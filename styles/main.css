@@ -6,6 +6,12 @@ body {
     background: linear-gradient(to bottom, #EADDCB, white);
 }
 
+.pampering-section {
+    background-color: rgba(255, 255, 255, 0.45);
+    /* Adjust the opacity value (0.45) as needed */
+    padding: 10px; 
+}
+
 header {
     background-color: white;
     padding: 10px; 
