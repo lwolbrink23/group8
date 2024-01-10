@@ -7,7 +7,7 @@ header {
 
 /* nav styles */
 .nav {
-    font-family: 'Cormorant', serif; /* Use Cormorant font for navigation links */
+    font-family: 'Cormorant', serif; 
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -17,8 +17,8 @@ header {
 
 .profile-icon-container {
     position: fixed;
-    top: 10px; /* Adjust as needed */
-    right: 10px; /* Adjust as needed */
+    top: 10px; 
+    right: 10px; 
     z-index: 1000; /* Ensure it appears above other elements */
 }
 .profile-icon {
@@ -46,13 +46,13 @@ header {
 
 .nav li {
     display: inline-block;
-    margin-right: 10px; /* Adjust as needed */
+    margin-right: 10px; 
     position: relative;
 }
 
 .nav a {
     text-decoration: none;
-    color: #090B0A; /* Adjust link color as needed */
+    color: #090B0A; 
     padding: 10px 20px; /* Adjust padding to make the background larger */
     position: relative;
 }
@@ -81,26 +81,27 @@ body {
     margin: 0;
     padding: 0;
     background: linear-gradient(to bottom, #EADDCB, white);
-    font-family: 'Poppins', sans-serif; /* Use Poppins font */
+    font-family: 'Poppins', sans-serif; 
     font-size: 14px; 
 }
 
 h1, h2, h3, h4, h5, h6 {
-    font-family: 'Cormorant', serif; /* Use Cormorant font for headers */
-    font-weight: bold; /* Make headers bold */
+    font-family: 'Cormorant', serif; 
+    font-weight: bold; 
 }
 
 /* should we title this "page-titles" instead of home since it will be consistent 
-through alot of pages?? -Callie  */
+through alot of pages?? -Callie  
+We could name it "transparent div" or something bc we repeat this style a lot. For example "pampering section" is repeated unnecessarily. my bad. -Lilly*/
 .home-title {
     background-color: rgba(255, 255, 255, 0.45);
-    /* Adjust the opacity value (0.45) as needed */
+    /* opacity value (0.45)*/
     padding: 10px; 
 }
 
 .pampering-section {
     background-color: rgba(255, 255, 255, 0.45);
-    /* Adjust the opacity value (0.45) as needed */
+    /* opacity value (0.45)*/
     padding: 10px; 
 }
 
@@ -108,11 +109,10 @@ through alot of pages?? -Callie  */
 button {
     background-color: #BACA82;
     color: #090B0A;
-    padding: 10px 20px; /* Adjust as needed */
+    padding: 10px 20px; 
     border: none;
     border-radius: 15px;
     cursor: pointer;
-    /* Add other styling properties for the button as needed */
 }
 
 .purp-button {
@@ -122,10 +122,8 @@ button {
     border: none;
     border-radius: 15px;
     cursor: pointer;
-    /* Add other styling properties for the button as needed */
 }
 
-/* footer styles */
 footer {
     background-color: #090B0A;
     color: white;
@@ -140,9 +138,8 @@ footer {
         padding: 10px; 
     }
     
-    /* nav styles */
     .nav {
-        font-family: 'Cormorant', serif; /* Use Cormorant font for navigation links */
+        font-family: 'Cormorant', serif; 
         display: flex;
         justify-content: space-between;
         align-items: center;
@@ -152,8 +149,8 @@ footer {
     
     .profile-icon-container {
         position: fixed;
-        top: 10px; /* Adjust as needed */
-        right: 10px; /* Adjust as needed */
+        top: 10px; 
+        right: 10px; 
         z-index: 1000; /* Ensure it appears above other elements */
     }
     .profile-icon {
@@ -181,14 +178,14 @@ footer {
     
     .nav li {
         display: inline-block;
-        margin-right: 10px; /* Adjust as needed */
+        margin-right: 10px; 
         position: relative;
     }
     
     .nav a {
         text-decoration: none;
-        color: #090B0A; /* Adjust link color as needed */
-        padding: 10px 20px; /* Adjust padding to make the background larger */
+        color: #090B0A; 
+        padding: 10px 20px; 
         position: relative;
     }
     
@@ -216,24 +213,24 @@ footer {
         margin: 0;
         padding: 0;
         background: linear-gradient(to bottom, #EADDCB, white);
-        font-family: 'Poppins', sans-serif; /* Use Poppins font */
+        font-family: 'Poppins', sans-serif; 
         font-size: 14px; 
     }
     
     h1, h2, h3, h4, h5, h6 {
-        font-family: 'Cormorant', serif; /* Use Cormorant font for headers */
-        font-weight: bold; /* Make headers bold */
+        font-family: 'Cormorant', serif; 
+        font-weight: bold; 
     }
     
     .home-title {
         background-color: rgba(255, 255, 255, 0.45);
-        /* Adjust the opacity value (0.45) as needed */
+        /* opacity value (0.45)*/
         padding: 10px; 
     }
     
     .pampering-section {
         background-color: rgba(255, 255, 255, 0.45);
-        /* Adjust the opacity value (0.45) as needed */
+        /* opacity value (0.45)*/
         padding: 10px; 
     }
     
@@ -245,20 +242,17 @@ footer {
         border: none;
         border-radius: 15px;
         cursor: pointer;
-        /* Add other styling properties for the button as needed */
     }
     
     .purp-button {
         background-color: #AA95D1;
         color: white;
-        padding: 10px 20px; /* Adjust as needed */
+        padding: 10px 20px; 
         border: none;
         border-radius: 15px;
         cursor: pointer;
-        /* Add other styling properties for the button as needed */
     }
     
-    /* footer styles */
     footer {
         background-color: #090B0A;
         color: white;
