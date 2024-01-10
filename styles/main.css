@@ -21,7 +21,9 @@ header {
     z-index: 1000; /* Ensure it appears above other elements */
 }
 .profile-icon {
-    margin-left: 20px; /* Adjust as needed */
+    max-width: 30%; 
+    height: auto;
+    margin-right: 20px;
 }
 
 .logo-and-nav {
@@ -30,9 +32,9 @@ header {
 }
 
 .logo {
-    max-width: 100px; /* Adjust the maximum width of the logo */
+    max-width: 100px; 
     height: auto;
-    margin-right: 20px; /* Adjust as needed */
+    margin-right: 20px; 
 }
 
 .nav ul {
@@ -52,8 +54,7 @@ header {
 }
 
 .nav a:hover {
-    text-decoration: underline; /* Optional: Underline on hover */
-    color: #AA95D1; /* Adjust hover color as needed */
+    background-color: #E7E7E7;
 }
 
 body {
