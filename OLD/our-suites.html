@@ -18,17 +18,21 @@
         />
       </head>
       <body>
+        <div class="profile-icon-container">
+          <!--profile icon-->
+          <img src="assets/icons/icons8-person-female-100.png" alt="profile icon" class="profile-icon"/>
+      </div>
         <header>
           <!--nav bar-->
           <div class="nav">
-            <ul>
-              <!--logo-->
-              <img src="assets/logo/TSS Circle logo Transparent.png" alt="Logo" />
-              <!--profile icon-->
-              <img src="assets/icons/icons8-person-female-100.png" alt="profile icon" />
-              <!--hamburger menu-->
-              <li><a href="default.asp">Home</a></li>
-              <li>
+            <!--logo and navigation links container-->
+            <div class="logo-and-nav">
+                <!--logo-->
+                <img src="assets/logo/TSS Circle logo Transparent.png" alt="Logo" class="logo" />
+                <!--hamburger menu-->
+                <ul>
+                <li><a href="default.asp">Home</a></li>
+                 <li>
                 <a href="linkhere">About</a>
                 <ul class="subpages">
                   <li><a href="our-story.html">Our Story</a></li>
@@ -46,12 +50,12 @@
                 <button
                   type="button"
                   onclick="alert('Button clicked!')"
-                  class="purp-button"
-                >
+                  class="purp-button">
                   Book Now
                 </button>
               </li>
             </ul>
+          </div>
           </div>
         </header>
         <div class="home-title">
@@ -63,8 +67,9 @@
              providers and their clients. Your comfort is our priority. 
           </ul>
         </div>
+        <div class="blurb-container">
         <div class="blurb1">
-          <h2>Quality Relaxation</h2>
+          <h2 >Quality Relaxation</h2>
           <ul>From serene lighting to plush seating, we've thought 
             of everything to ensure a quality experience.</ul>
         </div>
@@ -73,12 +78,13 @@
           <ul>Each suite is meticulously designed to create a welcoming and aesthetically pleasing space. 
             You'll find comfort and sophistication in every corner.</ul>
         </div>
+      </div>
         <div class="rent-section">
           <h1>Rent a Suite</h1>
-          <ul>Are you a Lifestyle Professional looking to lease a suite? 
+          <ul class="center">Are you a Lifestyle Professional looking to lease a suite? 
             Contact us below and a manager will get back to you.</ul>
             <!--needs css for padding between form entries-->
-            <form>
+            <form class="inline">
               <label for="name">Name</label>
               <input type="text" id="name"><br>
               <label for="email">Email</label>
@@ -87,10 +93,10 @@
               <input type="text" id="subject"><br>
               <label for="message">Message</label>
               <textarea rows="5" cols="50"></textarea>
-            </form>
             <button type="button" onclick="alert('Send Message')">
               Send Message
             </button>
+          </form>
         </div>
         <!-- Footer -->
     <footer>
