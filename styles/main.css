@@ -1,9 +1,20 @@
 /*homepage styles*/
+header {
+    background-color: white;
+    padding: 10px; 
+}
+
 
 body {
     margin: 0;
     padding: 0;
     background: linear-gradient(to bottom, #EADDCB, white);
+}
+
+.home-title {
+    background-color: rgba(255, 255, 255, 0.45);
+    /* Adjust the opacity value (0.45) as needed */
+    padding: 10px; 
 }
 
 .pampering-section {
@@ -12,10 +23,6 @@ body {
     padding: 10px; 
 }
 
-header {
-    background-color: white;
-    padding: 10px; 
-}
 
 footer {
     background-color: #090B0A;
