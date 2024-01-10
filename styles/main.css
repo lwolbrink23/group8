@@ -4,6 +4,31 @@ header {
     padding: 10px; 
 }
 
+/* nav styles */
+.nav {
+    font-family: 'Cormorant', serif; /* Use Cormorant font for navigation links */
+}
+
+.nav ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+
+.nav li {
+    display: inline-block;
+    margin-right: 20px; /* Adjust as needed */
+}
+
+.nav a {
+    text-decoration: none;
+    color: #090B0A; /* Adjust link color as needed */
+}
+
+.nav a:hover {
+    text-decoration: underline; /* Optional: Underline on hover */
+    color: #AA95D1; /* Adjust hover color as needed */
+}
 
 body {
     margin: 0;
