@@ -1,0 +1,28 @@
+/*homepage styles*/
+
+body {
+    margin: 0;
+    padding: 0;
+    background: linear-gradient(to bottom, #EADDCB, white);
+}
+
+header {
+    background-color: white;
+    padding: 10px; 
+}
+
+footer {
+    background-color: #090B0A;
+    color: white;
+    padding: 10px; 
+}
+
+button {
+    background-color: #BACA82;
+    color: #090B0A;
+    padding: 10px 20px; /* Adjust as needed */
+    border: none;
+    border-radius: 15px;
+    cursor: pointer;
+    /* Add other styling properties for the button as needed */
+}
