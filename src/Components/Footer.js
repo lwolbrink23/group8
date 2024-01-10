@@ -15,7 +15,7 @@ function Footer() {
       </div>
 
       <div class="newsletter">
-        <p><Strong>Join our Newsletter</Strong></p>
+        <p><strong>Join our Newsletter</strong></p>
         <form action="subscribe.php" method="post">
           <input type="email" name="email" placeholder="Your Email" required />
           <button type="submit">Subscribe</button>
