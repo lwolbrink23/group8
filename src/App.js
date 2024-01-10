@@ -1,5 +1,6 @@
 import logo from './logo.svg';
 import './App.css';
+import './Styles/main.css'
 import Header from './Components/Header'
 import Home from './Pages/Home'
 
