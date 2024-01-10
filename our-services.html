@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Our Services</title>
+    <!--css-->
+    <link rel="stylesheet" href="styles/main.css" />
+    <!--fonts-->
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;700&display=swap"
+    />
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css2?family=Cormorant:wght@700&display=swap"
+    />
+    <style>
+        .dropdown-container {
+        position: relative;
+        }
+
+        .dropdown {
+        display: inline-block;
+        }
+
+        .dropdown-btn {
+        padding: 10px;
+        cursor: pointer;
+        }
+
+        .dropdown-content {
+        display: none;
+        position: absolute;
+        background-color: #f9f9f9;
+        box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+        padding: 10px;
+        z-index: 1;
+        }
+    </style>
+</head>
+<body>
+    <h1>Services</h1>
+    <div class="dropdown-container">
+        <div class="dropdown">
+          <button type="button" class="dropdown-btn" onclick="toggleDropdown()">Show Information</button>
+          <div class="dropdown-content" id="infoBox">
+            <!-- Content for the information box goes here -->
+            <p>This is the information box.</p>
+          </div>
+        </div>
+      </div>
+
+      <script>
+        function toggleDropdown() {
+        var dropdownContent = document.getElementById("infoBox");
+
+        if (dropdownContent.style.display === "block") {
+            dropdownContent.style.display = "none";
+        } else {
+            dropdownContent.style.display = "block";
+        }
+        }
+      </script>
+
+</body>
+</html>
