@@ -7,11 +7,32 @@ header {
 /* nav styles */
 .nav {
     font-family: 'Cormorant', serif; /* Use Cormorant font for navigation links */
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: white;
+    padding: 10px;
 }
 
-.nav img {
-    max-width: 40%; /* Make images responsive */
-    height: auto; /* Maintain aspect ratio */
+.profile-icon-container {
+    position: fixed;
+    top: 10px; /* Adjust as needed */
+    right: 10px; /* Adjust as needed */
+    z-index: 1000; /* Ensure it appears above other elements */
+}
+.profile-icon {
+    margin-left: 20px; /* Adjust as needed */
+}
+
+.logo-and-nav {
+    display: flex;
+    align-items: center;
+}
+
+.logo {
+    max-width: 100px; /* Adjust the maximum width of the logo */
+    height: auto;
+    margin-right: 20px; /* Adjust as needed */
 }
 
 .nav ul {
