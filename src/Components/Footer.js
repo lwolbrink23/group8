@@ -14,26 +14,7 @@ function Footer() {
         </ul>
       </div>
 
-      <div class="newsletter">
-        <p><strong>Join our Newsletter</strong></p>
-        <form action="subscribe.php" method="post">
-          <input type="email" name="email" placeholder="Your Email" required />
-          <button type="submit">Subscribe</button>
-        </form>
-      </div>
 
-      <div class="social-icons">
-        <!-- Add social media icons here- make them not clickable?-->
-        <a href="#" target="_blank" rel="noopener noreferrer"
-          ><img src="social-icon-1.png" alt="Facebook"
-        /></a>
-        <a href="#" target="_blank" rel="noopener noreferrer"
-          ><img src="social-icon-2.png" alt="Instagram"
-        /></a>
-        <a href="#" target="_blank" rel="noopener noreferrer"
-          ><img src="social-icon-3.png" alt="TikTok"
-        /></a>
-      </div>
     </footer>
     );
   }
