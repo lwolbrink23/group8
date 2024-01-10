@@ -7,6 +7,34 @@ header {
 /* nav styles */
 .nav {
     font-family: 'Cormorant', serif; /* Use Cormorant font for navigation links */
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: white;
+    padding: 10px;
+}
+
+.profile-icon-container {
+    position: fixed;
+    top: 10px; /* Adjust as needed */
+    right: 10px; /* Adjust as needed */
+    z-index: 1000; /* Ensure it appears above other elements */
+}
+.profile-icon {
+    max-width: 30%; 
+    height: auto;
+    margin-right: 20px;
+}
+
+.logo-and-nav {
+    display: flex;
+    align-items: center;
+}
+
+.logo {
+    max-width: 100px; 
+    height: auto;
+    margin-right: 20px; 
 }
 
 .nav ul {
@@ -26,10 +54,10 @@ header {
 }
 
 .nav a:hover {
-    text-decoration: underline; /* Optional: Underline on hover */
-    color: #AA95D1; /* Adjust hover color as needed */
+    background-color: #E7E7E7;
 }
 
+/* body styles */
 body {
     margin: 0;
     padding: 0;
@@ -58,12 +86,6 @@ through alot of pages?? -Callie  */
 }
 
 
-footer {
-    background-color: #090B0A;
-    color: white;
-    padding: 10px; 
-}
-
 button {
     background-color: #BACA82;
     color: #090B0A;
@@ -82,4 +104,11 @@ button {
     border-radius: 15px;
     cursor: pointer;
     /* Add other styling properties for the button as needed */
+}
+
+/* footer styles */
+footer {
+    background-color: #090B0A;
+    color: white;
+    padding: 10px; 
 }
