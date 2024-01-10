@@ -5,7 +5,8 @@
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
         <title>The Suite Spot</title>
         <!--css-->
-       <!-- <link rel="stylesheet"  href="styles/main.css" /> -->
+        <link rel="stylesheet"  href="styles/main.css" /> 
+        <link rel="stylesheet"  href="styles/oursuites.css" /> 
         <!--fonts-->
         <link
           rel="stylesheet"
@@ -17,11 +18,14 @@
         />
       </head>
       <body>
-        <div class="nav">
+        <header>
+          <!--nav bar-->
+          <div class="nav">
             <ul>
               <!--logo-->
-              <img src="" alt="" />
+              <img src="assets/logo/TSS Circle logo Transparent.png" alt="Logo" />
               <!--profile icon-->
+              <img src="assets/icons/icons8-person-female-100.png" alt="profile icon" />
               <!--hamburger menu-->
               <li><a href="default.asp">Home</a></li>
               <li>
@@ -49,5 +53,82 @@
               </li>
             </ul>
           </div>
+        </header>
+        <div class="home-title">
+          <h1>Our Suites</h1>
+          <ul>
+            Step into our suites, and let the stress of the day melt away as you
+             embark on a journey of beauty and well-being. Our suites are 
+             thoughtfully designed to provide a relaxing and comfortable environment for both our 
+             providers and their clients. Your comfort is our priority. 
+          </ul>
+        </div>
+        <div class="blurb1">
+          <h2>Quality Relaxation</h2>
+          <ul>From serene lighting to plush seating, we've thought 
+            of everything to ensure a quality experience.</ul>
+        </div>
+        <div class="blurb2">
+          <h2>Impeccable Design</h2>
+          <ul>Each suite is meticulously designed to create a welcoming and aesthetically pleasing space. 
+            You'll find comfort and sophistication in every corner.</ul>
+        </div>
+        <div class="rent-section">
+          <h1>Rent a Suite</h1>
+          <ul>Are you a Lifestyle Professional looking to lease a suite? 
+            Contact us below and a manager will get back to you.</ul>
+            <!--needs css for padding between form entries-->
+            <form>
+              <label for="name">Name</label>
+              <input type="text" id="name"><br>
+              <label for="email">Email</label>
+              <input type="text" id="email"><br>
+              <label for="subject">Subject</label>
+              <input type="text" id="subject"><br>
+              <label for="message">Message</label>
+              <textarea rows="5" cols="50"></textarea>
+            </form>
+            <button type="button" onclick="alert('Send Message')">
+              Send Message
+            </button>
+        </div>
+        <!-- Footer -->
+    <footer>
+      <div class="footer-info">
+        <p><strong>The Suite Spot</p></strong>
+        <p><strong>Phone:</strong> 223-133-2948</p>
+        <p><strong>Address:</strong> 2343 Suite Spot Way, Orlando, FL 32804</p>
+        <p><strong>Hours of Operation:</strong></p>
+        <ul>
+          <li>Sunday: 12-6</li>
+          <li>Monday-Friday: 10-7</li>
+          <li>Saturday: 9-6</li>
+        </ul>
+      </div>
+
+      <div class="newsletter">
+        <p><Strong>Join our Newsletter</Strong></p>
+        <form action="subscribe.php" method="post">
+          <input type="email" name="email" placeholder="Your Email" required />
+          <button type="submit">Subscribe</button>
+        </form>
+      </div>
+
+      <div class="social-icons">
+        <!-- Add social media icons here- make them not clickable?-->
+        <a href="#" target="_blank" rel="noopener noreferrer"
+          ><img src="social-icon-1.png" alt="Facebook"
+        /></a>
+        <a href="#" target="_blank" rel="noopener noreferrer"
+          ><img src="social-icon-2.png" alt="Instagram"
+        /></a>
+        <a href="#" target="_blank" rel="noopener noreferrer"
+          ><img src="social-icon-3.png" alt="TikTok"
+        /></a>
+      </div>
+    </footer>
+
+    <!-- do we want JS at the end of body so the HTML can load first/page loads faster? -->
+    <script src="scripts.js"></script>
       </body>
 </html>

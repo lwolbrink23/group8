@@ -90,6 +90,8 @@ h1, h2, h3, h4, h5, h6 {
     font-weight: bold; /* Make headers bold */
 }
 
+/* should we title this "page-titles" instead of home since it will be consistent 
+through alot of pages?? -Callie  */
 .home-title {
     background-color: rgba(255, 255, 255, 0.45);
     /* Adjust the opacity value (0.45) as needed */
