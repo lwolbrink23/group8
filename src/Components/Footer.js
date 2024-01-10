@@ -1,93 +1,40 @@
 
 function Footer() {
     return (
-      <div className="App">
-        
-<div class="home-title">
-      <h1>The Suite Spot</h1>
-      <h2>Where Beauty Finds Its Home</h2>
-    </div>
-    {/* <!-- Promo Carousel --> */}
-    <div class="promos">
-      {/* <!-- Add promo carousel content here --> */}
-      <button type="button" onclick="alert('View Products')">
-        View Our Products
-      </button>
-    </div>
-
-    {/* <!-- Book Now Section --> */}
-    <div class="pampering-section">
-      {/* <!-- I checked the prototype & these should be h2 size--> */}
-      <h4>Pampering yourself is just one click away!</h4>
-      <button type="button" onclick="alert('Book Now!')" class="purp-button">
-        Book Now
-      </button>
-    </div>
-
-    {/* <!-- "Why Choose Us?" Section --> */}
-    <div class="why-choose-us-section">
-      <h2>Why Choose Us?</h2>
-      {/* <!-- I added a ul tag around the li elements - Lindsey --> */}
-      <ul>
-        <li>
-          We're all about empowering you to be your own boss. Enjoy the freedom
-          of setting your own hours and taking control of your career.
-        </li>
-        <li>
-          Our platform is designed to support your professional growth. We
-          provide the tools and infrastructure you need to focus on growing your
-          client base and income.
-        </li>
-        <li>
-          Decorate your suite in your unique, creative way! Your space is a
-          canvas where you can showcase your style and personality, creating an
-          inviting atmosphere for your clients.
-        </li>
-      </ul>
-      <p>
-        Unlock your potential and join "The Suite Spot" community. Discover how
-        we can help you build your beauty business on your own terms.
-      </p>
-    </div>
-    <img src="assets/images/spaproducts.png" alt="Spa Products" />
-    
-    <img src="assets/images/brownhair.png" alt="Hair" />
-    {/* <!-- "Our Providers" Section --> */}
-    <div class="our-providers-section">
-      <h2>Our Providers</h2>
-      <p>
-        Our location is the perfect hub for a wide range of beauty and wellness
-        services. Here are some of the dedicated professionals you'll find here:
-      </p>
-      <ul>
-        <li>Hairdressers</li>
-        <li>Makeup Artists</li>
-        <li>Nail Artists</li>
-        <li>Massage Therapists</li>
-      </ul>
-      <p>
-        Our community of Lifestyle Professionals is dedicated to helping you
-        look and feel your best. Discover a wide range of services under one
-        roof.
-      </p>
-      <button type="button" onclick="alert('View Our Services!')">
-        View Our Services
-      </button>
-    </div>
-
-    {/* <!-- Gallery --> */}
-    <div class="gallery">
-      <h2>Gallery</h2>
-      {/* <!-- Add gallery carousel content here --> */}
-    </div>
-
-    {/* <!-- Testimonials --> */}
-    <div class="testimonials">
-      <h2>Testimonials</h2>
-      {/* <!-- Add testimonials carousel content here --> */}
-    </div>
-
+      <footer>
+      <div class="footer-info">
+        <p><strong>The Suite Spot</p></strong>
+        <p><strong>Phone:</strong> 223-133-2948</p>
+        <p><strong>Address:</strong> 2343 Suite Spot Way, Orlando, FL 32804</p>
+        <p><strong>Hours of Operation:</strong></p>
+        <ul>
+          <li>Sunday: 12-6</li>
+          <li>Monday-Friday: 10-7</li>
+          <li>Saturday: 9-6</li>
+        </ul>
       </div>
+
+      <div class="newsletter">
+        <p><Strong>Join our Newsletter</Strong></p>
+        <form action="subscribe.php" method="post">
+          <input type="email" name="email" placeholder="Your Email" required />
+          <button type="submit">Subscribe</button>
+        </form>
+      </div>
+
+      <div class="social-icons">
+        <!-- Add social media icons here- make them not clickable?-->
+        <a href="#" target="_blank" rel="noopener noreferrer"
+          ><img src="social-icon-1.png" alt="Facebook"
+        /></a>
+        <a href="#" target="_blank" rel="noopener noreferrer"
+          ><img src="social-icon-2.png" alt="Instagram"
+        /></a>
+        <a href="#" target="_blank" rel="noopener noreferrer"
+          ><img src="social-icon-3.png" alt="TikTok"
+        /></a>
+      </div>
+    </footer>
     );
   }
   
