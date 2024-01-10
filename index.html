@@ -12,18 +12,37 @@
       <!--nav bar-->
       <div class="nav">
         <ul>
-          <img src="" alt="" />
           <!--logo-->
+          <img src="" alt="" />
+          <!--profile icon-->
+          <!--hamburger menu-->
           <li><a href="default.asp">Home</a></li>
-          <li><a href="linkhere">About</a></li>
-          <li><a href="linkhere">Link</a></li>
+          <li>
+            <a href="linkhere">About</a>
+            <ul class="subpages">
+              <li><a href="our-story.html">Our Story</a></li>
+              <li><a href="our-suites.html">Our Suites</a></li>
+              <li><a href="our-services.html">Our Services</a></li>
+              <li><a href="photo-gallery.html">Photo Gallery</a></li>
+            </ul>
+          </li>
+          <li><a href="linkhere">Blog</a></li>
+          <li><a href="linkhere">FAQ's</a></li>
+          <li><a href="linkhere">Shop</a></li>
+          <li><a href="linkhere">Contact Us</a></li>
+          <li><a href="linkhere">Account</a></li>
+          <li>
+            <button type="button" onclick="alert('Button clicked!')">
+              Book Now
+            </button>
+          </li>
         </ul>
       </div>
     </header>
     <h1>The Suite Spot</h1>
     <h2>Where Beauty Finds Its Home</h2>
     <h3>test</h3>
-    <!-- do we want JS at the end of body so the HTML can load first/faster? -->
+    <!-- do we want JS at the end of body so the HTML can load first/page loads faster? -->
     <script src="scripts.js"></script>
   </body>
 </html>
