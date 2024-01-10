@@ -1,7 +1,7 @@
 // App.js or your desired component file
 
 import React from 'react';
-import './styles/main.css';
+import './styles/App.css';
 import './styles/oursuites.css';
 
 function OurSuites() {

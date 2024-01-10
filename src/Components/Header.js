@@ -11,10 +11,10 @@ function Header() {
             <ul>
             <li><a href="default.asp">Home</a></li>
             <li class="dropdown">
-                <a href="#" class="about-link">About</a>
+                <a href="a" class="about-link">About</a>
                 <ul class="subpages">
                     <li><a href="our-story.html">Our Story</a></li>
-                    <li><a href="our-suites.html">Our Suites</a></li>
+                    <li><a href="OurSuites.js">Our Suites</a></li>
                     <li><a href="our-services.html">Our Services</a></li>
                     <li><a href="photo-gallery.html">Photo Gallery</a></li>
                 </ul>
