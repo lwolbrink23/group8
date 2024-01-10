@@ -9,6 +9,11 @@ header {
     font-family: 'Cormorant', serif; /* Use Cormorant font for navigation links */
 }
 
+.nav img {
+    max-width: 40%; /* Make images responsive */
+    height: auto; /* Maintain aspect ratio */
+}
+
 .nav ul {
     list-style: none;
     margin: 0;
