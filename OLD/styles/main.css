@@ -1,0 +1,261 @@
+/*mobile breakpoint styles*/
+@media only screen and (max-width: 767px) {
+header {
+    background-color: white;
+    padding: 10px; 
+}
+
+/* nav styles */
+.nav {
+    font-family: 'Cormorant', serif; 
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: white;
+    padding: 10px;
+}
+
+.profile-icon-container {
+    position: fixed;
+    top: 10px; 
+    right: 10px; 
+    z-index: 1000; /* Ensure it appears above other elements */
+}
+.profile-icon {
+    max-width: 30%; 
+    height: auto;
+    margin-right: 20px;
+}
+
+.logo-and-nav {
+    display: flex;
+    align-items: center;
+}
+
+.logo {
+    max-width: 100px; 
+    height: auto;
+    margin-right: 20px; 
+}
+
+.nav ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+
+.nav li {
+    display: inline-block;
+    margin-right: 10px; 
+    position: relative;
+}
+
+.nav a {
+    text-decoration: none;
+    color: #090B0A; 
+    padding: 10px 20px; /* Adjust padding to make the background larger */
+    position: relative;
+}
+
+.nav a:hover {
+    background-color: #E7E7E7;
+}
+
+.subpages {
+    display: none;
+    position: absolute;
+    top: 100%;
+    left: 0;
+    background-color: #E7E7E7;
+    padding: 10px;
+    border-radius: 5px;
+}
+
+.nav .dropdown:hover .subpages {
+    display: block;
+}
+
+
+/* body styles */
+body {
+    margin: 0;
+    padding: 0;
+    background: linear-gradient(to bottom, #EADDCB, white);
+    font-family: 'Poppins', sans-serif; 
+    font-size: 14px; 
+}
+
+h1, h2, h3, h4, h5, h6 {
+    font-family: 'Cormorant', serif; 
+    font-weight: bold; 
+}
+
+/* should we title this "page-titles" instead of home since it will be consistent 
+through alot of pages?? -Callie  
+We could name it "transparent div" or something bc we repeat this style a lot. For example "pampering section" is repeated unnecessarily. my bad. -Lilly*/
+.home-title {
+    background-color: rgba(255, 255, 255, 0.45);
+    /* opacity value (0.45)*/
+    padding: 10px; 
+}
+
+.pampering-section {
+    background-color: rgba(255, 255, 255, 0.45);
+    /* opacity value (0.45)*/
+    padding: 10px; 
+}
+
+
+button {
+    background-color: #BACA82;
+    color: #090B0A;
+    padding: 10px 20px; 
+    border: none;
+    border-radius: 15px;
+    cursor: pointer;
+}
+
+.purp-button {
+    background-color: #AA95D1;
+    color: white;
+    padding: 10px 20px; /* Adjust as needed */
+    border: none;
+    border-radius: 15px;
+    cursor: pointer;
+}
+
+footer {
+    background-color: #090B0A;
+    color: white;
+    padding: 10px; 
+}
+}
+
+/* web breakpoint styles*/
+@media only screen and (min-width: 768px) {
+    header {
+        background-color: white;
+        padding: 10px; 
+    }
+    
+    .nav {
+        font-family: 'Cormorant', serif; 
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        background-color: white;
+        padding: 10px;
+    }
+    
+    .profile-icon-container {
+        position: fixed;
+        top: 10px; 
+        right: 10px; 
+        z-index: 1000; /* Ensure it appears above other elements */
+    }
+    .profile-icon {
+        max-width: 30%; 
+        height: auto;
+        margin-right: 20px;
+    }
+    
+    .logo-and-nav {
+        display: flex;
+        align-items: center;
+    }
+    
+    .logo {
+        max-width: 100px; 
+        height: auto;
+        margin-right: 20px; 
+    }
+    
+    .nav ul {
+        list-style: none;
+        margin: 0;
+        padding: 0;
+    }
+    
+    .nav li {
+        display: inline-block;
+        margin-right: 10px; 
+        position: relative;
+    }
+    
+    .nav a {
+        text-decoration: none;
+        color: #090B0A; 
+        padding: 10px 20px; 
+        position: relative;
+    }
+    
+    .nav a:hover {
+        background-color: #E7E7E7;
+    }
+    
+    .subpages {
+        display: none;
+        position: absolute;
+        top: 100%;
+        left: 0;
+        background-color: #E7E7E7;
+        padding: 10px;
+        border-radius: 5px;
+    }
+    
+    .nav .dropdown:hover .subpages {
+        display: block;
+    }
+    
+    
+    /* body styles */
+    body {
+        margin: 0;
+        padding: 0;
+        background: linear-gradient(to bottom, #EADDCB, white);
+        font-family: 'Poppins', sans-serif; 
+        font-size: 14px; 
+    }
+    
+    h1, h2, h3, h4, h5, h6 {
+        font-family: 'Cormorant', serif; 
+        font-weight: bold; 
+    }
+    
+    .home-title {
+        background-color: rgba(255, 255, 255, 0.45);
+        /* opacity value (0.45)*/
+        padding: 10px; 
+    }
+    
+    .pampering-section {
+        background-color: rgba(255, 255, 255, 0.45);
+        /* opacity value (0.45)*/
+        padding: 10px; 
+    }
+    
+    
+    button {
+        background-color: #BACA82;
+        color: #090B0A;
+        padding: 10px 20px; /* Adjust as needed */
+        border: none;
+        border-radius: 15px;
+        cursor: pointer;
+    }
+    
+    .purp-button {
+        background-color: #AA95D1;
+        color: white;
+        padding: 10px 20px; 
+        border: none;
+        border-radius: 15px;
+        cursor: pointer;
+    }
+    
+    footer {
+        background-color: #090B0A;
+        color: white;
+        padding: 10px; 
+    }
+}
