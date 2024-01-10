@@ -1,0 +1,13 @@
+{
+  "gitdoc.autoCommitDelay": 15000,
+  "gitdoc.autoPush": "onCommit",
+  "gitdoc.autoPushDelay": 10000,
+  "gitdoc.commitValidationLevel": "none",
+  "gitdoc.enabled": true,
+  "git.enabled": true,
+  "editor.formatOnPaste": true,
+  "editor.formatOnSave": true,
+  "eslint.format.enable": true,
+  "files.autoSave": "afterDelay",
+  "git.autoStash": true
+}
