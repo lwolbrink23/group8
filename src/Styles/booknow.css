@@ -1,3 +1,13 @@
 .suites {
     
 }
+
+.top {
+    display: flex;
+
+}
+
+.top img {
+    margin-right: 20px;
+    /* Adjust the value as needed for the desired spacing */
+}
