@@ -36,6 +36,12 @@
     /* Navigation container styles */
     .nav-container {
       display: none;
+      position: absolute;
+        /* You may need to adjust this based on your design */
+        top: 100%;
+        /* Position it below the hamburger */
+        left: 0;
+        background-color: white;
       /* Initially hide the navigation links */
     }
   
