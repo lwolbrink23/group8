@@ -1,9 +1,9 @@
 // App.js or your desired component file
 
-import React from "react";
-import Header from "../Components/Header";
-// import './App.css'; this was throwing an error
-// import './styles/oursuites.css'; this was throwing an error
+import React from 'react';
+import Header from '../Components/Header';
+import './styles/App.css';
+import './styles/oursuites.css';
 
 function OurSuites() {
   return (
