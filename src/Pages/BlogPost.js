@@ -2,22 +2,7 @@ import React from "react";
 import "../App.css";
 import arrowIcon from '../assets/icons/arrow.png';
 
-function BlogPost() {
-  const blogmain = useHistory();
-
-  const backButton = () => {
-    blogmain.push("./blog");
-  };
-
   return (
-    <div>
-     <button
-        type="button"
-        onClick={backButton}
-        className="back-button"
-      >
-        <img src={arrowIcon} alt="Back Arrow Icon" />
-      </button>
       <div className="post1">
         <div className="post-general-info">
           {/* Image */}

@@ -17,8 +17,10 @@ function Header() {
       <div className="header-container">
         <img src={logoWeb} alt="logo" className="logo-web" />
         <img src={logoMobile} alt="logo" className="logo-mobile" />
+        {/* Hamburger menu icon */}
+        <div id="hamburger-menu" onClick={toggleHamburger}></div>
         <nav>
-          <ul>
+          <ul className={isHamburgerOpen ? "show" : ""}>
             <li>
               <Link to="/">Home</Link>
             </li>
