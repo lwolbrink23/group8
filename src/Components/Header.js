@@ -7,8 +7,11 @@ import "../Styles/header.css"; // main stylesheet
 import "../Styles/responsiveHeader.css"; // responsive stylesheet
 
 function Header() {
-  const [isDropdownOpen, setDropdownOpen] = useState(false);
+  const [isHamburgerOpen, setHamburgerOpen] = useState(false);
 
+  const toggleHamburger = () => {
+    setHamburgerOpen(!isHamburgerOpen);
+  };
   return (
     <header>
       <div className="header-container">
