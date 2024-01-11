@@ -1,6 +1,10 @@
   /* ONLY Global Styles for entire website */
  /* if you have specific page styling in this page please move it to its own css page */
-
+    @font-face {
+      font-family: 'poppins';
+      src: local('poppis'), url('./assets/fonts/poppins/Poppins-Regular.ttf') format('ttf');
+      /* Add additional formats if your font supports them */
+    }
 
   .bar {
     display: block;
@@ -15,7 +19,7 @@
       margin: 0;
       padding: 0;
       background: linear-gradient(to bottom, #EADDCB, white);
-      font-family: 'Poppins', sans-serif;
+      font-family: 'poppins', sans-serif;
       font-weight: normal;
       font-size: 14px;
     }
