@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import '../App.css';
 import Header from '../Components/Header';
+import Footer from '../Components/Footer';
 
 function OurServices() {
     const HairContent = () => (
@@ -212,6 +213,7 @@ function OurServices() {
             <NailsDropdown />
             <MakeupDropdown />
             <MassageDropdown />
+            <Footer />
         </div>
     );
 }
