@@ -2,6 +2,7 @@ import React from "react";
 import logo from "../assets/logo/TSS Circle logo Transparent.png";
 import profileicon from "../assets/icons/icons8-person-female-100.png";
 import { Link, useMatch, useResolvedPath } from "react-router-dom";
+import "../Styles/header.css"; // Import your styles
 
 function Header() {
   const headerStyle = {
@@ -19,13 +20,9 @@ function Header() {
 
   return (
     <header style={headerStyle}>
-      {/* nav bar */}
-      <div className="nav">
-        {/* <!--logo and navigation links container--> */}
-        <div className="logo-and-nav">
-          {/* <!--logo--> */}
+      <div>
+        <div>
           <img src={logo} alt="logo" className="logo" />
-          {/* <!--hamburger menu--> */}
           <ul>
             <li>
               <Link to="/">Home</Link>
@@ -34,7 +31,7 @@ function Header() {
               <a href="#" className="about-link">
                 About
               </a>
-              <ul className="subpages">
+              <ul>
                 <li>
                   <CustomLink to="/ourstory">Our Story</CustomLink>
                 </li>
@@ -70,11 +67,7 @@ function Header() {
               </CustomLink>
             </li>
           </ul>
-          <div
-            className="profile-icon-container"
-            style={profileIconContainerStyle}
-          >
-            {/* profile icon*/}
+          <div style={profileIconContainerStyle}>
             <img
               src={profileicon}
               alt="profile icon"
