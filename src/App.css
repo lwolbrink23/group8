@@ -1,197 +1,128 @@
-    /*keep outside of breakpoints */
-    .hamburger {
-      display: block;
-      /* Show the hamburger button on small screens */
-      background: none;
-      border: none;
-      cursor: pointer;
-    }
+  /*keep outside of breakpoints */
+  .hamburger {
+    display: block;
+    /* Show the hamburger button on small screens */
+    background: none;
+    border: none;
+    cursor: pointer;
+  }
 
-    .bar {
-      display: block;
-      background-color: #090B0A;
-      /* Adjust color as needed */
-      height: 4px;
-      width: 30px;
-      margin: 6px 0;
-      transition: 0.4s;
-    }
+  .bar {
+    display: block;
+    background-color: #090B0A;
+    /* Adjust color as needed */
+    height: 4px;
+    width: 30px;
+    margin: 6px 0;
+    transition: 0.4s;
+  }
 
-    /* Navigation container styles */
-    .nav-container {
-      display: none;
-      /* Initially hide the navigation links */
-    }
-
-
-    header {
-      background-color: white;
-      padding: 10px;
-
-      @@ -60, 8+85, 25 @@ footer {
-        padding: 10px;
-      }
+  /* Navigation container styles */
+  .nav-container {
+    display: none;
+    /* Initially hide the navigation links */
+  }
 
 
-      /*mobile breakpoint styles*/
-      @media only screen and (max-width: 767px) {
-        .hamburger {
-          display: block;
-          /* Show the hamburger button on small screens */
-        }
-
-        .nav-container {
-          display: none;
-          /* Initially hide the navigation links */
-        }
-
-        /* Adjust styling for the expanded navigation links */
-        .nav-container.show {
-          display: block;
-        }
-
-
-        .nav {
-          font-family: 'Cormorant', serif;
-          display: flex;
-
-          @@ -71, 14+113, 6 @@ footer {
-            padding: 10px;
-          }
-
-          .profile-icon-container {
-            position: absolute;
-            top: 10px;
-            right: 10px;
-            z-index: 1000;
-            /* Ensure it appears above other elements */
-          }
-
-          .profile-icon {
-            max-width: 30%;
-            height: auto;
-            margin-right: 20px;
-          }
-
-          .logo-and-nav {
-            display: flex;
-            align-items: center;
-          }
-
-          .logo {
-            max-width: 100px;
-            height: auto;
-            margin-right: 20px;
-          }
-
-          .nav ul {
-            list-style: none;
-            margin: 0;
-            padding: 0;
-          }
-
-          .nav li {
-            display: inline-block;
-            margin-right: 10px;
-            position: relative;
-            font-weight: normal !important;
-          }
-
-          .nav a {
-            text-decoration: none;
-            color: #090B0A;
-            padding: 10px 20px;
-            /* Adjust padding to make the background larger */
-            position: relative;
-          }
-
-          .nav a:hover {
-            background-color: #E7E7E7;
-          }
-
-          .subpages {
-            display: none;
-            position: absolute;
-            top: 100%;
-            left: 0;
-            background-color: #E7E7E7;
-            padding: 10px;
-            border-radius: 5px;
-          }
-
-          .nav .dropdown:hover .subpages {
-            display: block;
-          }
-        }
-
-        /* web breakpoint styles
-@media only screen and (min-width: 768px) {
   header {
     background-color: white;
     padding: 10px;
-  }
-  .nav {
-    font-family: 'Cormorant', serif;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    background-color: white;
-    padding: 10px;
-  }
-  .profile-icon-container {
-    position: fixed;
-    top: 10px;
-    right: 10px;
-    z-index: 1000;
-    /* Ensure it appears above other elements 
-  }
-  .profile-icon {
-    max-width: 30%;
-    height: auto;
-    margin-right: 20px;
-  }
-  .logo-and-nav {
-    display: flex;
-    align-items: center;
-  }
-  .logo {
-    max-width: 100px;
-    height: auto;
-    margin-right: 20px;
-  }
-  .nav ul {
-    list-style: none;
-    margin: 0;
-    padding: 0;
-  }
-  .nav li {
-    display: inline-block;
-    margin-right: 10px;
-    position: relative;
-  }
-  .nav a {
-    text-decoration: none;
-    color: #090B0A;
-    padding: 10px 20px;
-    position: relative;
-  }
-  .nav a:hover {
-    background-color: #E7E7E7;
-  }
-  .subpages {
-    display: none;
-    position: absolute;
-    top: 100%;
-    left: 0;
-    background-color: #E7E7E7;
-    padding: 10px;
-    border-radius: 5px;
-  }
-  .nav .dropdown:hover .subpages {
-    display: block;
-  }
-  
-}
+
+    @@ -60, 8+85, 25 @@ footer {
+      padding: 10px;
+    }
+
+
+    /*mobile breakpoint styles*/
+    @media only screen and (max-width: 767px) {
+      .hamburger {
+        display: block;
+        /* Show the hamburger button on small screens */
+      }
+
+      .nav-container {
+        display: none;
+        /* Initially hide the navigation links */
+      }
+
+      /* Adjust styling for the expanded navigation links */
+      .nav-container.show {
+        display: block;
+      }
+
+
+      .nav {
+        font-family: 'Cormorant', serif;
+        display: flex;
+
+        @@ -71, 14+113, 6 @@ footer {
+          padding: 10px;
+        }
+
+        .profile-icon-container {
+          position: absolute;
+          top: 10px;
+          right: 10px;
+          z-index: 1000;
+          /* Ensure it appears above other elements */
+        }
+
+        .profile-icon {
+          max-width: 30%;
+          height: auto;
+          margin-right: 20px;
+        }
+
+        .logo-and-nav {
+          display: flex;
+          align-items: center;
+        }
+
+        .logo {
+          max-width: 100px;
+          height: auto;
+          margin-right: 20px;
+        }
+
+        .nav ul {
+          list-style: none;
+          margin: 0;
+          padding: 0;
+        }
+
+        .nav li {
+          display: inline-block;
+          margin-right: 10px;
+          position: relative;
+          font-weight: normal !important;
+        }
+
+        .nav a {
+          text-decoration: none;
+          color: #090B0A;
+          padding: 10px 20px;
+          /* Adjust padding to make the background larger */
+          position: relative;
+        }
+
+        .nav a:hover {
+          background-color: #E7E7E7;
+        }
+
+        .subpages {
+          display: none;
+          position: absolute;
+          top: 100%;
+          left: 0;
+          background-color: #E7E7E7;
+          padding: 10px;
+          border-radius: 5px;
+        }
+
+        .nav .dropdown:hover .subpages {
+          display: block;
+        }
+      }
 
 /* web breakpoint styles
 @media only screen and (min-width: 768px) {
