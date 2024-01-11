@@ -25,8 +25,8 @@
 
   body,
   p, li {
-    font-weight: normal !important;
-  }
+    font-weight: normal !important; 
+  } /* i cant get the body poppins text to not be bold for some reason -lilly */
 
 .trans-white {
   background-color: rgba(255, 255, 255, 0.45);
@@ -72,7 +72,7 @@ footer {
   }
 
   .profile-icon-container {
-    position: fixed;
+    position: absolute;
     top: 10px;
     right: 10px;
     z-index: 1000;

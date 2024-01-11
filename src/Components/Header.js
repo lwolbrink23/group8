@@ -3,12 +3,19 @@ import logo from "../assets/logo/TSS Circle logo Transparent.png";
 import profileicon from "../assets/icons/icons8-person-female-100.png";
 
 function Header() {
+  const headerStyle = {
+    position: "relative",
+  };
+
+  const profileIconContainerStyle = {
+    position: "absolute",
+    top: "10px",
+    right: "10px",
+    zIndex: "1000",
+  };
+
   return (
-    <header>
-      <div className="profile-icon-container">
-        {/* profile icon*/}
-        <img src={profileicon} alt="profile icon" class="profile-icon" />
-      </div>
+    <header style={headerStyle}>
       {/* nav bar */}
       <div className="nav">
         {/* <!--logo and navigation links container--> */}
@@ -64,6 +71,13 @@ function Header() {
               </button>
             </li>
           </ul>
+          <div
+            className="profile-icon-container"
+            style={profileIconContainerStyle}
+          >
+            {/* profile icon*/}
+            <img src={profileicon} alt="profile icon" class="profile-icon" />
+          </div>
         </div>
       </div>
     </header>
