@@ -122,7 +122,7 @@
         .nav .dropdown:hover .subpages {
           display: block;
         }
-      }
+      }}
 
 /* web breakpoint styles
 @media only screen and (min-width: 768px) {
