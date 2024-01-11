@@ -1,5 +1,5 @@
 import "../App.css";
-import "../Styles/booknow"
+import "../Styles/booknow.css"
 
 function BookNowDirectory() {
     return (
