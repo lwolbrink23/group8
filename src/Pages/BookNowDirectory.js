@@ -1,16 +1,8 @@
 import "../App.css";
+import "../Styles/booknow"
 
 function BookNowDirectory() {
-<<<<<<< Updated upstream
     return <div></div>;
 }
 
 export default BookNowDirectory;
-=======
-    return (
-        <div>book</div>
-    )
-}
-
-export default BookNowDirectory
->>>>>>> Stashed changes
