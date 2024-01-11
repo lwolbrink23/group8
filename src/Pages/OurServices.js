@@ -1,7 +1,6 @@
 import React, { useState } from 'react';
 import '../App.css';
-import Header from '../Components/Header';
-import Footer from '../Components/Footer';
+import arrowIcon from '../assets/icons/arrow.png';
 
 function OurServices() {
     const HairContent = () => (
@@ -148,28 +147,42 @@ function OurServices() {
 
     const HairDropdown = () => {
         const [isHairVisible, setHairVisibility] = useState(false);
+        const [arrowRotation, setArrowRotation] = useState(0);
 
         const toggleHairVisibility = () => {
             setHairVisibility(!isHairVisible);
+            setArrowRotation(arrowRotation === 0 ? 90 : 0);
+        };
+
+        const arrowIconStyle = {
+            height: '15px',
+            transform: `rotate(${arrowRotation}deg)`,
         };
 
         return (
             <div class="dropdown">
-                <h3 onClick={toggleHairVisibility} class="dropdown-btn">Hair</h3>
+                <div class="dropdown-btn" onClick={toggleHairVisibility}><h2>Hair</h2><img src={arrowIcon} alt="Arrow" style={arrowIconStyle} /></div>
                 {isHairVisible && <HairContent />}
             </div>
         );
     };
     const NailsDropdown = () => {
         const [isNailsVisible, setNailsVisibility] = useState(false);
+        const [arrowRotation, setArrowRotation] = useState(0);
 
         const toggleNailsVisibility = () => {
             setNailsVisibility(!isNailsVisible);
+            setArrowRotation(arrowRotation === 0 ? 90 : 0);
+        };
+
+        const arrowIconStyle = {
+            height: '15px',
+            transform: `rotate(${arrowRotation}deg)`,
         };
 
         return (
             <div class="dropdown">
-                <h3 onClick={toggleNailsVisibility} class="dropdown-btn">Nails</h3>
+                <div class="dropdown-btn" onClick={toggleNailsVisibility}><h2>Nails</h2><img src={arrowIcon} alt="Arrow" style={arrowIconStyle} /></div>
                 {isNailsVisible && <NailContent />}
             </div>
         );
@@ -177,14 +190,21 @@ function OurServices() {
 
     const MakeupDropdown = () => {
         const [isMakeupVisible, setMakeupVisibility] = useState(false);
+        const [arrowRotation, setArrowRotation] = useState(0);
 
         const toggleMakeupVisibility = () => {
             setMakeupVisibility(!isMakeupVisible);
+            setArrowRotation(arrowRotation === 0 ? 90 : 0);
+        };
+
+        const arrowIconStyle = {
+            height: '15px',
+            transform: `rotate(${arrowRotation}deg)`,
         };
 
         return (
             <div class="dropdown">
-                <h3 onClick={toggleMakeupVisibility} class="dropdown-btn">Makeup</h3>
+                <div class="dropdown-btn" onClick={toggleMakeupVisibility}><h2>Makeup</h2><img src={arrowIcon} alt="Arrow" style={arrowIconStyle} /></div>
                 {isMakeupVisible && <MakeupContent />}
             </div>
         );
@@ -199,7 +219,7 @@ function OurServices() {
 
         return (
             <div class="dropdown">
-                <h3 onClick={toggleMassageVisibility} class="dropdown-btn">Massage</h3>
+                <div class="dropdown-btn" onClick={toggleMassageVisibility}><h2>Massage</h2><img src={arrowIcon} alt="Arrow" /></div>
                 {isMassageVisible && <MassageContent />}
             </div>
         );

@@ -114,9 +114,16 @@
     }
   
     .dropdown-btn {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
       margin: 0 auto;
-      padding: 20px 40px;
+      padding: 5px 35px;
       background-color: white;
+    }
+
+    .dropdown-btn img {
+      height: 15px;
     }
   
     .dropdown-content {
@@ -128,7 +135,7 @@
   
     .dropdown {
       margin: 0 auto;
-      width: 50%;
+      width: 40%;
       margin-top: 10px;
       margin-bottom: 10px;
       box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
