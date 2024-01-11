@@ -1,7 +1,7 @@
 import "../App.css";
 
 function BookNowDirectory() {
-    return (
-        <div></div>
-    )
+  return <div></div>;
 }
+
+export default BookNowDirectory;
