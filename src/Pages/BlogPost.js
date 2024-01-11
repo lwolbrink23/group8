@@ -1,6 +1,5 @@
 import React from "react";
-import "../App.css";
-import arrowIcon from '../assets/icons/arrow.png';
+import "../App.css";;
 
   return (
       <div className="post1">
