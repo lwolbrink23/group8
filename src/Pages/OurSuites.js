@@ -2,8 +2,8 @@
 
 import React from 'react';
 import Header from '../Components/Header';
-import './styles/App.css';
-import './styles/oursuites.css';
+// import './styles/App.css';
+// import './styles/oursuites.css';
 
 function OurSuites() {
   return (
