@@ -5,6 +5,7 @@ import Home from './Pages/Home'
 import Footer from './Components/Footer'
 import OurSuites from './Pages/OurSuites'
 import OurServices from './Pages/OurServices'
+import Faqs from './Pages/Faqs'
 import { Route, Routes } from "react-router-dom"
 
 // this is only the home page elements
@@ -17,6 +18,7 @@ function App() {
           <Route path="/" element={<Home />} />
           <Route path="/ourservices" element={<OurServices />} />
           <Route path="/oursuites" element={<OurSuites />} />
+          <Route path="/faqs" element={<Faqs />} />
         </Routes>
       </div>
       <Footer />

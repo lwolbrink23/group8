@@ -2,148 +2,172 @@ import React, { useState } from 'react';
 import '../App.css';
 import arrowIcon from '../assets/icons/arrow.png';
 
-function OurServices() {
+function Faqs() {
+    const GeneralContent = () => (
+        <div class="dropdown-content">
+            <p><strong>Q: What makes "The Suite Spot" different from traditional salons?</strong></p>
+            <p>
+                Unlike traditional salons, "The Suite Spot" offers providers the independence to run their businesses on their terms. Our suites are private, giving them full creative control.
+            </p>
+
+            <p><strong>Q: How can I get in touch with your team for more information?</strong></p>
+            <p>
+                You can contact our team through the "Contact Us" page on our website. We're here to answer your questions and provide all the information you need.
+            </p>
+
+            <p><strong>Q: Can I book an appointment at "The Suite Spot"?</strong></p>
+            <p>
+                Absolutely! You can book appointments with our providers through their individual profiles on our website. Simply find the professional you're interested in and schedule your appointment.
+            </p>
+
+            <p><strong>Q: How do you ensure client and professional safety?</strong></p>
+            <p>
+                We prioritize safety and follow all industry-standard guidelines. Our providers are licensed and experienced, and we maintain a clean and sanitized environment for the well-being of both clients and professionals.
+            </p>
+
+            <p><strong>Q: Do you accept walk-ins?</strong></p>
+            <p>
+                We are an appointment-only establishment. However, our providers will do their best to accommodate you if there is any availability!
+            </p>
+
+            <p><strong>Q: What is your cancellation policy?</strong></p>
+            <p>
+                Please refer to each provider’s cancellation policy when booking your appointment with them. Typically same day cancellations and no-shows are subject to fees.
+            </p>
+
+            <p><strong>Q: Are there any age restrictions for services?</strong></p>
+            <p>
+                Any clients under 18 years of age must be accompanied by a parent or guardian. Guardians must sign a waiver in advance for unaccompanied minors.
+            </p>
+        </div>
+    )
+
     const HairContent = () => (
         <div class="dropdown-content">
-            <p>Haircut</p>
-            <p>A haircut involves trimming and shaping your hair to achieve a desired length and style. It can range from a simple trim to a complete hair transformation.</p>
+            <p><strong>Q: How often should I get my hair trimmed?</strong></p>
+            <p>
+                The frequency at which you should get your hair trimmed can vary depending on your hair type, its condition, and your personal hair care goals. However, a general guideline is to trim your hair every 6 to 8 weeks.
+            </p>
 
-            <p>Hair Coloring</p>
-            <p>Hair coloring services include techniques like highlights, lowlights, balayage, and full color changes to alter the color of your hair, creating a new look or covering gray hair.</p>
+            <p><strong>Q: What is the difference between highlights and lowlights?</strong></p>
+            <p>
+                Highlights and lowlights are hair coloring techniques used to add dimension and depth to your hair color. Highlights involve lightening specific sections or strands of your hair to create contrast and add brightness to your overall hair color. Lowlights, on the other hand, involve coloring specific strands of hair with a shade darker than your natural hair color.
+            </p>
 
-            <p>Hair Styling</p>
-            <p>This service includes blowouts, curling, straightening, and updos. It's ideal for special occasions or when you want to change your everyday look.</p>
+            <p><strong>Q: What is a consultation, and is it necessary before a major hair transformation?</strong></p>
+            <p>
+                A consultation is a preliminary discussion between you and your hairstylist before undergoing a major hair transformation. It is an essential step when considering significant changes to your hair. Our stylists want to make sure that you are receiving the best solution for your individual needs!
+            </p>
 
-            <p>Hair Treatments</p>
-            <p>These treatments can include deep conditioning, relaxing, hair masks, and keratin treatments to improve the health and manageability of your hair.</p>
+            <p><strong>Q: How can I maintain vibrant hair color between salon visits?</strong></p>
+            <p>
+                Ask your stylist how often you should visit them in order to keep your colored hair looking fresh and vibrant! Be sure to check out our color-protecting products that are sold in our online store!
+            </p>
 
-            <p>Brazilian Blowout</p>
-            <p>This treatment smooths and straightens frizzy or curly hair, making it more manageable and reducing styling time.</p>
-
-            <p>Hair Extensions</p>
-            <p>Hair extensions add length and volume to your natural hair. They can be clipped, sewn, bonded, or taped into place for a temporary or semi-permanent change.</p>
-
-            <p>Hair Braiding</p>
-            <p>Hair braiding includes various styles, such as box braids, cornrows, and French braids, which can be decorative or functional.</p>
-            <div class="center"><button class="purp-button">Book Now</button></div>
+            <p><strong>Q: What can I do if I'm not satisfied with the results of my salon visit?</strong></p>
+            <p>
+                Do not hesitate to address any concerns or issues with the salon or stylist. Please refer to their individual policies on adjustments or refunds.
+            </p>
         </div>
     );
 
     const NailContent = () => (
         <div class="dropdown-content">
-            <p>Basic Manicure</p>
-            <p>A basic manicure includes nail shaping, cuticle maintenance, and a polish application. It's a quick and classic way to keep your nails neat and polished.</p>
+            <p><strong>Q: How often should I schedule a fill for my acrylic nails?</strong></p>
+            <p>
+                Acrylic nails typically require a fill every 2 to 3 weeks to maintain their appearance and structure. The exact frequency may vary based on individual nail growth.
+            </p>
 
-            <p>French Manicure</p>
-            <p>A French manicure is characterized by a natural pink or nude base with white tips. This service adds a touch of sophistication to your nails.</p>
+            <p><strong>Q: Are your nail products and polishes safe and cruelty-free?</strong></p>
+            <p>
+                Yes, we prioritize the use of safe and cruelty-free nail products and polishes. Our salon is committed to providing high-quality, ethical products for our customers.
+            </p>
 
-            <p>Spa Manicure</p>
-            <p>A spa manicure includes exfoliation, moisturizing, and a relaxing hand massage in addition to standard manicure procedures.</p>
+            <p><strong>Q: What is the recommended frequency for a spa pedicure?</strong></p>
+            <p>
+                For optimal foot care and relaxation, we recommend scheduling a spa pedicure every 4 to 6 weeks. However, the ideal frequency may depend on individual preferences and foot care needs.
+            </p>
 
-            <p>Basic Pedicure</p>
-            <p>Similar to a basic manicure, a basic pedicure involves nail shaping, cuticle care, and polish application.</p>
+            <p><strong>Q: Can I bring my own nail polish for my appointment?</strong></p>
+            <p>
+                While we provide a wide range of high-quality polishes, you are welcome to bring your own if you have a specific color or brand preference. Our technicians will be happy to use your polish during your appointment.
+            </p>
 
-            <p>French Pedicure</p>
-            <p>A French pedicure brings the classic elegance of the French manicure to your toes. It features a natural base with white tips.</p>
-
-            <p>Spa Pedicure</p>
-            <p>A spa pedicure offers a pampering experience for your feet. In addition to standard pedicure steps, it includes exfoliation, moisturizing, and a soothing foot massage to leave your feet feeling refreshed.</p>
-
-            <p>Acrylic Fill / Full Set</p>
-            <p>Acrylic nails are created by applying a liquid and powder mixture to your natural nails, resulting in durable and long-lasting extensions. An acrylic fill maintains and fills in the regrowth of your existing acrylic nails.</p>
-
-            <p>Dip Full Set</p>
-            <p>Dip powder nails involve dipping your nails into a colored powder to achieve a durable and chip-resistant finish.</p>
-
-            <p>Fiberglass Full Set</p>
-            <p>Fiberglass nails use a lightweight fiberglass mesh to create extensions that are both strong and natural-looking.</p>
-
-            <p>Hand-painted Designs</p>
-            <p>Hand-painted nail designs allow for creative and customized artwork on your nails. From intricate patterns to unique motifs, this service adds a personal touch to your manicure or pedicure.</p>
-
-            <p>Ombre Nails</p>
-            <p>Ombre nails feature a gradient color effect, blending one color into another for a stylish and eye-catching look.</p>
-
-            <p>Marble Nails</p>
-            <p>Marble nails mimic the appearance of natural marble with swirling patterns. This artistic nail technique adds a touch of sophistication and uniqueness to your manicure or pedicure.</p>
-
-            <p>Foiling</p>
-            <p>Foiling involves applying metallic or decorative foil to your nails for a bold and textured appearance.</p>
-
-            <p>3D Nail Art</p>
-            <p>3D nail art uses embellishments like gems, pearls, and decorative elements to create three-dimensional designs on your nails. It's a creative and expressive way to enhance your manicure or pedicure.</p>
-
-            <p>Paraffin Wax Treatment</p>
-            <p>A paraffin wax treatment involves immersing your hands or feet in warm paraffin wax to moisturize and soften the skin. It's a relaxing addition to your manicure or pedicure that leaves your skin feeling smooth.</p>
-
-            <p>Gel Polish</p>
-            <p>Gel polish provides a long-lasting and chip-resistant alternative to traditional nail polish. This service includes the application of gel polish, which is cured under a UV or LED light for a durable finish.</p>
-
-            <p>Soak-Off Removal</p>
-            <p>Soak-off removal is the process of safely and gently removing gel polish or acrylic nails without causing damage to the natural nails. It ensures a smooth transition between nail services.</p>
+            <p><strong>Q: What precautions are taken to ensure hygiene and cleanliness in the salon?</strong></p>
+            <p>
+                We adhere to strict hygiene standards to ensure a clean and safe environment. Our tools and equipment are sterilized between each use, and disposable items are used whenever possible.
+            </p>
         </div>
     )
 
     const MakeupContent = () => (
         <div class="dropdown-content">
-            <p>Classic Makeup Application</p>
-            <p>A timeless and elegant makeup look suitable for any occasion. Includes foundation, eyeshadow, eyeliner, mascara, blush, and lipstick.</p>
+            <p><strong>Q: How far in advance should I book a makeup appointment for my event?</strong></p>
+            <p>
+                It's recommended to book your makeup appointment as early as possible, especially for special events like weddings. Booking 2-3 months in advance ensures availability on your desired date, but last-minute appointments may be accommodated based on availability.
+            </p>
 
-            <p>Glamorous Evening Makeup</p>
-            <p>Perfect for special events or a night out. This service includes a more dramatic eye look, contouring, false eyelashes, and a bold lip color.</p>
+            <p><strong>Q: Can you travel to my location for makeup services?</strong></p>
+            <p>
+                Yes, Brush & Blush Beauty offers on-location makeup services for your convenience. Whether you're getting ready at home, a hotel, or a venue, they can bring their expertise and makeup kit to your preferred location.
+            </p>
 
-            <p>Natural Makeup Look</p>
-            <p>Enhance your features with a subtle and natural makeup application. Ideal for a fresh and understated appearance.</p>
+            <p><strong>Q: How long does a typical makeup application take?</strong></p>
+            <p>
+                The duration of a makeup application depends on the complexity of the look and the services requested. On average, a full makeup application takes about 60 to 90 minutes, allowing for a thorough and precise application.
+            </p>
 
-            <p>Bridal Makeup Package</p>
-            <p>A comprehensive service tailored for brides on their special day. Includes a trial session, consultation, and the final bridal makeup application with long-lasting products for a flawless look in photos.</p>
-
-            <p>Editorial/Fashion Makeup</p>
-            <p>Bold and creative makeup for photoshoots, runway shows, or fashion events. This service includes high-impact looks that stand out in a professional setting.</p>
-
-            <p>Special Effects Makeup</p>
-            <p>Transform your look with special effects makeup for costume parties, Halloween, or themed events. Pricing varies based on the complexity of the design.</p>
-
-            <p>Makeup Lesson</p>
-            <p>A one-on-one session to learn about makeup techniques, product application, and personalized tips. Perfect for those wanting to improve their own makeup skills.</p>
-
-            <p>Group Makeup Session</p>
-            <p>Ideal for bridal parties, prom groups, or special events. Enjoy a customized makeup experience for you and your friends, with group discounts available.</p>
-
-            <p>Men’s Grooming</p>
-            <p>Tailored makeup services for men, including concealing blemishes, evening skin tone, and enhancing facial features for photoshoots or events.</p>
+            <p><strong>Q: Do you provide makeup trials for bridal or special occasion makeup?</strong></p>
+            <p>
+                Yes, makeup trials are available, especially for bridal and special occasion makeup. A trial allows us to collaborate on your desired look and ensures that you are completely satisfied with the makeup before your event.
+            </p>
         </div>
     )
 
     const MassageContent = () => (
         <div class="dropdown-content">
-            <p>Swedish Massage</p>
-            <p>A classic relaxation massage using long, flowing strokes to release tension, improve circulation, and promote overall well-being.</p>
+            <p><strong>Q: What should I expect during my first massage session?</strong></p>
+            <p>
+                During your first session, we will have a brief consultation to discuss your health history, any specific concerns, and your preferences for the massage. You will then have time to undress to your comfort level and lie on the massage table under a sheet. Throughout the massage, your comfort and privacy will be prioritized.
+            </p>
 
-            <p>Deep Tissue Massage</p>
-            <p>Targets deeper layers of muscle and connective tissue to address chronic pain and muscle tightness. Ideal for those seeking therapeutic relief.</p>
+            <p><strong>Q: Is massage suitable for everyone?</strong></p>
+            <p>
+                While massage is generally safe for most people, certain health conditions may contraindicate massage therapy. It's essential to inform us of any medical conditions, injuries, or concerns you may have before the session. This ensures that the massage can be tailored to your specific needs and performed safely.
+            </p>
 
-            <p>Hot Stone Massage</p>
-            <p>Heated stones are strategically placed and used during the massage to enhance relaxation, soothe muscles, and promote a sense of balance.</p>
+            <p><strong>Q: How often should I schedule a massage for optimal benefits?</strong></p>
+            <p>
+                The frequency of massage depends on individual needs and goals. For general relaxation and stress relief, monthly sessions may be sufficient. If you're addressing specific issues or injuries, more frequent sessions may be recommended initially, with adjustments over time.
+            </p>
 
-            <p>Aromatherapy Massage</p>
-            <p>Integrates essential oils chosen for their therapeutic properties, enhancing the massage experience and promoting emotional and physical well-being.</p>
-
-            <p>Prenatal Massage</p>
-            <p>Tailored for expectant mothers, this massage helps alleviate discomfort associated with pregnancy, focusing on relaxation and reducing tension.</p>
-
-            <p>Sports Massage</p>
-            <p>Geared towards athletes, this massage addresses specific muscle groups, aids in recovery, and enhances flexibility and performance.</p>
-
-            <p>Couples Massage</p>
-            <p>Enjoy a massage alongside your partner in a shared space, each with your therapist, creating a relaxing and bonding experience.</p>
-
-            <p>Reflexology</p>
-            <p>Focuses on pressure points in the feet to promote relaxation, improve circulation, and stimulate the body's natural healing processes.</p>
-
-            <p>Custom Massage</p>
-            <p>Tailored to your specific needs, combining various techniques to address individual concerns and promote overall relaxation.</p>
+            <p><strong>Q: What is the difference between Swedish and deep tissue massage?</strong></p>
+            <p>
+                Swedish massage is a gentle, relaxing technique that uses long, flowing strokes, while deep tissue massage focuses on targeting deeper layers of muscles and connective tissue to address chronic tension and discomfort. The choice between the two depends on your preferences and therapeutic goals.
+            </p>
         </div>)
+
+    const GeneralDropdown = () => {
+        const [isGeneralVisible, setGeneralVisibility] = useState(false);
+        const [arrowRotation, setArrowRotation] = useState(0);
+
+        const toggleGeneralVisibility = () => {
+            setGeneralVisibility(!isGeneralVisible);
+            setArrowRotation(arrowRotation === 0 ? 90 : 0);
+        };
+
+        const arrowIconStyle = {
+            height: '15px',
+            transform: `rotate(${arrowRotation}deg)`,
+        };
+
+        return (
+            <div class="dropdown">
+                <div class="dropdown-btn" onClick={toggleGeneralVisibility}><h2>General</h2><img src={arrowIcon} alt="Arrow" style={arrowIconStyle} /></div>
+                {isGeneralVisible && <GeneralContent />}
+            </div>
+        );
+    };
 
     const HairDropdown = () => {
         const [isHairVisible, setHairVisibility] = useState(false);
@@ -166,6 +190,7 @@ function OurServices() {
             </div>
         );
     };
+
     const NailsDropdown = () => {
         const [isNailsVisible, setNailsVisibility] = useState(false);
         const [arrowRotation, setArrowRotation] = useState(0);
@@ -227,7 +252,8 @@ function OurServices() {
 
     return (
         <div>
-            <h1 class="center">Services</h1>
+            <h1 class="center">FAQ's</h1>
+            <GeneralDropdown />
             <HairDropdown />
             <NailsDropdown />
             <MakeupDropdown />
@@ -237,4 +263,4 @@ function OurServices() {
     );
 }
 
-export default OurServices;
+export default Faqs;

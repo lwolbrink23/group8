@@ -81,6 +81,7 @@ function OurServices() {
 
             <p>Soak-Off Removal</p>
             <p>Soak-off removal is the process of safely and gently removing gel polish or acrylic nails without causing damage to the natural nails. It ensures a smooth transition between nail services.</p>
+            <div class="center"><button class="purp-button">Book Now</button></div>
         </div>
     )
 
@@ -112,6 +113,7 @@ function OurServices() {
 
             <p>Men’s Grooming</p>
             <p>Tailored makeup services for men, including concealing blemishes, evening skin tone, and enhancing facial features for photoshoots or events.</p>
+            <div class="center"><button class="purp-button">Book Now</button></div>
         </div>
     )
 
@@ -143,6 +145,7 @@ function OurServices() {
 
             <p>Custom Massage</p>
             <p>Tailored to your specific needs, combining various techniques to address individual concerns and promote overall relaxation.</p>
+            <div class="center"><button class="purp-button">Book Now</button></div>
         </div>)
 
     const HairDropdown = () => {
