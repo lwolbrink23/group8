@@ -232,6 +232,7 @@ function OurServices() {
             <NailsDropdown />
             <MakeupDropdown />
             <MassageDropdown />
+            <div class="extra-space"></div>
         </div>
     );
 }
