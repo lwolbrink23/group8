@@ -1,7 +1,8 @@
 // App.js or your desired component file
 
 import React from 'react';
-import './styles/main.css';
+import Header from '../Components/Header';
+import './styles/App.css';
 import './styles/oursuites.css';
 
 function OurSuites() {
@@ -11,7 +12,7 @@ function OurSuites() {
         {/* profile icon */}
         <img src="assets/icons/icons8-person-female-100.png" alt="profile icon" classname="profile-icon"/>
       </div>
-      <header>
+        <header>
         {/* nav bar */}
         <div classname="nav">
           {/* logo and navigation links container */}
