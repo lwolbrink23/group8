@@ -6,7 +6,6 @@ import OurStory from "./Pages/OurStory";
 import OurSuites from "./Pages/OurSuites";
 import OurServices from "./Pages/OurServices";
 import Blog from "./Pages/blog";
-import BlogPost from "./Pages/BlogPost";
 import BookNowDirectory from "./Pages/BookNowDirectory";
 import Faqs from "./Pages/Faqs";
 import Shop from "./Pages/Shop";
@@ -24,7 +23,6 @@ function App() {
           <Route path="/ourservices" element={<OurServices />} />
           <Route path="/oursuites" element={<OurSuites />} />
           <Route path="/blog" element={<Blog />} />
-          <Route path="/blogpoist" element={<BlogPost />} />
           <Route path="/booknow" element={<BookNowDirectory />} />
           <Route path="/faqs" element={<Faqs />} />
           <Route path="/shop" element={<Shop />} />
