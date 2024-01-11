@@ -19,6 +19,16 @@ const tempData = [
         name: "Color Protection Kit",
         price: 34.99 
     },
+    {
+        name: "Niacinamide Serum",
+        price: 15.99
+    },
+{
+        name: "Illumination Face Mask",
+        price: 14.99
+    },
+        
+    
     
     
 ]
