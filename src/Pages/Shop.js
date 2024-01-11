@@ -65,8 +65,8 @@ function Shop() {
         {tempData.map((item) => (
           <div className="box">
             <p>img</p>
-            <p>item name</p>
-            <p>$item price</p>
+            <p>{item.name}</p>
+            <p>${item.price}</p>
             <div className="center-children">
               <div className="col-3">
                 <p>-</p>
