@@ -4,10 +4,43 @@
 
 .top {
     display: flex;
-
 }
 
 .top img {
     margin-right: 20px;
-    /* Adjust the value as needed for the desired spacing */
+    margin-bottom: 20px;
+    margin-top: 20px;
+    max-width: 100%;
+    /* Set maximum width for the image */
+    object-fit: cover;
+    /* Prevent the image from stretching */
+}
+.description {
+    flex-grow: 1;
+    /* To make the description div take the remaining width */
+}
+
+.buttons {
+    display: flex;
+    flex-wrap: wrap;
+    /* Enable wrapping for buttons */
+    margin-top: 70px;
+}
+
+.buttons button {
+    margin-right: 20px;
+    margin-bottom: 10px;
+    max-width: 150px;
+    /* Set maximum width for the buttons */
+    width: 100%;
+    /* Make buttons take full width initially */
+    box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
+}
+
+/* Media query for smaller screens */
+@media (max-width: 400px) {
+    .buttons button {
+        max-width: 100%;
+        /* Set maximum width to 100% for smaller screens */
+    }
 }
