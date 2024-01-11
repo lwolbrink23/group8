@@ -215,14 +215,21 @@ function OurServices() {
 
     const MassageDropdown = () => {
         const [isMassageVisible, setMassageVisibility] = useState(false);
+        const [arrowRotation, setArrowRotation] = useState(0);
 
         const toggleMassageVisibility = () => {
             setMassageVisibility(!isMassageVisible);
+            setArrowRotation(arrowRotation === 0 ? 90 : 0);
+        };
+
+        const arrowIconStyle = {
+            height: '15px',
+            transform: `rotate(${arrowRotation}deg)`,
         };
 
         return (
             <div class="dropdown">
-                <div class="dropdown-btn" onClick={toggleMassageVisibility}><h2>Massage</h2><img src={arrowIcon} alt="Arrow" /></div>
+                <div class="dropdown-btn" onClick={toggleMassageVisibility}><h2>Massage</h2><img src={arrowIcon} alt="Arrow" style={arrowIconStyle} /></div>
                 {isMassageVisible && <MassageContent />}
             </div>
         );
