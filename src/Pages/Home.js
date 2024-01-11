@@ -74,7 +74,7 @@ function Home() {
           look and feel your best. Discover a wide range of services under one
           roof.
         </p>
-        <button type="button" onClick="alert('View Our Services!')">
+        <button type="button" onClick={() => alert("Button clicked!")}>
           View Our Services
         </button>
       </div>
