@@ -59,6 +59,15 @@ function Shop() {
     <div>
       <h1>Shop</h1>
       <h2>Find all your favorite products here.</h2>
+      <div>
+        <h2>Gift Cards</h2>
+        <h3>Buy a gift card!</h3>
+        <p>Looking for the perfect gift for that special someone? We've got you covered! Whether it's for a birthday, anniversary, or any special occasion, our gift cards are the ideal way to show your appreciation.</p>
+        <p>Enter an amount:</p>
+        <input></input>
+        <button>Add to Cart</button>
+      </div>
+      
     </div>
   );
 }
