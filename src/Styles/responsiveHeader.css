@@ -1,0 +1,59 @@
+/* responsive.css */
+/* Styles for larger screens */
+.header-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+nav ul {
+    list-style: none;
+    display: flex;
+    margin: 0;
+    padding: 0;
+}
+
+nav ul li {
+    margin-right: 20px;
+    /* Adjust the spacing between the links */
+}
+
+/* Optional: Style the dropdown menu */
+nav ul ul {
+    display: none;
+    position: absolute;
+    background-color: #fff;
+    /* Change the background color if needed */
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    z-index: 1000;
+}
+
+nav ul li:hover>ul {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+    gap: 10px;
+    /* Adjust the spacing between dropdown items */
+    position: absolute;
+    top: 100%;
+    left: 0;
+    width: 100%;
+}
+
+/* Styles for smaller screens (mobile) */
+@media screen and (max-width: 767px) {
+    .header-container {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    nav ul {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    nav ul li {
+        margin: 10px 0;
+    }
+
+    /* Add additional styles for smaller screens as needed */
+}

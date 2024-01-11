@@ -3,7 +3,8 @@ import logoWeb from "../assets/logo/TSS Circle logo Transparent.png";
 import logoMobile from "../assets/logo/TSS Horizontal Logo Transparent.png";
 import profileicon from "../assets/icons/icons8-person-female-100.png";
 import { Link, useMatch, useResolvedPath } from "react-router-dom";
-import "../Styles/header.css";
+import "../Styles/header.css"; // main stylesheet
+import "../Styles/responsiveHeader.css"; // responsive stylesheet
 
 function Header() {
   const [isDropdownOpen, setDropdownOpen] = useState(false);
