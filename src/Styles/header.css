@@ -11,6 +11,38 @@ header {
     align-items: center;
 }
 
+nav a { /*nav text*/
+    color: #090B0A;
+    font-family: 'cormorant-bold', serif;
+    font-size: 18px;
+    text-decoration: none;/* Remove underlines from links */
+}
+
+
+nav a:hover { 
+    background-color: #E7E7E7;
+    padding: 5px 10px 5px 10px;
+}
+
+nav ul ul {/* the dropdown menu */
+    display: none;
+    position: absolute;
+    background-color: white;
+    /* Change the background color if needed */
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    z-index: 1000;
+}
+
+nav ul ul a { /*the dropdown menu text */
+    color: #090B0A;
+
+}
+
+nav ul ul a:hover { /*dropdown menu text on hover */
+    background-color: #E7E7E7;
+    padding: 5px 10px 5px 10px;
+}
+
 nav ul {
     list-style: none;
     display: flex;
@@ -21,16 +53,6 @@ nav ul {
 nav ul li {
     margin-right: 20px;
     /* Adjust the spacing between the links */
-}
-
-/* Optional: Style the dropdown menu */
-nav ul ul {
-    display: none;
-    position: absolute;
-    background-color: #fff;
-    /* Change the background color if needed */
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-    z-index: 1000;
 }
 
 nav ul li:hover>ul {
