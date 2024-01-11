@@ -1,3 +1,5 @@
+import "../App.css";
+
 const tempData = [
     {
         name: "Repair & Protect Kit",
@@ -65,7 +67,7 @@ function Shop() {
         <p>Looking for the perfect gift for that special someone? We've got you covered! Whether it's for a birthday, anniversary, or any special occasion, our gift cards are the ideal way to show your appreciation.</p>
         <p>Enter an amount:</p>
         <input></input>
-        <button>Add to Cart</button>
+        <button className="button">Add to Cart</button>
       </div>
       
     </div>
