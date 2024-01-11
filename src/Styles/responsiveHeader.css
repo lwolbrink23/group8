@@ -11,7 +11,7 @@
         align-items: center;
     }
 
-    nav ul li {
+    nav ul li { /*the spacing between the links */
         margin: 10px 0;
     }
 
@@ -25,6 +25,10 @@
         margin-right: 20px;
     }
 
+    nav a:hover {
+    width: 100%; /* Make the background color extend across the entire width */
+    display: block; /* Display as a block to take full width */
+  }
     /* Add additional styles for smaller screens as needed */
 }
 

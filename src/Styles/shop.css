@@ -1,20 +1,50 @@
+/* title */
+h1 {
+  margin: 0;
+  opacity: 100%;
+}
+#cart-icon {
+  position: absolute;
+  right: 0;
+}
+
+.title-container {
+  width: 100%;
+  background-color: rgba(255, 255, 255, 0.422);
+  margin: 0;
+  padding: 20px;
+}
+
+/* shop items */
+.items-container {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr); /* Four columns with equal width */
+  gap: 20px;
+  padding: 20px;
+}
 .box {
   padding: 20px;
   border: 2px solid black;
 }
+
+.col-3 {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr); /* Three columns with equal width */
+  gap: 20px; /* Adjust the gap between containers */
+}
+
+/* giftcard */
 .giftcard-grid {
   width: 50%;
-  padding: 20px;
   border: 2px solid black;
   margin: 25px auto;
   display: grid;
   grid-template-columns: 0.5fr 1fr; /* Two columns with equal width */
   gap: 20px;
 }
-
-.title-container {
+.giftcard-grid img {
   width: 100%;
-  background-color: white;
-  margin: 0;
-  opacity: 10%;
+}
+.center-children {
+  text-align: center;
 }

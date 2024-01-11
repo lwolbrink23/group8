@@ -1,6 +1,6 @@
 import "../App.css";
 import "../Styles/shop.css";
-
+import giftCardIMG from "../assets/images/giftcard.png";
 const tempData = [
   {
     name: "Repair & Protect Kit",
@@ -17,10 +17,6 @@ const tempData = [
   {
     name: "Men's Promade",
     price: 9.99,
-  },
-  {
-    name: "Color Protection Kit",
-    price: 34.99,
   },
   {
     name: "Niacinamide Serum",
@@ -59,21 +55,34 @@ const tempData = [
 function Shop() {
   return (
     <div>
+      {/* title */}
       <div className="title-container">
         <h1 className="center">Shop</h1>
+        <p id="cart-icon">icon</p>
       </div>
       <h2>Find all your favorite products here.</h2>
       {/* shop items */}
-      <div className="box">
-        <p>item name</p>
-        <p>$item price</p>
-        <p>0</p>
-        <button className="button">Add to Cart</button>
+      <div className="items-container">
+        {tempData.map((item) => (
+          <div className="box">
+            <p>img</p>
+            <p>{item.name}</p>
+            <p>${item.price}</p>
+            <div className="center-children">
+              <div className="col-3">
+                <p>-</p>
+                <p>0</p>
+                <p>+</p>
+              </div>
+              <button className="button">Add to Cart</button>
+            </div>
+          </div>
+        ))}
       </div>
       {/* giftcard */}
       <h2 className="center">Gift Cards</h2>
       <div className="giftcard-grid">
-        <p>img</p>
+        <img src={giftCardIMG} alt="giftcard"></img>
         <div>
           <h3>Buy a gift card!</h3>
           <p>
