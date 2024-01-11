@@ -1,14 +1,22 @@
 import React from "react";
 import "../App.css";
+import arrowIcon from '../assets/icons/arrow.png';
 
-function Blog() {
+function BlogPost() {
+  const blogmain = useHistory();
+
+  const backButton = () => {
+    blogmain.push("./blog");
+  };
+
   return (
     <div>
-      <button
+     <button
         type="button"
-        onClick={() => alert('Directs back to blog main page')}
+        onClick={backButton}
+        className="back-button"
       >
-        Back Arrow Icon
+        <img src={arrowIcon} alt="Back Arrow Icon" />
       </button>
       <div className="post1">
         <div className="post-general-info">
@@ -72,5 +80,5 @@ function Blog() {
   );
 }
 
-export default Blog;
+export default BlogPost;
 

@@ -1,6 +1,6 @@
 import "../App.css";
 import "../Styles/shop.css";
-
+import giftCardIMG from "../assets/images/giftcard.png";
 const tempData = [
   {
     name: "Repair & Protect Kit",
@@ -55,6 +55,7 @@ const tempData = [
 function Shop() {
   return (
     <div>
+      {/* title */}
       <div className="title-container">
         <h1 className="center">Shop</h1>
         <p id="cart-icon">icon</p>
@@ -81,7 +82,7 @@ function Shop() {
       {/* giftcard */}
       <h2 className="center">Gift Cards</h2>
       <div className="giftcard-grid">
-        <p>img</p>
+        <img src={giftCardIMG} alt="giftcard"></img>
         <div>
           <h3>Buy a gift card!</h3>
           <p>
