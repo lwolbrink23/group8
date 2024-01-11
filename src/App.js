@@ -1,15 +1,16 @@
-//import logo from './logo.svg';
 import './App.css';
 import './Styles/main.css'
 import Header from './Components/Header'
 import Home from './Pages/Home'
-import OurServices from './Pages/Our-Services';
+import Footer from './Components/Footer'
 
+// this is only the home page elements
 function App() {
   return (
     <div className="App">
     <Header/>
      <Home />
+     <Footer />
     </div>
   );
 }
