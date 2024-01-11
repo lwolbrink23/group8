@@ -37,7 +37,7 @@ function Header() {
           {/* <!--logo--> */}
           <img src={logo} alt="logo" className="logo" />
           {/* Navigation links container */}
-          <div className={`nav-container ${showNav ? 'show' : ''}`}>
+          <div className={`nav-container ${showNav ? "show" : ""}`}>
             <ul>
               <li>
                 <a href="default.asp">Home</a>
@@ -46,7 +46,7 @@ function Header() {
                 <a href="#" className="about-link">
                   About
                 </a>
-                <ul class="subpages">
+                <ul className="subpages">
                   <li>
                     <a href="our-story.html">Our Story</a>
                   </li>
@@ -79,7 +79,7 @@ function Header() {
               <li>
                 <button
                   type="button"
-                  onclick="alert('Button clicked!')"
+                  onClick="alert('Button clicked!')"
                   className="purp-button"
                 >
                   Book Now
@@ -93,12 +93,14 @@ function Header() {
             style={profileIconContainerStyle}
           >
             {/* profile icon*/}
-            <img src={profileicon} alt="profile icon" className="profile-icon" />
+            <img
+              src={profileicon}
+              alt="profile icon"
+              className="profile-icon"
+            />
           </div>
         </div>
       </div>
-
-      
     </header>
   );
 }
