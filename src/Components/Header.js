@@ -31,7 +31,7 @@ function Header() {
               <a href="#" className="about-link">
                 About
               </a>
-              <ul class="subpages">
+              <ul className="subpages">
                 <li>
                   <a href="our-story.html">Our Story</a>
                 </li>
