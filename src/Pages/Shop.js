@@ -60,7 +60,7 @@ const tempData = [
 function Shop() {
   return (
     <div>
-      <h1>Shop</h1>
+      <h1 className="center">Shop</h1>
       <h2>Find all your favorite products here.</h2>
         <h2>Gift Cards</h2>
       <div>
