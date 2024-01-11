@@ -22,7 +22,7 @@
 
 .buttons {
     display: flex;
-    flex-wrap: wrap;
+    flex-wrap: nowrap;
     /* Enable wrapping for buttons */
     margin-top: 70px;
 }
@@ -32,13 +32,13 @@
     margin-bottom: 10px;
     max-width: 150px;
     /* Set maximum width for the buttons */
-    width: 100%;
+    width: auto;
     /* Make buttons take full width initially */
     box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
 }
 
 /* Media query for smaller screens */
-@media (max-width: 400px) {
+@media (max-width: 600px) {
     .buttons button {
         max-width: 100%;
         /* Set maximum width to 100% for smaller screens */
