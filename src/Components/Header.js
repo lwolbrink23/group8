@@ -21,7 +21,7 @@ function Header() {
         {/* <!--logo and navigation links container--> */}
         <div className="logo-and-nav">
           {/* <!--logo--> */}
-          <img src={logo} alt="logo" class="logo" />
+          <img src={logo} alt="logo" className="logo" />
           {/* <!--hamburger menu--> */}
           <ul>
             <li>
