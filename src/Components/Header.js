@@ -63,13 +63,7 @@ function Header() {
               <CustomLink to="/account">Account</CustomLink>
             </li>
             <li>
-              <button
-                type="button"
-                onClick={() => alert("Button clicked!")}
-                className="purp-button"
-              >
-                Book Now
-              </button>
+              <CustomLink to="/booknow" className="purp-button">Book Now</CustomLink>
             </li>
           </ul>
           <div
