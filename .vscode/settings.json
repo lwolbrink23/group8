@@ -8,6 +8,6 @@
   "editor.formatOnPaste": true,
   "editor.formatOnSave": true,
   "eslint.format.enable": true,
-  "files.autoSave": "afterDelay",
+  "files.autoSave": "off",
   "git.autoStash": true
 }
