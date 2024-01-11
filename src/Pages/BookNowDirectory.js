@@ -1,18 +1,16 @@
 import "../App.css";
 
 function BookNowDirectory() {
+<<<<<<< Updated upstream
+    return <div></div>;
+}
 
-
+export default BookNowDirectory;
+=======
     return (
-        <div>
-            <h1 className="center">Directory</h1>
-            <div className="dropdown dropdown-content">
-                <div className="suites">
-                    <img />
-                </div>
-            </div>
-        </div>
+        <div>book</div>
     )
 }
 
 export default BookNowDirectory
+>>>>>>> Stashed changes

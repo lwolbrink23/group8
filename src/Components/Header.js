@@ -1,11 +1,14 @@
 import React from "react";
 import logo from "../assets/logo/TSS Circle logo Transparent.png";
 import profileicon from "../assets/icons/icons8-person-female-100.png";
-import { Link, useMatch, useResolvedPath } from "react-router-dom"
+import { Link, useMatch, useResolvedPath } from "react-router-dom";
+import "../Styles/header.css"; // Import your styles
 
 function Header() {
   const headerStyle = {
     position: "relative",
+    backgroundColor: "white",
+    padding: "10px",
   };
 
   const profileIconContainerStyle = {
@@ -17,13 +20,9 @@ function Header() {
 
   return (
     <header style={headerStyle}>
-      {/* nav bar */}
-      <div className="nav">
-        {/* <!--logo and navigation links container--> */}
-        <div className="logo-and-nav">
-          {/* <!--logo--> */}
+      <div>
+        <div>
           <img src={logo} alt="logo" className="logo" />
-          {/* <!--hamburger menu--> */}
           <ul>
             <li>
               <Link to="/">Home</Link>
@@ -32,7 +31,7 @@ function Header() {
               <a href="#" className="about-link">
                 About
               </a>
-              <ul className="subpages">
+              <ul>
                 <li>
                   <CustomLink to="/ourstory">Our Story</CustomLink>
                 </li>
@@ -63,14 +62,12 @@ function Header() {
               <CustomLink to="/account">Account</CustomLink>
             </li>
             <li>
-              <CustomLink to="/booknow" className="purp-button">Book Now</CustomLink>
+              <CustomLink to="/booknow" className="purp-button">
+                Book Now
+              </CustomLink>
             </li>
           </ul>
-          <div
-            className="profile-icon-container"
-            style={profileIconContainerStyle}
-          >
-            {/* profile icon*/}
+          <div style={profileIconContainerStyle}>
             <img
               src={profileicon}
               alt="profile icon"
@@ -84,8 +81,8 @@ function Header() {
 }
 
 function CustomLink({ to, children, ...props }) {
-  const resolvedPath = useResolvedPath(to)
-  const isActive = useMatch({ path: resolvedPath.pathname, end: true })
+  const resolvedPath = useResolvedPath(to);
+  const isActive = useMatch({ path: resolvedPath.pathname, end: true });
 
   return (
     <li className={isActive ? "active" : ""}>
@@ -93,7 +90,7 @@ function CustomLink({ to, children, ...props }) {
         {children}
       </Link>
     </li>
-  )
+  );
 }
 
 export default Header;

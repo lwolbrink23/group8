@@ -1,0 +1,11 @@
+ .logo-and-nav {
+     display: flex;
+     align-items: center;
+     font-family: 'Cormorant', serif;
+ }
+
+ .logo {
+     max-width: 100px;
+     height: auto;
+     margin-right: 20px;
+ }
