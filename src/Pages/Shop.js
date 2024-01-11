@@ -1,3 +1,28 @@
+const tempData = [
+    {
+        name: "Repair & Protect Kit",
+        price: 41.99 
+    },
+{
+        name: "Restorative Hair Mask",
+        price: 18.99 
+    },
+    {
+        name: "Color Protection Kit",
+        price: 34.99 
+    },
+    {
+        name: "Men's Promade",
+        price: 9.99 
+    },
+    {
+        name: "Color Protection Kit",
+        price: 34.99 
+    },
+    
+    
+]
+
 function Shop() {
   return (
     <div>
