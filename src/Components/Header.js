@@ -2,15 +2,16 @@ import React, { useState } from "react";
 import logo from "../assets/logo/TSS Circle logo Transparent.png";
 import profileicon from "../assets/icons/icons8-person-female-100.png";
 import { Link, useMatch, useResolvedPath } from "react-router-dom";
-import "../Styles/header.css"; // Import your styles
+import "../Styles/header.css";
 
 function Header() {
   const [isDropdownOpen, setDropdownOpen] = useState(false);
+
   return (
     <header>
       <div className="header-container">
-        <div>
-          <img src={logo} alt="logo" className="logo" />
+        <img src={logo} alt="logo" className="logo" />
+        <nav>
           <ul>
             <li>
               <Link to="/">Home</Link>
@@ -55,13 +56,9 @@ function Header() {
               </CustomLink>
             </li>
           </ul>
-          <div className="profile-container">
-            <img
-              src={profileicon}
-              alt="profile icon"
-              className="profile-icon"
-            />
-          </div>
+        </nav>
+        <div className="profile-container">
+          <img src={profileicon} alt="profile icon" className="profile-icon" />
         </div>
       </div>
     </header>
