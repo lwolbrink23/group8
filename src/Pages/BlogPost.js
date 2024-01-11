@@ -4,7 +4,6 @@ import "../App.css";
 function Blog() {
   return (
     <div>
-      <Header></Header>
       <button
         type="button"
         onClick={() => alert('Directs back to blog main page')}
