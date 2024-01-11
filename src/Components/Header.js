@@ -1,11 +1,13 @@
 import React from "react";
 import logo from "../assets/logo/TSS Circle logo Transparent.png";
 import profileicon from "../assets/icons/icons8-person-female-100.png";
-import { Link, useMatch, useResolvedPath } from "react-router-dom"
+import { Link, useMatch, useResolvedPath } from "react-router-dom";
 
 function Header() {
   const headerStyle = {
     position: "relative",
+    backgroundColor: "white",
+    padding: "10px",
   };
 
   const profileIconContainerStyle = {
@@ -63,7 +65,9 @@ function Header() {
               <CustomLink to="/account">Account</CustomLink>
             </li>
             <li>
-              <CustomLink to="/booknow" className="purp-button">Book Now</CustomLink>
+              <CustomLink to="/booknow" className="purp-button">
+                Book Now
+              </CustomLink>
             </li>
           </ul>
           <div
@@ -84,8 +88,8 @@ function Header() {
 }
 
 function CustomLink({ to, children, ...props }) {
-  const resolvedPath = useResolvedPath(to)
-  const isActive = useMatch({ path: resolvedPath.pathname, end: true })
+  const resolvedPath = useResolvedPath(to);
+  const isActive = useMatch({ path: resolvedPath.pathname, end: true });
 
   return (
     <li className={isActive ? "active" : ""}>
@@ -93,7 +97,7 @@ function CustomLink({ to, children, ...props }) {
         {children}
       </Link>
     </li>
-  )
+  );
 }
 
 export default Header;

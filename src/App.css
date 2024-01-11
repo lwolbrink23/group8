@@ -1,9 +1,5 @@
-  /* Common styles for both breakpoints */
-  header {
-    background-color: white;
-    padding: 10px;
-  }
-
+  /* Global Styles for entire website */
+ 
   .logo-and-nav {
     display: flex;
     align-items: center;
@@ -16,50 +12,6 @@
     margin-right: 20px;
   }
 
-  .nav ul {
-    list-style: none;
-    margin: 0;
-    padding: 0;
-    display: flex;
-  }
-
-  .nav li {
-    margin-right: 10px;
-    position: relative;
-    font-weight: normal !important;
-  }
-
-  .nav a {
-    text-decoration: none;
-    color: #090B0A;
-    padding: 10px 20px;
-    position: relative;
-  }
-
-  .nav a:hover {
-    background-color: #E7E7E7;
-  }
-
-  .subpages {
-    display: none;
-    position: absolute;
-    top: 100%;
-    left: 0;
-    background-color: #E7E7E7;
-    padding: 10px;
-    border-radius: 5px;
-  }
-
-  .nav .dropdown:hover .subpages {
-    display: block;
-  }
-
-  .hamburger {
-    display: none;
-    background: none;
-    border: none;
-    cursor: pointer;
-  }
 
   .bar {
     display: block;
