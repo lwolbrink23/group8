@@ -14,7 +14,8 @@ function BookNowDirectory() {
                             <h3>Simply Chic Hair</h3>
                             <p>Suite #1 <br />(321) 123-3211<br />Specialties: Hair cuts, color and styling.</p>
                             <div className="buttons">
-
+                                <button>View Profile</button>
+                                <button className="purp-button">Book Now</button>
                             </div>
                         </div>
                     </div>

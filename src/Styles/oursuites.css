@@ -1,0 +1,65 @@
+.blurb-container {
+    display: flex;
+    justify-content: space-between;
+}
+
+.blurbs {
+    width: 48%;
+    box-sizing: border-box;
+    padding: 10px;
+    margin: 20px;
+    background-color: #BACA82;
+    box-shadow: 0 8px 8px rgba(0, 0, 0, 0.1)
+}
+
+.rent-section {
+    text-align: center;
+    background-color: #5C5C5C;
+    margin: 50px;
+    box-shadow: 0 8px 8px rgba(0, 0, 0, 0.1);
+    color: white;
+}
+
+.inline {
+    display: inline-block;
+    text-align: left;
+    margin: 0 auto;
+    max-width: 600px;
+}
+
+label,
+input,
+textarea {
+    display: block;
+    margin-bottom: 5px;
+    margin-left: 20px;
+}
+.inline button {
+    display: block;
+    text-align: center;
+    margin: 15px auto;
+
+}
+.title {
+    padding-top: 20px;
+}
+.text2 {
+    padding: 10px
+}
+.fields {
+    display: block;
+    margin-bottom: 5px;
+    columns: 100;
+}
+textarea {
+    columns: 100;
+}
+.text {
+    text-indent: 20px;
+    text-align: center;
+    padding: 10px
+}
+
+h2 {
+    padding: 5px
+}
