@@ -28,16 +28,7 @@
     font-weight: normal !important;
   }
 
-/* should we title this "page-titles" instead of home since it will be consistent 
-through alot of pages?? -Callie  
-We could name it "transparent div" or something bc we repeat this style a lot. For example "pampering section" is repeated unnecessarily. my bad. -Lilly*/
-.home-title {
-  background-color: rgba(255, 255, 255, 0.45);
-  /* opacity value (0.45)*/
-  padding: 10px;
-}
-
-.pampering-section {
+.trans-white {
   background-color: rgba(255, 255, 255, 0.45);
   /* opacity value (0.45)*/
   padding: 10px;

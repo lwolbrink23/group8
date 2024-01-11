@@ -4,7 +4,7 @@ import Header from "../Components/Header";
 function Home() {
   return (
     <div className="App">
-      <div className="home-title">
+      <div className="trans-white">
         <h1>The Suite Spot</h1>
         <h2>Where Beauty Finds Its Home</h2>
       </div>
@@ -17,8 +17,7 @@ function Home() {
       </div>
 
       {/* <!-- Book Now Section --> */}
-      <div className="pampering-section">
-        {/* <!-- I checked the prototype & these should be h2 size--> */}
+      <div className="trans-white">
         <h4>Pampering yourself is just one click away!</h4>
         <button
           type="button"
