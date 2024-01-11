@@ -39,6 +39,7 @@ function Header() {
       {showNav && (
         <div className={`dropdown-container ${showDropdown ? "show" : ""}`}>
           {/* Navigation links */}
+           <div className="nav">
           <ul>
             <li>
               <a href="default.asp">Home</a>
@@ -91,7 +92,7 @@ function Header() {
       )}
 
       {/* nav bar */}
-      <div className="nav">
+     
         {/* <!--logo and navigation links container--> */}
         <div className="logo-and-nav">
           {/* <!--logo--> */}
