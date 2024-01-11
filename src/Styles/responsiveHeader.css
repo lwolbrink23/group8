@@ -1,6 +1,37 @@
 /* responsive.css */
+/* Styles for smaller screens (mobile) */
+@media screen and (max-width: 767px) {
+    .header-container {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    nav ul {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    nav ul li {
+        margin: 10px 0;
+    }
+
+    .logo-web {
+        display: none;
+    }
+
+    .logo-mobile {
+        max-width: 70%;
+        height: auto;
+        margin-right: 20px;
+    }
+
+    /* Add additional styles for smaller screens as needed */
+}
+
+
 /* Styles for larger screens */
-.header-container {
+@media screen and (min-width: 767px) {
+    .header-container {
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -39,21 +70,8 @@ nav ul li:hover>ul {
     width: 100%;
 }
 
-/* Styles for smaller screens (mobile) */
-@media screen and (max-width: 767px) {
-    .header-container {
-        flex-direction: column;
-        align-items: center;
-    }
-
-    nav ul {
-        flex-direction: column;
-        align-items: center;
-    }
-
-    nav ul li {
-        margin: 10px 0;
-    }
-
-    /* Add additional styles for smaller screens as needed */
+.logo-mobile {
+    display: none;
 }
+}
+
