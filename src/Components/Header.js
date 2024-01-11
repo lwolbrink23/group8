@@ -1,6 +1,7 @@
 import React from "react";
 import logo from "../assets/logo/TSS Circle logo Transparent.png";
 import profileicon from "../assets/icons/icons8-person-female-100.png";
+import { Link, useMatch, useResolvedPath } from "react-router-dom"
 
 function Header() {
   const headerStyle = {
@@ -25,7 +26,7 @@ function Header() {
           {/* <!--hamburger menu--> */}
           <ul>
             <li>
-              <a href="default.asp">Home</a>
+              <Link to="/">Home</Link>
             </li>
             <li className="dropdown">
               <a href="#" className="about-link">
@@ -33,33 +34,33 @@ function Header() {
               </a>
               <ul className="subpages">
                 <li>
-                  <a href="our-story.html">Our Story</a>
+                  <CustomLink to="/ourstory">Our Story</CustomLink>
                 </li>
                 <li>
-                  <a href="our-suites.html">Our Suites</a>
+                  <CustomLink to="/oursuites">Our Suites</CustomLink>
                 </li>
                 <li>
-                  <a href="our-services.html">Our Services</a>
+                  <CustomLink to="/ourservices">Our Services</CustomLink>
                 </li>
                 <li>
-                  <a href="photo-gallery.html">Photo Gallery</a>
+                  <CustomLink to="/">Photo Gallery</CustomLink>
                 </li>
               </ul>
             </li>
             <li>
-              <a href="linkhere">Blog</a>
+              <CustomLink to="/blog">Blog</CustomLink>
             </li>
             <li>
-              <a href="linkhere">FAQ's</a>
+              <CustomLink to="/faqs">FAQ's</CustomLink>
             </li>
             <li>
-              <a href="linkhere">Shop</a>
+              <CustomLink to="/shop">Shop</CustomLink>
             </li>
             <li>
-              <a href="linkhere">Contact Us</a>
+              <CustomLink to="/contactus">Contact Us</CustomLink>
             </li>
             <li>
-              <a href="linkhere">Account</a>
+              <CustomLink to="/account">Account</CustomLink>
             </li>
             <li>
               <button
@@ -86,6 +87,19 @@ function Header() {
       </div>
     </header>
   );
+}
+
+function CustomLink({ to, children, ...props }) {
+  const resolvedPath = useResolvedPath(to)
+  const isActive = useMatch({ path: resolvedPath.pathname, end: true })
+
+  return (
+    <li className={isActive ? "active" : ""}>
+      <Link to={to} {...props}>
+        {children}
+      </Link>
+    </li>
+  )
 }
 
 export default Header;

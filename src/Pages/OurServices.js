@@ -144,7 +144,7 @@ function OurServices() {
 
             <p>Custom Massage</p>
             <p>Tailored to your specific needs, combining various techniques to address individual concerns and promote overall relaxation.</p>
-        </div> )
+        </div>)
 
     const HairDropdown = () => {
         const [isHairVisible, setHairVisibility] = useState(false);
@@ -207,13 +207,11 @@ function OurServices() {
 
     return (
         <div>
-            <Header />
             <h1 class="center">Services</h1>
             <HairDropdown />
             <NailsDropdown />
             <MakeupDropdown />
             <MassageDropdown />
-            <Footer />
         </div>
     );
 }
