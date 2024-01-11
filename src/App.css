@@ -6,6 +6,12 @@
       /* Add additional formats if your font supports them */
     }
 
+    @font-face {
+      font-family: 'cormorant-bold';
+      src: local('cormorant-bold'), url('./assets/fonts/cormorant/CormorantGaramond-Bold.ttf') format('ttf');
+      /* Add additional formats if your font supports them */
+    }
+
   .bar {
     display: block;
     background-color: #090B0A;
@@ -30,8 +36,7 @@
     h4,
     h5,
     h6 {
-      font-family: 'Cormorant', serif;
-      font-weight: bold;
+      font-family: 'cormorant-bold', serif;
     }
   
     .trans-white {
