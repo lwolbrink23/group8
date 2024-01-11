@@ -7,15 +7,20 @@ import "../Styles/header.css"; // main stylesheet
 import "../Styles/responsiveHeader.css"; // responsive stylesheet
 
 function Header() {
-  const [isDropdownOpen, setDropdownOpen] = useState(false);
+  const [isHamburgerOpen, setHamburgerOpen] = useState(false);
 
+  const toggleHamburger = () => {
+    setHamburgerOpen(!isHamburgerOpen);
+  };
   return (
     <header>
       <div className="header-container">
         <img src={logoWeb} alt="logo" className="logo-web" />
         <img src={logoMobile} alt="logo" className="logo-mobile" />
+        {/* Hamburger menu icon */}
+        <div id="hamburger-menu" onClick={toggleHamburger}></div>
         <nav>
-          <ul>
+          <ul className={isHamburgerOpen ? "show" : ""}>
             <li>
               <Link to="/">Home</Link>
             </li>

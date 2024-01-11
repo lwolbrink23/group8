@@ -1,6 +1,45 @@
 /* responsive.css */
 /* Styles for smaller screens (mobile) */
 @media screen and (max-width: 767px) {
+    
+    nav ul { /*hide regular nav links*/
+        display: none;
+    }
+
+    /* Hamburger menu styles */
+    #hamburger-menu {
+    display: none; /* Initially hide the hamburger menu */
+    cursor: pointer;
+    font-size: 24px; /* Adjust the size of the hamburger icon */
+    }
+
+    /* Optional: Style the hamburger icon */
+    #hamburger-menu::before {
+    content: '\2630'; /* Unicode character for hamburger icon */
+    }
+
+
+    /* Show the hamburger menu on smaller screens */
+    #hamburger-menu {
+    display: block;
+    }
+
+    /* Hide the regular nav bar on smaller screens */
+    nav ul {
+        display: none;
+    }
+    
+    /* Display the nav links when the hamburger menu is open */
+    nav ul.show {
+        display: flex;
+        flex-direction: column;
+    }
+    
+    /* Show the dropdown menu when the hamburger menu is open */
+    nav ul.show ul {
+        display: block;
+    }
+
     .header-container {
         flex-direction: column;
         align-items: center;
@@ -11,7 +50,7 @@
         align-items: center;
     }
 
-    nav ul li {
+    nav ul li { /*the spacing between the links */
         margin: 10px 0;
     }
 
@@ -25,6 +64,10 @@
         margin-right: 20px;
     }
 
+    nav a:hover {
+    width: 100%; /* Make the background color extend across the entire width */
+    display: block; /* Display as a block to take full width */
+  }
     /* Add additional styles for smaller screens as needed */
 }
 

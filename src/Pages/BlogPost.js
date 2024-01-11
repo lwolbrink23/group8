@@ -3,12 +3,6 @@ import "../App.css";
 import arrowIcon from '../assets/icons/arrow.png';
 
 function BlogPost() {
-  const blogmain = useHistory();
-
-  const backButton = () => {
-    blogmain.push("./blog");
-  };
-
   return (
     <div>
      <button
