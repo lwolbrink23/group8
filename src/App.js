@@ -7,6 +7,7 @@ import OurSuites from "./Pages/OurSuites";
 import OurServices from "./Pages/OurServices";
 import BookNowDirectory from "./Pages/BookNowDirectory";
 import Faqs from "./Pages/Faqs";
+import Shop from "./Pages/Shop";
 import { Route, Routes } from "react-router-dom";
 
 // this is only the home page elements
@@ -22,6 +23,7 @@ function App() {
           <Route path="/oursuites" element={<OurSuites />} />
           <Route path="/booknow" element={<BookNowDirectory />} />
           <Route path="/faqs" element={<Faqs />} />
+          <Route path="/shop" element={<Shop />} />
         </Routes>
       </div>
       <Footer />
