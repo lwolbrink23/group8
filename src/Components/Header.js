@@ -1,16 +1,20 @@
+import React from "react";
+import logo from "../assets/logo/TSS Circle logo Transparent.png";
+import profileicon from "../assets/icons/icons8-person-female-100.png";
+
 function Header() {
   return (
     <header>
+      <div className="profile-icon-container">
+        {/* profile icon*/}
+        <img src={profileicon} alt="profile icon" class="profile-icon" />
+      </div>
       {/* nav bar */}
       <div className="nav">
         {/* <!--logo and navigation links container--> */}
         <div className="logo-and-nav">
           {/* <!--logo--> */}
-          <img
-            src="assets/logo/TSS Circle logo Transparent.png"
-            alt="Logo"
-            class="logo"
-          />
+          <img src={logo} alt="logo" class="logo" />
           {/* <!--hamburger menu--> */}
           <ul>
             <li>
