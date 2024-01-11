@@ -1,8 +1,12 @@
+import React from "react";
+import Header from "../Components/Header"
 import "../App.css";
+import "../Styles/header.css";
 
 function Blog() {
   return (
     <div>
+      <Header></Header>
       <button
         type="button"
         onClick={() => alert('Directs back to blog main page')}
