@@ -6,6 +6,7 @@ import Footer from './Components/Footer'
 import OurStory from './Pages/OurStory'
 import OurSuites from './Pages/OurSuites'
 import OurServices from './Pages/OurServices'
+import BookNowDirectory from './Pages/BookNowDirectory'
 import Faqs from './Pages/Faqs'
 import { Route, Routes } from "react-router-dom"
 
@@ -20,6 +21,7 @@ function App() {
           <Route path="/ourstory" element={<OurStory />} />
           <Route path="/ourservices" element={<OurServices />} />
           <Route path="/oursuites" element={<OurSuites />} />
+          <Route path="/booknow" element={<BookNowDirectory />} />
           <Route path="/faqs" element={<Faqs />} />
         </Routes>
       </div>
