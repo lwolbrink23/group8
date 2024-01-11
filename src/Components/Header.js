@@ -64,7 +64,7 @@ function Header() {
             <li>
               <button
                 type="button"
-                onClick={() => alert("Book Now!")}
+                onClick={() => alert("Button clicked!")}
                 className="purp-button"
               >
                 Book Now
