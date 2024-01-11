@@ -1,4 +1,5 @@
 import "../App.css";
+import "../Styles/shop.css";
 
 const tempData = [
     {
