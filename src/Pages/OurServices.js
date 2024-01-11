@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import '../App.css';
+import Header from '../Components/Header';
 
 function OurServices() {
     const HairContent = () => (
@@ -205,6 +206,7 @@ function OurServices() {
 
     return (
         <div>
+            <Header />
             <h1 class="center">Services</h1>
             <HairDropdown />
             <NailsDropdown />
