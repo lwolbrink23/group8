@@ -62,7 +62,7 @@ function Shop() {
     <div>
       <h1 className="center">Shop</h1>
       <h2>Find all your favorite products here.</h2>
-        <h2>Gift Cards</h2>
+        <h2 className="center">Gift Cards</h2>
       <div className="box">
         <h3 >Buy a gift card!</h3>
         <p>Looking for the perfect gift for that special someone? We've got you covered! Whether it's for a birthday, anniversary, or any special occasion, our gift cards are the ideal way to show your appreciation.</p>
