@@ -1,4 +1,20 @@
   /*keep outside of breakpoints */
+    .dropdown-container {
+      display: none;
+      position: absolute;
+      top: 100%;
+      left: 0;
+      background-color: white;
+      /* Adjust background color as needed */
+      padding: 10px;
+      border-radius: 5px;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    }
+  
+    .dropdown-container.show {
+      display: block;
+    }
+    
     .hamburger {
       display: block;
       /* Show the hamburger button on small screens */
