@@ -21,17 +21,6 @@ function Header() {
         {/* <!--logo and navigation links container--> */}
         <div className="logo-and-nav">
           {/* <!--logo--> */}
-<<<<<<< HEAD
-          <img src={logo} alt="logo" className="logo" />
-        </div>
-
-        <div
-          className="profile-icon-container"
-          style={profileIconContainerStyle}
-        >
-          {/* profile icon*/}
-          <img src={profileicon} alt="profile icon" className="profile-icon" />
-=======
           <img src={logo} alt="logo" class="logo" />
           {/* <!--hamburger menu--> */}
           <ul>
@@ -89,7 +78,6 @@ function Header() {
             {/* profile icon*/}
             <img src={profileicon} alt="profile icon" class="profile-icon" />
           </div>
->>>>>>> parent of a1b888c... fighting for my life w conditional rendering header
         </div>
       </div>
     </header>
