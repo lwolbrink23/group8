@@ -83,7 +83,8 @@ function Shop() {
       <h2 className="center">Gift Cards</h2>
       <div className="giftcard-grid">
         <img src={giftCardIMG} alt="giftcard"></img>
-        <div>
+
+        <div className="giftcard-info">
           <h3>Buy a gift card!</h3>
           <p>
             Looking for the perfect gift for that special someone? We've got you
@@ -92,8 +93,10 @@ function Shop() {
             appreciation.
           </p>
           <p>Enter an amount:</p>
-          <input></input>
-          <button className="button">Add to Cart</button>
+          <div className="col2">
+            <input></input>
+            <button className="button">Add to Cart</button>
+          </div>
         </div>
       </div>
     </div>
