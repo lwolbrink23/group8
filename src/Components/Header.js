@@ -64,7 +64,7 @@ function Header() {
             <li>
               <button
                 type="button"
-                onClick="alert('Button clicked!')"
+                onClick={() => alert("Book Now!")}
                 className="purp-button"
               >
                 Book Now
@@ -76,7 +76,11 @@ function Header() {
             style={profileIconContainerStyle}
           >
             {/* profile icon*/}
-            <img src={profileicon} alt="profile icon" className="profile-icon" />
+            <img
+              src={profileicon}
+              alt="profile icon"
+              className="profile-icon"
+            />
           </div>
         </div>
       </div>
