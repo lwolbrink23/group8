@@ -1,197 +1,128 @@
   /*keep outside of breakpoints */
-    .dropdown-container {
-      display: none;
-      position: absolute;
-      top: 100%;
-      left: 0;
-      background-color: white;
-      /* Adjust background color as needed */
-      padding: 10px;
-      border-radius: 5px;
-      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-    }
-  
-    .dropdown-container.show {
-      display: block;
-    }
-    
-    .hamburger {
-      display: block;
-      /* Show the hamburger button on small screens */
-      background: none;
-      border: none;
-      cursor: pointer;
-    }
-  
-    .bar {
-      display: block;
-      background-color: #090B0A;
-      /* Adjust color as needed */
-      height: 4px;
-      width: 30px;
-      margin: 6px 0;
-      transition: 0.4s;
-    }
-  
-    /* Navigation container styles */
-    .nav-container {
-      display: none;
-      position: absolute;
-        /* You may need to adjust this based on your design */
-        top: 100%;
-        /* Position it below the hamburger */
-        left: 0;
-        background-color: white;
-      /* Initially hide the navigation links */
-    }
-  
-  
+  .hamburger {
+    display: block;
+    /* Show the hamburger button on small screens */
+    background: none;
+    border: none;
+    cursor: pointer;
+  }
+
+  .bar {
+    display: block;
+    background-color: #090B0A;
+    /* Adjust color as needed */
+    height: 4px;
+    width: 30px;
+    margin: 6px 0;
+    transition: 0.4s;
+  }
+
+  /* Navigation container styles */
+  .nav-container {
+    display: none;
+    /* Initially hide the navigation links */
+  }
+
+
   header {
     background-color: white;
     padding: 10px;
-  }
-  
-  body {
-    margin: 0;
-    padding: 0;
-    background: linear-gradient(to bottom, #EADDCB, white);
-    font-family: 'Poppins', sans-serif;
-    font-size: 14px;
-  }
 
-
-  h1,
-  h2,
-  h3,
-  h4,
-  h5,
-  h6 {
-    font-family: 'Cormorant', serif;
-    font-weight: bold;
-  }
-
-  body,
-  p, li {
-    font-weight: normal !important; 
-  } /* i cant get the body poppins text to not be bold for some reason -lilly */
-
-.trans-white {
-  background-color: rgba(255, 255, 255, 0.45);
-  /* opacity value (0.45)*/
-  padding: 10px;
-}
-
-
-button {
-  background-color: #BACA82;
-  color: #090B0A;
-  padding: 10px 20px;
-  border: none;
-  border-radius: 15px;
-  cursor: pointer;
-}
-
-.purp-button {
-  background-color: #AA95D1;
-  color: white;
-  padding: 10px 20px;
-  /* Adjust as needed */
-  border: none;
-  border-radius: 15px;
-  cursor: pointer;
-}
-
-footer {
-  background-color: #090B0A;
-  color: white;
-  padding: 10px;
-}
-
-
-/*mobile breakpoint styles*/
-@media only screen and (max-width: 767px) {
-  .hamburger {
-      display: block;
-      /* Show the hamburger button on small screens */
+    @@ -60, 8+85, 25 @@ footer {
+      padding: 10px;
     }
-  
-    .nav-container {
-      display: none;
-      /* Initially hide the navigation links */
-    }
-  
-    /* Adjust styling for the expanded navigation links */
-    .nav-container.show {
-      display: block;
-    }
-  
-  
-  .nav {
-    font-family: 'Cormorant', serif;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    background-color: white;
-    padding: 10px;
-  }
 
-  .profile-icon {
-    max-width: 30%;
-    height: auto;
-    margin-right: 20px;
-  }
 
-  .logo-and-nav {
-    display: flex;
-    align-items: center;
-  }
+    /*mobile breakpoint styles*/
+    @media only screen and (max-width: 767px) {
+      .hamburger {
+        display: block;
+        /* Show the hamburger button on small screens */
+      }
 
-  .logo {
-    max-width: 100px;
-    height: auto;
-    margin-right: 20px;
-  }
+      .nav-container {
+        display: none;
+        /* Initially hide the navigation links */
+      }
 
-  .nav ul {
-    list-style: none;
-    margin: 0;
-    padding: 0;
-  }
+      /* Adjust styling for the expanded navigation links */
+      .nav-container.show {
+        display: block;
+      }
 
-  .nav li {
-    display: inline-block;
-    margin-right: 10px;
-    position: relative;
-    font-weight: normal !important;
-  }
 
-  .nav a {
-    text-decoration: none;
-    color: #090B0A;
-    padding: 10px 20px;
-    /* Adjust padding to make the background larger */
-    position: relative;
-  }
+      .nav {
+        font-family: 'Cormorant', serif;
+        display: flex;
 
-  .nav a:hover {
-    background-color: #E7E7E7;
-  }
+        @@ -71, 14+113, 6 @@ footer {
+          padding: 10px;
+        }
 
-  .subpages {
-    display: none;
-    position: absolute;
-    top: 100%;
-    left: 0;
-    background-color: #E7E7E7;
-    padding: 10px;
-    border-radius: 5px;
-  }
+        .profile-icon-container {
+          position: absolute;
+          top: 10px;
+          right: 10px;
+          z-index: 1000;
+          /* Ensure it appears above other elements */
+        }
 
-  .nav .dropdown:hover .subpages {
-    display: block;
-  }
+        .profile-icon {
+          max-width: 30%;
+          height: auto;
+          margin-right: 20px;
+        }
 
-}
+        .logo-and-nav {
+          display: flex;
+          align-items: center;
+        }
+
+        .logo {
+          max-width: 100px;
+          height: auto;
+          margin-right: 20px;
+        }
+
+        .nav ul {
+          list-style: none;
+          margin: 0;
+          padding: 0;
+        }
+
+        .nav li {
+          display: inline-block;
+          margin-right: 10px;
+          position: relative;
+          font-weight: normal !important;
+        }
+
+        .nav a {
+          text-decoration: none;
+          color: #090B0A;
+          padding: 10px 20px;
+          /* Adjust padding to make the background larger */
+          position: relative;
+        }
+
+        .nav a:hover {
+          background-color: #E7E7E7;
+        }
+
+        .subpages {
+          display: none;
+          position: absolute;
+          top: 100%;
+          left: 0;
+          background-color: #E7E7E7;
+          padding: 10px;
+          border-radius: 5px;
+        }
+
+        .nav .dropdown:hover .subpages {
+          display: block;
+        }
+      }}
 
 /* web breakpoint styles
 @media only screen and (min-width: 768px) {
