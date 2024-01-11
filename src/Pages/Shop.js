@@ -23,13 +23,34 @@ const tempData = [
         name: "Niacinamide Serum",
         price: 15.99
     },
-{
+    {
         name: "Illumination Face Mask",
         price: 14.99
     },
-        
-    
-    
+    {
+        name: "Daily Body Lotion",
+        price: 9.99
+    },
+    {
+        name: "Nourishing Body Oil",
+        price: 10.99
+    },
+    {
+        name: "Makeup Essentials Kit",
+        price: 49.99
+    },
+    {
+        name: "Makeup Brush Set",
+        price: 15.99
+    },
+    {
+        name: "Hyaluronic Acid Tonic",
+        price: 12.99
+    },
+    {
+        name: "Revitalizing Hair Oil",
+        price: 8.99
+    },
     
 ]
 
