@@ -92,7 +92,10 @@ function Shop() {
         {tempData.map((item) => (
           <div className="box">
             {/* item info */}
-            <p>img</p>
+            <img
+              src={require("../assets/images/shop/" + item.file + ".png")}
+              alt={item.name}
+            ></img>
             <p>{item.name}</p>
             <p>${item.price}</p>
             {/* item interactions */}
