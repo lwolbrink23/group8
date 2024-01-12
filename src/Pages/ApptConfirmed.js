@@ -1,5 +1,6 @@
 import React from "react";
 import "../App.css";
+import purpleCheck from "../assets/icons/icons8-check-100.png"
 
 function Confirmed() {
 return(
@@ -9,7 +10,7 @@ return(
         </div>
         <div className="confimed-container">
              {/*purple check mark*/}
-             <img src="assets/logo/TSS Circle logo Transparent.png" alt="purple check mark" />
+             <img src={purpleCheck} alt="purple check mark" />
              <h1><strong>Confirmed</strong></h1>
              <p>
                 Thank you for choosing The Suite Spot Salon for your beauty
