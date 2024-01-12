@@ -59,6 +59,12 @@ h1 {
 .center-children {
   text-align: center;
 }
+.center-v {
+  display: flex;
+  align-items: center; /* Center vertically */
+  text-align: center;
+  justify-content: center;
+}
 input {
   margin: 0;
 }

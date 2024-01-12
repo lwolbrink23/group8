@@ -1,6 +1,8 @@
 import "../App.css";
 import "../Styles/shop.css";
 import giftCardIMG from "../assets/images/giftcard.png";
+import plusICON from "../assets/icons/black-plus.png";
+import minusICON from "../assets/icons/black-minus.png";
 const tempData = [
   {
     name: "Repair & Protect Kit",
@@ -70,9 +72,13 @@ function Shop() {
             <p>${item.price}</p>
             <div className="center-children">
               <div className="col-3">
-                <p>-</p>
+                <div className="center-v">
+                  <img src={minusICON} alt="subtract item"></img>
+                </div>
                 <p>0</p>
-                <p>+</p>
+                <div className="center-v">
+                  <img src={plusICON} alt="add item"></img>
+                </div>
               </div>
               <button className="button">Add to Cart</button>
             </div>
