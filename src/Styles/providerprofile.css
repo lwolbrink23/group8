@@ -1,0 +1,116 @@
+.container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+}
+
+.image-wrapper {
+    border-radius: 50%;
+    overflow: hidden;
+    width: 150px;
+    height: 150px;
+    margin-right: 20px;
+}
+
+.image-wrapper img {
+    width: 100%;
+    height: auto;
+}
+
+.info {
+    text-align: left;
+}
+
+.info h1 {
+    margin: 0;
+    color: #333;
+}
+
+.info p {
+    margin: 5px 0;
+}
+
+button {
+    background-color: #AA95D1;
+    color: white;
+    padding: 10px 20px;
+    text-transform: uppercase;
+    font-weight: bold;
+    border-radius: 20px;
+    cursor: pointer;
+    margin-top: 10px;
+}
+
+button:hover {
+    background-color: #8569B8;
+}
+
+.services-container {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    /* Creates two columns of equal width */
+    grid-auto-flow: dense;
+    gap: 20px;
+    /* This adds space between the columns and rows */
+    padding: 20px;
+}
+
+.service-category {
+    padding: 20px;
+    border-right: 2px solid #ccc;
+    /* Add a right border for the line */
+}
+
+/* Remove border from the second (last) item in each row for a 2-column layout */
+.service-category:nth-child(2n) {
+    border-right: none;
+}
+
+h2 {
+    display: flex;
+    justify-content: center;
+}
+
+.space-below {
+    margin-bottom: 40px;
+}
+
+.gallery-container {
+    position: relative;
+    width: 910px;
+    /* Adjust width as needed */
+    margin: 0 auto;
+    /* This centers the gallery */
+}
+
+.navigation-button {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    cursor: pointer;
+    /* Add more styling for the buttons here */
+}
+
+.navigation-button.left {
+    left: 10px;
+}
+
+.navigation-button.right {
+    right: 10px;
+}
+
+
+.thumbnail-container {
+    display: flex;
+    justify-content: center;
+    /* Add more styling for the thumbnail container here */
+}
+
+.thumbnail-container img {
+    width: 157px;
+    height: 99px;
+    margin: 5px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.25);
+    /* Add more styling for thumbnails here */
+}
