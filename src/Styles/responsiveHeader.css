@@ -18,6 +18,12 @@
     nav ul ul { /*about dropdown links*/
     background-color: white;
     width: 100%;
+    top: 0;
+        /* Set top to 0 to align submenus with their parent items */
+    left: 0;
+        /* Set left to 0 to appear under the parent item */
+        position: absolute;
+        /* Set position to absolute */
 }   
 
     #hamburger-menu::before {
@@ -62,6 +68,7 @@
             /* Center the list items vertically */
             align-items: center;
             /* Center the list items horizontally */
+            position: relative;
     }
 
     nav ul li { /*the divs of each nav */
@@ -69,6 +76,7 @@
         background-color: white;
         width: 100%;
         height: auto;
+        position: relative;
     }
 
     .logo-web {
@@ -94,6 +102,18 @@
     display: none;
   }
 
+  li .purp-button {
+      /* Nav book now button */
+      background-color: white;
+        color: #090B0A;
+  }
+
+  li .purp-button:hover {
+      /* Nav book now button */
+    background-color: #E7E7E7;
+    padding: 10px 20px;
+    border-radius: 0px;
+  }
    
 }
 
