@@ -1,4 +1,38 @@
+/* general */
+.box {
+  border: 2px solid black;
+  background-color: white;
+}
+.col2 {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 20px;
+}
+.col-3 {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 20px;
+  margin: 0 50px;
+}
+.center-children {
+  text-align: center;
+}
+.center-v {
+  display: flex;
+  align-items: center; /* Center vertically */
+  justify-content: center;
+}
+input {
+  margin: 0;
+}
+
 /* title */
+#shop-banner {
+  background-image: url("../assets/images/shopbanner.png");
+  background-size: cover; /* Specifies how the background image should be sized */
+  background-position: center;
+  height: 20em;
+}
 h1 {
   margin: 0;
   opacity: 100%;
@@ -21,20 +55,12 @@ h1 {
   gap: 20px;
   padding: 20px;
 }
-.box {
-  padding: 20px;
-  border: 2px solid black;
+.item {
+  padding-bottom: 10px;
 }
-
-.col2 {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 20px;
-}
-.col-3 {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 20px;
+.item-img {
+  width: 100%;
+  object-fit: cover;
 }
 
 /* giftcard */
@@ -54,15 +80,4 @@ h1 {
 }
 .giftcard-info {
   padding: 0 20px 10px 20px;
-}
-.center-children {
-  text-align: center;
-}
-.center-v {
-  display: flex;
-  align-items: center; /* Center vertically */
-  justify-content: center;
-}
-input {
-  margin: 0;
 }

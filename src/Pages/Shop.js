@@ -82,19 +82,22 @@ function Shop() {
   return (
     <div>
       {/* title */}
-      <div className="title-container trans-white">
-        <h1 className="center">Shop</h1>
-        <p id="cart-icon">icon</p>
+      <div id="shop-banner">
+        <div className="title-container trans-white">
+          <h1 className="center">Shop</h1>
+          <p id="cart-icon">icon</p>
+        </div>
+        <h2>Find all your favorite products here.</h2>
       </div>
-      <h2>Find all your favorite products here.</h2>
       {/* shop items */}
       <div className="items-container">
         {tempData.map((item) => (
-          <div className="box">
+          <div className="item box">
             {/* item info */}
             <img
               src={require("../assets/images/shop/" + item.file + ".png")}
               alt={item.name}
+              className="item-img"
             ></img>
             <p>{item.name}</p>
             <p>${item.price}</p>
@@ -116,7 +119,7 @@ function Shop() {
       </div>
       {/* giftcard */}
       <h2 className="center">Gift Cards</h2>
-      <div className="giftcard-grid">
+      <div className="giftcard-grid box">
         <img src={giftCardIMG} alt="giftcard"></img>
 
         <div className="giftcard-info">
