@@ -13,7 +13,7 @@ return (
         </div>
         <div className="arrow-container">
              {/*back arrow*/}
-            <Link to="/blog">
+            <Link to="/selectservices">
                 <img src={backArrow} alt="back arrow" />
             </Link>
              <p>Services &gt; Time &gt; <strong>Confirm</strong></p>
