@@ -1,6 +1,8 @@
 import "../App.css";
 import "../Styles/shop.css";
 import giftCardIMG from "../assets/images/giftcard.png";
+import plusICON from "../assets/icons/black-plus.png";
+import minusICON from "../assets/icons/black-minus.png";
 const tempData = [
   {
     name: "Repair & Protect Kit",
@@ -70,9 +72,13 @@ function Shop() {
             <p>${item.price}</p>
             <div className="center-children">
               <div className="col-3">
-                <p>-</p>
+                <div className="center-v">
+                  <img src={minusICON} alt="subtract item"></img>
+                </div>
                 <p>0</p>
-                <p>+</p>
+                <div className="center-v">
+                  <img src={plusICON} alt="add item"></img>
+                </div>
               </div>
               <button className="button">Add to Cart</button>
             </div>
@@ -83,7 +89,8 @@ function Shop() {
       <h2 className="center">Gift Cards</h2>
       <div className="giftcard-grid">
         <img src={giftCardIMG} alt="giftcard"></img>
-        <div>
+
+        <div className="giftcard-info">
           <h3>Buy a gift card!</h3>
           <p>
             Looking for the perfect gift for that special someone? We've got you
@@ -92,8 +99,10 @@ function Shop() {
             appreciation.
           </p>
           <p>Enter an amount:</p>
-          <input></input>
-          <button className="button">Add to Cart</button>
+          <div className="col2">
+            <input></input>
+            <button className="button">Add to Cart</button>
+          </div>
         </div>
       </div>
     </div>

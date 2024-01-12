@@ -4,7 +4,6 @@ import "../App.css";
 function Blog() {
   return (
     <div>
-      <Header></Header>
       <div className="main-blog-page">
         <h1>Blog</h1>
         <p>Stay up to date with the latest news from The Suite Spot!</p>
