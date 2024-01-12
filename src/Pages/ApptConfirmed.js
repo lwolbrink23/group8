@@ -1,5 +1,6 @@
 import React from "react";
 import "../App.css";
+import { Link } from "react-router-dom";
 import purpleCheck from "../assets/icons/icons8-check-100.png"
 
 function Confirmed() {
@@ -33,7 +34,9 @@ return(
                 <h4><b>Location</b></h4>
                 <p>The Suite Spot Suite #1</p>
             </div>
-                <button type="button" onClick={() => alert('Goes back to home')}>Back to Home</button>
+            <Link to="/">
+                 <button type="button">Back to Home</button>
+            </Link>
             </div>
     </div>
 )
