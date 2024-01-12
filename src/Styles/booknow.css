@@ -37,10 +37,15 @@
     box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
 }
 
+
 /* Media query for smaller screens */
-@media (max-width: 600px) {
-    .buttons button {
-        max-width: 100%;
-        /* Set maximum width to 100% for smaller screens */
+@media (max-width: 900px) {
+    .buttons {
+            margin-top: 2px;
+        }
+    .top {
+        display:flex;
+        flex-wrap:wrap;
     }
 }
+
