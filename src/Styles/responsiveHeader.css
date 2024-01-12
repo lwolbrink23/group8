@@ -1,22 +1,32 @@
 /* Styles for smaller screens (mobile) */
 @media screen and (max-width: 767px) {
-    
     nav ul { /*hide regular nav links*/
         display: none;
     }
+   
     nav {
         grid-area: nav;
+        width: 100%;
+        position: absolute;
+        top: 100%;/* Position below the header */
+        left: 0;
+        z-index: 999;/* Ensure it's above other elements */
+        text-align: center;/* Center the text within the nav for now, might need to align it left later*/
+        background-color: white;
     }
+
+    nav ul ul { /*about dropdown links*/
+    background-color: white;
+    width: 100%;
+}   
 
     #hamburger-menu::before {
     content: '\2630'; /* Unicode character for hamburger icon */
     grid-area: hamburger-menu;
     }
 
-
-    /* Show the hamburger menu on smaller screens */
     #hamburger-menu {
-    font-size: 40px; /* size of hamburger menu*/
+    font-size: 45px;
     color: #5C5C5C;
     grid-area: hamburger-menu;
     }
@@ -33,20 +43,32 @@
         display: block;
     }
 
-    .header-container {
+
+     .header-container {
         display: grid;
-        grid-template-columns: auto auto 1fr auto;
-        grid-template-areas: "logo-mobile profile hamburger-menu nav";
+        grid-template-columns: auto auto auto;
+        grid-template-areas:
+         "logo-mobile hamburger-menu profile"
+        "nav nav nav";
+        /* Create a new row for the nav links */
         align-items: center;
-    }
+        }
 
     nav ul {
-        flex-direction: column;
-        align-items: center;
+        width: 100%;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            /* Center the list items vertically */
+            align-items: center;
+            /* Center the list items horizontally */
     }
 
-    nav ul li { /*the spacing between the links */
+    nav ul li { /*the divs of each nav */
         margin: 10px 0;
+        background-color: white;
+        width: 100%;
+        height: auto;
     }
 
     .logo-web {
@@ -61,12 +83,11 @@
     }
 
     nav a:hover {
-    width: 100%; /* Make the background color extend across the entire width */
     display: block; /* Display as a block to take full width */
   }
     
-    .profile-icon-mobile {/* Make the profile icon smaller for mobile */
-    max-width: 40px;
+    .profile-icon-mobile {
+    max-height: 40px;
   }
 
   .profile-icon-web {
