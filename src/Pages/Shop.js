@@ -104,9 +104,17 @@ function Shop() {
             {/* item interactions */}
             <div className="center-children">
               <div className="col-3 center-v">
-                <img src={minusICON} alt="subtract item"></img>
+                <img
+                  src={minusICON}
+                  alt="subtract item"
+                  className="mouse-hover"
+                ></img>
                 <p>0</p>
-                <img src={plusICON} alt="add item"></img>
+                <img
+                  src={plusICON}
+                  alt="add item"
+                  className="mouse-hover"
+                ></img>
               </div>
               <button className="button">Add to Cart</button>
             </div>
