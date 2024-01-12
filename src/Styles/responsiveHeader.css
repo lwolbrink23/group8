@@ -1,77 +1,57 @@
 /* Styles for smaller screens (mobile) */
 @media screen and (max-width: 767px) {
-    nav ul { /*hide regular nav links*/
+nav ul {
         display: none;
     }
-   
+
     nav {
         grid-area: nav;
         width: 100%;
         position: absolute;
-        top: 100%;/* Position below the header */
+        top: 100%;
         left: 0;
-        z-index: 999;/* Ensure it's above other elements */
-        text-align: center;/* Center the text within the nav for now, might need to align it left later*/
+        z-index: 999;
+        text-align: center;
         background-color: white;
     }
 
-    nav ul ul { /*about dropdown links*/
-    background-color: white;
-    width: 100%;
-    top: 0;
-        /* Set top to 0 to align submenus with their parent items */
-    left: 0;
-        /* Set left to 0 to appear under the parent item */
-        position: absolute;
-        /* Set position to absolute */
-}   
-
     #hamburger-menu::before {
-    content: '\2630'; /* Unicode character for hamburger icon */
-    grid-area: hamburger-menu;
+        content: '\2630';
+        grid-area: hamburger-menu;
     }
 
     #hamburger-menu {
-    font-size: 45px;
-    color: #5C5C5C;
-    grid-area: hamburger-menu;
-    }
-    
-    /* Display the nav links when the hamburger menu is open */
-    nav ul.show {
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-    }
-    
-    /* Show the dropdown menu when the hamburger menu is open */
-    nav ul.show ul {
-        display: block;
+        font-size: 45px;
+        color: #5C5C5C;
+        grid-area: hamburger-menu;
     }
 
+    nav ul ul {
+        background-color: white;
+        width: 100%;
+        top: 0;
+        left: 0;
+        position: absolute;
+    }
 
-     .header-container {
+    .header-container {
         display: grid;
         grid-template-columns: auto auto auto;
-        grid-template-areas:
-         "logo-mobile profile hamburger-menu"
-        "nav nav nav";
-        /* Create a new row for the nav links */
+        grid-template-areas: "logo-mobile profile hamburger-menu"
+            "nav nav nav";
         align-items: center;
-        }
+    }
 
     nav ul {
         width: 100%;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            /* Center the list items vertically */
-            align-items: center;
-            /* Center the list items horizontally */
-            position: relative;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        position: relative;
     }
 
-    nav ul li { /*the divs of each nav */
+    nav ul li {
         margin: 10px 0;
         background-color: white;
         width: 100%;
@@ -91,28 +71,34 @@
     }
 
     nav a:hover {
-    display: block; /* Display as a block to take full width */
-  }
-    
+        display: block;
+    }
+
     .profile-icon-mobile {
-    max-height: 40px;
-  }
+        max-height: 40px;
+    }
 
-  .profile-icon-web {
-    display: none;
-  }
+    .profile-icon-web {
+        display: none;
+    }
 
-  li .purp-button {
-      /* Nav book now button */
-      background-color: white;
+    li .purp-button {
+        background-color: white;
         color: #090B0A;
-  }
+    }
 
-  li .purp-button:hover {
-      /* Nav book now button */
-    background-color: #E7E7E7;
-    padding: 10px 20px;
-    border-radius: 0px;
+    li .purp-button:hover {
+        background-color: #E7E7E7;
+        padding: 10px 20px;
+        border-radius: 0px;
+    }
+
+  nav ul li:hover>ul { /*makes subpages vertical*/
+      display: block;
+      position: relative;
+      top: 0;
+      left: 0;
+      width: 100%;
   }
    
 }
