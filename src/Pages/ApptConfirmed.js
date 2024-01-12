@@ -32,7 +32,7 @@ return(
                 <h4><b>Location</b></h4>
                 <p>The Suite Spot Suite #1</p>
             </div>
-                <button type="button" onclick="alert('Goes back to home')">Back to Home</button>
+                <button type="button" onClick={() => alert('Goes back to home')}>Back to Home</button>
             </div>
     </div>
 )

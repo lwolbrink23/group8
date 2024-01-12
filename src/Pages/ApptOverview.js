@@ -52,7 +52,7 @@ return (
                   <p id="appt-time">10:00-10:30am</p>
                   </div>
                 </div>
-                <button type="button" onclick="alert('Directs to Appointment Confirmation')">Book Now</button>
+                <button type="button" onClick={() => alert('Directs to Appointment Confirmation')}>Book Now</button>
             </div>
         </div>
     </div>
