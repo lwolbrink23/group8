@@ -25,6 +25,9 @@
 input {
   margin: 0;
 }
+.mouse-hover:hover {
+  cursor: pointer;
+}
 
 /* title */
 #shop-banner {
@@ -33,9 +36,13 @@ input {
   background-position: center;
   height: 20em;
 }
-h1 {
+#shop-banner h1 {
   margin: 0;
   opacity: 100%;
+}
+#shop-banner h2 {
+  margin-left: 10em;
+  margin-top: 5em;
 }
 #cart-icon {
   position: absolute;
@@ -60,6 +67,7 @@ h1 {
 .item-img {
   width: 100%;
   object-fit: cover;
+  border-bottom: 2px solid black;
 }
 
 /* giftcard */
