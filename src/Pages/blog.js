@@ -14,7 +14,7 @@ function Blog() {
           <label htmlFor="email">Email</label>
           <input type="text" id="email" /><br />
           <button
-            type="submit"
+            type="button"
             onClick={() => alert('Thank you for subscribing to our blog!')}
           >
             Subscribe
