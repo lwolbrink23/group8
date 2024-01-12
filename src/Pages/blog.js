@@ -26,7 +26,7 @@ function Blog() {
       <div className="posts-container">
         <div className="hair-secrets">
            {/* post1 image */}
-        <img src={hairWashing} alt="woman getting her hairwashed by a hairstylist." />
+        <img src={hairWashing} alt="woman getting her hair washed by a hairstylist." />
           <h3><b>Hair Care Secrets: Tips for Gorgeous Locks</b></h3>
           <p>
             In this article, we'll delve into effective tips that will leave you with a mane to envy.

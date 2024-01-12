@@ -2,14 +2,16 @@ import React from "react";
 import "../App.css";
 import { Link } from "react-router-dom";
 import backArrow from "../assets/icons/back-arrow.png"
+import hairWashing from "../assets/images/hairwashing.jpg"
 function BlogPost() {
   return (
     <div className="post1">
-      <div className="post-general-info">
-        {/* back arrow */}
+      {/* back arrow */}
          <Link to="/blog">
                 <img src={backArrow} alt="back arrow" />
             </Link>
+      <div className="post-general-info">
+        <img src={hairWashing} alt="woman getting her hair washed by hairstylist" />
         <h4>Category: Hair</h4>
         <h4>Author: Jane Doe</h4>
         <h2>Hair Care Secrets: Tips for Gorgeous Locks</h2>
