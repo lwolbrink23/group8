@@ -57,7 +57,10 @@ return (
                   <p id="appt-time">10:00-10:30am</p>
                   </div>
                 </div>
-                <button type="button" onClick={() => alert('Directs to Appointment Confirmation')}>Book Now</button>
+                 {/*book now button*/}
+            <Link to="/appointment_confirmed">
+                <button type="button">Book Now</button>
+            </Link>
             </div>
         </div>
     </div>
