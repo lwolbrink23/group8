@@ -67,7 +67,12 @@ function OurStory() {
                     </ul>
                 </div>
                 <br />
-                <button type="button" onclick={() => alert('Redirect to suites')}>Learn More About Our Suites!</button>
+                <button
+            type="button"
+            onClick={() => alert('Directs to blog post')}
+          >
+            Learn more about our suites!
+          </button>
             </div>
         </div>
     );
