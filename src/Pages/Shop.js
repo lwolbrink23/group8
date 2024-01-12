@@ -95,6 +95,7 @@ function Shop() {
             <img
               src={require("../assets/images/shop/" + item.file + ".png")}
               alt={item.name}
+              className="item-img"
             ></img>
             <p>{item.name}</p>
             <p>${item.price}</p>
