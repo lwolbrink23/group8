@@ -5,13 +5,11 @@
     nav ul { /*hide regular nav links*/
         display: none;
     }
-
-    /* Hamburger menu styles */
-    #hamburger-menu {
-    display: none; /* Initially hide the hamburger menu */
-    cursor: pointer;
-    font-size: 24px; /* Adjust the size of the hamburger icon */
+    nav {
+        grid-area: nav;
     }
+
+   
 
     /* Optional: Style the hamburger icon */
     #hamburger-menu::before {
@@ -22,17 +20,16 @@
     /* Show the hamburger menu on smaller screens */
     #hamburger-menu {
     display: block;
-    }
-
-    /* Hide the regular nav bar on smaller screens */
-    nav ul {
-        display: none;
+    font-size: 40px; /* size of hamburger menu*/
+    color: #5C5C5C;
+    grid-area: hamburger-menu;
     }
     
     /* Display the nav links when the hamburger menu is open */
     nav ul.show {
         display: flex;
         flex-direction: column;
+        align-items: center;
     }
     
     /* Show the dropdown menu when the hamburger menu is open */
@@ -41,7 +38,9 @@
     }
 
     .header-container {
-        flex-direction: column;
+        display: grid;
+        grid-template-columns: auto auto 1fr auto;
+        grid-template-areas: "logo-mobile profile hamburger-menu nav";
         align-items: center;
     }
 
@@ -61,14 +60,22 @@
     .logo-mobile {
         max-width: 70%;
         height: auto;
-        margin-right: 20px;
+        display: block;
+        grid-area: logo-mobile;
     }
 
     nav a:hover {
     width: 100%; /* Make the background color extend across the entire width */
     display: block; /* Display as a block to take full width */
   }
-    /* Add additional styles for smaller screens as needed */
+    
+    .profile-icon {/* Make the profile icon smaller for mobile */
+    max-width: 40px;
+  }
+
+    .profile-container {
+        grid-area: profile;
+    }
 }
 
 

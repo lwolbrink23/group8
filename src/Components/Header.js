@@ -14,9 +14,14 @@ function Header() {
   };
   return (
     <header>
-      <div className="header-container">
+      <div
+        className={`header-container ${isHamburgerOpen ? "mobile-open" : ""}`}
+      >
         <img src={logoWeb} alt="logo" className="logo-web" />
         <img src={logoMobile} alt="logo" className="logo-mobile" />
+        <div className="profile-container">
+          <img src={profileicon} alt="profile icon" className="profile-icon" />
+        </div>
         {/* Hamburger menu icon */}
         <div id="hamburger-menu" onClick={toggleHamburger}></div>
         <nav>
@@ -65,9 +70,6 @@ function Header() {
             </li>
           </ul>
         </nav>
-        <div className="profile-container">
-          <img src={profileicon} alt="profile icon" className="profile-icon" />
-        </div>
       </div>
     </header>
   );
