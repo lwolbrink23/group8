@@ -1,12 +1,12 @@
 import React from "react";
 import "../App.css";
-
+import backArrow from "../assets/icons/arrow.png"
 function BlogPost() {
   return (
     <div className="post1">
       <div className="post-general-info">
-        {/* Image */}
-        <img src="assets/logo/TSS Circle logo Transparent.png" alt="The Suite Spot Logo" />
+        {/* back arrow */}
+        <img src={backArrow} alt="The Suite Spot Logo" />
         <h4>Category: Hair</h4>
         <h4>Author: Jane Doe</h4>
         <h2>Hair Care Secrets: Tips for Gorgeous Locks</h2>

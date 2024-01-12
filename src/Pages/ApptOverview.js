@@ -1,8 +1,10 @@
 import React from "react";
 import "../App.css";
-import store from "../assets/icons/icons8-shop-96.png"
-import purpleLady from "../assets/icons/icons8-person-female-100.png"
-import calendar from "../assets/icons/icons8-event-accepted-tentatively-96.png"
+import { Link } from "react-router-dom";
+import store from "../assets/icons/icons8-shop-96.png";
+import purpleLady from "../assets/icons/icons8-person-female-100.png";
+import calendar from "../assets/icons/icons8-event-accepted-tentatively-96.png";
+import backArrow from "../assets/icons/arrow.png"
 function Overview() {
 return (
     <div>
@@ -11,8 +13,9 @@ return (
         </div>
         <div className="arrow-container">
              {/*back arrow*/}
-             <img
-            src="assets/logo/TSS Circle logo Transparent.png" alt="back arrow"/>
+            <Link to="/blog">
+                <img src={backArrow} alt="back arrow" />
+            </Link>
              <p>Services &gt; Time &gt; <strong>Confirm</strong></p>
         </div>
         <div className="overview-container">
