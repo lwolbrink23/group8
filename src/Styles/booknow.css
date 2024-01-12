@@ -2,6 +2,11 @@
     display: flex;
 }
 
+.right {
+    display: flex;
+    justify-content: right;
+}
+
 .top img {
     margin-right: 20px;
     margin-bottom: 20px;
