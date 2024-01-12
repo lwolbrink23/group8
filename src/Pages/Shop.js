@@ -103,14 +103,10 @@ function Shop() {
             <p>${item.price}</p>
             {/* item interactions */}
             <div className="center-children">
-              <div className="col-3">
-                <div className="center-v">
-                  <img src={minusICON} alt="subtract item"></img>
-                </div>
+              <div className="col-3 center-v">
+                <img src={minusICON} alt="subtract item"></img>
                 <p>0</p>
-                <div className="center-v">
-                  <img src={plusICON} alt="add item"></img>
-                </div>
+                <img src={plusICON} alt="add item"></img>
               </div>
               <button className="button">Add to Cart</button>
             </div>
