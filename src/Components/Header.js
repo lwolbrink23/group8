@@ -19,11 +19,16 @@ function Header() {
       >
         <img src={logoWeb} alt="logo" className="logo-web" />
         <img src={logoMobile} alt="logo" className="logo-mobile" />
-        <div className="profile-container">
+        {/*<div className="profile-container">
           <img src={profileicon} alt="profile icon" className="profile-icon" />
-        </div>
+        </div>*/}
         {/* Hamburger menu icon */}
         <div id="hamburger-menu" onClick={toggleHamburger}></div>
+        <img
+          src={profileicon}
+          alt="profile icon"
+          className="profile-icon-mobile"
+        />
         <nav>
           <ul className={isHamburgerOpen ? "show" : ""}>
             <li>

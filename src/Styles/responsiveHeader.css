@@ -14,12 +14,12 @@
     /* Optional: Style the hamburger icon */
     #hamburger-menu::before {
     content: '\2630'; /* Unicode character for hamburger icon */
+    grid-area: hamburger-menu;
     }
 
 
     /* Show the hamburger menu on smaller screens */
     #hamburger-menu {
-    display: block;
     font-size: 40px; /* size of hamburger menu*/
     color: #5C5C5C;
     grid-area: hamburger-menu;
@@ -69,7 +69,7 @@
     display: block; /* Display as a block to take full width */
   }
     
-    .profile-icon {/* Make the profile icon smaller for mobile */
+    .profile-icon-mobile {/* Make the profile icon smaller for mobile */
     max-width: 40px;
   }
 
@@ -121,6 +121,10 @@ nav ul li:hover>ul {
 }
 
 .logo-mobile {
+    display: none;
+}
+
+.profile-icon-mobile {
     display: none;
 }
 }
