@@ -1,6 +1,8 @@
 import React from "react";
 import "../App.css";
-
+import store from "../assets/icons/icons8-shop-96.png"
+import purpleLady from "../assets/icons/icons8-person-female-100.png"
+import calendar from "../assets/icons/icons8-event-accepted-tentatively-96.png"
 function Overview() {
 return (
     <div>
@@ -16,8 +18,8 @@ return (
         <div className="overview-container">
             <div className="payment-method">
                 <h2>Payment Method</h2>
-                {/*store icon*/}
-                <img src="assets/logo/TSS Circle logo Transparent.png" alt="Purple store icon"/>
+                {/*store/shop icon*/}
+                <img src={store} alt="Purple shop icon"/>
              <p>Pay at venue</p>
             </div>
             <div className="cancelation-policy">
@@ -42,12 +44,12 @@ return (
                   <h3>Appointment:</h3>
                   <div id="staff">
                     {/*woman icon*/}
-                  <img src="assets/logo/TSS Circle logo Transparent.png" alt="Purple woman icon"/>
+                  <img src={purpleLady} alt="Purple woman icon"/>
                   <p>Your Info: Staff Member</p>
                   </div>
                   <div id="date-time">
                     {/*calendar icon*/}
-                  <img src="assets/logo/TSS Circle logo Transparent.png" alt="Purple calendar icon"/>
+                  <img src={calendar} alt="Purple calendar icon"/>
                   <p id="appt-date">Wednesday January 22</p>
                   <p id="appt-time">10:00-10:30am</p>
                   </div>
