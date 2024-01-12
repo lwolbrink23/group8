@@ -2,6 +2,10 @@
 /*Web design*/
 @media screen and (min-width: 767px) {
 
+.centerit {
+    display: flex;
+    justify-content: center;
+}
 .blurb-container {
     display: flex;
     justify-content: space-between;
@@ -22,11 +26,7 @@ img {
     max-height: 100%;
     display: block;
 }
-p {
-    text-align: center;
-    padding-left: 10px;
-    padding-right: 10px;
-}
+
 
 h1 {
     text-align: center;
@@ -37,18 +37,37 @@ h2 {
     padding: 5px
 }
 
-.rent-section {
+.container {
+    display: flex;
     justify-content: center;
+    margin: 20px
+}
+.p {
     text-align: center;
+    display: flex;
+    justify-content: center;
+    margin-left: 150px;
+        margin-right: 150px
+ 
+}
+.pmain {
+    text-align: center;
+    display: flex;
+    justify-content: center;
+    margin-left: 150px;
+    margin-right: 150px
+}
+.rent-section {
+    align-items: center;
     background-color: #5C5C5C;
-    margin: 2rem;
     box-shadow: 0 8px 8px rgba(0, 0, 0, 0.1);
     color: white;
-    width: 50%;
 }
 
 .formarea {
-    max-width: 80%;
+    display: flex;
+    justify-content: center;
+    max-width: 60%;
     margin: 0 auto;
     display: flex;
     flex-direction: column;
@@ -56,7 +75,9 @@ h2 {
 }
 
 .fields {
-    width: 75%;
+    display: flex;
+    justify-content: center;
+    width: 100%;
     box-sizing: border-box;
     margin-bottom: 10px;
 }
@@ -87,10 +108,11 @@ label {
 .blurb-container {
     text-align: center;
     height: 100vh;
+    width: ;
 }
 
 .blurbs {
-    width: 48%;
+    width: 60%;
     box-sizing: border-box;
     padding: 10px;
     margin: 20px auto;
@@ -110,10 +132,11 @@ h1 {
 h2 {
     padding: 5px
 }
-p {
-    text-align: center;
-    padding-left: 10px;
-    padding-right: 10px;
+
+.container {
+    display: flex;
+    justify-content: center;
+    margin: 20px
 }
 
 .rent-section {
@@ -122,14 +145,16 @@ p {
     margin: 50px;
     box-shadow: 0 8px 8px rgba(0, 0, 0, 0.1);
     color: white;
+
 }
 
 .formarea {
-    max-width: 400px;
+    max-width: 90%;
     margin: 0 auto;
     display: flex;
     flex-direction: column;
     text-align: left;
+    box-shadow: 0 8px 8px rgba(0, 0, 0, 0.1);
 }
 .fields {
     width: 100%;
