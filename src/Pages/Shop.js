@@ -58,7 +58,7 @@ function Shop() {
   return (
     <div>
       {/* title */}
-      <div className="title-container">
+      <div className="title-container trans-white">
         <h1 className="center">Shop</h1>
         <p id="cart-icon">icon</p>
       </div>
@@ -67,9 +67,11 @@ function Shop() {
       <div className="items-container">
         {tempData.map((item) => (
           <div className="box">
+            {/* item info */}
             <p>img</p>
             <p>{item.name}</p>
             <p>${item.price}</p>
+            {/* item interactions */}
             <div className="center-children">
               <div className="col-3">
                 <div className="center-v">
