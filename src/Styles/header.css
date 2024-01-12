@@ -31,9 +31,10 @@ nav ul ul {/* the dropdown menu */
     display: none;
     position: absolute;
     background-color: white;
-    /* Change the background color if needed */
     box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
     z-index: 1000;
+    top: 0;/*align submenus with parent items */
+    left: 0;
 }
 
 nav ul ul a { /*the dropdown menu text */
@@ -46,16 +47,18 @@ nav ul ul a:hover { /*dropdown menu text on hover */
     padding: 10px 20px;
 }
 
-nav ul {
+nav ul { /*dropdown menu items */
     list-style: none;
     display: flex;
     margin: 0;
     padding: 0;
+    position: relative;
 }
 
 nav ul li {
     margin-right: 20px;
     /* Adjust the spacing between the links */
+    position: relative;
 }
 
 nav ul li:hover>ul {
