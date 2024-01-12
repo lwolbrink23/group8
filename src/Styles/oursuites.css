@@ -1,6 +1,11 @@
+
+/*Web design*/
+@media screen and (min-width: 767px) {
+
 .blurb-container {
     display: flex;
     justify-content: space-between;
+    max-width: 75%;
 }
 
 .blurbs {
@@ -12,6 +17,105 @@
     box-shadow: 0 8px 8px rgba(0, 0, 0, 0.1)
 }
 
+img {
+    max-width: 100%;
+    max-height: 100%;
+    display: block;
+}
+p {
+    text-align: center;
+    padding-left: 10px;
+    padding-right: 10px;
+}
+
+h1 {
+    text-align: center;
+    padding-top: 20px;
+}
+
+h2 {
+    padding: 5px
+}
+
+.rent-section {
+    justify-content: center;
+    text-align: center;
+    background-color: #5C5C5C;
+    margin: 2rem;
+    box-shadow: 0 8px 8px rgba(0, 0, 0, 0.1);
+    color: white;
+    width: 50%;
+}
+
+.formarea {
+    max-width: 80%;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    text-align: left;
+}
+
+.fields {
+    width: 75%;
+    box-sizing: border-box;
+    margin-bottom: 10px;
+}
+
+label {
+    margin-bottom: 5px;
+}
+
+.formarea button {
+    width: 50%;
+    padding: 10px;
+    box-sizing: border-box;
+    margin: 15px auto
+}
+}
+
+/*alignment for rent section
+
+ /* the whole form is called .formarea
+
+ /* each input field is called .fields 
+
+}
+
+
+/* Mobile Design */
+@media screen and (max-width: 767px) {
+.blurb-container {
+    text-align: center;
+    height: 100vh;
+}
+
+.blurbs {
+    width: 48%;
+    box-sizing: border-box;
+    padding: 10px;
+    margin: 20px auto;
+    background-color: #BACA82;
+    box-shadow: 0 8px 8px rgba(0, 0, 0, 0.1);
+    align-items: center;
+    }
+
+img {
+    max-width: 100%;
+    }
+
+h1 {
+    padding-top: 20px;
+    text-align: center;
+}
+h2 {
+    padding: 5px
+}
+p {
+    text-align: center;
+    padding-left: 10px;
+    padding-right: 10px;
+}
+
 .rent-section {
     text-align: center;
     background-color: #5C5C5C;
@@ -20,46 +124,27 @@
     color: white;
 }
 
-.inline {
-    display: inline-block;
-    text-align: left;
+.formarea {
+    max-width: 400px;
     margin: 0 auto;
-    max-width: 600px;
-}
-
-label,
-input,
-textarea {
-    display: block;
-    margin-bottom: 5px;
-    margin-left: 20px;
-}
-.inline button {
-    display: block;
-    text-align: center;
-    margin: 15px auto;
-
-}
-.title {
-    padding-top: 20px;
-}
-.text2 {
-    padding: 10px
+    display: flex;
+    flex-direction: column;
+    text-align: left;
 }
 .fields {
-    display: block;
+    width: 100%;
+    box-sizing: border-box;
+    margin-bottom: 10px;
+}
+label {
     margin-bottom: 5px;
-    columns: 100;
-}
-textarea {
-    columns: 100;
-}
-.text {
-    text-indent: 20px;
-    text-align: center;
-    padding: 10px
 }
 
-h2 {
-    padding: 5px
+.formarea button {
+    width: 50%;
+    padding: 10px;
+    box-sizing: border-box;
+    margin: 15px auto
+
+}
 }
