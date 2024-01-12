@@ -1,5 +1,6 @@
 import React from "react";
 import "../App.css"
+import { Link } from "react-router-dom";
 import hairWashing from "../assets/images/hairwashing.jpg"
 
 function Blog() {
@@ -30,12 +31,12 @@ function Blog() {
           <p>
             In this article, we'll delve into effective tips that will leave you with a mane to envy.
           </p>
-          <button
-            type="button"
-            onClick={() => alert('Directs to blog post')}
-          >
+          <Link to="/blogpost">
+                  <button
+            type="button">
             Read More
           </button>
+            </Link>
         </div>
       </div>
     </div>
