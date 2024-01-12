@@ -30,7 +30,7 @@ return (
                 </p>
             </div>
             <div className="booking-notes">
-                <label for="booking-text-box">Booking Notes</label>
+                <label for="booking-text-box">Booking Notes</label><br/>
                 <input type="text" id="booking-text-box" name="booking-text-box" />
             </div>
             <div className="overview" id="booking-overview">
