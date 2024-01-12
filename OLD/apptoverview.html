@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Appointment Overview</title>
+        <!--css-->
+        <link rel="stylesheet"  href="styles/main.css">
+        <!--fonts-->
+        <link
+          rel="stylesheet"
+          href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;700&display=swap"
+        >
+        <link
+          rel="stylesheet"
+          href="https://fonts.googleapis.com/css2?family=Cormorant:wght@700&display=swap"
+        >
+      </head>
+      <body>
+        <div class="shop-name">
+            <h1>Simply Chic Hair</h1>
+        </div>
+        <div class="arrow-container">
+             <!--back arrow-->
+             <img src="assets/logo/TSS Circle logo Transparent.png" alt="Image">
+             <p>Services &gt; Time &gt; <strong>Confirm</strong></p>
+        </div>
+        <div class="overview-container">
+            <div class="payment-method">
+                <h2>Payment Method</h2>
+                <!--store icon-->
+             <img src="assets/logo/TSS Circle logo Transparent.png" alt="Image">
+             <p>Pay at venue</p>
+            </div>
+            <div class="cancelation-policy">
+                <h2>Cancelation Policy</h2>
+                <p>
+                    If you need to cancel or reschedule please let us know 24 hours
+                    in advance. Cancellations made within 24 hours of the appointment
+                    are subject to cancellation fees of 50% of the service. No-shows
+                    are subject to a fee of 100% of the service.
+                </p>
+            </div>
+            <div class="booking-notes">
+                <label for="booking-text-box">Booking Notes</label>
+                <input type="text" id="booking-text-box" name="booking-text-box">
+            </div>
+            <div class="overview" id="booking-overview">
+                <h2>Overview</h2>
+                <p id="booked-service">Classic Blowout $75</p>
+                <p id="booked-time">30 minutes</p>
+                <p id="total">Total $75</p>
+                <div class="appointment" id="appt-container">
+                  <h3 id="appt">Appointment:</h3>
+                  <p id="staff">Your Info: Staff Member</p>
+                  <p id="appt-date">Wednesday January 22</p>
+                  <p id="appt-time">10:00-10:30am</p>
+                </div>
+                <button type="button" onclick="alert('Directs to Appointment Confirmation')">Book Now</button>
+            </div>
+        </div>
+      </body>
+</html>

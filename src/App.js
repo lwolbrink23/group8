@@ -8,6 +8,8 @@ import OurServices from "./Pages/OurServices";
 import Blog from "./Pages/blog";
 import BlogPost from "./Pages/BlogPost";
 import BookNowDirectory from "./Pages/BookNowDirectory";
+import Overview from "./Pages/ApptOverview";
+import Confirmed from "./Pages/ApptConfirmed";
 import Faqs from "./Pages/Faqs";
 import Shop from "./Pages/Shop";
 import { Route, Routes } from "react-router-dom";
@@ -26,6 +28,8 @@ function App() {
           <Route path="/blog" element={<Blog />} />
           <Route path="/blogpost" element={<BlogPost />} />
           <Route path="/booknow" element={<BookNowDirectory />} />
+          <Route path="/appointment_overview" element={<Overview />} />
+          <Route path="/appointment_confirmed" element={<Confirmed />} />
           <Route path="/faqs" element={<Faqs />} />
           <Route path="/shop" element={<Shop />} />
         </Routes>
