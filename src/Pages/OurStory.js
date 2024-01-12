@@ -1,4 +1,7 @@
 import "../App.css";
+import scissors from "../assets/icons/icons8-barber-scissors-96.png"
+import diamond from "../assets/icons/icons8-diamond-64.png"
+import shootingStar from "../assets/icons/icons8-star-of-bethlehem-64.png"
 
 function OurStory() {
     return (
@@ -6,7 +9,7 @@ function OurStory() {
             <div class="page-title">
                 <h2>About</h2>
                 <h1>Our Story</h1>
-
+                {/*Background image*/}
                 <img src="assets/logo/TSS Circle logo Transparent.png" alt="background" />
             </div>
             <br />
@@ -39,7 +42,7 @@ function OurStory() {
                 <h1>Awards</h1>
                 <div class="golden-scissors">
                     <h2>Golden Scissors Award</h2>
-                    <img src="assets/logo/TSS Circle logo Transparent.png" alt="scissors" />
+                    <img src={scissors} alt="Clip art of barber scissors" />
                     <ul>
                         Voted the #1 Salon for Exceptional
                         Haircuts and Styles in 2022.
@@ -48,7 +51,7 @@ function OurStory() {
                 <div class="diamond-spa">
                     <h2>Diamond Spa Award</h2>
 
-                    <img src="assets/logo/TSS Circle logo Transparent.png" alt="diamond" />
+                    <img src={diamond} alt="Clip art of a diamond" />
                     <ul>
                         Recognized as the #1 Destination for Relaxation
                         and Pampering by Spa Enthusiasts in 2023.
@@ -57,14 +60,19 @@ function OurStory() {
                 <div class="platinum-innovators">
                     <h2>Platinum Innovators Award</h2>
 
-                    <img src="assets/logo/TSS Circle logo Transparent.png" alt="shooting star" />
+                    <img src={shootingStar} alt=" Clip art of the star of Bethlehem" />
                     <ul>
                         Voted Top Choice for Innovative Beauty Services by the Beauty
                         Innovators Association in 2024.
                     </ul>
                 </div>
                 <br />
-                <button type="button" onclick="alert('Redirect to suites')">Learn More About Our Suites!</button>
+                <button
+            type="button"
+            onClick={() => alert('Directs to blog post')}
+          >
+            Learn more about our suites!
+          </button>
             </div>
         </div>
     );
