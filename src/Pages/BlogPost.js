@@ -1,6 +1,6 @@
 import React from "react";
 import "../App.css";
-import backArrow from "../assets/icons/arrow.png"
+import backArrow from "../assets/icons/back-arrow.png"
 function BlogPost() {
   return (
     <div className="post1">
