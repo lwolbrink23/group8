@@ -8,7 +8,7 @@ function Blog() {
         <h1>Blog</h1>
         <p>Stay up to date with the latest news from The Suite Spot!</p>
         {/* Background image */}
-        <img src="assets/logo/TSS Circle logo Transparent.png" alt="Image" />
+        <img src="assets/logo/TSS Circle logo Transparent.png" alt="background" />
         <form className="subscribe">
           <label htmlFor="email">Email</label>
           <input type="text" id="email" /><br />
