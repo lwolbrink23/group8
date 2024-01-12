@@ -48,7 +48,7 @@
         display: grid;
         grid-template-columns: auto auto auto;
         grid-template-areas:
-         "logo-mobile hamburger-menu profile"
+         "logo-mobile profile hamburger-menu"
         "nav nav nav";
         /* Create a new row for the nav links */
         align-items: center;
