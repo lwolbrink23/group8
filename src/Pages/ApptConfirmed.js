@@ -9,7 +9,7 @@ return(
         </div>
         <div className="confimed-container">
              {/*purple check mark*/}
-             <img src="assets/logo/TSS Circle logo Transparent.png" alt="Image" />
+             <img src="assets/logo/TSS Circle logo Transparent.png" alt="purple check mark" />
              <h1><strong>Confirmed</strong></h1>
              <p>
                 Thank you for choosing The Suite Spot Salon for your beauty

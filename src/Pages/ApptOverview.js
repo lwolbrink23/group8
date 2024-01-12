@@ -10,19 +10,14 @@ return (
         <div className="arrow-container">
              {/*back arrow*/}
              <img
-            src="assets/logo/TSS Circle logo Transparent.png"
-            alt="Image"
-          />
+            src="assets/logo/TSS Circle logo Transparent.png" alt="back arrow"/>
              <p>Services &gt; Time &gt; <strong>Confirm</strong></p>
         </div>
         <div className="overview-container">
             <div className="payment-method">
                 <h2>Payment Method</h2>
                 {/*store icon*/}
-                <img
-            src="assets/logo/TSS Circle logo Transparent.png"
-            alt="Image"
-          />
+                <img src="assets/logo/TSS Circle logo Transparent.png" alt="Purple store icon"/>
              <p>Pay at venue</p>
             </div>
             <div className="cancelation-policy">
@@ -47,12 +42,12 @@ return (
                   <h3>Appointment:</h3>
                   <div id="staff">
                     {/*woman icon*/}
-                  <img src="assets/logo/TSS Circle logo Transparent.png" alt="Image"/>
+                  <img src="assets/logo/TSS Circle logo Transparent.png" alt="Purple woman icon"/>
                   <p>Your Info: Staff Member</p>
                   </div>
                   <div id="date-time">
                     {/*calendar icon*/}
-                  <img src="assets/logo/TSS Circle logo Transparent.png" alt="Image"/>
+                  <img src="assets/logo/TSS Circle logo Transparent.png" alt="Purple calendar icon"/>
                   <p id="appt-date">Wednesday January 22</p>
                   <p id="appt-time">10:00-10:30am</p>
                   </div>
