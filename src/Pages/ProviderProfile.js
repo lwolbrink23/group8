@@ -20,7 +20,7 @@ function ProviderProfile() {
                     <p>Suite #1</p>
                     <p>(321) 123-3211</p>
                     <p>Simplychic@thesuitespot.com</p>
-                    <button type="button">BOOK NOW</button>
+                    <button type="button" className="purp-button">BOOK NOW</button>
                 </div>
             </div>
             <div className="dropdown dropdown-content space-below">
