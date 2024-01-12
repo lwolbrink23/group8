@@ -13,7 +13,7 @@ function OurSuites() {
       <div>
         <div>
         <h1>Our Suites</h1>
-        <p>
+        <p className='p'>
           Step into our suites, and let the stress of the day melt away as you
           embark on a journey of beauty and well-being. Our suites are
           thoughtfully designed to provide a relaxing and comfortable
@@ -21,6 +21,7 @@ function OurSuites() {
           our priority.
         </p>
       </div>
+      <div className='centerit'>
       <div className="blurb-container">
         <div className="blurbs">
             <img src={oursuitesimg1} alt='Suite Pic 1' />
@@ -40,12 +41,16 @@ function OurSuites() {
           </p>
         </div>
       </div>
+      </div>
+      <div className='container'>
       <div className="rent-section">
         <h1>Rent a Suite</h1>
-        <p>
+        <div className='pmain'>
+        <p> 
           Are you a Lifestyle Professional looking to lease a suite? Contact us
           below, and a manager will get back to you.
         </p>
+        </div>
         <form className="formarea">
           <label htmlFor='name'>Name</label>
           <input type="text" className='fields' id="name" />
@@ -62,6 +67,7 @@ function OurSuites() {
             Send Message
           </button>
         </form>
+      </div>
       </div>
     </div>
   );
