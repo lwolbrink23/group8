@@ -1,4 +1,3 @@
-/* responsive.css */
 /* Styles for smaller screens (mobile) */
 @media screen and (max-width: 767px) {
     
@@ -9,9 +8,6 @@
         grid-area: nav;
     }
 
-   
-
-    /* Optional: Style the hamburger icon */
     #hamburger-menu::before {
     content: '\2630'; /* Unicode character for hamburger icon */
     grid-area: hamburger-menu;
@@ -73,14 +69,24 @@
     max-width: 40px;
   }
 
-    .profile-container {
-        grid-area: profile;
-    }
+  .profile-icon-web {
+    display: none;
+  }
+
+   
 }
 
 
 /* Styles for larger screens */
 @media screen and (min-width: 767px) {
+    .profile-icon-mobile {
+        display: none;
+    }
+
+    .profile-icon-web {
+        max-width: 50%;
+    }
+
     .header-container {
     display: flex;
     justify-content: space-between;
@@ -124,8 +130,6 @@ nav ul li:hover>ul {
     display: none;
 }
 
-.profile-icon-mobile {
-    display: none;
-}
+
 }
 

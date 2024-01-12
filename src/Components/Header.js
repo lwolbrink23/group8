@@ -19,9 +19,13 @@ function Header() {
       >
         <img src={logoWeb} alt="logo" className="logo-web" />
         <img src={logoMobile} alt="logo" className="logo-mobile" />
-        {/*<div className="profile-container">
-          <img src={profileicon} alt="profile icon" className="profile-icon" />
-        </div>*/}
+        <div className="profile-container">
+          <img
+            src={profileicon}
+            alt="profile icon"
+            className="profile-icon-web"
+          />
+        </div>
         {/* Hamburger menu icon */}
         <div id="hamburger-menu" onClick={toggleHamburger}></div>
         <img

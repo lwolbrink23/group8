@@ -82,7 +82,3 @@ nav ul li:hover>ul {
     right: 10px;
     z-index: 1000;
  }
-
-  .profile-icon {
-    max-width: 50%;
-  }
