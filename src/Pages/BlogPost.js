@@ -1,12 +1,15 @@
 import React from "react";
 import "../App.css";
+import { Link } from "react-router-dom";
 import backArrow from "../assets/icons/back-arrow.png"
 function BlogPost() {
   return (
     <div className="post1">
       <div className="post-general-info">
         {/* back arrow */}
-        <img src={backArrow} alt="The Suite Spot Logo" />
+         <Link to="/blog">
+                <img src={backArrow} alt="back arrow" />
+            </Link>
         <h4>Category: Hair</h4>
         <h4>Author: Jane Doe</h4>
         <h2>Hair Care Secrets: Tips for Gorgeous Locks</h2>
