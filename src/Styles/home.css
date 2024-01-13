@@ -1,0 +1,8 @@
+.booknow-section {
+    display: flex;
+    justify-content: space-between;
+}
+
+.booknow-section button {
+    height: 42px
+}

@@ -1,4 +1,5 @@
 import "../Styles/home.css"; // Import your styles
+import { Link } from 'react-router-dom';
 
 function Home() {
   return (
@@ -10,21 +11,24 @@ function Home() {
       {/* <!-- Promo Carousel --> */}
       <div className="promos">
         {/* <!-- Add promo carousel content here --> */}
-        <button type="button" onClick={() => alert("View Products")}>
-          View Our Products
-        </button>
+        <Link to="/shop">
+          <button type="button">
+            View Our Products
+          </button>
+        </Link>
       </div>
 
       {/* <!-- Book Now Section --> */}
-      <div className="trans-white">
-        <h3>Pampering yourself is just one click away!</h3>
-        <button
-          type="button"
-          onClick={() => alert("Book Now!")}
-          className="purp-button"
-        >
-          Book Now
-        </button>
+      <div className="trans-white booknow-section">
+        <h2>Pampering yourself is just one click away!</h2>
+        <Link to="/booknow">
+          <button
+            type="button"
+            className="purp-button"
+          >
+            Book Now
+          </button>
+        </Link>
       </div>
 
       {/* <!-- "Why Choose Us?" Section --> */}
@@ -74,9 +78,11 @@ function Home() {
           look and feel your best. Discover a wide range of services under one
           roof.
         </p>
-        <button type="button" onClick={() => alert("Button clicked!")}>
-          View Our Services
-        </button>
+        <Link to="/ourservices">
+          <button type="button">
+            View Our Services
+          </button>
+        </Link>
       </div>
 
       {/* <!-- Gallery --> */}
