@@ -3,7 +3,7 @@
   border: 2px solid black;
   background-color: white;
 }
-.col2 {
+.col-2 {
   display: grid;
   grid-template-columns: 1fr 1fr;
   gap: 20px;
@@ -28,7 +28,10 @@ input {
 .mouse-hover:hover {
   cursor: pointer;
 }
-
+main {
+  padding: 52px 200px;
+  background-color: white;
+}
 /* title */
 #shop-banner {
   background-image: url("../assets/images/shopbanner.png");
@@ -59,10 +62,10 @@ input {
   display: grid;
   grid-template-columns: repeat(4, 1fr); /* Four columns with equal width */
   gap: 42px;
-  padding: 20px 200px;
   font-size: 14px;
+  list-style-type: none;
 }
-.item {
+.items-container li {
   padding-bottom: 10px;
 }
 .item-img {
@@ -93,4 +96,48 @@ input {
 }
 .giftcard-info {
   padding: 0 20px 10px 20px;
+}
+
+@media screen and (max-width: 1300px) {
+  .items-container {
+    grid-template-columns: 1fr;
+  }
+  .items-container {
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 13px;
+  }
+  main {
+    padding: 18px 100px;
+  }
+}
+
+@media screen and (max-width: 767px) {
+  .items-container {
+    grid-template-columns: 1fr;
+  }
+  .items-container {
+    grid-template-columns: 1fr 1fr;
+    gap: 13px;
+  }
+  .giftcard-grid {
+    width: 70%;
+    grid-template-columns: 1fr;
+  }
+  .giftcard-grid img {
+    width: 100%;
+    aspect-ratio: 2;
+    object-fit: cover;
+  }
+  main {
+    padding: 18px 35px;
+  }
+}
+@media screen and (max-width: 500px) {
+  .col-2 {
+    grid-template-columns: 1fr;
+    margin: 0;
+  }
+  .giftcard-grid {
+    width: 100%;
+  }
 }

@@ -90,59 +90,61 @@ function Shop() {
         <h2>Find all your favorite products here.</h2>
       </div>
       {/* shop items */}
-      <div className="items-container">
-        {tempData.map((item) => (
-          <div className="item box">
-            {/* item info */}
-            <img
-              src={require("../assets/images/shop/" + item.file + ".png")}
-              alt={item.name}
-              className="item-img"
-            ></img>
-            <div className="item-info">
-              <p>{item.name}</p>
-              <p>${item.price}</p>
-            </div>
-            {/* item interactions */}
-            <div className="center-children">
-              <div className="col-3 center-v">
-                <img
-                  src={minusICON}
-                  alt="subtract item"
-                  className="mouse-hover"
-                ></img>
-                <p className="item-amount">0</p>
-                <img
-                  src={plusICON}
-                  alt="add item"
-                  className="mouse-hover"
-                ></img>
+      <main>
+        <ul className="items-container">
+          {tempData.map((item) => (
+            <li className="box">
+              {/* item info */}
+              <img
+                src={require("../assets/images/shop/" + item.file + ".png")}
+                alt={item.name}
+                className="item-img"
+              ></img>
+              <div className="item-info">
+                <p>{item.name}</p>
+                <p>${item.price}</p>
               </div>
+              {/* item interactions */}
+              <div className="center-children">
+                <div className="col-3 center-v">
+                  <img
+                    src={minusICON}
+                    alt="subtract item"
+                    className="mouse-hover"
+                  ></img>
+                  <p className="item-amount">0</p>
+                  <img
+                    src={plusICON}
+                    alt="add item"
+                    className="mouse-hover"
+                  ></img>
+                </div>
+                <button className="button">Add to Cart</button>
+              </div>
+            </li>
+          ))}
+        </ul>
+        {/* giftcard */}
+        <h2 className="center">Gift Cards</h2>
+        <div className="giftcard-grid box">
+          <img src={giftCardIMG} alt="giftcard"></img>
+
+          <div className="giftcard-info">
+            <h3>Buy a gift card!</h3>
+            <p>
+              Looking for the perfect gift for that special someone? We've got
+              you covered! Whether it's for a birthday, anniversary, or any
+              special occasion, our gift cards are the ideal way to show your
+              appreciation.
+            </p>
+            <p>Enter an amount:</p>
+            <div className="col-2">
+              <input></input>
               <button className="button">Add to Cart</button>
             </div>
           </div>
-        ))}
-      </div>
-      {/* giftcard */}
-      <h2 className="center">Gift Cards</h2>
-      <div className="giftcard-grid box">
-        <img src={giftCardIMG} alt="giftcard"></img>
-
-        <div className="giftcard-info">
-          <h3>Buy a gift card!</h3>
-          <p>
-            Looking for the perfect gift for that special someone? We've got you
-            covered! Whether it's for a birthday, anniversary, or any special
-            occasion, our gift cards are the ideal way to show your
-            appreciation.
-          </p>
-          <p>Enter an amount:</p>
-          <div className="col2">
-            <input></input>
-            <button className="button">Add to Cart</button>
-          </div>
         </div>
-      </div>
+      </main>
     </div>
   );
 }
