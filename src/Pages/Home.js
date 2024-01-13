@@ -17,7 +17,7 @@ function Home() {
 
       {/* <!-- Book Now Section --> */}
       <div className="trans-white">
-        <h4>Pampering yourself is just one click away!</h4>
+        <h3>Pampering yourself is just one click away!</h3>
         <button
           type="button"
           onClick={() => alert("Book Now!")}

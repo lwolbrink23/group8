@@ -22,12 +22,7 @@
     text-align: left;
 }
 
-.info h1 {
-    margin: 0;
-    color: #333;
-}
-
-button:hover {
+.purp-button:hover {
     background-color: #8569B8;
 }
 
@@ -52,10 +47,7 @@ button:hover {
     border-right: none;
 }
 
-h2 {
-    display: flex;
-    justify-content: center;
-}
+
 
 .space-below {
     margin-bottom: 40px;

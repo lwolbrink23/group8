@@ -3,14 +3,14 @@
 @font-face {
   font-family: "poppins";
   src: local("poppins"),
-    url("./assets/fonts/poppins/Poppins-Regular.ttf") format("ttf");
+    url("./assets/fonts/poppins/Poppins-Regular.ttf") format("truetype");
   /* Add additional formats if your font supports them */
 }
 
 @font-face {
   font-family: "cormorant-bold";
   src: local("cormorant-bold"),
-    url("./assets/fonts/cormorant/CormorantGaramond-Bold.ttf") format("ttf");
+    url("./assets/fonts/cormorant/CormorantGaramond-Bold.ttf") format("truetype");
   /* Add additional formats if your font supports them */
 }
 
@@ -55,6 +55,10 @@ button {
   border: none;
   border-radius: 15px;
   cursor: pointer;
+}
+
+button:hover {
+  background-color: #D8E79C
 }
 
 .purp-button {
