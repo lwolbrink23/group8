@@ -20,6 +20,13 @@
   /* Add additional formats if your font supports them */
 }
 
+@font-face {
+  font-family: "greatvibes";
+  src: local("GreatVibes-Regular"),
+    url("./assets/fonts/great-vibes/GreatVibes-Regular.ttf") format("truetype");
+  /* Add additional formats if your font supports them */
+}
+
 .bar {
   display: block;
   background-color: #090b0a;
