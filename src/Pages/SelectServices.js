@@ -1,6 +1,6 @@
 import React from "react";
 import "../App.css";
-import React, { useState } from 'react';
+import { useState } from 'react';
 
 const SelectServices = () => {
   const [selectedServices, setSelectedServices] = useState([]);
@@ -42,13 +42,13 @@ const SelectServices = () => {
   return (
     <div>
       <div className="shop-name">
-        <img src="assets/logo/TSS Circle logo Transparent.png" alt="Image" />
+        <img src="assets/logo/TSS Circle logo Transparent.png" alt="back arrow" />
         <h1>Simply Chic Hair</h1>
       </div>
       <div className="image-container">
-        <img src="assets/logo/TSS Circle logo Transparent.png" alt="Image" />
-        <img src="assets/logo/TSS Circle logo Transparent.png" alt="Image" />
-        <img src="assets/logo/TSS Circle logo Transparent.png" alt="Image" />
+        <img src="assets/logo/TSS Circle logo Transparent.png" alt="salon" />
+        <img src="assets/logo/TSS Circle logo Transparent.png" alt="salon 2" />
+        <img src="assets/logo/TSS Circle logo Transparent.png" alt="salon 3" />
       </div>
       <div id="tabs">
         <button type="button" onClick={() => clickCategory('featured')}>
@@ -68,44 +68,44 @@ const SelectServices = () => {
         <div className="item-1">
           <p>Classic Blowout<br />30 minutes<br/>$75</p>
           <button type="button" onClick={() => addToSelectedServices('Classic Blowout\n30 minutes\n$75')}>
-            <img src="assets/logo/TSS Circle logo Transparent.png" alt="Image" />
+            <img src="assets/logo/TSS Circle logo Transparent.png" alt="plus sign" />
           </button>
         </div>
         <div className="item-2">
           <p>Keratin Treatment<br />30 minutes<br/>$200</p>
           <button type="button" onClick={() => addToSelectedServices('Keratin Treatment\n30 minutes\n$200')}>
-            <img src="assets/logo/TSS Circle logo Transparent.png" alt="Image" />
+            <img src="assets/logo/TSS Circle logo Transparent.png" alt="plus sign" />
           </button>
         </div>
         <div className="item-3">
           <p>Sew-in Extensions<br />30 minutes<br/>$500</p>
           <button type="button" onClick={() => addToSelectedServices('Sew-in Extensions\n30 minutes\n$500')}>
-            <img src="assets/logo/TSS Circle logo Transparent.png" alt="Image" />
+            <img src="assets/logo/TSS Circle logo Transparent.png" alt="plus sign" />
           </button>
         </div>
         <div className="item-4">
           <p>Partial Balayage<br />30 minutes<br/>$70</p>
           <button type="button" onClick={() => addToSelectedServices('Partial Balayage\n30 minutes\n$70')}>
-            <img src="assets/logo/TSS Circle logo Transparent.png" alt="Image" />
+            <img src="assets/logo/TSS Circle logo Transparent.png" alt="plus sign" />
           </button>
         </div>
       </div>
       <div className="item-5">
           <p>Full Balayage<br />30 minutes<br />$200</p>
           <button type="button" onClick={() => addToSelectedServices('Full Balayage\n30 minutes\n$200')}>
-            <img src="assets/logo/TSS Circle logo Transparent.png" alt="Image" />
+            <img src="assets/logo/TSS Circle logo Transparent.png" alt="plus sign" />
           </button>
         </div>
         <div className="item-6">
           <p>Root Touchup<br />30 minutes<br />$50</p>
           <button type="button" onClick={() => addToSelectedServices('Root Touchup\n30 minutes\n$75')}>
-            <img src="assets/logo/TSS Circle logo Transparent.png" alt="Image" />
+            <img src="assets/logo/TSS Circle logo Transparent.png" alt="plus sign" />
           </button>
         </div>
         <div className="item-7">
           <p>Box Braids<br />30 minutes<br />$100</p>
           <button type="button" onClick={() => addToSelectedServices('Box Braids\n30 minutes\n$100')}>
-            <img src="assets/logo/TSS Circle logo Transparent.png" alt="Image" />
+            <img src="assets/logo/TSS Circle logo Transparent.png" alt="plus sign" />
           </button>
         </div>
       <div id="cut" className="category-list">
