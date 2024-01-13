@@ -1,108 +1,110 @@
-  /* ONLY Global Styles for entire website */
- /* if you have specific page styling in this page please move it to its own css page */
-    @font-face {
-      font-family: 'poppins';
-      src: local('poppis'), url('./assets/fonts/poppins/Poppins-Regular.ttf') format('ttf');
-      /* Add additional formats if your font supports them */
-    }
+/* ONLY Global Styles for entire website */
+/* if you have specific page styling in this page please move it to its own css page */
+@font-face {
+  font-family: "poppins";
+  src: local("poppins"),
+    url("./assets/fonts/poppins/Poppins-Regular.ttf") format("ttf");
+  /* Add additional formats if your font supports them */
+}
 
-    @font-face {
-      font-family: 'cormorant-bold';
-      src: local('cormorant-bold'), url('./assets/fonts/cormorant/CormorantGaramond-Bold.ttf') format('ttf');
-      /* Add additional formats if your font supports them */
-    }
+@font-face {
+  font-family: "cormorant-bold";
+  src: local("cormorant-bold"),
+    url("./assets/fonts/cormorant/CormorantGaramond-Bold.ttf") format("ttf");
+  /* Add additional formats if your font supports them */
+}
 
-  .bar {
-    display: block;
-    background-color: #090B0A;
-    height: 4px;
-    width: 30px;
-    margin: 6px 0;
-    transition: 0.4s;
-  }
+.bar {
+  display: block;
+  background-color: #090b0a;
+  height: 4px;
+  width: 30px;
+  margin: 6px 0;
+  transition: 0.4s;
+}
 
-    body {
-      margin: 0;
-      padding: 0;
-      background: linear-gradient(to bottom, #EADDCB, white);
-      font-family: 'poppins', sans-serif;
-      font-weight: normal;
-      font-size: 14px;
-    }
-  
-    h1,
-    h2,
-    h3,
-    h4,
-    h5,
-    h6 {
-      font-family: 'cormorant-bold', serif;
-    }
-  
-    .trans-white {
-      background-color: rgba(255, 255, 255, 0.45);
-      /* opacity value (0.45)*/
-      padding: 10px;
-    }
-  
-    button {
-      background-color: #BACA82;
-      color: #090B0A;
-      padding: 10px 20px;
-      /* Adjust as needed */
-      border: none;
-      border-radius: 15px;
-      cursor: pointer;
-    }
-  
-    .purp-button {
-      background-color: #AA95D1;
-      color: white;
-      padding: 10px 20px;
-      border: none;
-      border-radius: 15px;
-      cursor: pointer;
-    }
-  
-    .dropdown-btn {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      margin: 0 auto;
-      padding: 5px 35px;
-      background-color: white;
-    }
+body {
+  margin: 0;
+  padding: 0;
+  background: linear-gradient(to bottom, #eaddcb, white);
+  font-family: "poppins", sans-serif;
+  font-weight: normal;
+  font-size: 14px;
+}
 
-    .dropdown-btn img {
-      height: 15px;
-    }
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-family: "cormorant-bold", serif;
+}
 
-    .extra-space {
-      margin-bottom: 80px;
-    }
-  
-    .dropdown-content {
-      margin: 0 auto;
-      padding: 20px 40px;
-  
-      background-color: white;
-    }
-  
-    .dropdown {
-      margin: 0 auto;
-      width: 40%;
-      margin-top: 10px;
-      margin-bottom: 10px;
-      box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
-    }
-  
-    .center {
-      display: flex;
-      justify-content: center;
-    }
-  
-    footer {
-      background-color: #090B0A;
-      color: white;
-      padding: 10px;
-    }
+.trans-white {
+  background-color: rgba(255, 255, 255, 0.45);
+  /* opacity value (0.45)*/
+  padding: 10px;
+}
+
+button {
+  background-color: #baca82;
+  color: #090b0a;
+  padding: 10px 20px;
+  /* Adjust as needed */
+  border: none;
+  border-radius: 15px;
+  cursor: pointer;
+}
+
+.purp-button {
+  background-color: #aa95d1;
+  color: white;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 15px;
+  cursor: pointer;
+}
+
+.dropdown-btn {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin: 0 auto;
+  padding: 5px 35px;
+  background-color: white;
+}
+
+.dropdown-btn img {
+  height: 15px;
+}
+
+.extra-space {
+  margin-bottom: 80px;
+}
+
+.dropdown-content {
+  margin: 0 auto;
+  padding: 20px 40px;
+
+  background-color: white;
+}
+
+.dropdown {
+  margin: 0 auto;
+  width: 40%;
+  margin-top: 10px;
+  margin-bottom: 10px;
+  box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
+}
+
+.center {
+  display: flex;
+  justify-content: center;
+}
+
+footer {
+  background-color: #090b0a;
+  color: white;
+  padding: 10px;
+}
