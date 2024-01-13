@@ -42,19 +42,28 @@ main {
 #shop-banner h1 {
   margin: 0;
   opacity: 100%;
+  width: 100%;
+  flex-grow: 1;
+  z-index: 100;
 }
 #shop-banner h2 {
-  margin-left: 10em;
+  margin-left: 10%;
   margin-top: 5em;
-}
-#cart-icon {
-  position: absolute;
-  right: 0;
 }
 
 .title-container {
   margin: 0;
   padding: 20px;
+  text-align: center;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+#cart-icon {
+  position: absolute;
+  right: 8%;
+  width: 53px;
 }
 
 /* shop items */
@@ -64,6 +73,7 @@ main {
   gap: 42px;
   font-size: 14px;
   list-style-type: none;
+  padding: 0;
 }
 .items-container li {
   padding-bottom: 10px;

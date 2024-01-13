@@ -3,6 +3,7 @@ import "../Styles/shop.css";
 import giftCardIMG from "../assets/images/giftcard.png";
 import plusICON from "../assets/icons/black-plus.png";
 import minusICON from "../assets/icons/black-minus.png";
+import shopICON from "../assets/icons/icons8-shopping-cart-100.png";
 const tempData = [
   {
     id: "iID0",
@@ -84,8 +85,8 @@ function Shop() {
       {/* title */}
       <div id="shop-banner">
         <div className="title-container trans-white">
-          <h1 className="center">Shop</h1>
-          <p id="cart-icon">icon</p>
+          <h1>Shop</h1>
+          <img src={shopICON} alt="shopping cart" id="cart-icon"></img>
         </div>
         <h2>Find all your favorite products here.</h2>
       </div>
