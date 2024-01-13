@@ -99,8 +99,10 @@ function Shop() {
               alt={item.name}
               className="item-img"
             ></img>
-            <p>{item.name}</p>
-            <p>${item.price}</p>
+            <div className="item-info">
+              <p>{item.name}</p>
+              <p>${item.price}</p>
+            </div>
             {/* item interactions */}
             <div className="center-children">
               <div className="col-3 center-v">
@@ -109,7 +111,7 @@ function Shop() {
                   alt="subtract item"
                   className="mouse-hover"
                 ></img>
-                <p>0</p>
+                <p className="item-amount">0</p>
                 <img
                   src={plusICON}
                   alt="add item"

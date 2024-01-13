@@ -58,8 +58,9 @@ input {
 .items-container {
   display: grid;
   grid-template-columns: repeat(4, 1fr); /* Four columns with equal width */
-  gap: 20px;
-  padding: 20px;
+  gap: 42px;
+  padding: 20px 200px;
+  font-size: 14px;
 }
 .item {
   padding-bottom: 10px;
@@ -69,7 +70,12 @@ input {
   object-fit: cover;
   border-bottom: 2px solid black;
 }
-
+.item-amount {
+  font-weight: bold;
+}
+.item-info {
+  padding: 7px;
+}
 /* giftcard */
 .giftcard-grid {
   width: 70%;
