@@ -54,6 +54,7 @@ function Shop() {
             </li>
           ))}
         </ul>
+        <p className="right extra-space">Next Page</p>
         {/* giftcard */}
         <h2 className="center">Gift Cards</h2>
         <div className="giftcard-grid box">

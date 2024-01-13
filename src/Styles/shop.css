@@ -90,6 +90,9 @@ main {
 .item-info {
   padding: 7px;
 }
+.col-3 img {
+  width: 23px;
+}
 /* giftcard */
 .giftcard-grid {
   width: 70%;
@@ -109,13 +112,12 @@ main {
   padding: 0 20px 10px 20px;
 }
 
-@media screen and (max-width: 1300px) {
+@media screen and (max-width: 1200px) {
   .items-container {
     grid-template-columns: 1fr;
   }
   .items-container {
     grid-template-columns: 1fr 1fr 1fr;
-    gap: 13px;
   }
   main {
     padding: 18px 100px;
