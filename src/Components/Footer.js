@@ -14,7 +14,7 @@ function Footer() {
 
           </div>
           <div className="footer-section hours">
-            <p><strong>Hours of Operation</strong></p>
+            <p><strong>Hours of Operation:</strong></p>
             <p>Sunday: 12-6<br />Monday-Friday: 10-7<br />Saturday: 9-6</p>
           </div>
         </div>
