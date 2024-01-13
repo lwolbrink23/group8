@@ -4,6 +4,7 @@ import SimplyChicHair from '../assets/images/SimplyChicHair.png';
 import Polish from '../assets/images/PolishPerfection.png';
 import Brush from '../assets/images/BrushBlushBeauty.png';
 import Hands from '../assets/images/HealingHandsSpa.png';
+import { Link } from 'react-router-dom';
 
 function BookNowDirectory() {
     return (
@@ -17,7 +18,9 @@ function BookNowDirectory() {
                             <h2>Simply Chic Hair</h2>
                             <p>Suite #1 <br />(321) 123-3211<br />Specialties: Hair cuts, color and styling.</p>
                             <div className="buttons">
-                                <button>View Profile</button>
+                                <Link to="/providerprofile">
+                                    <button>View Profile</button>
+                                </Link>
                                 <button className="purp-button">Book Now</button>
                             </div>
                         </div>
