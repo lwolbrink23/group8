@@ -14,6 +14,7 @@ import Overview from "./Pages/ApptOverview";
 import Confirmed from "./Pages/ApptConfirmed";
 import Faqs from "./Pages/Faqs";
 import Shop from "./Pages/Shop";
+import OrderPlaced from "./Pages/OrderPlaced";
 import { Route, Routes } from "react-router-dom";
 
 // this is only the home page elements
@@ -36,6 +37,7 @@ function App() {
           <Route path="/appointment_confirmed" element={<Confirmed />} />
           <Route path="/faqs" element={<Faqs />} />
           <Route path="/shop" element={<Shop />} />
+          <Route path="/order_placed" element={<OrderPlaced />} />
         </Routes>
       </div>
       <Footer />
