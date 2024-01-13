@@ -41,23 +41,20 @@ main {
 }
 #shop-banner h1 {
   margin: 0;
+  padding: 0;
   opacity: 100%;
   width: 100%;
-  flex-grow: 1;
-  z-index: 100;
+  font-size: 44px;
 }
 #shop-banner h2 {
-  margin-left: 10%;
+  left: 9%;
   margin-top: 5em;
 }
 
 .title-container {
   margin: 0;
   padding: 20px;
-  text-align: center;
   display: flex;
-  align-items: center;
-  justify-content: space-between;
 }
 
 #cart-icon {
@@ -118,6 +115,12 @@ main {
   }
   main {
     padding: 18px 100px;
+  }
+}
+
+@media screen and (max-width: 1300px) {
+  .giftcard-grid {
+    width: 100%;
   }
 }
 
