@@ -1,55 +1,32 @@
+import "../Styles/footer.css"
 
 function Footer() {
   return (
-    <footer>
-      <div className="footer-info">
-        <p>
-          <strong>The Suite Spot</strong>
-        </p>
-        <p>
-          <strong>Phone:</strong> 223-133-2948
-        </p>
-        <p>
-          <strong>Address:</strong> 2343 Suite Spot Way, Orlando, FL 32804
-        </p>
-        <p>
-          <strong>Hours of Operation:</strong>
-        </p>
-        <ul>
-          <li>Sunday: 12-6</li>
-          <li>Monday-Friday: 10-7</li>
-          <li>Saturday: 9-6</li>
-        </ul>
-      </div>
+    <footer className="footer">
+      <div className="footer-content">
+        <div className="left">
+          <div className="footer-section suite-spot">
+            <h2>The Suite Spot</h2>
+            <p><strong>Phone:</strong> 223-133-2948<br /><strong>Address:</strong> 2343 Suite Spot Way, Orlando, FL 32804</p>
 
-      <div className="newsletter">
-        <p>
-          <strong>Join our Newsletter</strong>
-        </p>
-        <form action="subscribe.php" method="post">
-          <input
-            type="email"
-            name="email"
-            placeholder="Your Email"
-            required
-          />
-          <button type="submit">Subscribe</button>
-        </form>
-        <div className="social-icons">
-          {/* <!-- Add social media icons here- make them not clickable?--> */}
-          <a href="#" target="_blank" rel="noopener noreferrer">
-            <img src="social-icon-1.png" alt="Facebook" />
-          </a>
-          <a href="#" target="_blank" rel="noopener noreferrer" >
-            <img src="social-icon-2.png" alt="Instagram" />
-          </a>
-          <a href="#" target="_blank" rel="noopener noreferrer">
-            <img src="social-icon-3.png" alt="TikTok" />
-          </a>
+          </div>
+          <div className="footer-section hours">
+            <p><strong>Hours of Operation</strong></p>
+            <p>Sunday: 12-6<br />Monday-Friday: 10-7<br />Saturday: 9-6</p>
+          </div>
+        </div>
+        <div className="footer-section newsletter">
+          <h3>Join our Newsletter</h3>
+          <input type="email" placeholder="Enter your email" />
+          <button>Subscribe</button>
+          <div className="social-icons">
+            {/* Replace # with your social media links */}
+            <a href="#"><img src="/path-to-facebook-icon.png" alt="Facebook" /></a>
+            <a href="#"><img src="/path-to-instagram-icon.png" alt="Instagram" /></a>
+            <a href="#"><img src="/path-to-tiktok-icon.png" alt="TikTok" /></a>
+          </div>
         </div>
       </div>
-
-
     </footer>
   );
 }
