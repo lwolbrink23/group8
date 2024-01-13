@@ -88,7 +88,9 @@ function Shop() {
           <h1>Shop</h1>
           <img src={shopICON} alt="shopping cart" id="cart-icon"></img>
         </div>
-        <h2>Find all your favorite products here.</h2>
+        <h2>
+          Find all your <br></br> favorite products here.
+        </h2>
       </div>
       {/* shop items */}
       <main>

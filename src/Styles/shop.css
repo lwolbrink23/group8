@@ -38,6 +38,7 @@ main {
   background-size: cover; /* Specifies how the background image should be sized */
   background-position: center;
   height: 20em;
+  position: relative;
 }
 #shop-banner h1 {
   margin: 0;
@@ -48,7 +49,10 @@ main {
 }
 #shop-banner h2 {
   left: 9%;
-  margin-top: 5em;
+  bottom: 0;
+  position: absolute;
+  font-size: 36px;
+  max-width: 400px;
 }
 
 .title-container {
