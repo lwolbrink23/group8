@@ -4,7 +4,7 @@
     display: flex;
     justify-content: space-between;
     align-items: flex-start;
-    padding: 20px 80px;
+    padding: 10px 100px;
 }
 
 .footer-content {
@@ -23,12 +23,17 @@
     flex-direction: column;
 }
 
+.newsletter input {
+    width: 280px;
+    padding: 10px;
+    margin: 10px 0px;
+}
+
 .hours {
     margin-left: 40px;
 }
 
 .suite-spot h2,
-.hours h3,
 .newsletter h3 {
     margin: 0;
     padding-bottom: 4px;
@@ -48,13 +53,13 @@
 .social-icons {
     display: flex;
     justify-content: center;
-    padding-top: 10px;
+    padding-top: 20px;
 }
 
 .social-icons a img {
-    width: 24px;
+    width: 40px;
     /* Adjust the size as needed */
-    margin-right: 10px;
+    margin: 0px 20px
     /* Space between icons */
 }
 
