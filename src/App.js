@@ -9,6 +9,7 @@ import Blog from "./Pages/blog";
 import BlogPost from "./Pages/BlogPost";
 import BookNowDirectory from "./Pages/BookNowDirectory";
 import ProviderProfile from "./Pages/ProviderProfile";
+import SelectServices from "./Pages/SelectServices";
 import Overview from "./Pages/ApptOverview";
 import Confirmed from "./Pages/ApptConfirmed";
 import Faqs from "./Pages/Faqs";
@@ -30,6 +31,7 @@ function App() {
           <Route path="/blogpost" element={<BlogPost />} />
           <Route path="/booknow" element={<BookNowDirectory />} />
           <Route path="/providerprofile" element={<ProviderProfile />} />
+          <Route path="/selectservices" element={<SelectServices />} />
           <Route path="/appointment_overview" element={<Overview />} />
           <Route path="/appointment_confirmed" element={<Confirmed />} />
           <Route path="/faqs" element={<Faqs />} />
