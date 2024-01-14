@@ -1,7 +1,7 @@
 import shopICON from "../assets/icons/icons8-shopping-cart-100.png";
 import checkICON from "../assets/icons/icons8-check-100.png";
 import tempData from "../data/cart.json";
-import arrowIcon from "../assets/icons/arrow.png";
+import arrowIcon from "../assets/icons/white-arrow.svg";
 import React, { useState } from "react";
 import "../Styles/orderplaced.css";
 
@@ -17,11 +17,11 @@ function OrderPlaced() {
   );
   const CartDropdown = () => {
     const [dropdownVisible, setdropdownVisible] = useState(false);
-    const [arrowRotation, setArrowRotation] = useState(0);
+    const [arrowRotation, setArrowRotation] = useState(270);
 
     const toggleVisibility = () => {
       setdropdownVisible(!dropdownVisible);
-      setArrowRotation(arrowRotation === 0 ? 90 : 0);
+      setArrowRotation(arrowRotation === 0 ? 270 : 0);
     };
 
     const arrowIconStyle = {
@@ -58,6 +58,7 @@ function OrderPlaced() {
             and grooming needs.<br></br> You will receive a confirmation email
             shortly.
           </p>
+
           <button className="button">Back to Home</button>
         </article>
         {/* order summary */}
