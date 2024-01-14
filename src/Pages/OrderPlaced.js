@@ -4,15 +4,20 @@ import tempData from "../data/cart.json";
 import arrowIcon from "../assets/icons/white-arrow.svg";
 import React, { useState } from "react";
 import "../Styles/orderplaced.css";
+import tempPic from "../assets/images/shop/color-protection-kit.png";
 
 function OrderPlaced() {
   const OrderedItems = () => (
     <div class="dropdown-content">
-      <p>img</p>
-      <p>item name</p>
-      <p>quantity</p>
-      <p>#</p>
-      <p>price</p>
+      <article className="ordered-item">
+        <img src={tempPic} alt=""></img>
+        <div className="ordered-item-info">
+          <p>item name</p>
+          <p>quantity</p>
+          <p>#</p>
+        </div>
+        <p className="align-right">$##</p>
+      </article>
     </div>
   );
   const CartDropdown = () => {
@@ -32,7 +37,7 @@ function OrderPlaced() {
     return (
       <div class="dropdown">
         <div class="dropdown-btn" onClick={toggleVisibility}>
-          <h2>Items ordered (#)</h2>
+          <h2>Items ordered ({tempData.length})</h2>
           <img src={arrowIcon} alt="Arrow" style={arrowIconStyle} />
         </div>
         {dropdownVisible && <OrderedItems />}
@@ -48,7 +53,7 @@ function OrderPlaced() {
       </div>
       {/* blurb */}
       <main>
-        <article>
+        <article className="center-text">
           <div className="icon-info">
             <img src={checkICON} alt=""></img>
             <h3>Order Placed</h3>
