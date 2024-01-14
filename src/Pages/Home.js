@@ -6,7 +6,7 @@ function Home() {
     <div className="App">
       <div className="trans-white">
         <h1 className="title">The Suite Spot</h1>
-        <h2>Where Beauty Finds Its Home</h2>
+        <h2 className="center">Where Beauty Finds Its Home.</h2>
       </div>
       {/* <!-- Promo Carousel --> */}
       <div className="promos">
