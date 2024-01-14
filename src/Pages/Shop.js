@@ -23,7 +23,7 @@ function Shop() {
       <main>
         <ul className="items-container">
           {tempData.map((item) => (
-            <li className="box">
+            <li className="box" key={item.id}>
               {/* item info */}
               <img
                 src={require("../assets/images/shop/" + item.file + ".png")}
