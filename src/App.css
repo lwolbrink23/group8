@@ -10,7 +10,8 @@
 @font-face {
   font-family: "cormorant-bold";
   src: local("cormorant-bold"),
-    url("./assets/fonts/cormorant/CormorantGaramond-Bold.ttf") format("truetype");
+    url("./assets/fonts/cormorant/CormorantGaramond-Bold.ttf")
+      format("truetype");
   /* Add additional formats if your font supports them */
 }
 @font-face {
@@ -75,7 +76,7 @@ button {
 }
 
 button:hover {
-  background-color: #D8E79C
+  background-color: #d8e79c;
 }
 
 .purp-button {
@@ -99,6 +100,7 @@ button:hover {
   margin: 0 auto;
   padding: 5px 35px;
   background-color: white;
+  cursor: pointer;
 }
 
 .dropdown-btn img {
@@ -128,7 +130,3 @@ button:hover {
   display: flex;
   justify-content: center;
 }
-
-
-
-
