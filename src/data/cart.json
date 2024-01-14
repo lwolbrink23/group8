@@ -1,0 +1,32 @@
+[
+  {
+    "iID": "iID0",
+    "name": "Repair & Protect Kit",
+    "qty": 1,
+    "price": 41.99
+  },
+  {
+    "iID": "iID1",
+    "name": "Restorative Hair Mask",
+    "qty": 1,
+    "price": 18.99
+  },
+  {
+    "iID": "iID2",
+    "name": "Color Protection Kit",
+    "qty": 1,
+    "price": 34.99
+  },
+  {
+    "iID": "iID5",
+    "name": "Illumination Mask",
+    "qty": 1,
+    "price": 14.99
+  },
+  {
+    "iID": "iID6",
+    "name": "Daily Body Lotion",
+    "qty": 1,
+    "price": 9.99
+  }
+]

@@ -8,7 +8,7 @@ import tempData from "../data/shop.json";
 
 function Shop() {
   return (
-    <div>
+    <div id="shop">
       {/* title */}
       <div id="shop-banner">
         <div className="title-container trans-white">

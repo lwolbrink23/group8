@@ -28,7 +28,7 @@ input {
 .mouse-hover:hover {
   cursor: pointer;
 }
-main {
+#shop main {
   padding: 52px 200px;
   background-color: white;
 }
@@ -40,7 +40,7 @@ main {
   height: 20em;
   position: relative;
 }
-#shop-banner h1 {
+.title-container h1 {
   margin: 0;
   padding: 0;
   opacity: 100%;
