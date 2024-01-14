@@ -1,0 +1,9 @@
+#arrow {
+    position: absolute;
+    left: 8%;
+    width: 50px;
+}
+
+#arrow:hover {
+    width: 55px;
+}
