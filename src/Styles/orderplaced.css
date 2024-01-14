@@ -20,14 +20,19 @@
   background-color: #5c5c5c;
   color: white;
 }
+#order-placed main .dropdown-content {
+  padding: 28px;
+  transition: max-height 0.5s ease-out;
+}
+#order-placed main .dropdown-btn:active .dropdown-content {
+  max-height: auto;
+}
+
 #order-placed button {
   margin-top: 14px;
   margin-bottom: 150px;
 }
-#order-placed main .dropdown-content {
-  padding: 28px;
-  transition: height 3s ease-in-out;
-}
+
 .ordered-item {
   width: 100%;
   display: grid;
@@ -58,12 +63,4 @@
 }
 .icon-info h3 {
   font-size: 30px;
-}
-@keyframes slideIn {
-  from {
-    transform: translateY(-10%);
-  }
-  to {
-    transform: translateY(0);
-  }
 }
