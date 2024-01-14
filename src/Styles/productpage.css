@@ -1,0 +1,39 @@
+
+.product-section {
+    text-align: center;
+}
+
+.quantity-selector {
+    display: flex;
+    justify-content: center;
+    margin: 20px 0;
+}
+
+.quantity-selector button {
+    background-color: #eee;
+    border: 1px solid #ddd;
+    padding: 5px 10px;
+    cursor: pointer;
+}
+
+.quantity-selector input {
+    width: 50px;
+    text-align: center;
+}
+
+#product-banner h1 {
+    margin: 0;
+    padding: 0;
+    opacity: 100%;
+    width: 100%;
+    font-size: 44px;
+}
+
+
+
+#cart-icon {
+    position: absolute;
+    right: 8%;
+    width: 53px;
+}
+

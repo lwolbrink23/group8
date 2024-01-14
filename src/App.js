@@ -14,6 +14,7 @@ import Overview from "./Pages/ApptOverview";
 import Confirmed from "./Pages/ApptConfirmed";
 import Faqs from "./Pages/Faqs";
 import Shop from "./Pages/Shop";
+import ProductPage from "./Pages/ProductPage";
 import OrderPlaced from "./Pages/OrderPlaced";
 import { Route, Routes } from "react-router-dom";
 
@@ -37,6 +38,7 @@ function App() {
           <Route path="/appointment_confirmed" element={<Confirmed />} />
           <Route path="/faqs" element={<Faqs />} />
           <Route path="/shop" element={<Shop />} />
+          <Route path="/productpage" element={<ProductPage />} />
           <Route path="/order_placed" element={<OrderPlaced />} />
         </Routes>
       </div>
