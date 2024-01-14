@@ -7,6 +7,17 @@
 #order-placed article {
   text-align: center;
 }
+#order-placed main .dropdown {
+  width: 100%;
+  height: fit-content;
+}
+#order-placed main .dropdown-btn {
+  background-color: #5c5c5c;
+  color: white;
+}
+#order-placed button {
+  margin-top: 14px;
+}
 .icon-info {
   display: flex;
   align-items: center;
