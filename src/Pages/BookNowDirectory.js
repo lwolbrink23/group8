@@ -21,7 +21,8 @@ function BookNowDirectory() {
                                 <Link to="/providerprofile">
                                     <button>View Profile</button>
                                 </Link>
-                                <button className="purp-button">Book Now</button>
+                                <Link to="/SelectServices">
+                                <button className="purp-button">Book Now</button></Link>
                             </div>
                         </div>
                     </div>
@@ -34,8 +35,10 @@ function BookNowDirectory() {
                             <h2>Polish Perfection</h2>
                             <p>Suite #2 <br />(407) 123-1234<br />Specialties: Manicure, pedicure, dip and acrylic.</p>
                             <div className="buttons">
-                                <button>View Profile</button>
-                                <button className="purp-button">Book Now</button>
+                                <Link to="/providerprofile">
+                                <button>View Profile</button></Link>
+                                <Link to="/SelectServices">
+                                <button className="purp-button">Book Now</button> </Link>
                             </div>
                         </div>
                     </div>
@@ -48,8 +51,10 @@ function BookNowDirectory() {
                             <h2>Brush & Blush Beauty</h2>
                             <p>Suite #3 <br />(321) 333-1234<br />Specialties: Bridal and event makeup.</p>
                             <div className="buttons">
-                                <button>View Profile</button>
-                                <button className="purp-button">Book Now</button>
+                                <Link to="/providerprofile">
+                                <button>View Profile</button></Link>
+                                <Link to="/SelectServices">
+                                <button className="purp-button">Book Now</button> </Link>
                             </div>
                         </div>
                     </div>
@@ -62,8 +67,10 @@ function BookNowDirectory() {
                             <h2>Healing Hands Spa</h2>
                             <p>Suite #4 <br />(407) 666-1234<br />Specialties: Massage therapy.</p>
                             <div className="buttons">
-                                <button>View Profile</button>
-                                <button className="purp-button">Book Now</button>
+                                <Link to="/providerprofile">
+                                <button>View Profile</button></Link>
+                                <Link to="/SelectServices">
+                                <button className="purp-button">Book Now</button></Link>
                             </div>
                         </div>
                     </div>
