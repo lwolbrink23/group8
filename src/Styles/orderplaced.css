@@ -1,0 +1,21 @@
+#order-placed main {
+  padding: 52px 230px;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 150px;
+}
+#order-placed article {
+  text-align: center;
+}
+.icon-info {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.icon-info img {
+  width: 45px;
+  margin-right: 10px;
+}
+.icon-info h3 {
+  font-size: 30px;
+}
