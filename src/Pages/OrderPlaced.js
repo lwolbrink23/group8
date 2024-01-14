@@ -5,7 +5,6 @@ import tempShopData from "../data/shop.json";
 import arrowIcon from "../assets/icons/white-arrow.svg";
 import React, { useState } from "react";
 import "../Styles/orderplaced.css";
-import tempPic from "../assets/images/shop/color-protection-kit.png";
 
 function OrderPlaced() {
   const OrderedItems = () => (
@@ -29,9 +28,11 @@ function OrderPlaced() {
             ></img>
             <div className="ordered-item-info">
               <p>
-                {itemName}
-                <br></br>quantity<br></br>
-                {item.qty}
+                <span style={{ fontWeight: "bold" }}>{itemName}</span>
+                <br></br>
+                <span style={{ fontSize: "13px" }}>quantity</span>
+                <br></br>
+                <span id="item-qty">{item.qty}</span>
               </p>
             </div>
             <p className="align-right">${item.price}</p>
@@ -89,8 +90,6 @@ function OrderPlaced() {
         {/* order summary */}
         <CartDropdown />
       </main>
-      <div className="extra-space"></div>
-      <div className="extra-space"></div>
     </div>
   );
 }
