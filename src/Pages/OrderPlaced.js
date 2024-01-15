@@ -4,6 +4,7 @@ import tempData from "../data/cart.json";
 import tempShopData from "../data/shop.json";
 import arrowIcon from "../assets/icons/white-arrow.svg";
 import React, { useState } from "react";
+import { Link } from "react-router-dom";
 import "../Styles/orderplaced.css";
 
 function OrderPlaced() {
@@ -84,8 +85,9 @@ function OrderPlaced() {
             and grooming needs.<br></br> You will receive a confirmation email
             shortly.
           </p>
-
-          <button className="button">Back to Home</button>
+          <Link to="/">
+            <button className="button">Back to Home</button>
+          </Link>
         </article>
         {/* order summary */}
         <CartDropdown />
