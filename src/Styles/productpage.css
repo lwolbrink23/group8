@@ -8,8 +8,28 @@
     margin: 50px 100px;
 }
 
-.text {
-    
+.green-dropdown {
+    border-top: 0.6px solid var(--text-secondary, #3D3D43);
+    border-bottom: 0.6px solid var(--text-secondary, #3D3D43);
+    background: white;
+}
+
+.green-content {
+    padding: 5px 100px;
+}
+
+.green-dropdown-btn {
+    display: flex;
+        align-items: center;
+        justify-content: space-between;
+        margin: 0 auto;
+        padding: 5px 100px;
+        background-color: #BACA82;
+        cursor: pointer;
+}
+
+.green-dropdown-btn img {
+    width: 30px;
 }
 
 .stars-section {
@@ -76,6 +96,47 @@
     width: 53px;
 }
 
+.reviews {
+    background-color: white;
+    padding: 30px;
+}
+
+.reviews h1 {
+    font-size: 35px;
+}
+
+.above-reviews {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 100px;
+    padding: 20px;
+    /* Add some padding around the content */
+}
+
+.overall-rating {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+#big {
+    font-size: 60px;
+    font-weight: 600;
+    margin-bottom: 0px;
+    margin-top: 0px;
+}
+
+@media (min-width: 1500px) {
+
+    /* Adjust this breakpoint as needed */
+    .product-info {
+        margin: 50px 200px;
+    }
+
+}
+
+
 @media (max-width: 1200px) {
 
     /* Adjust this breakpoint as needed */
@@ -85,6 +146,12 @@
         gap: 20px;
         /* Smaller gap for smaller screens */
     }
+        .green-dropdown-btn {
+            padding: 5px 30px;
+        }
+        .green-content {
+            padding: 5px 30px;
+        }
 }
 
 @media (max-width: 600px) {
@@ -99,4 +166,5 @@
         gap: 20px;
         /* Smaller gap for smaller screens */
     }
+    
 }
