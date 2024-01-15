@@ -119,7 +119,7 @@ input {
   .items-container {
     grid-template-columns: 1fr 1fr 1fr;
   }
-  main {
+  #shop main {
     padding: 18px 100px;
   }
 }
@@ -147,7 +147,7 @@ input {
     aspect-ratio: 2;
     object-fit: cover;
   }
-  main {
+  #shop main {
     padding: 18px 35px;
   }
 }
