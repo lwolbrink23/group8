@@ -53,6 +53,9 @@ function ProductPage() {
                 <p>1.62 OZ | 8 OZ | 8 OZ<br/>Item Num. SPS-001004</p>
                 </div>
             </div>
+            <div className="green-dropdown">
+                
+            </div>
         </div>
     );
 }
