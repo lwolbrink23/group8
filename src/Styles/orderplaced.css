@@ -49,6 +49,12 @@
   font-weight: bold;
   font-size: 15px;
 }
+.home-desktop {
+  display: block;
+}
+.home-mobile {
+  display: none;
+}
 
 /* order placed  placing*/
 .icon-info {
@@ -86,5 +92,15 @@
   }
   #order-placed main {
     padding: 18px 35px;
+  }
+  #order-placed article p {
+    margin-bottom: 36px;
+  }
+  .home-desktop {
+    display: none;
+  }
+  .home-mobile {
+    margin-top: 36px;
+    display: flex;
   }
 }

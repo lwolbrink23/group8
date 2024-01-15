@@ -85,12 +85,17 @@ function OrderPlaced() {
             and grooming needs.<br></br> You will receive a confirmation email
             shortly.
           </p>
-          <Link to="/">
+          <Link to="/" className="home-desktop">
             <button className="button">Back to Home</button>
           </Link>
         </article>
         {/* order summary */}
         <CartDropdown />
+        <div className="home-mobile center">
+          <Link to="/">
+            <button className="button">Back to Home</button>
+          </Link>
+        </div>
       </main>
     </div>
   );
