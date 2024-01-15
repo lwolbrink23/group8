@@ -7,6 +7,7 @@ import Stars from "../assets/images/stars.png"
 import plusIcon from "../assets/icons/plus.png"
 import minusIcon from "../assets/icons/minus.png"
 import rating from "../assets/images/VisualRating.png"
+import Barber from '../assets/images/barber.png';
 import React, { useState } from 'react';
 
 
@@ -108,6 +109,22 @@ function ProductPage() {
     setValue(value + 1);
   };
 
+  const Review = () => {
+    return (
+      <div>
+        <div className="review-block">
+          <img src={Barber} alt="profile pic" className="profile-pic"></img>
+          <div className="review-info">
+            <p style={{ fontSize: "18px" }}><strong>Sara Wilson</strong>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;10/15/23</p>
+            <img src={Stars} alt="stars" id="small-stars"></img>
+            <p>This saved my damaged hair! I wish it came in bigger sizes.</p>
+          </div>
+        </div>
+        <hr className="linebreak" />
+      </div>
+    )
+  }
+
   return (
     <div className="product-page">
       {/* Header, Navigation, and other elements would go here */}
@@ -153,7 +170,14 @@ function ProductPage() {
             <p>42 reviews</p>
           </div>
         </div>
-        <div className="display-reviews"></div>
+        <div className="display-reviews">
+          <p id="reviews-count">42 Reviews</p>
+          <Review />
+          <Review />
+          <Review />
+          <Review />
+          <Review />
+        </div>
       </div>
     </div>
   );
