@@ -1,7 +1,27 @@
+/* general */
 #cart main {
-  padding: 52px 230px;
+  padding: 52px 198px;
+  display: grid;
+  grid-template-columns: auto auto;
+  gap: 50px;
 }
 
+/* cart */
 .items-container {
   background-color: white;
+  background: #ffffff;
+  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+  padding: 23px;
+}
+.cart-item {
+  display: grid;
+  grid-template-columns: auto auto auto;
+  gap: 19px;
+}
+.cart-item div {
+}
+
+/* subtotal */
+.subtotal > p:first-child {
+  margin-top: 50px;
 }
