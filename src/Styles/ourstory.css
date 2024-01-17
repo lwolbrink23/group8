@@ -16,10 +16,12 @@
     
     .about-text {
         text-align: left;
-       margin-top: 127px;
-       margin-bottom: -46px;
+        margin-top: 127px;
+        margin-bottom: -46px;
     }
-
+    .our-story {
+        text-align: center;
+    }
     h1 {
         /* Heading 1 */
         font-size: 44px;
