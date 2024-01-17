@@ -10,8 +10,7 @@ function OurStory() {
             <div class="page-title">
                 <h2>About</h2>
                 <h1>Our Story</h1>
-                {/*Background image*/}
-                <img src="assets/logo/TSS Circle logo Transparent.png" alt="background" />
+                {/*Background image added in CSS*/}
             </div>
             <br />
             <div class="story-mission-container">

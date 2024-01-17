@@ -5,4 +5,11 @@
         flex-shrink: 0;
         background: lightgray url("../assets/images/salon-chair.jpeg") no-repeat center/cover;
     }
+    h1 {
+        /* Heading 1 */
+            font-size: 44px;
+            font-style: normal;
+            font-weight: 700;
+            line-height: normal;
+    }
 }
