@@ -10,13 +10,15 @@ function Cart() {
   const CartItems = () => (
     <div className="cart-container">
       {tempData.map((item, i) => {
-        let itemName = "";
-        let itemPic = "";
+        let itemName;
+        let itemPic;
+        let itemPrice;
 
         for (const shopItem of tempShopData) {
           if (item.id === shopItem.id) {
             itemName = shopItem.name;
             itemPic = shopItem.file;
+            itemPrice = shopItem.price;
           }
         }
         return (
@@ -44,12 +46,24 @@ function Cart() {
                 ></img>
               </div>
             </div>
-            <p className="align-right">${item.price}</p>
+            <p className="align-right">${itemPrice}</p>
           </div>
         );
       })}
     </div>
   );
+
+  const total = () => {
+    let t = 0;
+    for (const cartItem of tempData) {
+      for (const shopItem of tempShopData) {
+        if (cartItem.id === shopItem.id) {
+          t += shopItem.price;
+        }
+      }
+    }
+    return t.toFixed(2);
+  };
 
   return (
     <div id="cart">
@@ -61,12 +75,14 @@ function Cart() {
       </div>
       <main>
         <div>
-          <p>6 items in your cart</p>
+          <p>{tempData.length} items in your cart</p>
           <CartItems />
         </div>
         <div className="subtotal">
-          <p>subtotal (6 items)</p>
-          <p>$###</p>
+          <div className="col-2">
+            <p>Subtotal ({tempData.length} items)</p>
+            <p>${total()}</p>
+          </div>
           <button>Proceed to Checkout</button>
         </div>
       </main>
