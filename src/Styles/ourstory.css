@@ -36,6 +36,9 @@
         flex-shrink: 0;
         padding-left: 180px
     }
+    .sm-p {
+        text-align: justify;
+    }
     h1 {
         /* Heading 1 */
         font-size: 44px;
