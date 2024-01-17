@@ -1,9 +1,8 @@
-/*web screen*/
-@media screen and (min-width: 767px) {  
-.page-title {
-height: 367px;
-flex-shrink: 0;
-background-size: cover;
-background: url("../assets/images/salon-chair.jpeg"),no-repeat,lightgray -2px -174.915px / 100.071% 216.549%;
-}
+/* web screen */
+@media screen and (min-width: 767px) {
+    .page-title {
+        height: 367px;
+        flex-shrink: 0;
+        background: lightgray url("../assets/images/salon-chair.jpeg") no-repeat center/cover;
+    }
 }
