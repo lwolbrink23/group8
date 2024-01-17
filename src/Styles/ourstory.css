@@ -21,6 +21,7 @@
     }
     .story-mission-container{
         display: flex;
+        background-color: white;
     }
     .our-story {
         text-align: center;
