@@ -1,6 +1,6 @@
 /* web screen */
 @media screen and (min-width: 767px) {
-    .page-title {
+    body {
         /*background image*/
         margin: 0;
         height: 560px;
