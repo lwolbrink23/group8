@@ -7,6 +7,9 @@
         flex-shrink: 0;
         background: lightgray url("../assets/images/salon-chair.jpeg") no-repeat center/cover;
     }
+    .about-text{
+        text-align: left;
+    }
     h1 {
         /* Heading 1 */
         font-size: 44px;
