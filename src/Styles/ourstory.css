@@ -21,7 +21,7 @@
     }
     .story-mission-container{
         display: flex;
-        padding-top: 150px;
+        flex-shrink: 0;
         background-color: white;
     }
     .our-story {
