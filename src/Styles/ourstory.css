@@ -11,7 +11,7 @@
     }
     .title-text {
         text-align: left;
-        word-spacing: 30px;
+        line-height: normal;
     }
     h1 {
         /* Heading 1 */
