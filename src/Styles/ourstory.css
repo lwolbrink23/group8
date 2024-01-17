@@ -4,11 +4,10 @@
         /*background image*/
         height: 367px;
         display: flex;
+        flex-direction: column;
+        padding-left: 20px;
         flex-shrink: 0;
         background: lightgray url("../assets/images/salon-chair.jpeg") no-repeat center/cover;
-    }
-    .story-text {
-        text-align: left;
     }
     h1 {
         /* Heading 1 */

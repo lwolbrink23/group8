@@ -8,8 +8,8 @@ function OurStory() {
     return (
         <div>
             <div class="page-title">
-                <h2><u>About</u></h2>
-                <h1 class="story-text">Our Story</h1>
+                <h2 class="title-text"><u>About</u></h2>
+                <h1 class="title-text">Our Story</h1>
                 {/*Background image added in CSS*/}
             </div>
             <br />
