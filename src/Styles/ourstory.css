@@ -1,7 +1,6 @@
 /*web screen*/
 @media screen and (min-width: 767px) {  
 .page-title {
-width: 1281px;
 height: 367px;
 flex-shrink: 0;
 background-size: cover;
