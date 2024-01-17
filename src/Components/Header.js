@@ -10,7 +10,7 @@ function Header() {
   const [isHamburgerOpen, setHamburgerOpen] = useState(false);
 
   const toggleHamburger = () => {
-    setHamburgerOpen(!isHamburgerOpen);
+    setHamburgerOpen((prevValue) => !prevValue);
   };
   return (
     <header>
