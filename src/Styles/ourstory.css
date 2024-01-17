@@ -10,8 +10,8 @@
         background: lightgray url("../assets/images/salon-chair.jpeg") no-repeat center/cover;
     }
     .title-text {
-        padding-bottom: 10px;
         text-align: left;
+        word-spacing: 30px;
     }
     h1 {
         /* Heading 1 */
