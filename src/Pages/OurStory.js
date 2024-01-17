@@ -8,7 +8,7 @@ function OurStory() {
     return (
         <div>
             <div class="page-title">
-                <h2>About</h2>
+                <h2><u>About</u></h2>
                 <h1>Our Story</h1>
                 {/*Background image added in CSS*/}
             </div>
