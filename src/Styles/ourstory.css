@@ -2,6 +2,8 @@
 @media screen and (min-width: 767px) {  
 .page-title {
 flex-shrink: 0;
+background-size: cover;
+background-position: center;
 background: url("../assets/images/salon-chair.jpeg"), lightgray -2px -174.915px / 100.071% 216.549% no-repeat;
 }
 }
