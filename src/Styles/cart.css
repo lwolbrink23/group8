@@ -1,6 +1,6 @@
 /* general */
 #cart main {
-  padding: 52px 198px;
+  padding: 52px 20vw;
   display: grid;
   grid-template-columns: auto auto;
   gap: 50px;
@@ -44,6 +44,30 @@
 }
 
 /* subtotal */
-.subtotal > div:first-child {
+.subtotal div {
   margin-top: 50px;
+}
+
+@media screen and (max-width: 1200px) {
+  #cart main {
+    padding: 52px 10vw;
+  }
+}
+@media screen and (max-width: 890px) {
+#cart main {
+  display: block;
+    padding: 52px 10vw;
+  }
+    .cart-item {
+      grid-template-columns: auto 2fr auto;
+
+    }
+
+  .subtotal{
+    text-align: center;
+  }
+        .subtotal div {
+          width: 50%;
+          margin: 50px auto;
+        }
 }
