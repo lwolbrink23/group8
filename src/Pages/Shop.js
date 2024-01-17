@@ -36,7 +36,7 @@ function Shop() {
               </div>
               {/* item interactions */}
               <div className="center-children">
-                <div className="col-3 center-v">
+                <div className="center-v">
                   <img
                     src={minusICON}
                     alt="subtract item"

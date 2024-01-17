@@ -5,9 +5,11 @@
   grid-template-columns: auto auto;
   gap: 50px;
 }
-
+#cart main > div:first-child {
+  margin-left: auto;
+}
 /* cart */
-.items-container {
+.cart-container {
   background-color: white;
   background: #ffffff;
   box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
@@ -15,10 +17,28 @@
 }
 .cart-item {
   display: grid;
-  grid-template-columns: auto auto auto;
+  grid-template-columns: auto 12vw auto;
+  width: 100%;
   gap: 19px;
+  margin-bottom: 25px;
 }
-.cart-item div {
+.cart-item:last-child {
+  margin-bottom: 0;
+}
+
+.cart-item > img:first-child {
+  width: 117px;
+  aspect-ratio: 1;
+  object-fit: cover;
+}
+.item-interaction {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+}
+.item-interaction img {
+  width: 23px;
+  height: 23px;
 }
 
 /* subtotal */
