@@ -22,7 +22,7 @@
     .story-mission-container{
         height: 440px;
         display: flex;
-        padding: 0;
+        padding-top: 20px;
         margin-top: -20px;
         background-color: white;
     }
