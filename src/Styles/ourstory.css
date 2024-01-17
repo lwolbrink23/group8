@@ -34,6 +34,7 @@
         width: 500px;
         height: 231px;
         flex-shrink: 0;
+        padding-right: 85px;
     }
     h1 {
         /* Heading 1 */
