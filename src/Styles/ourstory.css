@@ -19,6 +19,9 @@
         margin-top: 127px;
         margin-bottom: -46px;
     }
+    .story-mission-container{
+        display: flex;
+    }
     .our-story {
         text-align: center;
         width: 500px;
