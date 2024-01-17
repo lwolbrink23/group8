@@ -4,7 +4,7 @@
         /*background image*/
         margin: 0;
         padding: 0;
-        height: 450px;
+        height: 600px;
         flex-shrink: 0;
         background: lightgray url("../assets/images/salon-chair.jpeg") no-repeat center/cover;
     }
