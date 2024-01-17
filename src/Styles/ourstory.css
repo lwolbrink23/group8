@@ -13,11 +13,13 @@
         text-align: left;
         line-height: 1.2;
     }
-         .about-text {
-             text-align: left;
-             line-height: 1.2;
-             padding-bottom: -200px;
-         }
+    
+    .about-text {
+        text-align: left;
+        line-height: 1.2;
+        padding-bottom: 5px;
+    }
+    
     h1 {
         /* Heading 1 */
         font-size: 44px;
