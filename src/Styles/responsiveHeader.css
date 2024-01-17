@@ -6,7 +6,6 @@
 
     nav {
         display: none;/*hide nav at first*/
-        display: ${isHamburgerOpen ? 'block': 'none'};
         grid-area: nav;
         width: 100%;
         position: absolute;
@@ -81,16 +80,6 @@
         display: none;
     }
 
-    li .purp-button {
-        background-color: white;
-        color: #090B0A;
-    }
-
-    li .purp-button:hover {
-        background-color: #E7E7E7;
-        padding: 10px 20px;
-        border-radius: 0px;
-    }
 
   nav ul li:hover>ul { /*makes subpages vertical*/
       display: block;
