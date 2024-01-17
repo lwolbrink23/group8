@@ -16,7 +16,7 @@ function OurStory() {
             <div class="story-mission-container">
                 <div class="our-story">
                     <h1>Our Story</h1>
-                    <p>
+                    <p class="sm-p">
                         "The Suite Spot" was founded with a vision to create a space where beauty providers
                         could thrive and clients could indulge in a world of beauty and relaxation.
                         Our story is one of innovation and empowerment, a journey that continues to unfold.
@@ -25,7 +25,7 @@ function OurStory() {
                 </div>
                 <div class="our-mission">
                     <h1>Our Mission</h1>
-                    <p>
+                    <p class="sm-p">
                         At "The Suite Spot," our mission is simple yet profound:
                         to empower providers and elevate the beauty and wellness experience
                         for our clients. We are committed to providing a nurturing environment
