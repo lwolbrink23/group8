@@ -20,11 +20,10 @@
         margin-bottom: -46px;
     }
     .our-story {
-        width: 60%;
-            box-sizing: border-box;
-            padding: 10px;
-            margin: 20px auto;
-            align-items: center;
+        text-align: center;
+        width: 500px;
+        height: 276px;
+        flex-shrink: 0;
     }
     h1 {
         /* Heading 1 */
