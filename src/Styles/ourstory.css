@@ -5,7 +5,7 @@
         height: 367px;
         display: flex;
         flex-direction: column;
-        padding-left: 100px;
+        padding-left: 133px;
         flex-shrink: 0;
         background: lightgray url("../assets/images/salon-chair.jpeg") no-repeat center/cover;
     }
