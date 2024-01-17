@@ -6,6 +6,7 @@
 
     nav {
         display: none;/*hide nav at first*/
+        display: ${isHamburgerOpen ? 'block': 'none'};
         grid-area: nav;
         width: 100%;
         position: absolute;
@@ -14,6 +15,10 @@
         z-index: 999;
         text-align: center;
         background-color: white;
+    }
+
+    .header-container.mobile-open nav {
+    display: block;
     }
 
     #hamburger-menu::before {
