@@ -26,6 +26,12 @@
         flex-shrink: 0;
         padding-left: 132px;
     }
+    .our-mission {
+        text-align: center;
+        width: 500px;
+        height: 231px;
+        flex-shrink: 0;
+    }
     h1 {
         /* Heading 1 */
         font-size: 44px;
