@@ -1,0 +1,8 @@
+/*web screen*/
+@media screen and (min-width: 767px) {  
+.page-title {
+flex-shrink: 0;
+background-size: cover;
+background: url("../assets/images/salon-chair.jpeg"),no-repeat, center;
+}
+}

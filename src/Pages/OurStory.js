@@ -1,4 +1,5 @@
 import "../App.css";
+import "../Styles/ourstory.css"
 import scissors from "../assets/icons/icons8-barber-scissors-96.png"
 import diamond from "../assets/icons/icons8-diamond-64.png"
 import shootingStar from "../assets/icons/icons8-star-of-bethlehem-64.png"
