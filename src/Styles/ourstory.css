@@ -24,6 +24,7 @@
         width: 500px;
         height: 276px;
         flex-shrink: 0;
+        padding-left: 132px;
     }
     h1 {
         /* Heading 1 */
