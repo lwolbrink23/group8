@@ -163,7 +163,7 @@ function Faqs() {
 
         return (
             <div class="dropdown">
-                <div class="dropdown-btn" onClick={toggleGeneralVisibility}><h2>General</h2><img src={arrowIcon} alt="Arrow" style={arrowIconStyle} /></div>
+                <div class="dropdown-btn" onClick={toggleGeneralVisibility} style={{ cursor: 'pointer' }}><h2>General</h2><img src={arrowIcon} alt="Arrow" style={arrowIconStyle} /></div>
                 {isGeneralVisible && <GeneralContent />}
             </div>
         );
@@ -185,7 +185,7 @@ function Faqs() {
 
         return (
             <div class="dropdown">
-                <div class="dropdown-btn" onClick={toggleHairVisibility}><h2>Hair</h2><img src={arrowIcon} alt="Arrow" style={arrowIconStyle} /></div>
+                <div class="dropdown-btn" onClick={toggleHairVisibility} style={{ cursor: 'pointer' }}><h2>Hair</h2><img src={arrowIcon} alt="Arrow" style={arrowIconStyle} /></div>
                 {isHairVisible && <HairContent />}
             </div>
         );
@@ -207,7 +207,7 @@ function Faqs() {
 
         return (
             <div class="dropdown">
-                <div class="dropdown-btn" onClick={toggleNailsVisibility}><h2>Nails</h2><img src={arrowIcon} alt="Arrow" style={arrowIconStyle} /></div>
+                <div class="dropdown-btn" onClick={toggleNailsVisibility} style={{ cursor: 'pointer' }}><h2>Nails</h2><img src={arrowIcon} alt="Arrow" style={arrowIconStyle} /></div>
                 {isNailsVisible && <NailContent />}
             </div>
         );
@@ -229,7 +229,7 @@ function Faqs() {
 
         return (
             <div class="dropdown">
-                <div class="dropdown-btn" onClick={toggleMakeupVisibility}><h2>Makeup</h2><img src={arrowIcon} alt="Arrow" style={arrowIconStyle} /></div>
+                <div class="dropdown-btn" onClick={toggleMakeupVisibility} style={{ cursor: 'pointer' }}><h2>Makeup</h2><img src={arrowIcon} alt="Arrow" style={arrowIconStyle} /></div>
                 {isMakeupVisible && <MakeupContent />}
             </div>
         );
@@ -251,7 +251,7 @@ function Faqs() {
 
         return (
             <div class="dropdown">
-                <div class="dropdown-btn" onClick={toggleMassageVisibility}><h2>Massage</h2><img src={arrowIcon} alt="Arrow" style={arrowIconStyle} /></div>
+                <div class="dropdown-btn" onClick={toggleMassageVisibility} style={{ cursor: 'pointer' }}><h2>Massage</h2><img src={arrowIcon} alt="Arrow" style={arrowIconStyle} /></div>
                 {isMassageVisible && <MassageContent />}
             </div>
         );

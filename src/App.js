@@ -14,6 +14,10 @@ import Overview from "./Pages/ApptOverview";
 import Confirmed from "./Pages/ApptConfirmed";
 import Faqs from "./Pages/Faqs";
 import Shop from "./Pages/Shop";
+import ProductPage from "./Pages/ProductPage";
+import Cart from "./Pages/Cart";
+import OrderPlaced from "./Pages/OrderPlaced";
+import OrderDetails from "./Pages/OrderDetails";
 import { Route, Routes } from "react-router-dom";
 
 // this is only the home page elements
@@ -36,6 +40,10 @@ function App() {
           <Route path="/appointment_confirmed" element={<Confirmed />} />
           <Route path="/faqs" element={<Faqs />} />
           <Route path="/shop" element={<Shop />} />
+          <Route path="/productpage" element={<ProductPage />} />
+          <Route path="/cart" element={<Cart />} />
+          <Route path="/order_placed" element={<OrderPlaced />} />
+          <Route path="/order_details" element={<OrderDetails />} />
         </Routes>
       </div>
       <Footer />

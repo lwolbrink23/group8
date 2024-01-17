@@ -8,7 +8,7 @@ import tempData from "../data/shop.json";
 
 function Shop() {
   return (
-    <div>
+    <div id="shop">
       {/* title */}
       <div id="shop-banner">
         <div className="title-container trans-white">
@@ -23,7 +23,7 @@ function Shop() {
       <main>
         <ul className="items-container">
           {tempData.map((item) => (
-            <li className="box">
+            <li className="box" key={item.id}>
               {/* item info */}
               <img
                 src={require("../assets/images/shop/" + item.file + ".png")}
@@ -36,7 +36,7 @@ function Shop() {
               </div>
               {/* item interactions */}
               <div className="center-children">
-                <div className="col-3 center-v">
+                <div className="center-v">
                   <img
                     src={minusICON}
                     alt="subtract item"

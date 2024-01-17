@@ -10,7 +10,21 @@
 @font-face {
   font-family: "cormorant-bold";
   src: local("cormorant-bold"),
-    url("./assets/fonts/cormorant/CormorantGaramond-Bold.ttf") format("truetype");
+    url("./assets/fonts/cormorant/CormorantGaramond-Bold.ttf")
+      format("truetype");
+  /* Add additional formats if your font supports them */
+}
+@font-face {
+  font-family: "raleway";
+  src: local("raleway-bold"),
+    url("./assets/fonts/raleway/Raleway-Bold.ttf") format("truetype");
+  /* Add additional formats if your font supports them */
+}
+
+@font-face {
+  font-family: "greatvibes";
+  src: local("GreatVibes-Regular"),
+    url("./assets/fonts/great-vibes/GreatVibes-Regular.ttf") format("truetype");
   /* Add additional formats if your font supports them */
 }
 
@@ -49,25 +63,34 @@ h6 {
 
 button {
   background-color: #baca82;
+  font-family: "raleway";
+  font-size: 15px;
+  text-transform: uppercase;
   color: #090b0a;
   padding: 10px 20px;
   /* Adjust as needed */
   border: none;
   border-radius: 15px;
   cursor: pointer;
+  box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
 }
 
 button:hover {
-  background-color: #D8E79C
+  background-color: #d8e79c;
 }
 
 .purp-button {
+  font-family: "raleway";
+  font-size: large;
+  text-transform: uppercase;
   background-color: #aa95d1;
   color: white;
   padding: 10px 20px;
   border: none;
   border-radius: 15px;
   cursor: pointer;
+  width: 200px;
+  box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
 }
 
 .dropdown-btn {
@@ -77,6 +100,7 @@ button:hover {
   margin: 0 auto;
   padding: 5px 35px;
   background-color: white;
+  cursor: pointer;
 }
 
 .dropdown-btn img {
@@ -106,7 +130,3 @@ button:hover {
   display: flex;
   justify-content: center;
 }
-
-
-
-

@@ -1,29 +1,46 @@
 import React from "react";
 import "../App.css";
 import { Link } from "react-router-dom";
+import "../Styles/ApptOverview.css"
 import store from "../assets/icons/icons8-shop-96.png";
 import purpleLady from "../assets/icons/icons8-person-female-100.png";
 import calendar from "../assets/icons/icons8-event-accepted-tentatively-96.png";
-import backArrow from "../assets/icons/back-arrow.png"
+import Arrow from "../assets/icons/circlearrow.png"
+import { useNavigate } from 'react-router-dom';
+
+
 function Overview() {
+    function BackButton() {
+
+    let navigate = useNavigate();
+
+    function handleBack() {
+        navigate(-1);
+    }
+
+    return (
+        <div><img src={Arrow} alt="back arrow" onClick={handleBack} id="backarrow" style={{ cursor: 'pointer' }}></img></div>
+    );}
 return (
     <div>
-        <div className="shop-name">
+        <div className="title-container trans-white">
+            <BackButton />
             <h1>Simply Chic Hair</h1>
         </div>
         <div className="arrow-container">
              {/*back arrow*/}
-            <Link to="/selectservices">
-                <img src={backArrow} alt="back arrow" />
-            </Link>
-             <p>Services &gt; Time &gt; <strong>Confirm</strong></p>
+            
+             
         </div>
         <div className="overview-container">
+            <p>Services &gt; Time &gt; <strong>Confirm</strong></p>
             <div className="payment-method">
                 <h2>Payment Method</h2>
                 {/*store/shop icon*/}
+                <div id="payment-method">
                 <img src={store} alt="Purple shop icon"/>
-             <p>Pay at venue</p>
+                <p>Pay at venue</p>
+                </div>
             </div>
             <div className="cancelation-policy">
                 <h2>Cancelation Policy</h2>

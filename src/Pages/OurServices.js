@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import '../App.css';
 import arrowIcon from '../assets/icons/arrow.png';
+import { Link } from "react-router-dom"
 
 function OurServices() {
     const HairContent = () => (
@@ -25,7 +26,7 @@ function OurServices() {
 
             <strong><p>Hair Braiding</p></strong>
             <p>Hair braiding includes various styles, such as box braids, cornrows, and French braids, which can be decorative or functional.</p>
-            <div class="center"><button class="purp-button">Book Now</button></div>
+            <div class="center"><Link to="/booknow"><button class="purp-button">Book Now</button></Link></div>
         </div>
     );
 
@@ -81,7 +82,7 @@ function OurServices() {
 
             <strong><p>Soak-Off Removal</p></strong>
             <p>Soak-off removal is the process of safely and gently removing gel polish or acrylic nails without causing damage to the natural nails. It ensures a smooth transition between nail services.</p>
-            <div class="center"><button class="purp-button">Book Now</button></div>
+            <div class="center"><Link to="/booknow"><button class="purp-button">Book Now</button></Link></div>
         </div>
     )
 
@@ -113,7 +114,7 @@ function OurServices() {
 
             <strong><p>Men’s Grooming</p></strong>
             <p>Tailored makeup services for men, including concealing blemishes, evening skin tone, and enhancing facial features for photoshoots or events.</p>
-            <div class="center"><button class="purp-button">Book Now</button></div>
+            <div class="center"><Link to="/booknow"><button class="purp-button">Book Now</button></Link></div>
         </div>
     )
 
@@ -145,7 +146,7 @@ function OurServices() {
 
             <strong><p>Custom Massage</p></strong>
             <p>Tailored to your specific needs, combining various techniques to address individual concerns and promote overall relaxation.</p>
-            <div class="center"><button class="purp-button">Book Now</button></div>
+            <div class="center"><Link to="/booknow"><button class="purp-button">Book Now</button></Link></div>
         </div>)
 
     const HairDropdown = () => {
@@ -164,7 +165,7 @@ function OurServices() {
 
         return (
             <div class="dropdown">
-                <div class="dropdown-btn" onClick={toggleHairVisibility}><h2>Hair</h2><img src={arrowIcon} alt="Arrow" style={arrowIconStyle} /></div>
+                <div class="dropdown-btn" onClick={toggleHairVisibility} style={{ cursor: 'pointer' }}><h2>Hair</h2><img src={arrowIcon} alt="Arrow" style={arrowIconStyle} /></div>
                 {isHairVisible && <HairContent />}
             </div>
         );
@@ -185,7 +186,7 @@ function OurServices() {
 
         return (
             <div class="dropdown">
-                <div class="dropdown-btn" onClick={toggleNailsVisibility}><h2>Nails</h2><img src={arrowIcon} alt="Arrow" style={arrowIconStyle} /></div>
+                <div class="dropdown-btn" onClick={toggleNailsVisibility} style={{ cursor: 'pointer' }}><h2>Nails</h2><img src={arrowIcon} alt="Arrow" style={arrowIconStyle} /></div>
                 {isNailsVisible && <NailContent />}
             </div>
         );
@@ -207,7 +208,7 @@ function OurServices() {
 
         return (
             <div class="dropdown">
-                <div class="dropdown-btn" onClick={toggleMakeupVisibility}><h2>Makeup</h2><img src={arrowIcon} alt="Arrow" style={arrowIconStyle} /></div>
+                <div class="dropdown-btn" onClick={toggleMakeupVisibility} style={{ cursor: 'pointer' }}><h2>Makeup</h2><img src={arrowIcon} alt="Arrow" style={arrowIconStyle} /></div>
                 {isMakeupVisible && <MakeupContent />}
             </div>
         );
@@ -229,7 +230,7 @@ function OurServices() {
 
         return (
             <div class="dropdown">
-                <div class="dropdown-btn" onClick={toggleMassageVisibility}><h2>Massage</h2><img src={arrowIcon} alt="Arrow" style={arrowIconStyle} /></div>
+                <div class="dropdown-btn" onClick={toggleMassageVisibility} style={{ cursor: 'pointer' }}><h2>Massage</h2><img src={arrowIcon} alt="Arrow" style={arrowIconStyle} /></div>
                 {isMassageVisible && <MassageContent />}
             </div>
         );

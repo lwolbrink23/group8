@@ -42,6 +42,10 @@ nav ul ul a { /*the dropdown menu text */
 
 }
 
+nav a {
+    padding: 10px 20px;
+}
+
 nav ul ul a:hover { /*dropdown menu text on hover */
     background-color: #E7E7E7;
     padding: 10px 20px;

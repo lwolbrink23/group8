@@ -1,0 +1,15 @@
+.booknow-section {
+    display: flex;
+    justify-content: space-between;
+}
+
+.booknow-section button {
+    height: 42px
+}
+
+.title {
+    font-family: "greatvibes";
+    font-weight: 500;
+    font-size: 46px;
+    margin-bottom: -25px;
+}

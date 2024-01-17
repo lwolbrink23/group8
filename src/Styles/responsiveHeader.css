@@ -16,6 +16,10 @@
         background-color: white;
     }
 
+    .header-container.mobile-open nav {
+    display: block;
+    }
+
     #hamburger-menu::before {
         content: '\2630';
         grid-area: hamburger-menu;
@@ -76,16 +80,6 @@
         display: none;
     }
 
-    li .purp-button {
-        background-color: white;
-        color: #090B0A;
-    }
-
-    li .purp-button:hover {
-        background-color: #E7E7E7;
-        padding: 10px 20px;
-        border-radius: 0px;
-    }
 
   nav ul li:hover>ul { /*makes subpages vertical*/
       display: block;
