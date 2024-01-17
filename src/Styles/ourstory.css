@@ -1,11 +1,5 @@
 /* web screen */
 @media screen and (min-width: 767px) {
-    .page-title {
-        /*background image*/
-        height: 367px;
-        flex-shrink: 0;
-        background: lightgray url("../assets/images/salon-chair.jpeg") no-repeat center/cover;
-    }
     h1 {
         /* Heading 1 */
         font-size: 44px;
@@ -13,11 +7,23 @@
         font-weight: 700;
         line-height: normal;
     }
+        
     h2 {
         /* Heading 2 */
         font-size: 36px;
         font-style: normal;
         font-weight: 700;
         line-height: normal;
+    }
+
+    .page-title {
+        /*background image*/
+        height: 367px;
+        flex-shrink: 0;
+        background: lightgray url("../assets/images/salon-chair.jpeg") no-repeat center/cover;
+    }
+
+    .story-text {
+        text-align: left;
     }
 }
