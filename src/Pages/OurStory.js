@@ -36,7 +36,6 @@ function OurStory() {
                     </p>
                 </div>
             </div>
-            <br />
             <div class="awards-container">
                 <h1>Awards</h1>
                 <div class="golden-scissors">
