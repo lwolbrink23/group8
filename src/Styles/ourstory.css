@@ -17,7 +17,7 @@
     .about-text {
         text-align: left; 
         margin-top: 127px;
-        align-items: flex-start;
+        align-items: flex-end;
     }
     .story-mission-container{
         display: flex;
