@@ -9,6 +9,9 @@
         flex-shrink: 0;
         background: lightgray url("../assets/images/salon-chair.jpeg") no-repeat center/cover;
     }
+    .title-text {
+        padding-bottom: 10px;
+    }
     h1 {
         /* Heading 1 */
         font-size: 44px;
