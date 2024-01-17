@@ -17,6 +17,7 @@
     .about-text {
         text-align: left;
        margin-top: 127px;
+       margin-bottom: -100px;
     }
 
     h1 {
