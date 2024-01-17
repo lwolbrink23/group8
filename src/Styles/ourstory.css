@@ -1,8 +1,6 @@
 /*web screen*/
 @media screen and (min-width: 767px) {  
 .page-title {
-width: 1281px;
-height: 367px;
 flex-shrink: 0;
 background: url("../assets/images/salon-chair.jpeg"), lightgray -2px -174.915px / 100.071% 216.549% no-repeat;
 }
