@@ -15,14 +15,14 @@
     }
     
     .about-text {
-        text-align: left; 
+        text-align: left;
         margin-top: 127px;
-        align-items: flex-end;
+        margin-bottom: -46px;
     }
     .story-mission-container{
         display: flex;
         flex-shrink: 0;
-        margin-top: -150px;
+        align-items: start;
         background-color: white;
     }
     .our-story {
