@@ -22,7 +22,7 @@
     .story-mission-container{
         display: flex;
         flex-shrink: 0;
-        align-items: flex-start;
+        align-items: flex-end;
         background-color: white;
     }
     .our-story {
