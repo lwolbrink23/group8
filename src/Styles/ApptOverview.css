@@ -7,7 +7,10 @@
 }
 
 .overview-container {
-    margin: 0 50px;
+    margin: 20px 150px;
+    display: flex;
+    gap: 100px;
+    justify-content: flex-end;
 }
 
 #payment-method {
@@ -17,4 +20,55 @@
 
 #payment-method img {
     width: 50px
+}
+
+.overview-container>div {
+    flex: 1;
+}
+ 
+.overview {
+    float: right;
+    background: white;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.25);
+    width: 100%;
+    max-width: 300px;
+    padding: 0 50px;
+    padding-bottom: 20px;
+}
+
+.icon-container {
+    display: flex;
+    align-items: center;
+}
+
+.icon-container img {
+    width: 50px
+}
+
+#booked-time {
+    font-size: 12px;
+    margin-bottom: 40px;
+}
+
+#total {
+    margin-bottom: 40px;
+}
+
+@media (max-width: 900px) {
+
+    /* Adjust the max-width as needed for your breakpoint */
+    .overview-container {
+        flex-direction: column;
+        align-items: center;
+        margin: 20px 50px;
+    }
+
+    .payment,
+    .overview {
+        width: 100%;
+        /* Make each div take the full container width */
+        margin-bottom: 10px;
+        /* Reduce margin */
+        
+    }
 }
