@@ -41,7 +41,7 @@ function OrderDetails() {
                 })}
             </ul>
             <hr />
-            <div className='payment-info-top'>
+            <div className='payment-info'>
                 <div id="titles-left">
                     <p><strong>Order Placed:</strong></p>
                     <p><strong>Subtotal:</strong></p>
@@ -55,6 +55,17 @@ function OrderDetails() {
                     <p>$6.18</p>
                     <p>$1.19</p>
                     <p>$27.35</p>
+                </div>
+            </div>
+            <hr />
+            <div className='payment-info'>
+                <div id="titles-left">
+                    <p><strong>Payment Method</strong></p>
+                    <p>Visa ending in 1234</p>
+                </div>
+                <div id="titles-right">
+                    <p><strong>Shipping Address</strong></p>
+                    <p>Bob Smith<br />123 Main St<br />Orlando, FL 32829</p>
                 </div>
             </div>
         </div>
