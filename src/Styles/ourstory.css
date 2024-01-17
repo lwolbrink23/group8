@@ -4,7 +4,6 @@
         /*background image*/
         height: 367px;
         display: flex;
-        flex-direction: column;
         padding-left: 133px;
         flex-shrink: 0;
         background: lightgray url("../assets/images/salon-chair.jpeg") no-repeat center/cover;
@@ -12,8 +11,6 @@
     .title-text {
         text-align: left;
         line-height: 1.2;
-        margin: 0;
-        padding: 0;
     }
     h1 {
         /* Heading 1 */
