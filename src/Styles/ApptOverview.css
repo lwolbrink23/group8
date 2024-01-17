@@ -1,0 +1,20 @@
+#backarrow {
+    width: 50px;
+}
+        
+#arrow:hover {
+    width: 55px;
+}
+
+.overview-container {
+    margin: 0 50px;
+}
+
+#payment-method {
+    display: flex;
+    align-items: center;
+}
+
+#payment-method img {
+    width: 50px
+}
