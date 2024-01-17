@@ -2,8 +2,6 @@
 @media screen and (min-width: 767px) {
     .page-title {
         /*background image*/
-        margin: -30px;
-        height: 560px;
         display: flex;
         flex-shrink: 0;
         background: lightgray url("../assets/images/salon-chair.jpeg") no-repeat center/cover;
