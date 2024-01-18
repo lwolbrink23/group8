@@ -28,6 +28,30 @@
   /* Add additional formats if your font supports them */
 }
 
+h1 {
+  /* Heading 1 */
+  font-size: 44px;
+  font-style: normal;
+  font-weight: 700;
+  line-height: normal;
+}
+
+h2 {
+  /* Heading 2 */
+  font-size: 36px;
+  font-style: normal;
+  font-weight: 700;
+  line-height: normal;
+}
+
+h3 {
+  font-size: 24px;
+  font-style: normal;
+  font-weight: 700;
+  line-height: normal;
+  white-space: nowrap;
+}
+
 .bar {
   display: block;
   background-color: #090b0a;

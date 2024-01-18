@@ -93,20 +93,4 @@
         padding-left: 65px;
     }
 
-    h1 {
-        /* Heading 1 */
-        font-size: 44px;
-        font-style: normal;
-        font-weight: 700;
-        line-height: normal;
-    }
-
-    h2 {
-        /* Heading 2 */
-        font-size: 36px;
-        font-style: normal;
-        font-weight: 700;
-        line-height: normal;
-        white-space: nowrap;
-    }
 }

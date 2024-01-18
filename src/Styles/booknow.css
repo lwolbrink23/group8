@@ -21,7 +21,7 @@
     /* To make the description div take the remaining width */
 }
 
-.buttons {
+.buttons-group {
     display: flex;
     flex-wrap: nowrap;
     /* Enable wrapping for buttons */
