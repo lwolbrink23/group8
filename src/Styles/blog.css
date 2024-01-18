@@ -1,7 +1,7 @@
 /* web screen */
 @media screen and (min-width: 767px) {
     .main-blog-page {
-        height: 600px;
+        height: 700px;
         padding-top: 50px;
         margin-top: 0px;
         flex-shrink: 0;
