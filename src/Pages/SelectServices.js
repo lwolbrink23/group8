@@ -1,6 +1,19 @@
-import React from "react";
+import React, { useEffect } from "react";
+import { Link, useLocation } from "react-router-dom";
 import "../App.css";
 import { useState } from 'react';
+
+function ScrollToTop() {
+  const location = useLocation();
+
+  useEffect(() => {
+    if (location.pathname === "/blogpost") {
+      window.scrollTo(0, 0);
+    }
+  }, [location.pathname]);
+
+  return null;
+}
 
 const SelectServices = () => {
   const [selectedServices, setSelectedServices] = useState([]);
@@ -38,9 +51,13 @@ const SelectServices = () => {
     setSelectedServices([]);
     updateSelectedServices();
   };
+  const scrollToTop = () => {
+    window.scrollTo(0, 0);
+  };
 
   return (
     <div>
+       <ScrollToTop />
       <div className="shop-name">
         <img src="assets/logo/TSS Circle logo Transparent.png" alt="back arrow" />
         <h1>Simply Chic Hair</h1>
@@ -120,9 +137,12 @@ const SelectServices = () => {
       <div>
         <h2 id="selectedServicesLabel">{`${selectedServices.length} services selected`}</h2>
         <ul id="selectedList"></ul>
-        <button type="button" onClick={() => alert('Goes to overview')}>
+       <Link to="/appointment_overview" onClick={scrollToTop}>
+                  <button
+            type="button">
           CONTINUE
-        </button>
+          </button>
+            </Link>
       </div>
     </div>
   );
