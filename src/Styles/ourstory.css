@@ -61,6 +61,10 @@
         font-style: normal;
         font-weight: 400;
         line-height: normal;
+        display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
     }
 
     .items-container{
@@ -73,7 +77,10 @@
     }
 
     .golden-scissors {
-        
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
 
     }
 
