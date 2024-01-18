@@ -38,6 +38,7 @@ function Blog() {
             Subscribe
           </button>
         </form>
+        <div class="overlay-box"></div>
       </div>
       <br />
       <div className="posts-container">

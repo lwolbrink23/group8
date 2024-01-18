@@ -1,12 +1,28 @@
 /* web screen */
 @media screen and (min-width: 767px) {
     .main-blog-page {
-        height: 419px;
+        width: 1000px;
+        height: 450px;
         padding-top: 0px;
-        margin-top: 0px;
+        margin: 0 auto;
         flex-shrink: 0;
         background: url("../assets/images/flower.jpeg") lightgray center/cover no-repeat;
         background-position: 50% 45%;
         box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
+        
+    .overlay-box {
+            position: absolute;
+            top: 345px;
+            left: 270px;
+            bottom: 0px;
+            width: 500px;
+            height: 268px;
+            flex-shrink: 0;
+            background-color: rgba(255, 255, 255, 0.63);
+            z-index: 1;
+            
+        }
+
+        
     }
 }
