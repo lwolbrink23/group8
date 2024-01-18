@@ -78,7 +78,13 @@
             margin: 0;
             padding-right: 20px;
         }
-   
+        .golden-scissors{
+            padding-left: 50px;
+            padding-right: -60px;
+        }
+        .diamond-spa{
+            padding-left: 65px;
+        }
     h1 {
         /* Heading 1 */
         font-size: 44px;
