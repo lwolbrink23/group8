@@ -19,6 +19,7 @@
         margin-top: 127px;
         margin-bottom: -46px;
     }
+
     .story-mission-container{
         height: 410px;
         display: flex;
@@ -26,6 +27,7 @@
         margin-top: -20px;
         background-color: white;
     }
+
     .our-story {
         text-align: center;
         width: 500px;
@@ -33,16 +35,35 @@
         flex-shrink: 0;
         padding-left: 132px;
     }
+
     .our-mission {
         text-align: center;
         width: 500px;
-        height: 231px;
+        height: 276px;
         flex-shrink: 0;
         padding-left: 180px
     }
+
     .sm-p {
         text-align: justify;
     }
+
+    .awards-container {
+
+    }
+
+    .golden-scissors {
+
+    }
+
+    .diamond-spa {
+
+    }
+    
+    .platinum-innovators {
+
+    }
+
     h1 {
         /* Heading 1 */
         font-size: 44px;
@@ -50,6 +71,7 @@
         font-weight: 700;
         line-height: normal;
     }
+
     h2 {
         /* Heading 2 */
         font-size: 36px;
