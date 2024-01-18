@@ -1,8 +1,7 @@
 /* web screen */
 @media screen and (min-width: 767px) {
     .main-blog-page {
-        flex-direction: column;
-        height: 419px;
+        height: 100%;
         flex-shrink: 0;
         background: url("../assets/images/flower.jpeg") lightgray center/100% no-repeat;
         box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
