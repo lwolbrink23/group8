@@ -65,10 +65,10 @@
 
     .items-container{
         display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(100px, 1fr));
-            /* Adjust item width as needed */
-            gap: 30px;
-            /* Adjust the gap between items as needed */
+        grid-template-columns: repeat(auto-fill, minmax(100px, 1fr));
+        justify-content: center;
+        /* Center the items horizontally */
+        gap: 10px;
     }
 
     .circle {
