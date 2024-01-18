@@ -65,7 +65,7 @@
 
     .items-container{
         margin-right: 15px;
-
+        margin-left: 15px;
     }
 
     .golden-scissors,
@@ -79,7 +79,6 @@
             padding: 0;
         }
         .golden-scissors{
-            padding-left: 50px;
             padding-right: -60px;
         }
         .diamond-spa{
@@ -88,7 +87,6 @@
 
         }
         .platinum-innovators{
-            padding-right: -30px;
         }
 
     h1 {
