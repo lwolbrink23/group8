@@ -39,6 +39,7 @@ function OurStory() {
             </div>
             <div class="awards-container">
                 <h1>Awards</h1>
+                <div class="items-container">
                 <div class="golden-scissors">
                     <h2>Golden Scissors Award</h2>
                     <img src={scissors} alt="Clip art of barber scissors" />
@@ -67,6 +68,7 @@ function OurStory() {
                         Voted Top Choice for Innovative Beauty Services by the Beauty
                         Innovators Association in 2024.
                     </ul>
+                </div>
                 </div>
                 <br />
                 <button
