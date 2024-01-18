@@ -1,6 +1,7 @@
 import React, { useEffect } from "react";
 import { Link, useLocation } from "react-router-dom";
 import "../App.css"
+import "../Styles/blog.css";
 import hairWashing from "../assets/images/hairwashing.jpg"
 
 function ScrollToTop() {
