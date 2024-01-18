@@ -67,9 +67,11 @@
         display: grid;
         grid-template-columns: repeat(auto-fill, minmax(100px, 1fr));
         justify-content: center;
-        /* Center the items horizontally */
-        gap: 100px;
-    }
+        gap: 20px;
+        /* Adjust the gap between items as needed */
+        margin-top: 20px;
+        /* Adjust the margin as needed */
+        }
 
     .circle {
     width: 100px;
