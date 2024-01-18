@@ -50,7 +50,6 @@
 
     .awards-container {
         height: 482px;
-        margin-left: 260px;
         padding-bottom: 100px;
         flex-shrink: 0;
         color: var(--Color, #FFF);
