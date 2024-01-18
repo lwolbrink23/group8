@@ -49,11 +49,6 @@
     }
 
     .awards-container {
-        display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(100px, 1fr));
-            /* Adjust item width as needed */
-            gap: 30px;
-            /* Adjust the gap between items as needed */
         height: 482px;
         flex-shrink: 0;
         color: var(--Color, #FFF);
