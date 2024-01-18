@@ -69,38 +69,20 @@
         justify-content: center;
         gap: 20px;
         }
-        .circle-image1{
-        width: 100px;
-        height: 100px;
-}
- .circle-image2 {
-     width: 100px;
-     height: 100px;
- }
-  .circle-image3 {
-      width: 70px;
-      height: 100px;
-  }
     .golden-scissors {
         padding-left: 150px;
         padding-right: 20px;
-        width: 258px;
-        height: 73px;
-
-
     }
 
     .diamond-spa {
-    width: 258px;
-    height: 101px;
+  
     padding-left: 150px;
     padding-right: 20px;
 
     }
 
     .platinum-innovators {
-    width: 258px;
-    height: 40px;
+
     padding-left: 50px;
     padding-right: 50px;
 
