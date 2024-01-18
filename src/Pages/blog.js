@@ -27,8 +27,7 @@ function Blog() {
       <div className="main-blog-page">
         <h1>Blog</h1>
         <p>Stay up to date with the latest news from The Suite Spot!</p>
-        {/* Background image */}
-        <img src="assets/logo/TSS Circle logo Transparent.png" alt="background" />
+        {/* Background image added in CSS*/}
         <form className="subscribe">
           <label htmlFor="email">Email</label>
           <input type="text" id="email" /><br />
