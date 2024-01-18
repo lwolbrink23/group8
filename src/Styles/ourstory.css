@@ -55,6 +55,12 @@
         background: #5C5C5C;
     }
 
+    .circle {
+    width: 100px;
+    height: 100px;
+    flex-shrink: 0;
+    }
+
     .golden-scissors {
      
 
