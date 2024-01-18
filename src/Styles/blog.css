@@ -2,6 +2,7 @@
 @media screen and (min-width: 767px) {
 .main-blog-page{
     height: 419px;
+    display: flex;
     flex-shrink: 0;
     background: url("../assets/images/flower.jpeg"), lightgray 50% / cover no-repeat;
     background-size: cover;
