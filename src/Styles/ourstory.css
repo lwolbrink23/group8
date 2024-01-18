@@ -65,19 +65,21 @@
 
     .items-container{
         display: grid;
-        grid-template-columns: repeat(auto-fill, minmax(100px, 2fr));
+        grid-template-columns: repeat(auto-fill, minmax(100px, 1fr));
         justify-content: center;
         gap: 20px;
         }
 
     .circle {
-    width: 100px;
-    height: 100px;
+        width: 100px;
+        height: 100px;
     }
 
     .golden-scissors {
-    width: 258px;
-    height: 73px;
+        padding-left: 85px;
+        padding-right: 30px;
+        width: 258px;
+        height: 73px;
 
 
     }
