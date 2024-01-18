@@ -38,10 +38,9 @@ function OurStory() {
             </div>
             <div class="awards-container">
                 <h1>Awards</h1>
-                <div class="items-container">
                 <div class="golden-scissors">
                     <h2>Golden Scissors Award</h2>
-                    <img className="circle-image" src={scissors} alt="Clip art of barber scissors" />
+                    <img src={scissors} alt="Clip art of barber scissors" />
                     <ul>
                         Voted the #1 Salon for Exceptional
                         Haircuts and Styles in 2022.
@@ -50,7 +49,7 @@ function OurStory() {
                 <div class="diamond-spa">
                     <h2>Diamond Spa Award</h2>
 
-                    <img className="circle-image" src={diamond} alt="Clip art of a diamond" />
+                    <img src={diamond} alt="Clip art of a diamond" />
                     <ul>
                         Recognized as the #1 Destination for Relaxation
                         and Pampering by Spa Enthusiasts in 2023.
@@ -58,7 +57,7 @@ function OurStory() {
                 </div>
                 <div class="platinum-innovators">
                     <h2>Platinum Innovators Award</h2>
-                    <img className="circle-image" src={shootingStar} alt=" Clip art of the star of Bethlehem" />
+                    <img src={shootingStar} alt=" Clip art of the star of Bethlehem" />
                     <ul>
                         Voted Top Choice for Innovative Beauty Services by the Beauty
                         Innovators Association in 2024.
@@ -73,7 +72,6 @@ function OurStory() {
             Learn More About Our Suites!
           </button>
             </div>
-        </div>
     );
 }
 

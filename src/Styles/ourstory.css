@@ -63,9 +63,6 @@
         line-height: normal;
     }
 
-    .items-container{
-    }
-
     .golden-scissors {
         display: flex;
         flex-direction: column;
