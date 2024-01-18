@@ -3,6 +3,7 @@ import "../Styles/ourstory.css"
 import scissors from "../assets/icons/icons8-barber-scissors-96.png"
 import diamond from "../assets/icons/icons8-diamond-64.png"
 import shootingStar from "../assets/icons/icons8-star-of-bethlehem-64.png"
+import whiteCircle from "../assets/icons/icons8-white-circle.png"
 
 function OurStory() {
     return (
@@ -41,6 +42,7 @@ function OurStory() {
                 <div class="golden-scissors">
                     <h2>Golden Scissors Award</h2>
                     <img src={scissors} alt="Clip art of barber scissors" />
+                    <img className="circle" src={whiteCircle} alt="white circle background" />
                     <ul>
                         Voted the #1 Salon for Exceptional
                         Haircuts and Styles in 2022.
@@ -50,6 +52,7 @@ function OurStory() {
                     <h2>Diamond Spa Award</h2>
 
                     <img src={diamond} alt="Clip art of a diamond" />
+                    <img className="circle" src={whiteCircle} alt="white circle background" />
                     <ul>
                         Recognized as the #1 Destination for Relaxation
                         and Pampering by Spa Enthusiasts in 2023.
@@ -59,6 +62,7 @@ function OurStory() {
                     <h2>Platinum Innovators Award</h2>
 
                     <img src={shootingStar} alt=" Clip art of the star of Bethlehem" />
+                    <img className="circle" src={whiteCircle} alt="white circle background" />
                     <ul>
                         Voted Top Choice for Innovative Beauty Services by the Beauty
                         Innovators Association in 2024.
