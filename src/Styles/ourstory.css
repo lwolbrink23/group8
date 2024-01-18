@@ -64,8 +64,8 @@
     }
 
     .items-container{
-        margin-right: 10px;
-        margin-left: -15px;
+        margin-right: auto;
+        margin-left: auto;
     }
 
     .golden-scissors,
