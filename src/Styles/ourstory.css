@@ -62,7 +62,13 @@
     }
 
     .golden-scissors {
-     
+    color: var(--Color, #FFF);
+    text-align: center;
+    font-family: Poppins;
+    font-size: 15px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
 
     }
 
