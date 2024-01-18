@@ -21,10 +21,7 @@
     }
 
     .story-mission-container{
-        text-align: center;
-        width: 500px;
-        height: 276px;
-        flex-shrink: 0;
+        height: 410px;
         display: flex;
         padding-top: 35px;
         margin-top: -20px;
@@ -32,6 +29,10 @@
     }
 
     .our-story {
+        text-align: center;
+        width: 500px;
+        height: 276px;
+        flex-shrink: 0;
         padding-left: 132px;
     }
 
