@@ -66,9 +66,9 @@
     .items-container{
         display: grid;
         grid-template-columns: repeat(auto-fill, minmax(100px, 1fr));
-        justify-content: center;
+        padding-left: 85px;
         /* Center the items horizontally */
-        gap: 10px;
+        gap: 100px;
     }
 
     .circle {
