@@ -77,14 +77,23 @@
             text-align: center;
             margin: 0;
             padding-right: 20px;
-        }
+    }
+
         .golden-scissors{
             padding-left: 50px;
             padding-right: -60px;
+    }
+        button {
+            width: 200px;
+
+            padding: 10px;
+
+            font-size: 16px;
         }
         .diamond-spa{
             padding-left: 65px;
-        }
+    }
+
     h1 {
         /* Heading 1 */
         font-size: 44px;
