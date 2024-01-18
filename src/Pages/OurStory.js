@@ -1,3 +1,5 @@
+import React from "react";
+import { Link } from "react-router-dom";
 import "../App.css";
 import "../Styles/ourstory.css"
 import scissors from "../assets/icons/scissors-whitebg.png"
@@ -66,12 +68,12 @@ function OurStory() {
                 </div>
                 </div>
                 <br />
-                <button className="suite-button"
-            type="button"
-            onClick={() => alert('redirects to suites')}
-          >
-            Learn More About Our Suites!
+          <Link to="/oursuites">
+                  <button
+            type="button" className="suite-button">
+             Learn More About Our Suites!
           </button>
+          </Link>
             </div>
         </div>
     );
