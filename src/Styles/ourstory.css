@@ -50,6 +50,7 @@
 
     .awards-container {
         height: 482px;
+        margin-left: 260px;
         padding-bottom: 100px;
         flex-shrink: 0;
         color: var(--Color, #FFF);
@@ -61,10 +62,6 @@
         font-style: normal;
         font-weight: 400;
         line-height: normal;
-        display: flex;
-            flex-direction: column;
-            align-items: center;
-            text-align: center;
     }
 
     .items-container{
@@ -72,18 +69,14 @@
 
     }
 
-    .golden-scissors {
-    align-items: center;
-
-    }
-
-    .diamond-spa {
-        align-items: center;
-    }
-
+    .golden-scissors,
+    .diamond-spa,
     .platinum-innovators {
-    align-items: center;
-    }
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+        }
 
     h1 {
         /* Heading 1 */
