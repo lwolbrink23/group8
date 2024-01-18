@@ -66,7 +66,6 @@
     .items-container{
         display: grid;
         grid-template-columns: repeat(auto-fill, minmax(100px, 1fr));
-        padding-left: 100px;
         /* Center the items horizontally */
         gap: 100px;
     }
@@ -79,21 +78,18 @@
     .golden-scissors {
     width: 258px;
     height: 73px;
-    padding-left: 150px;
 
     }
 
     .diamond-spa {
     width: 258px;
     height: 101px;
-    padding-left: 150px;
 
     }
 
     .platinum-innovators {
     width: 258px;
     height: 40px;
-    padding-right: -150px;
 
     }
 
