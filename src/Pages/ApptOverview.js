@@ -1,6 +1,6 @@
-import React from "react";
+import React, { useEffect } from "react";
+import { Link, useLocation } from "react-router-dom";
 import "../App.css";
-import { Link } from "react-router-dom";
 import "../Styles/ApptOverview.css"
 import store from "../assets/icons/icons8-shop-96.png";
 import purpleLady from "../assets/icons/icons8-person-female-100.png";
@@ -8,8 +8,24 @@ import calendar from "../assets/icons/icons8-event-accepted-tentatively-96.png";
 import Arrow from "../assets/icons/circlearrow.png"
 import { useNavigate } from 'react-router-dom';
 
+function ScrollToTop() {
+  const location = useLocation();
+
+  useEffect(() => {
+    if (location.pathname === "/blogpost") {
+      window.scrollTo(0, 0);
+    }
+  }, [location.pathname]);
+
+  return null;
+}
+
 
 function Overview() {
+    const scrollToTop = () => {
+    window.scrollTo(0, 0);
+  };
+
     function BackButton() {
 
         let navigate = useNavigate();
@@ -24,6 +40,7 @@ function Overview() {
     }
     return (
         <div>
+            <ScrollToTop />
             <div className="title-container trans-white">
                 <BackButton />
                 <h1>Simply Chic Hair</h1>
@@ -82,7 +99,7 @@ function Overview() {
                         </div>
                     </div>
                     {/*book now button*/}
-                    <Link to="/appointment_confirmed">
+                    <Link to="/appointment_confirmed" onClick={scrollToTop}>
                         <button type="button" className="purp-button">Book Now</button>
                     </Link>
                 </div>
