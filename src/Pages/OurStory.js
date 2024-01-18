@@ -38,6 +38,7 @@ function OurStory() {
             </div>
             <div class="awards-container">
                 <h1>Awards</h1>
+                <div class="items-container">
                 <div class="golden-scissors">
                     <h2>Golden Scissors Award</h2>
                     <img src={scissors} alt="Clip art of barber scissors" />
@@ -72,6 +73,7 @@ function OurStory() {
             Learn More About Our Suites!
           </button>
             </div>
+        </div>
     );
 }
 
