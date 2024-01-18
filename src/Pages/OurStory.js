@@ -58,7 +58,6 @@ function OurStory() {
                 </div>
                 <div class="platinum-innovators">
                     <h2>Platinum Innovators Award</h2>
-
                     <img className="circle-image" src={shootingStar} alt=" Clip art of the star of Bethlehem" />
                     <ul>
                         Voted Top Choice for Innovative Beauty Services by the Beauty
