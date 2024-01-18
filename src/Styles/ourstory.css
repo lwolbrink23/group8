@@ -63,7 +63,12 @@
     }
 
     .items-container{
-        display: flex;
+        display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(100px, 1fr));
+            /* Adjust item width as needed */
+            gap: 10px;
+            /* Adjust the gap between items as needed */
+        }
     }
 
     .circle {
