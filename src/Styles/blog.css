@@ -4,7 +4,7 @@
     height: 419px;
     flex-shrink: 0;
     background: url("../assets/images/flower.jpeg"), lightgray 50% / cover no-repeat;
-    background-size: cover;
+    background-size: contain;
     box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
 
 }
