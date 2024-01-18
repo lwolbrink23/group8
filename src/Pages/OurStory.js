@@ -56,9 +56,10 @@ function OurStory() {
                         and Pampering by Spa Enthusiasts in 2023.
                     </ul>
                 </div>
-                <img className="circle-image" src={shootingStar} alt=" Clip art of the star of Bethlehem" />
                 <div class="platinum-innovators">
                     <h2>Platinum Innovators Award</h2>
+
+                    <img className="circle-image" src={shootingStar} alt=" Clip art of the star of Bethlehem" />
                     <ul>
                         Voted Top Choice for Innovative Beauty Services by the Beauty
                         Innovators Association in 2024.
