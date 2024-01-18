@@ -1,7 +1,7 @@
 /* web screen */
 @media screen and (min-width: 767px) {
 .main-blog-page{
-    width: auto;
+    width: 1200px;
     height: 419px;
     flex-shrink: 0;
     background: url("../assets/images/flower.png"), lightgray 50% / cover no-repeat;
