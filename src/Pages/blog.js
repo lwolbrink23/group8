@@ -1,11 +1,28 @@
-import React from "react";
+import React, { useEffect } from "react";
+import { Link, useLocation } from "react-router-dom";
 import "../App.css"
-import { Link } from "react-router-dom";
 import hairWashing from "../assets/images/hairwashing.jpg"
 
+function ScrollToTop() {
+  const location = useLocation();
+
+  useEffect(() => {
+    if (location.pathname === "/blogpost") {
+      window.scrollTo(0, 0);
+    }
+  }, [location.pathname]);
+
+  return null;
+}
+
 function Blog() {
+  const scrollToTop = () => {
+    window.scrollTo(0, 0);
+  };
+
   return (
     <div>
+      <ScrollToTop />
       <div className="main-blog-page">
         <h1>Blog</h1>
         <p>Stay up to date with the latest news from The Suite Spot!</p>
@@ -31,7 +48,7 @@ function Blog() {
           <p>
             In this article, we'll delve into effective tips that will leave you with a mane to envy.
           </p>
-          <Link to="/blogpost">
+          <Link to="/blogpost" onClick={scrollToTop}>
                   <button
             type="button">
             Read More
