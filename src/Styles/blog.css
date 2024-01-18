@@ -1,8 +1,8 @@
 /* web screen */
 @media screen and (min-width: 767px) {
     .main-blog-page {
-        height: 700px;
-        padding-top: 50px;
+        height: 600px;
+        padding-top: 100px;
         margin-top: 0px;
         flex-shrink: 0;
         background: url("../assets/images/flower.jpeg") lightgray center/cover no-repeat;
