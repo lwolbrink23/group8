@@ -51,6 +51,7 @@
     .awards-container {
         height: 482px;
         flex-shrink: 0;
+        display: flex;
         color: var(--Color, #FFF);
         border: 1px solid #000;
         background: #5C5C5C;
