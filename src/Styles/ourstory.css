@@ -69,9 +69,14 @@
         justify-content: center;
         gap: 20px;
         }
+        .golden-scissors>img,
+        .diamond-spa>img,
+        .platinum-innovators>img {
+            width: 100px;
+            height: 100px;
+        }
     .golden-scissors {
-        padding-left: 150px;
-        padding-right: 20px;
+
     }
 
     .diamond-spa {
