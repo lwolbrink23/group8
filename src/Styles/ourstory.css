@@ -63,17 +63,18 @@
         line-height: normal;
     }
 
-    .items-container{
-        display: grid;
-        grid-template-columns: repeat(auto-fill, minmax(100px, 1fr));
-        justify-content: center;
-        gap: 20px;
-        }
-  .items-container img {
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-  }
+    .items-container img {
+        width: 100%;
+        height: 100%;
+        object-fit: contain;
+    }
+    
+    .circle-image {
+    height: 100px;
+    width: 100px;
+    object-fit: contain;
+     }
+
     .golden-scissors {
         padding-left: 150px;
         padding-right: 20px;
