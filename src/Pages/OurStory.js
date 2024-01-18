@@ -66,7 +66,7 @@ function OurStory() {
                 </div>
                 </div>
                 <br />
-                <button
+                <button className="suite-button"
             type="button"
             onClick={() => alert('redirects to suites')}
           >
