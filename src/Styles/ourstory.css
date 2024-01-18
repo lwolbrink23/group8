@@ -55,6 +55,7 @@
         color: var(--Color, #FFF);
         border: 1px solid #000;
         background: #5C5C5C;
+        text-align: center;
         font-family: Poppins;
         font-size: 15px;
         font-style: normal;
@@ -73,7 +74,6 @@
             display: flex;
             flex-direction: column;
             align-items: center;
-            text-align: center;
         }
 
     h1 {
