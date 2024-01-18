@@ -49,7 +49,11 @@
     }
 
     .awards-container {
-
+        width: 1280px;
+        height: 482px;
+        flex-shrink: 0;
+        border: 1px solid #000;
+        background: #5C5C5C;
     }
 
     .golden-scissors {
@@ -59,7 +63,7 @@
     .diamond-spa {
 
     }
-    
+
     .platinum-innovators {
 
     }
