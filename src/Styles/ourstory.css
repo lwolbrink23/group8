@@ -1,7 +1,6 @@
 /* web screen */
 @media screen and (min-width: 767px) {
     .page-title {
-        /*background image*/
         height: 367px;
         display: flex;
         flex-direction: column;
@@ -9,18 +8,19 @@
         flex-shrink: 0;
         background: lightgray url("../assets/images/salon-chair.jpeg") no-repeat center/cover;
     }
+
     .title-text {
         text-align: left;
         line-height: 1.2;
     }
-    
+
     .about-text {
         text-align: left;
         margin-top: 127px;
         margin-bottom: -46px;
     }
 
-    .story-mission-container{
+    .story-mission-container {
         height: 410px;
         display: flex;
         padding-top: 35px;
@@ -28,20 +28,17 @@
         background-color: white;
     }
 
-    .our-story {
-        text-align: center;
-        width: 500px;
-        height: 276px;
-        flex-shrink: 0;
-        padding-left: 132px;
-    }
-
+    .our-story,
     .our-mission {
         text-align: center;
-        width: 500px;
-        height: 276px;
-        flex-shrink: 0;
-        padding-left: 180px
+        width: 100%;
+        /* Use full width for responsiveness */
+        max-width: 500px;
+        /* Set a maximum width */
+        margin: 0 auto;
+        /* Center horizontally */
+        padding: 0 20px;
+        /* Add padding for spacing */
     }
 
     .sm-p {
@@ -52,7 +49,7 @@
         height: 482px;
         padding-bottom: 100px;
         flex-shrink: 0;
-        color: var(--Color, #FFF);
+        color: #FFF;
         border: 1px solid #000;
         background: #5C5C5C;
         text-align: center;
@@ -63,41 +60,30 @@
         line-height: normal;
     }
 
-    .items-container{
+    .items-container {
         display: grid;
         grid-template-columns: repeat(auto-fill, minmax(100px, 1fr));
         justify-content: center;
         gap: 20px;
-        }
+    }
 
     .circle {
         width: 100px;
         height: 100px;
     }
 
-    .golden-scissors {
-        padding-left: 150px;
-        padding-right: 20px;
-        width: 258px;
-        height: 73px;
-
-
-    }
-
-    .diamond-spa {
-    width: 258px;
-    height: 101px;
-    padding-left: 150px;
-    padding-right: 20px;
-
-    }
-
+    .golden-scissors,
+    .diamond-spa,
     .platinum-innovators {
-    width: 258px;
-    height: 40px;
-    padding-left: 50px;
-    padding-right: 50px;
-
+        text-align: center;
+        width: 100%;
+        max-width: 258px;
+        padding: 20px;
+        /* Adjust padding as needed */
+        background-color: #fff;
+        /* Adjust background color as needed */
+        margin: 0 auto;
+        /* Center horizontally */
     }
 
     h1 {
