@@ -1,7 +1,8 @@
 .conf-body {
     align-items: center;
     text-align: center;
-    padding-bottom: 30px
+    padding-bottom: 30px;
+    margin: 0 500px;
 }
 
 #confirmed-header {
@@ -27,7 +28,7 @@
 }
 
 #conf-thanks {
-    margin: 0 500px;
+
 }
 
 .appt-details {
@@ -45,4 +46,18 @@
 
 .appt-details h1{
     margin-top: -20px;
+}
+
+@media screen and (max-width: 1400px) {
+    .conf-body {
+        margin: 0 200px;
+        /* Larger margin for smaller screens */
+    }
+}
+
+@media screen and (max-width: 768px) {
+    .conf-body {
+        margin: 0 50px;
+        /* Larger margin for smaller screens */
+    }
 }
