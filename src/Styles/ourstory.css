@@ -37,6 +37,10 @@
     }
 
     .our-mission {
+        text-align: center;
+        width: 500px;
+        height: 276px;
+        flex-shrink: 0;
         padding-left: 180px
     }
 
@@ -55,7 +59,7 @@
     .diamond-spa {
 
     }
-
+    
     .platinum-innovators {
 
     }
