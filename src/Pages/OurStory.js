@@ -1,14 +1,31 @@
-import React from "react";
-import { Link } from "react-router-dom";
+import React, { useEffect } from "react";
+import { Link, useLocation } from "react-router-dom";
 import "../App.css";
-import "../Styles/ourstory.css"
-import scissors from "../assets/icons/scissors-whitebg.png"
-import diamond from "../assets/icons/diamond-whitebg.png"
-import shootingStar from "../assets/icons/star-whitebg.png"
+import "../Styles/ourstory.css";
+import scissors from "../assets/icons/scissors-whitebg.png";
+import diamond from "../assets/icons/diamond-whitebg.png";
+import shootingStar from "../assets/icons/star-whitebg.png";
+
+function ScrollToTop() {
+  const location = useLocation();
+
+  useEffect(() => {
+    if (location.pathname === "/oursuites") {
+      window.scrollTo(0, 0);
+    }
+  }, [location.pathname]);
+
+  return null;
+}
 
 function OurStory() {
-    return (
-        <div>
+  const scrollToTop = () => {
+    window.scrollTo(0, 0);
+  };
+
+  return (
+    <div>
+      <ScrollToTop />
             <div class="page-title">
                 <h2 class="about-text"><u>About</u></h2>
                 <h1 class="title-text">Our Story</h1>
@@ -68,7 +85,7 @@ function OurStory() {
                 </div>
                 </div>
                 <br />
-          <Link to="/oursuites">
+          <Link to="/oursuites"  onClick={scrollToTop}>
                   <button
             type="button" className="suite-button">
              Learn More About Our Suites!
