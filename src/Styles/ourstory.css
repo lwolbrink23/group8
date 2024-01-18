@@ -64,12 +64,7 @@
     }
 
     .items-container{
-        margin-left: 260px;
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(100px, 1fr));
-            justify-content: center;
-            gap: 20px;
-            /* Adjust the value based on your preference */
+
 
     }
 
