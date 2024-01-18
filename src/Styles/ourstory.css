@@ -54,7 +54,6 @@
         color: var(--Color, #FFF);
         border: 1px solid #000;
         background: #5C5C5C;
-        color: var(--Color, #FFF);
         text-align: center;
         font-family: Poppins;
         font-size: 15px;
@@ -70,7 +69,6 @@
     .circle {
     width: 100px;
     height: 100px;
-    flex-shrink: 0;
     }
 
     .golden-scissors {
