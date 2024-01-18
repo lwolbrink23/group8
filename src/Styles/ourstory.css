@@ -77,7 +77,7 @@
 
     .golden-scissors {
         padding-left: 150px;
-        padding-right: 30px;
+        padding-right: 20px;
         width: 258px;
         height: 73px;
 
@@ -88,15 +88,15 @@
     width: 258px;
     height: 101px;
     padding-left: 150px;
-    padding-right: 30px;
+    padding-right: 20px;
 
     }
 
     .platinum-innovators {
     width: 258px;
     height: 40px;
-    padding-left: 150px;
-    padding-right: 30px;
+    padding-left: 20px;
+    padding-right: 150px;
 
     }
 
