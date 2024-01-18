@@ -1,11 +1,28 @@
-import React from "react";
+import React, { useEffect } from "react";
+import { Link, useLocation } from "react-router-dom";
 import "../App.css";
-import { Link } from "react-router-dom";
 import purpleCheck from "../assets/icons/icons8-check-100.png"
 
+function ScrollToTop() {
+  const location = useLocation();
+
+  useEffect(() => {
+    if (location.pathname === "/blogpost") {
+      window.scrollTo(0, 0);
+    }
+  }, [location.pathname]);
+
+  return null;
+}
+
 function Confirmed() {
-return(
+  const scrollToTop = () => {
+    window.scrollTo(0, 0);
+  };
+
+  return (
     <div>
+      <ScrollToTop />
          <div className="shop-name">
             <h1>Simply Chic Hair</h1>
         </div>
@@ -34,7 +51,7 @@ return(
                 <h4><b>Location</b></h4>
                 <p>The Suite Spot Suite #1</p>
             </div>
-            <Link to="/">
+            <Link to="/" onClick={scrollToTop}>
                  <button type="button">Back to Home</button>
             </Link>
             </div>
