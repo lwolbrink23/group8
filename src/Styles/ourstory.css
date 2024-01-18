@@ -64,13 +64,14 @@
     }
 
     .items-container{
-        display: grid;
-        grid-template-columns: repeat(auto-fill, minmax(100px, 1fr));
-        justify-content: center;
-        gap: 20px;
-        /* Adjust the gap between items as needed */
-        margin-top: 20px;
-        /* Adjust the margin as needed */
+            display: flex;
+            justify-content: center;
+        }
+    
+        /* Add this style if you want to center the button as well */
+        .awards-container button {
+            margin: 0 auto;
+            display: block;
         }
 
     .circle {
