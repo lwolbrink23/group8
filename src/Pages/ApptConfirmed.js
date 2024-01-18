@@ -22,7 +22,7 @@ function Confirmed() {
   };
 
   return (
-    <div>
+    <div className="conf-body">
       <ScrollToTop />
       <div className="header-white">
         <h1>Simply Chic Hair</h1>
@@ -32,7 +32,7 @@ function Confirmed() {
           <img src={purpleCheck} alt="purple check mark" />
           <h1><strong>Confirmed</strong></h1>
         </div>
-        <p>
+        <p id="conf-thanks">
           Thank you for choosing The Suite Spot Salon for your beauty
           and grooming needs.
           Your appointment has been successfully booked.
@@ -53,10 +53,11 @@ function Confirmed() {
           <h3><b>Location</b></h3>
           <p>The Suite Spot Suite #1</p>
         </div>
-        <Link to="/" onClick={scrollToTop}>
-          <button type="button">Back to Home</button>
-        </Link>
+
       </div>
+      <Link to="/" onClick={scrollToTop}>
+        <button type="button">Back to Home</button>
+      </Link>
     </div>
   )
 }
