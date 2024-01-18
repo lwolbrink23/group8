@@ -54,6 +54,13 @@
         color: var(--Color, #FFF);
         border: 1px solid #000;
         background: #5C5C5C;
+        color: var(--Color, #FFF);
+        text-align: center;
+        font-family: Poppins;
+        font-size: 15px;
+        font-style: normal;
+        font-weight: 400;
+        line-height: normal;
     }
 
     .circle {
@@ -65,30 +72,18 @@
     .golden-scissors {
     width: 258px;
     height: 73px;
-    flex-shrink: 0;
-    text-align: center;
-    font-family: Poppins;
-    font-size: 15px;
-    font-style: normal;
-    font-weight: 400;
-    line-height: normal;
 
     }
 
     .diamond-spa {
+    width: 258px;
+    height: 101px;
 
     }
 
     .platinum-innovators {
     width: 258px;
     height: 40px;
-    flex-shrink: 0;
-    text-align: center;
-    font-family: Poppins;
-    font-size: 15px;
-    font-style: normal;
-    font-weight: 400;
-    line-height: normal;
 
     }
 
