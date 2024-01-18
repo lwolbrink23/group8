@@ -69,10 +69,18 @@
         justify-content: center;
         gap: 20px;
         }
-        .circle-image{
+        .circle-image1{
         width: 100px;
         height: 100px;
 }
+ .circle-image2 {
+     width: 100px;
+     height: 100px;
+ }
+  .circle-image3 {
+      width: 100px;
+      height: 100px;
+  }
     .golden-scissors {
         padding-left: 150px;
         padding-right: 20px;
