@@ -57,7 +57,14 @@
     nav ul li {
         margin: 10px 0;
         width: 100%;
-        height: auto;
+       
+        text-align: center;
+            /* Center the text in the list items */
+    }
+
+    .purp-button {
+        display: block;
+        margin: 10px auto; /* Center the "Book Now" button */
     }
 
     .logo-web {
