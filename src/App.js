@@ -18,9 +18,10 @@ import ProductPage from "./Pages/ProductPage";
 import Cart from "./Pages/Cart";
 import OrderPlaced from "./Pages/OrderPlaced";
 import OrderDetails from "./Pages/OrderDetails";
-import Account from "./Pages/Account";
+import Login from "./Pages/Login";
 import SelectTime from "./Pages/SelectTime"
 import { Route, Routes } from "react-router-dom";
+
 
 // this is only the home page elements
 function App() {
@@ -47,7 +48,7 @@ function App() {
           <Route path="/selecttime" element={<SelectTime />} />
           <Route path="/order_placed" element={<OrderPlaced />} />
           <Route path="/order_details" element={<OrderDetails />} />
-          <Route path="/Account" element={<Account />} />
+          <Route path="/Login" element={<Login />} />
         </Routes>
       </div>
       <Footer />

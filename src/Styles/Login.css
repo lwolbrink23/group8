@@ -1,10 +1,11 @@
 /*general*/
-p {
+.reg {
     text-align: center;
 }
 
 .purp {
     color: #8569B8;
+    text-align: center;
 }
 
 .check {
@@ -48,7 +49,7 @@ p {
     height: 50px;
     }
 
-   .loginform button {
+   button {
        padding: 15px 30px;
        justify-content: center;
        align-items: center;
@@ -87,7 +88,7 @@ p {
         margin: 0 auto;
         }
    
-    .loginform button {
+     button {
         padding: 15px 30px;
         justify-content: center;
         align-items: center;
@@ -100,6 +101,6 @@ p {
         }
     .contain {
         display: flex;
-            justify-content: center;
+        justify-content: center;
     }
 }

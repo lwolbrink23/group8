@@ -1,8 +1,9 @@
 import React from "react";
-import "../App.css";
-import "../Styles/Account.css"
+import '../App.css';
+import '../Styles/Login.css'
 
-function Account() {
+
+function Login() {
     return (
         <div>
             <h1>Log In</h1>
@@ -18,19 +19,20 @@ function Account() {
                 <input type="checkbox" className="check" id="check"/>
                 <label htmlFor="check">Remember Me</label>
                 </div>
-                <br/>
                 <button type="button">
                     LOG IN
                 </button>
             </form>
             </div>
             <p className="purp">Forgot your password?</p>
+
             <div className="text-container">
-            <p>Not registered? </p>
-            <p className="purp"> Sign up</p>
+            <p classname="reg">Not registered?</p>
+            <p className="purp">Sign up</p>
             </div>
+
         </div>
     )
 }
 
-export default Account;
+export default Login;
