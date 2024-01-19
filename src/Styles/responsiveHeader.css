@@ -1,8 +1,5 @@
 /* Styles for smaller screens (mobile) */
 @media screen and (max-width: 767px) {
-    /*nav ul {
-        display: none;
-    } idk if i need this???*/ 
 
     nav {
         display: none;/*hide nav at first*/
@@ -36,7 +33,6 @@
 
     nav ul ul {
         width: 100%;
-        color: red;
     }
 
     .header-container {
@@ -57,7 +53,14 @@
     nav ul li {
         margin: 10px 0;
         width: 100%;
-        height: auto;
+       
+        text-align: center;
+            /* Center the text in the list items */
+    }
+
+    .purp-button {
+        display: block;
+        margin: 10px auto; /* Center the "Book Now" button */
     }
 
     .logo-web {
@@ -80,6 +83,12 @@
         display: none;
     }
 
+
+    .icon-mobile {
+        max-height: 35px;
+        margin-right: 10px;
+        display: flex;
+    }
 
   nav ul li:hover>ul { /*makes subpages vertical*/
       display: block;
