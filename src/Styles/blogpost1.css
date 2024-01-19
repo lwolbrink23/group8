@@ -6,12 +6,11 @@
 
     .main-image {
         display: flex;
-        align-items: center;
-        max-width: 50%;
-        height: 50%;
-        flex-shrink: 0;
-        position: relative;
-        margin: 0 auto;
+            align-items: center;
+            max-width: 50%;
+            flex-shrink: 0;
+            position: relative;
+            margin: 0 auto;
     }
 
     .post-general-info h4 {
