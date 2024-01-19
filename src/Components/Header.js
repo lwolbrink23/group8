@@ -23,8 +23,10 @@ function Header() {
       <div
         className={`header-container ${isHamburgerOpen ? "mobile-open" : ""}`}
       >
-        <img src={logoWeb} alt="logo" className="logo-web" />
-        <img src={logoMobile} alt="logo" className="logo-mobile" />
+        <Link to="/">
+          <img src={logoWeb} alt="logo" className="logo-web" />
+          <img src={logoMobile} alt="logo" className="logo-mobile" />
+        </Link>
         <div className="profile-container">
           <Link to="/account">
             {" "}
