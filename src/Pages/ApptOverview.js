@@ -5,8 +5,6 @@ import "../Styles/ApptOverview.css"
 import store from "../assets/icons/icons8-shop-96.png";
 import purpleLady from "../assets/icons/icons8-person-female-100.png";
 import calendar from "../assets/icons/icons8-event-accepted-tentatively-96.png";
-import Arrow from "../assets/icons/circlearrow.png"
-import { useNavigate } from 'react-router-dom';
 import BackButton from "../Components/BackButton";
 
 function ScrollToTop() {

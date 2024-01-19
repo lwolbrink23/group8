@@ -24,7 +24,7 @@ function OurStory() {
   };
 
   return (
-    <div>
+    <div className="bg-color">
       <ScrollToTop />
             <div class="page-title">
                 <h2 class="about-text"><u>About</u></h2>
@@ -57,16 +57,16 @@ function OurStory() {
             </div>
             <div class="awards-container">
                 <h1>Awards</h1>
-                <div class="items-container">
-                <div class="golden-scissors">
+                <div class="items-containers">
+                    <div class="column">
                     <h2>Golden Scissors Award</h2>
                     <img src={scissors} alt="Clip art of barber scissors" />
                     <ul>
                         Voted the #1 Salon for Exceptional
                         Haircuts and Styles in 2022.
                     </ul>
-                </div>
-                <div class="diamond-spa">
+                    </div>
+                    <div class="column">
                     <h2>Diamond Spa Award</h2>
 
                     <img src={diamond} alt="Clip art of a diamond" />
@@ -74,15 +74,15 @@ function OurStory() {
                         Recognized as the #1 Destination for Relaxation
                         and Pampering by Spa Enthusiasts in 2023.
                     </ul>
-                </div>
-                <div class="platinum-innovators">
+                    </div>
+                    <div class="column">
                     <h2>Platinum Innovators Award</h2>
                     <img src={shootingStar} alt=" Clip art of the star of Bethlehem" />
                     <ul>
                         Voted Top Choice for Innovative Beauty Services by the Beauty
                         Innovators Association in 2024.
                     </ul>
-                </div>
+                    </div>
                 </div>
                 <br />
           <Link to="/oursuites"  onClick={scrollToTop}>

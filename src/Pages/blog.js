@@ -25,19 +25,21 @@ function Blog() {
     <div>
       <ScrollToTop />
       <div className="main-blog-page">
-        <h1>Blog</h1>
-        <p>Stay up to date with the latest news from The Suite Spot!</p>
+        <div className="bg-image"></div>
+        <div className="overlay-text">
+        <h1 className="header-1">Blog</h1>
+        <p className="sub-text">Stay up to date with the latest news from The Suite Spot!</p>
         {/* Background image added in CSS*/}
         <form className="subscribe">
-          <label htmlFor="email">Email</label>
-          <input type="text" id="email" /><br />
+          <input type="text" id="email" placeholder="Enter your email" className="email" />
           <button
-            type="button"
+            type="button" className="sub-button"
             onClick={() => alert('Thank you for subscribing to our blog!')}
           >
             Subscribe
           </button>
         </form>
+        </div>
         <div class="overlay-box"></div>
       </div>
       <br />
