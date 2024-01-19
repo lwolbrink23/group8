@@ -69,14 +69,7 @@ function Header() {
                   <CustomLink to="/ourservices">Our Services</CustomLink>
                 </li>
                 <li>
-                  <CustomLink to="/">
-                    <img
-                      src={profileicon}
-                      alt="profile icon"
-                      className="icon-mobile"
-                    />
-                    Photo Gallery
-                  </CustomLink>
+                  <CustomLink to="/">Photo Gallery</CustomLink>
                 </li>
               </ul>
             </li>

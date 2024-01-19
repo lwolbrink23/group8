@@ -1,8 +1,5 @@
 /* Styles for smaller screens (mobile) */
 @media screen and (max-width: 767px) {
-    /*nav ul {
-        display: none;
-    } idk if i need this???*/ 
 
     nav {
         display: none;/*hide nav at first*/
