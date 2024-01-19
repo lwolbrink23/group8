@@ -44,18 +44,11 @@
     margin: 0 auto;
     padding: 0 10px;
 }
-
 .awards-container {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    height: auto;
     padding-bottom: 100px;
     color: var(--Color, #FFF);
     border: 1px solid #000;
     background: #5C5C5C;
-    text-align: center;
     font-family: Poppins;
     font-size: 15px;
     font-style: normal;
@@ -64,47 +57,38 @@
     max-width: 100%;
     margin: 0 auto;
     padding: 0 20px;
-}
-.awards-container {
-    display: flex;
-    flex-direction: column;
     align-items: center;
     justify-content: center;
-    height: auto;
-    padding-bottom: 100px;
-    color: var(--Color, #FFF);
-    border: 1px solid #000;
-    background: #5C5C5C;
-    text-align: center;
-    font-family: Poppins;
-    font-size: 15px;
-    font-style: normal;
-    font-weight: 400;
-    line-height: normal;
-    max-width: 100%;
-    margin: 0 auto;
-    padding: 0 20px;
 }
-
-.items-container {
+.items-containers {
     display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(100px, 1fr));
-    gap: 20px;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 20px;
+        justify-content: center;
+        align-items: center;
 }
 
-.golden-scissors,
-.diamond-spa,
-.platinum-innovators {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
+.column{
+    box-sizing: border-box;
+    margin-bottom: 20px;
     text-align: center;
+}
+.column img {
+    display: block;
+    /* Ensure the image is treated as a block element */
+    margin: 0 auto;
+    /* Center the image horizontally */
+    max-width: 100%;
+    /* Ensure the image doesn't exceed the width of its container */
 }
 
 .suite-button {
-    width: 400px;
+width: 400px;
     padding: 10px;
     margin-bottom: 16px;
+    margin-left: auto;
+    margin-right: auto;
+    display: block;
 }
 
 
@@ -121,4 +105,54 @@ h2 {
     font-weight: 700;
     line-height: normal;
 }
+}
+/* mobile screen */
+@media screen and (max-width: 766px) {
+    .bg-color {
+        background-color: white;
+    }
+
+    .page-title h1,
+    .page-title h2 {
+        display: none;
+    }
+
+    .story-mission-container {
+        text-align: center;
+        font-family: Cormorant;
+        font-size: 36px;
+        font-weight: 700;
+        line-height: normal;
+    }
+
+    .sm-p {
+        text-align: justify;
+        max-width: 100%;
+        margin: 0 auto;
+        padding: 0 15px 30px;
+        /* Adjust padding as needed */
+        font-family: Poppins;
+        font-size: 15px;
+        font-weight: 400;
+        line-height: normal;
+    }
+
+    .awards-container {
+        color: var(--Color, #FFF);
+        border: 1px solid #000;
+        background: #5C5C5C;
+        font-family: Poppins;
+        font-size: 15px;
+        text-align: center;
+        padding: 25px;
+    }
+
+    .suite-button {
+        position: relative;
+        width: 100%;
+        margin-bottom: 16px;
+        margin: 0 auto;
+        margin-bottom: 30px;
+
+    }
 }
