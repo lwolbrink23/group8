@@ -65,13 +65,33 @@
     margin: 0 auto;
     padding: 0 20px;
 }
+.awards-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: auto;
+    padding-bottom: 100px;
+    color: var(--Color, #FFF);
+    border: 1px solid #000;
+    background: #5C5C5C;
+    text-align: center;
+    font-family: Poppins;
+    font-size: 15px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+    max-width: 100%;
+    margin: 0 auto;
+    /* Center the element horizontally */
+    padding: 0 20px;
+    /* Adjust padding for spacing */
+}
 
 .items-container {
     display: grid;
     grid-template-columns: repeat(auto-fill, minmax(100px, 1fr));
     gap: 20px;
-    align-items: center;
-    justify-content: center;
 }
 
 .golden-scissors,
@@ -86,7 +106,9 @@
 .suite-button {
     width: 400px;
     padding: 10px;
+    margin-bottom: 16px;
 }
+
 
 h1 {
     font-size: 44px;
