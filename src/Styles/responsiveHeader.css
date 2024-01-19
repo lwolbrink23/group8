@@ -7,10 +7,11 @@
     nav {
         display: none;/*hide nav at first*/
         grid-area: nav;
-        width: 100%;
+        width: 326px;
+        height: 100vh; /*take up entire viewport height. i thought this looks cleaner*/
         position: absolute;
         top: 100%;
-        left: 0;
+        right: 0;
         z-index: 999;
         text-align: center;
         background-color: white;
@@ -33,6 +34,7 @@
 
     nav ul ul {
         width: 100%;
+        color: red;
     }
 
     .header-container {
@@ -44,7 +46,7 @@
     }
 
     nav ul {
-        width: 100%;
+        width: 100%; /*nav links grey part*/
         flex-direction: column;
         justify-content: center;
         align-items: center;
@@ -52,7 +54,6 @@
 
     nav ul li {
         margin: 10px 0;
-        background-color: white;
         width: 100%;
         height: auto;
     }
@@ -66,10 +67,6 @@
         height: auto;
         display: block;
         grid-area: logo-mobile;
-    }
-
-    nav a:hover { /*makes mobile menu grey boxes take up entire width*/
-        display: block;
     }
 
     .profile-icon-mobile {

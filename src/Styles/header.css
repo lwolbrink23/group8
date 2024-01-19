@@ -1,4 +1,11 @@
-/* global header styles*/
+/* Resetting default margin and padding for ul and li */
+nav ul,
+nav ul ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+
 header {
     position: relative;
     background-color: white;
@@ -8,84 +15,79 @@ header {
 .header-container {
     display: flex;
     justify-content: space-between;
-    align-items: center;
+    align-items: flex-end;
 }
 
-nav a { /*nav text*/
-    color: #090B0A;
-    font-family: 'cormorant-bold', serif;
-    font-size: 18px;
-    text-decoration: none;/* Remove underlines from links */
+nav {
+    display: flex;
 }
 
-li .purp-button:hover { /* Nav book now button */
-    background-color: #8569B8;
-}
-
-nav a:hover { 
-    background-color: #E7E7E7;
-    padding: 10px 20px;
-}
-
-nav ul ul {/* the dropdown menu */
-    display: none;
-    position: absolute;
-    background-color: white;
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-    z-index: 1000;
-    top: 0;/*align submenus with parent items */
-    left: 0;
-}
-
-nav ul ul a { /*the dropdown menu text */
-    color: #090B0A;
-
+nav ul {
+    display: flex;
+    /* Set the display to flex to make items spread horizontally */
 }
 
 nav a {
+    color: #090B0A;
+    font-family: 'cormorant-bold', serif;
+    font-size: 18px;
+    text-decoration: none;
     padding: 10px 20px;
+    /* Padding for regular nav items */
 }
 
-nav ul ul a:hover { /*dropdown menu text on hover */
+nav a:hover {
     background-color: #E7E7E7;
-    padding: 10px 20px;
 }
 
-nav ul { /*dropdown menu items */
-    list-style: none;
-    display: flex;
-    margin: 0;
-    padding: 0;
+nav li {
     position: relative;
 }
 
-nav ul li {
-    margin-right: 20px;
-    /* Adjust the spacing between the links */
-    position: relative;
+nav ul ul {
+    display: none;
+    position: absolute;
+    background-color: white;
+    z-index: 1000;
+}
+
+nav ul ul a {
+    color: #090B0A;
+}
+
+nav ul ul a:hover {
+    background-color: #E7E7E7;
 }
 
 nav ul li:hover>ul {
     display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
-    gap: 10px;
-    /* Adjust the spacing between dropdown items */
-    position: absolute;
     top: 100%;
     left: 0;
     width: 100%;
 }
 
+.logo-web {
+    max-width: 150px;
+    height: auto;
+    margin-right: 20px;
+}
 
- .logo-web {
-     max-width: 150px;
-     height: auto;
-     margin-right: 20px;
- }
-
- .profile-container {
+.profile-container {
     position: absolute;
     top: 10px;
     right: 10px;
     z-index: 1000;
- }
+}
+
+/* Distribute the nav links evenly */
+nav li {
+    flex: 1;
+    text-align: center;
+}
+
+/* Optional: Center the text vertically */
+nav a {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
