@@ -1,5 +1,4 @@
 import React from "react";
-import "../App.css";
 import "../Styles/blogpost1.css";
 import { Link } from "react-router-dom";
 import backArrow from "../assets/icons/back-arrow.png"
@@ -12,10 +11,10 @@ function BlogPost() {
                 <img src={backArrow} alt="back arrow" />
             </Link>
       <div className="post-general-info">
-        <img src={hairWashing} alt="woman getting her hair washed by hairstylist" />
-        <h4>Category: Hair</h4>
-        <h4>Author: Jane Doe</h4>
-        <h2>Hair Care Secrets: Tips for Gorgeous Locks</h2>
+        <img src={hairWashing} className="main-image" alt="woman getting her hair washed by hairstylist" />
+        <h4 className="category">Category: Hair</h4>
+        <h4 className="author" >Author: Jane Doe</h4>
+        <h2 className="art-title">Hair Care Secrets: Tips for Gorgeous Locks</h2>
       </div>
       <div className="article-content">
         <p>

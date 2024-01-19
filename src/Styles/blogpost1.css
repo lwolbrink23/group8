@@ -1,0 +1,56 @@
+/* web screen */
+@media screen and (min-width: 767px) {
+    .post1 {
+        background-color: white;
+    }
+    .main-image {
+        display: flex;
+        align-items: center;
+        max-width: 50%;
+        height: 50%;
+        flex-shrink: 0;
+        position: relative;
+        margin: 0 auto;
+    }
+
+    .post-general-info h4 {
+        font-family: Inter;
+        font-size: 20px;
+        font-style: normal;
+        font-weight: 400;
+        line-height: normal;
+    }
+
+    .art-title {
+        margin: 0 auto;
+        max-width: max-content;
+        font-family: Poppins;
+        font-size: 30px;
+        font-style: normal;
+        font-weight: 700;
+        line-height: normal;
+        margin-top: 80px;
+    }
+
+    .category {
+        position: absolute;
+        right: 64%;
+
+    }
+
+    .author {
+    position: absolute;
+    left: 62%;
+    }
+
+    .article-content{
+        text-align: justify;
+        margin: 0 50px;
+        padding: 0 80px 80px;
+        font-family: Poppins;
+        font-size: 20px;
+        font-style: normal;
+        font-weight: 400;
+        line-height: normal;
+    }
+}
