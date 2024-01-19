@@ -24,12 +24,14 @@
     #hamburger-menu::before {
         content: '\2630';
         grid-area: hamburger-menu;
+       
     }
 
     #hamburger-menu {
         font-size: 45px;
         color: #5C5C5C;
         grid-area: hamburger-menu;
+        margin-bottom: 7px;
     }
 
     nav ul ul {
@@ -40,7 +42,7 @@
     .header-container {
         display: grid;
         grid-template-columns: auto auto auto;
-        grid-template-areas: "logo-mobile profile hamburger-menu"
+        grid-template-areas: "logo-mobile profile hamburger-menu "
             "nav nav nav";
         align-items: center;
     }
@@ -63,14 +65,15 @@
     }
 
     .logo-mobile {
-        max-width: 70%;
+        max-width: 75%;
         height: auto;
         display: block;
         grid-area: logo-mobile;
     }
 
     .profile-icon-mobile {
-        max-height: 40px;
+        max-height: 35px;
+        display: block;
     }
 
     .profile-icon-web {
@@ -96,7 +99,7 @@
     }
 
     .profile-icon-web {
-        max-width: 50%;
+        max-width: 40%;
     }
 
     .logo-mobile {

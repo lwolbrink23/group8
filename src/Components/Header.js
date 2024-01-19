@@ -20,19 +20,25 @@ function Header() {
         <img src={logoWeb} alt="logo" className="logo-web" />
         <img src={logoMobile} alt="logo" className="logo-mobile" />
         <div className="profile-container">
-          <img
-            src={profileicon}
-            alt="profile icon"
-            className="profile-icon-web"
-          />
+          <Link to="/account">
+            {" "}
+            <img
+              src={profileicon}
+              alt="profile icon"
+              className="profile-icon-web"
+            />
+          </Link>
         </div>
         {/* Hamburger menu icon */}
         <div id="hamburger-menu" onClick={toggleHamburger}></div>
-        <img
-          src={profileicon}
-          alt="profile icon"
-          className="profile-icon-mobile"
-        />
+        <Link to="/account">
+          {" "}
+          <img
+            src={profileicon}
+            alt="profile icon"
+            className="profile-icon-mobile"
+          />
+        </Link>
         <nav>
           <ul className={isHamburgerOpen ? "show" : ""}>
             <li>
