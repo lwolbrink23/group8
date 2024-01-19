@@ -1,10 +1,11 @@
 /*general*/
-p {
+.text-container p {
     text-align: center;
 }
 
 .purp {
     color: #8569B8;
+    text-align: center;
 }
 
 .check {
