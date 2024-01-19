@@ -1,0 +1,12 @@
+
+
+.photo-carousel {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.photo-carousel img {
+    max-width: 80%;
+    height: auto;
+}
