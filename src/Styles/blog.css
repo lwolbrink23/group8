@@ -7,26 +7,36 @@
         margin: 0 auto;
         margin-bottom: 88px;
         flex-shrink: 0;
-        background: url("../assets/images/flower.jpeg") lightgray center/cover no-repeat;
-        background-position: 50% 45%;
+    }
+.bg-image {
+        display: flex;
+        align-items: center;
+        max-width: 900px;
+        height: 450px;
+        position: relative;
+        margin: 0 auto;
+        flex-shrink: 0;
+        background: lightgray url("../assets/images/flower.jpeg") center/cover no-repeat;
         box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
     }
 
    .overlay-box {
-       position: relative;
-       width: 500px;
-       height: 268px;
-       margin-top: -255px;
-       /* Adjust the margin as needed */
-       margin-left: 43px;
-       /* Adjust the margin as needed */
-       flex-shrink: 0;
-       background-color: rgba(255, 255, 255, 0.63);
-       z-index: 1;
+        display: flex;
+        position: relative;
+        margin: 0 auto;
+        bottom: 155%;
+        left: -15%;
+        max-width: 500px;
+        height: 268px;
+        flex-shrink: 0;
+        background-color: rgba(255, 255, 255, 0.63);
+        z-index: 1;
    }
 
     .overlay-text {
         position: relative;
+        bottom: 108%;
+        left: 6%;
         z-index: 2;
     }
 
@@ -68,7 +78,7 @@
         margin-left: 17px;
     }
     
-    #email {
+    .email {
         width: 222px;
         height: 51px;
         flex-shrink: 0;
@@ -84,11 +94,12 @@
     }
 
    .hair-secrets {
-       position: absolute;
-       top: 750px;
-       left: 50%;
-       bottom: 100px;
-       margin-left: -500px;
+       position: relative;
+       bottom: 5%;
+       top:-5;
+       right: -19%;
+       left: 19%;
+       
        background: #FFF;
        box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
        width: 390px;
@@ -97,6 +108,7 @@
        padding-top: 18px;
        padding-right: 5px;
        padding-left: 5px;
+       margin-bottom: 88px;
    }
 
    .hair-secrets p {

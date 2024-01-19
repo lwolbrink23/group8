@@ -25,6 +25,7 @@ function Blog() {
     <div>
       <ScrollToTop />
       <div className="main-blog-page">
+        <div className="bg-image"></div>
         <div className="overlay-text">
         <h1 className="header-1">Blog</h1>
         <p className="sub-text">Stay up to date with the latest news from The Suite Spot!</p>
