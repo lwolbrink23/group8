@@ -110,6 +110,17 @@ function Header() {
                 />
                 Account
               </CustomLink>
+              <ul>
+                <li>
+                  <CustomLink to="/login">Log In</CustomLink>
+                </li>
+                <li>
+                  <CustomLink to="/signup">Sign Up</CustomLink>
+                </li>
+                <li>
+                  <CustomLink to="/ourservices">Account</CustomLink>
+                </li>
+                </ul>
             </li>
             <li>
               <CustomLink to="/booknow" className="purp-button">
