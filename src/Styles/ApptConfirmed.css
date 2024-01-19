@@ -1,0 +1,63 @@
+.conf-body {
+    align-items: center;
+    text-align: center;
+    padding-bottom: 30px;
+    margin: 0 500px;
+}
+
+#confirmed-header {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 20px;
+}
+
+#confirmed-header img {
+    width: 50px;
+    height: 50px;
+    margin-top: 20px
+}
+
+.header-white {
+    background-color: rgba(255, 255, 255, 0.45);
+    padding: 1px
+}
+
+.header-white h1 {
+    margin-top: 5px
+}
+
+#conf-thanks {
+
+}
+
+.appt-details {
+    background: white;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.25);
+    padding: 10px;
+    margin: auto;
+    margin-top: 30px;
+    margin-bottom: 30px;
+    width: 100%;
+    max-width: 600px;
+    display: block;
+    justify-content: center;
+}
+
+.appt-details h1{
+    margin-top: -20px;
+}
+
+@media screen and (max-width: 1400px) {
+    .conf-body {
+        margin: 0 200px;
+        /* Larger margin for smaller screens */
+    }
+}
+
+@media screen and (max-width: 768px) {
+    .conf-body {
+        margin: 0 50px;
+        /* Larger margin for smaller screens */
+    }
+}

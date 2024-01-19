@@ -6,7 +6,7 @@ function Home() {
     <div className="App">
       <div className="trans-white">
         <h1 className="title">The Suite Spot</h1>
-        <h2 className="center">Where Beauty Finds Its Home.</h2>
+        <h3 className="center">Where Beauty Finds Its Home.</h3>
       </div>
       {/* <!-- Promo Carousel --> */}
       <div className="promos">
@@ -20,7 +20,7 @@ function Home() {
 
       {/* <!-- Book Now Section --> */}
       <div className="trans-white booknow-section">
-        <h2>Pampering yourself is just one click away!</h2>
+        <h3>Pampering yourself is just one click away!</h3>
         <Link to="/booknow">
           <button
             type="button"

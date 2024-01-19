@@ -1,20 +1,21 @@
 import React from "react";
-import "../App.css";
+import "../Styles/blogpost1.css";
 import { Link } from "react-router-dom";
 import backArrow from "../assets/icons/back-arrow.png"
 import hairWashing from "../assets/images/hairwashing.jpg"
+import hairPink from "../assets/images/hair-pinkbg.jpeg"
 function BlogPost() {
   return (
     <div className="post1">
       {/* back arrow */}
          <Link to="/blog">
-                <img src={backArrow} alt="back arrow" />
+                <img src={backArrow}  className="arrow" alt="back arrow" />
             </Link>
       <div className="post-general-info">
-        <img src={hairWashing} alt="woman getting her hair washed by hairstylist" />
-        <h4>Category: Hair</h4>
-        <h4>Author: Jane Doe</h4>
-        <h2>Hair Care Secrets: Tips for Gorgeous Locks</h2>
+        <img src={hairWashing} className="main-image" alt="woman getting her hair washed by hairstylist" />
+        <h4 className="category">Category: Hair</h4>
+        <h4 className="author" >Author: Jane Doe</h4>
+        <h2 className="art-title">Hair Care Secrets: Tips for Gorgeous Locks</h2>
       </div>
       <div className="article-content">
         <p>
@@ -36,6 +37,7 @@ function BlogPost() {
         Regular Scalp Massages: Massaging your scalp regularly improves blood circulation, which can stimulate hair growth. A gentle, daily massage can also help distribute natural oils evenly,
         keeping your hair hydrated and healthy.
         </li>
+         <img src={hairPink} className="pink-image" alt="A woman running her fingers through her hair" />
         <li>
         Condition with Natural Oils: Introduce the magic of natural oils into your hair care routine. Coconut oil, argan oil, and jojoba oil are all fantastic options. Apply a small amount to your hair,
         focusing on the ends, and leave it in for at least an hour before washing. These oils will add shine and repair damage.
