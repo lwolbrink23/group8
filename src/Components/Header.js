@@ -67,7 +67,9 @@ function Header() {
               <CustomLink to="/shop">Shop</CustomLink>
             </li>
             <li>
-              <CustomLink to="/contactus">Contact Us</CustomLink>
+              <CustomLink to="/contactus" className="contact-link">
+                Contact Us
+              </CustomLink>
             </li>
             <li>
               <CustomLink to="/account">Account</CustomLink>

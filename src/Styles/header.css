@@ -36,6 +36,12 @@ nav a {
     /* Padding for regular nav items */
 }
 
+nav a.contact-link {
+    /* Makes "Contact Us" link fit on one line*/
+    white-space: nowrap;
+
+}
+
 nav a:hover {
     background-color: #E7E7E7;
 }
@@ -49,6 +55,8 @@ nav ul ul {
     position: absolute;
     background-color: white;
     z-index: 1000;
+    width: max-content;
+    white-space: nowrap;
 }
 
 nav ul ul a {
@@ -63,7 +71,7 @@ nav ul li:hover>ul {
     display: grid;
     top: 100%;
     left: 0;
-    width: 100%;
+    width: max-content;
 }
 
 .logo-web {
