@@ -1,5 +1,6 @@
 import React from "react";
 import "../App.css";
+import "../Styles/blogpost1.css";
 import { Link } from "react-router-dom";
 import backArrow from "../assets/icons/back-arrow.png"
 import hairWashing from "../assets/images/hairwashing.jpg"
