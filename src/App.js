@@ -18,6 +18,7 @@ import ProductPage from "./Pages/ProductPage";
 import Cart from "./Pages/Cart";
 import OrderPlaced from "./Pages/OrderPlaced";
 import OrderDetails from "./Pages/OrderDetails";
+import Account from "./Pages/Login";
 import { Route, Routes } from "react-router-dom";
 
 // this is only the home page elements
@@ -44,6 +45,7 @@ function App() {
           <Route path="/cart" element={<Cart />} />
           <Route path="/order_placed" element={<OrderPlaced />} />
           <Route path="/order_details" element={<OrderDetails />} />
+          <Route path="/Account" element={<Account />} />
         </Routes>
       </div>
       <Footer />
