@@ -3,6 +3,7 @@
     .post1 {
         background-color: white;
     }
+
     .main-image {
         display: flex;
         align-items: center;
@@ -34,13 +35,15 @@
 
     .category {
         position: absolute;
+        left: 25%;
         right: 64%;
 
     }
 
     .author {
     position: absolute;
-    left: 62%;
+    left: 64%;
+    right: 24%;
     }
 
     .article-content{
@@ -52,5 +55,27 @@
         font-style: normal;
         font-weight: 400;
         line-height: normal;
+    }
+
+    .pink-image{
+    width: 342px;
+    height: 408px;
+    flex-shrink: 0;
+    object-fit: cover;
+    object-position: center;
+    float:right;
+    padding-left: 20px;
+    padding-top: 20px;
+    padding-bottom: 20px;
+    }
+
+    .arrow{
+        position: absolute;
+        left: 8%;
+        width: 50px;
+    }
+
+    .arrow:hover {
+        width: 55px;
     }
 }
