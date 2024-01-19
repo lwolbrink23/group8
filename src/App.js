@@ -18,7 +18,7 @@ import ProductPage from "./Pages/ProductPage";
 import Cart from "./Pages/Cart";
 import OrderPlaced from "./Pages/OrderPlaced";
 import OrderDetails from "./Pages/OrderDetails";
-import Account from "./Pages/Login";
+import Account from "./Pages/Account";
 import SelectTime from "./Pages/SelectTime"
 import { Route, Routes } from "react-router-dom";
 
@@ -47,7 +47,7 @@ function App() {
           <Route path="/selecttime" element={<SelectTime />} />
           <Route path="/order_placed" element={<OrderPlaced />} />
           <Route path="/order_details" element={<OrderDetails />} />
-          <Route path="/login" element={<Account />} />
+          <Route path="/Account" element={<Account />} />
         </Routes>
       </div>
       <Footer />

@@ -46,7 +46,7 @@ function OurSuites() {
       <div className="rent-section">
         <h1>Rent a Suite</h1>
         <div className='pmain'>
-        <p> 
+        <p>
           Are you a Lifestyle Professional looking to lease a suite? Contact us
           below, and a manager will get back to you.
         </p>
