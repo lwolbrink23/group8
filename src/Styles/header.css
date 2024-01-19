@@ -1,8 +1,9 @@
 /* Resetting default margin and padding for ul and li */
+
 nav ul,
 nav ul ul {
     list-style: none;
-    margin: 0;
+    margin: 0 0 5 0;
     padding: 0;
 }
 
@@ -82,8 +83,8 @@ nav ul li:hover>ul {
 
 .profile-container {
     position: absolute;
-    top: 10px;
-    right: 10px;
+    top: 30px;
+    right: 0px;
     z-index: 1000;
 }
 
@@ -99,3 +100,4 @@ nav a {
     align-items: center;
     justify-content: center;
 }
+
