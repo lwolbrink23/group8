@@ -1,31 +1,42 @@
 import "../Styles/home.css"; // Import your styles
-import { Link } from 'react-router-dom';
+import { Link } from "react-router-dom";
+import MainCarousel from "../Components/MainCarousel.js";
+import promoBottle from "../assets/images/promo_bottle.png";
+import promoAroma from "../assets/images/promo_aroma.png";
+import promoHair from "../assets/images/promo_hair.png";
+import promoSpa from "../assets/images/promo_spa.png";
+import promoWella from "../assets/images/promo_wella.png";
 
 function Home() {
+  const carouselImages = [
+    promoBottle,
+    promoAroma,
+    promoHair,
+    promoSpa,
+    promoWella,
+    // Add more image URLs as needed
+  ];
+
   return (
     <div className="App">
-      <div className="trans-white">
-        <h1 className="title">The Suite Spot</h1>
-        <h3 className="center">Where Beauty Finds Its Home.</h3>
+      <div className="carousel-container">
+        {/* <!-- Promo Carousel --> */}
+        <MainCarousel images={carouselImages} />
+        <div className="suite-spot-overlay">
+          <h1 className="title">The Suite Spot:</h1>
+          <h3 className="center">Where Beauty Finds Its Home.</h3>
+        </div>
       </div>
-      {/* <!-- Promo Carousel --> */}
-      <div className="promos">
-        {/* <!-- Add promo carousel content here --> */}
-        <Link to="/shop">
-          <button type="button">
-            View Our Products
-          </button>
-        </Link>
-      </div>
+
+      <Link to="/shop">
+        <button type="button">View Our Products</button>
+      </Link>
 
       {/* <!-- Book Now Section --> */}
       <div className="trans-white booknow-section">
         <h3>Pampering yourself is just one click away!</h3>
         <Link to="/booknow">
-          <button
-            type="button"
-            className="purp-button"
-          >
+          <button type="button" className="purp-button">
             Book Now
           </button>
         </Link>
@@ -79,9 +90,7 @@ function Home() {
           roof.
         </p>
         <Link to="/ourservices">
-          <button type="button">
-            View Our Services
-          </button>
+          <button type="button">View Our Services</button>
         </Link>
       </div>
 
