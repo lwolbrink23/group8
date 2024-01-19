@@ -1,16 +1,14 @@
 /* Styles for smaller screens (mobile) */
 @media screen and (max-width: 767px) {
-    /*nav ul {
-        display: none;
-    } idk if i need this???*/ 
 
     nav {
         display: none;/*hide nav at first*/
         grid-area: nav;
-        width: 100%;
+        width: 326px;
+        height: 100vh; /*take up entire viewport height. i thought this looks cleaner*/
         position: absolute;
         top: 100%;
-        left: 0;
+        right: 0;
         z-index: 999;
         text-align: center;
         background-color: white;
@@ -23,12 +21,14 @@
     #hamburger-menu::before {
         content: '\2630';
         grid-area: hamburger-menu;
+       
     }
 
     #hamburger-menu {
         font-size: 45px;
         color: #5C5C5C;
         grid-area: hamburger-menu;
+        margin-bottom: 7px;
     }
 
     nav ul ul {
@@ -38,13 +38,13 @@
     .header-container {
         display: grid;
         grid-template-columns: auto auto auto;
-        grid-template-areas: "logo-mobile profile hamburger-menu"
+        grid-template-areas: "logo-mobile profile hamburger-menu "
             "nav nav nav";
         align-items: center;
     }
 
     nav ul {
-        width: 100%;
+        width: 100%; /*nav links grey part*/
         flex-direction: column;
         justify-content: center;
         align-items: center;
@@ -52,9 +52,15 @@
 
     nav ul li {
         margin: 10px 0;
-        background-color: white;
         width: 100%;
-        height: auto;
+       
+        text-align: center;
+            /* Center the text in the list items */
+    }
+
+    .purp-button {
+        display: block;
+        margin: 10px auto; /* Center the "Book Now" button */
     }
 
     .logo-web {
@@ -62,24 +68,27 @@
     }
 
     .logo-mobile {
-        max-width: 70%;
+        max-width: 75%;
         height: auto;
         display: block;
         grid-area: logo-mobile;
     }
 
-    nav a:hover { /*makes mobile menu grey boxes take up entire width*/
-        display: block;
-    }
-
     .profile-icon-mobile {
-        max-height: 40px;
+        max-height: 35px;
+        display: block;
     }
 
     .profile-icon-web {
         display: none;
     }
 
+
+    .icon-mobile {
+        max-height: 35px;
+        margin-right: 10px;
+        display: flex;
+    }
 
   nav ul li:hover>ul { /*makes subpages vertical*/
       display: block;
@@ -99,7 +108,7 @@
     }
 
     .profile-icon-web {
-        max-width: 50%;
+        max-width: 40%;
     }
 
     .logo-mobile {

@@ -2,6 +2,12 @@ import React, { useState } from "react";
 import logoWeb from "../assets/logo/TSS Circle logo Transparent.png";
 import logoMobile from "../assets/logo/TSS Horizontal Logo Transparent.png";
 import profileicon from "../assets/icons/icons8-person-female-100.png";
+import homeicon from "../assets/icons/icons8-home-96.png";
+import abouticon from "../assets/icons/icons8-team-96.png";
+import blogicon from "../assets/icons/icons8-article-96.png";
+import faqicon from "../assets/icons/icons8-faq-96.png";
+import shopicon from "../assets/icons/icons8-shop-96.png";
+import contacticon from "../assets/icons/icons8-contact-96.png";
 import { Link, useMatch, useResolvedPath } from "react-router-dom";
 import "../Styles/header.css"; // main stylesheet
 import "../Styles/responsiveHeader.css"; // responsive stylesheet
@@ -20,26 +26,36 @@ function Header() {
         <img src={logoWeb} alt="logo" className="logo-web" />
         <img src={logoMobile} alt="logo" className="logo-mobile" />
         <div className="profile-container">
-          <img
-            src={profileicon}
-            alt="profile icon"
-            className="profile-icon-web"
-          />
+          <Link to="/account">
+            {" "}
+            <img
+              src={profileicon}
+              alt="profile icon"
+              className="profile-icon-web"
+            />
+          </Link>
         </div>
         {/* Hamburger menu icon */}
         <div id="hamburger-menu" onClick={toggleHamburger}></div>
-        <img
-          src={profileicon}
-          alt="profile icon"
-          className="profile-icon-mobile"
-        />
+        <Link to="/account">
+          {" "}
+          <img
+            src={profileicon}
+            alt="profile icon"
+            className="profile-icon-mobile"
+          />
+        </Link>
         <nav>
           <ul className={isHamburgerOpen ? "show" : ""}>
             <li>
-              <Link to="/">Home</Link>
+              <Link to="/">
+                <img src={homeicon} alt="home icon" className="icon-mobile" />
+                Home
+              </Link>
             </li>
             <li>
               <a href="#" className="about-link">
+                <img src={abouticon} alt="about icon" className="icon-mobile" />
                 About
               </a>
               <ul>
@@ -58,19 +74,42 @@ function Header() {
               </ul>
             </li>
             <li>
-              <CustomLink to="/blog">Blog</CustomLink>
+              <CustomLink to="/blog">
+                <img src={blogicon} alt="blog icon" className="icon-mobile" />
+                Blog
+              </CustomLink>
             </li>
             <li>
-              <CustomLink to="/faqs">FAQ's</CustomLink>
+              <CustomLink to="/faqs">
+                <img src={faqicon} alt="FAQ icon" className="icon-mobile" />
+                FAQ's
+              </CustomLink>
             </li>
             <li>
-              <CustomLink to="/shop">Shop</CustomLink>
+              <CustomLink to="/shop">
+                <img src={shopicon} alt="shop icon" className="icon-mobile" />
+                Shop
+              </CustomLink>
             </li>
             <li>
-              <CustomLink to="/contactus">Contact Us</CustomLink>
+              <CustomLink to="/contactus" className="contact-link">
+                <img
+                  src={contacticon}
+                  alt="contact us icon"
+                  className="icon-mobile"
+                />
+                Contact Us
+              </CustomLink>
             </li>
             <li>
-              <CustomLink to="/account">Account</CustomLink>
+              <CustomLink to="/account">
+                <img
+                  src={profileicon}
+                  alt="profile icon"
+                  className="icon-mobile"
+                />
+                Account
+              </CustomLink>
             </li>
             <li>
               <CustomLink to="/booknow" className="purp-button">

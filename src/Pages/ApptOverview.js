@@ -7,37 +7,27 @@ import purpleLady from "../assets/icons/icons8-person-female-100.png";
 import calendar from "../assets/icons/icons8-event-accepted-tentatively-96.png";
 import Arrow from "../assets/icons/circlearrow.png"
 import { useNavigate } from 'react-router-dom';
+import BackButton from "../Components/BackButton";
 
 function ScrollToTop() {
-  const location = useLocation();
+    const location = useLocation();
 
-  useEffect(() => {
-    if (location.pathname === "/blogpost") {
-      window.scrollTo(0, 0);
-    }
-  }, [location.pathname]);
+    useEffect(() => {
+        if (location.pathname === "/blogpost") {
+            window.scrollTo(0, 0);
+        }
+    }, [location.pathname]);
 
-  return null;
+    return null;
 }
 
 
 function Overview() {
     const scrollToTop = () => {
-    window.scrollTo(0, 0);
-  };
+        window.scrollTo(0, 0);
+    };
 
-    function BackButton() {
 
-        let navigate = useNavigate();
-
-        function handleBack() {
-            navigate(-1);
-        }
-
-        return (
-            <div><img src={Arrow} alt="back arrow" onClick={handleBack} id="backarrow" style={{ cursor: 'pointer' }}></img></div>
-        );
-    }
     return (
         <div>
             <ScrollToTop />
