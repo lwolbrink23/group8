@@ -7,9 +7,38 @@
     height: 42px
 }
 
+
+.carousel-container {
+    position: relative;
+}
+
+.suite-spot-overlay {
+    background-color: rgba(255, 255, 255, 0.45);
+    padding: 0px;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%
+ 
+}
+
 .title {
     font-family: "greatvibes";
     font-weight: 500;
     font-size: 46px;
-    margin-bottom: -25px;
+    margin-bottom: -28px;
+    margin-top: 10px;
+}
+
+@media screen and (max-width: 767px) {
+
+    .title {
+    font-size: 40px;
+    margin-bottom: -28px;
+    margin-top: -5px;
+    }
+
+    h3 {
+        font-size: 20px;
+    }
 }
