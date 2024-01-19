@@ -18,7 +18,7 @@
     padding: 10px;
     margin: 20px;
     background-color: #BACA82;
-    box-shadow: 0 8px 8px rgba(0, 0, 0, 0.1)
+    box-shadow: 0 8px 8px rgba(0, 0, 0, 0.1);
 }
 
 img {
@@ -47,7 +47,7 @@ h2 {
     display: flex;
     justify-content: center;
     margin-left: 150px;
-        margin-right: 150px
+    margin-right: 150px
  
 }
 .pmain {
@@ -94,21 +94,12 @@ label {
 }
 }
 
-/*alignment for rent section
-
- /* the whole form is called .formarea
-
- /* each input field is called .fields 
-
-}
-
 
 /* Mobile Design */
 @media screen and (max-width: 767px) {
 .blurb-container {
     text-align: center;
     height: 100vh;
-    width: ;
 }
 
 .blurbs {
@@ -119,6 +110,7 @@ label {
     background-color: #BACA82;
     box-shadow: 0 8px 8px rgba(0, 0, 0, 0.1);
     align-items: center;
+    
     }
 
 img {
@@ -132,7 +124,13 @@ h1 {
 h2 {
     padding: 5px
 }
-
+.p {
+    text-align: center;
+    display: flex;
+    justify-content: center;
+    margin-left: 50px;
+    margin-right: 50px
+}
 .container {
     display: flex;
     justify-content: center;
@@ -145,7 +143,7 @@ h2 {
     margin: 50px;
     box-shadow: 0 8px 8px rgba(0, 0, 0, 0.1);
     color: white;
-
+    margin-top: 150px
 }
 
 .formarea {
@@ -170,6 +168,5 @@ label {
     padding: 10px;
     box-sizing: border-box;
     margin: 15px auto
-
 }
 }
