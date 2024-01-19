@@ -87,6 +87,12 @@
     }
 
 
+    .icon-mobile {
+        max-height: 35px;
+        margin-right: 10px;
+        display: flex;
+    }
+
   nav ul li:hover>ul { /*makes subpages vertical*/
       display: block;
       position: relative;
