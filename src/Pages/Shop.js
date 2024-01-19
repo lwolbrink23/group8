@@ -5,6 +5,7 @@ import plusICON from "../assets/icons/black-plus.png";
 import minusICON from "../assets/icons/black-minus.png";
 import shopICON from "../assets/icons/icons8-shopping-cart-100.png";
 import tempData from "../data/shop.json";
+import { Link } from 'react-router-dom';
 
 function Shop() {
   return (
@@ -25,11 +26,13 @@ function Shop() {
           {tempData.map((item) => (
             <li className="box" key={item.id}>
               {/* item info */}
-              <img
-                src={require("../assets/images/shop/" + item.file + ".png")}
-                alt={item.name}
-                className="item-img"
-              ></img>
+              <Link to={`/productpage/${item.id}`}>
+                <img
+                  src={require("../assets/images/shop/" + item.file + ".png")}
+                  alt={item.name}
+                  className="item-img"
+                ></img>
+              </Link>
               <div className="item-info">
                 <p>{item.name}</p>
                 <p>${item.price}</p>

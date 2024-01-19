@@ -2,16 +2,20 @@ import "../Styles/productpage.css"
 import "../App.css";
 import shopICON from "../assets/icons/icons8-shopping-cart-100.png";
 import BackButton from "../Components/BackButton";
-import ProductPic from "../assets/images/pexels-natallia-photo.png"
 import Stars from "../assets/images/stars.png"
 import plusIcon from "../assets/icons/plus.png"
 import minusIcon from "../assets/icons/minus.png"
 import rating from "../assets/images/VisualRating.png"
 import Barber from '../assets/images/barber.png';
 import React, { useState } from 'react';
+import { useParams } from 'react-router-dom';
+import tempData from "../data/shop.json";
 
 
 function ProductPage() {
+
+  const { id } = useParams();
+  const product = tempData.find(item => item.id.toString() === id);
 
   const AboutContent = () => (
     <div class="green-content">
@@ -137,10 +141,10 @@ function ProductPage() {
       </div>
       <div className="product-info">
         <div className="product-section">
-          <img src={ProductPic} alt="Product" id="product-image"></img>
+          <img src={require("../assets/images/shop/" + product.productimg + ".png")} alt="Product" id="product-image"></img>
         </div>
         <div className="product-section">
-          <h2 className="titletext">Repair & Protect Kit</h2>
+          <h2 className="titletext">{product.name}</h2>
           <div className="stars-section">
             <img src={Stars} alt="stars" id="stars"></img>
             <p>4.5 (42)</p>

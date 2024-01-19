@@ -3,72 +3,84 @@
     "id": "iID0",
     "name": "Repair & Protect Kit",
     "price": 41.99,
-    "file": "repair-and-protect-kit"
+    "file": "repair-and-protect-kit",
+    "productimg": "repair-and-protect-kit-large"
   },
   {
     "id": "iID1",
     "name": "Restorative Hair Mask",
     "price": 18.99,
-    "file": "restorative-hair-mask"
+    "file": "restorative-hair-mask",
+    "productimg": "restorative-hair-mask-large"
   },
   {
     "id": "iID2",
     "name": "Color Protection Kit",
     "price": 34.99,
-    "file": "color-protection-kit"
+    "file": "color-protection-kit",
+    "productimg": "color-protection-kit-large"
   },
   {
     "id": "iID3",
     "name": "Men's Pomade",
     "price": 9.99,
-    "file": "mens-pomade"
+    "file": "mens-pomade",
+    "productimg": "mens-pomade-large"
   },
   {
     "id": "iID4",
     "name": "Niacinamide Serum",
     "price": 15.99,
-    "file": "niacinamide-serum"
+    "file": "niacinamide-serum",
+    "productimg": "niacinamide-serum-large"
   },
   {
     "id": "iID5",
     "name": "Illumination Face Mask",
     "price": 14.99,
-    "file": "illumination-face-mask"
+    "file": "illumination-face-mask",
+    "productimg": "illumination-face-mask-large"
   },
   {
     "id": "iID6",
     "name": "Daily Body Lotion",
     "price": 9.99,
-    "file": "daily-body-lotion"
+    "file": "daily-body-lotion",
+    "productimg": "daily-body-lotion-large"
   },
   {
     "id": "iID7",
     "name": "Nourishing Body Oil",
     "price": 10.99,
-    "file": "nourishing-body-oil"
+    "file": "nourishing-body-oil",
+    "productimg": "nourishing-body-oil-large"
   },
   {
     "id": "iID8",
     "name": "Makeup Essentials Kit",
     "price": 49.99,
-    "file": "makeup-essentials-kit"
+    "file": "makeup-essentials-kit",
+    "productimg": "makeup-essentials-kit-large"
   },
   {
     "id": "iID9",
     "name": "Makeup Brush Set",
     "price": 15.99,
-    "file": "makeup-brush-set"
+    "file": "makeup-brush-set",
+    "productimg": "makeup-brush-set-large"
   },
   {
     "id": "iID10",
     "name": "Hyaluronic Acid Tonic",
     "price": 12.99,
-    "file": "hyaluronic-acid-tonic"
+    "file": "hyaluronic-acid-tonic",
+    "productimg": "hyaluronic-acid-tonic-large"
   },
   {
     "id": "iID11",
     "name": "Revitalizing Hair Oil",
     "price": 8.99,
-    "file": "revitalizing-hair-oil"
+    "file": "revitalizing-hair-oil",
+    "productimg": "revitalizing-hair-oil-large"
   }
 ]
