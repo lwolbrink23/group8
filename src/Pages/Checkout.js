@@ -25,28 +25,23 @@ function Checkout() {
           <div>
             <input type="text" placeholder="Street Address*" required />
           </div>
-          <div>
+          <div className="ct-state">
             <input type="text" placeholder="City*" required />
-          </div>
-          <div>
             <input type="text" placeholder="State*" required />
-          </div>
-          <div>
             <input type="text" placeholder="ZIP Code*" required />
           </div>
         </div>
         <div id="payment-info" className="cardbox">
           <h3>Payment Method</h3>
+          <p>options here</p>
           <div>
             <input type="text" placeholder="Card Number*" required />
           </div>
-          <div>
+          <div className="cc-info">
             <input type="text" placeholder="mm*" required />
-          </div>
-          <div>
+
             <input type="text" placeholder="yy*" required />
-          </div>
-          <div>
+
             <input type="text" placeholder="CVC*" required />
           </div>
           <div>
