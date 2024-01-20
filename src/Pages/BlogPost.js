@@ -14,14 +14,15 @@ function BlogPost() {
         <h4 className="author" >Author: Jane Doe</h4>
         <h2 className="art-title">Hair Care Secrets: Tips for Gorgeous Locks</h2>
       </div>
-      <div className="article-content">
-        <p>
+      <p className="articles-contents">
           Are you yearning for luscious, head-turning locks that radiate health
           and beauty? Say goodbye to your hair woes and embrace the secrets to
           achieving and maintaining gorgeous hair. In this article, we'll delve
           into some unconventional yet effective hair care tips that will leave
           you with a mane to envy.
         </p>
+      <div className="list-content">
+        <img src={hairPink} className="pink-image" alt="A woman running her fingers through her hair" />
         <ol>  
           <li>
         The No-Shampoo Revelation: Ditch traditional shampoos with harsh chemicals and sulfates. Instead, consider adopting a "no-poo" approach. This involves washing your hair with just water,
@@ -34,7 +35,6 @@ function BlogPost() {
         Regular Scalp Massages: Massaging your scalp regularly improves blood circulation, which can stimulate hair growth. A gentle, daily massage can also help distribute natural oils evenly,
         keeping your hair hydrated and healthy.
         </li>
-         <img src={hairPink} className="pink-image" alt="A woman running her fingers through her hair" />
         <li>
         Condition with Natural Oils: Introduce the magic of natural oils into your hair care routine. Coconut oil, argan oil, and jojoba oil are all fantastic options. Apply a small amount to your hair,
         focusing on the ends, and leave it in for at least an hour before washing. These oils will add shine and repair damage.
@@ -59,7 +59,8 @@ function BlogPost() {
         Stay Hydrated: Drinking enough water is vital for overall health, and it also directly impacts the health of your hair. Staying hydrated helps keep your hair moisturized and prevents dryness and breakage.
          </li>
         </ol>
-        <p>
+      </div>
+       <p className="article-content">
           By following these unconventional yet highly effective tips, you can
           achieve and maintain the gorgeous locks you've always desired.
           Embrace a holistic approach to hair care, nourish your hair from the
@@ -67,7 +68,6 @@ function BlogPost() {
           With dedication and the right practices, you'll be well on your way to
           having stunning, head-turning hair that radiates beauty and vitality.
         </p>
-      </div>
     </div>
   );
 }
