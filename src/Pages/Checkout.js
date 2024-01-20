@@ -1,41 +1,78 @@
 import "../Styles/checkout.css";
+import shopICON from "../assets/icons/icons8-shopping-cart-100.png";
+import BackButton from "../Components/BackButton";
 
 function Checkout() {
   return (
     <div id="checkout">
-      <div id="shipping-info" className="cardbox">
-        <h3>Shipping Information</h3>
-        <input type="text" placeholder="First Name*" required></input>
-        <input type="text" placeholder="Last Name*" required></input>
-        <input type="text" placeholder="Phone*" required></input>
-        <input type="text" placeholder="Street Address*" required></input>
-        <input type="text" placeholder="City*" required></input>
-        <input type="text" placeholder="State*" required></input>
-        <input type="text" placeholder="ZIP Code*" required></input>
+      <div className="title-container trans-white">
+        <BackButton />
+        <h1>Checkout</h1>
+        <img src={shopICON} alt="shopping cart" id="cart-icon"></img>
       </div>
-      <div id="payment-info" className="cardbox">
-        <h3>Payment Method</h3>
-        <input type="text" placeholder="Card Number*" required></input>
-        <input type="text" placeholder="mm*" required></input>
-        <input type="text" placeholder="yy*" required></input>
-        <input type="text" placeholder="CVC*" required></input>
-        <input type="text" placeholder="Name on Card*" required></input>
-      </div>
-      <h3>Review Order</h3>
-      <p>copy pasta</p>
-      <h3>Finish Checkout</h3>
-      <div className="cardbox">
-        <p>Subtotal</p>
-        <p>$###</p>
-        <p>Shipping & Handling</p>
-        <p>$###</p>
-        <p>Taxes</p>
-        <p>$###</p>
-        <p>line</p>
-        <p>Total</p>
-        <p>$###</p>
-        <button>Place Order</button>
-      </div>
+      <main>
+        <div id="shipping-info" className="cardbox">
+          <h3>Shipping Information</h3>
+          <div>
+            <input type="text" placeholder="First Name*" required />
+          </div>
+          <div>
+            <input type="text" placeholder="Last Name*" required />
+          </div>
+          <div>
+            <input type="text" placeholder="Phone*" required />
+          </div>
+          <div>
+            <input type="text" placeholder="Street Address*" required />
+          </div>
+          <div>
+            <input type="text" placeholder="City*" required />
+          </div>
+          <div>
+            <input type="text" placeholder="State*" required />
+          </div>
+          <div>
+            <input type="text" placeholder="ZIP Code*" required />
+          </div>
+        </div>
+        <div id="payment-info" className="cardbox">
+          <h3>Payment Method</h3>
+          <div>
+            <input type="text" placeholder="Card Number*" required />
+          </div>
+          <div>
+            <input type="text" placeholder="mm*" required />
+          </div>
+          <div>
+            <input type="text" placeholder="yy*" required />
+          </div>
+          <div>
+            <input type="text" placeholder="CVC*" required />
+          </div>
+          <div>
+            <input type="text" placeholder="Name on Card*" required />
+          </div>
+        </div>
+        <div id="cart-items">
+          <h3>Review Order</h3>
+          <p>copy pasta</p>
+        </div>
+        <div id="checkout-sum">
+          <h3>Finish Checkout</h3>
+          <div className="cardbox">
+            <p>Subtotal</p>
+            <p>$###</p>
+            <p>Shipping & Handling</p>
+            <p>$###</p>
+            <p>Taxes</p>
+            <p>$###</p>
+            <p>line</p>
+            <p>Total</p>
+            <p>$###</p>
+            <button>Place Order</button>
+          </div>
+        </div>
+      </main>
     </div>
   );
 }
