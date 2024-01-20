@@ -2,30 +2,42 @@ import "../Styles/productpage.css"
 import "../App.css";
 import shopICON from "../assets/icons/icons8-shopping-cart-100.png";
 import BackButton from "../Components/BackButton";
-import ProductPic from "../assets/images/pexels-natallia-photo.png"
 import Stars from "../assets/images/stars.png"
 import plusIcon from "../assets/icons/plus.png"
 import minusIcon from "../assets/icons/minus.png"
 import rating from "../assets/images/VisualRating.png"
 import Barber from '../assets/images/barber.png';
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
+import { useParams } from 'react-router-dom';
+import tempData from "../data/shop.json";
+import { Link, useLocation } from 'react-router-dom';
 
+function ScrollToTop() {
+  const location = useLocation();
+
+  useEffect(() => {
+    if (location.pathname === "/blogpost") {
+      window.scrollTo(0, 0);
+    }
+  }, [location.pathname]);
+
+  return null;
+}
 
 function ProductPage() {
 
+  const { id } = useParams();
+  const product = tempData.find(item => item.id.toString() === id);
+
   const AboutContent = () => (
     <div class="green-content">
-      <ul>
-        <li>Rejuvenating Serum: Formulated with nourishing ingredients to repair and strengthen each hair strand.</li>
-        <li>Specialized Shampoo: Gently cleanses, removing impurities while promoting a healthier scalp.</li>
-        <li>Moisture-Lock Conditioner: Works to lock in moisture, leaving your hair silky smooth and more resilient.</li>
-      </ul>
+      <ul dangerouslySetInnerHTML={{ __html: product.about }} />
     </div>
   )
 
   const IngredientsContent = () => (
     <div class="green-content">
-      <p>Please refer to individual bottles for ingredient information.</p>
+      <div dangerouslySetInnerHTML={{ __html: product.ingredients }} />
     </div>
   )
 
@@ -127,6 +139,7 @@ function ProductPage() {
 
   return (
     <div className="product-page">
+      <ScrollToTop />
       {/* Header, Navigation, and other elements would go here */}
       <div id="product-banner">
         <div className="title-container trans-white">
@@ -137,22 +150,22 @@ function ProductPage() {
       </div>
       <div className="product-info">
         <div className="product-section">
-          <img src={ProductPic} alt="Product" id="product-image"></img>
+          <img src={require("../assets/images/shop/" + product.productimg + ".png")} alt="Product" id="product-image"></img>
         </div>
         <div className="product-section">
-          <h2 className="titletext">Repair & Protect Kit</h2>
+          <h2 className="titletext">{product.name}</h2>
           <div className="stars-section">
             <img src={Stars} alt="stars" id="stars"></img>
-            <p>4.5 (42)</p>
+            <p>{product.revrating} ({product.revamount})</p>
           </div>
-          <h2 id="money">$41.99</h2>
+          <h2 id="money">${product.price}</h2>
           <div className="quantity-selector">
             <button onClick={handleDecrement}>-</button>
             <p id="value">{value}</p>
             <button onClick={handleIncrement}>+</button>
           </div>
           <button className="add-to-cart">Add to Cart</button>
-          <p>1.62 OZ | 8 OZ | 8 OZ<br />Item Num. SPS-001004</p>
+          <p>{product.size}<br />{product.num}</p>
         </div>
       </div>
       <div className="green-dropdown">
@@ -165,13 +178,13 @@ function ProductPage() {
         <div className="above-reviews">
           <img src={rating} alt="rating system"></img>
           <div className="overall-rating">
-            <p id="big">4.5</p>
+            <p id="big">{product.revrating}</p>
             <img src={Stars} alt="stars" id="stars"></img>
-            <p>42 reviews</p>
+            <p>{product.revamount} reviews</p>
           </div>
         </div>
         <div className="display-reviews">
-          <p id="reviews-count">42 Reviews</p>
+          <p id="reviews-count">{product.revamount} Reviews</p>
           <Review />
           <Review />
           <Review />

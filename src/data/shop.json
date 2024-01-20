@@ -3,72 +3,156 @@
     "id": "iID0",
     "name": "Repair & Protect Kit",
     "price": 41.99,
-    "file": "repair-and-protect-kit"
+    "file": "repair-and-protect-kit",
+    "productimg": "repair-and-protect-kit-large",
+    "size": "1.62 OZ | 8 OZ | 8 OZ",
+    "num": "Item Num. SPS-001004",
+    "about": "<li>Rejuvenating Serum: Formulated with nourishing ingredients to repair and strengthen each hair strand.</li><li>Specialized Shampoo: Gently cleanses, removing impurities while promoting a healthier scalp.</li><li>Moisture-Lock Conditioner: Works to lock in moisture, leaving your hair silky smooth and more resilient.</li>",
+    "ingredients": "<p>Please refer to individual bottles for ingredient information.</p>",
+    "revrating": "4.5",
+    "revamount": "42"
   },
   {
     "id": "iID1",
     "name": "Restorative Hair Mask",
     "price": 18.99,
-    "file": "restorative-hair-mask"
+    "file": "restorative-hair-mask",
+    "productimg": "restorative-hair-mask-large",
+    "size": "4.5 OZ",
+    "num": "Item Num. SPS-001108",
+    "about": "<li>Nourishing Blend: Formulated with a potent blend of ingredients, this mask aims to revitalize, hydrate, and repair each strand.</li><li>Deep Penetration: The intensive treatment deeply penetrates each hair strand, leaving your hair feeling soft, manageable, and visibly rejuvenated.</li>",
+    "ingredients": "<p>Water, Cetyl Alcohol, Behentrimonium Chloride, Shea Butter, Argan Oil, Panthenol, Aloe Vera Extract</p>",
+    "revrating": "3.5",
+    "revamount": "22"
   },
   {
     "id": "iID2",
     "name": "Color Protection Kit",
     "price": 34.99,
-    "file": "color-protection-kit"
+    "file": "color-protection-kit",
+    "productimg": "color-protection-kit-large",
+    "size": "8 OZ | 12 OZ | 12 OZ | 8 OZ",
+    "num": "Item Num. SPS-000112",
+    "about": "<li>Preserve and enhance your hair color with our Color Protection Kit. This comprehensive kit includes a color-safe shampoo, conditioner, and a nourishing leave-in treatment. Specially formulated to extend the life of your color, leaving your hair vibrant, silky, and healthy.</li>",
+    "ingredients": "<ul><li>Shampoo:<ul><li>Aqua (Water)</li><li>Sodium Lauroyl Sarcosinate</li><li>Cocamidopropyl Betaine</li><li>Glycerin</li><li>Polyquaternium-7</li><li>Panthenol</li><li>Fragrance</li></ul></li><li>Conditioner:<ul><li>Aqua (Water)</li><li>Cetearyl Alcohol</li><li>Behentrimonium Chloride</li><li>Glycerin</li><li>Dimethicone</li><li>Amodimethicone</li><li>Cetrimonium Chloride</li><li>Panthenol</li><li>Fragrance</li></ul></li><li>Leave-In Treatment:<ul><li>Aqua (Water)</li><li>Cyclopentasiloxane</li><li>Dimethicone</li><li>Argania Spinosa Kernel Oil</li><li>Hydrolyzed Keratin</li><li>Panthenol</li><li>Amodimethicone</li><li>Fragrance</li></ul></li></ul>",
+    "revrating": "4.0",
+    "revamount": "87"
   },
   {
     "id": "iID3",
     "name": "Men's Pomade",
     "price": 9.99,
-    "file": "mens-pomade"
+    "file": "mens-pomade",
+    "productimg": "mens-pomade-large",
+    "size": "3.0 OZ",
+    "num": "Item Num. SPS-000512",
+    "about": "<li>Provides strong hold and natural finish</li><li>Suitable for various hairstyles</li>",
+    "ingredients": "<p>Lanolin, Beeswax, Castor Oil, Essential Oils, Water</p>",
+    "revrating": "4.5",
+    "revamount": "24"
   },
   {
     "id": "iID4",
     "name": "Niacinamide Serum",
     "price": 15.99,
-    "file": "niacinamide-serum"
+    "file": "niacinamide-serum",
+    "productimg": "niacinamide-serum-large",
+    "size": "30 ml",
+    "num": "Item Num. SPS-001214",
+    "about": "<li>Enhances skin texture</li><li>Minimizes pores</li><li>Promotes healthy, even complexion</li>",
+    "ingredients": "<p>Niacinamide (Vitamin B3), Hyaluronic Acid, Licorice Root Extract, Panthenol (Pro-Vitamin B5), Chamomile Extract, Glycerin, Green Tea Extract</p>",
+    "revrating": "5.0",
+    "revamount": "42" 
   },
   {
     "id": "iID5",
     "name": "Illumination Face Mask",
     "price": 14.99,
-    "file": "illumination-face-mask"
+    "file": "illumination-face-mask",
+    "productimg": "illumination-face-mask-large",
+    "size": "2.7 OZ",
+    "num": "Item Num. SPS-000116",
+    "about": "<li>Provides a radiant boost to the skin</li><li>Leaves skin refreshed and revitalized</li>",
+    "ingredients": "<p>Aloe Vera Gel, Vitamin C, Hyaluronic Acid, and other ingredients</p>",
+    "revrating": "5.0",
+    "revamount": "98"
   },
   {
     "id": "iID6",
     "name": "Daily Body Lotion",
     "price": 9.99,
-    "file": "daily-body-lotion"
+    "file": "daily-body-lotion",
+    "productimg": "daily-body-lotion-large",
+    "size": "6.8 OZ",
+    "num": "Item Num. SPS-000218",
+    "about": "<li>Indulge your skin in daily luxury</li><li>Lightweight and fast-absorbing</li><li>Designed to keep skin moisturized and refreshed</li>",
+    "ingredients": "<p>Shea Butter, Aloe Vera, Vitamin E, Coconut Oil, Chamomile Extract, Glycerin</p>",
+    "revrating": "4.7",
+    "revamount": "30"
   },
   {
     "id": "iID7",
     "name": "Nourishing Body Oil",
     "price": 10.99,
-    "file": "nourishing-body-oil"
+    "file": "nourishing-body-oil",
+    "productimg": "nourishing-body-oil-large",
+    "size": "4.0 OZ",
+    "num": "Item Num. SPS-001122",
+    "about": "<li>Indulge in the luxurious experience</li><li>Formulated with a blend of natural oils</li><li>Lightweight and fast-absorbing</li>",
+    "ingredients": "<p>Sweet Almond Oil, Jojoba Oil, Argan Oil, Vitamin E, Lavender Essential Oil</p>",
+    "revrating": "4.8",
+    "revamount": "25"
   },
   {
     "id": "iID8",
     "name": "Makeup Essentials Kit",
     "price": 49.99,
-    "file": "makeup-essentials-kit"
+    "file": "makeup-essentials-kit",
+    "productimg": "makeup-essentials-kit-large",
+    "size": "3.4 OZ | 1.0 OZ | 0.42 OZ | 0.09 OZ",
+    "num": "Item Num. SPS-000615",
+    "about": "<li>Includes essential makeup items for a flawless look</li><li>Suitable for all occasions</li>",
+    "ingredients": "Please refer to individual packaging for product ingredients.",
+    "revrating": "4.9",
+    "revamount": "36"
   },
   {
     "id": "iID9",
     "name": "Makeup Brush Set",
     "price": 15.99,
-    "file": "makeup-brush-set"
+    "file": "makeup-brush-set",
+    "productimg": "makeup-brush-set-large",
+    "size": "11 Brushes",
+    "num": "Item Num. SPS-000125",
+    "about": "<li>Comprehensive set of 11 brushes for various makeup applications</li><li>High-quality bristles for precise application and blending</li>",
+    "ingredients": "N/A (The brushes are typically made from synthetic or natural bristles with handles made of various materials.)",
+    "revrating": "5.0",
+    "revamount": "98"
   },
   {
     "id": "iID10",
     "name": "Hyaluronic Acid Tonic",
     "price": 12.99,
-    "file": "hyaluronic-acid-tonic"
+    "file": "hyaluronic-acid-tonic",
+    "productimg": "hyaluronic-acid-tonic-large",
+    "size": "120 ml",
+    "num": "Item Num. SPS-000929",
+    "about": "<li>Hydrating and revitalizing tonic for the skin</li><li>Lightweight and formulated for deep hydration</li>",
+    "ingredients": "<p>Hyaluronic Acid, Aloe Vera Extract, Green Tea Extract, Witch Hazel, Chamomile Extract, Glycerin</p>",
+    "revrating": "4.6",
+    "revamount": "72"
   },
   {
     "id": "iID11",
     "name": "Revitalizing Hair Oil",
     "price": 8.99,
-    "file": "revitalizing-hair-oil"
+    "file": "revitalizing-hair-oil",
+    "productimg": "revitalizing-hair-oil-large",
+    "size": "20 ml",
+    "num": "Item Num. SPS-000101",
+    "about": "<li>Transforms hair to nourish and strengthen</li><li>Adds a radiant shine and leaves hair feeling silky</li>",
+    "ingredients": "<p>Argan Oil, Jojoba Oil, Coconut Oil, Vitamin E, Rosemary Extract, Peppermint Essential Oil</p>",
+    "revrating": "4.9",
+    "revamount": "56"
   }
 ]

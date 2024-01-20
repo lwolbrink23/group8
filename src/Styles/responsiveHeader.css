@@ -34,6 +34,12 @@
     nav ul ul {
         width: 100%;
     }
+/* This is what makes the icons and text positioned to the left in mobile mode */
+    nav a {
+        display: flex;
+        align-items: center;
+        justify-content: left;
+    }
 
     .header-container {
         display: grid;

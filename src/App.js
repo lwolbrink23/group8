@@ -43,7 +43,7 @@ function App() {
           <Route path="/appointment_confirmed" element={<Confirmed />} />
           <Route path="/faqs" element={<Faqs />} />
           <Route path="/shop" element={<Shop />} />
-          <Route path="/productpage" element={<ProductPage />} />
+          <Route path="/productpage/:id" element={<ProductPage />} />
           <Route path="/cart" element={<Cart />} />
           <Route path="/selecttime" element={<SelectTime />} />
           <Route path="/order_placed" element={<OrderPlaced />} />
