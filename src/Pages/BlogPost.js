@@ -1,16 +1,13 @@
 import React from "react";
 import "../Styles/blogpost1.css";
-import { Link } from "react-router-dom";
-import backArrow from "../assets/icons/back-arrow.png"
+import BackButton from "../Components/BackButton";
 import hairWashing from "../assets/images/hairwashing.jpg"
 import hairPink from "../assets/images/hair-pinkbg.jpeg"
 function BlogPost() {
   return (
     <div className="post1">
       {/* back arrow */}
-         <Link to="/blog">
-                <img src={backArrow}  className="arrow" alt="back arrow" />
-            </Link>
+      <BackButton />
       <div className="post-general-info">
         <img src={hairWashing} className="main-image" alt="woman getting her hair washed by hairstylist" />
         <h4 className="category">Category: Hair</h4>
