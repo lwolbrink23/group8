@@ -19,10 +19,10 @@ import ProductPage from "./Pages/ProductPage";
 import Cart from "./Pages/Cart";
 import OrderPlaced from "./Pages/OrderPlaced";
 import OrderDetails from "./Pages/OrderDetails";
+import Checkout from "./Pages/Checkout";
 import Login from "./Pages/Login";
-import SelectTime from "./Pages/SelectTime"
+import SelectTime from "./Pages/SelectTime";
 import { Route, Routes } from "react-router-dom";
-
 
 // this is only the home page elements
 function App() {
@@ -51,6 +51,7 @@ function App() {
           <Route path="/order_placed" element={<OrderPlaced />} />
           <Route path="/order_details" element={<OrderDetails />} />
           <Route path="/Login" element={<Login />} />
+          <Route path="/checkout" element={<Checkout />} />
         </Routes>
       </div>
       <Footer />
