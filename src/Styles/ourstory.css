@@ -63,6 +63,7 @@
 .items-containers {
     display: grid;
         grid-template-columns: repeat(3, 1fr);
+        padding: 0 20px;
         gap: 20px;
         justify-content: center;
         align-items: center;
@@ -75,11 +76,9 @@
 }
 .column img {
     display: block;
-    /* Ensure the image is treated as a block element */
     margin: 0 auto;
-    /* Center the image horizontally */
+    padding: 0 20px;
     max-width: 100%;
-    /* Ensure the image doesn't exceed the width of its container */
 }
 
 .suite-button {
@@ -92,14 +91,14 @@ width: 400px;
 }
 
 
-h1 {
+.story-mission-container h1 {
     font-size: 44px;
     font-style: normal;
     font-weight: 700;
     line-height: normal;
 }
 
-h2 {
+.items-containers h2 {
     font-size: 36px;
     font-style: normal;
     font-weight: 700;

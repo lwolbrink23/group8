@@ -58,6 +58,18 @@ function Blog() {
           </button>
             </Link>
         </div>
+        <div className="knead-relax">
+          <img src={hairWashing} alt="woman getting her hair washed by a hairstylist." />
+          <h3><b>Knead to Relax: The Power of Massage</b></h3>
+          <p>Discover the healing touch of massage and its 
+            incredible power to improve well-being and relaxation.</p>
+            <Link to="/blogpost" onClick={scrollToTop}>
+                  <button
+            type="button">
+            Read More
+          </button>
+            </Link>
+        </div>
       </div>
     </div>
   );
