@@ -8,6 +8,17 @@ import tempShopData from "../data/shop.json";
 import arrowIcon from "../assets/icons/white-arrow.svg";
 import { useState } from "react";
 function Checkout() {
+  // radio button stuff
+  const [selectedOption, setSelectedOption] = useState(null);
+  const options = [
+    { id: "option1", label: "Option 1" },
+    { id: "option2", label: "Option 2" },
+    { id: "option3", label: "Option 3" },
+  ];
+
+  const handleOptionChange = (event) => {
+    setSelectedOption(event.target.value);
+  };
   // dropdown content
   const OrderedItems = () => (
     <ul className="dropdown-content">
@@ -43,7 +54,7 @@ function Checkout() {
       })}
     </ul>
   );
-  // drop down
+  // drop down button
   const CartDropdown = () => {
     const [dropdownVisible, setdropdownVisible] = useState(false);
     const [arrowRotation, setArrowRotation] = useState(270);
@@ -68,6 +79,8 @@ function Checkout() {
       </div>
     );
   };
+
+  // main stuff
   return (
     <div id="checkout">
       <Shopheader htitle={"Checkout"} />
@@ -94,7 +107,20 @@ function Checkout() {
         </div>
         <div id="payment-info" className="cardbox">
           <h3>Payment Method</h3>
-          <p>options here</p>
+          {options.map((option) => (
+            <div key={option.id}>
+              <label>
+                <input
+                  type="radio"
+                  name="options"
+                  value={option.id}
+                  checked={selectedOption === option.id}
+                  onChange={handleOptionChange}
+                />
+                {option.label}
+              </label>
+            </div>
+          ))}
           <div>
             <input type="text" placeholder="Card Number*" required />
           </div>
