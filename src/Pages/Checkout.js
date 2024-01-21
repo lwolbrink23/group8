@@ -5,8 +5,10 @@ import Shopheader from "../Components/Shopheader";
 import { Link } from "react-router-dom";
 import tempData from "../data/cart.json";
 import tempShopData from "../data/shop.json";
-
+import arrowIcon from "../assets/icons/white-arrow.svg";
+import { useState } from "react";
 function Checkout() {
+  // dropdown content
   const OrderedItems = () => (
     <ul className="dropdown-content">
       {tempData.map((item, i) => {
@@ -41,7 +43,31 @@ function Checkout() {
       })}
     </ul>
   );
+  // drop down
+  const CartDropdown = () => {
+    const [dropdownVisible, setdropdownVisible] = useState(false);
+    const [arrowRotation, setArrowRotation] = useState(270);
 
+    const toggleVisibility = () => {
+      setdropdownVisible(!dropdownVisible);
+      setArrowRotation(arrowRotation === 0 ? 270 : 0);
+    };
+
+    const arrowIconStyle = {
+      height: "15px",
+      transform: `rotate(${arrowRotation}deg)`,
+    };
+
+    return (
+      <div className="dropdown">
+        <div className="dropdown-btn" onClick={toggleVisibility}>
+          <h2>Items ordered ({tempData.length})</h2>
+          <img src={arrowIcon} alt="Arrow" style={arrowIconStyle} />
+        </div>
+        {dropdownVisible && <OrderedItems />}
+      </div>
+    );
+  };
   return (
     <div id="checkout">
       <Shopheader htitle={"Checkout"} />
@@ -86,7 +112,7 @@ function Checkout() {
         <div id="summary">
           <div id="cart-items">
             <h3>Review Order</h3>
-            <OrderedItems />
+            <CartDropdown />
           </div>
           <div id="checkout-sum">
             <h3>Finish Checkout</h3>
