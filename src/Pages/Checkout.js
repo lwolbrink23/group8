@@ -11,9 +11,9 @@ function Checkout() {
   // radio button stuff
   const [selectedOption, setSelectedOption] = useState(null);
   const options = [
-    { id: "option1", label: "Option 1" },
-    { id: "option2", label: "Option 2" },
-    { id: "option3", label: "Option 3" },
+    { id: "applePay", label: "Pay with Apple Pay" },
+    { id: "paypal", label: "Pay with Paypal" },
+    { id: "card", label: "Add a new credit or debit card" },
   ];
 
   const handleOptionChange = (event) => {
@@ -117,6 +117,7 @@ function Checkout() {
                   checked={selectedOption === option.id}
                   onChange={handleOptionChange}
                 />
+
                 {option.label}
               </label>
             </div>
