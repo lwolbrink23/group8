@@ -3,8 +3,45 @@ import shopICON from "../assets/icons/icons8-shopping-cart-100.png";
 import BackButton from "../Components/BackButton";
 import Shopheader from "../Components/Shopheader";
 import { Link } from "react-router-dom";
+import tempData from "../data/cart.json";
+import tempShopData from "../data/shop.json";
 
 function Checkout() {
+  const OrderedItems = () => (
+    <ul className="dropdown-content">
+      {tempData.map((item, i) => {
+        let itemName = "";
+        let itemPic = "";
+
+        for (const shopItem of tempShopData) {
+          if (item.id === shopItem.id) {
+            itemName = shopItem.name;
+            itemPic = shopItem.file;
+          }
+        }
+
+        return (
+          <li className="ordered-item" key={i}>
+            <img
+              src={require("../assets/images/shop/" + itemPic + ".png")}
+              alt=""
+            ></img>
+            <div className="ordered-item-info">
+              <p>
+                <span style={{ fontWeight: "bold" }}>{itemName}</span>
+                <br></br>
+                <span style={{ fontSize: "13px" }}>quantity</span>
+                <br></br>
+                <span id="item-qty">{item.qty}</span>
+              </p>
+            </div>
+            <p className="align-right">${item.price}</p>
+          </li>
+        );
+      })}
+    </ul>
+  );
+
   return (
     <div id="checkout">
       <Shopheader htitle={"Checkout"} />
@@ -48,7 +85,7 @@ function Checkout() {
         </div>
         <div id="cart-items">
           <h3>Review Order</h3>
-          <p>copy pasta</p>
+          <OrderedItems />
         </div>
         <div id="checkout-sum">
           <h3>Finish Checkout</h3>
