@@ -83,29 +83,31 @@ function Checkout() {
             <input type="text" placeholder="Name on Card*" required />
           </div>
         </div>
-        <div id="cart-items">
-          <h3>Review Order</h3>
-          <OrderedItems />
-        </div>
-        <div id="checkout-sum">
-          <h3>Finish Checkout</h3>
-          <div className="cardbox">
-            <div>
-              <p>Subtotal</p>
-              <p>$###</p>
-              <p>Shipping & Handling</p>
-              <p>$###</p>
-              <p>Taxes</p>
-              <p>$###</p>
+        <div id="summary">
+          <div id="cart-items">
+            <h3>Review Order</h3>
+            <OrderedItems />
+          </div>
+          <div id="checkout-sum">
+            <h3>Finish Checkout</h3>
+            <div className="cardbox">
+              <div>
+                <p>Subtotal</p>
+                <p>$###</p>
+                <p>Shipping & Handling</p>
+                <p>$###</p>
+                <p>Taxes</p>
+                <p>$###</p>
+              </div>
+              <hr />
+              <div>
+                <p>Total</p>
+                <p>$###</p>
+              </div>
+              <Link to={`/order_placed`}>
+                <button>Place Order</button>
+              </Link>
             </div>
-            <hr />
-            <div>
-              <p>Total</p>
-              <p>$###</p>
-            </div>
-            <Link to={`/order_placed`}>
-              <button>Place Order</button>
-            </Link>
           </div>
         </div>
       </main>
