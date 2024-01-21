@@ -1,15 +1,13 @@
 import "../Styles/checkout.css";
 import shopICON from "../assets/icons/icons8-shopping-cart-100.png";
 import BackButton from "../Components/BackButton";
+import Shopheader from "../Components/Shopheader";
+import { Link } from "react-router-dom";
 
 function Checkout() {
   return (
     <div id="checkout">
-      <div className="title-container trans-white">
-        <BackButton />
-        <h1>Checkout</h1>
-        <img src={shopICON} alt="shopping cart" id="cart-icon"></img>
-      </div>
+      <Shopheader htitle={"Checkout"} />
       <main>
         <div id="shipping-info" className="cardbox">
           <h3>Shipping Information</h3>
@@ -55,19 +53,26 @@ function Checkout() {
         <div id="checkout-sum">
           <h3>Finish Checkout</h3>
           <div className="cardbox">
-            <p>Subtotal</p>
-            <p>$###</p>
-            <p>Shipping & Handling</p>
-            <p>$###</p>
-            <p>Taxes</p>
-            <p>$###</p>
-            <p>line</p>
-            <p>Total</p>
-            <p>$###</p>
-            <button>Place Order</button>
+            <div>
+              <p>Subtotal</p>
+              <p>$###</p>
+              <p>Shipping & Handling</p>
+              <p>$###</p>
+              <p>Taxes</p>
+              <p>$###</p>
+            </div>
+            <hr />
+            <div>
+              <p>Total</p>
+              <p>$###</p>
+            </div>
+            <Link to={`/order_placed`}>
+              <button>Place Order</button>
+            </Link>
           </div>
         </div>
       </main>
+      <div className="extra-space"></div>
     </div>
   );
 }

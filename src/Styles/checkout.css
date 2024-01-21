@@ -45,3 +45,20 @@
   grid-template-columns: auto auto auto;
   column-gap: 10px;
 }
+
+#checkout-sum .cardbox {
+  width: 40%;
+}
+#checkout-sum .cardbox div p:nth-child(even) {
+  text-align: right;
+}
+
+.cardbox:last-child div {
+  display: grid;
+  grid-template-columns: auto auto;
+}
+
+#checkout button {
+  width: 100%;
+  margin: auto;
+}

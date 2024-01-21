@@ -5,6 +5,8 @@ import plusICON from "../assets/icons/black-plus.png";
 import minusICON from "../assets/icons/black-minus.png";
 import tempData from "../data/cart.json";
 import tempShopData from "../data/shop.json";
+import Shopheader from "../Components/Shopheader";
+import { Link } from "react-router-dom";
 
 function Cart() {
   const CartItems = () => (
@@ -68,11 +70,7 @@ function Cart() {
   return (
     <div id="cart">
       {/* title */}
-      <div className="title-container trans-white">
-        <BackButton />
-        <h1>Cart</h1>
-        <img src={shopICON} alt="shopping cart" id="cart-icon"></img>
-      </div>
+      <Shopheader htitle={"Cart"} />
       <main>
         <div>
           <p>{tempData.length} items in your cart</p>
