@@ -53,8 +53,12 @@
   column-gap: 10px;
 }
 /* summ box */
+#checkout-sum h3 {
+  margin-top: 70px;
+}
 #checkout-sum .cardbox {
-  width: 40%;
+  box-sizing: border-box;
+  width: 100%;
 }
 #checkout-sum .cardbox div p:nth-child(even) {
   text-align: right;
@@ -66,7 +70,6 @@
 }
 /* review items */
 #checkout .dropdown-content {
-  width: 50%;
   height: 400px;
   overflow-y: scroll;
   margin: 0 0 70px 0;
@@ -74,4 +77,22 @@
 
 #summary {
   grid-row: 1 / span 3;
+  width: 35%;
+}
+/* item dropdown */
+#cart-items .dropdown {
+  margin: initial;
+  width: 100%;
+}
+#cart-items .dropdown-content {
+  width: initial;
+  margin: initial;
+}
+#cart-items .dropdown-btn {
+  background-color: #5c5c5c;
+  color: white;
+  padding: 23px;
+}
+#cart-items .dropdown-btn h3 {
+  margin: initial;
 }
