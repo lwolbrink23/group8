@@ -41,7 +41,7 @@
 #payment-info,
 #shipping-info {
   margin-left: auto;
-  width: 70%;
+  width: 60%;
 }
 .ct-state {
   display: grid;
@@ -78,7 +78,7 @@
 
 #summary {
   grid-row: 1 / span 3;
-  width: 35%;
+  width: 50%;
 }
 /* item dropdown */
 #summary #cart-items .dropdown {
