@@ -66,8 +66,8 @@ function Overview() {
                         const parts = service.split('\n'); // Split the service string into parts
                         return (
                             <div key={index} id="booked-service">
-                                <p>{parts[0]}<br />{parts[1]} - {parts[2]}</p> {/* Service name */}
-                                <p></p> {/* Service duration and price */}
+                                <p>{parts[0]}<br />{parts[1]}</p> {/* Service name */}
+                                <p>{parts[2]}</p> {/* Service duration and price */}
                             </div>
                         );
                     })}
