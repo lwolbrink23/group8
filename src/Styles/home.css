@@ -278,8 +278,7 @@ h3 {
              /* This allows the child elements to take equal space within the flex container */
          }
     
-         .why-choose-us-section,
-         .our-providers-section {
+         .why-choose-us-section{
              width: 50%;
             max-width: 700px;
              box-sizing: border-box;
@@ -287,6 +286,18 @@ h3 {
              padding: 20px;
              /* Adjust padding as needed */
             margin-left: auto;
+            margin-right: 0;
+            margin-top: 20px;
+         }
+
+         .our-providers-section {
+             width: 50%;
+            max-width: 700px;
+             box-sizing: border-box;
+             /* Include padding and border in the element's total width and height */
+             padding: 20px;
+             /* Adjust padding as needed */
+            margin-left: 0;
             margin-right: auto;
             margin-top: 20px;
          }
@@ -300,7 +311,7 @@ h3 {
                 /* Make sure the images don't exceed the height of the container */
                 object-fit: cover;
                 /* Maintain aspect ratio and cover the entire container */
-                margin-left: -150px;
+                margin-left: 20px;
                 margin-right: auto;
                 margin-top: 20px;
          }
@@ -315,7 +326,7 @@ h3 {
                 object-fit: cover;
                 /* Maintain aspect ratio and cover the entire container */
                 margin-left: auto;
-                margin-right: -150px;
+                margin-right: 20px;
                 margin-top: 20px;
          }
 }
