@@ -29,6 +29,82 @@ h3 {
     font-weight: 500;
 }
 
+.why-choose-us-section {
+    background-color: white;
+        margin-top: 20px;
+        margin-bottom: 20px;
+        box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.3);
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        width: 85%;
+        margin-left: auto;
+        /*centers the div*/
+        margin-right: auto;
+        /*centers the div*/
+    }
+    
+    .why-choose-us-section p {
+        text-align: center;
+        /* Center the text within the container */
+        width: 90%;
+        margin-bottom: 30px;
+    
+    }
+    
+    
+     .viewServButton {
+         margin-top: 10px;
+         margin-bottom: 30px;
+    }
+
+
+.our-providers-section {
+    background-color: white;
+    margin-top: 20px;
+    margin-bottom: 20px;
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.3);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 85%;
+    margin-left: auto;
+    /*centers the div*/
+    margin-right: auto;
+    /*centers the div*/
+}
+
+.our-providers-section p {
+    text-align: center;
+    /* Center the text within the container */
+    width: 90%;
+
+}
+
+.gallery {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            margin-left: auto;
+            /*centers the div*/
+            margin-right: auto;
+            /*centers the div*/
+}
+
+.testimonials {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin-left: auto;
+    /*centers the div*/
+    margin-right: auto;
+    /*centers the div*/
+}
+
 /*mobile styles:*/
 @media screen and (max-width: 767px) {
     .suite-spot-overlay {
@@ -62,26 +138,46 @@ h3 {
         margin-top: 0px;
     }
 
+    h2 {
+        font-size: 25px;
+        margin-top: 10px;
+        margin-bottom: -5px;
+    }
+
     h3 {
         font-size: 20px;
     }
 
-        .booknow-section {
+    .booknow-section {
             padding-top: 10px;
             padding-bottom: 20px;
             display: flex;
             flex-direction: column;
             justify-content: center;
             align-items: center;
-        }
+    }
 
     .booknow-section button {
-        height: 50px;
+        height: 60px;
+        width: 230px;
         font-size: 25px;
         margin-top: -10px;
         
      }
 
+
+
+    .webHomepic1 {
+        display: none;
+     }
+    .webHomepic2 {
+        display: none;
+    }
+
+
+    .testimonials {
+        background-color: white;
+    }
 
 }
 
@@ -130,4 +226,26 @@ h3 {
     margin-left: 100px;
     }
 
+        .why-choose-us-section {
+            width: 50%;
+            margin-left: auto;
+            /*centers the div*/
+            margin-right: auto;
+            /*centers the div*/
+        }
+    
+        .why-choose-us-section p {
+            width: 75%;
+            margin-bottom: 30px;
+    
+        }
+
+        .our-providers-section {
+            width: 50%;
+        }
+
+        .our-providers-section p{
+            width: 75%;
+        }
+       
 }

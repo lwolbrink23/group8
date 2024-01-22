@@ -18,9 +18,7 @@ function Home() {
   ];
 
   // finish adding web images wider from figma:
-  const webcarouselImages = [
-    webpromoBottle
-  ]
+  const webcarouselImages = [webpromoBottle];
 
   return (
     <div className="App">
@@ -41,7 +39,9 @@ function Home() {
         </div>
       </div>
       <Link to="/shop">
-        <button type="button" className="promoButton">View Our Products</button>
+        <button type="button" className="promoButton">
+          View Our Products
+        </button>
       </Link>
 
       {/* <!-- Book Now Section --> */}
@@ -79,9 +79,12 @@ function Home() {
           how we can help you build your beauty business on your own terms.
         </p>
       </div>
-      <img src="assets/images/spaproducts.png" alt="Spa Products" />
-
-      <img src="assets/images/brownhair.png" alt="Hair" />
+      <div className="webHomepic1">
+        <img src="assets/images/spaproducts.png" alt="Spa Products" />
+      </div>
+      <div className="webHomepic2">
+        <img src="assets/images/brownhair.png" alt="Hair" />
+      </div>
       {/* <!-- "Our Providers" Section --> */}
       <div className="our-providers-section">
         <h2>Our Providers</h2>
@@ -102,7 +105,9 @@ function Home() {
           roof.
         </p>
         <Link to="/ourservices">
-          <button type="button">View Our Services</button>
+          <button type="button" className="viewServButton">
+            View Our Services
+          </button>
         </Link>
       </div>
 
