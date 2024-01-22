@@ -33,11 +33,6 @@ function Overview() {
                 <BackButton />
                 <h1>Simply Chic Hair</h1>
             </div>
-            <div className="arrow-container">
-                {/*back arrow*/}
-
-
-            </div>
             <div className="overview-container">
                 <div className="payment">
                     <p>Services &gt; Time &gt; <strong>Confirm</strong></p>

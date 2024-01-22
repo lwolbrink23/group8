@@ -1,8 +1,9 @@
 import React from "react";
 import "../Styles/blogpost1.css";
-import BackButton from "../Components/BackButton";
 import hairWashing from "../assets/images/hairwashing.jpg"
 import hairPink from "../assets/images/hair-pinkbg.jpeg"
+import BackButton from "../Components/BackButton";
+
 function BlogPost() {
   return (
     <div className="post1">
