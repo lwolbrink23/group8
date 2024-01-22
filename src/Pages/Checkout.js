@@ -14,11 +14,11 @@ function Checkout() {
     { id: "paypal", label: "Pay with Paypal" },
     { id: "card", label: "Add a new credit or debit card" },
   ];
-
   const handleOptionChange = (event) => {
     setSelectedOption(event.target.value);
   };
-  // dropdown content
+
+  // dropdown content for cart
   const OrderedItems = () => (
     <ul className="dropdown-content">
       {tempData.map((item, i) => {
