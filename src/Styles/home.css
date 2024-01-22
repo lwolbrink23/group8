@@ -52,7 +52,18 @@ h3 {
         margin-bottom: 30px;
     
     }
+
+    .why-choose-us-section li {
+         margin-bottom: 10px;
+            /*space btw bullet  points */
+        text-align: center;
+        width: 90%;
+     }
     
+     .our-providers-section li {
+         margin-bottom: 10px;
+            /*space btw bullet  points */
+     }
     
      .viewServButton {
          margin-top: 10px;
@@ -237,7 +248,11 @@ h3 {
         .why-choose-us-section p {
             width: 75%;
             margin-bottom: 30px;
-    
+            margin-top: -10px;
+        }
+
+        .why-choose-us-section li {
+            margin-bottom: 20px; /*space btw bullet  points */
         }
 
         .our-providers-section {
