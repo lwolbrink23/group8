@@ -1,5 +1,162 @@
+/* general */
 .cardbox {
   background: #ffffff;
   box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
   display: block;
+  padding: 23px;
+  width: fit-content;
+  height: fit-content;
+}
+#checkout main {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 24px;
+  margin-top: 55px;
+}
+#checkout h3 {
+  margin-top: 0;
+}
+#checkout input[type="text"] {
+  width: 100%;
+  height: 50px;
+  margin: 5px;
+  padding: 10px;
+  box-sizing: border-box;
+  background: #ffffff;
+  border: 1px solid #cfcfcf;
+  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+}
+
+#checkout button {
+  width: 100%;
+  margin: auto;
+}
+
+/* payment section */
+#payment-info {
+  grid-row: 2;
+  grid-column: 1;
+}
+
+#payment-info,
+#shipping-info {
+  margin-left: auto;
+  width: 60%;
+  box-sizing: border-box;
+}
+.ct-state {
+  display: grid;
+  grid-template-columns: 2fr 1fr;
+  column-gap: 10px;
+}
+.cc-info {
+  display: grid;
+  grid-template-columns: auto auto auto;
+  column-gap: 10px;
+}
+/* summ box */
+#checkout-sum h3 {
+  margin-top: 70px;
+}
+#checkout-sum .cardbox {
+  box-sizing: border-box;
+  width: 100%;
+}
+#checkout-sum .cardbox div p:nth-child(even) {
+  text-align: right;
+}
+
+.cardbox:last-child div {
+  display: grid;
+  grid-template-columns: auto auto;
+}
+/* review items */
+#checkout .dropdown-content {
+  height: 400px;
+  overflow-y: scroll;
+  margin: 0 0 70px 0;
+}
+
+#summary {
+  grid-row: 1 / span 3;
+  width: 50%;
+}
+/* item dropdown */
+#summary #cart-items .dropdown {
+  margin: initial;
+  width: 100%;
+}
+#summary #cart-items .dropdown-content {
+  width: initial;
+  margin: initial;
+}
+#summary #cart-items .dropdown-btn {
+  background-color: #5c5c5c;
+  color: white;
+  padding: 23px;
+}
+#summary #cart-items .dropdown-btn h3 {
+  margin: initial;
+}
+
+/* radio */
+#checkout input[type="radio"] {
+  margin: 7px 20px 7px 10px;
+}
+#checkout label {
+  display: inline-flex;
+  align-items: center;
+  color: #000000;
+}
+
+
+/* responsive */
+@media screen and (max-width: 1750px) {
+  #summary {
+    width: 80%;
+    margin-top: 40px;
+  }
+
+  #payment-info,
+  #shipping-info {
+    width: 80%;
+    margin-top: 40px;
+  }
+}
+
+@media screen and (max-width: 1100px) {
+
+  #summary {
+    width: 95%;
+
+  }
+
+  #payment-info,
+  #shipping-info {
+    width: 95%;
+
+  }
+}
+
+@media screen and (max-width: 875px) {
+#checkout main {
+    display: block;
+    padding: 0 10% 10% 10%;
+  }
+  #summary{
+    width: 100%;
+
+  }
+    #payment-info,
+    #shipping-info {
+      width: 100%;
+
+    }
+}
+
+@media screen and (max-width: 700px) {
+  #checkout main {
+  padding: 0 20px 20px 20px;
+
+  }
 }

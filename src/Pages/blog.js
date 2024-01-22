@@ -3,6 +3,7 @@ import { Link, useLocation } from "react-router-dom";
 import "../App.css"
 import "../Styles/blog.css";
 import hairWashing from "../assets/images/hairwashing.jpg"
+import kneadRelax from "../assets/images/relax.jpeg"
 
 function ScrollToTop() {
   const location = useLocation();
@@ -25,6 +26,7 @@ function Blog() {
     <div>
       <ScrollToTop />
       <div className="main-blog-page">
+        <div className="inner-container"></div>
         <div className="bg-image"></div>
         <div className="overlay-text">
         <h1 className="header-1">Blog</h1>
@@ -52,6 +54,18 @@ function Blog() {
             In this article, we'll delve into effective tips that will leave you with a mane to envy.
           </p>
           <Link to="/blogpost" onClick={scrollToTop}>
+                  <button
+            type="button">
+            Read More
+          </button>
+            </Link>
+        </div>
+        <div className="knead-relax">
+          <img src={kneadRelax} alt="woman getting her hair washed by a hairstylist." />
+          <h3><b>Knead to Relax: The Power of Massage</b></h3>
+          <p>Discover the healing touch of massage and its 
+            incredible power to improve well-being and relaxation.</p>
+            <Link to="/blogpost" onClick={scrollToTop}>
                   <button
             type="button">
             Read More

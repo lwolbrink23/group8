@@ -7,6 +7,7 @@ import OurSuites from "./Pages/OurSuites";
 import OurServices from "./Pages/OurServices";
 import Blog from "./Pages/blog";
 import BlogPost from "./Pages/BlogPost";
+import BlogPost2 from "./Pages/BlogPost-two";
 import BookNowDirectory from "./Pages/BookNowDirectory";
 import ProviderProfile from "./Pages/ProviderProfile";
 import SelectServices from "./Pages/SelectServices";
@@ -18,10 +19,10 @@ import ProductPage from "./Pages/ProductPage";
 import Cart from "./Pages/Cart";
 import OrderPlaced from "./Pages/OrderPlaced";
 import OrderDetails from "./Pages/OrderDetails";
+import Checkout from "./Pages/Checkout";
 import Login from "./Pages/Login";
-import SelectTime from "./Pages/SelectTime"
+import SelectTime from "./Pages/SelectTime";
 import { Route, Routes } from "react-router-dom";
-
 
 // this is only the home page elements
 function App() {
@@ -36,6 +37,7 @@ function App() {
           <Route path="/oursuites" element={<OurSuites />} />
           <Route path="/blog" element={<Blog />} />
           <Route path="/blogpost" element={<BlogPost />} />
+          <Route path="/blogpost_two" element={<BlogPost2 />} />
           <Route path="/booknow" element={<BookNowDirectory />} />
           <Route path="/providerprofile" element={<ProviderProfile />} />
           <Route path="/selectservices" element={<SelectServices />} />
@@ -43,12 +45,13 @@ function App() {
           <Route path="/appointment_confirmed" element={<Confirmed />} />
           <Route path="/faqs" element={<Faqs />} />
           <Route path="/shop" element={<Shop />} />
-          <Route path="/productpage" element={<ProductPage />} />
+          <Route path="/productpage/:id" element={<ProductPage />} />
           <Route path="/cart" element={<Cart />} />
           <Route path="/selecttime" element={<SelectTime />} />
           <Route path="/order_placed" element={<OrderPlaced />} />
           <Route path="/order_details" element={<OrderDetails />} />
           <Route path="/Login" element={<Login />} />
+          <Route path="/checkout" element={<Checkout />} />
         </Routes>
       </div>
       <Footer />

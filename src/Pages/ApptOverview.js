@@ -24,7 +24,9 @@ function Overview() {
     const scrollToTop = () => {
         window.scrollTo(0, 0);
     };
-
+    const location = useLocation();
+    const selectedServices = location.state?.service || [];
+    const totalCost = location.state?.totalCost || 0;
 
     return (
         <div>
@@ -32,11 +34,6 @@ function Overview() {
             <div className="title-container trans-white">
                 <BackButton />
                 <h1>Simply Chic Hair</h1>
-            </div>
-            <div className="arrow-container">
-                {/*back arrow*/}
-
-
             </div>
             <div className="overview-container">
                 <div className="payment">
@@ -65,10 +62,19 @@ function Overview() {
                 </div>
                 <div className="overview" id="booking-overview">
                     <h2>Overview</h2>
-                    <p id="booked-service">Classic Blowout $75</p>
-                    <p id="booked-time">30 minutes</p>
+                    {selectedServices.map((service, index) => {
+                        const parts = service.split('\n'); // Split the service string into parts
+                        return (
+                            <div key={index} id="booked-service" className="OverviewDeats">
+                                <p>{parts[0]}<br />{parts[1]}</p> {/* Service name */}
+                                <p>{parts[2]}</p> {/* Service duration and price */}
+                            </div>
+                        );
+                    })}
+
+
                     <hr />
-                    <p id="total"><strong>Total: $75</strong></p>
+                    <p id="total"><strong>Total: ${totalCost}</strong></p>
                     <div className="appointment" id="appt-container">
                         <p><strong>Appointment:</strong></p>
                         <div id="staff">

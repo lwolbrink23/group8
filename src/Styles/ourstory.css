@@ -1,54 +1,55 @@
 /* web screen */
 @media screen and (min-width: 767px) {
-.page-title {
+  .page-title {
     /*background image*/
     height: 367px;
     display: flex;
     flex-direction: column;
     padding-left: 133px;
     flex-shrink: 0;
-    background: lightgray url("../assets/images/salon-chair.jpeg") no-repeat center/cover;
-}
+    background: lightgray url("../assets/images/salon-chair.jpeg") no-repeat
+      center/cover;
+  }
 
-.title-text {
+  .title-text {
     text-align: left;
     line-height: 1.2;
-}
-    
-.about-text {
+  }
+
+  .about-text {
     text-align: left;
     margin-top: 127px;
     margin-bottom: -46px;
-}
+  }
 
-.story-mission-container{
+  .story-mission-container {
     height: 410px;
     display: flex;
     padding-top: 35px;
     margin-top: -20px;
     background-color: white;
     width: 100%;
-}
+  }
 
-.our-story,
-.our-mission {
+  .our-story,
+  .our-mission {
     text-align: center;
     max-width: 100%;
     margin: 0 auto;
     padding: 0 20px;
-}
+  }
 
-.sm-p {
+  .sm-p {
     text-align: justify;
     max-width: 100%;
     margin: 0 auto;
     padding: 0 10px;
-}
-.awards-container {
+  }
+  .awards-container {
     padding-bottom: 100px;
-    color: var(--Color, #FFF);
+    color: var(--Color, #fff);
     border: 1px solid #000;
-    background: #5C5C5C;
+    background: #5c5c5c;
     font-family: Poppins;
     font-size: 15px;
     font-style: normal;
@@ -59,100 +60,97 @@
     padding: 0 20px;
     align-items: center;
     justify-content: center;
-}
-.items-containers {
+  }
+  .items-containers {
     display: grid;
-        grid-template-columns: repeat(3, 1fr);
-        gap: 20px;
-        justify-content: center;
-        align-items: center;
-}
+    grid-template-columns: repeat(3, 1fr);
+    padding: 0 20px;
+    gap: 20px;
+    justify-content: center;
+    align-items: center;
+  }
 
-.column{
+  .column {
     box-sizing: border-box;
     margin-bottom: 20px;
     text-align: center;
-}
-.column img {
+  }
+  .column img {
     display: block;
-    /* Ensure the image is treated as a block element */
     margin: 0 auto;
-    /* Center the image horizontally */
+    padding: 0 20px;
     max-width: 100%;
-    /* Ensure the image doesn't exceed the width of its container */
-}
+  }
 
-.suite-button {
-width: 400px;
+  .suite-button {
+    width: 400px;
     padding: 10px;
     margin-bottom: 16px;
     margin-left: auto;
     margin-right: auto;
     display: block;
-}
+  }
 
-
-h1 {
+  .story-mission-container h1 {
     font-size: 44px;
     font-style: normal;
     font-weight: 700;
     line-height: normal;
-}
+  }
 
-h2 {
+  .items-containers h2 {
     font-size: 36px;
     font-style: normal;
     font-weight: 700;
     line-height: normal;
-}
+  }
 }
 /* mobile screen */
 @media screen and (max-width: 766px) {
-    .bg-color {
-        background-color: white;
-    }
+  .bg-color {
+    background-color: white;
+  }
 
-    .page-title h1,
-    .page-title h2 {
-        display: none;
-    }
+  .page-title h1,
+  .page-title h2 {
+    display: none;
+  }
 
-    .story-mission-container {
-        text-align: center;
-        font-family: Cormorant;
-        font-size: 36px;
-        font-weight: 700;
-        line-height: normal;
-    }
+  .story-mission-container {
+    text-align: center;
+    font-family: Cormorant;
+    font-size: 36px;
+    font-weight: 700;
+    line-height: normal;
+  }
 
-    .sm-p {
-        text-align: justify;
-        max-width: 100%;
-        margin: 0 auto;
-        padding: 0 15px 30px;
-        /* Adjust padding as needed */
-        font-family: Poppins;
-        font-size: 15px;
-        font-weight: 400;
-        line-height: normal;
-    }
+  .sm-p {
+    text-align: justify;
+    max-width: 100%;
+    margin: 0 auto;
+    padding: 0 15px 30px;
+    /* Adjust padding as needed */
+    font-family: Poppins;
+    font-size: 15px;
+    font-weight: 400;
+    line-height: normal;
+  }
 
-    .awards-container {
-        color: var(--Color, #FFF);
-        border: 1px solid #000;
-        background: #5C5C5C;
-        font-family: Poppins;
-        font-size: 15px;
-        text-align: center;
-        padding: 25px;
-    }
+  .awards-container {
+    color: var(--Color, #fff);
+    border: 1px solid #000;
+    background: #5c5c5c;
+    font-family: Poppins;
+    font-size: 15px;
+    text-align: center;
+    padding: 25px;
+  }
 
-    .suite-button {
-        position: relative;
-        width: 100%;
-        margin-bottom: 16px;
-        margin: 0 auto;
-        margin-bottom: 30px;
-
-    }
+  .suite-button {
+    position: relative;
+    width: 100%;
+    margin-bottom: 16px;
+    margin: 0 auto;
+    margin-bottom: 30px;
+  }
 }

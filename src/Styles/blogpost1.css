@@ -1,80 +1,175 @@
 /* web screen */
 @media screen and (min-width: 767px) {
-    .post1 {
-        background-color: white;
-    }
+  .post1 {
+    background-color: white;
+  }
 
-    .main-image {
-        display: flex;
-            align-items: center;
-            max-width: 50%;
-            flex-shrink: 0;
-            position: relative;
-            margin: 0 auto;
-    }
+  .main-image {
+    padding-top: 80px;
+    display: flex;
+    align-items: center;
+    max-width: 50%;
+    flex-shrink: 0;
+    position: relative;
+    margin: 0 auto;
+  }
 
-    .post-general-info h4 {
-        font-family: Inter;
-        font-size: 20px;
-        font-style: normal;
-        font-weight: 400;
-        line-height: normal;
-    }
+  .post-general-info h4 {
+    font-family: Inter;
+    font-size: 20px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+  }
 
-    .art-title {
-        margin: 0 auto;
-        max-width: max-content;
-        font-family: Poppins;
-        font-size: 30px;
-        font-style: normal;
-        font-weight: 700;
-        line-height: normal;
-        margin-top: 80px;
-    }
+  .art-title {
+    margin: 0 auto;
+    max-width: max-content;
+    font-family: Poppins;
+    font-size: 30px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: normal;
+    margin-top: 80px;
+  }
 
-    .category {
-        position: absolute;
-        left: 25%;
-        right: 64%;
+  .category {
+    position: absolute;
+    left: 25%;
+    right: 64%;
+  }
 
-    }
-
-    .author {
+  .author {
     position: absolute;
     left: 64%;
     right: 24%;
-    }
+  }
 
-    .article-content{
-        text-align: justify;
-        margin: 0 50px;
-        padding: 0 80px 80px;
-        font-family: Poppins;
-        font-size: 20px;
-        font-style: normal;
-        font-weight: 400;
-        line-height: normal;
-    }
+  .articles-contents {
+    text-align: justify;
+    margin: 0 50px;
+    padding: 0 40px 40px;
+    font-family: Poppins;
+    font-size: 18px;
+    font-style: normal;
+    padding-top: 30px;
+    margin-bottom: -40px;
+    font-weight: 400;
+    line-height: normal;
+  }
+  .article-content {
+    text-align: justify;
+    margin: 0 50px;
+    padding: 0 40px 40px;
+    margin-top: -40px;
+    font-family: Poppins;
+    font-size: 18px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+  }
 
-    .pink-image{
+  .list-content {
+    margin: 0 50px;
+    padding: 0 40px 40px;
+    font-family: Poppins;
+    font-size: 18px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+  }
+
+  .pink-image {
     width: 342px;
     height: 408px;
     flex-shrink: 0;
     object-fit: cover;
     object-position: center;
-    float:right;
-    padding-left: 20px;
-    padding-top: 20px;
-    padding-bottom: 20px;
-    }
+    float: right;
+    margin: 0 0 20px 20px;
+  }
 
-    .arrow{
-        position: absolute;
-        left: 8%;
-        width: 50px;
-    }
+  .list-content::after {
+    content: "";
+    display: table;
+    clear: both;
+  }
+}
+/* Mobile screen */
+@media screen and (max-width: 766px) {
+  .post1 {
+    background-color: white;
+  }
 
-    .arrow:hover {
-        width: 55px;
-    }
+  .main-image {
+    padding-top: 70px;
+    display: flex;
+    align-items: center;
+    max-width: 80%;
+    flex-shrink: 0;
+    position: relative;
+    margin: 0 auto;
+  }
+  .article-content {
+    padding: 0 30px 30px;
+    flex-shrink: 0;
+    font-family: Poppins;
+    margin-top: -35px;
+    font-size: 11px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+    text-align: justify;
+  }
+  .articles-contents {
+    padding: 0 30px 30px;
+    flex-shrink: 0;
+    font-family: Poppins;
+    font-size: 11px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+    text-align: justify;
+    margin-bottom: -25px;
+  }
+
+  .art-title {
+    margin: 0 auto;
+    text-align: center;
+    max-width: max-content;
+    font-family: Poppins;
+    font-size: 15px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: normal;
+    margin-top: 80px;
+  }
+  .category {
+    margin-top: 23px;
+    position: absolute;
+    left: 5%;
+    right: 4%;
+  }
+
+  .author {
+    margin-top: 23px;
+    position: absolute;
+    left: 65%;
+  }
+  .pink-image {
+    max-width: 100%;
+    margin: 20px auto;
+    display: block;
+  }
+
+  .list-content {
+    padding: 0 30px 30px;
+    flex-shrink: 0;
+    font-family: Poppins;
+    font-size: 11px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+    text-align: justify;
+  }
 }

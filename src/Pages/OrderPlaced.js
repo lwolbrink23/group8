@@ -6,6 +6,7 @@ import arrowIcon from "../assets/icons/white-arrow.svg";
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import "../Styles/orderplaced.css";
+import Shopheader from "../Components/Shopheader";
 
 function OrderPlaced() {
   const OrderedItems = () => (
@@ -59,7 +60,7 @@ function OrderPlaced() {
     return (
       <div className="dropdown">
         <div className="dropdown-btn" onClick={toggleVisibility}>
-          <h2>Items ordered ({tempData.length})</h2>
+          <h3>Items ordered ({tempData.length})</h3>
           <img src={arrowIcon} alt="Arrow" style={arrowIconStyle} />
         </div>
         {dropdownVisible && <OrderedItems />}
@@ -69,10 +70,7 @@ function OrderPlaced() {
   return (
     <div id="order-placed">
       {/* title */}
-      <div className="title-container trans-white">
-        <h1>Checkout</h1>
-        <img src={shopICON} alt="shopping cart" id="cart-icon"></img>
-      </div>
+      <Shopheader htitle={"Checkout"} />
       {/* blurb */}
       <main>
         <article className="center-text">
