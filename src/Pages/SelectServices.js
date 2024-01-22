@@ -1,5 +1,5 @@
-import React, { useEffect } from "react";
-import { Link, useLocation, useNavigate } from "react-router-dom";
+import React from "react";
+import { useNavigate } from "react-router-dom";
 import BackButton from "../Components/BackButton";
 import plusICON from "../assets/icons/black-plus.png";
 import minusICON from "../assets/icons/black-minus.png";
@@ -8,17 +8,6 @@ import "../Styles/selectservices.css";
 import "../App.css";
 import { useState } from "react";
 
-function ScrollToTop() {
-  const location = useLocation();
-
-  useEffect(() => {
-    if (location.pathname === "/blogpost") {
-      window.scrollTo(0, 0);
-    }
-  }, [location.pathname]);
-
-  return null;
-}
 //updating services on screen
 const SelectServices = () => {
   const [selectedServices, setSelectedServices] = useState([]);
@@ -58,9 +47,6 @@ const SelectServices = () => {
     setSelectedServices(updatedServices);
   };
 
-  const scrollToTop = () => {
-    window.scrollTo(0, 0);
-  };
 
   const navigate = useNavigate();
 
@@ -79,7 +65,6 @@ const SelectServices = () => {
 
   return (
     <div>
-      <ScrollToTop />
       <div className="title-container trans-white">
         <BackButton />
         <h1>Simply Chic Hair</h1>
@@ -92,6 +77,7 @@ const SelectServices = () => {
                 key={category}
                 type="button"
                 onClick={() => clickCategory(category)}
+                className={currentCategory === category ? "active" : ""}
               >
                 {category.charAt(0).toUpperCase() + category.slice(1)}
               </button>
