@@ -14,11 +14,11 @@ function Checkout() {
     { id: "paypal", label: "Pay with Paypal" },
     { id: "card", label: "Add a new credit or debit card" },
   ];
-
   const handleOptionChange = (event) => {
     setSelectedOption(event.target.value);
   };
-  // dropdown content
+
+  // dropdown content for cart
   const OrderedItems = () => (
     <ul className="dropdown-content">
       {tempData.map((item, i) => {
@@ -168,7 +168,7 @@ function Checkout() {
                 <p>${taxes.toFixed(2)}</p>
               </div>
               <hr />
-              <div>
+              <div className="bold">
                 <p>Total</p>
                 <p>${total.toFixed(2)}</p>
               </div>

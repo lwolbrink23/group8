@@ -103,7 +103,7 @@ const SelectServices = () => {
                 <p>{service}</p>
                 {selectedServices.includes(service) ? (
                   <div className="button-container">
-                    <button
+                    <button className="remove-button"
                       type="button"
                       onClick={() => removeFromSelectedServices(service)}
                     >
@@ -120,7 +120,7 @@ const SelectServices = () => {
                     />
                   </div>
                 ) : (
-                  <button
+                  <button className="plus-button"
                     type="button"
                     onClick={() => addToSelectedServices(service)}
                   >
