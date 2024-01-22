@@ -245,14 +245,7 @@ h3 {
     margin-left: 100px;
     }
 
-        .why-choose-us-section {
-            width: 50%;
-            margin-left: auto;
-            /*centers the div*/
-            margin-right: auto;
-            /*centers the div*/
-        }
-    
+ 
         .why-choose-us-section p {
             width: 85%;
             margin-bottom: 30px;
@@ -264,10 +257,6 @@ h3 {
             width: 85%;
         }
 
-        .our-providers-section {
-            width: 50%;
-        }
-
         .our-providers-section p{
             width: 75%;
         }
@@ -275,4 +264,58 @@ h3 {
         .viewServButton {
             width: 220px;
         }
+
+         .wcu,
+         .op {
+             display: flex;
+             align-items: stretch;
+             /* This makes the items stretch to the same height */
+         }
+    
+         .wcu > *,
+         .op > * {
+             flex: 1;
+             /* This allows the child elements to take equal space within the flex container */
+         }
+    
+         .why-choose-us-section,
+         .our-providers-section {
+             width: 50%;
+            max-width: 700px;
+             box-sizing: border-box;
+             /* Include padding and border in the element's total width and height */
+             padding: 20px;
+             /* Adjust padding as needed */
+            margin-left: auto;
+            margin-right: auto;
+            margin-top: 20px;
+         }
+    
+         .webHomepic1 {
+            width: 100%;
+                /* Adjust the width as needed */
+                max-width: 300px;
+                /* Set a maximum width as needed */
+                max-height: 100%;
+                /* Make sure the images don't exceed the height of the container */
+                object-fit: cover;
+                /* Maintain aspect ratio and cover the entire container */
+                margin-left: -150px;
+                margin-right: auto;
+                margin-top: 20px;
+         }
+
+         .webHomepic2 {
+            width: 100%;
+                /* Adjust the width as needed */
+                max-width: 300px;
+                /* Set a maximum width as needed */
+                max-height: 100%;
+                /* Make sure the images don't exceed the height of the container */
+                object-fit: cover;
+                /* Maintain aspect ratio and cover the entire container */
+                margin-left: auto;
+                margin-right: -150px;
+                margin-top: 20px;
+         }
 }
