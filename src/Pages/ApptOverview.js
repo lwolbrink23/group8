@@ -63,9 +63,15 @@ function Overview() {
                 </div>
                 <div className="overview" id="booking-overview">
                     <h2>Overview</h2>
-                    {selectedServices.map((service, index) => (
-                        <p key={index}>{service}</p>
-                    ))}
+                    {selectedServices.map((service, index) => {
+                        const parts = service.split('\n'); // Split the service string into parts
+                        return (
+                            <div key={index} id="booked-service">
+                                <p>{parts[0]}<br />{parts[1]} - {parts[2]}</p> {/* Service name */}
+                                <p></p> {/* Service duration and price */}
+                            </div>
+                        );
+                    })}
 
 
                     <hr />
