@@ -121,14 +121,17 @@ const SelectServices = () => {
           </div>
         </div>
         <div className="services-selected">
-          <h2>{`${selectedServices.length} services selected`}</h2>
+          <h2 className="service-title">{`${selectedServices.length} services selected`}</h2>
+          <div className="line"></div>
           <ul>
             {selectedServices.map((service, index) => (
               <li key={index}>{service}</li>
             ))}
           </ul>
           <Link to="/appointment_overview" onClick={scrollToTop}>
-            <button type="button">CONTINUE</button>
+            <button className="continue" type="button">
+              CONTINUE
+            </button>
           </Link>
         </div>
       </div>

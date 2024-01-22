@@ -1,19 +1,73 @@
 /* web screen */
 @media screen and (min-width: 767px) {
-    .tabs-cat-list {
-        flex-direction: column;
-    }
+  .tabs {
+    text-align: center;
+    font-family: Cormorant;
+    font-size: 26px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: normal;
+  }
 
-    .button-container {
-        display: flex;
-        align-items: center;
+  .category-list {
+    font-family: Poppins;
+    font-size: 16.342px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+  }
+  .tabs-cat-list {
+    flex-direction: column;
+  }
 
-    }
+  .button-container {
+    display: flex;
+    align-items: center;
+  }
 
-    .check-mark {
-        width: 80px;
-        height: 80px;
-        margin-left: 5px;
-        pointer-events: none;
-    }
+  .check-mark {
+    width: 80px;
+    height: 80px;
+    margin-left: 5px;
+    pointer-events: none;
+  }
+
+  .services-selected {
+    position: relative;
+    text-align: center;
+    font-family: Poppins;
+    font-size: 20px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: normal;
+    background: #fff;
+
+    box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
+    width: 358px;
+    height: 270px;
+    flex-shrink: 0;
+    padding-bottom: 150px;
+  }
+
+  .line {
+    width: 80%;
+    height: 2px;
+    background-color: #000;
+    margin: 10px auto;
+  }
+
+  .service-title {
+    margin-bottom: 0;
+  }
+
+  .continue {
+    margin-top: 100px;
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    margin: auto;
+    width: 150px;
+    margin-bottom: 20px;
+  }
 }
