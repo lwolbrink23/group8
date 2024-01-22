@@ -11,6 +11,9 @@ function SelectTime() {
         window.scrollTo(0, 0);
     };
 
+    const location = useLocation();
+    const selectedServices = location.state?.service || [];
+    const totalCost = location.state?.totalCost || 0;
 
     return (
         <div>
@@ -20,8 +23,6 @@ function SelectTime() {
             </div>
             <div className="arrow-container">
                 {/*back arrow*/}
-
-
             </div>
             <div className="overview-container">
                 <div className="time">
