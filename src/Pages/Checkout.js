@@ -1,12 +1,12 @@
 import "../Styles/checkout.css";
-import shopICON from "../assets/icons/icons8-shopping-cart-100.png";
-import BackButton from "../Components/BackButton";
 import Shopheader from "../Components/Shopheader";
 import { Link } from "react-router-dom";
 import tempData from "../data/cart.json";
 import tempShopData from "../data/shop.json";
 import arrowIcon from "../assets/icons/white-arrow.svg";
 import { useState } from "react";
+const shipCost = 14;
+
 function Checkout() {
   // radio button stuff
   const [selectedOption, setSelectedOption] = useState(null);
@@ -55,10 +55,10 @@ function Checkout() {
     </ul>
   );
   // drop down button
-  const CartDropdown = () => {
-    const [dropdownVisible, setdropdownVisible] = useState(false);
-    const [arrowRotation, setArrowRotation] = useState(270);
+  const [dropdownVisible, setdropdownVisible] = useState(false);
+  const [arrowRotation, setArrowRotation] = useState(270);
 
+  const CartDropdown = () => {
     const toggleVisibility = () => {
       setdropdownVisible(!dropdownVisible);
       setArrowRotation(arrowRotation === 0 ? 270 : 0);
