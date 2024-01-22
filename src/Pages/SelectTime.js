@@ -6,26 +6,6 @@ import "../Styles/SelectTime.css"
 import BackButton from "../Components/BackButton";
 import Calendar from 'react-calendar'
 
-const ValuePiece = Date | null;
-
-const Value = ValuePiece | [ValuePiece, ValuePiece];
-
-function SuiteCalendar() {
-  const [value, onChange] = useState<Value>(new Date());
-
-  return (
-    <div className="Sample">
-      <header>
-        <h1>react-calendar sample page</h1>
-      </header>
-      <div className="Sample__container">
-        <main className="Sample__container__content">
-          <Calendar onChange={onChange} showWeekNumbers value={value} />
-        </main>
-      </div>
-    </div>
-  );
-}
 
 function SelectTime() {
     const scrollToTop = () => {
@@ -41,6 +21,26 @@ function SelectTime() {
     navigate('/appointment_overview', { state: { service: selectedServices, totalCost: totalCost } });
   };
 
+    // Step 1: State for the selected date
+    const [selectedDate, setSelectedDate] = useState(new Date());
+
+    // Step 2: Update state on date selection
+    const handleDateChange = (date) => {
+        setSelectedDate(date);
+    };
+
+    const formattedDate = selectedDate.toLocaleDateString('en-US', {
+    year: 'numeric',
+    month: 'long',
+    day: 'numeric'
+});
+
+    const [isClicked, setIsClicked] = useState(false);
+
+        const handleClick = () => {
+        setIsClicked(true);
+    };
+
     return (
         <div>
             <div className="title-container trans-white">
@@ -53,9 +53,22 @@ function SelectTime() {
             <div className="overview-container">
                 <div className="time">
                     <p>Services &gt; <strong>Time</strong> &gt; Confirm</p>
+                    <Calendar
+                    className="calendar"
+                    onChange={handleDateChange}  // Handle date change
+                    value={selectedDate}        // Step 3: Control calendar's selected date
+                />
                 </div>
-                <div>
-                    <Calendar className="calendar" />
+                <div className="times">
+                    <h2>{formattedDate}</h2>
+                    <button className={isClicked ? 'button-green' : ''} onClick={handleClick}>9:00 AM</button> {/* work on this */}
+                    <button>10:00 AM</button>
+                    <button>11:00 AM</button>
+                    <button>12:00 PM</button>
+                    <button>1:00 PM</button>
+                    <button>2:00 PM</button>
+                    <button>3:00 PM</button>
+                    <button>4:00 PM</button>
                 </div>
                 <div className="overview" id="booking-overview">
                     <h2>Overview</h2>
