@@ -54,6 +54,14 @@
     margin-bottom: 40px;
 }
 
+.OverviewDeats {
+    display: grid;
+    grid-template-columns: 1fr auto;
+        /* Define two columns: one taking up the remaining space, and one sized by its content */
+        justify-content: space-between;
+        /* This will place the columns on opposite ends of the div */
+    }
+
 @media (max-width: 900px) {
 
     /* Adjust the max-width as needed for your breakpoint */

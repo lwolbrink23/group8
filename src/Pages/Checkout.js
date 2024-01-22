@@ -5,7 +5,6 @@ import tempData from "../data/cart.json";
 import tempShopData from "../data/shop.json";
 import arrowIcon from "../assets/icons/white-arrow.svg";
 import { useState } from "react";
-const shipCost = 14;
 
 function Checkout() {
   // radio button stuff
@@ -79,6 +78,22 @@ function Checkout() {
       </div>
     );
   };
+  // calc totals
+  const subtotal = () => {
+    let t = 0;
+    for (const cartItem of tempData) {
+      for (const shopItem of tempShopData) {
+        if (cartItem.id === shopItem.id) {
+          t += shopItem.price;
+        }
+      }
+    }
+    return t;
+  };
+  const taxes = subtotal() * 0.06;
+  const shipCost = 14;
+  const total = subtotal() + taxes + shipCost;
+  console.log(`${subtotal()}, ${taxes}, ${shipCost}, ${total}`);
 
   // main stuff
   return (
@@ -146,16 +161,16 @@ function Checkout() {
             <div className="cardbox">
               <div>
                 <p>Subtotal</p>
-                <p>$###</p>
+                <p>${subtotal().toFixed(2)}</p>
                 <p>Shipping & Handling</p>
-                <p>$###</p>
+                <p>${shipCost}</p>
                 <p>Taxes</p>
-                <p>$###</p>
+                <p>${taxes.toFixed(2)}</p>
               </div>
               <hr />
-              <div>
+              <div className="bold">
                 <p>Total</p>
-                <p>$###</p>
+                <p>${total.toFixed(2)}</p>
               </div>
               <Link to={`/order_placed`}>
                 <button>Place Order</button>

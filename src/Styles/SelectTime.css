@@ -1,0 +1,9 @@
+.calendar {
+    background: white;
+    padding: 5px;
+    width: 350px
+}
+
+.calendar button {
+    border-radius: 0px;
+}
