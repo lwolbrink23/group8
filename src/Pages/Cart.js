@@ -81,7 +81,9 @@ function Cart() {
             <p>Subtotal ({tempData.length} items)</p>
             <p>${total()}</p>
           </div>
-          <button>Proceed to Checkout</button>
+          <Link to="/checkout">
+            <button>Proceed to Checkout</button>
+          </Link>
         </div>
       </main>
     </div>
