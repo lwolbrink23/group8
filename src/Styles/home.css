@@ -1,3 +1,4 @@
+/*global styles:*/
 .booknow-section {
     display: flex;
     justify-content: space-between;
@@ -7,9 +8,12 @@
     height: 42px
 }
 
-
-.carousel-container {
+.carousel-container-web {
     position: relative;
+}
+
+.carousel-container-mobile {
+    display: relative;
 }
 
 .suite-spot-overlay {
@@ -19,26 +23,67 @@
     top: 0;
     left: 0;
     width: 100%
- 
 }
 
 .title {
     font-family: "greatvibes";
     font-weight: 500;
-    font-size: 46px;
-    margin-bottom: -28px;
-    margin-top: 10px;
 }
 
+/*mobile styles:*/
 @media screen and (max-width: 767px) {
+    .carousel-container-web {
+        display: none;
+    }
+
+    .promoButton {
+        position: absolute;
+        top: 50%;
+        left: 26%;
+        transform: translate(-50%, -50%);
+        z-index: 2;
+        /* Set a higher z-index to ensure the button is on top */
+        /* Add other styles as needed */
+    }
 
     .title {
-    font-size: 40px;
-    margin-bottom: -28px;
-    margin-top: -5px;
+        font-size: 35px;
+        margin-bottom: -28px;
+        margin-top: 100px;
     }
 
     h3 {
         font-size: 20px;
     }
+
+
+}
+
+/*web styles:*/
+@media screen and (min-width: 767px) {
+    .carousel-container-mobile {
+        display: none;
+    }
+
+    .promoButton {
+        position: absolute;
+        top: 50%;
+        left: 26%;
+        transform: translate(-50%, -50%);
+        z-index: 2;
+        /* Set a higher z-index to ensure the button is on top */
+        /* Add other styles as needed */
+    }
+
+    .title {
+        font-size: 50px;
+        margin-bottom: -28px;
+        margin-top: -5px;
+    }
+
+    h3 {
+        font-size: 25px;
+    }
+
+
 }

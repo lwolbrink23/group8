@@ -6,30 +6,42 @@ import promoAroma from "../assets/images/promo_aroma.png";
 import promoHair from "../assets/images/promo_hair.png";
 import promoSpa from "../assets/images/promo_spa.png";
 import promoWella from "../assets/images/promo_wella.png";
+import webpromoBottle from "../assets/images/home banner bottle.png";
 
 function Home() {
-  const carouselImages = [
+  const mobilecarouselImages = [
     promoBottle,
     promoAroma,
     promoHair,
     promoSpa,
     promoWella,
-    // Add more image URLs as needed
   ];
+
+  // finish adding web images wider from figma:
+  const webcarouselImages = [
+    webpromoBottle
+  ]
 
   return (
     <div className="App">
-      <div className="carousel-container">
-        {/* <!-- Promo Carousel --> */}
-        <MainCarousel images={carouselImages} />
+      <div className="carousel-container-mobile">
+        {/* <!-- Promo Carousel mobile --> */}
+        <MainCarousel images={mobilecarouselImages} className="mobileMainC" />
         <div className="suite-spot-overlay">
           <h1 className="title">The Suite Spot:</h1>
           <h3 className="center">Where Beauty Finds Its Home.</h3>
         </div>
       </div>
-
+      <div className="carousel-container-web">
+        {/* <!-- Promo Carousel web--> */}
+        <MainCarousel images={webcarouselImages} className="webMainC" />
+        <div className="suite-spot-overlay">
+          <h1 className="title">The Suite Spot:</h1>
+          <h3 className="center">Where Beauty Finds Its Home.</h3>
+        </div>
+      </div>
       <Link to="/shop">
-        <button type="button">View Our Products</button>
+        <button type="button" className="promoButton">View Our Products</button>
       </Link>
 
       {/* <!-- Book Now Section --> */}

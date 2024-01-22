@@ -26,7 +26,9 @@
 #order-placed main .dropdown-btn:active .dropdown-content {
   max-height: auto;
 }
-
+#order-placed main .dropdown h3{
+margin: 10px;
+}
 #order-placed button {
   margin-top: 14px;
   margin-bottom: 150px;

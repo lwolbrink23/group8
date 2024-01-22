@@ -1,9 +1,47 @@
 .calendar {
     background: white;
     padding: 5px;
-    width: 350px
+    width: 350px;
+    box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
 }
 
 .calendar button {
     border-radius: 0px;
+    background: white;
+    box-shadow: none;
+}
+
+.calendar button:hover {
+    border-radius: 0px;
+    background: rgb(234, 234, 234)
+}
+
+.react-calendar__month-view__weekdays__weekday {
+    text-align: center;
+}
+
+
+.react-calendar__month-view__weekdays__weekday--weekend {
+    text-align: center;
+}
+
+.react-calendar__tile--active {
+    color: #8569B8;
+    /* Set your highlight color */
+    /* Add other styles as needed */
+}
+
+.times button {
+    border-radius: 0px;
+    background: white;
+    margin: 5px;
+    width: 110px;
+}
+
+.times button:hover {
+    background: rgb(234, 234, 234)
+}
+
+.button-green {
+    background: #BACA82;
 }

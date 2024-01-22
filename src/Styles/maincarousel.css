@@ -1,5 +1,3 @@
-
-
 .photo-carousel {
     display: flex;
     align-items: center;
@@ -7,6 +5,38 @@
 }
 
 .photo-carousel img {
-    max-width: 80%;
-    height: auto;
+    width: 1280px;
+    height: 654px;
+    flex-shrink: 0;
+    align-items: center;
+}
+
+.photo-carousel button {
+    background-color: white;
+    stroke: #5c5c5c;
+    stroke-width: 4;
+}
+
+
+
+@media screen and (max-width: 767px) {
+
+    .photo-carousel {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+    }
+
+    .photo-carousel img {
+        max-width: 80%;
+        height: auto;
+        align-items: center;
+    }
+
+    .photo-carousel button {
+        background-color: white;
+        stroke: #5c5c5c;
+        stroke-width: 4;
+    }
+
 }
