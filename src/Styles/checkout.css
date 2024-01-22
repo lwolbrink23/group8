@@ -97,7 +97,10 @@
 #summary #cart-items .dropdown-btn h3 {
   margin: initial;
 }
-
+#checkout-sum .cardbox div:last-child{
+  font-weight: bold;
+}
+/* radio */
 #checkout input[type="radio"] {
   margin: 7px 20px 7px 10px;
 }
