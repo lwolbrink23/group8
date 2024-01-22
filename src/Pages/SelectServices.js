@@ -72,9 +72,9 @@ const SelectServices = () => {
     }, 0);
   };
 
-  const navigateToOverview = () => {
+  const navigateToTime = () => {
     const totalCost = calculateTotalCost();
-    navigate('/appointment_overview', { state: { service: selectedServices, totalCost: totalCost } });
+    navigate('/selecttime', { state: { service: selectedServices, totalCost: totalCost } });
   };
 
   return (
@@ -143,8 +143,7 @@ const SelectServices = () => {
               <li key={index}>{service}</li>
             ))}
           </ul>
-          {console.log("Selected Services:", selectedServices)}
-          <button onClick={navigateToOverview} className="continue" type="button">
+          <button onClick={navigateToTime} className="continue" type="button">
             CONTINUE
           </button>
         </div>
