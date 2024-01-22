@@ -24,7 +24,9 @@ function Overview() {
     const scrollToTop = () => {
         window.scrollTo(0, 0);
     };
-
+    const location = useLocation();
+    console.log(location.state)
+    const selectedServices = location.state?.service || [];
 
     return (
         <div>
@@ -60,8 +62,11 @@ function Overview() {
                 </div>
                 <div className="overview" id="booking-overview">
                     <h2>Overview</h2>
-                    <p id="booked-service">Classic Blowout $75</p>
-                    <p id="booked-time">30 minutes</p>
+                    {selectedServices.map((service, index) => (
+                        <p key={index}>{service}</p>
+                    ))}
+
+
                     <hr />
                     <p id="total"><strong>Total: $75</strong></p>
                     <div className="appointment" id="appt-container">

@@ -1,5 +1,5 @@
 import React, { useEffect } from "react";
-import { Link, useLocation } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 import BackButton from "../Components/BackButton";
 import plusICON from "../assets/icons/black-plus.png";
 import minusICON from "../assets/icons/black-minus.png";
@@ -60,6 +60,12 @@ const SelectServices = () => {
 
   const scrollToTop = () => {
     window.scrollTo(0, 0);
+  };
+
+  const navigate = useNavigate();
+
+  const navigateToOverview = () => {
+    navigate('/appointment_overview', { state: { service: selectedServices } });
   };
 
   return (
@@ -128,11 +134,10 @@ const SelectServices = () => {
               <li key={index}>{service}</li>
             ))}
           </ul>
-          <Link to="/appointment_overview" onClick={scrollToTop}>
-            <button className="continue" type="button">
-              CONTINUE
-            </button>
-          </Link>
+          {console.log("Selected Services:", selectedServices)}
+          <button onClick={navigateToOverview} className="continue" type="button">
+            CONTINUE
+          </button>
         </div>
       </div>
     </div>
