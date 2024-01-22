@@ -60,7 +60,7 @@ function OrderPlaced() {
     return (
       <div className="dropdown">
         <div className="dropdown-btn" onClick={toggleVisibility}>
-          <h2>Items ordered ({tempData.length})</h2>
+          <h3>Items ordered ({tempData.length})</h3>
           <img src={arrowIcon} alt="Arrow" style={arrowIconStyle} />
         </div>
         {dropdownVisible && <OrderedItems />}
