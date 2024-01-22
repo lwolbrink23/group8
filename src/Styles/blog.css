@@ -1,195 +1,196 @@
 /* web screen */
 @media screen and (min-width: 767px) {
-    .main-blog-page {
-        width: 1000px;
-        height: 450px;
-        padding-top: 0px;
-        margin: 0 auto;
-        margin-bottom: 88px;
-        flex-shrink: 0;
-    }
-    
-    .bg-image {
-        display: flex;
-        align-items: center;
-        max-width: 900px;
-        height: 450px;
-        position: relative;
-        margin: 0 auto;
-        flex-shrink: 0;
-        background: lightgray url("../assets/images/flower.jpeg") center/cover no-repeat;
-        box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
-    }
-    
-    .inner-container {
-        padding: 0 20px;
-    }
-    
-    .posts-container {
-        display: grid;
-        grid-template-columns: repeat(4, 1fr);
-        gap: 5%;
-        font-size: 14px;
-        list-style-type: none;
-        padding-left: 20px;
-        padding-right: 20px;
-    }
-    
-    .overlay-box {
-        display: flex;
-        position: relative;
-        margin: 0 auto;
-        bottom: 155%;
-        left: -15%;
-        max-width: 500px;
-        height: 268px;
-        flex-shrink: 0;
-        background-color: rgba(255, 255, 255, 0.63);
-        z-index: 1;
-    }
+  .main-blog-page {
+    width: 1000px;
+    height: 450px;
+    padding-top: 0px;
+    margin: 0 auto;
+    margin-bottom: 88px;
+    flex-shrink: 0;
+  }
 
-    .overlay-text {
-        position: relative;
-        bottom: 108%;
-        left: 6%;
-        z-index: 2;
-    }
-
-    .header-1 {
-        font-family: Cormorant;
-        font-size: 44px;
-        font-style: normal;
-        font-weight: 700;
-        line-height: normal;
-        padding-left: 0;
-        padding-right: 735px;
-        padding-top: 175px;
-        padding-bottom: 0;
-    }
-
-    .sub-text {
-         padding-left: 85px;
-        width: 339px;
-        font-family: Inter;
-        font-size: 16px;
-        font-style: normal;
-        font-weight: 400;
-        line-height: normal;
-        margin-top: -17px;
-        margin-bottom: 27px;
-    }
-
-    .subscribe{
-        width: 339px;
-        font-family: Inter;
-        font-size: 16px;
-        font-style: normal;
-        font-weight: 400;
-        line-height: normal;
-        padding-left: 85px;
-        white-space: nowrap;
-    }
-
-    .sub-button {
-        margin-left: 17px;
-    }
-    
-    .email {
-        width: 222px;
-        height: 51px;
-        flex-shrink: 0;
-    }
-
-    #email::placeholder {
-        color: #000;
-        font-family: Poppins;
-        font-size: 14px;
-        font-style: normal;
-        font-weight: 400;
-        line-height: normal;
-    }
-
-   .hair-secrets {
-       background: #FFF;
-       box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
-       width: 390px;
-       height: 386px;
-       flex-shrink: 0;
-       padding-top: 20px;
-       padding-right: 20px;
-       padding-left: 20px;
-       padding-bottom: 20px;
-       margin-bottom: 88px;
-   }
-   .hair-secrets img {
+  .bg-image {
+    display: flex;
+    align-items: center;
+    max-width: 900px;
+    height: 450px;
+    position: relative;
+    margin: 0 auto;
+    flex-shrink: 0;
+    background: lightgray url("../assets/images/flower.jpeg") center/cover
+      no-repeat;
     box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
-   }
+  }
 
-   .hair-secrets p {
-       width: 329px;
-       height: 51px;
-       margin-left: 1px;
-       flex-shrink: 0;
-       font-family: Poppins;
-       font-size: 12px;
-       font-style: normal;
-       font-weight: 400;
-       line-height: normal;
-   }
+  .inner-container {
+    padding: 0 20px;
+  }
 
-   .hair-secrets h3 {
-       color: var(--Vampire-Black, #090B0A);
-       text-align:start;
-       font-family: Poppins;
-       font-size: 15px;
-       font-style: normal;
-       font-weight: 500;
-       line-height: normal;
-   }
+  .posts-container {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 5%;
+    font-size: 14px;
+    list-style-type: none;
+    padding-left: 20px;
+    padding-right: 20px;
+  }
 
-   .hair-secrets button {
-    display: block;
-        margin-left: auto;
-        margin-top: -25px;
-   }
+  .overlay-box {
+    display: flex;
+    position: relative;
+    margin: 0 auto;
+    bottom: 155%;
+    left: -15%;
+    max-width: 500px;
+    height: 268px;
+    flex-shrink: 0;
+    background-color: rgba(255, 255, 255, 0.63);
+    z-index: 1;
+  }
 
-   .knead-relax {
-    background: #FFF;
-        box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
-        width: 390px;
-        height: 386px;
-        flex-shrink: 0;
-        padding-top: 20px;
-        padding-right: 20px;
-        padding-left: 20px;
-        padding-bottom: 20px;
-        margin-bottom: 88px;
-   }
+  .overlay-text {
+    position: relative;
+    bottom: 108%;
+    left: 6%;
+    z-index: 2;
+  }
 
-   .knead-relax p {
+  .header-1 {
+    font-family: Cormorant;
+    font-size: 44px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: normal;
+    padding-left: 0;
+    padding-right: 735px;
+    padding-top: 175px;
+    padding-bottom: 0;
+  }
+
+  .sub-text {
+    padding-left: 85px;
+    width: 339px;
+    font-family: Inter;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+    margin-top: -17px;
+    margin-bottom: 27px;
+  }
+
+  .subscribe {
+    width: 339px;
+    font-family: Inter;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+    padding-left: 85px;
+    white-space: nowrap;
+  }
+
+  .sub-button {
+    margin-left: 17px;
+  }
+
+  .email {
+    width: 222px;
+    height: 51px;
+    flex-shrink: 0;
+  }
+
+  #email::placeholder {
+    color: #000;
+    font-family: Poppins;
+    font-size: 14px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+  }
+
+  .hair-secrets {
+    background: #fff;
+    box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
+    width: 390px;
+    height: 386px;
+    flex-shrink: 0;
+    padding-top: 20px;
+    padding-right: 20px;
+    padding-left: 20px;
+    padding-bottom: 20px;
+    margin-bottom: 88px;
+  }
+  .hair-secrets img {
+    box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
+  }
+
+  .hair-secrets p {
     width: 329px;
-        height: 51px;
-        margin-left: 1px;
-        flex-shrink: 0;
-        font-family: Poppins;
-        font-size: 12px;
-        font-style: normal;
-        font-weight: 400;
-        line-height: normal;
-   }
+    height: 51px;
+    margin-left: 1px;
+    flex-shrink: 0;
+    font-family: Poppins;
+    font-size: 12px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+  }
 
-   .knead-relax h3 {
-        color: var(--Vampire-Black, #090B0A);
-        text-align: start;
-        font-family: Poppins;
-        font-size: 15px;
-        font-style: normal;
-        font-weight: 500;
-        line-height: normal;
-   }
-   .knead-relax button {
+  .hair-secrets h3 {
+    color: var(--Vampire-Black, #090b0a);
+    text-align: start;
+    font-family: Poppins;
+    font-size: 15px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: normal;
+  }
+
+  .hair-secrets button {
     display: block;
-        margin-left: auto;
-        margin-top: -25px;
-   }
+    margin-left: auto;
+    margin-top: -25px;
+  }
+
+  .knead-relax {
+    background: #fff;
+    box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
+    width: 390px;
+    height: 386px;
+    flex-shrink: 0;
+    padding-top: 20px;
+    padding-right: 20px;
+    padding-left: 20px;
+    padding-bottom: 20px;
+    margin-bottom: 88px;
+  }
+
+  .knead-relax p {
+    width: 329px;
+    height: 51px;
+    margin-left: 1px;
+    flex-shrink: 0;
+    font-family: Poppins;
+    font-size: 12px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+  }
+
+  .knead-relax h3 {
+    color: var(--Vampire-Black, #090b0a);
+    text-align: start;
+    font-family: Poppins;
+    font-size: 15px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: normal;
+  }
+  .knead-relax button {
+    display: block;
+    margin-left: auto;
+    margin-top: -25px;
+  }
 }

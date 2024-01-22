@@ -1,136 +1,134 @@
 /* web screen */
 @media screen and (min-width: 767px) {
-    .post1 {
-        background-color: white;
-    }
+  .post1 {
+    background-color: white;
+  }
 
-    .main-image {
-        padding-top: 80px;
-        display: flex;
-        align-items: center;
-        max-width: 50%;
-        flex-shrink: 0;
-        position: relative;
-        margin: 0 auto;
-    }
+  .main-image {
+    padding-top: 80px;
+    display: flex;
+    align-items: center;
+    max-width: 50%;
+    flex-shrink: 0;
+    position: relative;
+    margin: 0 auto;
+  }
 
-    .post-general-info h4 {
-        font-family: Inter;
-        font-size: 20px;
-        font-style: normal;
-        font-weight: 400;
-        line-height: normal;
-    }
+  .post-general-info h4 {
+    font-family: Inter;
+    font-size: 20px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+  }
 
-    .art-title {
-        margin: 0 auto;
-        max-width: max-content;
-        font-family: Poppins;
-        font-size: 30px;
-        font-style: normal;
-        font-weight: 700;
-        line-height: normal;
-        margin-top: 80px;
-    }
+  .art-title {
+    margin: 0 auto;
+    max-width: max-content;
+    font-family: Poppins;
+    font-size: 30px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: normal;
+    margin-top: 80px;
+  }
 
-    .category {
-        position: absolute;
-        left: 25%;
-        right: 64%;
+  .category {
+    position: absolute;
+    left: 25%;
+    right: 64%;
+  }
 
-    }
+  .author {
+    position: absolute;
+    left: 64%;
+    right: 24%;
+  }
 
-    .author {
-        position: absolute;
-        left: 64%;
-        right: 24%;
-    }
+  .articles-contents {
+    text-align: justify;
+    margin: 0 50px;
+    padding: 0 40px 40px;
+    font-family: Poppins;
+    font-size: 18px;
+    font-style: normal;
+    padding-top: 30px;
+    margin-bottom: -40px;
+    font-weight: 400;
+    line-height: normal;
+  }
 
-    .articles-contents {
-        text-align: justify;
-        margin: 0 50px;
-        padding: 0 40px 40px;
-        font-family: Poppins;
-        font-size: 18px;
-        font-style: normal;
-        padding-top: 30px;
-        margin-bottom: -40px;
-        font-weight: 400;
-        line-height: normal;
-    }
+  .arrow {
+    position: absolute;
+    left: 8%;
+    width: 50px;
+  }
 
-    .arrow {
-        position: absolute;
-        left: 8%;
-        width: 50px;
-    }
-
-    .arrow:hover {
-        width: 55px;
-    }
+  .arrow:hover {
+    width: 55px;
+  }
 }
 
 /* Mobile screen */
 @media screen and (max-width: 766px) {
-    .main-image {
-        padding-top: 70px;
-        display: flex;
-        align-items: center;
-        max-width: 80%;
-        flex-shrink: 0;
-        position: relative;
-        margin: 0 auto;
-    }
+  .main-image {
+    padding-top: 70px;
+    display: flex;
+    align-items: center;
+    max-width: 80%;
+    flex-shrink: 0;
+    position: relative;
+    margin: 0 auto;
+  }
 
-    .post1 {
-        background-color: white;
-    }
+  .post1 {
+    background-color: white;
+  }
 
-    .articles-contents {
-        padding: 0 30px 30px;
-        flex-shrink: 0;
-        font-family: Poppins;
-        font-size: 11px;
-        font-style: normal;
-        font-weight: 400;
-        line-height: normal;
-        text-align: justify;
-        margin-bottom: -25px;
-    }
+  .articles-contents {
+    padding: 0 30px 30px;
+    flex-shrink: 0;
+    font-family: Poppins;
+    font-size: 11px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+    text-align: justify;
+    margin-bottom: -25px;
+  }
 
-    .arrow {
-        position: absolute;
-        left: 8%;
-        width: 50px;
-    }
+  .arrow {
+    position: absolute;
+    left: 8%;
+    width: 50px;
+  }
 
-    .arrow:hover {
-        width: 55px;
-    }
+  .arrow:hover {
+    width: 55px;
+  }
 
-    .art-title {
-        margin: 0 auto;
-        text-align: center;
-        max-width: max-content;
-        font-family: Poppins;
-        font-size: 15px;
-        font-style: normal;
-        font-weight: 700;
-        line-height: normal;
-        margin-top: 80px;
-    }
+  .art-title {
+    margin: 0 auto;
+    text-align: center;
+    max-width: max-content;
+    font-family: Poppins;
+    font-size: 15px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: normal;
+    margin-top: 80px;
+  }
 
-    .category {
-        margin-top: 23px;
-        position: absolute;
-        left: 5%;
-        right: 4%;
+  .category {
+    margin-top: 23px;
+    position: absolute;
+    left: 5%;
+    right: 4%;
+  }
 
-    }
-
-    .author {
-        margin-top: 23px;
-        position: absolute;
-        left: 65%;
-    }
+  .author {
+    margin-top: 23px;
+    position: absolute;
+    left: 65%;
+  }
 }
