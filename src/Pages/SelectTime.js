@@ -1,10 +1,31 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import { Link, useLocation, useNavigate } from "react-router-dom";
 import "../App.css";
 import "../Styles/ApptOverview.css"
+import "../Styles/SelectTime.css"
 import BackButton from "../Components/BackButton";
+import Calendar from 'react-calendar'
 
+const ValuePiece = Date | null;
 
+const Value = ValuePiece | [ValuePiece, ValuePiece];
+
+function SuiteCalendar() {
+  const [value, onChange] = useState<Value>(new Date());
+
+  return (
+    <div className="Sample">
+      <header>
+        <h1>react-calendar sample page</h1>
+      </header>
+      <div className="Sample__container">
+        <main className="Sample__container__content">
+          <Calendar onChange={onChange} showWeekNumbers value={value} />
+        </main>
+      </div>
+    </div>
+  );
+}
 
 function SelectTime() {
     const scrollToTop = () => {
@@ -32,6 +53,9 @@ function SelectTime() {
             <div className="overview-container">
                 <div className="time">
                     <p>Services &gt; <strong>Time</strong> &gt; Confirm</p>
+                </div>
+                <div>
+                    <Calendar className="calendar" />
                 </div>
                 <div className="overview" id="booking-overview">
                     <h2>Overview</h2>
