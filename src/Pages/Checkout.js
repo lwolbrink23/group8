@@ -168,7 +168,7 @@ function Checkout() {
                 <p>${taxes.toFixed(2)}</p>
               </div>
               <hr />
-              <div>
+              <div className="bold">
                 <p>Total</p>
                 <p>${total.toFixed(2)}</p>
               </div>
