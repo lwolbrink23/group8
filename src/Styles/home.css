@@ -1,11 +1,6 @@
 /*global styles:*/
 .booknow-section {
-    display: flex;
-    justify-content: space-between;
-}
-
-.booknow-section button {
-    height: 42px
+    height: 100px;
 }
 
 .carousel-container-web {
@@ -30,8 +25,23 @@
     font-weight: 500;
 }
 
+h3 {
+    font-weight: 500;
+}
+
 /*mobile styles:*/
 @media screen and (max-width: 767px) {
+    .suite-spot-overlay {
+        padding: 0px;
+        position: absolute;
+        top: 0;
+        left: 0;
+        margin-top: -100px;
+        height: 100px;
+        margin-top: 90px;
+    }
+
+
     .carousel-container-web {
         display: none;
     }
@@ -47,14 +57,30 @@
     }
 
     .title {
-        font-size: 35px;
+        font-size: 45px;
         margin-bottom: -28px;
-        margin-top: 100px;
+        margin-top: 0px;
     }
 
     h3 {
         font-size: 20px;
     }
+
+        .booknow-section {
+            padding-top: 10px;
+            padding-bottom: 20px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+        }
+
+    .booknow-section button {
+        height: 50px;
+        font-size: 25px;
+        margin-top: -10px;
+        
+     }
 
 
 }
@@ -64,6 +90,7 @@
     .carousel-container-mobile {
         display: none;
     }
+    
 
     .promoButton {
         position: absolute;
@@ -84,6 +111,23 @@
     h3 {
         font-size: 25px;
     }
+    
+    .booknow-section {
+    padding-top: 10px;
+    padding-bottom: 10px;
+    display: flex;
+    align-items: center;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 0;
+    }
 
+    .booknow-section button {
+    height: 50px;
+    font-size: 25px;
+    margin-top: -10px;
+    margin-left: 100px;
+    }
 
 }
