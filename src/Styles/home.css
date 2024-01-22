@@ -58,6 +58,9 @@ h3 {
             /*space btw bullet  points */
         text-align: center;
         width: 90%;
+        margin-left: auto;
+            /*centers the div*/
+            margin-right: auto;
      }
     
      .our-providers-section li {
@@ -215,6 +218,11 @@ h3 {
         margin-top: -5px;
     }
 
+    h2 {
+        margin-top: 5px;
+        margin-bottom: 0px;
+    }
+
     h3 {
         font-size: 25px;
     }
@@ -246,13 +254,14 @@ h3 {
         }
     
         .why-choose-us-section p {
-            width: 75%;
+            width: 85%;
             margin-bottom: 30px;
             margin-top: -10px;
         }
 
         .why-choose-us-section li {
             margin-bottom: 20px; /*space btw bullet  points */
+            width: 85%;
         }
 
         .our-providers-section {
@@ -263,4 +272,7 @@ h3 {
             width: 75%;
         }
        
+        .viewServButton {
+            width: 220px;
+        }
 }
