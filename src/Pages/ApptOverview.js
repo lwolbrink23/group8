@@ -27,6 +27,7 @@ function Overview() {
     const location = useLocation();
     console.log(location.state)
     const selectedServices = location.state?.service || [];
+    const totalCost = location.state?.totalCost || 0;
 
     return (
         <div>
@@ -68,7 +69,7 @@ function Overview() {
 
 
                     <hr />
-                    <p id="total"><strong>Total: $75</strong></p>
+                    <p id="total"><strong>Total: ${totalCost}</strong></p>
                     <div className="appointment" id="appt-container">
                         <p><strong>Appointment:</strong></p>
                         <div id="staff">

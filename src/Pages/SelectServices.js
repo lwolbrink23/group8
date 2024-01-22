@@ -64,8 +64,17 @@ const SelectServices = () => {
 
   const navigate = useNavigate();
 
+  const calculateTotalCost = () => {
+    return selectedServices.reduce((total, service) => {
+      const pricePart = service.split('\n').pop(); // Extracts the last line (e.g., "$75")
+      const price = parseInt(pricePart.replace(/[^0-9]/g, '')); // Extracts numerical value
+      return total + price;
+    }, 0);
+  };
+
   const navigateToOverview = () => {
-    navigate('/appointment_overview', { state: { service: selectedServices } });
+    const totalCost = calculateTotalCost();
+    navigate('/appointment_overview', { state: { service: selectedServices, totalCost: totalCost } });
   };
 
   return (
