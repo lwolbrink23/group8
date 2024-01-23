@@ -132,7 +132,7 @@ function Home() {
       <div className="gallery">
         <h2>Gallery</h2>
         {/* <!-- Add gallery carousel content here --> */}
-        <MainCarousel images={mobilegallImages} className="mobileGall" />
+        {/*<MainCarousel images={mobilegallImages} className="mobileGall" />*/}
       </div>
 
       {/* <!-- Testimonials --> */}

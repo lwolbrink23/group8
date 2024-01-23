@@ -37,7 +37,6 @@
     /* Use Flexbox */
     align-items: center;
     /* Align items vertically */
-    margin-top: -20px;
     gap: 10px
 }
 
