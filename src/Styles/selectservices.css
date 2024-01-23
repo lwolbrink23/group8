@@ -13,7 +13,6 @@
     padding-top: 20px;
     padding-bottom: 20px;
   }
-  
 
   .tabs button {
     background-color: transparent;
@@ -23,8 +22,13 @@
   }
 
   .tabs button.active {
-    background-color: #BACA82;
+    background-color: #baca82;
     box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
+  }
+
+  .tabs button:not(.active) {
+    background-color: transparent;
+    box-shadow: none;
   }
 
   .category-list {
@@ -107,10 +111,57 @@
     box-shadow: none;
     padding: 15px;
   }
+  /* Update styles for the image wrapper */
+  .image-container {
+    overflow: hidden;
+    /* Clear floats */
+  }
 
-  /* Add styles for inactive category buttons */
-  .tabs button:not(.active) {
-    background-color: transparent;
-    box-shadow: none;
+  .side-images-container {
+    float: right;
+    width: 50%;
+    /* Adjust the width of the container for small images */
+  }
+  .image-div {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .focus-image,
+  .side-images {
+    width: 300px;
+    /* Adjust the width as needed */
+    height: 200px;
+    /* Adjust the height as needed */
+  }
+
+  .focus-image {
+    padding: 10px;
+    margin-left: 200px;
+    width: 60%;
+      /* Set the width to 100% to make it responsive */
+      height: auto;
+      /* Set the height to auto to maintain the aspect ratio */
+      max-width: 100%;
+      /* Add max-width for extra safety */
+    }
+
+  .side-images {
+  width: 45%;
+    /* Adjust the width percentage as needed */
+    padding: 10px;
+    height: auto;
+    /* Set the height to auto to maintain the aspect ratio */
+    max-width: 100%;
+  }
+  .select-serv {
+      font-family: Cormorant;
+      font-size: 32px;
+      font-style: normal;
+      font-weight: 700;
+      line-height: normal;
+      text-align: left;
+      margin-left: 150px;
   }
 }
