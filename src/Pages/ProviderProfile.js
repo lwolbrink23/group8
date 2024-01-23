@@ -1,19 +1,18 @@
 import "../App.css";
 import "../Styles/providerprofile.css"
-import SimplyChicHair from '../assets/images/SimplyChicHair.png';
-import Blowdry from '../assets/images/Blowdry.png';
-import Hairdye from '../assets/images/Hairdye.png';
-import Pretty from '../assets/images/prettyhair.png';
-import Barber from '../assets/images/barber.png';
-import Haircut from '../assets/images/haircut.png';
 import suiteData from "../data/providers.json";
-import { useParams } from 'react-router-dom';
+import { useParams, useNavigate } from 'react-router-dom';
 
 
 function ProviderProfile() {
 
     const { id } = useParams();
     const suite = suiteData.find(item => item.id.toString() === id);
+
+    const navigate = useNavigate();
+    const navigateToConfirm = () => {
+        navigate('/selectservices', { state: {} }); {/* Continue working on this */ }
+    };
 
     return (
         <div>
@@ -26,7 +25,7 @@ function ProviderProfile() {
                     <p>{suite.suite}</p>
                     <p>{suite.phone}</p>
                     <p>{suite.email}</p>
-                    <button type="button" className="purp-button">BOOK NOW</button> {/*make something pass through here*/}
+                    <button type="button" className="purp-button" onClick={navigateToConfirm}>BOOK NOW</button> {/*make something pass through here*/}
                 </div>
             </div>
             <div className="dropdown dropdown-content space-below">
