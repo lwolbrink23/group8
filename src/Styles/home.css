@@ -1,15 +1,14 @@
+/*global styles:*/
 .booknow-section {
-    display: flex;
-    justify-content: space-between;
+    height: 100px;
 }
 
-.booknow-section button {
-    height: 42px
-}
-
-
-.carousel-container {
+.carousel-container-web {
     position: relative;
+}
+
+.carousel-container-mobile {
+    display: relative;
 }
 
 .suite-spot-overlay {
@@ -19,26 +18,346 @@
     top: 0;
     left: 0;
     width: 100%
- 
 }
 
 .title {
     font-family: "greatvibes";
     font-weight: 500;
-    font-size: 46px;
-    margin-bottom: -28px;
-    margin-top: 10px;
 }
 
+h3 {
+    font-weight: 500;
+}
+
+.why-choose-us-section {
+    background-color: white;
+        margin-top: 20px;
+        margin-bottom: 20px;
+        box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.3);
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        width: 85%;
+        margin-left: auto;
+        /*centers the div*/
+        margin-right: auto;
+        /*centers the div*/
+    }
+    
+    .why-choose-us-section p {
+        text-align: center;
+        /* Center the text within the container */
+        width: 90%;
+        margin-bottom: 30px;
+    
+    }
+
+    .why-choose-us-section li {
+         margin-bottom: 10px;
+            /*space btw bullet  points */
+        text-align: center;
+        width: 90%;
+        margin-left: auto;
+            /*centers the div*/
+            margin-right: auto;
+     }
+    
+     .our-providers-section li {
+         margin-bottom: 10px;
+            /*space btw bullet  points */
+     }
+    
+     .viewServButton {
+         margin-top: 10px;
+         margin-bottom: 30px;
+    }
+
+
+.our-providers-section {
+    background-color: white;
+    margin-top: 20px;
+    margin-bottom: 20px;
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.3);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 85%;
+    margin-left: auto;
+    /*centers the div*/
+    margin-right: auto;
+    /*centers the div*/
+}
+
+.our-providers-section p {
+    text-align: center;
+    /* Center the text within the container */
+    width: 90%;
+
+}
+
+.gallery {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            margin-left: auto;
+            /*centers the div*/
+            margin-right: auto;
+            /*centers the div*/
+}
+
+.webgallery {
+    display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        margin-left: auto;
+        /*centers the div*/
+        margin-right: auto;
+        /*centers the div*/
+}
+
+.testDiv {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+/*mobile styles:*/
 @media screen and (max-width: 767px) {
+    .webgallery {
+            display: none;
+        }
+
+    
+    .suite-spot-overlay {
+        padding: 0px;
+        position: absolute;
+        top: 0;
+        left: 0;
+        margin-top: -100px;
+        height: 100px;
+        margin-top: 90px;
+    }
+
+
+    .carousel-container-web {
+        display: none;
+    }
+
+    .promoButton {
+        position: absolute;
+        top: 46%;
+        left: 35%;
+        transform: translate(-50%, -50%);
+        z-index: 2;
+    }
 
     .title {
-    font-size: 40px;
-    margin-bottom: -28px;
-    margin-top: -5px;
+        font-size: 45px;
+        margin-bottom: -28px;
+        margin-top: 0px;
+    }
+
+    h2 {
+        font-size: 25px;
+        margin-top: 10px;
+        margin-bottom: -5px;
     }
 
     h3 {
         font-size: 20px;
     }
+
+    .booknow-section {
+            padding-top: 10px;
+            padding-bottom: 20px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+    }
+
+    .booknow-section button {
+        height: 60px;
+        width: 230px;
+        font-size: 25px;
+        margin-top: -10px;
+        
+     }
+
+
+
+    .webHomepic1 {
+        display: none;
+     }
+    .webHomepic2 {
+        display: none;
+    }
+
+
+    .testimonials {
+        background-color: white;
+    }
+
+}
+
+/*web styles:*/
+@media screen and (min-width: 767px) {
+    .gallery { /*mobile gallery*/
+            display: none;
+        }
+
+    .carousel-container-mobile {
+        display: none;
+    }
+    
+    .cwebMainC {
+        margin-left: auto;
+        margin-right: auto;
+    }
+
+
+
+    .promoButton {
+        position: sticky;
+        top: 50%;
+        left: 30%;
+        transform: translate(-50%, -50%);
+        z-index: 2;
+        /* Set a higher z-index to ensure the button is on top */
+        /* Add other styles as needed */
+    }
+
+    .title {
+        font-size: 50px;
+        margin-bottom: -28px;
+        margin-top: -5px;
+    }
+
+    h2 {
+        margin-top: 5px;
+        margin-bottom: 0px;
+    }
+
+    h3 {
+        font-size: 25px;
+    }
+    
+    .booknow-section {
+    padding-top: 10px;
+    padding-bottom: 10px;
+    display: flex;
+    align-items: center;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 0;
+    }
+
+    .booknow-section button {
+    height: 50px;
+    font-size: 25px;
+    margin-top: -10px;
+    margin-left: 100px;
+    }
+
+ 
+        .why-choose-us-section p {
+            width: 85%;
+            margin-bottom: 30px;
+            margin-top: -10px;
+        }
+
+        .why-choose-us-section li {
+            margin-bottom: 20px; /*space btw bullet  points */
+            width: 85%;
+        }
+
+        .our-providers-section p{
+            width: 85%;
+        }
+       
+        .viewServButton {
+            width: 220px;
+        }
+
+         .wcu,
+         .op {
+             display: flex;
+             align-items: stretch;
+             /* This makes the items stretch to the same height */
+         }
+    
+         .wcu > *,
+         .op > * {
+             flex: 1;
+             /* This allows the child elements to take equal space within the flex container */
+         }
+    
+         .why-choose-us-section{
+             width: 50%;
+            max-width: 700px;
+             box-sizing: border-box;
+             /* Include padding and border in the element's total width and height */
+             padding: 20px;
+             /* Adjust padding as needed */
+            margin-left: auto;
+            margin-right: 0;
+            margin-top: 20px;
+         }
+
+         .our-providers-section {
+             width: 50%;
+            max-width: 700px;
+             box-sizing: border-box;
+             /* Include padding and border in the element's total width and height */
+             padding: 20px;
+             /* Adjust padding as needed */
+            margin-left: 0;
+            margin-right: auto;
+            margin-top: 20px;
+         }
+    
+         .webHomepic1 {
+            width: 100%;
+                /* Adjust the width as needed */
+                max-width: 300px;
+                /* Set a maximum width as needed */
+                max-height: 100%;
+                /* Make sure the images don't exceed the height of the container */
+                object-fit: cover;
+                /* Maintain aspect ratio and cover the entire container */
+                margin-left: 20px;
+                margin-right: auto;
+                margin-top: 20px;
+         }
+
+         .webHomepic2 {
+            width: 100%;
+                /* Adjust the width as needed */
+                max-width: 300px;
+                /* Set a maximum width as needed */
+                max-height: 100%;
+                /* Make sure the images don't exceed the height of the container */
+                object-fit: cover;
+                /* Maintain aspect ratio and cover the entire container */
+                margin-left: auto;
+                margin-right: 20px;
+                margin-top: 20px;
+         }
+
+        .promoButton {
+        position: absolute;
+        top: 65%;
+        left: 21%;
+        transform: translate(-50%, -50%);
+        z-index: 2;
+    }
+               
 }

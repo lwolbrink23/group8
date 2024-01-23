@@ -64,7 +64,7 @@
             /* Center the text in the list items */
     }
 
-    .purp-button {
+    .centerbutton {
         display: block;
         margin: 10px auto; /* Center the "Book Now" button */
     }

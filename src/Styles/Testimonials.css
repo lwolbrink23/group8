@@ -1,0 +1,286 @@
+.testimonials .alex .p {
+    margin-left: 0;
+}
+
+.testimonials .sarah .p {
+    margin-left: 0;
+}
+
+.testimonials .michael .p {
+    margin-left: 0;
+}
+
+.testimonials .alex,
+.testimonials .sarah,
+.testimonials .michael {
+    width: 285px;
+    height: 165px;
+    /* Adjust the width as needed */
+}
+
+.testimonials {
+    height: 300px;
+    position: relative;
+    width: 1096px;
+    margin-left: auto;
+    margin-right: auto;
+
+}
+
+
+.testimonials .alex {
+
+    left: 0;
+    position: absolute;
+}
+
+.testimonials .stars {
+    height: 41px;
+    left: 49px;
+    position: absolute;
+    top: 95px;
+    width: 201px;
+}
+
+.testimonials .p {
+    font-size: 17px;
+    left: 0;
+    letter-spacing: 0;
+    line-height: normal;
+    position: absolute;
+    text-align: center;
+    top: 0;
+    width: 281px;
+}
+
+.testimonials .text-wrapper {
+    /*Alex turner name*/
+    font-size: 17px;
+    font-weight: 400;
+    left: 80px;
+    letter-spacing: 0;
+    line-height: normal;
+    position: absolute;
+    text-align: center;
+    top: 134px;
+    width: 121px;
+}
+
+.testimonials .sarah {
+
+    left: 351px;
+    position: absolute;
+}
+
+.testimonials .img {
+    height: 41px;
+    left: 42px;
+    position: absolute;
+    top: 90px;
+    width: 201px;
+}
+
+.testimonials .span {
+    color: #000000;
+    font-family: "Poppins-Regular", Helvetica;
+    font-size: 17px;
+    font-weight: 400;
+    letter-spacing: 0;
+}
+
+.testimonials .text-wrapper-2 {
+    font-size: 14px;
+}
+
+.testimonials .text-wrapper-3 {
+    color: #000000;
+    font-family: "Poppins-Regular", Helvetica;
+    font-size: 17px;
+    font-weight: 400;
+    left: 77px;
+    letter-spacing: 0;
+    line-height: normal;
+    position: absolute;
+    text-align: center;
+    top: 134px;
+    width: 128px;
+}
+
+.testimonials .michael {
+
+    left: 702px;
+    position: absolute;
+}
+
+.testimonials .overlap-group {
+    height: 130px;
+    left: 0;
+    position: absolute;
+    top: 0;
+    width: 295px;
+}
+
+.testimonials .stars-2 {
+    height: 41px;
+    left: 58px;
+    position: absolute;
+    top: 95px;
+    width: 201px;
+}
+
+.testimonials .text-wrapper-4 {
+    color: #000000;
+    font-family: "Poppins-Regular", Helvetica;
+    font-size: 17px;
+    font-weight: 400;
+    left: 0;
+    letter-spacing: 0;
+    line-height: normal;
+    position: absolute;
+    text-align: center;
+    top: 0;
+    width: 295px;
+}
+
+.testimonials .text-wrapper-5 {
+    color: #000000;
+    font-family: "Poppins-Regular", Helvetica;
+    font-size: 17px;
+    font-weight: 400;
+    left: 79px;
+    letter-spacing: 0;
+    line-height: normal;
+    position: absolute;
+    text-align: center;
+    top: 134px;
+    width: 161px;
+}
+
+.testimonials .left-arrow-group {
+    background-color: #ffffff;
+    border-radius: 19px;
+    box-shadow: 0px 4px 4px #00000040;
+    height: 38px;
+    left: -60px;
+    position: absolute;
+    top: 64px;
+    width: 38px;
+}
+
+.testimonials .left-arrow {
+    height: 18px;
+    left: 12px;
+    position: absolute;
+    top: 9px;
+    width: 12px;
+}
+
+.testimonials .right-arrow-group {
+    background-color: #ffffff;
+    border-radius: 19px;
+    box-shadow: 0px 4px 4px #00000040;
+    height: 38px;
+    left: 1030px;
+    position: absolute;
+    top: 64px;
+    width: 38px;
+}
+
+.testimonials .right-arrow {
+    height: 18px;
+    left: 14px;
+    position: absolute;
+    top: 10px;
+    width: 12px;
+}
+
+.testimonials .testimonials-3 {
+    opacity: 0.3;
+    top: 20px;
+}
+
+.testimonials .testimonials-1 {
+    top: 0;
+}
+
+.testimonials .testimonials-2 {
+    opacity: 0.3;
+    top: 20px;
+}
+
+.testimonials .property-1-testimonials-3 {
+    opacity: 0.3;
+    top: 20px;
+}
+
+.testimonials .property-1-testimonials-1 {
+    opacity: 0.3;
+    top: 20px;
+}
+
+.testimonials .property-1-testimonials-2 {
+    top: 0;
+}
+
+.testimonials .property-1-0-testimonials-3 {
+    top: 0;
+}
+
+.testimonials .property-1-0-testimonials-1 {
+    opacity: 0.3;
+    top: 20px;
+}
+
+.testimonials .property-1-0-testimonials-2 {
+    opacity: 0.3;
+    top: 20px;
+}
+
+.testimonials .property-1-1-testimonials-1 {
+    opacity: 0.5;
+}
+
+.testimonials .property-1-1-testimonials-3 {
+    opacity: 0.5;
+}
+
+
+
+@media screen and (max-width: 767px) {
+    .testimonials {
+        width: 100%;
+
+    }
+
+    .testimonials .alex,
+    .testimonials .sarah,
+    .testimonials .michael {
+        width: 350px;
+        left: 0;
+        /*layers them on top of each other*/
+        position: absolute;
+        margin-left: 100px;
+        margin-top: 20px;
+        margin-bottom: 0px;
+        height: 200px;
+        opacity: 1;
+    }
+
+
+    .testimonials .left-arrow-group {
+        left: 20px;
+    }
+
+    .testimonials .left-arrow {
+        left: 12px;
+    }
+
+    .testimonials .right-arrow-group {
+        left: 420px;
+    }
+
+    .testimonials .right-arrow {
+        left: 14px;
+    }
+
+}

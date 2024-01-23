@@ -1,24 +1,16 @@
-import React, { useEffect } from "react";
-import { Link, useLocation, useNavigate } from "react-router-dom";
+import React from "react";
+import { useNavigate } from "react-router-dom";
 import BackButton from "../Components/BackButton";
 import plusICON from "../assets/icons/black-plus.png";
 import minusICON from "../assets/icons/black-minus.png";
 import purpCheck from "../assets/icons/icons8-check-100.png";
+import blowDry from "../assets/images/Blowdry.png";
+import barber from "../assets/images/barber.png";
+import hairDye from "../assets/images/Hairdye.png";
 import "../Styles/selectservices.css";
 import "../App.css";
 import { useState } from "react";
 
-function ScrollToTop() {
-  const location = useLocation();
-
-  useEffect(() => {
-    if (location.pathname === "/blogpost") {
-      window.scrollTo(0, 0);
-    }
-  }, [location.pathname]);
-
-  return null;
-}
 //updating services on screen
 const SelectServices = () => {
   const [selectedServices, setSelectedServices] = useState([]);
@@ -58,31 +50,50 @@ const SelectServices = () => {
     setSelectedServices(updatedServices);
   };
 
-  const scrollToTop = () => {
-    window.scrollTo(0, 0);
-  };
-
   const navigate = useNavigate();
 
   const calculateTotalCost = () => {
     return selectedServices.reduce((total, service) => {
-      const pricePart = service.split('\n').pop(); // Extracts the last line (e.g., "$75")
-      const price = parseInt(pricePart.replace(/[^0-9]/g, '')); // Extracts numerical value
+      const pricePart = service.split("\n").pop(); // Extracts the last line (e.g., "$75")
+      const price = parseInt(pricePart.replace(/[^0-9]/g, "")); // Extracts numerical value
       return total + price;
     }, 0);
   };
 
   const navigateToTime = () => {
     const totalCost = calculateTotalCost();
-    navigate('/selecttime', { state: { service: selectedServices, totalCost: totalCost } });
+    navigate("/selecttime", {
+      state: { service: selectedServices, totalCost: totalCost },
+    });
   };
 
   return (
     <div>
-      <ScrollToTop />
       <div className="title-container trans-white">
         <BackButton />
         <h1>Simply Chic Hair</h1>
+      </div>
+      <div className="image-div">
+        <img
+          src={blowDry}
+          className="focus-image"
+          alt="woman getting her hair blow dried by a hair dresser"
+        />
+        <div className="side-images-container">
+          <img
+            src={hairDye}
+            className="side-images"
+            alt="woman getting her hair dyed by a hair dresser"
+          />
+          <img
+            src={barber}
+            className="side-images"
+            alt="man getting his hair cut my a barber"
+          />
+        </div>
+      </div>
+      <div className="select-serv">
+        <h3>Select Services</h3>
       </div>
       <div className="overview-container">
         <div className="tabs-cat-list">
@@ -92,6 +103,7 @@ const SelectServices = () => {
                 key={category}
                 type="button"
                 onClick={() => clickCategory(category)}
+                className={currentCategory === category ? "active" : ""}
               >
                 {category.charAt(0).toUpperCase() + category.slice(1)}
               </button>
@@ -103,7 +115,8 @@ const SelectServices = () => {
                 <p>{service}</p>
                 {selectedServices.includes(service) ? (
                   <div className="button-container">
-                    <button className="remove-button"
+                    <button
+                      className="remove-button"
                       type="button"
                       onClick={() => removeFromSelectedServices(service)}
                     >
@@ -120,7 +133,8 @@ const SelectServices = () => {
                     />
                   </div>
                 ) : (
-                  <button className="plus-button"
+                  <button
+                    className="plus-button"
                     type="button"
                     onClick={() => addToSelectedServices(service)}
                   >

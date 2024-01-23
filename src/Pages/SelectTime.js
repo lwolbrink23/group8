@@ -16,29 +16,34 @@ function SelectTime() {
     const selectedServices = location.state?.service || [];
     const totalCost = location.state?.totalCost || 0;
 
-    const navigate = useNavigate();
-    const navigateToOverview = () => {
-    navigate('/appointment_overview', { state: { service: selectedServices, totalCost: totalCost } });
-  };
 
-    // Step 1: State for the selected date
+
+
     const [selectedDate, setSelectedDate] = useState(new Date());
 
-    // Step 2: Update state on date selection
     const handleDateChange = (date) => {
         setSelectedDate(date);
     };
 
     const formattedDate = selectedDate.toLocaleDateString('en-US', {
-    year: 'numeric',
-    month: 'long',
-    day: 'numeric'
-});
+        year: 'numeric',
+        month: 'long',
+        day: 'numeric'
+    });
 
-    const [isClicked, setIsClicked] = useState(false);
+    const navigate = useNavigate();
+    const navigateToOverview = () => {
+        navigate('/appointment_overview', { state: { service: selectedServices, totalCost: totalCost, date: formattedDate, time: clickedTime } });
+    };
 
-        const handleClick = () => {
-        setIsClicked(true);
+
+
+    // State to track the clicked time button
+    const [clickedTime, setClickedTime] = useState(null);
+
+    // Click handler that sets the clicked time
+    const handleTimeClick = (time) => {
+        setClickedTime(time);
     };
 
     return (
@@ -54,21 +59,23 @@ function SelectTime() {
                 <div className="time">
                     <p>Services &gt; <strong>Time</strong> &gt; Confirm</p>
                     <Calendar
-                    className="calendar"
-                    onChange={handleDateChange}  // Handle date change
-                    value={selectedDate}        // Step 3: Control calendar's selected date
-                />
+                        className="calendar"
+                        onChange={handleDateChange}  // Handle date change
+                        value={selectedDate}        // Step 3: Control calendar's selected date
+                    />
                 </div>
                 <div className="times">
-                    <h2>{formattedDate}</h2>
-                    <button className={isClicked ? 'button-green' : ''} onClick={handleClick}>9:00 AM</button> {/* work on this */}
-                    <button>10:00 AM</button>
-                    <button>11:00 AM</button>
-                    <button>12:00 PM</button>
-                    <button>1:00 PM</button>
-                    <button>2:00 PM</button>
-                    <button>3:00 PM</button>
-                    <button>4:00 PM</button>
+                    <h3>{formattedDate}</h3>
+                    {/* List of time buttons */}
+                    {['9:00 AM', '10:00 AM', '11:00 AM', '12:00 PM', '1:00 PM', '2:00 PM', '3:00 PM', '4:00 PM'].map((time, index) => (
+                        <button
+                            key={index}
+                            className={clickedTime === time ? 'button-green' : ''}
+                            onClick={() => handleTimeClick(time)}
+                        >
+                            {time}
+                        </button>
+                    ))}
                 </div>
                 <div className="overview" id="booking-overview">
                     <h2>Overview</h2>
@@ -87,7 +94,7 @@ function SelectTime() {
                     </div>
                     {/*book now button*/}
                     <button onClick={navigateToOverview} type="button">
-                    CONTINUE
+                        CONTINUE
                     </button>
                 </div>
             </div>
