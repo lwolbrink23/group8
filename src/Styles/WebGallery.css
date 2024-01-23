@@ -1,0 +1,19 @@
+.image-gallery {
+    display: grid;
+        grid-template-columns: repeat(4, 1fr);
+        /* 4 columns, each taking 1 fraction of the available space */
+        gap: 16px;
+        /* Adjust spacing between images */
+}
+
+.image-item {
+    margin-bottom: 0px;
+    /* Adjust spacing between images */
+}
+
+.image-item img {
+    width: 100%;
+    /* Make images fill the container */
+    height: auto;
+    /* Maintain aspect ratio */
+}

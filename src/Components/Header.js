@@ -70,9 +70,6 @@ function Header() {
                 <li>
                   <CustomLink to="/ourservices">Our Services</CustomLink>
                 </li>
-                <li>
-                  <CustomLink to="/">Photo Gallery</CustomLink>
-                </li>
               </ul>
             </li>
             <li>
