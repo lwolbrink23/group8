@@ -1,14 +1,29 @@
 import "../Styles/home.css"; // Import your styles
 import { Link } from "react-router-dom";
 import MainCarousel from "../Components/MainCarousel.js";
+import WebGallery from "../Components/WebGallery.js";
 import promoBottle from "../assets/images/promo_bottle.png";
 import promoAroma from "../assets/images/promo_aroma.png";
 import promoHair from "../assets/images/promo_hair.png";
 import promoSpa from "../assets/images/promo_spa.png";
 import promoWella from "../assets/images/promo_wella.png";
 import webpromoBottle from "../assets/images/home banner bottle.png";
+import webaroma from "../assets/images/home_aroma.png";
 import brownHair from "../assets/images/brownhair.jpg";
 import spaProducts from "../assets/images/spaproducts.png";
+import webglamour from "../assets/images/web_glamourpromo.png";
+import webrelax from "../assets/images/web_relaxpromo.png";
+import webwella from "../assets/images/webwellapromo.png";
+import eyeball from "../assets/images/eyeball.png";
+import hands from "../assets/images/hands.png";
+import facemask from "../assets/images/facemask.png";
+import gall1 from "../assets/images/gall1.png";
+import gall2 from "../assets/images/gall2.png";
+import gall3 from "../assets/images/gall3.png";
+import gall4 from "../assets/images/gall4.png";
+import gall5 from "../assets/images/gall5.png";
+import gall6 from "../assets/images/gall6.png";
+import gall7 from "../assets/images/gall7.png";
 
 function Home() {
   const mobilecarouselImages = [
@@ -19,8 +34,26 @@ function Home() {
     promoWella,
   ];
 
-  // finish adding web images wider from figma:
-  const webcarouselImages = [webpromoBottle];
+  const webcarouselImages = [
+    webpromoBottle,
+    webaroma,
+    webglamour,
+    webrelax,
+    webwella,
+  ];
+
+  const mobilegallImages = [gall1, gall2, eyeball, hands, facemask];
+
+  const webgallImages = [
+    gall3,
+    gall4,
+    gall6,
+    gall7,
+    gall1,
+    gall2,
+    hands,
+    facemask,
+  ];
 
   return (
     <div className="App">
@@ -114,12 +147,18 @@ function Home() {
         </div>
       </div>
 
-      {/* <!-- Gallery --> */}
+      {/* <!-- mobile Gallery --> */}
       <div className="gallery">
         <h2>Gallery</h2>
         {/* <!-- Add gallery carousel content here --> */}
+        <MainCarousel images={mobilegallImages} className="mobileGall" />
       </div>
-
+      {/* <!-- web Gallery --> */}
+      <div className="webgallery">
+        <h2>Gallery</h2>
+        {/* <!-- Web gallery grid content here --> */}
+        <WebGallery images={webgallImages} />
+      </div>
       {/* <!-- Testimonials --> */}
       <div className="testimonials">
         <h2>Testimonials</h2>
