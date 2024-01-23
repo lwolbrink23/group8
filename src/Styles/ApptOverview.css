@@ -51,6 +51,11 @@
     margin-bottom: 40px;
 }
 
+#booked-service {
+    display: flex;
+    justify-content: space-between;
+}
+
 #total {
     margin-bottom: 40px;
 }

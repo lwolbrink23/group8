@@ -33,7 +33,7 @@ function SelectTime() {
 
     const navigate = useNavigate();
     const navigateToOverview = () => {
-        navigate('/appointment_overview', { state: { service: selectedServices, totalCost: totalCost, date: formattedDate } });
+        navigate('/appointment_overview', { state: { service: selectedServices, totalCost: totalCost, date: formattedDate, time: clickedTime } });
     };
 
 
