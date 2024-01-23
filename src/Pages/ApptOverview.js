@@ -27,6 +27,8 @@ function Overview() {
     const location = useLocation();
     const selectedServices = location.state?.service || [];
     const totalCost = location.state?.totalCost || 0;
+    const formattedDate = location.state?.date;
+    const clickedTime = location.state?.time;
 
     return (
         <div>
@@ -87,7 +89,7 @@ function Overview() {
                             <div className="icon-container">
                                 <img src={calendar} alt="Purple calendar icon" />
                                 <div>
-                                    <p id="appt-date">Wednesday January 22<br />10:00-10:30am</p>
+                                    <p id="appt-date">{formattedDate}<br />{clickedTime}</p>
                                 </div>
                             </div>
                         </div>
