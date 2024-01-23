@@ -6,6 +6,7 @@ import Hairdye from '../assets/images/Hairdye.png';
 import Pretty from '../assets/images/prettyhair.png';
 import Barber from '../assets/images/barber.png';
 import Haircut from '../assets/images/haircut.png';
+import suiteData from "../data/providers.json";
 
 
 function ProviderProfile() {
