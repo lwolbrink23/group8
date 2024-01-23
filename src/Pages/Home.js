@@ -7,8 +7,10 @@ import promoHair from "../assets/images/promo_hair.png";
 import promoSpa from "../assets/images/promo_spa.png";
 import promoWella from "../assets/images/promo_wella.png";
 import webpromoBottle from "../assets/images/home banner bottle.png";
+import webaroma from "../assets/images/home_aroma.png";
 import brownHair from "../assets/images/brownhair.jpg";
 import spaProducts from "../assets/images/spaproducts.png";
+import webglamour from "../assets/images/web_glamourpromo.png";
 
 function Home() {
   const mobilecarouselImages = [
@@ -20,7 +22,7 @@ function Home() {
   ];
 
   // finish adding web images wider from figma:
-  const webcarouselImages = [webpromoBottle];
+  const webcarouselImages = [webpromoBottle, webaroma, webglamour];
 
   return (
     <div className="App">

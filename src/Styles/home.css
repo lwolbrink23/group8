@@ -139,11 +139,9 @@ h3 {
     .promoButton {
         position: absolute;
         top: 50%;
-        left: 26%;
+        left: 34%;
         transform: translate(-50%, -50%);
         z-index: 2;
-        /* Set a higher z-index to ensure the button is on top */
-        /* Add other styles as needed */
     }
 
     .title {
@@ -201,6 +199,10 @@ h3 {
         display: none;
     }
     
+    .cwebMainC {
+        margin-left: auto;
+        margin-right: auto;
+    }
 
     .promoButton {
         position: absolute;
@@ -258,7 +260,7 @@ h3 {
         }
 
         .our-providers-section p{
-            width: 75%;
+            width: 85%;
         }
        
         .viewServButton {
@@ -329,4 +331,14 @@ h3 {
                 margin-right: 20px;
                 margin-top: 20px;
          }
+
+        .promoButton {
+        position: absolute;
+        top: 83.5%;
+        left: 78%;
+        transform: translate(-50%, -50%);
+        z-index: 2;
+    }
+
+               
 }
