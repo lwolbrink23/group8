@@ -22,7 +22,6 @@ import gall1 from "../assets/images/gall1.png";
 import gall2 from "../assets/images/gall2.png";
 import gall3 from "../assets/images/gall3.png";
 import gall4 from "../assets/images/gall4.png";
-import gall5 from "../assets/images/gall5.png";
 import gall6 from "../assets/images/gall6.png";
 import gall7 from "../assets/images/gall7.png";
 
