@@ -75,15 +75,21 @@ const SelectServices = () => {
       </div>
       <div className="image-div">
         <img
-          src={blowDry} className="focus-image"
+          src={blowDry}
+          className="focus-image"
           alt="woman getting her hair blow dried by a hair dresser"
         />
         <div className="side-images-container">
-        <img
-          src={hairDye} className="side-images"
-          alt="woman getting her hair dyed by a hair dresser"
-        />
-        <img src={barber} className="side-images"  alt="man getting his hair cut my a barber" />
+          <img
+            src={hairDye}
+            className="side-images"
+            alt="woman getting her hair dyed by a hair dresser"
+          />
+          <img
+            src={barber}
+            className="side-images"
+            alt="man getting his hair cut my a barber"
+          />
         </div>
       </div>
       <div className="select-serv">

@@ -111,57 +111,54 @@
     box-shadow: none;
     padding: 15px;
   }
-  /* Update styles for the image wrapper */
+
   .image-container {
     overflow: hidden;
-    /* Clear floats */
   }
 
-  .side-images-container {
-    float: right;
-    width: 50%;
-    /* Adjust the width of the container for small images */
-  }
   .image-div {
-    display: flex;
+    display: grid;
+    grid-template-columns: 60% auto;
+    gap: 0;
     justify-content: center;
     align-items: center;
   }
 
   .focus-image,
   .side-images {
-    width: 300px;
-    /* Adjust the width as needed */
-    height: 200px;
-    /* Adjust the height as needed */
+    width: 80%;
+    height: auto;
+    padding: 10px;
   }
 
   .focus-image {
-    padding: 10px;
-    margin-left: 200px;
-    width: 60%;
-      /* Set the width to 100% to make it responsive */
-      height: auto;
-      /* Set the height to auto to maintain the aspect ratio */
-      max-width: 100%;
-      /* Add max-width for extra safety */
-    }
+    grid-column: 1 / 2;
+    width: 80%;
+    height: auto;
+    justify-self: center;
+    align-self: center;
+  }
+
+  .side-images-container {
+    display: flex;
+    flex-direction: column;
+    grid-column: 2 / 3;
+  }
 
   .side-images {
-  width: 45%;
-    /* Adjust the width percentage as needed */
-    padding: 10px;
+    width: 80%;
     height: auto;
-    /* Set the height to auto to maintain the aspect ratio */
-    max-width: 100%;
+    padding-bottom: 10px;
+    justify-self: left;
+    margin-left: -50px;
   }
   .select-serv {
-      font-family: Cormorant;
-      font-size: 32px;
-      font-style: normal;
-      font-weight: 700;
-      line-height: normal;
-      text-align: left;
-      margin-left: 150px;
+    font-family: Cormorant;
+    font-size: 32px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: normal;
+    text-align: left;
+    margin-left: 150px;
   }
 }
