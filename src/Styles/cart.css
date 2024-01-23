@@ -3,10 +3,10 @@
   padding: 52px 20vw;
   display: grid;
   grid-template-columns: auto auto;
-  gap: 50px;
+  gap: 20px;
 }
 #cart main > div:first-child {
-  margin-left: auto;
+  margin: auto;
 }
 /* cart */
 .cart-container {
@@ -44,8 +44,18 @@
 }
 
 /* subtotal */
+
 .subtotal div {
   margin-top: 50px;
+}
+.subtotal .col-2 > p:last-child {
+  text-align: right;
+}
+.subtotal .col-2 > p:first-child {
+  text-align: left;
+}
+.subtotal button {
+  width: 100%;
 }
 
 @media screen and (max-width: 1200px) {
@@ -63,10 +73,7 @@
   }
 
   .subtotal {
-    text-align: center;
-  }
-  .subtotal div {
-    width: 50%;
-    margin: 50px auto;
+    width: 65%;
+    margin: auto;
   }
 }
