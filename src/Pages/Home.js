@@ -42,7 +42,7 @@ function Home() {
     webwella,
   ];
 
-  const mobilegallImages = [eyeball, hands, facemask];
+  const mobilegallImages = [gall1, gall2, eyeball, hands, facemask];
 
   const webgallImages = [
     gall3,
