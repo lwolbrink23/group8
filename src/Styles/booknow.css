@@ -48,8 +48,8 @@
         display:flex;
         flex-wrap:wrap;
     }
-        .top img {
-            margin-bottom: 2px;
-        }
+    .top img {
+        margin-bottom: 2px;
+    }
 }
 

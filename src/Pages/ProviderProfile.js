@@ -47,16 +47,21 @@ function ProviderProfile() {
                     </div>
                 </section>
             </div>
+            <h2 className="center">Gallery</h2>
             <div class="gallery-container">
-                <h2 className="center">Gallery</h2>
                 <div class="center">
-                    {suite.gallery && suite.gallery[0] && <img src={require(`../assets/images/${suite.gallery[0]}.png`)} alt="Main Gallery" />}
+                    {suite.gallery && suite.gallery[0] && <img src={require(`../assets/images/${suite.gallery[0]}.png`)} alt="Main Gallery" id="largeimg" />}
                 </div>
                 <div class="thumbnail-container">
                     {suite.gallery && suite.gallery.slice(1).map((image, index) => (
-                        image && <img key={index} src={require(`../assets/images/${image}.png`)} alt={`Thumbnail ${index + 1}`} />
+                        image && <img key={index} src={require(`../assets/images/${image}.png`)} alt={`Thumbnail ${index + 1}`} class="smallimg" />
                     ))}
                 </div>
+            </div>
+            <div className="mobile-gallery">
+                {suite.gallery && suite.gallery.slice(1).map((image, index) => (
+                    image && <img key={index} src={require(`../assets/images/${image}.png`)} alt={`Thumbnail ${index + 1}`} />
+                ))}
             </div>
             <div className="extra-space"></div>
         </div>
