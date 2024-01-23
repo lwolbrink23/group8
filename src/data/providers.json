@@ -15,13 +15,7 @@
             "Hair Extensions": "<p>Hair extensions add length and volume to your natural hair. They can be clipped, sewn, bonded, or taped into place for a temporary or semi-permanent change.</p><p>Tape-in Extensions: $400</p><p>Sew-in Extensions: $500</p><p>Fusion Extensions: $600</p>",
             "Hair Styling": "<p>This service includes blowouts, curling, straightening, and updos. It's ideal for special occasions or when you want to change your everyday look.</p><p>Classic Blowout: $20</p><p>Updo: $100</p><p>Box Braids: $100</p><p>Corn Rows: $100</p><p>Special Occasion Styling: $100</p>"
         },
-        "gallery": {
-            "photo0": "Blowdry",
-            "photo1": "Hairdye",
-            "photo2": "prettyhair",
-            "photo3": "barber",
-            "photo4": "haircut"
-        }
+        "gallery": ["Blowdry", "Hairdye", "prettyhair", "barber", "haircut"]
     },
     {
         "id": "iID1",
@@ -38,13 +32,51 @@
             "Nail Extensions": "<p>Adding length to the nails using tips or forms, often with acrylic or gel.</p><p>Acrylic Fill / Full Set: $40/$80</p><p>Dip Full Set: $80</p><p>Fiberglass Full Set: $100</p>",
             "Add-Ons": "<p>From the glossy finish of a gel polish to the therapeutic relaxation of a paraffin wax treatment, these extras transform a standard service into a pampering session.</p><p>Hand-painted Designs: $20</p><p>Ombre Nails: $30</p><p>Marble Nails: $30</p><p>Foiling: $20</p><p>3D Nail Art: $20</p><p>Paraffin Wax Treatment: $20</p><p>Gel Polish: $10</p><p>Soak-Off Removal: $20</p>"
             },
-        "gallery": {
-            "photo0": "Blowdry",
-            "photo1": "Hairdye",
-            "photo2": "prettyhair",
-            "photo3": "barber",
-            "photo4": "haircut"
-        }
+        "gallery": ["hands", "gall2", "nails1", "nails2", "nails3"]
+    },
+    {
+        "id": "iID2",
+        "provider": "Brush & Brush Beauty",
+        "suite": "Suite #3",
+        "phone": "(321) 333-1234",
+        "specialties": "Bridal and event makeup",
+        "image": "BrushBlushBeauty",
+        "email": "Brushandblush@thesuitespot.com",
+        "about": "At Brush & Blush Beauty, I offer a range of makeup services, from subtle and natural to bold and glamorous. Whether it's for a special event, a photoshoot, or simply to elevate your everyday beauty, I have the skills and expertise to make your makeup dreams a reality. Book your appointment today, and let's create a makeup masterpiece that reflects your personality and leaves you feeling absolutely radiant. Your beauty journey starts here.",
+        "services": {
+            "Classic Makeup Application": "<p>A timeless and elegant makeup look suitable for any occasion. Includes foundation, eyeshadow, eyeliner, mascara, blush, and lipstick.<br />$40</p>",
+            "Glamorous Evening Makeup": "<p>Perfect for special events or a night out. This service includes a more dramatic eye look, contouring, false eyelashes, and a bold lip color.<br />$75</p>",
+            "Natural Makeup Look": "<p>Enhance your features with a subtle and natural makeup application. Ideal for a fresh and understated appearance.<br />$45</p>",
+            "Bridal Makeup Package": "<p>A comprehensive service tailored for brides on their special day. Includes a trial session, consultation, and the final bridal makeup application with long-lasting products for a flawless look in photos.<br />$150</p>",
+            "Editorial/Fashion Makeup":"<p>Bold and creative makeup for photoshoots, runway shows, or fashion events. This service includes high-impact looks that stand out in a professional setting.<br />$70</p>",
+            "Special Effects Makeup":"<p>Transform your look with special effects makeup for costume parties, Halloween, or themed events. Pricing varies based on the complexity of the design.<br />$80</p>",
+            "Makeup Lesson":"<p>A one-on-one session to learn about makeup techniques, product application, and personalized tips. Perfect for those wanting to improve their own makeup skills.<br />$60</p>",
+            "Group Makeup Session":"<p>Ideal for bridal parties, prom groups, or special events. Enjoy a customized makeup experience for you and your friends, with group discounts available.<br />$150</p>",
+            "Men’s Grooming":"<p>Tailored makeup services for men, including concealing blemishes, evening skin tone, and enhancing facial features for photoshoots or events.<br />$40</p>"
+            },
+        "gallery": ["prettyhair", "wedding", "wedding2", "makeup", "haircut"]
+    },
+    {
+        "id": "iID3",
+        "provider": "Healing Hands Spa",
+        "suite": "Suite #4",
+        "phone": "(407) 666-1234",
+        "specialties": "Bridal and event makeup",
+        "image": "HealingHandsSpa",
+        "email": "Healinghandsspa@thesuitespot.com",
+        "about": "Welcome to Healing Hands Spa—your haven for relaxation and rejuvenation. I offer a range of therapeutic massage techniques designed to alleviate tension, soothe sore muscles, and enhance your overall sense of well-being. Whether you seek relief from chronic pain or simply want to unwind and pamper yourself, I have the knowledge and expertise to tailor each session to your specific needs. Step into a world of tranquility and relief!",
+        "services": {
+            "Swedish Massage": "<p>A classic relaxation massage using long, flowing strokes to release tension, improve circulation, and promote overall well-being.<br />$80</p>",
+            "Deep Tissue Massage": "<p>Targets deeper layers of muscle and connective tissue to address chronic pain and muscle tightness. Ideal for those seeking therapeutic relief.<br />$90</p>",
+            "Hot Stone Massage": "<p>Heated stones are strategically placed and used during the massage to enhance relaxation, soothe muscles, and promote a sense of balance.<br />$90</p>",
+            "Aromatherapy Massage": "<p>Integrates essential oils chosen for their therapeutic properties, enhancing the massage experience and promoting emotional and physical well-being.<br />$100</p>",
+            "Prenatal Massage":"<p>Tailored for expectant mothers, this massage helps alleviate discomfort associated with pregnancy, focusing on relaxation and reducing tension.<br />$80</p>",
+            "Sports Massage":"<p>Geared towards athletes, this massage addresses specific muscle groups, aids in recovery, and enhances flexibility and performance.<br />$80</p>",
+            "Couples Massage":"<p>Enjoy a massage alongside your partner in a shared space, each with your therapist, creating a relaxing and bonding experience.<br />$150</p>",
+            "Reflexology":"<p>Focuses on pressure points in the feet to promote relaxation, improve circulation, and stimulate the body's natural healing processes.<br />$100</p>",
+            "Custom Massage":"<p>Tailored to your specific needs, combining various techniques to address individual concerns and promote overall relaxation.<br />$150</p>"
+            },
+        "gallery": ["Blowdry", "Hairdye", "prettyhair", "barber", "haircut"]
     }
 
 ]
