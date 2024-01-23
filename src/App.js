@@ -39,7 +39,7 @@ function App() {
           <Route path="/blogpost" element={<BlogPost />} />
           <Route path="/blogpost_two" element={<BlogPost2 />} />
           <Route path="/booknow" element={<BookNowDirectory />} />
-          <Route path="/providerprofile" element={<ProviderProfile />} />
+          <Route path="/providerprofile/:id" element={<ProviderProfile />} />
           <Route path="/selectservices" element={<SelectServices />} />
           <Route path="/appointment_overview" element={<Overview />} />
           <Route path="/appointment_confirmed" element={<Confirmed />} />

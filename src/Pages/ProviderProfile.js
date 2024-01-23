@@ -7,9 +7,14 @@ import Pretty from '../assets/images/prettyhair.png';
 import Barber from '../assets/images/barber.png';
 import Haircut from '../assets/images/haircut.png';
 import suiteData from "../data/providers.json";
+import { useParams } from 'react-router-dom';
 
 
 function ProviderProfile() {
+
+    const { id } = useParams();
+    const suite = suiteData.find(item => item.id.toString() === id);
+
     return (
         <div>
             <div class="container">
@@ -17,8 +22,8 @@ function ProviderProfile() {
                     <img src={SimplyChicHair} alt="Simply Chic Hair" />
                 </div>
                 <div class="info">
-                    <h1>Simply Chic Hair</h1>
-                    <p>Suite #1</p>
+                    <h1>{suite.provider}</h1>
+                    <p>{suite.suite}</p>
                     <p>(321) 123-3211</p>
                     <p>Simplychic@thesuitespot.com</p>
                     <button type="button" className="purp-button">BOOK NOW</button>

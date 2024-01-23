@@ -5,76 +5,34 @@ import Polish from '../assets/images/PolishPerfection.png';
 import Brush from '../assets/images/BrushBlushBeauty.png';
 import Hands from '../assets/images/HealingHandsSpa.png';
 import { Link } from 'react-router-dom';
+import suiteData from "../data/providers.json";
 
 function BookNowDirectory() {
     return (
         <div>
             <h1 className="center">Directory</h1>
             <div className="dropdown dropdown-content">
-                <div className="suites">
-                    <div className="top">
-                        <img src={SimplyChicHair} alt="SimplyChicHair" />
-                        <div className="description">
-                            <h3>Simply Chic Hair</h3>
-                            <p>Suite #1 <br />(321) 123-3211<br />Specialties: Hair cuts, color and styling.</p>
-                            <div className="buttons">
-                                <Link to="/providerprofile">
-                                    <button>View Profile</button>
-                                </Link>
-                                <Link to="/SelectServices">
-                                    <button className="purp-button">Book Now</button></Link>
+                {suiteData.map((item) => (
+                    <div className="suites">
+                        <div className="top">
+                            <img src={SimplyChicHair} alt="SimplyChicHair" />
+                            <div className="description">
+                                <h3>{item.provider}</h3>
+                                <p>{item.suite}<br />{item.phone}<br />Specialties: {item.specialties}</p>
+                                <div className="buttons">
+                                    <Link to={`/providerprofile/${item.id}`}>
+                                        <button>View Profile</button>
+                                    </Link>
+                                    <Link to="/SelectServices">
+                                        <button className="purp-button">Book Now</button></Link>
+                                </div>
                             </div>
                         </div>
+                        <hr />
                     </div>
-                </div>
-                <hr />
-                <div className="suites">
-                    <div className="top">
-                        <img src={Polish} alt="SimplyChicHair" />
-                        <div className="description">
-                            <h3>Polish Perfection</h3>
-                            <p>Suite #2 <br />(407) 123-1234<br />Specialties: Manicure, pedicure, dip and acrylic.</p>
-                            <div className="buttons">
-                                <Link to="/providerprofile">
-                                    <button>View Profile</button></Link>
-                                <Link to="/SelectServices">
-                                    <button className="purp-button">Book Now</button> </Link>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <hr />
-                <div className="suites">
-                    <div className="top">
-                        <img src={Brush} alt="SimplyChicHair" />
-                        <div className="description">
-                            <h3>Brush & Blush Beauty</h3>
-                            <p>Suite #3 <br />(321) 333-1234<br />Specialties: Bridal and event makeup.</p>
-                            <div className="buttons">
-                                <Link to="/providerprofile">
-                                    <button>View Profile</button></Link>
-                                <Link to="/SelectServices">
-                                    <button className="purp-button">Book Now</button> </Link>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <hr />
-                <div className="suites">
-                    <div className="top">
-                        <img src={Hands} alt="SimplyChicHair" />
-                        <div className="description">
-                            <h3>Healing Hands Spa</h3>
-                            <p>Suite #4 <br />(407) 666-1234<br />Specialties: Massage therapy.</p>
-                            <div className="buttons">
-                                <Link to="/providerprofile">
-                                    <button>View Profile</button></Link>
-                                <Link to="/SelectServices">
-                                    <button className="purp-button">Book Now</button></Link>
-                            </div>
-                        </div>
-                    </div>
-                </div>
+
+                ))}
+
                 <p className="right">Next Page</p>
             </div>
             <div className="extra-space"></div>
