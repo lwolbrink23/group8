@@ -24,7 +24,7 @@
     width: 1096px;
     margin-left: auto;
     margin-right: auto;
-    
+
 }
 
 
@@ -43,10 +43,7 @@
 }
 
 .testimonials .p {
-    color: #000000;
-    font-family: "Poppins-Regular", Helvetica;
     font-size: 17px;
-    font-weight: 400;
     left: 0;
     letter-spacing: 0;
     line-height: normal;
@@ -57,8 +54,7 @@
 }
 
 .testimonials .text-wrapper {
-    color: #000000;
-    font-family: "Poppins-Regular", Helvetica;
+    /*Alex turner name*/
     font-size: 17px;
     font-weight: 400;
     left: 80px;
@@ -253,29 +249,38 @@
 @media screen and (max-width: 767px) {
     .testimonials {
         width: 100%;
-        overflow: hidden;
+
     }
-    
+
     .testimonials .alex,
     .testimonials .sarah,
     .testimonials .michael {
-        width: 100%;
-
+        width: 350px;
+        left: 0;
+        /*layers them on top of each other*/
+        position: absolute;
+        margin-left: 100px;
+        margin-top: 20px;
+        margin-bottom: 0px;
+        height: 200px;
+        opacity: 1;
     }
 
-.testimonials .left-arrow-group {
-    left: 20px;
-}
 
-.testimonials .left-arrow {
-    left: 12px;
-}
+    .testimonials .left-arrow-group {
+        left: 20px;
+    }
 
-.testimonials .right-arrow-group {
-    left: 420px;
-}
+    .testimonials .left-arrow {
+        left: 12px;
+    }
 
-.testimonials .right-arrow {
-    left: 14px;
-}
+    .testimonials .right-arrow-group {
+        left: 420px;
+    }
+
+    .testimonials .right-arrow {
+        left: 14px;
+    }
+
 }
