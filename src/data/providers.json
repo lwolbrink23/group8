@@ -16,6 +16,7 @@
             "Hair Styling": "<p>This service includes blowouts, curling, straightening, and updos. It's ideal for special occasions or when you want to change your everyday look.</p><p>Classic Blowout: $20</p><p>Updo: $100</p><p>Box Braids: $100</p><p>Corn Rows: $100</p><p>Special Occasion Styling: $100</p>"
         },
         "gallery": {
+            "photo0": "Blowdry",
             "photo1": "Hairdye",
             "photo2": "prettyhair",
             "photo3": "barber",
@@ -29,16 +30,16 @@
         "phone": "(407) 123-1234",
         "specialties": "Manicure, pedicure, dip and acrylic.",
         "image": "PolishPerfection",
-        "email": "Simplychic@thesuitespot.com",
-        "about": "At Simply Chic Hair, we're more than just hairstylists; we're your partners in creating the perfect look that reflects your individuality. Whether you're seeking a simple trim or a complete hair transformation, our team is here to make your vision a reality. We specialize in a wide range of services, from precision haircuts and luxurious coloring to transformative hair extensions and stunning up-dos.",
+        "email": "Polishperfection@thesuitespot.com",
+        "about": "At our salon, our skilled nail technicians are passionate about their craft and are committed to providing you with the highest level of care. Step into our chic and inviting salon, where you can unwind in a serene atmosphere. We offer a wide range of nail services, from classic manicures and pedicures to stunning nail art and extensions. Our team uses only the finest products to ensure your nails are healthy, strong, and beautifully adorned.",
         "services": {
-            "Haircut": "<p>A haircut involves trimming and shaping your hair to achieve a desired length and style. It can range from a simple trim to a complete hair transformation.</p><p>Standard Haircut: $40</p><p>Layered Haircut: $80</p><p>Children's Haircuts: $30</p>",
-            "Hair Coloring": "<p>Hair coloring services include techniques like highlights, lowlights, balayage, and full color changes to alter the color of your hair, creating a new look or covering gray hair.</p><p>Root Touchup: $50</p><p>Partial / Full Balayage: $70/$200</p><p>Highlights or Lowlights: $100</p>",
-            "Hair Treatments": "<p>These treatments can include deep conditioning, relaxing, hair masks, and keratin treatments to improve the health and manageability of your hair.</p><p>Brazilian Blowout: $200</p><p>Keratin Treatment: $200</p><p>Deep Conditioning: $40</p>",
-            "Hair Extensions": "<p>Hair extensions add length and volume to your natural hair. They can be clipped, sewn, bonded, or taped into place for a temporary or semi-permanent change.</p><p>Tape-in Extensions: $400</p><p>Sew-in Extensions: $500</p><p>Fusion Extensions: $600</p>",
-            "Hair Styling": "<p>This service includes blowouts, curling, straightening, and updos. It's ideal for special occasions or when you want to change your everyday look.</p><p>Classic Blowout: $20</p><p>Updo: $100</p><p>Box Braids: $100</p><p>Corn Rows: $100</p><p>Special Occasion Styling: $100</p>"
-        },
+            "Manicure": "<p>A basic treatment for the hands, including nail shaping, cuticle care, and polish application.</p><p>Basic Manicure: $40</p><p>French Manicure: $60</p><p>Spa Manicure: $60</p>",
+            "Pedicure": "<p>Similar to a manicure, but for the feet. It includes nail care, exfoliation, and moisturizing.</p><p>Basic Pedicure: $40</p><p>French Pedicure: $60/$200</p><p>Spa Pedicure: $60</p>",
+            "Nail Extensions": "<p>Adding length to the nails using tips or forms, often with acrylic or gel.</p><p>Acrylic Fill / Full Set: $40/$80</p><p>Dip Full Set: $80</p><p>Fiberglass Full Set: $100</p>",
+            "Add-Ons": "<p>From the glossy finish of a gel polish to the therapeutic relaxation of a paraffin wax treatment, these extras transform a standard service into a pampering session.</p><p>Hand-painted Designs: $20</p><p>Ombre Nails: $30</p><p>Marble Nails: $30</p><p>Foiling: $20</p><p>3D Nail Art: $20</p><p>Paraffin Wax Treatment: $20</p><p>Gel Polish: $10</p><p>Soak-Off Removal: $20</p>"
+            },
         "gallery": {
+            "photo0": "Blowdry",
             "photo1": "Hairdye",
             "photo2": "prettyhair",
             "photo3": "barber",
