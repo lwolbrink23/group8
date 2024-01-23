@@ -116,49 +116,50 @@
     overflow: hidden;
   }
 
-  .image-div {
-    display: grid;
-    grid-template-columns: 60% auto;
-    gap: 0;
-    justify-content: center;
-    align-items: center;
-  }
+ .image-div {
+   display: grid;
+   grid-template-columns: 60% auto;
+   gap: 0;
+   justify-content: center;
+   align-items: center;
+ }
 
-  .focus-image,
-  .side-images {
-    width: 80%;
-    height: auto;
-    padding: 10px;
-  }
+ .focus-image,
+ .side-images {
+   width: 80%;
+   height: auto;
+   padding: 10px;
+ }
 
-  .focus-image {
-    grid-column: 1 / 2;
-    width: 80%;
+ .focus-image {
+   grid-column: 1 / 2;
+  width: 80%;
     height: auto;
     justify-self: center;
     align-self: center;
-  }
+ }
 
-  .side-images-container {
-    display: flex;
-    flex-direction: column;
-    grid-column: 2 / 3;
-  }
+ .side-images-container {
+   display: flex;
+   flex-direction: column;
+   grid-column: 2 / 3;
+ }
 
-  .side-images {
-    width: 80%;
-    height: auto;
-    padding-bottom: 10px;
-    justify-self: left;
-    margin-left: -50px;
-  }
+ .side-images {
+   width: 80%;
+  height: auto;
+   padding-bottom: 10px;
+  justify-self: left;
+  margin-left: -50px;
+
+ }
   .select-serv {
-    font-family: Cormorant;
-    font-size: 32px;
-    font-style: normal;
-    font-weight: 700;
-    line-height: normal;
-    text-align: left;
-    margin-left: 150px;
+      font-family: Cormorant;
+      font-size: 32px;
+      font-style: normal;
+      font-weight: 700;
+      line-height: normal;
+      text-align: left;
+      margin-left: 150px;
   }
 }
