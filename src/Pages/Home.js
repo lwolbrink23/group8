@@ -128,13 +128,17 @@ function Home() {
         </div>
       </div>
 
-      {/* <!-- Gallery --> */}
+      {/* <!-- mobile Gallery --> */}
       <div className="gallery">
         <h2>Gallery</h2>
         {/* <!-- Add gallery carousel content here --> */}
         <MainCarousel images={mobilegallImages} className="mobileGall" />
       </div>
-
+      {/* <!-- web Gallery --> */}
+      <div className="webgallery">
+        <h2>Gallery</h2>
+        {/* <!-- Web gallery grid content here --> */}
+      </div>
       {/* <!-- Testimonials --> */}
       <div className="testimonials">
         <h2>Testimonials</h2>

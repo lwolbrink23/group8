@@ -108,6 +108,17 @@ h3 {
             /*centers the div*/
 }
 
+.webgallery {
+    display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        margin-left: auto;
+        /*centers the div*/
+        margin-right: auto;
+        /*centers the div*/
+}
+
 .testimonials {
     display: flex;
     flex-direction: column;
@@ -121,6 +132,11 @@ h3 {
 
 /*mobile styles:*/
 @media screen and (max-width: 767px) {
+    .webgallery {
+            display: none;
+        }
+
+    
     .suite-spot-overlay {
         padding: 0px;
         position: absolute;
@@ -195,6 +211,10 @@ h3 {
 
 /*web styles:*/
 @media screen and (min-width: 767px) {
+    .gallery { /*mobile gallery*/
+            display: none;
+        }
+
     .carousel-container-mobile {
         display: none;
     }
@@ -339,6 +359,5 @@ h3 {
         transform: translate(-50%, -50%);
         z-index: 2;
     }
-
                
 }
