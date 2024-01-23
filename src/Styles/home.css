@@ -334,8 +334,8 @@ h3 {
 
         .promoButton {
         position: absolute;
-        top: 83.5%;
-        left: 78%;
+        top: 65%;
+        left: 21%;
         transform: translate(-50%, -50%);
         z-index: 2;
     }

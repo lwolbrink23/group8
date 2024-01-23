@@ -11,6 +11,11 @@ import webaroma from "../assets/images/home_aroma.png";
 import brownHair from "../assets/images/brownhair.jpg";
 import spaProducts from "../assets/images/spaproducts.png";
 import webglamour from "../assets/images/web_glamourpromo.png";
+import webrelax from "../assets/images/web_relaxpromo.png";
+import webwella from "../assets/images/webwellapromo.png";
+import eyeball from "../assets/images/eyeball.png";
+import hands from "../assets/images/hands.png";
+import facemask from "../assets/images/facemask.png";
 
 function Home() {
   const mobilecarouselImages = [
@@ -21,8 +26,15 @@ function Home() {
     promoWella,
   ];
 
-  // finish adding web images wider from figma:
-  const webcarouselImages = [webpromoBottle, webaroma, webglamour];
+  const webcarouselImages = [
+    webpromoBottle,
+    webaroma,
+    webglamour,
+    webrelax,
+    webwella,
+  ];
+
+  const mobilegallImages = [eyeball, hands, facemask];
 
   return (
     <div className="App">
@@ -120,6 +132,7 @@ function Home() {
       <div className="gallery">
         <h2>Gallery</h2>
         {/* <!-- Add gallery carousel content here --> */}
+        <MainCarousel images={mobilegallImages} className="mobileGall" />
       </div>
 
       {/* <!-- Testimonials --> */}
