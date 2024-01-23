@@ -2,6 +2,7 @@ import "../Styles/home.css"; // Import your styles
 import { Link } from "react-router-dom";
 import MainCarousel from "../Components/MainCarousel.js";
 import WebGallery from "../Components/WebGallery.js";
+import { Testimonials } from "../Components/Testimonials.js";
 import promoBottle from "../assets/images/promo_bottle.png";
 import promoAroma from "../assets/images/promo_aroma.png";
 import promoHair from "../assets/images/promo_hair.png";
@@ -160,8 +161,9 @@ function Home() {
         <WebGallery images={webgallImages} />
       </div>
       {/* <!-- Testimonials --> */}
-      <div className="testimonials">
+      <div className="testDiv">
         <h2>Testimonials</h2>
+        <Testimonials></Testimonials>
         {/* <!-- Add testimonials carousel content here --> */}
       </div>
     </div>

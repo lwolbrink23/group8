@@ -119,15 +119,13 @@ h3 {
         /*centers the div*/
 }
 
-.testimonials {
+.testDiv {
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
     margin-left: auto;
-    /*centers the div*/
     margin-right: auto;
-    /*centers the div*/
 }
 
 /*mobile styles:*/
@@ -223,6 +221,8 @@ h3 {
         margin-left: auto;
         margin-right: auto;
     }
+
+
 
     .promoButton {
         position: absolute;
