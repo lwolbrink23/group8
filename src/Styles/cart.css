@@ -3,7 +3,7 @@
   padding: 52px 20vw;
   display: grid;
   grid-template-columns: auto auto;
-  gap: 20px;
+  gap: 50px;
 }
 #cart main > div:first-child {
   margin: auto;
@@ -58,7 +58,7 @@
   width: 100%;
 }
 
-@media screen and (max-width: 1200px) {
+@media screen and (max-width: 1250px) {
   #cart main {
     padding: 52px 10vw;
   }
