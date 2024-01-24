@@ -23,6 +23,10 @@
     margin-right: 10px;
 }
 
+#confirm {
+    background-color: white;
+}
+
 /* Mobile */
 @media screen and (max-width: 767px) {
     .signupform {
