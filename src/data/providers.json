@@ -1,7 +1,7 @@
 [
     {
         "id": "iID0",
-        "provider": "The Suite Spot",
+        "provider": "Simply Chic Hair",
         "suite": "Suite #1",
         "phone": "(321) 123-3211",
         "specialties": "Hair cuts, color and styling.",
@@ -15,7 +15,8 @@
             "Hair Extensions": "<p>Hair extensions add length and volume to your natural hair. They can be clipped, sewn, bonded, or taped into place for a temporary or semi-permanent change.</p><p>Tape-in Extensions: $400</p><p>Sew-in Extensions: $500</p><p>Fusion Extensions: $600</p>",
             "Hair Styling": "<p>This service includes blowouts, curling, straightening, and updos. It's ideal for special occasions or when you want to change your everyday look.</p><p>Classic Blowout: $20</p><p>Updo: $100</p><p>Box Braids: $100</p><p>Corn Rows: $100</p><p>Special Occasion Styling: $100</p>"
         },
-        "gallery": ["Blowdry", "Hairdye", "prettyhair", "barber", "haircut"]
+        "gallery": ["Blowdry", "Hairdye", "prettyhair", "barber", "haircut"],
+        "booknow": "/selectservices_simply_chic"
     },
     {
         "id": "iID1",
@@ -32,11 +33,12 @@
             "Nail Extensions": "<p>Adding length to the nails using tips or forms, often with acrylic or gel.</p><p>Acrylic Fill / Full Set: $40/$80</p><p>Dip Full Set: $80</p><p>Fiberglass Full Set: $100</p>",
             "Add-Ons": "<p>From the glossy finish of a gel polish to the therapeutic relaxation of a paraffin wax treatment, these extras transform a standard service into a pampering session.</p><p>Hand-painted Designs: $20</p><p>Ombre Nails: $30</p><p>Marble Nails: $30</p><p>Foiling: $20</p><p>3D Nail Art: $20</p><p>Paraffin Wax Treatment: $20</p><p>Gel Polish: $10</p><p>Soak-Off Removal: $20</p>"
             },
-        "gallery": ["hands", "gall2", "nails1", "nails2", "nails3"]
+        "gallery": ["hands", "gall2", "nails1", "nails2", "nails3"],
+        "booknow": "/selectservices_polish_perfection"
     },
     {
         "id": "iID2",
-        "provider": "Brush & Brush Beauty",
+        "provider": "Blush & Brush Beauty",
         "suite": "Suite #3",
         "phone": "(321) 333-1234",
         "specialties": "Bridal and event makeup",
@@ -54,7 +56,8 @@
             "Group Makeup Session":"<p>Ideal for bridal parties, prom groups, or special events. Enjoy a customized makeup experience for you and your friends, with group discounts available.<br />$150</p>",
             "Men’s Grooming":"<p>Tailored makeup services for men, including concealing blemishes, evening skin tone, and enhancing facial features for photoshoots or events.<br />$40</p>"
             },
-        "gallery": ["prettyhair", "wedding", "wedding2", "makeup", "haircut"]
+        "gallery": ["prettyhair", "wedding", "wedding2", "makeup", "haircut"],
+        "booknow": "/selectservices_brush_blush"
     },
     {
         "id": "iID3",
@@ -76,7 +79,8 @@
             "Reflexology":"<p>Focuses on pressure points in the feet to promote relaxation, improve circulation, and stimulate the body's natural healing processes.<br />$100</p>",
             "Custom Massage":"<p>Tailored to your specific needs, combining various techniques to address individual concerns and promote overall relaxation.<br />$150</p>"
             },
-        "gallery": ["healing1", "gall1", "healing2", "healing3", "healing4"]
+        "gallery": ["healing1", "gall1", "healing2", "healing3", "healing4"],
+        "booknow": "/selectservices_healing_hands"
     }
 
 ]

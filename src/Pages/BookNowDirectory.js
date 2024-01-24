@@ -23,7 +23,7 @@ function BookNowDirectory() {
                                     <Link to={`/providerprofile/${item.id}`}>
                                         <button>View Profile</button>
                                     </Link>
-                                    <Link to="/SelectServices">
+                                    <Link to={item.booknow}>
                                         <button className="purp-button">Book Now</button>
                                     </Link>
                                 </div>

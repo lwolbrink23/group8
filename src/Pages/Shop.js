@@ -4,7 +4,7 @@ import giftCardIMG from "../assets/images/giftcard.png";
 import plusICON from "../assets/icons/black-plus.png";
 import minusICON from "../assets/icons/black-minus.png";
 import shopICON from "../assets/icons/icons8-shopping-cart-100.png";
-import tempData from "../data/shop.json";
+import shopData from "../data/shop.json";
 import { Link, useLocation } from "react-router-dom";
 import React, { useEffect, useState } from "react";
 
@@ -26,17 +26,47 @@ function Shop() {
   };
 
   // keeping track of item qty
-  const [items, setItems] = useState([{ id: "iID0", quantity: 1 }]);
+  const [dynamicItems, setDynamicItems] = useState([{ id: "iID0", qty: 1 }]);
+  const [cartItems, setCartItems] = useState([{ id: "iID0", qty: 1 }]);
+  const [cartButtons, setCartButtons] = useState([]);
 
-  const handleIncrement = (itemId) => {
-    setItems((prevItems) => {
+  const updateButtons = (itemId) => {
+    let changed = false;
+    for (const i of cartItems) {
+      if (i.id === itemId) {
+        for (const j of dynamicItems) {
+          if (j.id === itemId) {
+            if (i.qty !== j.qty) {
+              changed = true;
+              console.log(`cart: ${i.qty}      dynamic:${j.qty}`);
+            }
+          }
+        }
+      }
+    }
+    setCartButtons((prevItems) => {
       const updatedItems = prevItems.map((item) =>
-        item.id === itemId ? { ...item, quantity: item.quantity + 1 } : item
+        item.id === itemId ? { ...item, changed } : item
       );
 
       // If the item doesn't exist in the array, add it with quantity 1
       if (!updatedItems.some((item) => item.id === itemId)) {
-        updatedItems.push({ id: itemId, quantity: 1 });
+        updatedItems.push({ id: itemId, changed });
+      }
+
+      return updatedItems;
+    });
+  };
+  const handleIncrement = (itemId) => {
+    updateButtons(itemId);
+    setDynamicItems((prevItems) => {
+      const updatedItems = prevItems.map((item) =>
+        item.id === itemId ? { ...item, qty: item.qty + 1 } : item
+      );
+
+      // If the item doesn't exist in the array, add it with quantity 1
+      if (!updatedItems.some((item) => item.id === itemId)) {
+        updatedItems.push({ id: itemId, qty: 1 });
       }
 
       return updatedItems;
@@ -44,15 +74,19 @@ function Shop() {
   };
 
   const handleDecrement = (itemId) => {
-    setItems((prevItems) =>
-      prevItems
-        .map((item) =>
-          item.id === itemId && item.quantity > 0
-            ? { ...item, quantity: item.quantity - 1 }
-            : item
-        )
-        .filter((item) => item.quantity > 0)
+    updateButtons(itemId);
+    setDynamicItems((prevItems) =>
+      prevItems.map((item) =>
+        item.id === itemId && item.qty > 0
+          ? { ...item, qty: item.qty - 1 }
+          : item
+      )
     );
+  };
+
+  const handleAddToCart = (itemId) => {
+    setCartItems(dynamicItems.filter((item) => item.qty > 0));
+    updateButtons(itemId);
   };
 
   return (
@@ -74,11 +108,17 @@ function Shop() {
       <main>
         <ul className="items-container">
           {/* mapping each shop item */}
-          {tempData.map((item) => {
+          {shopData.map((item) => {
             let itemQty = 0;
-            for (const i of items) {
+            let btn = false;
+            for (const i of dynamicItems) {
               if (i.id === item.id) {
-                itemQty = i.quantity;
+                itemQty = i.qty;
+              }
+            }
+            for (const i of cartButtons) {
+              if (i.id === item.id) {
+                btn = i.changed;
               }
             }
             return (
@@ -113,7 +153,15 @@ function Shop() {
                       onClick={() => handleIncrement(item.id)}
                     ></img>
                   </div>
-                  <button className="button">Add to Cart</button>
+
+                  <button
+                    className="button"
+                    onClick={() => handleAddToCart(item.id)}
+                    disabled={!btn}
+                    style={{ opacity: !btn ? 0.5 : 1 }}
+                  >
+                    {!btn ? "Added to Cart" : "Add to Cart"}
+                  </button>
                 </div>
               </li>
             );

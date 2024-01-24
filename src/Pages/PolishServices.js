@@ -74,7 +74,7 @@ const SelectServices = () => {
   const navigateToTime = () => {
     const totalCost = calculateTotalCost();
     navigate("/selecttime", {
-      state: { service: selectedServices, totalCost: totalCost },
+      state: { service: selectedServices, totalCost: totalCost, serviceName: 'Polish Perfection' },
     });
   };
 

@@ -1,5 +1,5 @@
 import React from "react";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 import BackButton from "../Components/BackButton";
 import plusICON from "../assets/icons/black-plus.png";
 import minusICON from "../assets/icons/black-minus.png";
@@ -63,7 +63,7 @@ const SelectServices = () => {
   const navigateToTime = () => {
     const totalCost = calculateTotalCost();
     navigate("/selecttime", {
-      state: { service: selectedServices, totalCost: totalCost },
+      state: { service: selectedServices, totalCost: totalCost, serviceName: 'Simply Chic Hair' },
     });
   };
 
