@@ -163,8 +163,8 @@ function Home() {
       {/* <!-- Testimonials --> */}
       <div className="testDiv">
         <h2>Testimonials</h2>
-        <Testimonials></Testimonials>
-        {/* <!-- Add testimonials carousel content here --> */}
+        <div className="testContainer"><Testimonials></Testimonials></div>
+
       </div>
       <div className="bottom-container">
         <div className="blog-div">

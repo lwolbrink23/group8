@@ -1,4 +1,5 @@
 /*global styles:*/
+
 .booknow-section {
     height: 100px;
 }
@@ -28,6 +29,8 @@
 h3 {
     font-weight: 500;
 }
+
+
 
 .why-choose-us-section {
     background-color: white;
@@ -213,14 +216,15 @@ h3 {
     }
 
 
-    .testimonials {
-        background-color: white;
+    .div {
+        display: none;
     }
 
 }
 
 /*web styles:*/
 @media screen and (min-width: 767px) {
+
     .gallery {
         /*mobile gallery*/
         display: none;
