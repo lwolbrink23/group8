@@ -1,7 +1,7 @@
 import "../App.css";
 import "../Styles/providerprofile.css"
 import suiteData from "../data/providers.json";
-import { useParams, useNavigate } from 'react-router-dom';
+import { useParams, useNavigate, Link } from 'react-router-dom';
 
 
 function ProviderProfile() {
@@ -25,7 +25,7 @@ function ProviderProfile() {
                     <p>{suite.suite}</p>
                     <p>{suite.phone}</p>
                     <p>{suite.email}</p>
-                    <button type="button" className="purp-button" onClick={navigateToConfirm}>BOOK NOW</button> {/*make something pass through here*/}
+                    <Link to={suite.booknow}><button type='button' className='purp-button'>BOOK NOW</button></Link>
                 </div>
             </div>
             <div className="dropdown dropdown-content space-below">

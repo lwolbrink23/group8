@@ -1,10 +1,11 @@
 import React, { useEffect, useState } from "react";
-import { Link, useLocation, useNavigate } from "react-router-dom";
+import { Link, useLocation, useNavigate, useParams } from "react-router-dom";
 import "../App.css";
 import "../Styles/ApptOverview.css"
 import "../Styles/SelectTime.css"
 import BackButton from "../Components/BackButton";
 import Calendar from 'react-calendar'
+import suiteData from "../data/providers.json";
 
 
 function SelectTime() {
@@ -15,8 +16,7 @@ function SelectTime() {
     const location = useLocation();
     const selectedServices = location.state?.service || [];
     const totalCost = location.state?.totalCost || 0;
-
-
+    const serviceName = location.state?.serviceName || 'Default Service Name';
 
 
     const [selectedDate, setSelectedDate] = useState(new Date());
@@ -36,8 +36,6 @@ function SelectTime() {
         navigate('/appointment_overview', { state: { service: selectedServices, totalCost: totalCost, date: formattedDate, time: clickedTime } });
     };
 
-
-
     // State to track the clicked time button
     const [clickedTime, setClickedTime] = useState(null);
 
@@ -50,7 +48,7 @@ function SelectTime() {
         <div>
             <div className="title-container trans-white">
                 <BackButton />
-                <h1>Simply Chic Hair</h1>
+                <h1>{serviceName}</h1> {/*make the provider name display here instead*/}
             </div>
             <div className="arrow-container">
                 {/*back arrow*/}
