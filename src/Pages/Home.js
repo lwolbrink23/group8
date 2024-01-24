@@ -2,7 +2,6 @@ import "../Styles/home.css"; // Import your styles
 import { Link } from "react-router-dom";
 import MainCarousel from "../Components/MainCarousel.js";
 import WebGallery from "../Components/WebGallery.js";
-import { Testimonials } from "../Components/Testimonials.js";
 import promoBottle from "../assets/images/promo_bottle.png";
 import promoAroma from "../assets/images/promo_aroma.png";
 import promoHair from "../assets/images/promo_hair.png";
@@ -24,7 +23,7 @@ import gall3 from "../assets/images/gall3.png";
 import gall4 from "../assets/images/gall4.png";
 import gall6 from "../assets/images/gall6.png";
 import gall7 from "../assets/images/gall7.png";
-import news from "../assets/images/newsletter.jpg";
+import testimonials from "../assets/images/testimonials.png";
 
 function Home() {
   const mobilecarouselImages = [
@@ -163,7 +162,7 @@ function Home() {
       {/* <!-- Testimonials --> */}
       <div className="testDiv">
         <h2>Testimonials</h2>
-        <div className="testContainer"><Testimonials></Testimonials></div>
+        <img src={testimonials} alt="testimonials" className="testimonials" />
 
       </div>
       <div className="bottom-container">
