@@ -2,6 +2,7 @@ import "../Styles/home.css"; // Import your styles
 import { Link } from "react-router-dom";
 import MainCarousel from "../Components/MainCarousel.js";
 import WebGallery from "../Components/WebGallery.js";
+import { Testimonials } from "../Components/Testimonials.js";
 import promoBottle from "../assets/images/promo_bottle.png";
 import promoAroma from "../assets/images/promo_aroma.png";
 import promoHair from "../assets/images/promo_hair.png";
@@ -21,7 +22,6 @@ import gall1 from "../assets/images/gall1.png";
 import gall2 from "../assets/images/gall2.png";
 import gall3 from "../assets/images/gall3.png";
 import gall4 from "../assets/images/gall4.png";
-import gall5 from "../assets/images/gall5.png";
 import gall6 from "../assets/images/gall6.png";
 import gall7 from "../assets/images/gall7.png";
 
@@ -160,8 +160,9 @@ function Home() {
         <WebGallery images={webgallImages} />
       </div>
       {/* <!-- Testimonials --> */}
-      <div className="testimonials">
+      <div className="testDiv">
         <h2>Testimonials</h2>
+        <Testimonials></Testimonials>
         {/* <!-- Add testimonials carousel content here --> */}
       </div>
     </div>

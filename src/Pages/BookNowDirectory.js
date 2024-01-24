@@ -15,7 +15,7 @@ function BookNowDirectory() {
                 {suiteData.map((item) => (
                     <div className="suites">
                         <div className="top">
-                            <img src={SimplyChicHair} alt="SimplyChicHair" />
+                            <img src={require("../assets/images/" + item.image + ".png")} alt={item.image} />
                             <div className="description">
                                 <h3>{item.provider}</h3>
                                 <p>{item.suite}<br />{item.phone}<br />Specialties: {item.specialties}</p>

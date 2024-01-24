@@ -122,7 +122,7 @@ function Header() {
               </ul>
             </li>
             <li>
-              <CustomLink to="/booknow" className="purp-button">
+              <CustomLink to="/booknow" className="purp-button centerbutton"> {/*I added centerbutton as a class for the book now button because the previous css was messing with the buttons on the entire site. -Lindsey*/}
                 Book Now
               </CustomLink>
             </li>

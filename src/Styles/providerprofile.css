@@ -31,6 +31,7 @@
     grid-template-columns: repeat(2, 1fr);
     /* Creates two columns of equal width */
     grid-auto-flow: dense;
+    justify-content: space-between;
     gap: 20px;
     /* This adds space between the columns and rows */
     padding: 20px;
@@ -46,8 +47,6 @@
 .service-category:nth-child(2n) {
     border-right: none;
 }
-
-
 
 .space-below {
     margin-bottom: 40px;
@@ -90,4 +89,46 @@
     margin: 5px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.25);
     /* Add more styling for thumbnails here */
+}
+
+.mobile-gallery {
+    display: none;
+}
+
+@media screen and (max-width: 600px) {
+    .image-wrapper {
+        display: none;
+    }
+        .mobile-gallery {
+            display: block;
+            margin: 10px 30px !important;
+        }
+}
+
+@media screen and (max-width: 1200px) {
+.services-container {
+    display: grid;
+    grid-template-columns: 1fr;
+    /* Creates two columns of equal width */
+    gap: 0px;
+    /* This adds space between the columns and rows */
+    padding: 0px;
+}
+
+.service-category {
+    border: none !important;
+}
+}
+
+@media screen and (max-width: 900px) {
+    .gallery-container {
+            display: none;
+        }
+    .mobile-gallery {
+        display: block;
+        margin: 10px 150px;
+    }
+    .dropdown {
+        width: 70%;
+    }
 }
