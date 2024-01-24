@@ -4,49 +4,32 @@ import BackButton from "../Components/BackButton";
 import plusICON from "../assets/icons/black-plus.png";
 import minusICON from "../assets/icons/black-minus.png";
 import purpCheck from "../assets/icons/icons8-check-100.png";
-import serviceNails from "../assets/images/servicenails.jpg";
-import polishes from "../assets/images/polishes.jpg";
-import acetone from "../assets/images/acetone.jpg";
-import "../Styles/polishservices.css";
+import blowDry from "../assets/images/Blowdry.png";
+import hairDye from "../assets/images/Hairdye.png";
+import "../Styles/chicservices.css";
 import "../App.css";
 import { useState } from "react";
 
+// updating services on screen
 const SelectServices = () => {
   const [selectedServices, setSelectedServices] = useState([]);
-  const [currentCategory, setCurrentCategory] = useState("featured");
+  const [currentCategory, setCurrentCategory] = useState("makeup"); // Updated category name
 
+  // make categories
   const categories = {
-    featured: [
-      "Classic Manicure\n45 minutes\n$40",
-      "Classic Pedicure\n45 minutes\n$40",
-      "Nail Art\n30 minutes\n$20",
-    ],
-    manicure: [
-      "Basic Manicure\n45 minutes\n$40",
-      "French Manicure\n45 minutes\n$60",
-      "Spa Manicure\n45 minutes\n$60",
-    ],
-    pedicure: [
-      "Basic Pedicure\n45 minutes\n$40",
-      "French Pedicure\n45 minutes\n$60",
-      "Spa Pedicure\n45 minutes\n$60",
-    ],
-    extensions: [
-      "Acrylic Fill / Full Set\n60 minutes\n$40/$80",
-      "Dip Full Set\n60 minutes\n$80",
-      "Fiberglass Full Set\n60 minutes\n$100",
-    ],
-    addons: [
-      "Hand-painted Designs\n15 minutes\n$20",
-      "Ombre Nails\n15 minutes\n$30",
-      "Marble Nails\n15 minutes\n$30",
-      "Foiling\n15 minutes\n$20",
-      "3D Nail Art\n15 minutes\n$20",
-      "Paraffin Wax Treatment\n15 minutes\n$20",
-      "Gel Polish\n15 minutes\n$10",
-      "Soak-Off Removal\n15 minutes\n$20",
+    makeup: [
+      "Classic Makeup Application\n$40\nA timeless and elegant makeup look suitable for any occasion. Includes foundation, eyeshadow, eyeliner, mascara, blush, and lipstick.",
+      "Glamorous Evening Makeup\n$75\nPerfect for special events or a night out. This service includes a more dramatic eye look, contouring, false eyelashes, and a bold lip color.",
+      "Natural Makeup Look\n$45\nEnhance your features with a subtle and natural makeup application. Ideal for a fresh and understated appearance.",
+      "Bridal Makeup Package\n$150\nA comprehensive service tailored for brides on their special day. Includes a trial session, consultation, and the final bridal makeup application with long-lasting products for a flawless look in photos.",
+      "Editorial/Fashion Makeup\n$70\nBold and creative makeup for photoshoots, runway shows, or fashion events. This service includes high-impact looks that stand out in a professional setting.",
+      "Special Effects Makeup\n$80\nTransform your look with special effects makeup for costume parties, Halloween, or the complexity of the design.",
+      "Makeup Lesson\n$60\nA one-on-one session to learn about makeup techniques, product application, and personalized tips. Perfect for those wanting to improve their own makeup skills.",
+      "Group Makeup Session\n$150\nIdeal for bridal parties, prom groups, or any special occasion. Create a fun and memorable experience for you and your friends, with group discounts available.",
+      "Men's Grooming\n$40\nTailored makeup services for men, including concealing blemishes, evening skin tone, and enhancing facial features for photoshoots or events.",
     ],
   };
+
 
   const clickCategory = (category) => {
     setCurrentCategory(category);
@@ -65,8 +48,8 @@ const SelectServices = () => {
 
   const calculateTotalCost = () => {
     return selectedServices.reduce((total, service) => {
-      const pricePart = service.split("\n").pop();
-      const price = parseInt(pricePart.replace(/[^0-9]/g, ""));
+      const pricePart = service.split("\n").pop(); // Extracts the last line (e.g., "$75")
+      const price = parseInt(pricePart.replace(/[^0-9]/g, "")); // Extracts numerical value
       return total + price;
     }, 0);
   };
@@ -78,29 +61,23 @@ const SelectServices = () => {
     });
   };
 
-
   return (
     <div>
       <div className="titles-containers trans-white">
         <BackButton />
-        <h1>Polish Perfection</h1>
+        <h1>Brush & Blush Beauty </h1>
       </div>
       <div className="image-div">
         <img
-          src={serviceNails}
+          src={blowDry}
           className="focus-image"
-          alt="baby pink nails"
+          alt="woman getting her hair blow dried by a hair dresser"
         />
         <div className="side-images-container">
           <img
-            src={polishes}
+            src={hairDye}
             className="side-images"
-            alt="shelf full of different color nail polish"
-          />
-          <img
-            src={acetone}
-            className="side-images"
-            alt="nail technician using acetone on a customer's nails"
+            alt="woman getting her hair dyed by a hair dresser"
           />
         </div>
       </div>
