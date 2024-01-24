@@ -4,33 +4,30 @@ import BackButton from "../Components/BackButton";
 import plusICON from "../assets/icons/black-plus.png";
 import minusICON from "../assets/icons/black-minus.png";
 import purpCheck from "../assets/icons/icons8-check-100.png";
-import ringLight from "../assets/images/ringlight.jpg";
-import lashes from "../assets/images/lashes.jpg";
-import weddingDreamz from "../assets/images/wedding_dreams.jpg"
-import "../Styles/chicservices.css";
+import mugSpa from "../assets/images/mugspa.jpg";
+import spaBlue from "../assets/images/spa_bluebg.jpg";
+import relaxMassage from "../assets/images/relax_massage.jpg";
+import "../Styles/healingservices.css";
 import "../App.css";
 import { useState } from "react";
 
-// updating services on screen
 const SelectServices = () => {
   const [selectedServices, setSelectedServices] = useState([]);
   const [currentCategory, setCurrentCategory] = useState("featured");
 
-  // make categories
   const categories = {
     featured: [
-      "Classic Makeup Application\n$40",
-      "Glamorous Evening Makeup\n$75",
-      "Natural Makeup Look\n$45",
-      "Bridal Makeup Package\n$150",
-      "Editorial/Fashion Makeup\n$70",
-      "Special Effects Makeup\n$80",
-      "Makeup Lesson\n$60",
-      "Group Makeup Session\n$150",
-      "Men's Grooming\n$40",
+      "Swedish Massage\n60 minutes\n$80",
+      "Deep Tissue Massage\n60 minutes\n$90",
+      "Hot Stone Massage\n60 minutes\n$90",
+      "Aromatherapy Massage\n60 minutes\n$100",
+      "Prenatal Massage\n60 minutes\n$80",
+      "Sports Massage\n60 minutes\n$80",
+      "Couples Massage\n60 minutes\n$150",
+      "Reflexology\n60 minutes\n$100",
+      "Custom Massage\n60 minutes\n$150",
     ],
   };
-
 
   const clickCategory = (category) => {
     setCurrentCategory(category);
@@ -49,8 +46,8 @@ const SelectServices = () => {
 
   const calculateTotalCost = () => {
     return selectedServices.reduce((total, service) => {
-      const pricePart = service.split("\n").pop(); // Extracts the last line (e.g., "$75")
-      const price = parseInt(pricePart.replace(/[^0-9]/g, "")); // Extracts numerical value
+      const pricePart = service.split("\n").pop();
+      const price = parseInt(pricePart.replace(/[^0-9]/g, ""));
       return total + price;
     }, 0);
   };
@@ -66,28 +63,26 @@ const SelectServices = () => {
     <div>
       <div className="titles-containers trans-white">
         <BackButton />
-        <h1>Brush & Blush Beauty </h1>
+        <h1>Healing Hands Spa</h1>
       </div>
       <div className="image-div">
         <img
-          src={weddingDreamz}
+          src={mugSpa}
           className="focus-image"
           alt="woman getting her hair blow dried by a hair dresser"
         />
         <div className="side-images-container">
           <img
-            src={lashes}
+            src={spaBlue}
             className="side-images"
             alt="woman getting her hair dyed by a hair dresser"
           />
-          <div className="side-images-container">
           <img
-            src={ringLight}
+            src={relaxMassage}
             className="side-images"
-            alt="woman getting her hair dyed by a hair dresser"
+            alt="man getting his hair cut my a barber"
           />
         </div>
-      </div>
       </div>
       <div className="select-serv">
         <h3>Select Services</h3>
