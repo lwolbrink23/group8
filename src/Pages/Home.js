@@ -24,6 +24,7 @@ import gall3 from "../assets/images/gall3.png";
 import gall4 from "../assets/images/gall4.png";
 import gall6 from "../assets/images/gall6.png";
 import gall7 from "../assets/images/gall7.png";
+import news from "../assets/images/newsletter.jpg";
 
 function Home() {
   const mobilecarouselImages = [
@@ -164,6 +165,46 @@ function Home() {
         <h2>Testimonials</h2>
         <Testimonials></Testimonials>
         {/* <!-- Add testimonials carousel content here --> */}
+      </div>
+      <div className="bottom-container">
+        <div className="blog-div">
+          <h2>Blog</h2>
+          <div className="blog-content">
+            <Link to="/blog">
+              <img src={hands} alt="hands" className="blogphoto" />
+            </Link>
+            <div className="text-content">
+              <p>
+                Stay in the loop with our company news.<br />Find recent articles on:
+              </p>
+              <ul>
+                <li>Hair care</li>
+                <li>Tips & Tricks</li>
+                <li>Industry Trends</li>
+              </ul>
+              <input type="email" placeholder="Enter your email" className="blogInput" />
+              <button type="button" className="blogButton">
+                Subscribe
+              </button>
+            </div>
+          </div>
+        </div>
+        <div className="blog-div">
+          <h2>Newsletter</h2>
+          <div className="blog-content">
+            <div className="text-content">
+              <p>
+                Stay in the loop with our company news. <br />
+                Sign up to our newsletter and receive the freshest info.
+              </p>
+              <br />
+              <input type="email" placeholder="Enter your email" className="blogInput" />
+              <button type="button" className="blogButton">
+                Subscribe
+              </button>
+            </div>
+          </div>
+        </div>
       </div>
     </div>
   );
