@@ -38,7 +38,7 @@ function Shop() {
           if (j.id === itemId) {
             if (i.qty !== j.qty) {
               changed = true;
-              console.log(i.qty + "   " + j.qty);
+              console.log(`cart: ${i.qty}      dynamic:${j.qty}`);
             }
           }
         }
