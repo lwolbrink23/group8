@@ -24,7 +24,8 @@ function BookNowDirectory() {
                                         <button>View Profile</button>
                                     </Link>
                                     <Link to="/SelectServices">
-                                        <button className="purp-button">Book Now</button></Link>
+                                        <button className="purp-button">Book Now</button>
+                                    </Link>
                                 </div>
                             </div>
                         </div>

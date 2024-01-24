@@ -2,96 +2,126 @@
 .reg {
     text-align: center;
 }
+
 .purp {
     text-align: center;
     color: #8569B8;
 }
-
-.check {
-    width: 20px;
-    height: 20px;
-    flex-shrink: 0;
-    display: inline-block;
-    margin-right: 5px;
-    border: 10px solid #000;
-}
-
-.checkbox-container {
-    display: flex;
-    align-items: center;
-}
-
-.text-container {
+.text-container,
+.contain {
     display: flex;
     align-items: center;
     justify-content: center;
 }
 
+.inline {
+    display: flex;
+    flex-direction: row;
+}
+
+.inline>div {
+    margin-right: 10px;
+}
+
+#confirm {
+    background-color: white;
+}
+
+#confirm:hover {
+    background-color: white;
+}
+
 /* Mobile */
 @media screen and (max-width: 767px) {
-    .loginform {
-        max-width: 60%;
+    .signupform {
+        max-width: 100%;
         margin: 0 auto;
         display: flex;
         flex-direction: column;
         text-align: left;
     }
 
+    .section1,
     .textarea {
-        width: 100%;
+        display: block;
+        width: 145px;
         box-sizing: border-box;
         margin-bottom: 10px;
         box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
         border: none;
         height: 50px;
+
     }
 
-    .loginform button {
+    .textarea {
+        width: 300px;
+    }
+
+    .signupform button {
         padding: 15px 30px;
+        justify-content: center;
+        align-items: center;
         box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
         color: #5A5A5A;
         font-family: Raleway;
         font-size: 24px;
-        width: 100%;
+        width: 250px;
         margin: 0 auto;
         display: flex;
-        justify-content: center;
-        align-items: center;
     }
 }
 
 /* Web */
 @media screen and (min-width: 767px) {
-    .loginform {
-        max-width: 60%;
+    .signupform {
         margin: 0 auto;
         display: flex;
         flex-direction: column;
         text-align: left;
     }
 
-    .textarea {
-        width: 500px;
+    .inline {
+        display: flex;
+        justify-content: center;
+        flex-direction: row;
+    }
+
+    .inline>div {
+        margin-right: 10px;
+    }
+
+    .section1 {
+        display: flex;
+        justify-content: center;
+        width: 218px;
         box-sizing: border-box;
         margin-bottom: 10px;
         box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
         border: none;
         height: 50px;
-        max-width: 450px;
+    }
+
+    .textarea {
+        justify-content: center;
+        box-sizing: border-box;
+        margin-bottom: 10px;
+        box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
+        border: none;
+        height: 50px;
+        width: 500px;
         margin: 0 auto;
     }
 
-    .loginform button {
+    .signupform button {
         padding: 15px 30px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
         box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
         color: #5A5A5A;
         font-family: Raleway;
         font-size: 24px;
-        width: 100%;
-        max-width: 300px;
+        width: 300px;
         margin: 0 auto;
-        display: flex;
-        justify-content: center;
-        align-items: center;
     }
 }
