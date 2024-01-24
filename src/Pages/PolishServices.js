@@ -74,7 +74,11 @@ const SelectServices = () => {
   const navigateToTime = () => {
     const totalCost = calculateTotalCost();
     navigate("/selecttime", {
-      state: { service: selectedServices, totalCost: totalCost, serviceName: 'Polish Perfection' },
+      state: {
+        service: selectedServices,
+        totalCost: totalCost,
+        serviceName: "Polish Perfection",
+      },
     });
   };
 
@@ -84,17 +88,21 @@ const SelectServices = () => {
         <BackButton />
         <h1>Polish Perfection</h1>
       </div>
-      <div className="image-div">
-        <img src={serviceNails} className="focus-image" alt="baby pink nails" />
-        <div className="side-images-container">
+      <div className="image-divP">
+        <img
+          src={serviceNails}
+          className="focus-imageP"
+          alt="baby pink nails"
+        />
+        <div className="side-images-containerP">
           <img
             src={polishes}
-            className="side-images"
+            className="side-imagesP"
             alt="shelf full of different color nail polish"
           />
           <img
             src={acetone}
-            className="side-images"
+            className="side-imagesP"
             alt="nail technician using acetone on a customer's nails"
           />
         </div>

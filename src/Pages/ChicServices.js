@@ -73,21 +73,21 @@ const SelectServices = () => {
         <BackButton />
         <h1>Simply Chic Hair</h1>
       </div>
-      <div className="image-div">
+      <div className="image-divC">
         <img
           src={blowDry}
-          className="focus-image"
+          className="focus-imageC"
           alt="woman getting her hair blow dried by a hair dresser"
         />
-        <div className="side-images-container">
+        <div className="side-images-containerC">
           <img
             src={hairDye}
-            className="side-images"
+            className="side-imagesC"
             alt="woman getting her hair dyed by a hair dresser"
           />
           <img
             src={barber}
-            className="side-images"
+            className="side-imagesC"
             alt="man getting his hair cut my a barber"
           />
         </div>
