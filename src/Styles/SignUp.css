@@ -27,6 +27,10 @@
     background-color: white;
 }
 
+#confirm:hover {
+    background-color: white;
+}
+
 /* Mobile */
 @media screen and (max-width: 767px) {
     .signupform {
