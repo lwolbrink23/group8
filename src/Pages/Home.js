@@ -165,6 +165,38 @@ function Home() {
         <Testimonials></Testimonials>
         {/* <!-- Add testimonials carousel content here --> */}
       </div>
+      <div className="bottom-container">
+        <div className="blog-div">
+          <h2>Blog</h2>
+          <Link to="/blog">
+            <img src={hands} alt="hands" className="blogphoto" />
+          </Link>
+          <p>
+            Stay in the loop with our company news. <br />
+            Find recent articles on:
+          </p>
+          <ul>
+            <li>Hair care</li>
+            <li>Tips & Tricks</li>
+            <li>Industry Trends</li>
+          </ul>
+          <input type="email" placeholder="Enter your email" />
+          <button type="button" className="blogButton">
+            Subscribe
+          </button>
+        </div>
+        <div className="blog-div">
+          <h2>Newsletter</h2>
+          <p>
+            Stay in the loop with our company news. <br />
+            Sign up to our newsletter and receive the freshest info.
+          </p>
+          <input type="email" placeholder="Enter your email" />
+          <button type="button" className="blogButton">
+            Subscribe
+          </button>
+        </div>
+      </div>
     </div>
   );
 }
