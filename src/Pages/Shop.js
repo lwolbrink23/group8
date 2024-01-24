@@ -6,7 +6,7 @@ import minusICON from "../assets/icons/black-minus.png";
 import shopICON from "../assets/icons/icons8-shopping-cart-100.png";
 import tempData from "../data/shop.json";
 import { Link, useLocation } from "react-router-dom";
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 
 function ScrollToTop() {
   const location = useLocation();
@@ -23,6 +23,36 @@ function ScrollToTop() {
 function Shop() {
   const scrollToTop = () => {
     window.scrollTo(0, 0);
+  };
+
+  // keeping track of item qty
+  const [items, setItems] = useState([{ id: "iID0", quantity: 1 }]);
+
+  const handleIncrement = (itemId) => {
+    setItems((prevItems) => {
+      const updatedItems = prevItems.map((item) =>
+        item.id === itemId ? { ...item, quantity: item.quantity + 1 } : item
+      );
+
+      // If the item doesn't exist in the array, add it with quantity 1
+      if (!updatedItems.some((item) => item.id === itemId)) {
+        updatedItems.push({ id: itemId, quantity: 1 });
+      }
+
+      return updatedItems;
+    });
+  };
+
+  const handleDecrement = (itemId) => {
+    setItems((prevItems) =>
+      prevItems
+        .map((item) =>
+          item.id === itemId && item.quantity > 0
+            ? { ...item, quantity: item.quantity - 1 }
+            : item
+        )
+        .filter((item) => item.quantity > 0)
+    );
   };
 
   return (
@@ -43,40 +73,52 @@ function Shop() {
       {/* shop items */}
       <main>
         <ul className="items-container">
-          {tempData.map((item) => (
-            <li className="box" key={item.id}>
-              {/* item info */}
-              <Link to={`/productpage/${item.id}`}>
-                <img
-                  src={require("../assets/images/shop/" + item.file + ".png")}
-                  alt={item.name}
-                  className="item-img"
-                  onClick={scrollToTop}
-                ></img>
-              </Link>
-              <div className="item-info">
-                <p>{item.name}</p>
-                <p>${item.price}</p>
-              </div>
-              {/* item interactions */}
-              <div className="center-children">
-                <div className="center-v">
+          {/* mapping each shop item */}
+          {tempData.map((item) => {
+            let itemQty = 0;
+            for (const i of items) {
+              if (i.id === item.id) {
+                itemQty = i.qantity;
+              }
+              console.log(i.quantity);
+            }
+            return (
+              <li className="box" key={item.id}>
+                {/* item info */}
+                <Link to={`/productpage/${item.id}`}>
                   <img
-                    src={minusICON}
-                    alt="subtract item"
-                    className="mouse-hover"
+                    src={require("../assets/images/shop/" + item.file + ".png")}
+                    alt={item.name}
+                    className="item-img"
+                    onClick={scrollToTop}
                   ></img>
-                  <p className="item-amount">0</p>
-                  <img
-                    src={plusICON}
-                    alt="add item"
-                    className="mouse-hover"
-                  ></img>
+                </Link>
+                <div className="item-info">
+                  <p>{item.name}</p>
+                  <p>${item.price}</p>
                 </div>
-                <button className="button">Add to Cart</button>
-              </div>
-            </li>
-          ))}
+                {/* item interactions */}
+                <div className="center-children">
+                  <div className="center-v">
+                    <img
+                      src={minusICON}
+                      alt="subtract item"
+                      className="mouse-hover"
+                      onClick={() => handleDecrement(item.id)}
+                    ></img>
+                    <p className="item-amount">{itemQty}</p>
+                    <img
+                      src={plusICON}
+                      alt="add item"
+                      className="mouse-hover"
+                      onClick={() => handleIncrement(item.id)}
+                    ></img>
+                  </div>
+                  <button className="button">Add to Cart</button>
+                </div>
+              </li>
+            );
+          })}
         </ul>
         <p className="right extra-space">Next Page</p>
         {/* giftcard */}
