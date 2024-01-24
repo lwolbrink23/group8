@@ -17,17 +17,26 @@ const SelectServices = () => {
 
   const categories = {
     featured: [
+      "Classic Manicure\n45 minutes\n$40",
+      "Classic Pedicure\n45 minutes\n$40",
+      "Nail Art\n30 minutes\n$20",
+    ],
+    manicure: [
       "Basic Manicure\n45 minutes\n$40",
       "French Manicure\n45 minutes\n$60",
       "Spa Manicure\n45 minutes\n$60",
+    ],
+    pedicure: [
       "Basic Pedicure\n45 minutes\n$40",
       "French Pedicure\n45 minutes\n$60",
       "Spa Pedicure\n45 minutes\n$60",
+    ],
+    extensions: [
       "Acrylic Fill / Full Set\n60 minutes\n$40/$80",
       "Dip Full Set\n60 minutes\n$80",
       "Fiberglass Full Set\n60 minutes\n$100",
     ],
-    addOns: [
+    addons: [
       "Hand-painted Designs\n15 minutes\n$20",
       "Ombre Nails\n15 minutes\n$30",
       "Marble Nails\n15 minutes\n$30",
@@ -69,11 +78,12 @@ const SelectServices = () => {
     });
   };
 
+
   return (
     <div>
       <div className="titles-containers trans-white">
         <BackButton />
-        <h1>Your Nail Salon Name</h1>
+        <h1>Polish Perfection</h1>
       </div>
       <div className="image-div">
         <img
