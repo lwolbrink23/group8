@@ -24,6 +24,7 @@ import OrderPlaced from "./Pages/OrderPlaced";
 import OrderDetails from "./Pages/OrderDetails";
 import Checkout from "./Pages/Checkout";
 import Login from "./Pages/Login";
+import SignUp from "./Pages/SignUp";
 import SelectTime from "./Pages/SelectTime";
 import { Route, Routes } from "react-router-dom";
 
@@ -57,6 +58,7 @@ function App() {
           <Route path="/order_placed" element={<OrderPlaced />} />
           <Route path="/order_details" element={<OrderDetails />} />
           <Route path="/Login" element={<Login />} />
+          <Route path="/SignUp" element={<SignUp />} />
           <Route path="/checkout" element={<Checkout />} />
         </Routes>
       </div>

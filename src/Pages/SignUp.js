@@ -1,38 +1,54 @@
 import React from "react";
 import '../App.css';
-import '../Styles/Login.css'
+import '../Styles/SignUp.css'
+import { Link } from 'react-router-dom';
 
-
-function Login() {
+function SignUp() {
     return (
         <div>
-            <h1>Log In</h1>
+            <h1>Sign Up</h1>
             <div className="contain">
-            <form className="loginform">
-                <label htmlFor="email">Email</label>
-                <input type="text" className="textarea" id="email" />
-                <br/>
+            <form className="signupform">
+                <div className="inline">
+                <div>
+                <label htmlFor="firstname">First Name</label>
+                <input type="text" className="section1" id="first" />
+                </div>
+                <div>
+                <label htmlFor="lastname">Last Name</label>
+                <input type="text" className="section1" id="last" />
+                </div>
+                </div>
+                <div className="inline">
+                    <div>
+                <label htmlFor="phonenumber">Phone Number</label>
+                <input type="text" className="section1" id="phone" />
+                </div>
+                <div>
+                <label htmlFor="email">Email Address</label>
+                <input type="text" className="section1" id="email" />
+                </div>
+                </div>
                 <label htmlFor="password">Password</label>
                 <input type="text" className="textarea" id="password" />
-                <br/>
-                <div className="checkbox-container">
-                <input type="checkbox" className="check" id="check"/>
-                <label htmlFor="check">Remember Me</label>
-                </div>
+                <br></br>
+                <label htmlFor="confirm">Confirm Password</label>
+                <input type="text" className="textarea" id="confirm" />
+                <br></br>
+                <Link to="/Account">
                 <button type="button">
-                    LOG IN
+                    Sign Up
                 </button>
+                </Link>
             </form>
             </div>
-            <p className="purp">Forgot your password?</p>
-
             <div className="text-container">
-            <p classname="reg">Not registered?</p>
-            <p className="purp">Sign up</p>
+            <p classname="reg">Already have an account?</p>
+            <p className="purp"><Link to="/login">Log In</Link></p>
             </div>
 
         </div>
     )
 }
 
-export default Login;
+export default SignUp;
