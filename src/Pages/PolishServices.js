@@ -4,10 +4,10 @@ import BackButton from "../Components/BackButton";
 import plusICON from "../assets/icons/black-plus.png";
 import minusICON from "../assets/icons/black-minus.png";
 import purpCheck from "../assets/icons/icons8-check-100.png";
-import manicure from "../assets/images/Manicure.png";
-import pedicure from "../assets/images/Pedicure.png";
-import nailExtensions from "../assets/images/NailExtensions.png";
-import "../Styles/selectservices.css";
+import serviceNails from "../assets/images/servicenails.jpg";
+import polishes from "../assets/images/polishes.jpg";
+import acetone from "../assets/images/acetone.jpg";
+import "../Styles/polishservices.css";
 import "../App.css";
 import { useState } from "react";
 
@@ -77,18 +77,18 @@ const SelectServices = () => {
       </div>
       <div className="image-div">
         <img
-          src={manicure}
+          src={serviceNails}
           className="focus-image"
           alt="woman getting a manicure"
         />
         <div className="side-images-container">
           <img
-            src={pedicure}
+            src={polishes}
             className="side-images"
             alt="woman getting a pedicure"
           />
           <img
-            src={nailExtensions}
+            src={acetone}
             className="side-images"
             alt="woman with nail extensions"
           />
