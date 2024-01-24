@@ -1,5 +1,5 @@
 import React, { useEffect } from "react";
-import { Link, useLocation } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 import "../App.css";
 import "../Styles/ApptOverview.css"
 import store from "../assets/icons/icons8-shop-96.png";
@@ -29,13 +29,19 @@ function Overview() {
     const totalCost = location.state?.totalCost || 0;
     const formattedDate = location.state?.date;
     const clickedTime = location.state?.time;
+    const serviceName = location.state?.serviceName || 'Default Service Name';
+
+    const navigate = useNavigate();
+    const navigateToConfirmed = () => {
+        navigate('/appointment_confirmed', { state: { service: selectedServices, totalCost: totalCost, date: formattedDate, time: clickedTime, serviceName: serviceName } });
+    };
 
     return (
         <div>
             <ScrollToTop />
             <div className="title-container trans-white">
                 <BackButton />
-                <h1>Simply Chic Hair</h1>
+                <h1>{serviceName}</h1>
             </div>
             <div className="overview-container">
                 <div className="payment">
@@ -95,9 +101,7 @@ function Overview() {
                         </div>
                     </div>
                     {/*book now button*/}
-                    <Link to="/appointment_confirmed" onClick={scrollToTop}>
-                        <button type="button" className="purp-button">Book Now</button>
-                    </Link>
+                        <button type="button" className="purp-button" onClick={navigateToConfirmed}>Book Now</button>
                 </div>
             </div>
         </div>

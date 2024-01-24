@@ -21,10 +21,15 @@ function Confirmed() {
     window.scrollTo(0, 0);
   };
 
+  const location = useLocation();
+
+  const serviceName = location.state?.serviceName || 'Default Service Name';
+  const totalCost = location.state?.totalCost || 0;
+
   return (
     <div>
       <div className="header-white">
-        <h1>Simply Chic Hair</h1>
+        <h1>{serviceName}</h1>
       </div>
       <div className="conf-body">
         <ScrollToTop />
@@ -45,7 +50,7 @@ function Confirmed() {
           <h1><strong>Appointment Details</strong></h1>
           <div id="appt-date-time-service">
             <h3><b>Appointment</b></h3>
-            <p> Friday, 10/27/23 at 4:00pm (EST) Classic Blowout; 30 minutes</p>
+            <p> Friday, 10/27/23 at 4:00 Classic Blowout; 30 minutes</p>
           </div>
           <div id="company">
             <h3><b>Company</b></h3>
