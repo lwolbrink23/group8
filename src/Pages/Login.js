@@ -1,6 +1,7 @@
 import React from "react";
 import '../App.css';
-import '../Styles/Login.css'
+import '../Styles/Login.css';
+import { Link } from 'react-router-dom';
 
 
 function Login() {
@@ -19,16 +20,18 @@ function Login() {
                 <input type="checkbox" className="check" id="check"/>
                 <label htmlFor="check">Remember Me</label>
                 </div>
+                <Link to="/SignUp" style={{ display: 'flex', justifyContent: 'center', alignItems: 'center' }}>
                 <button type="button">
                     LOG IN
                 </button>
+                </Link>
             </form>
             </div>
             <p className="purp">Forgot your password?</p>
 
             <div className="text-container">
             <p classname="reg">Not registered?</p>
-            <p className="purp">Sign up</p>
+            <p className="purp"><Link to="/SignUp">Sign Up</Link></p>
             </div>
 
         </div>
@@ -36,3 +39,5 @@ function Login() {
 }
 
 export default Login;
+
+
