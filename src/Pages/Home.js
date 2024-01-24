@@ -24,6 +24,7 @@ import gall4 from "../assets/images/gall4.png";
 import gall6 from "../assets/images/gall6.png";
 import gall7 from "../assets/images/gall7.png";
 import testimonials from "../assets/images/testimonials.png";
+import mobtestimonials from "../assets/images/mobiletestimonials.png";
 
 function Home() {
   const mobilecarouselImages = [
@@ -162,8 +163,8 @@ function Home() {
       {/* <!-- Testimonials --> */}
       <div className="testDiv">
         <h2>Testimonials</h2>
+        <img src={mobtestimonials} alt="testimonials" className="mobiletesti" />
         <img src={testimonials} alt="testimonials" className="testimonials" />
-
       </div>
       <div className="bottom-container">
         <div className="blog-div">
@@ -174,14 +175,20 @@ function Home() {
             </Link>
             <div className="text-content">
               <p>
-                Stay in the loop with our company news.<br />Find recent articles on:
+                Stay in the loop with our company news.
+                <br />
+                Find recent articles on:
               </p>
               <ul>
                 <li>Hair care</li>
                 <li>Tips & Tricks</li>
                 <li>Industry Trends</li>
               </ul>
-              <input type="email" placeholder="Enter your email" className="blogInput" />
+              <input
+                type="email"
+                placeholder="Enter your email"
+                className="blogInput"
+              />
               <button type="button" className="blogButton">
                 Subscribe
               </button>
@@ -197,7 +204,11 @@ function Home() {
                 Sign up to our newsletter and receive the freshest info.
               </p>
               <br />
-              <input type="email" placeholder="Enter your email" className="blogInput" />
+              <input
+                type="email"
+                placeholder="Enter your email"
+                className="blogInput"
+              />
               <button type="button" className="blogButton">
                 Subscribe
               </button>

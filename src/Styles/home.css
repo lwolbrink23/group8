@@ -217,15 +217,23 @@ h3 {
 
 
 
-        .testimonials {
-
-            margin-bottom: 20px;
+        .mobiletesti {
+            margin: 20px auto;
+            width: 70%;
         }
+
+                .testimonials {
+                    display: none;
+                }
 
 }
 
 /*web styles:*/
 @media screen and (min-width: 767px) {
+
+    .mobiletesti {
+        display: none;
+    }
 
     .testimonials {
         width: 80%;
