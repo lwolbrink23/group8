@@ -80,7 +80,6 @@ function Shop() {
               if (i.id === item.id) {
                 itemQty = i.quantity;
               }
-              console.log(i.quantity);
             }
             return (
               <li className="box" key={item.id}>
