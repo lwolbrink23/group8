@@ -6,7 +6,7 @@ import minusICON from "../assets/icons/black-minus.png";
 import purpCheck from "../assets/icons/icons8-check-100.png";
 import ringLight from "../assets/images/ringlight.jpg";
 import lashes from "../assets/images/lashes.jpg";
-import weddingDreamz from "../assets/images/wedding_dreams.jpg"
+import weddingDreamz from "../assets/images/wedding_dreams.jpg";
 import "../Styles/chicservices.css";
 import "../App.css";
 import { useState } from "react";
@@ -30,7 +30,6 @@ const SelectServices = () => {
       "Men's Grooming\n$40",
     ],
   };
-
 
   const clickCategory = (category) => {
     setCurrentCategory(category);
@@ -81,13 +80,13 @@ const SelectServices = () => {
             alt="woman getting her hair dyed by a hair dresser"
           />
           <div className="side-images-container">
-          <img
-            src={ringLight}
-            className="side-images"
-            alt="woman getting her hair dyed by a hair dresser"
-          />
+            <img
+              src={ringLight}
+              className="side-images"
+              alt="woman getting her hair dyed by a hair dresser"
+            />
+          </div>
         </div>
-      </div>
       </div>
       <div className="select-serv">
         <h3>Select Services</h3>

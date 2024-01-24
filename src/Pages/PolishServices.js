@@ -78,7 +78,6 @@ const SelectServices = () => {
     });
   };
 
-
   return (
     <div>
       <div className="titles-containers trans-white">
@@ -86,11 +85,7 @@ const SelectServices = () => {
         <h1>Polish Perfection</h1>
       </div>
       <div className="image-div">
-        <img
-          src={serviceNails}
-          className="focus-image"
-          alt="baby pink nails"
-        />
+        <img src={serviceNails} className="focus-image" alt="baby pink nails" />
         <div className="side-images-container">
           <img
             src={polishes}

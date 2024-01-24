@@ -4,10 +4,10 @@
     padding: 20px;
     margin: 0;
   }
-    .titles-containers h1 {
-      margin: 0;
-      padding: 0;
-    }
+  .titles-containers h1 {
+    margin: 0;
+    padding: 0;
+  }
   .tabs {
     text-align: center;
     font: 700 26px Cormorant;
@@ -151,7 +151,7 @@
     aspect-ratio: 1.86/ 1;
   }
 
-  .side-images-container> :first-child {
+  .side-images-container > :first-child {
     padding-bottom: 20px;
   }
 
