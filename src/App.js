@@ -10,7 +10,10 @@ import BlogPost from "./Pages/BlogPost";
 import BlogPost2 from "./Pages/BlogPost-two";
 import BookNowDirectory from "./Pages/BookNowDirectory";
 import ProviderProfile from "./Pages/ProviderProfile";
-import SelectServices from "./Pages/SelectServices";
+import ChicServices from "./Pages/ChicServices";
+import PolishServices from "./Pages/PolishServices"
+import BlushServices from "./Pages/BlushServices"
+import HealingHands from "./Pages/HealingServices"
 import Overview from "./Pages/ApptOverview";
 import Confirmed from "./Pages/ApptConfirmed";
 import Faqs from "./Pages/Faqs";
@@ -41,7 +44,10 @@ function App() {
           <Route path="/blogpost_two" element={<BlogPost2 />} />
           <Route path="/booknow" element={<BookNowDirectory />} />
           <Route path="/providerprofile/:id" element={<ProviderProfile />} />
-          <Route path="/selectservices" element={<SelectServices />} />
+          <Route path="/selectservices_simply_chic" element={<ChicServices />} />
+          <Route path="/selectservices_polish_perfection" element={<PolishServices />} />
+          <Route path="/selectservices_brush_blush" element={<BlushServices />} />
+          <Route path="/selectservices_healing_hands" element={<HealingHands />} />
           <Route path="/appointment_overview" element={<Overview />} />
           <Route path="/appointment_confirmed" element={<Confirmed />} />
           <Route path="/faqs" element={<Faqs />} />

@@ -7,7 +7,7 @@ import purpCheck from "../assets/icons/icons8-check-100.png";
 import blowDry from "../assets/images/Blowdry.png";
 import barber from "../assets/images/barber.png";
 import hairDye from "../assets/images/Hairdye.png";
-import "../Styles/selectservices.css";
+import "../Styles/chicservices.css";
 import "../App.css";
 import { useState } from "react";
 
@@ -69,7 +69,7 @@ const SelectServices = () => {
 
   return (
     <div>
-      <div className="title-container trans-white">
+      <div className="titles-containers trans-white">
         <BackButton />
         <h1>Simply Chic Hair</h1>
       </div>
