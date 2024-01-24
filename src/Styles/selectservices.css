@@ -1,5 +1,12 @@
 /* web screen */
 @media screen and (min-width: 767px) {
+  .titles-containers {
+    padding: 20px;
+    margin: 0;
+  }
+    .titles-containers h1 {
+      margin: 0;
+    }
   .tabs {
     text-align: center;
     font: 700 26px Cormorant;
@@ -153,6 +160,7 @@
     margin-left: 150px;
   }
 }
+
 /* mobile screen */
 @media screen and (max-width: 766px) {
   .tabs {
@@ -181,7 +189,7 @@
   }
 
   .category-list {
-  font-family: Poppins;
+    font-family: Poppins;
     font-size: 15px;
     font-style: normal;
     font-weight: 400;
@@ -203,10 +211,10 @@
     flex-direction: column;
   }
 
- .button-container {
-   display: flex;
-   align-items: center;
- }
+  .button-container {
+    display: flex;
+    align-items: center;
+  }
 
   .check-mark {
     width: 50px;
@@ -221,14 +229,15 @@
     flex-shrink: 0;
     padding-bottom: 100px;
     display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: center;
-      margin-top: -90px;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    margin-top: -90px;
   }
-    .services-selected ul {
-      display: none;
-    }
+
+  .services-selected ul {
+    display: none;
+  }
 
   .service-title {
     margin-bottom: 0;
@@ -258,7 +267,7 @@
     display: none;
   }
 
-  .select-serv h3{
+  .select-serv h3 {
     font: 700 36px Cormorant;
     text-align: center;
     margin-left: 0;
