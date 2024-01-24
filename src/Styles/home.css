@@ -379,6 +379,7 @@ h3 {
         display: flex;
         flex-direction: row;
         align-items: center;
+
     }
 
     .blog-div {
@@ -397,7 +398,7 @@ h3 {
 
 
     .blog-div p {
-        text-align: center;
+        margin-left: 10px;
         color: white;
     }
 
@@ -415,4 +416,23 @@ h3 {
         width: 100%;
         max-width: 300px;
     }
+
+    .blogButton {
+        margin-left: 10px;
+        height: 30px;
+        font-size: 12px;
+    }
+
+    .blogInput {
+        margin-left: 10px;
+        height: 25px;
+        margin-bottom: 10px;
+
+    }
+
+    .newsButton {
+        margin-top: 10px;
+    }
+
+
 }
