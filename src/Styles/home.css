@@ -216,14 +216,22 @@ h3 {
     }
 
 
-    .div {
-        display: none;
-    }
+
+        .testimonials {
+
+            margin-bottom: 20px;
+        }
 
 }
 
 /*web styles:*/
 @media screen and (min-width: 767px) {
+
+    .testimonials {
+        width: 80%;
+        margin-top: 20px;
+        margin-bottom: 20px;
+    }
 
     .gallery {
         /*mobile gallery*/
