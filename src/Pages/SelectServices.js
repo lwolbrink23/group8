@@ -69,7 +69,7 @@ const SelectServices = () => {
 
   return (
     <div>
-      <div className="title-container trans-white">
+      <div className="titles-containers trans-white">
         <BackButton />
         <h1>Simply Chic Hair</h1>
       </div>
