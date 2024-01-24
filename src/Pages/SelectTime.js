@@ -33,7 +33,7 @@ function SelectTime() {
 
     const navigate = useNavigate();
     const navigateToOverview = () => {
-        navigate('/appointment_overview', { state: { service: selectedServices, totalCost: totalCost, date: formattedDate, time: clickedTime } });
+        navigate('/appointment_overview', { state: { service: selectedServices, totalCost: totalCost, date: formattedDate, time: clickedTime, serviceName: serviceName } });
     };
 
     // State to track the clicked time button
