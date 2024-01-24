@@ -371,7 +371,14 @@ h3 {
 
     .bottom-container {
         display: flex;
+        justify-content: center;
 
+    }
+
+    .blog-content {
+        display: flex;
+        flex-direction: row;
+        align-items: center;
     }
 
     .blog-div {
@@ -402,5 +409,10 @@ h3 {
     .blog-div h2 {
         color: white;
         text-align: center;
+    }
+
+    .blog-div img {
+        width: 100%;
+        max-width: 300px;
     }
 }

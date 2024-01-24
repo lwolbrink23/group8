@@ -168,22 +168,26 @@ function Home() {
       <div className="bottom-container">
         <div className="blog-div">
           <h2>Blog</h2>
-          <Link to="/blog">
-            <img src={hands} alt="hands" className="blogphoto" />
-          </Link>
-          <p>
-            Stay in the loop with our company news. <br />
-            Find recent articles on:
-          </p>
-          <ul>
-            <li>Hair care</li>
-            <li>Tips & Tricks</li>
-            <li>Industry Trends</li>
-          </ul>
-          <input type="email" placeholder="Enter your email" />
-          <button type="button" className="blogButton">
-            Subscribe
-          </button>
+          <div className="blog-content">
+            <Link to="/blog">
+              <img src={hands} alt="hands" className="blogphoto" />
+            </Link>
+            <div className="text-content">
+              <p>
+                Stay in the loop with our company news. <br />
+                Find recent articles on:
+              </p>
+              <ul>
+                <li>Hair care</li>
+                <li>Tips & Tricks</li>
+                <li>Industry Trends</li>
+              </ul>
+              <input type="email" placeholder="Enter your email" />
+              <button type="button" className="blogButton">
+                Subscribe
+              </button>
+            </div>
+          </div>
         </div>
         <div className="blog-div">
           <h2>Newsletter</h2>
