@@ -78,7 +78,7 @@ function Shop() {
             let itemQty = 0;
             for (const i of items) {
               if (i.id === item.id) {
-                itemQty = i.qantity;
+                itemQty = i.quantity;
               }
               console.log(i.quantity);
             }
