@@ -20,7 +20,7 @@ function Login() {
                 <input type="checkbox" className="check" id="check"/>
                 <label htmlFor="check">Remember Me</label>
                 </div>
-                <Link to="/SignUp" style={{ display: 'flex', justifyContent: 'center', alignItems: 'center' }}>
+                <Link to="/Account" style={{ display: 'flex', justifyContent: 'center', alignItems: 'center' }}>
                 <button type="button">
                     LOG IN
                 </button>
