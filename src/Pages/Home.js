@@ -192,9 +192,6 @@ function Home() {
         <div className="blog-div">
           <h2>Newsletter</h2>
           <div className="blog-content">
-            <Link to="/blog">
-              <img src={news} alt="email" className="blogphoto" />
-            </Link>
             <div className="text-content">
               <p>
                 Stay in the loop with our company news. <br />
