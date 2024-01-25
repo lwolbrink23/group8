@@ -62,6 +62,7 @@ function Shop() {
         break;
       }
     }
+
     setCartItems((prevItems) => {
       const updatedItems = prevItems.map((item) =>
         item.id === itemId ? itemToAdd : item
@@ -70,10 +71,8 @@ function Shop() {
       if (!updatedItems.some((item) => item.id === itemId)) {
         updatedItems.push(itemToAdd);
       }
-
       return updatedItems;
     });
-    console.log(cartItems);
   };
 
   return (
@@ -97,25 +96,30 @@ function Shop() {
           {/* mapping each shop item */}
           {shopData.map((item) => {
             let itemQty = 0;
-            let btn = false;
+            let btnEnable = false;
+            let existInCart = false;
             for (const i of cartItems) {
               if (i.id === item.id) {
                 for (const j of dynamicItems) {
-                  if (j.id === item.id) {
-                    if (i.qty !== j.qty) {
-                      btn = true;
-                      console.log(`cart: ${i.qty}      dynamic:${j.qty}`);
-                      break;
-                    }
+                  if (j.id === item.id && i.qty !== j.qty) {
+                    existInCart = true;
+                    btnEnable = true;
+                    console.log(
+                      `id: ${item.id}    cart: ${i.qty}      dynamic:${j.qty}`
+                    );
+                    break;
                   }
                 }
-                break;
               }
             }
             for (const i of dynamicItems) {
               if (i.id === item.id) {
                 itemQty = i.qty;
+                break;
               }
+            }
+            if (!existInCart && itemQty > 0) {
+              btnEnable = true;
             }
 
             return (
@@ -154,10 +158,12 @@ function Shop() {
                   <button
                     className="button"
                     onClick={() => handleAddToCart(item.id)}
-                    disabled={!btn}
-                    style={{ opacity: !btn ? 0.5 : 1 }}
+                    disabled={!btnEnable}
+                    style={{ opacity: !btnEnable ? 0.5 : 1 }}
                   >
-                    {!btn && itemQty > 0 ? "Added to Cart" : "Add to Cart"}
+                    {!btnEnable && itemQty > 0
+                      ? "Added to Cart"
+                      : "Add to Cart"}
                   </button>
                 </div>
               </li>
