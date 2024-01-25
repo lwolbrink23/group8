@@ -4,6 +4,7 @@
         flex-direction: column;
         align-items: center;
         text-align: center;
+        padding: 20px;
 }
 
 .profile-picture-container {
@@ -27,10 +28,40 @@
     display: block;
 }
 
+.buttonsContainer {
+    margin-top: 10px;
+}
+
 .signoutButton {
-    background-color: #F8A0A0;
+    background-color: #F8A0A0; 
+    margin-left: 5px;
+}
+.signoutButton:hover {
+    background-color: #ee6363;
+    color: white;
+}
+
+.editButton {
+    margin-right: 5px;
 }
 
 .persIcons {
     width: 20%;
+}
+
+.persInfoContainer {
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+    background-color: white;
+    margin: 20px auto;
+}
+
+.persInfoContainer h3 {
+    margin: 20px;
+}
+
+/* Styles for mobile*/
+@media screen and (max-width: 767px) {
+    .persInfoContainer {
+        padding: 0 30%;
+    }
 }
