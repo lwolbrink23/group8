@@ -7,7 +7,7 @@ import purpCheck from "../assets/icons/icons8-check-100.png";
 import ringLight from "../assets/images/ringlight.jpg";
 import lashes from "../assets/images/lashes.jpg";
 import weddingDreamz from "../assets/images/wedding_dreams.jpg";
-import "../Styles/chicservices.css";
+import "../Styles/blushservices.css";
 import "../App.css";
 import { useState } from "react";
 
@@ -23,7 +23,7 @@ const SelectServices = () => {
       "Glamorous Evening Makeup\n$75",
       "Natural Makeup Look\n$45",
       "Bridal Makeup Package\n$150",
-      "Editorial/Fashion Makeup\n$70",
+      "Editorial/\nFashion Makeup\n$70",
       "Special Effects Makeup\n$80",
       "Makeup Lesson\n$60",
       "Group Makeup Session\n$150",
@@ -112,7 +112,7 @@ const SelectServices = () => {
                 {selectedServices.includes(service) ? (
                   <div className="button-container">
                     <button
-                      className="remove-button"
+                      className="remove-buttonB"
                       type="button"
                       onClick={() => removeFromSelectedServices(service)}
                     >
@@ -130,7 +130,7 @@ const SelectServices = () => {
                   </div>
                 ) : (
                   <button
-                    className="plus-button"
+                    className="plus-buttonB"
                     type="button"
                     onClick={() => addToSelectedServices(service)}
                   >

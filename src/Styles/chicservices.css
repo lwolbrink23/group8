@@ -149,6 +149,7 @@
     height: auto;
     max-width: 100%;
     aspect-ratio: 1.86/ 1;
+     object-fit: cover;
   }
 
   .side-images-containerC > :first-child {
