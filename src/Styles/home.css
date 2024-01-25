@@ -122,6 +122,11 @@ h3 {
     /*centers the div*/
 }
 
+.webgallery h2 {
+ margin: 20px 0;
+
+}
+
 .testDiv {
     display: flex;
     flex-direction: column;
@@ -228,6 +233,7 @@ h3 {
 
 }
 
+
 /*web styles:*/
 @media screen and (min-width: 767px) {
 
@@ -309,7 +315,6 @@ h3 {
 
     .why-choose-us-section li {
         margin-bottom: 20px;
-        /*space btw bullet  points */
         width: 85%;
     }
 
@@ -338,9 +343,7 @@ h3 {
         width: 50%;
         max-width: 700px;
         box-sizing: border-box;
-        /* Include padding and border in the element's total width and height */
         padding: 20px;
-        /* Adjust padding as needed */
         margin-left: auto;
         margin-right: 0;
         margin-top: 20px;
@@ -350,9 +353,7 @@ h3 {
         width: 50%;
         max-width: 700px;
         box-sizing: border-box;
-        /* Include padding and border in the element's total width and height */
         padding: 20px;
-        /* Adjust padding as needed */
         margin-left: 0;
         margin-right: auto;
         margin-top: 20px;
@@ -360,13 +361,9 @@ h3 {
 
     .webHomepic1 {
         width: 100%;
-        /* Adjust the width as needed */
         max-width: 300px;
-        /* Set a maximum width as needed */
         max-height: 100%;
-        /* Make sure the images don't exceed the height of the container */
         object-fit: cover;
-        /* Maintain aspect ratio and cover the entire container */
         margin-left: 20px;
         margin-right: auto;
         margin-top: 20px;
@@ -374,24 +371,16 @@ h3 {
 
     .webHomepic2 {
         width: 100%;
-        /* Adjust the width as needed */
         max-width: 300px;
-        /* Set a maximum width as needed */
         max-height: 100%;
-        /* Make sure the images don't exceed the height of the container */
         object-fit: cover;
-        /* Maintain aspect ratio and cover the entire container */
         margin-left: auto;
         margin-right: 20px;
         margin-top: 20px;
     }
 
     .promoButton {
-        position: absolute;
-        top: 65%;
-        left: 21%;
-        transform: translate(-50%, -50%);
-        z-index: 2;
+        display: none; /*couldnt figure out how to get view products buttons to sit on page nicely over everything on diff size screens*/
     }
 
     .bottom-container {
@@ -444,15 +433,22 @@ h3 {
 
     .blogButton {
         margin-left: 10px;
-        height: 30px;
-        font-size: 12px;
+        font-size: 11px;
     }
 
     .blogInput {
         margin-left: 10px;
         height: 25px;
+        width: 50%;
         margin-bottom: 10px;
 
+    }
+
+    .newsInput {
+        margin-left: 10px;
+        height: 25px;
+        width: 60%;
+        margin-bottom: 10px;
     }
 
     .newsButton {
