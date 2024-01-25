@@ -11,9 +11,9 @@ import BlogPost2 from "./Pages/BlogPost-two";
 import BookNowDirectory from "./Pages/BookNowDirectory";
 import ProviderProfile from "./Pages/ProviderProfile";
 import ChicServices from "./Pages/ChicServices";
-import PolishServices from "./Pages/PolishServices"
-import BlushServices from "./Pages/BlushServices"
-import HealingHands from "./Pages/HealingServices"
+import PolishServices from "./Pages/PolishServices";
+import BlushServices from "./Pages/BlushServices";
+import HealingHands from "./Pages/HealingServices";
 import Overview from "./Pages/ApptOverview";
 import Confirmed from "./Pages/ApptConfirmed";
 import Faqs from "./Pages/Faqs";
@@ -26,6 +26,7 @@ import Checkout from "./Pages/Checkout";
 import Login from "./Pages/Login";
 import SignUp from "./Pages/SignUp";
 import SelectTime from "./Pages/SelectTime";
+import Account from "./Pages/Account";
 import { Route, Routes } from "react-router-dom";
 
 // this is only the home page elements
@@ -39,15 +40,28 @@ function App() {
           <Route path="/ourstory" element={<OurStory />} />
           <Route path="/ourservices" element={<OurServices />} />
           <Route path="/oursuites" element={<OurSuites />} />
+          <Route path="/account" element={<Account />} />
           <Route path="/blog" element={<Blog />} />
           <Route path="/blogpost" element={<BlogPost />} />
           <Route path="/blogpost_two" element={<BlogPost2 />} />
           <Route path="/booknow" element={<BookNowDirectory />} />
           <Route path="/providerprofile/:id" element={<ProviderProfile />} />
-          <Route path="/selectservices_simply_chic" element={<ChicServices />} />
-          <Route path="/selectservices_polish_perfection" element={<PolishServices />} />
-          <Route path="/selectservices_brush_blush" element={<BlushServices />} />
-          <Route path="/selectservices_healing_hands" element={<HealingHands />} />
+          <Route
+            path="/selectservices_simply_chic"
+            element={<ChicServices />}
+          />
+          <Route
+            path="/selectservices_polish_perfection"
+            element={<PolishServices />}
+          />
+          <Route
+            path="/selectservices_brush_blush"
+            element={<BlushServices />}
+          />
+          <Route
+            path="/selectservices_healing_hands"
+            element={<HealingHands />}
+          />
           <Route path="/appointment_overview" element={<Overview />} />
           <Route path="/appointment_confirmed" element={<Confirmed />} />
           <Route path="/faqs" element={<Faqs />} />
