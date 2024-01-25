@@ -62,16 +62,12 @@ function Shop() {
   const ShopItems = () => {
     return shopData.map((item) => {
       let itemQty = 0;
-      let btnEnable = false;
 
       for (const i of dynamicItems) {
         if (i.id === item.id) {
           itemQty = i.qty;
           break;
         }
-      }
-      if (itemQty > 0 && !btnEnable) {
-        btnEnable = true;
       }
 
       return (
