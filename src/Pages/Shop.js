@@ -26,8 +26,7 @@ function Shop() {
   };
 
   // keeping track of item qty
-  const [dynamicItems, setDynamicItems] = useState([{ id: "iID0", qty: 1 }]);
-  const [cartItems, setCartItems] = useState([{ id: "iID0", qty: 1 }]);
+  const [dynamicItems, setDynamicItems] = useState([]);
 
   const handleIncrement = (itemId) => {
     setDynamicItems((prevItems) => {
@@ -54,26 +53,68 @@ function Shop() {
   };
 
   const handleAddToCart = (itemId) => {
-    // push only item with id in the array, not the whole dynamic items array
-    let itemToAdd;
-    for (const i of dynamicItems) {
-      if (i.id === itemId) {
-        itemToAdd = i;
-        break;
+    const updatedItems = dynamicItems.filter((item) => item.id !== itemId);
+
+    setDynamicItems(updatedItems);
+  };
+
+  // mapping each shop item
+  const ShopItems = () => {
+    return shopData.map((item) => {
+      let itemQty = 0;
+
+      for (const i of dynamicItems) {
+        if (i.id === item.id) {
+          itemQty = i.qty;
+          break;
+        }
       }
-    }
-    setCartItems((prevItems) => {
-      const updatedItems = prevItems.map((item) =>
-        item.id === itemId ? itemToAdd : item
+
+      return (
+        <li className="box" key={item.id}>
+          {/* item info */}
+          <Link to={`/productpage/${item.id}`}>
+            <img
+              src={require("../assets/images/shop/" + item.file + ".png")}
+              alt={item.name}
+              className="item-img"
+              onClick={scrollToTop}
+            ></img>
+          </Link>
+          <div className="item-info">
+            <p>{item.name}</p>
+            <p>${item.price}</p>
+          </div>
+          {/* item interactions */}
+          <div className="center-children">
+            <div className="center-v">
+              <img
+                src={minusICON}
+                alt="subtract item"
+                className="mouse-hover"
+                onClick={() => handleDecrement(item.id)}
+              ></img>
+              <p className="item-amount">{itemQty}</p>
+              <img
+                src={plusICON}
+                alt="add item"
+                className="mouse-hover"
+                onClick={() => handleIncrement(item.id)}
+              ></img>
+            </div>
+
+            <button
+              className="button"
+              onClick={() => handleAddToCart(item.id)}
+              disabled={!itemQty}
+              style={{ opacity: !itemQty ? 0.5 : 1 }}
+            >
+              Add to Cart
+            </button>
+          </div>
+        </li>
       );
-
-      if (!updatedItems.some((item) => item.id === itemId)) {
-        updatedItems.push(itemToAdd);
-      }
-
-      return updatedItems;
     });
-    console.log(cartItems);
   };
 
   return (
@@ -95,74 +136,7 @@ function Shop() {
       <main>
         <ul className="items-container">
           {/* mapping each shop item */}
-          {shopData.map((item) => {
-            let itemQty = 0;
-            let btn = false;
-            for (const i of cartItems) {
-              if (i.id === item.id) {
-                for (const j of dynamicItems) {
-                  if (j.id === item.id) {
-                    if (i.qty !== j.qty) {
-                      btn = true;
-                      console.log(`cart: ${i.qty}      dynamic:${j.qty}`);
-                      break;
-                    }
-                  }
-                }
-                break;
-              }
-            }
-            for (const i of dynamicItems) {
-              if (i.id === item.id) {
-                itemQty = i.qty;
-              }
-            }
-
-            return (
-              <li className="box" key={item.id}>
-                {/* item info */}
-                <Link to={`/productpage/${item.id}`}>
-                  <img
-                    src={require("../assets/images/shop/" + item.file + ".png")}
-                    alt={item.name}
-                    className="item-img"
-                    onClick={scrollToTop}
-                  ></img>
-                </Link>
-                <div className="item-info">
-                  <p>{item.name}</p>
-                  <p>${item.price}</p>
-                </div>
-                {/* item interactions */}
-                <div className="center-children">
-                  <div className="center-v">
-                    <img
-                      src={minusICON}
-                      alt="subtract item"
-                      className="mouse-hover"
-                      onClick={() => handleDecrement(item.id)}
-                    ></img>
-                    <p className="item-amount">{itemQty}</p>
-                    <img
-                      src={plusICON}
-                      alt="add item"
-                      className="mouse-hover"
-                      onClick={() => handleIncrement(item.id)}
-                    ></img>
-                  </div>
-
-                  <button
-                    className="button"
-                    onClick={() => handleAddToCart(item.id)}
-                    disabled={!btn}
-                    style={{ opacity: !btn ? 0.5 : 1 }}
-                  >
-                    {!btn && itemQty > 0 ? "Added to Cart" : "Add to Cart"}
-                  </button>
-                </div>
-              </li>
-            );
-          })}
+          <ShopItems />
         </ul>
         <p className="right extra-space">Next Page</p>
         {/* giftcard */}
