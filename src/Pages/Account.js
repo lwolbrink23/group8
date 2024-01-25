@@ -8,20 +8,24 @@ import lock from "../assets/icons/icons8-password-100.png";
 
 function Account() {
   return (
-    <div className="profileTop">
-      <div class="profile-picture-container">
-        <img
-          src={profilepic}
-          alt="Profile picture"
-          className="profile-picture"
-        />
-      </div>
-      <h2>Bob Smith</h2>
-      <div className="buttonsContainer">
-        <button type="button">Edit Profile</button>
-        <button type="button" className="signoutButton">
-          Sign Out
-        </button>
+    <div>
+      <div className="profileTop">
+        <div class="profile-picture-container">
+          <img
+            src={profilepic}
+            alt="Profile picture"
+            className="profile-picture"
+          />
+        </div>
+        <h2>Bob Smith</h2>
+        <div className="buttonsContainer">
+          <button type="button" className="editButton">
+            Edit Profile
+          </button>
+          <button type="button" className="signoutButton">
+            Sign Out
+          </button>
+        </div>
       </div>
       <div className="persInfoContainer">
         <h3>Personal Information</h3>
