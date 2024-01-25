@@ -188,8 +188,6 @@ function ProductPage() {
           <Review />
           <Review />
           <Review />
-          <Review />
-          <Review />
         </div>
       </div>
     </div>
