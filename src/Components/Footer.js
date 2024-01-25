@@ -8,10 +8,9 @@ function Footer() {
     <footer className="footer">
       <div className="footer-content">
         <div className="left">
-          <div className="footer-section suite-spot">
+          <h2>The Suite Spot</h2>
+          <div className="contact-info">
             <p>
-              <strong>The Suite Spot</strong>
-              <br />
               <strong>Phone:</strong>
               <br />
               223-133-2948
@@ -21,8 +20,7 @@ function Footer() {
               2343 Suite Spot Way, <br />
               Orlando, FL 32804
             </p>
-          </div>
-          <div className="footer-section hours">
+
             <p>
               <strong>Hours of Operation:</strong> <br />
               Sunday: 12-6

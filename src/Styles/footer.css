@@ -8,17 +8,17 @@
     display: flex;
     justify-content: space-between;
     align-items: flex-start;
+    padding-top: 30px;
+    padding-bottom: 30px;
 }
 
-.left {
+.contact-info {
     display: flex;
-    flex-direction: column;
+    justify-content: space-around;
+    gap: 50px
 }
 
-.footer-section {
-    display: flex;
-    flex-direction: column;
-}
+
 
 .business-info {
     width: 60%;
@@ -64,6 +64,10 @@
         background-color: #090b0a;
         color: white;
         padding: 0px 50px;
+    }
+
+    .contact-info {
+        display: block;
     }
 
     .footer-content {
