@@ -117,6 +117,7 @@ function Shop() {
     });
   };
 
+  // main JSX
   return (
     <div id="shop">
       <ScrollToTop />
