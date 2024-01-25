@@ -61,6 +61,14 @@ const SelectServices = () => {
     setSelectedServices(updatedServices);
   };
 
+  const toggleService = (service) => {
+    if (selectedServices.includes(service)) {
+      removeFromSelectedServices(service);
+    } else {
+      addToSelectedServices(service);
+    }
+  };
+
   const navigate = useNavigate();
 
   const calculateTotalCost = () => {
@@ -124,16 +132,20 @@ const SelectServices = () => {
               </button>
             ))}
           </div>
-          <div id={currentCategory} className="category-list">
+           <div id={currentCategory} className="category-list">
             {categories[currentCategory].map((service, index) => (
-              <div key={index} className={`item-${index + 1}`}>
+              <div key={index} className={`item-${index + 1}`} onClick={() => toggleService(service)}>
                 <p>{service}</p>
                 {selectedServices.includes(service) ? (
                   <div className="button-container">
                     <button
                       className="remove-button"
                       type="button"
-                      onClick={() => removeFromSelectedServices(service)}
+                      onClick={(e) => {
+                         // Stop parent div click
+                        e.stopPropagation();
+                        removeFromSelectedServices(service);
+                      }}
                     >
                       <img
                         src={minusICON}
@@ -151,7 +163,11 @@ const SelectServices = () => {
                   <button
                     className="plus-button"
                     type="button"
-                    onClick={() => addToSelectedServices(service)}
+                    onClick={(e) => {
+                      // Stop parent div click
+                      e.stopPropagation();
+                      addToSelectedServices(service);
+                    }}
                   >
                     <img
                       src={plusICON}
@@ -167,6 +183,7 @@ const SelectServices = () => {
         <div className="services-selected">
           <h2 className="service-title">{`${selectedServices.length} services selected`}</h2>
           <div className="line"></div>
+           <div className="text-container">
           <ul>
             {selectedServices.map((service, index) => (
               <li key={index}>{service}</li>
@@ -175,7 +192,8 @@ const SelectServices = () => {
           <button onClick={navigateToTime} className="continue" type="button">
             CONTINUE
           </button>
-        </div>
+          </div>
+          </div>
       </div>
     </div>
   );

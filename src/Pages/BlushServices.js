@@ -84,13 +84,13 @@ const SelectServices = () => {
         <div className="side-images-container">
           <img
             src={lashes}
-            className="side-images"
+            className="side-imagesB"
             alt="woman getting her hair dyed by a hair dresser"
           />
           <div className="side-images-container">
             <img
               src={ringLight}
-              className="side-images"
+              className="side-imagesB"
               alt="woman getting her hair dyed by a hair dresser"
             />
           </div>
