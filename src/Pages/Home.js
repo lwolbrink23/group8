@@ -23,8 +23,7 @@ import gall3 from "../assets/images/gall3.png";
 import gall4 from "../assets/images/gall4.png";
 import gall6 from "../assets/images/gall6.png";
 import gall7 from "../assets/images/gall7.png";
-import testimonials from "../assets/images/testimonials.png";
-import mobtestimonials from "../assets/images/mobiletestimonials.png";
+import fivestars from "../assets/images/5stars.png";
 
 function Home() {
   const mobilecarouselImages = [
@@ -161,10 +160,27 @@ function Home() {
         <WebGallery images={webgallImages} />
       </div>
       {/* <!-- Testimonials --> */}
-      <div className="testDiv">
+      <div className="testimonialsContainer">
         <h2>Testimonials</h2>
-        <img src={mobtestimonials} alt="testimonials" className="mobiletesti" />
-        <img src={testimonials} alt="testimonials" className="testimonials" />
+        <div className="testDiv">
+          <div className="test1">
+            <p>"The Suite Spot is my new addiction. I feel beautiful!"</p>
+            <img src={fivestars} alt="five stars" className="fivestarsTestis" />
+            <p>Alex Turner</p>
+          </div>
+          <div className="test2">
+            <p>"The Suite Spot is my go-to escape for beauty treatments."</p>
+            <img src={fivestars} alt="five stars" className="fivestarsTestis" />
+            <p>Sarah Davis</p>
+          </div>
+          <div className="test3">
+            <p>
+              "I always leave the Salon Suite feeling like a million bucks!"
+            </p>
+            <img src={fivestars} alt="five stars" className="fivestarsTestis" />
+            <p>Michael Smith</p>
+          </div>
+        </div>
       </div>
       <div className="bottom-container">
         <div className="blog-div">
@@ -220,4 +236,3 @@ function Home() {
   );
 }
 export default Home;
-

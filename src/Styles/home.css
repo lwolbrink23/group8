@@ -127,23 +127,78 @@ h3 {
 
 }
 
-.testDiv {
+.testimonialsContainer {
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
     margin-left: auto;
     margin-right: auto;
+    margin-top: 30px;
+}
+
+.testDiv {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    margin-left: auto;
+    margin-right: auto;
+    margin-bottom: 20px;
+    width: 80%;
+}
+
+.testDiv img{
+    width: 60%;
+    margin-left: auto;
+        margin-right: auto;
 }
 
 .testDiv h2 {
-
     margin-top: 20px;
 }
-
+/* Add styling for individual testimonials */
+.test1,
+.test2,
+.test3 {
+    text-align: center;
+    /* Center the content within each testimonial */
+    margin: 20px;
+    /* Add margin between testimonials */
+}
 
 /*mobile styles:*/
 @media screen and (max-width: 767px) {
+    .testimonialsContainer {
+        margin-top: 10px;
+    }
+    
+    .testDiv {
+        flex-direction: column;
+        margin: 20px 0px;
+        width: 84%;
+    }
+    
+    .testDiv img {
+        width: 50%;
+    }
+
+    .testDiv p {
+        font-size: 12px;
+    }
+    
+    
+    /* individual testimonials */
+    .test1,
+    .test2,
+    .test3 {
+        text-align: center;
+        /* Center the content within each testimonial */
+        margin: 0px;
+        /* Add margin between testimonials */
+    }
+
+
     .blog-div {
         display: none;
     }
@@ -398,7 +453,8 @@ h3 {
 
     .blog-div {
         box-sizing: border-box;
-        padding: 20px;
+        padding-bottom: 50px;
+        padding-top: 10px;
         background-color: #5C5C5C;
         box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.3);
         display: flex;
