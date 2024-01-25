@@ -1,9 +1,17 @@
+import React, { useState } from 'react';
+import Popup from './PopUp';
 import "../Styles/footer.css";
 import Facebook from "../assets/icons/facebook.png";
 import Insta from "../assets/icons/instagram.png";
 import Tiktok from "../assets/icons/tiktok.png";
 
 function Footer() {
+
+  const [isPopupOpen, setIsPopupOpen] = useState(false);
+
+  const openPopup = () => setIsPopupOpen(true);
+  const closePopup = () => setIsPopupOpen(false);
+
   return (
     <footer className="footer">
       <div className="footer-content">
@@ -36,7 +44,8 @@ function Footer() {
             <strong>Join our Newsletter</strong>
           </p>
           <input type="email" placeholder="Enter your email" />
-          <button>Subscribe</button>
+          <button onClick={openPopup}>Subscribe</button>
+          <Popup isOpen={isPopupOpen} closePopup={closePopup} />
           <div className="social-icons">
             {/* Replace # with your social media links */}
             <a href="#">
