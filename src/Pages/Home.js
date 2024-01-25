@@ -1,5 +1,7 @@
 import "../Styles/home.css"; // Import your styles
 import { Link } from "react-router-dom";
+import React, { useState } from 'react';
+import Popup from '../Components/PopUp';
 import MainCarousel from "../Components/MainCarousel.js";
 import WebGallery from "../Components/WebGallery.js";
 import promoBottle from "../assets/images/promo_bottle.png";
@@ -54,6 +56,11 @@ function Home() {
     hands,
     facemask,
   ];
+
+  const [isPopupOpen, setIsPopupOpen] = useState(false);
+
+  const openPopup = () => setIsPopupOpen(true);
+  const closePopup = () => setIsPopupOpen(false);
 
   return (
     <div className="App">
@@ -205,7 +212,7 @@ function Home() {
                 placeholder="Enter your email"
                 className="blogInput"
               />
-              <button type="button" className="blogButton">
+              <button type="button" className="blogButton" onClick={openPopup}>
                 Subscribe
               </button>
             </div>
@@ -225,9 +232,10 @@ function Home() {
                 placeholder="Enter your email"
                 className="newsInput"
               />
-              <button type="button" className="blogButton">
+              <button type="button" className="blogButton" onClick={openPopup}>
                 Subscribe
               </button>
+              <Popup isOpen={isPopupOpen} closePopup={closePopup} />
             </div>
           </div>
         </div>
