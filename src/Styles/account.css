@@ -91,7 +91,49 @@
     margin-left: 40px;
 }
 
+.table {
+    width: 100%;
+    margin-top: -10px;
+}
 
+.AppointmentsContainer {
+    margin: 20px auto;
+}
+
+.apptsInfoContainer {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+    background-color: white;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 20px;
+    margin-bottom: 20px;
+    width: 90%;
+    text-align: center;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+th,
+td {
+    padding: 8px;
+}
+
+th { /*Table top header*/
+    background-color: #D8E79C;;
+}
+
+.noAppts {
+    text-align: center;
+    padding: 20px;
+    color: #888;
+    font-weight: bold;
+}
 
 /* Styles for mobile*/
 @media screen and (max-width: 767px) {

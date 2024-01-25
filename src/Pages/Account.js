@@ -49,6 +49,30 @@ function Account() {
           </div>
         </div>
       </div>
+      <div className="apptsInfoContainer">
+        <div className="infoRowTitle">
+          <h3>Scheduled Appointments</h3>
+        </div>
+        <div className="table">
+          <table>
+            <thead>
+              <tr>
+                <th>Date</th>
+                <th>Location</th>
+                <th>Services</th>
+                <th>Staff</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td colSpan="4" className="noAppts">
+                  No Appointments
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
     </div>
   );
 }
