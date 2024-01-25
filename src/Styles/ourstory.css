@@ -39,6 +39,14 @@
     padding: 0 20px;
   }
 
+  .our-story {
+    margin-left: 200px
+  }
+
+  .our-mission {
+    margin-right: 200px
+  }
+
   .sm-p {
     text-align: justify;
     max-width: 100%;
@@ -152,5 +160,23 @@
     margin-bottom: 16px;
     margin: 0 auto;
     margin-bottom: 30px;
+  }
+  .our-story {
+    margin: 0 40px
+  }
+  
+  .our-mission {
+    margin: 0 40px
+  }
+}
+
+/* tablet screens */
+@media screen and (max-width: 1200px) {
+  .our-story {
+    margin-left: 30px
+  }
+  
+  .our-mission {
+    margin-right: 30px
   }
 }
