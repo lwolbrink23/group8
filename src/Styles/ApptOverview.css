@@ -1,11 +1,3 @@
-#backarrow {
-    width: 50px;
-}
-        
-#arrow:hover {
-    width: 55px;
-}
-
 .overview-container {
     margin: 20px 150px;
     display: flex;

@@ -7,3 +7,11 @@
 #arrow:hover {
     width: 55px;
 }
+
+@media screen and (max-width: 766px) {
+    #arrow {
+        position: absolute;
+        left: 8%;
+        width: 50px;
+    }
+}
