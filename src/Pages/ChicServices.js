@@ -1,5 +1,5 @@
 import React from "react";
-import { useNavigate, useParams } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import BackButton from "../Components/BackButton";
 import plusICON from "../assets/icons/black-plus.png";
 import minusICON from "../assets/icons/black-minus.png";
@@ -11,11 +11,11 @@ import "../Styles/chicservices.css";
 import "../App.css";
 import { useState } from "react";
 
-//updating services on screen
+// updating services on screen
 const SelectServices = () => {
   const [selectedServices, setSelectedServices] = useState([]);
   const [currentCategory, setCurrentCategory] = useState("featured");
-  //make categories
+  // make categories
   const categories = {
     featured: [
       "Classic Blowout\n30 minutes\n$75",
@@ -36,18 +36,26 @@ const SelectServices = () => {
       "Special Occasion\n45 minutes\n$70",
     ],
   };
-  //change catergory to category clicked
+  // change category to category clicked
   const clickCategory = (category) => {
     setCurrentCategory(category);
   };
-  //add clicked service to list
+  // add clicked service to list
   const addToSelectedServices = (service) => {
     setSelectedServices([...selectedServices, service]);
   };
-  //click to remove the service added
+  // click to remove the service added
   const removeFromSelectedServices = (service) => {
     const updatedServices = selectedServices.filter((s) => s !== service);
     setSelectedServices(updatedServices);
+  };
+
+  const toggleService = (service) => {
+    if (selectedServices.includes(service)) {
+      removeFromSelectedServices(service);
+    } else {
+      addToSelectedServices(service);
+    }
   };
 
   const navigate = useNavigate();
@@ -73,21 +81,21 @@ const SelectServices = () => {
         <BackButton />
         <h1>Simply Chic Hair</h1>
       </div>
-      <div className="image-divC">
+      <div className="image-div">
         <img
           src={blowDry}
-          className="focus-imageC"
+          className="focus-image"
           alt="woman getting her hair blow dried by a hair dresser"
         />
         <div className="side-images-containerC">
           <img
             src={hairDye}
-            className="side-imagesC"
+            className="side-images"
             alt="woman getting her hair dyed by a hair dresser"
           />
           <img
             src={barber}
-            className="side-imagesC"
+            className="side-images"
             alt="man getting his hair cut my a barber"
           />
         </div>
@@ -111,14 +119,18 @@ const SelectServices = () => {
           </div>
           <div id={currentCategory} className="category-list">
             {categories[currentCategory].map((service, index) => (
-              <div key={index} className={`item-${index + 1}`}>
+              <div key={index} className={`item-${index + 1}`} onClick={() => toggleService(service)}>
                 <p>{service}</p>
                 {selectedServices.includes(service) ? (
                   <div className="button-container">
                     <button
                       className="remove-button"
                       type="button"
-                      onClick={() => removeFromSelectedServices(service)}
+                      onClick={(e) => {
+                         // Stop parent div click
+                        e.stopPropagation();
+                        removeFromSelectedServices(service);
+                      }}
                     >
                       <img
                         src={minusICON}
@@ -136,7 +148,11 @@ const SelectServices = () => {
                   <button
                     className="plus-button"
                     type="button"
-                    onClick={() => addToSelectedServices(service)}
+                    onClick={(e) => {
+                      // Stop parent div click
+                      e.stopPropagation();
+                      addToSelectedServices(service);
+                    }}
                   >
                     <img
                       src={plusICON}
@@ -152,14 +168,16 @@ const SelectServices = () => {
         <div className="services-selected">
           <h2 className="service-title">{`${selectedServices.length} services selected`}</h2>
           <div className="line"></div>
-          <ul>
-            {selectedServices.map((service, index) => (
-              <li key={index}>{service}</li>
-            ))}
-          </ul>
-          <button onClick={navigateToTime} className="continue" type="button">
-            CONTINUE
-          </button>
+          <div className="text-style">
+            <ul>
+              {selectedServices.map((service, index) => (
+                <li key={index}>{service}</li>
+              ))}
+            </ul>
+            <button onClick={navigateToTime} className="continue" type="button">
+              CONTINUE
+            </button>
+          </div>
         </div>
       </div>
     </div>
