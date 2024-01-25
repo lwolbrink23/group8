@@ -97,9 +97,6 @@
 }
 /* Mobile screen */
 @media screen and (max-width: 766px) {
-  .post1 {
-    background-color: white;
-  }
 
   .main-image {
     padding-top: 70px;
