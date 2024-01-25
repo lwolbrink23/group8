@@ -36,7 +36,7 @@ function ProviderProfile() {
                     <div class="services-container">
                         {Object.entries(suite.services).map(([serviceName, serviceDetails]) => (
                             <div key={serviceName} class="service-category">
-                                <h2>{serviceName}</h2>
+                                <h3 className="serviceName">{serviceName}</h3>
                                 <div dangerouslySetInnerHTML={{ __html: serviceDetails }} />
                             </div>
                         ))}
