@@ -33,8 +33,6 @@ function BookNowDirectory() {
                     </div>
 
                 ))}
-
-                <p className="right">Next Page</p>
             </div>
             <div className="extra-space"></div>
         </div>

@@ -1,5 +1,5 @@
 import React, { useEffect } from "react";
-import { Link, useLocation } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 import "../App.css";
 import "../Styles/ApptConfirmed.css"
 import purpleCheck from "../assets/icons/icons8-check-100.png"
@@ -25,6 +25,11 @@ function Confirmed() {
 
   const serviceName = location.state?.serviceName || 'Default Service Name';
   const totalCost = location.state?.totalCost || 0;
+  const formattedDate = location.state?.date;
+  const clickedTime = location.state?.time;
+  const selectedServices = location.state?.service || [];
+  
+
 
   return (
     <div>
@@ -40,7 +45,7 @@ function Confirmed() {
             <h1><strong>Confirmed</strong></h1>
           </div>
           <p id="conf-thanks">
-            Thank you for choosing The Suite Spot Salon for your beauty
+            Thank you for choosing {serviceName} for your beauty
             and grooming needs.
             Your appointment has been successfully booked.
             We can't wait to help you look and feel your best.
@@ -50,11 +55,14 @@ function Confirmed() {
           <h1><strong>Appointment Details</strong></h1>
           <div id="appt-date-time-service">
             <h3><b>Appointment</b></h3>
-            <p> Friday, 10/27/23 at 4:00 Classic Blowout; 30 minutes</p>
+            <p><strong>{formattedDate} at {clickedTime}</strong></p>
+            {selectedServices.map((service, index) => (
+              <p key={index}>{service}</p>
+            ))}
           </div>
           <div id="company">
             <h3><b>Company</b></h3>
-            <p>Simply Chic Hair, (234) 214-5678</p>
+            <p>{serviceName}</p>
           </div>
           <div id="location">
             <h3><b>Location</b></h3>

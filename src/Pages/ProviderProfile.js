@@ -10,9 +10,6 @@ function ProviderProfile() {
     const suite = suiteData.find(item => item.id.toString() === id);
 
     const navigate = useNavigate();
-    const navigateToConfirm = () => {
-        navigate('/selectservices', { state: {} }); {/* Continue working on this */ }
-    };
 
     return (
         <div>
