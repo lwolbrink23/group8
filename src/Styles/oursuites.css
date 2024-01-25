@@ -103,7 +103,7 @@ label {
 }
 
 .blurbs {
-    width: 60%;
+    width: 80%;
     box-sizing: border-box;
     padding: 10px;
     margin: 20px auto;
@@ -140,10 +140,10 @@ h2 {
 .rent-section {
     text-align: center;
     background-color: #5C5C5C;
-    margin: 50px;
+    margin: 10px;
     box-shadow: 0 8px 8px rgba(0, 0, 0, 0.1);
     color: white;
-    margin-top: 150px
+    margin-top: 150px;
 }
 
 .formarea {
