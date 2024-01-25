@@ -144,13 +144,14 @@
     grid-column: 2 / 3;
   }
 
-  .side-images {
+  .side-imagesH {
     justify-self: left;
     margin-left: -50px;
     width: 78%;
     height: auto;
     max-width: 100%;
-    aspect-ratio: 1.86/ 1;
+    aspect-ratio: 1.71/ 1;
+    object-fit: cover;
   }
 
   .side-images-container> :first-child {
@@ -214,7 +215,7 @@
     flex-direction: column;
   }
 
-  .button-container {
+  .button-containerH {
     display: flex;
     align-items: center;
   }
@@ -255,8 +256,8 @@
     justify-content: center;
   }
 
-  .plus-button,
-  .remove-button {
+  .plus-buttonH,
+  .remove-buttonH {
     background-color: white;
     box-shadow: none;
     padding: 10px;

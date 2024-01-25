@@ -215,7 +215,7 @@
     flex-direction: column;
   }
 
-  .button-container {
+  .button-containerP {
     display: flex;
     align-items: center;
   }
@@ -256,8 +256,8 @@
     justify-content: center;
   }
 
-  .plus-button,
-  .remove-button {
+  .plus-buttonP,
+  .remove-buttonP {
     background-color: white;
     box-shadow: none;
     padding: 10px;

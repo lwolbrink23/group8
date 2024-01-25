@@ -7,7 +7,7 @@ import purpCheck from "../assets/icons/icons8-check-100.png";
 import ringLight from "../assets/images/ringlight.jpg";
 import lashes from "../assets/images/lashes.jpg";
 import weddingDreamz from "../assets/images/wedding_dreams.jpg";
-import "../Styles/blushservices.css";
+import "../Styles/chicservices.css";
 import "../App.css";
 import { useState } from "react";
 
@@ -42,6 +42,14 @@ const SelectServices = () => {
   const removeFromSelectedServices = (service) => {
     const updatedServices = selectedServices.filter((s) => s !== service);
     setSelectedServices(updatedServices);
+  };
+
+   const toggleService = (service) => {
+    if (selectedServices.includes(service)) {
+      removeFromSelectedServices(service);
+    } else {
+      addToSelectedServices(service);
+    }
   };
 
   const navigate = useNavigate();
@@ -107,14 +115,18 @@ const SelectServices = () => {
           </div>
           <div id={currentCategory} className="category-list">
             {categories[currentCategory].map((service, index) => (
-              <div key={index} className={`item-${index + 1}`}>
+              <div key={index} className={`item-${index + 1}`} onClick={() => toggleService(service)}>
                 <p>{service}</p>
                 {selectedServices.includes(service) ? (
                   <div className="button-container">
                     <button
-                      className="remove-buttonB"
+                      className="remove-button"
                       type="button"
-                      onClick={() => removeFromSelectedServices(service)}
+                      onClick={(e) => {
+                         // Stop parent div click
+                        e.stopPropagation();
+                        removeFromSelectedServices(service);
+                      }}
                     >
                       <img
                         src={minusICON}
@@ -130,9 +142,13 @@ const SelectServices = () => {
                   </div>
                 ) : (
                   <button
-                    className="plus-buttonB"
+                    className="plus-button"
                     type="button"
-                    onClick={() => addToSelectedServices(service)}
+                    onClick={(e) => {
+                      // Stop parent div click
+                      e.stopPropagation();
+                      addToSelectedServices(service);
+                    }}
                   >
                     <img
                       src={plusICON}
@@ -148,14 +164,16 @@ const SelectServices = () => {
         <div className="services-selected">
           <h2 className="service-title">{`${selectedServices.length} services selected`}</h2>
           <div className="line"></div>
-          <ul>
-            {selectedServices.map((service, index) => (
-              <li key={index}>{service}</li>
-            ))}
-          </ul>
-          <button onClick={navigateToTime} className="continue" type="button">
-            CONTINUE
-          </button>
+                    <div className="text-style">
+            <ul>
+              {selectedServices.map((service, index) => (
+                <li key={index}>{service}</li>
+              ))}
+            </ul>
+            <button onClick={navigateToTime} className="continue" type="button">
+              CONTINUE
+            </button>
+          </div>
         </div>
       </div>
     </div>
