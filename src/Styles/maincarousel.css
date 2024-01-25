@@ -13,7 +13,7 @@
 
 
 .photo-carousel button {
-    background-color: white;
+    background-color: rgba(255, 255, 255, 0.400);
     stroke: #5c5c5c;
     stroke-width: 4;
 
@@ -56,7 +56,6 @@
     }
 
     .photo-carousel button {
-        background-color: white;
         stroke: #5c5c5c;
         stroke-width: 4;
     }
