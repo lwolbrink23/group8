@@ -1,5 +1,3 @@
-import shopICON from "../assets/icons/icons8-shopping-cart-100.png";
-import BackButton from "../Components/BackButton";
 import "../Styles/cart.css";
 import plusICON from "../assets/icons/black-plus.png";
 import minusICON from "../assets/icons/black-minus.png";
@@ -7,11 +5,13 @@ import tempData from "../data/cart.json";
 import tempShopData from "../data/shop.json";
 import Shopheader from "../Components/Shopheader";
 import { Link } from "react-router-dom";
+import { useState } from "react";
 
 function Cart() {
+  const [cartItems, setCartItems] = useState(tempData);
   const CartItems = () => (
     <div className="cart-container">
-      {tempData.map((item, i) => {
+      {cartItems.map((item, i) => {
         let itemName;
         let itemPic;
         let itemPrice;
