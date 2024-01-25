@@ -1,5 +1,5 @@
 import React from "react";
-import "../Styles/blogpost1.css";
+import "../Styles/blogpost.css";
 import BackButton from "../Components/BackButton";
 import kneadRelax from "../assets/images/relax.jpeg"
 function BlogPost2() {

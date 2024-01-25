@@ -2,6 +2,7 @@
     position: absolute;
     left: 8%;
     width: 50px;
+    z-index: 2;
 }
 
 #arrow:hover {
