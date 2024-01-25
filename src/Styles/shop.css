@@ -25,7 +25,7 @@ input {
   cursor: pointer;
 }
 #shop main {
-  padding: 52px 200px;
+  padding: 52px 400px;
   background-color: white;
 }
 /* title */
@@ -44,7 +44,7 @@ input {
   font-size: 44px;
 }
 #shop-banner h2 {
-  left: 9%;
+  left: 16%;
   bottom: 0;
   position: absolute;
   font-size: 36px;
@@ -75,7 +75,7 @@ input {
 }
 .items-container li {
   padding-bottom: 10px;
-    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
 }
 .item-img {
   width: 100%;
@@ -122,6 +122,15 @@ input {
   }
 }
 
+@media screen and (max-width: 1900px) {
+  #shop main {
+    padding: 52px 100px;
+  }
+  #shop-banner h2 {
+    left: 9%;
+  }
+}
+
 @media screen and (max-width: 1300px) {
   .giftcard-grid {
     width: 100%;
@@ -129,9 +138,6 @@ input {
 }
 
 @media screen and (max-width: 767px) {
-  .items-container {
-    grid-template-columns: 1fr;
-  }
   .items-container {
     grid-template-columns: 1fr 1fr;
     gap: 13px;

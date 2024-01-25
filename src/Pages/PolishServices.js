@@ -7,7 +7,7 @@ import purpCheck from "../assets/icons/icons8-check-100.png";
 import serviceNails from "../assets/images/servicenails.jpg";
 import polishes from "../assets/images/polishes.jpg";
 import acetone from "../assets/images/acetone.jpg";
-import "../Styles/polishservices.css";
+import "../Styles/chicservices.css";
 import "../App.css";
 import { useState } from "react";
 
@@ -88,13 +88,13 @@ const SelectServices = () => {
         <BackButton />
         <h1>Polish Perfection</h1>
       </div>
-      <div className="image-divP">
+      <div className="image-div">
         <img
           src={serviceNails}
-          className="focus-imageP"
+          className="focus-image"
           alt="baby pink nails"
         />
-        <div className="side-images-containerP">
+        <div className="side-images-container">
           <img
             src={polishes}
             className="side-imagesP"
