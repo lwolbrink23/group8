@@ -75,6 +75,80 @@ function Shop() {
     });
   };
 
+  // mapping each shop item
+  const ShopItems = () => {
+    return shopData.map((item) => {
+      let itemQty = 0;
+      let btnEnable = false;
+      let existInCart = false;
+      for (const i of cartItems) {
+        if (i.id === item.id) {
+          for (const j of dynamicItems) {
+            if (j.id === item.id && i.qty !== j.qty) {
+              btnEnable = true;
+              break;
+            }
+          }
+          existInCart = true;
+        }
+      }
+      for (const i of dynamicItems) {
+        if (i.id === item.id) {
+          itemQty = i.qty;
+          break;
+        }
+      }
+      if (!existInCart && itemQty > 0 && !btnEnable) {
+        btnEnable = true;
+      }
+
+      return (
+        <li className="box" key={item.id}>
+          {/* item info */}
+          <Link to={`/productpage/${item.id}`}>
+            <img
+              src={require("../assets/images/shop/" + item.file + ".png")}
+              alt={item.name}
+              className="item-img"
+              onClick={scrollToTop}
+            ></img>
+          </Link>
+          <div className="item-info">
+            <p>{item.name}</p>
+            <p>${item.price}</p>
+          </div>
+          {/* item interactions */}
+          <div className="center-children">
+            <div className="center-v">
+              <img
+                src={minusICON}
+                alt="subtract item"
+                className="mouse-hover"
+                onClick={() => handleDecrement(item.id)}
+              ></img>
+              <p className="item-amount">{itemQty}</p>
+              <img
+                src={plusICON}
+                alt="add item"
+                className="mouse-hover"
+                onClick={() => handleIncrement(item.id)}
+              ></img>
+            </div>
+
+            <button
+              className="button"
+              onClick={() => handleAddToCart(item.id)}
+              disabled={!btnEnable}
+              style={{ opacity: !btnEnable ? 0.5 : 1 }}
+            >
+              {!btnEnable && itemQty > 0 ? "Added to Cart" : "Add to Cart"}
+            </button>
+          </div>
+        </li>
+      );
+    });
+  };
+
   return (
     <div id="shop">
       <ScrollToTop />
@@ -94,81 +168,7 @@ function Shop() {
       <main>
         <ul className="items-container">
           {/* mapping each shop item */}
-          {shopData.map((item) => {
-            let itemQty = 0;
-            let btnEnable = false;
-            let existInCart = false;
-            for (const i of cartItems) {
-              if (i.id === item.id) {
-                for (const j of dynamicItems) {
-                  if (j.id === item.id && i.qty !== j.qty) {
-                    existInCart = true;
-                    btnEnable = true;
-                    console.log(
-                      `id: ${item.id}    cart: ${i.qty}      dynamic:${j.qty}`
-                    );
-                    break;
-                  }
-                }
-              }
-            }
-            for (const i of dynamicItems) {
-              if (i.id === item.id) {
-                itemQty = i.qty;
-                break;
-              }
-            }
-            if (!existInCart && itemQty > 0) {
-              btnEnable = true;
-            }
-
-            return (
-              <li className="box" key={item.id}>
-                {/* item info */}
-                <Link to={`/productpage/${item.id}`}>
-                  <img
-                    src={require("../assets/images/shop/" + item.file + ".png")}
-                    alt={item.name}
-                    className="item-img"
-                    onClick={scrollToTop}
-                  ></img>
-                </Link>
-                <div className="item-info">
-                  <p>{item.name}</p>
-                  <p>${item.price}</p>
-                </div>
-                {/* item interactions */}
-                <div className="center-children">
-                  <div className="center-v">
-                    <img
-                      src={minusICON}
-                      alt="subtract item"
-                      className="mouse-hover"
-                      onClick={() => handleDecrement(item.id)}
-                    ></img>
-                    <p className="item-amount">{itemQty}</p>
-                    <img
-                      src={plusICON}
-                      alt="add item"
-                      className="mouse-hover"
-                      onClick={() => handleIncrement(item.id)}
-                    ></img>
-                  </div>
-
-                  <button
-                    className="button"
-                    onClick={() => handleAddToCart(item.id)}
-                    disabled={!btnEnable}
-                    style={{ opacity: !btnEnable ? 0.5 : 1 }}
-                  >
-                    {!btnEnable && itemQty > 0
-                      ? "Added to Cart"
-                      : "Add to Cart"}
-                  </button>
-                </div>
-              </li>
-            );
-          })}
+          <ShopItems />
         </ul>
         <p className="right extra-space">Next Page</p>
         {/* giftcard */}
