@@ -1,7 +1,7 @@
 import "../Styles/home.css"; // Import your styles
 import { Link } from "react-router-dom";
 import React, { useState } from 'react';
-import Popup from '../Components/PopUp';
+import PopUp from '../Components/PopUp.js';
 import MainCarousel from "../Components/MainCarousel.js";
 import WebGallery from "../Components/WebGallery.js";
 import promoBottle from "../assets/images/promo_bottle.png";
@@ -235,7 +235,7 @@ function Home() {
               <button type="button" className="blogButton" onClick={openPopup}>
                 Subscribe
               </button>
-              <Popup isOpen={isPopupOpen} closePopup={closePopup} />
+              <PopUp isOpen={isPopupOpen} closePopup={closePopup} />
             </div>
           </div>
         </div>

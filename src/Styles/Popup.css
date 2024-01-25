@@ -15,6 +15,10 @@
     margin-bottom: 20px;
 }
 
+.popup-container p {
+    color: #000;
+}
+
 .popup-container {
     width: 20%;
     /* Adjust this for desired size */
