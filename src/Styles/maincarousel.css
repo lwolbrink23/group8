@@ -5,7 +5,7 @@
 }
 
 .photo-carousel img {
-    width: 85%;
+    width: 100%;
     height: auto;
     flex-shrink: 0;
     align-items: center;
@@ -20,21 +20,19 @@
 }
 
 .leftbutt {
-    margin-left: 50px;
-    margin-right: 0px;
-
+    position: absolute;
+    left: 4%;
 }
 
 .rightbutt {
-    margin-left: 0px;
-    margin-right: 50px;
-
+    position: absolute;
+    right: 4%;
 }
 
 /*largest web screen styles*/
 @media screen and (min-width: 1300px) {
     .photo-carousel img {
-            width: 85%;
+            width: 100%;
             height: auto;
             flex-shrink: 0;
             align-items: center;
@@ -52,7 +50,7 @@
     }
 
     .photo-carousel img {
-        max-width: 80%;
+        max-width: 100%;
         height: auto;
         align-items: center;
     }
