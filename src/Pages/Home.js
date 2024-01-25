@@ -7,12 +7,12 @@ import promoAroma from "../assets/images/promo_aroma.png";
 import promoHair from "../assets/images/promo_hair.png";
 import promoSpa from "../assets/images/promo_spa.png";
 import promoWella from "../assets/images/promo_wella.png";
-import webpromoBottle from "../assets/images/home banner bottle.png";
-import webaroma from "../assets/images/home_aroma.png";
+import webpromoBottle from "../assets/images/bigwebbottle.png";
+import webaroma from "../assets/images/bigwebaroma.png";
 import brownHair from "../assets/images/brownhair.jpg";
 import spaProducts from "../assets/images/spaproducts.png";
-import webglamour from "../assets/images/web_glamourpromo.png";
-import webrelax from "../assets/images/web_relaxpromo.png";
+import webglamour from "../assets/images/bigwebglamour.png";
+import webrelax from "../assets/images/bigwebspa.png";
 import webwella from "../assets/images/webwellapromo.png";
 import eyeball from "../assets/images/eyeball.png";
 import hands from "../assets/images/hands.png";
@@ -207,7 +207,7 @@ function Home() {
               <input
                 type="email"
                 placeholder="Enter your email"
-                className="blogInput"
+                className="newsInput"
               />
               <button type="button" className="blogButton">
                 Subscribe
@@ -220,3 +220,4 @@ function Home() {
   );
 }
 export default Home;
+
