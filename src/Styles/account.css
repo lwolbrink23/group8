@@ -1,0 +1,36 @@
+.profileTop {
+    background-color: white;
+    display: flex;
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+}
+
+.profile-picture-container {
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
+    /* Make it a circle by setting border-radius to 50% */
+    overflow: hidden;
+    /* Hide the overflow to make sure it stays a circle */
+    margin: 0 auto;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3); 
+    background-color: #f0f0f0;
+    padding: 10px;
+}
+
+.profile-picture {
+    width: 100%;
+    /* Make the image fill the container */
+    height: auto;
+    /* Maintain the aspect ratio */
+    display: block;
+}
+
+.signoutButton {
+    background-color: #F8A0A0;
+}
+
+.persIcons {
+    width: 20%;
+}
