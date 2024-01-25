@@ -5,8 +5,8 @@
 }
 
 .photo-carousel img {
-    width: 75%;
-    height: 500px;
+    width: 85%;
+    height: auto;
     flex-shrink: 0;
     align-items: center;
 }
@@ -30,6 +30,18 @@
     margin-right: 50px;
 
 }
+
+/*largest web screen styles*/
+@media screen and (min-width: 1300px) {
+    .photo-carousel img {
+            width: 85%;
+            height: auto;
+            flex-shrink: 0;
+            align-items: center;
+        }
+}
+
+
 
 @media screen and (max-width: 767px) {
 
