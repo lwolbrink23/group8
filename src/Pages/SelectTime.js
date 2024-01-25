@@ -54,7 +54,7 @@ function SelectTime() {
                 {/*back arrow*/}
             </div>
             <div className="overview-container">
-                <div className="time">
+                <div className="time extra-space">
                     <p>Services &gt; <strong>Time</strong> &gt; Confirm</p>
                     <Calendar
                         className="calendar"

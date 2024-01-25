@@ -7,7 +7,8 @@ const Popup = ({ isOpen, closePopup }) => {
     return (
         <div className="popup-background">
             <div className="popup-container">
-                <h2>Thank you for subscribing!</h2>
+                <p>Thank You for subscribing
+                    to our newsletter!</p>
                 <button onClick={closePopup}>Close</button>
             </div>
         </div>
