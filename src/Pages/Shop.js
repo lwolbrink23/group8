@@ -30,35 +30,35 @@ function Shop() {
   const [cartItems, setCartItems] = useState([{ id: "iID0", qty: 1 }]);
   const [cartButtons, setCartButtons] = useState([]);
 
-  const updateButtons = (itemId) => {
-    let changed = false;
-    for (const i of cartItems) {
-      if (i.id === itemId) {
-        for (const j of dynamicItems) {
-          if (j.id === itemId) {
-            if (i.qty !== j.qty) {
-              changed = true;
-              console.log(`cart: ${i.qty}      dynamic:${j.qty}`);
-            }
-          }
-        }
-      }
-    }
-    setCartButtons((prevItems) => {
-      const updatedItems = prevItems.map((item) =>
-        item.id === itemId ? { ...item, changed } : item
-      );
+  // const updateButtons = (itemId) => {
+  //   let changed = false;
+  //   for (const i of cartItems) {
+  //     if (i.id === itemId) {
+  //       for (const j of dynamicItems) {
+  //         if (j.id === itemId) {
+  //           if (i.qty !== j.qty) {
+  //             changed = true;
+  //             console.log(`cart: ${i.qty}      dynamic:${j.qty}`);
+  //           }
+  //         }
+  //       }
+  //     }
+  //   }
+  //   setCartButtons((prevItems) => {
+  //     const updatedItems = prevItems.map((item) =>
+  //       item.id === itemId ? { ...item, changed } : item
+  //     );
 
-      // If the item doesn't exist in the array, add it with quantity 1
-      if (!updatedItems.some((item) => item.id === itemId)) {
-        updatedItems.push({ id: itemId, changed });
-      }
+  //     // If the item doesn't exist in the array, add it with quantity 1
+  //     if (!updatedItems.some((item) => item.id === itemId)) {
+  //       updatedItems.push({ id: itemId, changed });
+  //     }
 
-      return updatedItems;
-    });
-  };
+  //     return updatedItems;
+  //   });
+  // };
   const handleIncrement = (itemId) => {
-    updateButtons(itemId);
+    // updateButtons(itemId);
     setDynamicItems((prevItems) => {
       const updatedItems = prevItems.map((item) =>
         item.id === itemId ? { ...item, qty: item.qty + 1 } : item
@@ -74,7 +74,7 @@ function Shop() {
   };
 
   const handleDecrement = (itemId) => {
-    updateButtons(itemId);
+    // updateButtons(itemId);
     setDynamicItems((prevItems) =>
       prevItems.map((item) =>
         item.id === itemId && item.qty > 0
@@ -86,7 +86,7 @@ function Shop() {
 
   const handleAddToCart = (itemId) => {
     setCartItems(dynamicItems.filter((item) => item.qty > 0));
-    updateButtons(itemId);
+    // updateButtons(itemId);
   };
 
   return (
@@ -111,16 +111,24 @@ function Shop() {
           {shopData.map((item) => {
             let itemQty = 0;
             let btn = false;
+            for (const i of cartItems) {
+              if (i.id === item.id) {
+                for (const j of dynamicItems) {
+                  if (j.id === item.id) {
+                    if (i.qty !== j.qty) {
+                      btn = true;
+                      console.log(`cart: ${i.qty}      dynamic:${j.qty}`);
+                    }
+                  }
+                }
+              }
+            }
             for (const i of dynamicItems) {
               if (i.id === item.id) {
                 itemQty = i.qty;
               }
             }
-            for (const i of cartButtons) {
-              if (i.id === item.id) {
-                btn = i.changed;
-              }
-            }
+
             return (
               <li className="box" key={item.id}>
                 {/* item info */}
