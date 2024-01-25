@@ -46,22 +46,54 @@
 }
 
 .persIcons {
-    width: 20%;
+    width: 30px;
+    height: 30px;
+    margin-right: 10px;
 }
 
 .persInfoContainer {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
     background-color: white;
-    margin: 20px auto;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 20px;
+    margin-bottom: 20px;
+    width: 90%;
+}
+
+.infoRow {
+    display: flex;
+    align-items: center;
+    margin-bottom: 10px;
+    /* Adjust the margin between rows as needed */
+}
+
+.linesofInfo { /*tightly targeting only the information lines*/
+    margin-bottom: 20px;
+   /* align-items: left;*/
 }
 
 .persInfoContainer h3 {
-    margin: 20px;
+    text-align: center;
 }
+
+.persInfoContainer p {
+    display: flex;
+    align-items: center;
+    margin: 5px 0;
+    /* Adjust the margin as needed */
+}
+
+.changePW {
+    margin-left: 40px;
+}
+
+
 
 /* Styles for mobile*/
 @media screen and (max-width: 767px) {
-    .persInfoContainer {
-        padding: 0 30%;
-    }
+    
 }

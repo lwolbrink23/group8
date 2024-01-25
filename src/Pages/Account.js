@@ -28,16 +28,26 @@ function Account() {
         </div>
       </div>
       <div className="persInfoContainer">
-        <h3>Personal Information</h3>
-        <img src={phone} alt="phone icon" className="persIcons"></img>
-        <p>(xxx) xxx-xxxx</p>
-        <img src={email} alt="email icon" className="persIcons"></img>
-        <p>email@gmail.com</p>
-        <img src={lock} alt="password icon" className="persIcons"></img>
-        <p>password</p>
-        <button type="button" className="changePW">
-          Change
-        </button>
+        <div className="linesofInfo">
+          <div className="infoRowTitle">
+            <h3>Personal Information</h3>
+          </div>
+          <div className="infoRow">
+            <img src={phone} alt="phone icon" className="persIcons"></img>
+            <p>(xxx) xxx-xxxx</p>
+          </div>
+          <div className="infoRow">
+            <img src={email} alt="email icon" className="persIcons"></img>
+            <p>email@gmail.com</p>
+          </div>
+          <div className="infoRow">
+            <img src={lock} alt="password icon" className="persIcons"></img>
+            <p>password</p>
+            <button type="button" className="changePW">
+              Change
+            </button>
+          </div>
+        </div>
       </div>
     </div>
   );
