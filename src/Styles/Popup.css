@@ -15,8 +15,20 @@
     margin-bottom: 20px;
 }
 
+.popup-container button {
+    margin: 10px;
+}
+
 .popup-container p {
     color: #000;
+}
+
+.popup-input {
+    width: 200px;
+    height: 30px;
+    margin-bottom: 20px;
+    font-size: 16px;
+    font-family: "Poppins";
 }
 
 .popup-container {
@@ -27,4 +39,7 @@
     border-radius: 10px;
     box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
     text-align: center;
+    display: grid;
+    columns: 1fr;
+    place-items: center;
 }
