@@ -109,12 +109,12 @@ function Cart() {
       ) : (
         <main>
           <div>
-            <p>{tempData.length} items in your cart</p>
+            <p>{cartItems.length} items in your cart</p>
             <CartItems />
           </div>
           <div className="subtotal poppins-bigger">
             <div className="col-2">
-              <p>Subtotal ({tempData.length} items)</p>
+              <p>Subtotal ({cartItems.length} items)</p>
               <p>${calcTotal()}</p>
             </div>
             <Link to="/checkout">
