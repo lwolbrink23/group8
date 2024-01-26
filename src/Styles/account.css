@@ -35,6 +35,14 @@
     margin-top: 10px;
 }
 
+.editButton,
+.signoutButton,
+.changePW, .shopButton {
+    width: 150px;
+    font-size: 14px;
+}
+
+
 .signoutButton {
     background-color: #F8A0A0; 
     margin-left: 5px;
@@ -88,10 +96,6 @@
     align-items: center;
     margin: 5px 0;
     /* Adjust the margin as needed */
-}
-
-.changePW {
-    margin-left: 40px;
 }
 
 .table {
@@ -168,12 +172,41 @@ th { /*Table top header*/
             height: 30px;
             margin-right: 10px;
         }
+
+        .changePW {
+            margin-left: 40px;
+        }
 }
 
 /* Styles for web*/
 @media screen and (min-width: 767px) {
+    .buttonsContainer {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+        margin-top: 0;
+        }
+
+    .signoutButton {
+        margin-top: 10px;
+        margin-left: auto;
+        margin-right: auto;
+    }
+
+    .editButton {
+        margin-left: auto;
+            margin-right: auto;
+    }
+
+    .changePW {
+        margin-left: 100px;
+    }
+
     .profileContainer {
             display: flex;
+            gap: 20px;
+                /* Add spacing between the two containers */
             box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
             background-color: white;
             margin-left: auto;
@@ -183,11 +216,13 @@ th { /*Table top header*/
             width: 90%;
         }
 
-        .profileTop,
+        .profileTop {
+            flex: 0 0 30%; /* Adjust the percentage for the desired width */
+        }
+
         .persInfoContainer {
             flex: 1;
-            margin-right: 0px;/* Add spacing between the two containers */
-        }
+        }       
 
         .profileTop h2 {
             font-size: 20px;
@@ -195,9 +230,18 @@ th { /*Table top header*/
 
         .persInfoContainer {
             box-shadow: none;
-            background-color: rgb(208, 208, 236);
             margin: 0;
         }   
+
+        .linesofInfo {
+            width: 90%;
+        }
+
+        .persInfoContainer h3 {
+            margin: 20px 0;
+            margin-top: 50px;
+            text-align: left; 
+        }
 
 
     .profile-picture-container {
@@ -210,4 +254,5 @@ th { /*Table top header*/
         height: 30px;
         margin-right: 10px;
     }
+
 }

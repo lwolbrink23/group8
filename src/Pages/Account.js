@@ -107,7 +107,7 @@ function Account() {
         <div className="orderHistory">
           <p>No Order History</p>
           <Link to="/shop">
-            <button class="shopButtonutton">Shop Now</button>
+            <button class="shopButton">Shop Now</button>
           </Link>
         </div>
       </div>
