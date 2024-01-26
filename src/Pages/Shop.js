@@ -94,7 +94,7 @@ function Shop() {
                 className="mouse-hover"
                 onClick={() => handleDecrement(item.id)}
               ></img>
-              <p className="item-amount">{itemQty}</p>
+              <p className="item-amount poppins-bigger">{itemQty}</p>
               <img
                 src={plusICON}
                 alt="add item"
