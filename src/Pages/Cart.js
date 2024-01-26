@@ -61,7 +61,7 @@ function Cart() {
                   className="mouse-hover"
                   onClick={() => handleDecrement(item.id)}
                 ></img>
-                <p className="item-amount">{item.qty}</p>
+                <p className="item-amount poppins-bigger bold">{item.qty}</p>
                 <img
                   src={plusICON}
                   alt="add item"
@@ -70,7 +70,7 @@ function Cart() {
                 ></img>
               </div>
             </div>
-            <p className="align-right">${itemPrice}</p>
+            <p className="align-right poppins-bigger">${itemPrice}</p>
           </div>
         );
       })}
@@ -100,7 +100,7 @@ function Cart() {
           <p>{tempData.length} items in your cart</p>
           <CartItems />
         </div>
-        <div className="subtotal">
+        <div className="subtotal poppins-bigger">
           <div className="col-2">
             <p>Subtotal ({tempData.length} items)</p>
             <p>${calcTotal()}</p>

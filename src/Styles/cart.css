@@ -8,6 +8,13 @@
 #cart main > div:first-child {
   margin: auto;
 }
+/* # items in cart text */
+#cart main > div:first-child > p:first-child {
+  font-weight: bold;
+  font-size: 25px;
+  font-family: "cormorant", serif;
+}
+
 /* cart */
 .cart-container {
   background-color: white;

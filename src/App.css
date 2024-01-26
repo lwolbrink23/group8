@@ -172,6 +172,10 @@ input[type="radio"]:checked {
   background-color: #aa95d1;
   box-shadow: inset 0 0 0 3px white;
 }
-.bold{
-font-weight: bold;
+.bold {
+  font-weight: bold;
+}
+.poppins-bigger {
+  font-family: "poppins", sans-serif;
+  font-size: 20px;
 }
