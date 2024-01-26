@@ -10,43 +10,45 @@ import lock from "../assets/icons/icons8-password-100.png";
 function Account() {
   return (
     <div>
-      <div className="profileTop">
-        <div class="profile-picture-container">
-          <img
-            src={profilepic}
-            alt="Profile picture"
-            className="profile-picture"
-          />
-        </div>
-        <h2>Bob Smith</h2>
-        <div className="buttonsContainer">
-          <button type="button" className="editButton">
-            Edit Profile
-          </button>
-          <button type="button" className="signoutButton">
-            Sign Out
-          </button>
-        </div>
-      </div>
-      <div className="persInfoContainer">
-        <div className="linesofInfo">
-          <div className="infoRowTitle">
-            <h3>Personal Information</h3>
+      <div className="profileContainer">
+        <div className="profileTop">
+          <div class="profile-picture-container">
+            <img
+              src={profilepic}
+              alt="Profile picture"
+              className="profile-picture"
+            />
           </div>
-          <div className="infoRow">
-            <img src={phone} alt="phone icon" className="persIcons"></img>
-            <p>(xxx) xxx-xxxx</p>
-          </div>
-          <div className="infoRow">
-            <img src={email} alt="email icon" className="persIcons"></img>
-            <p>email@gmail.com</p>
-          </div>
-          <div className="infoRow">
-            <img src={lock} alt="password icon" className="persIcons"></img>
-            <p>password</p>
-            <button type="button" className="changePW">
-              Change
+          <h2>Bob Smith</h2>
+          <div className="buttonsContainer">
+            <button type="button" className="editButton">
+              Edit Profile
             </button>
+            <button type="button" className="signoutButton">
+              Sign Out
+            </button>
+          </div>
+        </div>
+        <div className="persInfoContainer">
+          <div className="linesofInfo">
+            <div className="infoRowTitle">
+              <h3>Personal Information</h3>
+            </div>
+            <div className="infoRow">
+              <img src={phone} alt="phone icon" className="persIcons"></img>
+              <p>(xxx) xxx-xxxx</p>
+            </div>
+            <div className="infoRow">
+              <img src={email} alt="email icon" className="persIcons"></img>
+              <p>email@gmail.com</p>
+            </div>
+            <div className="infoRow">
+              <img src={lock} alt="password icon" className="persIcons"></img>
+              <p>password</p>
+              <button type="button" className="changePW">
+                Change
+              </button>
+            </div>
           </div>
         </div>
       </div>
