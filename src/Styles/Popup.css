@@ -29,10 +29,11 @@
     margin-bottom: 20px;
     font-size: 16px;
     font-family: "Poppins";
+    place-items: center;
 }
 
 .popup-container {
-    width: 17%;
+    width: 20%;
     /* Adjust this for desired size */
     background-color: white;
     padding: 20px;
@@ -42,4 +43,16 @@
     display: grid;
     columns: 1fr;
     place-items: center;
+}
+
+@media screen and (max-width: 760px) {
+    .popup-container {
+        width: 80%;
+    }
+}
+
+@media screen and (max-width: 1100px) {
+    .popup-container {
+        width: 40%;
+    }
 }
