@@ -42,6 +42,10 @@
     font-size: 14px;
 }
 
+.changePW {
+    margin-bottom: 5px;
+    margin-top: -5px;
+}
 
 .signoutButton {
     background-color: #F8A0A0; 
@@ -60,6 +64,7 @@
     width: 30px;
     height: 30px;
     margin-right: 10px;
+    margin-bottom: 5px;
 }
 
 .persInfoContainer {
@@ -78,8 +83,10 @@
 .infoRow {
     display: flex;
     align-items: center;
-    margin-bottom: 10px;
+    margin-bottom: 15px;
     /* Adjust the margin between rows as needed */
+    border-bottom: 1px solid #ddd;
+        /* Add a horizontal line */
 }
 
 .linesofInfo { /*tightly targeting only the information lines*/
@@ -200,7 +207,7 @@ th { /*Table top header*/
     }
 
     .changePW {
-        margin-left: 100px;
+        margin-left: 120px;
     }
 
     .profileContainer {
