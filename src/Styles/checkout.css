@@ -30,6 +30,8 @@
 #checkout button {
   width: 100%;
   margin: auto;
+  font-weight: bold;
+  font-size: 25px;
 }
 
 /* payment section */
@@ -109,7 +111,6 @@
   color: #000000;
 }
 
-
 /* responsive */
 @media screen and (max-width: 1750px) {
   #summary {
@@ -125,38 +126,32 @@
 }
 
 @media screen and (max-width: 1100px) {
-
   #summary {
     width: 95%;
-
   }
 
   #payment-info,
   #shipping-info {
     width: 95%;
-
   }
 }
 
 @media screen and (max-width: 875px) {
-#checkout main {
+  #checkout main {
     display: block;
     padding: 0 10% 10% 10%;
   }
-  #summary{
+  #summary {
     width: 100%;
-
   }
-    #payment-info,
-    #shipping-info {
-      width: 100%;
-
-    }
+  #payment-info,
+  #shipping-info {
+    width: 100%;
+  }
 }
 
 @media screen and (max-width: 700px) {
   #checkout main {
-  padding: 0 20px 20px 20px;
-
+    padding: 0 20px 20px 20px;
   }
 }
