@@ -7,8 +7,9 @@ const PopupNews = ({ isOpen, closePopup }) => {
     return (
         <div className="popup-background">
             <div className="popup-container">
-                <p>Thank You for subscribing
+                <p>Thank you for subscribing
                     to our newsletter!</p>
+                <p>Check your email to get the latest info about The Suite Spot!</p>
                 <button onClick={closePopup}>Close</button>
             </div>
         </div>
