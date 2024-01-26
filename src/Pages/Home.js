@@ -1,7 +1,8 @@
 import "../Styles/home.css"; // Import your styles
 import { Link } from "react-router-dom";
 import React, { useState } from 'react';
-import PopUp from '../Components/PopUp.js';
+import PopUpBlog from '../Components/PopUpBlog.js';
+import PopUpNews from '../Components/PopUpNews.js';
 import MainCarousel from "../Components/MainCarousel.js";
 import WebGallery from "../Components/WebGallery.js";
 import promoBottle from "../assets/images/promo_bottle.png";
@@ -57,10 +58,15 @@ function Home() {
     facemask,
   ];
 
-  const [isPopupOpen, setIsPopupOpen] = useState(false);
+  const [isBlogOpen, setIsBlogOpen] = useState(false);
 
-  const openPopup = () => setIsPopupOpen(true);
-  const closePopup = () => setIsPopupOpen(false);
+  const openBlog = () => setIsBlogOpen(true);
+  const closeBlog = () => setIsBlogOpen(false);
+
+  const [isNewsOpen, setIsNewsOpen] = useState(false);
+
+  const openNews = () => setIsNewsOpen(true);
+  const closeNews = () => setIsNewsOpen(false);
 
   return (
     <div className="App">
@@ -212,9 +218,10 @@ function Home() {
                 placeholder="Enter your email"
                 className="blogInput"
               />
-              <button type="button" className="blogButton" onClick={openPopup}>
+              <button type="button" className="blogButton" onClick={openBlog}>
                 Subscribe
               </button>
+              <PopUpBlog isOpen={isBlogOpen} closePopup={closeBlog} />
             </div>
           </div>
         </div>
@@ -232,10 +239,10 @@ function Home() {
                 placeholder="Enter your email"
                 className="newsInput"
               />
-              <button type="button" className="blogButton" onClick={openPopup}>
+              <button type="button" className="blogButton" onClick={openNews}>
                 Subscribe
               </button>
-              <PopUp isOpen={isPopupOpen} closePopup={closePopup} />
+              <PopUpNews isOpen={isNewsOpen} closePopup={closeNews} />
             </div>
           </div>
         </div>

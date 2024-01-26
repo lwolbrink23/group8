@@ -1,9 +1,9 @@
 import React, { useState } from 'react';
-import Popup from './PopUp';
 import "../Styles/footer.css";
 import Facebook from "../assets/icons/facebook.png";
 import Insta from "../assets/icons/instagram.png";
 import Tiktok from "../assets/icons/tiktok.png";
+import PopupNews from './PopUpNews';
 
 function Footer() {
 
@@ -45,7 +45,7 @@ function Footer() {
           </p>
           <input type="email" placeholder="Enter your email" />
           <button onClick={openPopup}>Subscribe</button>
-          <Popup isOpen={isPopupOpen} closePopup={closePopup} />
+          <PopupNews isOpen={isPopupOpen} closePopup={closePopup} />
           <div className="social-icons">
             {/* Replace # with your social media links */}
             <a href="#">
