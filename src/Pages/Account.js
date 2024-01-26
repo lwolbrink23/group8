@@ -1,4 +1,5 @@
 import React from "react";
+import { Link } from "react-router-dom";
 import "../App.css";
 import "../Styles/account.css";
 import profilepic from "../assets/icons/icons8-person-female-100.png";
@@ -47,6 +48,65 @@ function Account() {
               Change
             </button>
           </div>
+        </div>
+      </div>
+      <div className="apptsInfoContainer">
+        <div className="infoRowTitle">
+          <h3>Scheduled Appointments</h3>
+        </div>
+        <div className="table">
+          <table>
+            <thead>
+              <tr>
+                <th>Date</th>
+                <th>Location</th>
+                <th>Services</th>
+                <th>Staff</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td colSpan="4" className="noAppts">
+                  No Appointments
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+
+        <div className="infoRowTitle">
+          <h3>Appointment History</h3>
+        </div>
+        <div className="table">
+          <table>
+            <thead>
+              <tr>
+                <th>Date</th>
+                <th>Location</th>
+                <th>Services</th>
+                <th>Staff</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td colSpan="4" className="noAppts">
+                  No Appointments
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+
+      <div className="orderInfoContainer">
+        <div className="infoRowTitle">
+          <h3>Order History</h3>
+        </div>
+        <div className="orderHistory">
+          <p>No Order History</p>
+          <Link to="/shop">
+            <button class="shopButtonutton">Shop Now</button>
+          </Link>
         </div>
       </div>
     </div>
