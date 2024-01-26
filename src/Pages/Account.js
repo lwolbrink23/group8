@@ -116,12 +116,14 @@ function Account() {
                       className="apptActionIcon"
                       onClick={() => showAppointmentDetails()}
                     />
-                    <button
-                      onClick={() => navigateToAppointmentDetails()}
-                      className="apptDropdown"
-                    >
-                      View Details
-                    </button>
+                    <Link to="/appointment/:id">
+                      <button
+                        onClick={() => navigateToAppointmentDetails()}
+                        className="apptDropdown"
+                      >
+                        View Details
+                      </button>
+                    </Link>
                   </div>
                 </td>
               </tr>
