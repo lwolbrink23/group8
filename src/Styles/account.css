@@ -7,9 +7,12 @@
         padding: 20px;
 }
 
+.profileTop h2 {
+    font-family: "poppins";
+    font-weight: normal;
+}
+
 .profile-picture-container {
-    width: 100px;
-    height: 100px;
     border-radius: 50%;
     /* Make it a circle by setting border-radius to 50% */
     overflow: hidden;
@@ -155,5 +158,56 @@ th { /*Table top header*/
 
 /* Styles for mobile*/
 @media screen and (max-width: 767px) {
-    
+    .profile-picture-container {
+            width: 100px;
+            height: 100px;
+        }
+
+        .persIcons {
+            width: 30px;
+            height: 30px;
+            margin-right: 10px;
+        }
+}
+
+/* Styles for web*/
+@media screen and (min-width: 767px) {
+    .profileContainer {
+            display: flex;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+            background-color: white;
+            margin-left: auto;
+            margin-right: auto;
+            margin-top: 20px;
+            margin-bottom: 20px;
+            width: 90%;
+        }
+
+        .profileTop,
+        .persInfoContainer {
+            flex: 1;
+            margin-right: 0px;/* Add spacing between the two containers */
+        }
+
+        .profileTop h2 {
+            font-size: 20px;
+        }
+
+        .persInfoContainer {
+            box-shadow: none;
+            background-color: rgb(208, 208, 236);
+            margin: 0;
+        }   
+
+
+    .profile-picture-container {
+        width: 100px;
+        height: 100px;
+    }
+
+    .persIcons {
+        width: 30px;
+        height: 30px;
+        margin-right: 10px;
+    }
 }
