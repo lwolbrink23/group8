@@ -56,7 +56,7 @@ function Header() {
               </Link>
             </li>
             <li>
-              <a href="#" className="about-link">
+              <a href="/ourstory" className="about-link">
                 <img src={abouticon} alt="about icon" className="icon-mobile" />
                 About
               </a>

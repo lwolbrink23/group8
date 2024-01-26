@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import "../App.css";
 import "../Styles/account.css";
@@ -7,6 +7,7 @@ import phone from "../assets/icons/icons8-phone-96.png";
 import email from "../assets/icons/icons8-email-100 (1).png";
 import lock from "../assets/icons/icons8-password-100.png";
 import apptActionIcon from "../assets/icons/apptaction.svg";
+import PopupPassword from "../Components/PopUpPassword";
 
 function Account() {
   function showAppointmentDetails() {
@@ -17,6 +18,12 @@ function Account() {
 
   const navigateToAppointmentDetails = () =>
     console.log("inside navigateToAppointmentDetails");
+
+  const [isContactOpen, setIsContactOpen] = useState(false);
+
+  const openContact = () => setIsContactOpen(true);
+  const closeContact = () => setIsContactOpen(false);
+
 
   return (
     <div>
@@ -55,9 +62,10 @@ function Account() {
             <div className="infoRow">
               <img src={lock} alt="password icon" className="persIcons"></img>
               <p>password</p>
-              <button type="button" className="changePW">
+              <button type="button" className="changePW" onClick={openContact}>
                 Change
               </button>
+              <PopupPassword isOpen={isContactOpen} closePopup={closeContact} />
             </div>
           </div>
         </div>
