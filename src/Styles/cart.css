@@ -8,13 +8,20 @@
 #cart main > div:first-child {
   margin: auto;
 }
+/* # items in cart text */
+#cart main > div:first-child > p:first-child {
+  font-weight: bold;
+  font-size: 25px;
+  font-family: "cormorant", serif;
+}
+
 /* cart */
 .cart-container {
   background-color: white;
   background: #ffffff;
   box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
   padding: 23px;
-  height: 70%;
+  max-height: 700px;
   overflow: auto;
 }
 .cart-item {
@@ -56,6 +63,8 @@
 }
 .subtotal button {
   width: 100%;
+  font-weight: bold;
+  font-size: 25px;
 }
 
 @media screen and (max-width: 1250px) {

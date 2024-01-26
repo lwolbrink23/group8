@@ -5,10 +5,30 @@ import tempData from "../data/cart.json";
 import tempShopData from "../data/shop.json";
 import Shopheader from "../Components/Shopheader";
 import { Link } from "react-router-dom";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 
 function Cart() {
+  // BACKEND: load cart data from database here
   const [cartItems, setCartItems] = useState(tempData);
+
+  const handleIncrement = (itemId) => {
+    setCartItems((prevItems) => {
+      const updatedItems = prevItems.map((item) =>
+        item.id === itemId ? { ...item, qty: item.qty + 1 } : item
+      );
+      return updatedItems;
+    });
+  };
+
+  const handleDecrement = (itemId) => {
+    setCartItems((prevItems) =>
+      prevItems.map((item) =>
+        item.id === itemId && item.qty > 0
+          ? { ...item, qty: item.qty - 1 }
+          : item
+      )
+    );
+  };
   const CartItems = () => (
     <div className="cart-container">
       {cartItems.map((item, i) => {
@@ -39,31 +59,35 @@ function Cart() {
                   src={minusICON}
                   alt="subtract item"
                   className="mouse-hover"
+                  onClick={() => handleDecrement(item.id)}
                 ></img>
-                <p className="item-amount">{item.qty}</p>
+                <p className="item-amount poppins-bigger bold">{item.qty}</p>
                 <img
                   src={plusICON}
                   alt="add item"
                   className="mouse-hover"
+                  onClick={() => handleIncrement(item.id)}
                 ></img>
               </div>
             </div>
-            <p className="align-right">${itemPrice}</p>
+            <p className="align-right poppins-bigger">${itemPrice}</p>
           </div>
         );
       })}
     </div>
   );
 
-  const total = () => {
+  // calculate totals
+  const calcTotal = () => {
     let t = 0;
-    for (const cartItem of tempData) {
+    for (const cartItem of cartItems) {
       for (const shopItem of tempShopData) {
         if (cartItem.id === shopItem.id) {
-          t += shopItem.price;
+          t += shopItem.price * cartItem.qty;
         }
       }
     }
+    // BACKEND: save cart data into database here (?)
     return t.toFixed(2);
   };
 
@@ -76,10 +100,10 @@ function Cart() {
           <p>{tempData.length} items in your cart</p>
           <CartItems />
         </div>
-        <div className="subtotal">
+        <div className="subtotal poppins-bigger">
           <div className="col-2">
             <p>Subtotal ({tempData.length} items)</p>
-            <p>${total()}</p>
+            <p>${calcTotal()}</p>
           </div>
           <Link to="/checkout">
             <button>Proceed to Checkout</button>
