@@ -6,8 +6,18 @@ import profilepic from "../assets/icons/icons8-person-female-100.png";
 import phone from "../assets/icons/icons8-phone-96.png";
 import email from "../assets/icons/icons8-email-100 (1).png";
 import lock from "../assets/icons/icons8-password-100.png";
+import apptActionIcon from "../assets/icons/apptaction.svg";
 
 function Account() {
+  function showAppointmentDetails() {
+    const dropdown = document.querySelector(".apptDropdown");
+    dropdown.style.display =
+      dropdown.style.display === "none" ? "block" : "none";
+  }
+
+  const navigateToAppointmentDetails = () =>
+    console.log("inside navigateToAppointmentDetails");
+
   return (
     <div>
       <div className="profileContainer">
@@ -64,11 +74,12 @@ function Account() {
                 <th>Location</th>
                 <th>Services</th>
                 <th>Staff</th>
+                <th></th> {/* 3 dots column - DO NOT DELETE */}
               </tr>
             </thead>
             <tbody>
               <tr>
-                <td colSpan="4" className="noAppts">
+                <td colSpan="5" className="noAppts">
                   No Appointments
                 </td>
               </tr>
@@ -87,11 +98,37 @@ function Account() {
                 <th>Location</th>
                 <th>Services</th>
                 <th>Staff</th>
+                <th></th> {/* 3 dots column - DO NOT DELETE */}
               </tr>
             </thead>
             <tbody>
+              {/* Fake appointment */}
               <tr>
-                <td colSpan="4" className="noAppts">
+                <td>Sep 3, 2023</td>
+                <td>Simply Chic Hair</td>
+                <td>Full Balayage</td>
+                <td>Jean C.</td>
+                <td>
+                  <div className="apptActionContainer">
+                    <img
+                      src={apptActionIcon}
+                      alt="appointment menu"
+                      className="apptActionIcon"
+                      onClick={() => showAppointmentDetails()}
+                    />
+                    <button
+                      onClick={() => navigateToAppointmentDetails()}
+                      className="apptDropdown"
+                    >
+                      View Details
+                    </button>
+                  </div>
+                </td>
+              </tr>
+
+              {/* Display "No Appointments" if there are no real appointments */}
+              <tr>
+                <td colSpan="5" className="noAppts">
                   No Appointments
                 </td>
               </tr>
