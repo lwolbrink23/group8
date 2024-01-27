@@ -11,7 +11,6 @@
         right: 0;
         z-index: 999;
         text-align: center;
-        background-color: white;
     }
 
     .header-container.mobile-open nav {
