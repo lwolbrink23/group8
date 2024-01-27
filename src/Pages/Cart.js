@@ -25,9 +25,7 @@ function Cart() {
   const handleDecrement = (itemId, itemName, itemQty) => {
     // handle if qty is 1 and user press decrment
     if (itemQty === 1) {
-      console.log(itemName);
-
-      setPopupItem(itemName);
+      setPopupItem({ itemName, itemId });
     } else {
       setCartItems((prevItems) =>
         prevItems.map((item) =>
@@ -103,17 +101,22 @@ function Cart() {
   };
 
   // Delete cart function
-  const Popup = (props) => (
+  const Popup = () => (
     <div className="popup-background">
       <div className="cart-popup">
         <p>Do you want to delete this item from you cart?</p>
-        <p className="bold">{props.itemName}</p>
-        <button onClick={() => setPopupItem("")}>Cancel</button>
-        <button>Yes</button>
+        <p className="bold">{popupItem.itemName}</p>
+        <button onClick={() => setPopupItem()}>Cancel</button>
+        <button onClick={() => deleteItem(popupItem.itemId)}>Yes</button>
       </div>
     </div>
   );
-  const deleteItem = () => {};
+  const deleteItem = (itemId) => {
+    const newArray = cartItems.filter((item) => item.id !== itemId);
+    setCartItems(newArray);
+    setPopupItem();
+    // Backend: save cart here
+  };
 
   const EmptyCart = () => (
     <div className="center-children empty-cart poppins-bigger">
@@ -130,7 +133,7 @@ function Cart() {
     <div id="cart">
       {/* title */}
       <Shopheader htitle={"Cart"} />
-      {popupItem && <Popup itemName={popupItem} />}
+      {popupItem && <Popup />}
 
       {!cartItems.length ? (
         <EmptyCart />
