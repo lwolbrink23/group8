@@ -14,6 +14,9 @@
   font-size: 25px;
   font-family: "cormorant", serif;
 }
+#cart {
+  min-height: 70vh;
+}
 
 /* cart */
 .cart-container {
@@ -66,10 +69,11 @@
   font-weight: bold;
   font-size: 25px;
 }
+
 /* empty cart */
 .empty-cart {
-  height: 20vh;
-  padding: 200px;
+  padding-top: 150px;
+  margin: auto;
 }
 .empty-cart button {
   padding: 20px 100px;

@@ -9,7 +9,7 @@ import { useState, useEffect } from "react";
 
 function Cart() {
   // BACKEND: load cart data from database here
-  const [cartItems, setCartItems] = useState([]);
+  const [cartItems, setCartItems] = useState(tempData);
 
   const handleIncrement = (itemId) => {
     setCartItems((prevItems) => {
