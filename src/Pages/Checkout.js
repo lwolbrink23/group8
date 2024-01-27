@@ -44,7 +44,7 @@ function Checkout() {
                 <br></br>
                 <span style={{ fontSize: "13px" }}>quantity</span>
                 <br></br>
-                <span id="item-qty" className="bold">
+                <span id="item-qty" className="bold poppins-bigger">
                   {item.qty}
                 </span>
               </p>
