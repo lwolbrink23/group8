@@ -12,6 +12,16 @@ function Cart() {
   const [cartItems, setCartItems] = useState(tempData);
   const [popupItem, setPopupItem] = useState("");
 
+  const countItems = () => {
+    let totalQty = 0;
+
+    cartItems.forEach((item) => {
+      totalQty += item.qty;
+    });
+
+    return totalQty;
+  };
+
   // increment & decrement
   const handleIncrement = (itemId) => {
     setCartItems((prevItems) => {
@@ -59,7 +69,7 @@ function Cart() {
               alt=""
             ></img>
             <div>
-              <p>
+              <p className="rem-top-margin">
                 {itemName}
                 <br></br> instock
               </p>
@@ -79,7 +89,9 @@ function Cart() {
                 ></img>
               </div>
             </div>
-            <p className="align-right poppins-bigger">${itemPrice}</p>
+            <p className="align-right poppins-bigger rem-top-margin">
+              ${itemPrice}
+            </p>
           </div>
         );
       })}
@@ -106,7 +118,9 @@ function Cart() {
       <div className="cart-popup">
         <p>Do you want to delete this item from you cart?</p>
         <p className="bold">{popupItem.itemName}</p>
-        <button onClick={() => setPopupItem()}>Cancel</button>
+        <button onClick={() => setPopupItem()} className="red-btn">
+          Cancel
+        </button>
         <button onClick={() => deleteItem(popupItem.itemId)}>Yes</button>
       </div>
     </div>
@@ -129,6 +143,7 @@ function Cart() {
     </div>
   );
 
+  // main code
   return (
     <div id="cart">
       {/* title */}
@@ -140,12 +155,12 @@ function Cart() {
       ) : (
         <main>
           <div>
-            <p>{cartItems.length} items in your cart</p>
+            <p>{countItems()} items in your cart</p>
             <CartItems />
           </div>
           <div className="subtotal poppins-bigger">
             <div className="col-2">
-              <p>Subtotal ({cartItems.length} items)</p>
+              <p>Subtotal ({countItems()} items)</p>
               <p>${calcTotal()}</p>
             </div>
             <Link to="/checkout">
