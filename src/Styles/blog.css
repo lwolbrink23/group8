@@ -18,7 +18,8 @@
     position: relative;
     margin: 0 auto;
     flex-shrink: 0;
-    background: lightgray url("../assets/images/flower.jpeg") center/cover no-repeat;
+    background: lightgray url("../assets/images/flower.jpeg") center/cover
+      no-repeat;
     box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
   }
 
@@ -155,18 +156,17 @@
   }
 
   .hair button,
-  .massage button
-  .makeup button {
+  .massage button .makeup button {
     display: block;
     margin-left: auto;
     margin-top: -25px;
   }
   #category {
     width: 170px;
-      height: 41px;
-      flex-shrink: 0;
+    height: 41px;
+    flex-shrink: 0;
   }
-.filter-dropdown {
+  .filter-dropdown {
     text-align: center;
     margin-left: 1008px;
     margin-bottom: 5px;
@@ -210,65 +210,65 @@
     line-height: normal;
     padding: 10px;
   }
- .subscribe {
-   display: flex;
-   flex-direction: column;
-   align-items: center;
-   width: 80%;
-   font-family: Inter;
-   font-size: 14px;
-   font-style: normal;
-   font-weight: 400;
-   line-height: normal;
-   white-space: nowrap;
-   margin: 0 auto;
-   max-width: 500px;
- }
+  .subscribe {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 80%;
+    font-family: Inter;
+    font-size: 14px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+    white-space: nowrap;
+    margin: 0 auto;
+    max-width: 500px;
+  }
 
- .email {
-   width: 100%;
-   height: 40px;
-   margin-bottom: 10px;
-   padding: 8px;
-   /* Add padding for better visual appearance */
-   box-sizing: border-box;
- }
+  .email {
+    width: 100%;
+    height: 40px;
+    margin-bottom: 10px;
+    padding: 8px;
+    /* Add padding for better visual appearance */
+    box-sizing: border-box;
+  }
 
- .sub-button {
-   width: 100%;
-   /* Make the button take up full width within .subscribe */
-   height: 40px;
-   margin-top: 10px;
-   /* Add margin to separate from the email field */
- }
- .posts-container {
-   display: flex;
-   flex-wrap: wrap;
- }
+  .sub-button {
+    width: 100%;
+    /* Make the button take up full width within .subscribe */
+    height: 40px;
+    margin-top: 10px;
+    /* Add margin to separate from the email field */
+  }
+  .posts-container {
+    display: flex;
+    flex-wrap: wrap;
+  }
 
-    .filter-dropdown {
-      display: flex;
-      justify-content: flex-end;
-      margin: 10px -15px 10px -15px;
-      width: 100%;
-    }
-  
-    .filter-dropdown select {
-      padding: 10px;
-      font-family: Poppins;
-      font-size: 15px;
-      font-style: normal;
-      font-weight: 400;
-      line-height: 183%;
-      display: block;
-      margin-bottom: 10px;
-      width: 170px;
-    }
+  .filter-dropdown {
+    display: flex;
+    justify-content: flex-end;
+    margin: 10px -15px 10px -15px;
+    width: 100%;
+  }
 
-.hair,
-.massage,
-.makeup {
-  display: flex;
+  .filter-dropdown select {
+    padding: 10px;
+    font-family: Poppins;
+    font-size: 15px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 183%;
+    display: block;
+    margin-bottom: 10px;
+    width: 170px;
+  }
+
+  .hair,
+  .massage,
+  .makeup {
+    display: flex;
     flex-direction: column;
     /* Stack child elements vertically */
     width: 80%;
@@ -276,34 +276,31 @@
     box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
     padding: 20px;
     margin: 20px 10px;
-}
+  }
 
-.hair p,
-.massage p,
-.makeup p {
-
-  
+  .hair p,
+  .massage p,
+  .makeup p {
     font-family: Poppins;
     font-size: 12px;
     font-style: normal;
     font-weight: 400;
     line-height: normal;
-}
-.hair h3,
-.massage h3,
-.makeup h3 {
-  font-family: Poppins;
-  font-size: 15px;
-  word-wrap: break-word;
-  white-space: normal;
-}
+  }
+  .hair h3,
+  .massage h3,
+  .makeup h3 {
+    font-family: Poppins;
+    font-size: 15px;
+    word-wrap: break-word;
+    white-space: normal;
+  }
 
-.hair button,
-.massage button,
-.makeup button {
-  margin: 10px 0 10px auto;
+  .hair button,
+  .massage button,
+  .makeup button {
+    margin: 10px 0 10px auto;
     /* Center the button horizontally */
     display: block;
-}
-
+  }
 }

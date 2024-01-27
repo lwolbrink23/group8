@@ -48,7 +48,6 @@ function Blog() {
       title: "Makeup for All Ages",
       content: "Celebrate the beauty of every stage of life.",
     }
-    // Add more posts with categories as needed
   ];
 
   const categories = [ "hair", "nails", "makeup", "massage"];
