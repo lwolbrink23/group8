@@ -16,25 +16,41 @@ function Header() {
   const [isHamburgerOpen, setHamburgerOpen] = useState(false);
   const menuRef = useRef();
 
-  const toggleHamburger = () => {
-    setHamburgerOpen((prevValue) => !prevValue);
-  };
+  {/* making side bar slide in and out */}
+  const [isSidebarOpen, setIsSidebarOpen] = useState(false);
+    const sidebarRef = useRef(null);
 
   useEffect(() => {
     const handleClickOutside = (event) => {
-      if (menuRef.current && !menuRef.current.contains(event.target)) {
-        setHamburgerOpen(false);
+      if (menuRef.current && !menuRef.current.contains(event.target) && isSidebarOpen) {
+        toggleSidebar();
       }
     };
 
-    if (isHamburgerOpen) {
-      document.addEventListener("mousedown", handleClickOutside);
-    }
+    document.addEventListener('mousedown', handleClickOutside);
 
     return () => {
-      document.removeEventListener("mousedown", handleClickOutside);
+        document.removeEventListener('mousedown', handleClickOutside);
     };
-  }, [isHamburgerOpen]);
+    }, [isSidebarOpen]);
+
+    const toggleSidebar = () => {
+        setIsSidebarOpen(!isSidebarOpen); // Toggle sidebar state
+        setHamburgerOpen(!isHamburgerOpen); // Also toggle hamburger state for consistency
+      };
+
+      const handleHamburgerClick = () => {
+        toggleSidebar(); // Call toggleSidebar to handle both state and animation
+      }
+
+      useEffect(() => {
+    if (isSidebarOpen) {
+        sidebarRef.current.style.animationName = 'slideIn';
+    } else {
+        sidebarRef.current.style.animationName = 'slideOut';
+    }
+}, [isSidebarOpen]);
+
 
   return (
     <header>
@@ -56,7 +72,7 @@ function Header() {
           </Link>
         </div>
         {/* Hamburger menu icon */}
-        <div id="hamburger-menu" onClick={toggleHamburger}></div>
+        <div id="hamburger-menu" onClick={handleHamburgerClick}></div>
         <Link to="/account">
           {" "}
           <img
@@ -65,7 +81,7 @@ function Header() {
             className="profile-icon-mobile"
           />
         </Link>
-        <nav>
+        <nav ref={sidebarRef} className="sidebar">
           <ul className={isHamburgerOpen ? "show" : ""}>
             <li>
               <Link to="/" >
