@@ -101,6 +101,10 @@
 .red-btn {
   background-color: #f8a0a0;
 }
+.red-btn:hover {
+  background-color: #ee6363;
+  color: white;
+}
 
 @media screen and (max-width: 1250px) {
   #cart main {

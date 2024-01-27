@@ -116,12 +116,15 @@ function Cart() {
   const Popup = () => (
     <div className="popup-background">
       <div className="cart-popup">
-        <p>Do you want to delete this item from you cart?</p>
+        <p>Delete this item from your cart?</p>
         <p className="bold">{popupItem.itemName}</p>
-        <button onClick={() => setPopupItem()} className="red-btn">
-          Cancel
+        <button onClick={() => setPopupItem()}>Cancel</button>
+        <button
+          onClick={() => deleteItem(popupItem.itemId)}
+          className="red-btn"
+        >
+          Delete Item
         </button>
-        <button onClick={() => deleteItem(popupItem.itemId)}>Yes</button>
       </div>
     </div>
   );
