@@ -10,7 +10,9 @@ import { useState, useEffect } from "react";
 function Cart() {
   // BACKEND: load cart data from database here
   const [cartItems, setCartItems] = useState(tempData);
-  const [popupItem, setPopItem] = useState("");
+  const [popupItem, setPopupItem] = useState("");
+
+  // increment & decrement
   const handleIncrement = (itemId) => {
     setCartItems((prevItems) => {
       const updatedItems = prevItems.map((item) =>
@@ -20,16 +22,24 @@ function Cart() {
     });
   };
 
-  const handleDecrement = (itemId) => {
-    setPopItem("meow");
-    setCartItems((prevItems) =>
-      prevItems.map((item) =>
-        item.id === itemId && item.qty > 0
-          ? { ...item, qty: item.qty - 1 }
-          : item
-      )
-    );
+  const handleDecrement = (itemId, itemName, itemQty) => {
+    // handle if qty is 1 and user press decrment
+    if (itemQty === 1) {
+      console.log(itemName);
+
+      setPopupItem(itemName);
+    } else {
+      setCartItems((prevItems) =>
+        prevItems.map((item) =>
+          item.id === itemId && item.qty > 0
+            ? { ...item, qty: item.qty - 1 }
+            : item
+        )
+      );
+    }
   };
+
+  // map out cart items
   const CartItems = () => (
     <div className="cart-container">
       {cartItems.map((item, i) => {
@@ -60,7 +70,7 @@ function Cart() {
                   src={minusICON}
                   alt="subtract item"
                   className="mouse-hover"
-                  onClick={() => handleDecrement(item.id)}
+                  onClick={() => handleDecrement(item.id, itemName, item.qty)}
                 ></img>
                 <p className="item-amount poppins-bigger bold">{item.qty}</p>
                 <img
@@ -92,6 +102,19 @@ function Cart() {
     return t.toFixed(2);
   };
 
+  // Delete cart function
+  const Popup = (props) => (
+    <div className="popup-background">
+      <div className="cart-popup">
+        <p>Do you want to delete this item from you cart?</p>
+        <p className="bold">{props.itemName}</p>
+        <button onClick={() => setPopupItem("")}>Cancel</button>
+        <button>Yes</button>
+      </div>
+    </div>
+  );
+  const deleteItem = () => {};
+
   const EmptyCart = () => (
     <div className="center-children empty-cart poppins-bigger">
       <p>You have no items in your cart!</p>
@@ -103,23 +126,13 @@ function Cart() {
     </div>
   );
 
-  // Delete cart function
-  const Popup = (props) => (
-    <div className="popup-background">
-      <div className="cart-popup">
-        <p>Do you want to delete this item from you cart?</p>
-        <p className="bold">{props.itemName}</p>
-        <button>Cancel</button>
-        <button>Yes</button>
-      </div>
-    </div>
-  );
   return (
     <div id="cart">
       {/* title */}
       <Shopheader htitle={"Cart"} />
-      <Popup itemName={popupItem} />
-      {cartItems.length === 0 ? (
+      {popupItem && <Popup itemName={popupItem} />}
+
+      {!cartItems.length ? (
         <EmptyCart />
       ) : (
         <main>
