@@ -91,25 +91,39 @@ function Cart() {
     return t.toFixed(2);
   };
 
+  const EmptyCart = () => (
+    <div className="center-children empty-cart poppins-bigger">
+      <p>You have no items in your cart!</p>
+      <p>Take a look at our shop to find some products.</p>
+      <br></br>
+      <Link to="/shop">
+        <button>Shop</button>
+      </Link>
+    </div>
+  );
   return (
     <div id="cart">
       {/* title */}
       <Shopheader htitle={"Cart"} />
-      <main>
-        <div>
-          <p>{tempData.length} items in your cart</p>
-          <CartItems />
-        </div>
-        <div className="subtotal poppins-bigger">
-          <div className="col-2">
-            <p>Subtotal ({tempData.length} items)</p>
-            <p>${calcTotal()}</p>
+      {cartItems.length === 0 ? (
+        <EmptyCart />
+      ) : (
+        <main>
+          <div>
+            <p>{cartItems.length} items in your cart</p>
+            <CartItems />
           </div>
-          <Link to="/checkout">
-            <button>Proceed to Checkout</button>
-          </Link>
-        </div>
-      </main>
+          <div className="subtotal poppins-bigger">
+            <div className="col-2">
+              <p>Subtotal ({cartItems.length} items)</p>
+              <p>${calcTotal()}</p>
+            </div>
+            <Link to="/checkout">
+              <button>Proceed to Checkout</button>
+            </Link>
+          </div>
+        </main>
+      )}
     </div>
   );
 }
