@@ -9,7 +9,7 @@ import { useState, useEffect } from "react";
 
 function Cart() {
   // BACKEND: load cart data from database here
-  const [cartItems, setCartItems] = useState(tempData);
+  const [cartItems, setCartItems] = useState([]);
 
   const handleIncrement = (itemId) => {
     setCartItems((prevItems) => {
@@ -92,9 +92,10 @@ function Cart() {
   };
 
   const EmptyCart = () => (
-    <div>
+    <div className="center-children empty-cart poppins-bigger">
       <p>You have no items in your cart!</p>
       <p>Take a look at our shop to find some products.</p>
+      <br></br>
       <Link to="/shop">
         <button>Shop</button>
       </Link>
@@ -104,7 +105,7 @@ function Cart() {
     <div id="cart">
       {/* title */}
       <Shopheader htitle={"Cart"} />
-      {cartItems.length == 0 ? (
+      {cartItems.length === 0 ? (
         <EmptyCart />
       ) : (
         <main>
