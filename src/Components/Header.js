@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useRef, useEffect } from "react";
 import logoWeb from "../assets/logo/TSS Circle logo Transparent.png";
 import logoMobile from "../assets/logo/TSS Horizontal Logo Transparent.png";
 import profileicon from "../assets/icons/icons8-person-female-100.png";
@@ -14,14 +14,32 @@ import "../Styles/responsiveHeader.css"; // responsive stylesheet
 
 function Header() {
   const [isHamburgerOpen, setHamburgerOpen] = useState(false);
+  const menuRef = useRef();
 
   const toggleHamburger = () => {
     setHamburgerOpen((prevValue) => !prevValue);
   };
+
+  useEffect(() => {
+    const handleClickOutside = (event) => {
+      if (menuRef.current && !menuRef.current.contains(event.target)) {
+        setHamburgerOpen(false);
+      }
+    };
+
+    if (isHamburgerOpen) {
+      document.addEventListener("mousedown", handleClickOutside);
+    }
+
+    return () => {
+      document.removeEventListener("mousedown", handleClickOutside);
+    };
+  }, [isHamburgerOpen]);
+
   return (
     <header>
       <div
-        className={`header-container ${isHamburgerOpen ? "mobile-open" : ""}`}
+        ref={menuRef} className={`header-container ${isHamburgerOpen ? "mobile-open" : ""}`}
       >
         <Link to="/">
           <img src={logoWeb} alt="logo" className="logo-web" />
@@ -50,7 +68,7 @@ function Header() {
         <nav>
           <ul className={isHamburgerOpen ? "show" : ""}>
             <li>
-              <Link to="/">
+              <Link to="/" >
                 <img src={homeicon} alt="home icon" className="icon-mobile" />
                 Home
               </Link>
