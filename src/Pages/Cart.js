@@ -10,7 +10,7 @@ import { useState, useEffect } from "react";
 function Cart() {
   // BACKEND: load cart data from database here
   const [cartItems, setCartItems] = useState(tempData);
-
+  const [popupItem, setPopItem] = useState("");
   const handleIncrement = (itemId) => {
     setCartItems((prevItems) => {
       const updatedItems = prevItems.map((item) =>
@@ -21,6 +21,7 @@ function Cart() {
   };
 
   const handleDecrement = (itemId) => {
+    setPopItem("meow");
     setCartItems((prevItems) =>
       prevItems.map((item) =>
         item.id === itemId && item.qty > 0
@@ -101,10 +102,23 @@ function Cart() {
       </Link>
     </div>
   );
+
+  // Delete cart function
+  const Popup = (props) => (
+    <div className="popup-background">
+      <div className="cart-popup">
+        <p>Do you want to delete this item from you cart?</p>
+        <p className="bold">{props.itemName}</p>
+        <button>Cancel</button>
+        <button>Yes</button>
+      </div>
+    </div>
+  );
   return (
     <div id="cart">
       {/* title */}
       <Shopheader htitle={"Cart"} />
+      <Popup itemName={popupItem} />
       {cartItems.length === 0 ? (
         <EmptyCart />
       ) : (
