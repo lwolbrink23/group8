@@ -10,7 +10,19 @@ import { useState, useEffect } from "react";
 function Cart() {
   // BACKEND: load cart data from database here
   const [cartItems, setCartItems] = useState(tempData);
+  const [popupItem, setPopupItem] = useState("");
 
+  const countItems = () => {
+    let totalQty = 0;
+
+    cartItems.forEach((item) => {
+      totalQty += item.qty;
+    });
+
+    return totalQty;
+  };
+
+  // increment & decrement
   const handleIncrement = (itemId) => {
     setCartItems((prevItems) => {
       const updatedItems = prevItems.map((item) =>
@@ -20,15 +32,22 @@ function Cart() {
     });
   };
 
-  const handleDecrement = (itemId) => {
-    setCartItems((prevItems) =>
-      prevItems.map((item) =>
-        item.id === itemId && item.qty > 0
-          ? { ...item, qty: item.qty - 1 }
-          : item
-      )
-    );
+  const handleDecrement = (itemId, itemName, itemQty) => {
+    // handle if qty is 1 and user press decrment
+    if (itemQty === 1) {
+      setPopupItem({ itemName, itemId });
+    } else {
+      setCartItems((prevItems) =>
+        prevItems.map((item) =>
+          item.id === itemId && item.qty > 0
+            ? { ...item, qty: item.qty - 1 }
+            : item
+        )
+      );
+    }
   };
+
+  // map out cart items
   const CartItems = () => (
     <div className="cart-container">
       {cartItems.map((item, i) => {
@@ -50,7 +69,7 @@ function Cart() {
               alt=""
             ></img>
             <div>
-              <p>
+              <p className="rem-top-margin">
                 {itemName}
                 <br></br> instock
               </p>
@@ -59,7 +78,7 @@ function Cart() {
                   src={minusICON}
                   alt="subtract item"
                   className="mouse-hover"
-                  onClick={() => handleDecrement(item.id)}
+                  onClick={() => handleDecrement(item.id, itemName, item.qty)}
                 ></img>
                 <p className="item-amount poppins-bigger bold">{item.qty}</p>
                 <img
@@ -70,7 +89,9 @@ function Cart() {
                 ></img>
               </div>
             </div>
-            <p className="align-right poppins-bigger">${itemPrice}</p>
+            <p className="align-right poppins-bigger rem-top-margin">
+              ${itemPrice}
+            </p>
           </div>
         );
       })}
@@ -91,6 +112,29 @@ function Cart() {
     return t.toFixed(2);
   };
 
+  // Delete cart function
+  const Popup = () => (
+    <div className="popup-background">
+      <div className="cart-popup">
+        <p>Delete this item from your cart?</p>
+        <p className="bold">{popupItem.itemName}</p>
+        <button onClick={() => setPopupItem()}>Cancel</button>
+        <button
+          onClick={() => deleteItem(popupItem.itemId)}
+          className="red-btn"
+        >
+          Delete Item
+        </button>
+      </div>
+    </div>
+  );
+  const deleteItem = (itemId) => {
+    const newArray = cartItems.filter((item) => item.id !== itemId);
+    setCartItems(newArray);
+    setPopupItem();
+    // Backend: save cart here
+  };
+
   const EmptyCart = () => (
     <div className="center-children empty-cart poppins-bigger">
       <p>You have no items in your cart!</p>
@@ -101,21 +145,25 @@ function Cart() {
       </Link>
     </div>
   );
+
+  // main code
   return (
     <div id="cart">
       {/* title */}
       <Shopheader htitle={"Cart"} />
-      {cartItems.length === 0 ? (
+      {popupItem && <Popup />}
+
+      {!cartItems.length ? (
         <EmptyCart />
       ) : (
         <main>
           <div>
-            <p>{cartItems.length} items in your cart</p>
+            <p>{countItems()} items in your cart</p>
             <CartItems />
           </div>
           <div className="subtotal poppins-bigger">
             <div className="col-2">
-              <p>Subtotal ({cartItems.length} items)</p>
+              <p>Subtotal ({countItems()} items)</p>
               <p>${calcTotal()}</p>
             </div>
             <Link to="/checkout">

@@ -30,11 +30,13 @@ function OrderPlaced() {
             ></img>
             <div className="ordered-item-info">
               <p>
-                <span style={{ fontWeight: "bold" }}>{itemName}</span>
+                <span>{itemName}</span>
                 <br></br>
                 <span style={{ fontSize: "13px" }}>quantity</span>
                 <br></br>
-                <span id="item-qty">{item.qty}</span>
+                <span id="item-qty" className="bold poppins-bigger">
+                  {item.qty}
+                </span>
               </p>
             </div>
             <p className="align-right">${item.price}</p>
