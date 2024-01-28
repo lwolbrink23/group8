@@ -1,5 +1,5 @@
 import React from 'react';
-import '../Styles/Popup.css'; // Assuming you create a CSS file for styling
+import '../Styles/Popup.css';
 
 const PopupBlog = ({ isOpen, closePopup }) => {
     if (!isOpen) return null;

@@ -68,6 +68,25 @@ function Home() {
   const openNews = () => setIsNewsOpen(true);
   const closeNews = () => setIsNewsOpen(false);
 
+  const [blogEmail, setBlogEmail] = useState('');
+  const [newsEmail, setNewsEmail] = useState('');
+
+  // Functions to handle input changes
+  const handleBlogEmailChange = (e) => {
+    setBlogEmail(e.target.value);
+  };
+
+  const handleNewsEmailChange = (e) => {
+    setNewsEmail(e.target.value);
+  };
+
+  const buttonBlogStyle = {
+    color: blogEmail ? 'black' : '#646464', // Black when clickable, light grey when not
+  };
+
+  const buttonNewsStyle = {
+    color: newsEmail ? 'black' : '#646464', // Black when clickable, light grey when not
+  };
   return (
     <div className="App">
       <div className="carousel-container-mobile">
@@ -217,8 +236,10 @@ function Home() {
                 type="email"
                 placeholder="Enter your email"
                 className="blogInput"
+                value={blogEmail}
+                onChange={handleBlogEmailChange}
               />
-              <button type="button" className="blogButton" onClick={openBlog}>
+              <button type="button" className="blogButton" onClick={openBlog} disabled={!blogEmail} style={buttonBlogStyle}>
                 Subscribe
               </button>
               <PopUpBlog isOpen={isBlogOpen} closePopup={closeBlog} />
@@ -239,7 +260,7 @@ function Home() {
                 placeholder="Enter your email"
                 className="newsInput"
               />
-              <button type="button" className="blogButton" onClick={openNews}>
+              <button type="button" className="blogButton" onClick={openNews} disabled={!newsEmail} style={buttonNewsStyle}>
                 Subscribe
               </button>
               <PopUpNews isOpen={isNewsOpen} closePopup={closeNews} />
