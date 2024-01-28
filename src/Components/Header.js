@@ -16,9 +16,9 @@ function Header() {
   const [isHamburgerOpen, setHamburgerOpen] = useState(false);
   const menuRef = useRef();
 
-  {/* making side bar slide in and out */}
+  {/* making side bar slide in and out */ }
   const [isSidebarOpen, setIsSidebarOpen] = useState(false);
-    const sidebarRef = useRef(null);
+  const sidebarRef = useRef(null);
 
   useEffect(() => {
     const handleClickOutside = (event) => {
@@ -30,26 +30,26 @@ function Header() {
     document.addEventListener('mousedown', handleClickOutside);
 
     return () => {
-        document.removeEventListener('mousedown', handleClickOutside);
+      document.removeEventListener('mousedown', handleClickOutside);
     };
-    }, [isSidebarOpen]);
+  }, [isSidebarOpen]);
 
-    const toggleSidebar = () => {
-        setIsSidebarOpen(!isSidebarOpen); // Toggle sidebar state
-        setHamburgerOpen(!isHamburgerOpen); // Also toggle hamburger state for consistency
-      };
+  const toggleSidebar = () => {
+    setIsSidebarOpen(!isSidebarOpen); // Toggle sidebar state
+    setHamburgerOpen(!isHamburgerOpen); // Also toggle hamburger state for consistency
+  };
 
-      const handleHamburgerClick = () => {
-        toggleSidebar(); // Call toggleSidebar to handle both state and animation
-      }
+  const handleHamburgerClick = () => {
+    toggleSidebar(); // Call toggleSidebar to handle both state and animation
+  }
 
-      useEffect(() => {
+  useEffect(() => {
     if (isSidebarOpen) {
-        sidebarRef.current.style.animationName = 'slideIn';
+      sidebarRef.current.style.animationName = 'slideIn';
     } else {
-        sidebarRef.current.style.animationName = 'slideOut';
+      sidebarRef.current.style.animationName = 'slideOut';
     }
-}, [isSidebarOpen]);
+  }, [isSidebarOpen]);
 
 
   return (
@@ -90,10 +90,18 @@ function Header() {
               </Link>
             </li>
             <li>
-              <a href="/ourstory" className="about-link">
-                <img src={abouticon} alt="about icon" className="icon-mobile" />
-                About
-              </a>
+              <div id="about-web">
+                <a href="/ourstory" className="about-link">
+                  <img src={abouticon} alt="about icon" className="icon-mobile" />
+                  About
+                </a>
+              </div>
+              <div id="about-mobile">
+                <a href="#" className="about-link">
+                  <img src={abouticon} alt="about icon" className="icon-mobile" />
+                  About
+                </a>
+              </div>
               <ul>
                 <li>
                   <CustomLink to="/ourstory">Our Story</CustomLink>
@@ -135,14 +143,26 @@ function Header() {
               </CustomLink>
             </li>
             <li>
-              <CustomLink to="/account">
-                <img
-                  src={profileicon}
-                  alt="profile icon"
-                  className="icon-mobile"
-                />
-                Account
-              </CustomLink>
+              <div id="account-web">
+                <CustomLink to="/account">
+                  <img
+                    src={profileicon}
+                    alt="profile icon"
+                    className="icon-mobile"
+                  />
+                  Account
+                </CustomLink>
+              </div>
+              <div id="account-mobile">
+                <CustomLink to="#">
+                  <img
+                    src={profileicon}
+                    alt="profile icon"
+                    className="icon-mobile"
+                  />
+                  Account
+                </CustomLink>
+              </div>
               <ul>
                 <li>
                   <CustomLink to="/Login">Login</CustomLink>
