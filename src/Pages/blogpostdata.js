@@ -15,16 +15,13 @@ function BlogPostData() {
   );
 
   if (!blogPost) {
-    // Handle the case where the blog post with the specified id is not found
     return <div>Blog post not found</div>;
   }
 
-  // Map category to the corresponding image
   const categoryToImage = {
     hair: hairWashing,
     massage: relaxImage,
     makeup: allAgesImage,
-    // Add more categories as needed
   };
 
 return (
