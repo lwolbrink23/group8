@@ -7,8 +7,34 @@ import arrowIcon from "../assets/icons/white-arrow.svg";
 import { useState } from "react";
 
 function Checkout() {
-  // radio button stuff
+  // backend: check if user logged in. if logged in, get their info from the database and autofill in userAns
+  // const [userAns, setUserAns] = useState({
+  //   personal: {
+  //     firstName: "",
+  //     lastName: "",
+  //     phone: "",
+  //   },
+  //   address: { street: "", city: "", state: "", zip: "" },
+  //   payment: {
+  //     option: "",
+  //     cardNumber: "",
+  //     mm: "",
+  //     yy: "",
+  //     cvc: "",
+  //     name: "",
+  //   },
+  // });
+
   const [selectedOption, setSelectedOption] = useState(null);
+
+  // form val
+  // const isAnyFieldEmpty = Object.values(userAns)
+  //   .flat(Infinity)
+  //   .some((value) => value === "");
+
+  const validateValues = () => {};
+
+  // radio button stuff
   const options = [
     { id: "applePay", label: "Pay with Apple Pay" },
     { id: "paypal", label: "Pay with Paypal" },
@@ -95,7 +121,7 @@ function Checkout() {
   const taxes = subtotal() * 0.06;
   const shipCost = 14;
   const total = subtotal() + taxes + shipCost;
-  console.log(`${subtotal()}, ${taxes}, ${shipCost}, ${total}`);
+  // console.log(`${subtotal()}, ${taxes}, ${shipCost}, ${total}`);
 
   // main stuff
   return (
@@ -175,7 +201,7 @@ function Checkout() {
                 <p>${total.toFixed(2)}</p>
               </div>
               <Link to={`/order_placed`}>
-                <button>Place Order</button>
+                <button disabled={false}>Place Order</button>
               </Link>
             </div>
           </div>
