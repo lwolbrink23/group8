@@ -8,6 +8,7 @@ import email from "../assets/icons/icons8-email-100 (1).png";
 import lock from "../assets/icons/icons8-password-100.png";
 import apptActionIcon from "../assets/icons/apptaction.svg";
 import PopupPassword from "../Components/PopUpPassword";
+import PopupSignOut from '../Components/PopUpSignOut.js';
 
 function Account() {
   function showAppointmentDetails() {
@@ -24,6 +25,10 @@ function Account() {
   const openContact = () => setIsContactOpen(true);
   const closeContact = () => setIsContactOpen(false);
 
+  const [isButtonOpen, setIsButtonOpen] = useState(false);
+
+  const openButton = () => setIsButtonOpen(true);
+  const closeButton = () => setIsButtonOpen(false);
 
   return (
     <div>
@@ -41,9 +46,10 @@ function Account() {
             <button type="button" className="editButton">
               Edit Profile
             </button>
-            <button type="button" className="signoutButton">
+            <button type="button" className="signoutButton" onClick={openButton}>
               Sign Out
             </button>
+            <PopupSignOut isOpen={isButtonOpen} closePopup={closeButton} />
           </div>
         </div>
         <div className="persInfoContainer">
