@@ -1,6 +1,6 @@
 import React from "react";
 import "../Styles/blogpost.css";
-import BackButton from "../Components/BackButton";
+import BackButton from "../src/Components/BackButton";
 import kneadRelax from "../assets/images/relax.jpeg";
 function BlogPost3() {
   return (

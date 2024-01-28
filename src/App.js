@@ -6,8 +6,7 @@ import OurStory from "./Pages/OurStory";
 import OurSuites from "./Pages/OurSuites";
 import OurServices from "./Pages/OurServices";
 import Blog from "./Pages/blog";
-import BlogPost from "./Pages/BlogPost";
-import BlogPost2 from "./Pages/BlogPost-two";
+import BlogPostData from "./Pages/blogpostdata";
 import BookNowDirectory from "./Pages/BookNowDirectory";
 import ProviderProfile from "./Pages/ProviderProfile";
 import ChicServices from "./Pages/ChicServices";
@@ -44,8 +43,7 @@ function App() {
           <Route path="/account" element={<Account />} />
           <Route path="/appointment/:id" element={<ApptDetails />} />
           <Route path="/blog" element={<Blog />} />
-          <Route path="/blogpost" element={<BlogPost />} />
-          <Route path="/blogpost_two" element={<BlogPost2 />} />
+          <Route path="/blog/blogpost/:category/:id" element={<BlogPostData />} />
           <Route path="/booknow" element={<BookNowDirectory />} />
           <Route path="/providerprofile/:id" element={<ProviderProfile />} />
           <Route

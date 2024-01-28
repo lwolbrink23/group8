@@ -2,7 +2,7 @@ import React from "react";
 import "../Styles/blogpost.css";
 import hairWashing from "../assets/images/hairwashing.jpg"
 import hairPink from "../assets/images/hair-pinkbg.jpeg"
-import BackButton from "../Components/BackButton";
+import BackButton from "../src/Components/BackButton";
 
 function BlogPost() {
   return (
