@@ -79,23 +79,25 @@ function ContactUs() {
       <div className="bottom-container">
         <div className="contact-bottom-div">
           <h1 className="bottomh1">Follow Us</h1>
-          <p>
+          <p className="white-text-bottom-div">
             Stay updated with the latest trends - follow us on social media!
           </p>
           <div className="social-icons-web">
             <img src={fb} alt="facebook icon" className="contact-icons" />
 
-            <p>@TheSuiteSpotFB</p>
+            <p className="white-text-bottom-div">@TheSuiteSpotFB</p>
             <img src={insta} alt="instagram icon" className="contact-icons" />
-            <p>@TheSuiteSpotInsta</p>
+            <p className="white-text-bottom-div">@TheSuiteSpotInsta</p>
             <img src={tiktok} alt="TikTok icon" className="contact-icons" />
-            <p>@TheSuiteSpot</p>
+            <p className="white-text-bottom-div">@TheSuiteSpot</p>
           </div>
         </div>
         <div className="contact-bottom-div">
           <h1 className="bottomh1">Contact Us</h1>
 
-          <p>Contact us below and a manager will get back to you.</p>
+          <p className="white-text-bottom-div">
+            Contact us below and a manager will get back to you.
+          </p>
 
           <form className="bottom-formarea">
             <label htmlFor="name"></label>
