@@ -1,0 +1,47 @@
+/*Web design*/
+@media screen and (min-width: 767px) {
+    .contact-icons {
+        display: flex;
+        justify-content: center;
+        margin-left: auto;
+        margin-right: auto;
+        width: 40px;
+    }
+
+    .social-icons {
+        display: flex;
+        justify-content: center;
+        margin-left: auto;
+        margin-right: auto;
+        width: 50%;
+    }
+
+    .follow-us-container {
+        background-color: #5C5C5C;
+        box-shadow: 0 8px 8px rgba(0, 0, 0, 0.1);
+        color: white;
+    }
+
+}
+
+@media screen and (max-width: 767px) {
+    .follow-us-container {
+        display: none;
+    }
+
+    .contact-icons {
+        display: flex;
+        justify-content: center;
+        margin-left: auto;
+        margin-right: auto;
+        width: 40px;
+    }
+
+    .social-icons {
+        display: flex;
+        justify-content: center;
+        margin-left: auto;
+        margin-right: auto;
+        width: 50%;
+    }
+}
