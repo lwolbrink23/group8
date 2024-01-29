@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { Link, useLocation } from "react-router-dom";
+import PopUpBlog from '../Components/PopUpBlog.js';
 import "../App.css";
 import "../Styles/blog.css";
 import BlogPosts from "../data/blogposts.json";
@@ -32,6 +33,24 @@ function Blog() {
 
   const categories = ["Hair", "Nails", "Makeup", "Massage"];
 
+  const [isBlogOpen, setIsBlogOpen] = useState(false);
+
+  const openBlog = () => setIsBlogOpen(true);
+  const closeBlog = () => setIsBlogOpen(false);
+
+  // State to keep track of the input value
+  const [inputValue, setInputValue] = useState('');
+
+  // Function to update the state based on input changes
+  const handleInputChange = (event) => {
+    setInputValue(event.target.value);
+  };
+
+  // change button text color when disabled
+  const buttonStyle = {
+    color: inputValue ? 'black' : '#646464', // Black when clickable, light grey when not
+  };
+
   return (
       <div>
         <ScrollToTop />
@@ -43,15 +62,18 @@ function Blog() {
             <p className="sub-text">Stay up to date with the latest news from The Suite Spot!</p>
             {/* Background image added in CSS*/}
             <form className="subscribe">
-              <input type="text" id="email" placeholder="Enter your email" className="email" />
+              <input type="text" id="email" placeholder="Enter your email" className="email" value={inputValue} onChange={handleInputChange} />
               <button
-                type="button" className="sub-button"
-                onClick={() => alert('Thank you for subscribing to our blog!')}
+                type="button"
+                style={buttonStyle}
+                disabled={!inputValue}
+                onClick={openBlog}
               >
                 Subscribe
               </button>
             </form>
           </div>
+          <PopUpBlog isOpen={isBlogOpen} closePopup={closeBlog} />
           <div className="overlay-box"></div>
         </div>
               <div className="filter-dropdown">

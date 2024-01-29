@@ -16,9 +16,9 @@ function Header() {
   const [isHamburgerOpen, setHamburgerOpen] = useState(false);
   const menuRef = useRef();
 
-  {/* making side bar slide in and out */}
+  {/* making side bar slide in and out */ }
   const [isSidebarOpen, setIsSidebarOpen] = useState(false);
-    const sidebarRef = useRef(null);
+  const sidebarRef = useRef(null);
 
   useEffect(() => {
     const handleClickOutside = (event) => {
@@ -30,26 +30,35 @@ function Header() {
     document.addEventListener('mousedown', handleClickOutside);
 
     return () => {
-        document.removeEventListener('mousedown', handleClickOutside);
+      document.removeEventListener('mousedown', handleClickOutside);
     };
-    }, [isSidebarOpen]);
+  }, [isSidebarOpen]);
 
-    const toggleSidebar = () => {
-        setIsSidebarOpen(!isSidebarOpen); // Toggle sidebar state
-        setHamburgerOpen(!isHamburgerOpen); // Also toggle hamburger state for consistency
-      };
-
-      const handleHamburgerClick = () => {
-        toggleSidebar(); // Call toggleSidebar to handle both state and animation
-      }
-
-      useEffect(() => {
+  const toggleSidebar = () => {
     if (isSidebarOpen) {
-        sidebarRef.current.style.animationName = 'slideIn';
+      sidebarRef.current.style.animationName = 'slideOut';
+      setTimeout(() => {
+        setIsSidebarOpen(false);
+        setHamburgerOpen(false);
+      }, 800)
     } else {
-        sidebarRef.current.style.animationName = 'slideOut';
+      setIsSidebarOpen(true);
+      setHamburgerOpen(true);
+      sidebarRef.current.style.animationName = 'slideIn';
     }
-}, [isSidebarOpen]);
+  };
+
+  const handleHamburgerClick = () => {
+    toggleSidebar(); // Call toggleSidebar to handle both state and animation
+  }
+
+  useEffect(() => {
+    if (isSidebarOpen) {
+      sidebarRef.current.style.animationName = 'slideIn';
+    } else {
+      sidebarRef.current.style.animationName = 'slideOut';
+    }
+  }, [isSidebarOpen]);
 
 
   return (
@@ -84,48 +93,56 @@ function Header() {
         <nav ref={sidebarRef} className="sidebar">
           <ul className={isHamburgerOpen ? "show" : ""}>
             <li>
-              <Link to="/" >
+              <Link to="/" onClick={toggleSidebar}>
                 <img src={homeicon} alt="home icon" className="icon-mobile" />
                 Home
               </Link>
             </li>
             <li>
-              <a href="/ourstory" className="about-link">
-                <img src={abouticon} alt="about icon" className="icon-mobile" />
-                About
-              </a>
+              <div id="about-web">
+                <a href="/ourstory" className="about-link">
+                  <img src={abouticon} alt="about icon" className="icon-mobile" />
+                  About
+                </a>
+              </div>
+              <div id="about-mobile">
+                <a href="#" className="about-link">
+                  <img src={abouticon} alt="about icon" className="icon-mobile" />
+                  About
+                </a>
+              </div>
               <ul>
                 <li>
-                  <CustomLink to="/ourstory">Our Story</CustomLink>
+                  <CustomLink to="/ourstory" onClick={toggleSidebar}>Our Story</CustomLink>
                 </li>
                 <li>
-                  <CustomLink to="/oursuites">Our Suites</CustomLink>
+                  <CustomLink to="/oursuites" onClick={toggleSidebar}>Our Suites</CustomLink>
                 </li>
                 <li>
-                  <CustomLink to="/ourservices">Our Services</CustomLink>
+                  <CustomLink to="/ourservices" onClick={toggleSidebar}>Our Services</CustomLink>
                 </li>
               </ul>
             </li>
             <li>
-              <CustomLink to="/blog">
+              <CustomLink to="/blog" onClick={toggleSidebar}>
                 <img src={blogicon} alt="blog icon" className="icon-mobile" />
                 Blog
               </CustomLink>
             </li>
             <li>
-              <CustomLink to="/faqs">
+              <CustomLink to="/faqs" onClick={toggleSidebar}>
                 <img src={faqicon} alt="FAQ icon" className="icon-mobile" />
                 FAQ's
               </CustomLink>
             </li>
             <li>
-              <CustomLink to="/shop">
+              <CustomLink to="/shop" onClick={toggleSidebar}>
                 <img src={shopicon} alt="shop icon" className="icon-mobile" />
                 Shop
               </CustomLink>
             </li>
             <li>
-              <CustomLink to="/contactus" className="contact-link">
+              <CustomLink to="/contactus" className="contact-link" onClick={toggleSidebar}>
                 <img
                   src={contacticon}
                   alt="contact us icon"
@@ -135,23 +152,35 @@ function Header() {
               </CustomLink>
             </li>
             <li>
-              <CustomLink to="/account">
-                <img
-                  src={profileicon}
-                  alt="profile icon"
-                  className="icon-mobile"
-                />
-                Account
-              </CustomLink>
+              <div id="account-web">
+                <CustomLink to="/account">
+                  <img
+                    src={profileicon}
+                    alt="profile icon"
+                    className="icon-mobile"
+                  />
+                  Account
+                </CustomLink>
+              </div>
+              <div id="account-mobile">
+                <CustomLink to="#">
+                  <img
+                    src={profileicon}
+                    alt="profile icon"
+                    className="icon-mobile"
+                  />
+                  Account
+                </CustomLink>
+              </div>
               <ul>
                 <li>
-                  <CustomLink to="/Login">Login</CustomLink>
+                  <CustomLink to="/Login" onClick={toggleSidebar}>Login</CustomLink>
                 </li>
                 <li>
-                  <CustomLink to="/SignUp">Sign Up</CustomLink>
+                  <CustomLink to="/SignUp" onClick={toggleSidebar}>Sign Up</CustomLink>
                 </li>
                 <li>
-                  <CustomLink to="/Account">Account</CustomLink>
+                  <CustomLink to="/Account" onClick={toggleSidebar}>Account</CustomLink>
                 </li>
               </ul>
             </li>

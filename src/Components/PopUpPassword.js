@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import '../Styles/Popup.css'; // Assuming you create a CSS file for styling
+import '../Styles/Popup.css';
 
 const PopupPassword = ({ isOpen, closePopup }) => {
 

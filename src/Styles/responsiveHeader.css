@@ -1,5 +1,5 @@
 /* Styles for smaller screens (mobile) */
-@media screen and (max-width: 767px) {
+@media screen and (max-width: 950px) {
 
     nav {
         display: none;/*hide nav at first*/
@@ -11,6 +11,13 @@
         right: 0;
         z-index: 999;
         text-align: center;
+    }
+
+    #about-web {
+        display:none
+    }
+    #account-web {
+        display: none
     }
 
     .header-container.mobile-open nav {
@@ -129,14 +136,14 @@
   }
 
   .sidebar {
-      animation-duration: 0.5s;
+      animation-duration: 0.8s;
       animation-fill-mode: forwards;
   }
 }
 
 
 /* Styles for larger screens */
-@media screen and (min-width: 767px) {
+@media screen and (min-width: 950px) {
     .profile-icon-mobile {
         display: none;
     }
@@ -149,5 +156,12 @@
     display: none;
     }
 
+    #about-mobile {
+        display: none
+    }
+
+    #account-mobile {
+        display: none
+    }
 
 }
