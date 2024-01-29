@@ -39,6 +39,18 @@ function ContactUs() {
     setMessageValue(event.target.value);
   };
 
+  const resetForm = () => {
+    setNameValue("");
+    setEmailValue("");
+    setSubjectValue("");
+    setMessageValue("");
+  };
+
+  const handleSendMessage = () => {
+    openContact();
+    resetForm();
+  };
+
   // change button text color when disabled
   const buttonStyle = {
     color:
@@ -113,7 +125,7 @@ function ContactUs() {
             ></textarea>
             <button
               type="button"
-              onClick={openContact}
+              onClick={handleSendMessage}
               style={buttonStyle}
               disabled={
                 !nameValue || !emailValue || !subjectValue || !messageValue
@@ -185,7 +197,7 @@ function ContactUs() {
             ></textarea>
             <button
               type="button"
-              onClick={openContact}
+              onClick={handleSendMessage}
               style={buttonStyle}
               disabled={
                 !nameValue || !emailValue || !subjectValue || !messageValue
