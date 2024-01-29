@@ -1,15 +1,17 @@
 import React, { useState } from "react";
 import "../App.css";
 import "../Styles/SignUp.css";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 
 function SignUp() {
+  const navigate = useNavigate();
   const [firstNameValue, setFirstNameValue] = useState("");
   const [lastNameValue, setLastNameValue] = useState("");
   const [emailValue, setEmailValue] = useState("");
   const [phoneValue, setPhoneValue] = useState("");
   const [pwValue, setPwValue] = useState("");
   const [confPwValue, setConfPwValue] = useState("");
+  const [passwordsMatchError, setPasswordsMatchError] = useState(false);
 
   const handleFirstNameInputChange = (event) => {
     setFirstNameValue(event.target.value);
@@ -29,10 +31,14 @@ function SignUp() {
 
   const handlePwInputChange = (event) => {
     setPwValue(event.target.value);
+    // Reset passwords match error when password changes
+    setPasswordsMatchError(false);
   };
 
   const handleConfPwInputChange = (event) => {
     setConfPwValue(event.target.value);
+    // Reset passwords match error when confirm password changes
+    setPasswordsMatchError(false);
   };
 
   const resetForm = () => {
@@ -41,15 +47,33 @@ function SignUp() {
     setEmailValue("");
     setPwValue("");
     setConfPwValue("");
+    setPasswordsMatchError(false);
   };
 
   const handleSignUp = () => {
+    // Check if passwords match
+    if (pwValue !== confPwValue) {
+      setPasswordsMatchError(true);
+      return; // Stop sign-up process if passwords don't match
+    }
+
+    // Perform sign-up logic here
+    // ...
+
+    // Reset form after successful sign-up
     resetForm();
+    // Redirect to the account page
+    navigate("/Account");
   };
 
   const buttonStyle = {
     color:
-      firstNameValue && lastNameValue && emailValue && pwValue && confPwValue
+      firstNameValue &&
+      lastNameValue &&
+      emailValue &&
+      pwValue &&
+      confPwValue &&
+      !passwordsMatchError
         ? "black"
         : "#646464",
   };
@@ -104,7 +128,7 @@ function SignUp() {
           </div>
           <label htmlFor="password">Password</label>
           <input
-            type="text"
+            type="password" // Change type to password for secure input
             className="textarea"
             id="password"
             value={pwValue}
@@ -113,38 +137,34 @@ function SignUp() {
           <br></br>
           <label htmlFor="confirm">Confirm Password</label>
           <input
-            type="text"
+            type="password" // Change type to password for secure input
             className="textarea"
             id="confirm"
             value={confPwValue}
             onChange={handleConfPwInputChange}
           />
+          {passwordsMatchError && (
+            <p style={{ color: "red" }}>
+              Passwords do not match. Please try again.
+            </p>
+          )}
           <br></br>
-          <Link
-            to="/Account"
-            style={{
-              display: "flex",
-              justifyContent: "center",
-              alignItems: "center",
-              textDecorationLine: "none",
-            }}
+
+          <button
+            type="button"
+            style={buttonStyle}
+            disabled={
+              !firstNameValue ||
+              !lastNameValue ||
+              !emailValue ||
+              !phoneValue ||
+              !pwValue ||
+              !confPwValue
+            }
+            onClick={handleSignUp}
           >
-            <button
-              type="button"
-              style={buttonStyle}
-              disabled={
-                !firstNameValue ||
-                !lastNameValue ||
-                !emailValue ||
-                !phoneValue ||
-                !pwValue ||
-                !confPwValue
-              }
-              onClick={handleSignUp}
-            >
-              Sign Up
-            </button>
-          </Link>
+            Sign Up
+          </button>
         </form>
       </div>
       <div className="text-container">
