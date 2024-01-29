@@ -20,7 +20,7 @@ function ContactUs() {
   return (
     <div>
       <div className="contactinfo-container">
-        <h1>Contact Us</h1>
+        <h1 className="toph1">Contact Us</h1>
         <p className='p'>
           Phone:
         </p>
@@ -81,42 +81,6 @@ function ContactUs() {
           @TheSuiteSpot
         </p>
       </div>
-
-      <div className="follow-us-container">
-        <h1>Follow Us</h1>
-        <p>
-          Stay updated with the latest trends - follow us on social media!
-        </p>
-        <div className="social-icons">
-          <img
-            src={fb}
-            alt="facebook icon"
-            className="contact-icons"
-          />
-          <p>
-            @TheSuiteSpotFB
-          </p>
-          <img
-            src={insta}
-            alt="instagram icon"
-            className="contact-icons"
-          />
-          <p>
-            @TheSuiteSpotInsta
-          </p>
-          <img
-            src={tiktok}
-            alt="TikTok icon"
-            className="contact-icons"
-          />
-          <p>
-            @TheSuiteSpot
-          </p>
-        </div>
-        <p className='p'>
-          @TheSuiteSpot
-        </p>
-      </div>
       <div className='container'>
         <div className="rent-section">
           <h1>Contact Us</h1>
@@ -141,6 +105,62 @@ function ContactUs() {
           </form>
         </div>
       </div>
+      <div className="bottom-container">
+        <div className="blog-div">
+          <h1>Follow Us</h1>
+          <p>
+            Stay updated with the latest trends - follow us on social media!
+          </p>
+          <div className="social-icons-web">
+            <img
+              src={fb}
+              alt="facebook icon"
+              className="contact-icons"
+            />
+            <p>
+              @TheSuiteSpotFB
+            </p>
+            <img
+              src={insta}
+              alt="instagram icon"
+              className="contact-icons"
+            />
+            <p>
+              @TheSuiteSpotInsta
+            </p>
+            <img
+              src={tiktok}
+              alt="TikTok icon"
+              className="contact-icons"
+            />
+            <p>
+              @TheSuiteSpot
+            </p>
+          </div>
+        </div>
+        <div className="blog-div">
+          <h1>Contact Us</h1>
+          <div className='pmain'>
+            <p>
+              Contact us below and a manager will get back to you.
+            </p>
+          </div>
+          <form className="formarea">
+            <label htmlFor='name'></label>
+            <input type="text" className='fields' id="name" placeholder="Name" />
+            <label htmlFor='email'></label>
+            <input type="text" className='fields' id="email" placeholder="Email" />
+            <label htmlFor='subject'></label>
+            <input type="text" className='fields' id="subject" placeholder="Subject" />
+            <label htmlFor='message'></label>
+            <textarea className='fields' placeholder="Message"></textarea>
+            <button type="button" onClick={openContact}>
+              Send Message
+            </button>
+            <PopupContact isOpen={isContactOpen} closePopup={closeContact} />
+          </form>
+        </div>
+      </div >
     </div >
   );
 }

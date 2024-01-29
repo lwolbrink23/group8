@@ -1,6 +1,21 @@
 /*Web design*/
 @media screen and (min-width: 767px) {
+    /*need to fix web contact form*/
+
+    .toph1 {
+        display: none;
+    }
+
+    h1 {
+        color: white;
+    }
+
+    .rent-section {
+        display: none;
+    }
+
     .contact-icons {
+        /* need icons to be side by side and bigger */
         display: flex;
         justify-content: center;
         margin-left: auto;
@@ -9,6 +24,11 @@
     }
 
     .social-icons {
+        display: none;
+    }
+
+    .social-icons-web {
+        /*need these to be stacked on top of each other*/
         display: flex;
         justify-content: center;
         margin-left: auto;
@@ -22,9 +42,16 @@
         color: white;
     }
 
+
+
 }
 
+/*mobile styles*/
 @media screen and (max-width: 767px) {
+    .blog-div {
+        display: none;
+    }
+
     .follow-us-container {
         display: none;
     }
