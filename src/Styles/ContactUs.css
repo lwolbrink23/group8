@@ -76,6 +76,23 @@
 
 /*mobile styles*/
 @media screen and (max-width: 767px) {
+    .contact-us-mobile {
+        align-items: center;
+        background-color: #5C5C5C;
+        box-shadow: 0 8px 8px rgba(0, 0, 0, 0.1);
+        color: white;
+        width: 100%;
+        
+    }
+
+    .contact-us-mobile p {
+        text-align: center;
+        display: flex;
+        justify-content: center;
+        margin-left: auto;
+        margin-right: auto;
+        }
+
     .contact-bottom-div {
         display: none;
     }

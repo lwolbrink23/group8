@@ -43,9 +43,8 @@ function ContactUs() {
       <div className="container">
         <div className="contact-us-mobile">
           <h1>Contact Us</h1>
-          <div className="pmain">
-            <p>Contact us below and a manager will get back to you.</p>
-          </div>
+
+          <p>Contact us below and a manager will get back to you.</p>
           <form className="formarea">
             <label htmlFor="name"></label>
             <input
