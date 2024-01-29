@@ -18,14 +18,14 @@
     position: relative;
     margin: 0 auto;
     flex-shrink: 0;
-    background: lightgray url("../assets/images/flower.jpeg") center/cover no-repeat;
+    background: lightgray url("../assets/images/flower.jpeg") center/cover
+      no-repeat;
     box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
   }
 
   .inner-container {
     padding: 0 20px;
   }
-
 
   .overlay-box {
     display: flex;
@@ -61,7 +61,7 @@
   .sub-text {
     padding-left: 85px;
     width: 339px;
-    font-family: 'Poppins';
+    font-family: "Poppins";
     font-size: 16px;
     font-style: normal;
     font-weight: 400;
@@ -72,7 +72,7 @@
 
   .subscribe {
     width: 339px;
-    font-family: 'Poppins';
+    font-family: "Poppins";
     font-size: 16px;
     font-style: normal;
     font-weight: 400;
@@ -89,100 +89,87 @@
     width: 222px;
     height: 51px;
     flex-shrink: 0;
-    margin-right: 10px
+    margin-right: 10px;
   }
 
   #email::placeholder {
     color: #000;
-    font-family: 'Poppins';
+    font-family: "Poppins";
     font-size: 14px;
     font-style: normal;
     font-weight: 400;
     line-height: normal;
   }
 
-.posts-container {
-  display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-  gap: 20px;
-  /* Adjust the gap between items as needed */
-  font-size: 14px;
-  list-style-type: none;
-  margin: 0 auto;
-  /* Center the container horizontally */
-  margin-bottom: 55px;
-  padding: 0 20px;
-  /* Add padding to the left and right */
-  max-width: 1200px;
-  /* Set a max-width if needed */
-}
-
-.Hair,
-.Massage,
-.Makeup {
-  background: #fff;
-  box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
-  height: auto;
-  /* Adjust to allow content to determine height */
-  flex-shrink: 0;
-  padding: 20px;
-  box-sizing: border-box;
-  /* Include padding and border in the width */
-  display: flex;
-  flex-direction: column;
-}
-
-.Hair img,
-.Massage img,
-.Makeup img{
-  box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
-  max-width: 100%;
-  /* Ensure images don't exceed their container */
-  height: 200px;
-  /* Maintain aspect ratio */
-}
-
-.Hair p,
-.Massage p,
-.Makeup p {
-  flex-grow: 1;
-  /* Allow text content to grow as needed */
-  font-family: Poppins;
-  font-size: 12px;
-  font-style: normal;
-  font-weight: 400;
-  line-height: normal;
-  margin-top: 10px;
-  /* Adjust spacing as needed */
-}
-
-.Hair h3,
-.Massage h3,
-.Makeup h3 {
-  color: var(--Vampire-Black, #090b0a);
-  text-align: start;
-  word-wrap: break-word;
-    white-space: normal;
-  font-family: Poppins;
-  font-size: 15px;
-  margin-bottom: 10px;
-  /* Adjust spacing as needed */
-}
-
-.Hair button,
-.Massage button,
-.Makeup button {
-  display: block;
-    margin-left: auto;
-    /* Adjusted margin to align buttons to the right */
-    margin-top: auto;
-}
-  #category {
-    width: 170px;
-      height: 41px;
-      flex-shrink: 0;
+  .posts-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: 20px;
+    font-size: 14px;
+    list-style-type: none;
+    margin: 0 auto;
+    margin-bottom: 55px;
+    padding: 0 20px;
+    max-width: 1200px;
   }
 
+  .Hair,
+  .Massage,
+  .Makeup {
+    background: #fff;
+    box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
+    height: auto;
+    flex-shrink: 0;
+    padding: 20px;
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: column;
+  }
+
+  .Hair img,
+  .Massage img,
+  .Makeup img {
+    box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
+    max-width: 100%;
+    height: 200px;
+  }
+
+  .Hair p,
+  .Massage p,
+  .Makeup p {
+    flex-grow: 1;
+    font-family: Poppins;
+    font-size: 12px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+    margin-top: 10px;
+  }
+
+  .Hair h3,
+  .Massage h3,
+  .Makeup h3 {
+    color: var(--Vampire-Black, #090b0a);
+    text-align: start;
+    word-wrap: break-word;
+    white-space: normal;
+    font-family: Poppins;
+    font-size: 15px;
+    margin-bottom: 10px;
+  }
+
+  .Hair button,
+  .Massage button,
+  .Makeup button {
+    display: block;
+    margin-left: auto;
+    margin-top: auto;
+  }
+  #category {
+    width: 170px;
+    height: 41px;
+    flex-shrink: 0;
+  }
 
   .filter-dropdown select {
     padding: 10px;
@@ -204,106 +191,102 @@
     padding-bottom: 30px;
   }
 
-
   .sub-text {
     text-align: center;
-    font-family: 'Poppins';
+    font-family: "Poppins";
     font-size: 15px;
     font-style: normal;
     font-weight: 400;
     line-height: normal;
     padding: 10px;
   }
- .subscribe {
-   display: flex;
-   flex-direction: column;
-   align-items: center;
-   width: 80%;
-   font-family: 'Poppins';
-   font-size: 14px;
-   font-style: normal;
-   font-weight: 400;
-   line-height: normal;
-   white-space: nowrap;
-   margin: 0 auto;
-   max-width: 500px;
- }
+  .subscribe {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 80%;
+    font-family: "Poppins";
+    font-size: 14px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+    white-space: nowrap;
+    margin: 0 auto;
+    max-width: 500px;
+  }
 
- .email {
-   width: 100%;
-   height: 40px;
-   margin-bottom: 10px;
-   padding: 8px;
-   box-sizing: border-box;
- }
+  .email {
+    width: 100%;
+    height: 40px;
+    margin-bottom: 10px;
+    padding: 8px;
+    box-sizing: border-box;
+  }
 
- .sub-button {
-   width: 100%;
-   height: 40px;
-   margin-top: 10px;
- }
- .posts-container {
-   display: flex;
-   flex-wrap: wrap;
-  justify-content: center;
- }
+  .sub-button {
+    width: 100%;
+    height: 40px;
+    margin-top: 10px;
+  }
+  .posts-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+  }
 
-    .filter-dropdown {
-      display: flex;
-      justify-content: flex-end;
-      margin: 10px -15px 10px -15px;
-      width: 100%;
-    }
-  
-    .filter-dropdown select {
-      padding: 10px;
-      font-family: 'Poppins';
-      font-size: 15px;
-      font-style: normal;
-      font-weight: 400;
-      line-height: 183%;
-      display: block;
-      margin-bottom: 10px;
-      width: 170px;
-    }
+  .filter-dropdown {
+    display: flex;
+    justify-content: flex-end;
+    margin: 10px -15px 10px -15px;
+    width: 100%;
+  }
 
-.Hair,
-.Massage,
-.Makeup {
-  display: flex;
+  .filter-dropdown select {
+    padding: 10px;
+    font-family: "Poppins";
+    font-size: 15px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 183%;
+    display: block;
+    margin-bottom: 10px;
+    width: 170px;
+  }
+
+  .Hair,
+  .Massage,
+  .Makeup {
+    display: flex;
     flex-direction: column;
     width: 80%;
     background: #fff;
     box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
     padding: 20px;
     margin: 20px 10px;
-}
+  }
 
-.Hair p,
-.Massage p,
-.Makeup p {
-
-  
-    font-family: 'Poppins';
+  .Hair p,
+  .Massage p,
+  .Makeup p {
+    font-family: "Poppins";
     font-size: 12px;
     font-style: normal;
     font-weight: 400;
     line-height: normal;
-}
-.Hair h3,
-.Massage h3,
-.Makeup h3 {
-  font-family: Poppins;
-  font-size: 15px;
-  word-wrap: break-word;
-  white-space: normal;
-}
+  }
+  .Hair h3,
+  .Massage h3,
+  .Makeup h3 {
+    font-family: Poppins;
+    font-size: 15px;
+    word-wrap: break-word;
+    white-space: normal;
+  }
 
-.Hair button,
-.Massage button,
-.Makeup button {
-  margin: 10px 0 10px auto;
+  .Hair button,
+  .Massage button,
+  .Makeup button {
+    margin: 10px 0 10px auto;
     display: block;
-}
-
+  }
 }

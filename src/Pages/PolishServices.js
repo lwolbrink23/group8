@@ -183,7 +183,7 @@ const SelectServices = () => {
         <div className="services-selected">
           <h2 className="service-title">{`${selectedServices.length} services selected`}</h2>
           <div className="line"></div>
-           <div className="text-container">
+           <div className="text-style">
           <ul>
             {selectedServices.map((service, index) => (
               <li key={index}>{service}</li>

@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { Link, useLocation } from "react-router-dom";
-import PopUpBlog from '../Components/PopUpBlog.js';
+import PopUpBlog from "../Components/PopUpBlog.js";
 import "../App.css";
 import "../Styles/blog.css";
 import BlogPosts from "../data/blogposts.json";
@@ -39,7 +39,7 @@ function Blog() {
   const closeBlog = () => setIsBlogOpen(false);
 
   // State to keep track of the input value
-  const [inputValue, setInputValue] = useState('');
+  const [inputValue, setInputValue] = useState("");
 
   // Function to update the state based on input changes
   const handleInputChange = (event) => {
@@ -48,65 +48,86 @@ function Blog() {
 
   // change button text color when disabled
   const buttonStyle = {
-    color: inputValue ? 'black' : '#646464', // Black when clickable, light grey when not
+    color: inputValue ? "black" : "#646464", // Black when clickable, light grey when not
   };
 
   return (
-      <div>
-        <ScrollToTop />
-        <div className="main-blog-page">
-          <div className="inner-container"></div>
-          <div className="bg-image"></div>
-          <div className="overlay-text">
-            <h1 className="header-1">Blog</h1>
-            <p className="sub-text">Stay up to date with the latest news from The Suite Spot!</p>
-            {/* Background image added in CSS*/}
-            <form className="subscribe">
-              <input type="text" id="email" placeholder="Enter your email" className="email" value={inputValue} onChange={handleInputChange} />
-              <button
-                type="button"
-                style={buttonStyle}
-                disabled={!inputValue}
-                onClick={openBlog}
-              >
-                Subscribe
-              </button>
-            </form>
-          </div>
-          <PopUpBlog isOpen={isBlogOpen} closePopup={closeBlog} />
-          <div className="overlay-box"></div>
+    <div>
+      <ScrollToTop />
+      <div className="main-blog-page">
+        <div className="inner-container"></div>
+        <div className="bg-image"></div>
+        <div className="overlay-text">
+          <h1 className="header-1">Blog</h1>
+          <p className="sub-text">
+            Stay up to date with the latest news from The Suite Spot!
+          </p>
+          {/* Background image added in CSS*/}
+          <form className="subscribe">
+            <input
+              type="text"
+              id="email"
+              placeholder="Enter your email"
+              className="email"
+              value={inputValue}
+              onChange={handleInputChange}
+            />
+            <button
+              type="button"
+              style={buttonStyle}
+              disabled={!inputValue}
+              onClick={openBlog}
+            >
+              Subscribe
+            </button>
+          </form>
         </div>
-              <div className="filter-dropdown">
-          <select
-            id="category"
-            onChange={(e) => handleFilter(e.target.value)}
-            value={selectedCategory}
-          >
-            <option value="Filter by Topic">Filter by Topic</option>
-            {categories.map((category) => (
-              <option key={category} value={category}>
-                {category.charAt(0).toUpperCase() + category.slice(1)}
-              </option>
-            ))}
-          </select>
-        </div>
+        <PopUpBlog isOpen={isBlogOpen} closePopup={closeBlog} />
+        <div className="overlay-box"></div>
+      </div>
+      <div className="filter-dropdown">
+        <select
+          id="category"
+          onChange={(e) => handleFilter(e.target.value)}
+          value={selectedCategory}
+        >
+          <option value="Filter by Topic">Filter by Topic</option>
+          {categories.map((category) => (
+            <option key={category} value={category}>
+              {category.charAt(0).toUpperCase() + category.slice(1)}
+            </option>
+          ))}
+        </select>
+      </div>
       <br />
       <div className="posts-container">
-        {BlogPosts.filter((post) => selectedCategory === "Filter by Topic" || post.category === selectedCategory)
-          .map((post, index) => (
-            <div key={index} className={`${post.category}`}>
-              {post.category === "Hair" && <img src={hairWashing} alt={`${post.title} - ${post.category}`} />}
-              {post.category === "Massage" && <img src={kneadRelax} alt={`${post.title} - ${post.category}`} />}
-              {post.category === "Makeup" && <img src={allAges} alt={`${post.title} - ${post.category}`} />}
-              <h3>
-                <b>{post.title}</b>
-              </h3>
-              <p>{post.blurb}</p>
-              <Link to={`/blog/blogpost/${post.category}/${post.id}`} onClick={scrollToTop}>
-                <button type="button">Read More</button>
-              </Link>
-            </div>
-          ))}
+        {BlogPosts.filter(
+          (post) =>
+            selectedCategory === "Filter by Topic" ||
+            post.category === selectedCategory,
+        ).map((post, index) => (
+          <div key={index} className={`${post.category}`}>
+            {post.category === "Hair" && (
+              <img src={hairWashing} alt={`${post.title} - ${post.category}`} />
+            )}
+            {post.category === "Massage" && (
+              <img src={kneadRelax} alt={`${post.title} - ${post.category}`} />
+            )}
+            {post.category === "Makeup" && (
+              <img src={allAges} alt={`${post.title} - ${post.category}`} />
+            )}
+            <h3>
+              <b>{post.title}</b>
+            </h3>
+            <p>{post.blurb}</p>
+            <Link
+              to={`/blog/blogpost/${post.category}/${post.id}`}
+              onClick={scrollToTop}
+            >
+              <button type="button">Read More</button>
+            </Link>
+          </div>
+        ))}
       </div>
     </div>
   );
