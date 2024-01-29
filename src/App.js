@@ -27,6 +27,7 @@ import SignUp from "./Pages/SignUp";
 import SelectTime from "./Pages/SelectTime";
 import Account from "./Pages/Account";
 import ApptDetails from "./Pages/ApptDetails";
+import ContactUs from "./Pages/ContactUs";
 import { Route, Routes } from "react-router-dom";
 
 // this is only the home page elements
@@ -40,6 +41,7 @@ function App() {
           <Route path="/ourstory" element={<OurStory />} />
           <Route path="/ourservices" element={<OurServices />} />
           <Route path="/oursuites" element={<OurSuites />} />
+          <Route path="/contact_us" element={<ContactUs />} />
           <Route path="/account" element={<Account />} />
           <Route path="/appointment/:id" element={<ApptDetails />} />
           <Route path="/blog" element={<Blog />} />
