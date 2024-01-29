@@ -1,9 +1,7 @@
+/*using this style sheet for contact us page too!*/
+
+
 /* Mobile Design */
-.contactinfo-container {
-    background-color: aquamarine;
-}
-
-
 @media screen and (max-width: 767px) {
     .blurb-container {
         text-align: center;
