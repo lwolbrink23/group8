@@ -30,10 +30,9 @@ function Blog() {
     setSelectedCategory(category);
   };
 
-  const categories = ["hair", "nails", "makeup", "massage"];
+  const categories = ["Hair", "Nails", "Makeup", "Massage"];
 
   return (
-    <div>
       <div>
         <ScrollToTop />
         <div className="main-blog-page">
@@ -55,8 +54,7 @@ function Blog() {
           </div>
           <div className="overlay-box"></div>
         </div>
-        <br />
-        <div className="filter-dropdown">
+              <div className="filter-dropdown">
           <select
             id="category"
             onChange={(e) => handleFilter(e.target.value)}
@@ -70,15 +68,14 @@ function Blog() {
             ))}
           </select>
         </div>
-      </div>
       <br />
       <div className="posts-container">
         {BlogPosts.filter((post) => selectedCategory === "Filter by Topic" || post.category === selectedCategory)
           .map((post, index) => (
             <div key={index} className={`${post.category}`}>
-              {post.category === "hair" && <img src={hairWashing} alt={`${post.title} - ${post.category}`} />}
-              {post.category === "massage" && <img src={kneadRelax} alt={`${post.title} - ${post.category}`} />}
-              {post.category === "makeup" && <img src={allAges} alt={`${post.title} - ${post.category}`} />}
+              {post.category === "Hair" && <img src={hairWashing} alt={`${post.title} - ${post.category}`} />}
+              {post.category === "Massage" && <img src={kneadRelax} alt={`${post.title} - ${post.category}`} />}
+              {post.category === "Makeup" && <img src={allAges} alt={`${post.title} - ${post.category}`} />}
               <h3>
                 <b>{post.title}</b>
               </h3>

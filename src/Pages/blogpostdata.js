@@ -19,23 +19,38 @@ function BlogPostData() {
   }
 
   const categoryToImage = {
-    hair: hairWashing,
-    massage: relaxImage,
-    makeup: allAgesImage,
+    Hair: hairWashing,
+    Massage: relaxImage,
+    Makeup: allAgesImage,
   };
+
+  const paragraphs = blogPost.content.split("\n\n");
 
 return (
   <div className="post1">
     <BackButton />
     <div className="post-general-info">
       <img src={categoryToImage[category]} alt={blogPost.title} className="main-image" />
-      {category === "hair" && (
-        <img className="pink-image" src={hairPink} alt="woman running fingers through her hair" />
-      )}
-      <h4 className="category">{blogPost.category}</h4>
-      <h4 className="author">{blogPost.author}</h4>
+      <h4 className="category">Category: {blogPost.category}</h4>
+      <h4 className="author">Author: {blogPost.author}</h4>
       <h2 className="art-title">{blogPost.title}</h2>
-      <div className="articles-contents">{blogPost.content}</div>
+      {/* Render the content as paragraphs */}
+        <div className="articles-contents">
+          {paragraphs.map((paragraph, index) => (
+            <p key={index}>
+              {paragraph}
+              {category === "Hair" && index === 2 && ( // Insert the pink image after the third paragraph
+                <div className="pink-image-container">
+                  <img
+                    className="pink-image"
+                    src={hairPink}
+                    alt="woman running fingers through her hair"
+                  />
+                </div>
+              )}
+            </p>
+          ))}
+</div>
     </div>
   </div>
 );
