@@ -1,5 +1,21 @@
 /*using this style sheet for contact us page too!*/
+.fields {
+    width: 100%;
+    box-sizing: border-box;
+    margin-bottom: 10px;
+    height: 40px;
+    font-family: "poppins";
+}
 
+textarea.fields {
+    height: 80px;
+    /* Set your desired height for the textarea */
+}
+
+textarea {
+    font-family: "poppins";
+
+}
 
 /*Web design*/
 @media screen and (min-width: 767px) {
@@ -166,11 +182,6 @@
         box-shadow: 0 8px 8px rgba(0, 0, 0, 0.1);
     }
 
-    .fields {
-        width: 100%;
-        box-sizing: border-box;
-        margin-bottom: 10px;
-    }
 
     label {
         margin-bottom: 5px;

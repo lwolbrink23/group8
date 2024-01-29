@@ -47,17 +47,14 @@ function ContactUs() {
             </p>
           </div>
           <form className="formarea">
-            <label htmlFor='name'>Name</label>
-            <input type="text" className='fields' id="name" />
-            <br />
-            <label htmlFor='email'>Email</label>
-            <input type="text" className='fields' id="email" />
-            <br />
-            <label htmlFor='subject'>Subject</label>
-            <input type="text" className='fields' id="subject" />
-            <br />
-            <label htmlFor='message'>Message</label>
-            <textarea className='fields'></textarea>
+            <label htmlFor='name'></label>
+            <input type="text" className='fields' id="name" placeholder="Name" />
+            <label htmlFor='email'></label>
+            <input type="text" className='fields' id="email" placeholder="Email" />
+            <label htmlFor='subject'></label>
+            <input type="text" className='fields' id="subject" placeholder="Subject" />
+            <label htmlFor='message'></label>
+            <textarea className='fields' placeholder="Message"></textarea>
             <button type="button" onClick={openContact}>
               Send Message
             </button>
