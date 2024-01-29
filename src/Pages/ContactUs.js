@@ -84,6 +84,7 @@ function ContactUs() {
           </p>
           <div className="social-icons-web">
             <img src={fb} alt="facebook icon" className="contact-icons" />
+
             <p>@TheSuiteSpotFB</p>
             <img src={insta} alt="instagram icon" className="contact-icons" />
             <p>@TheSuiteSpotInsta</p>

@@ -1,6 +1,6 @@
 /*Web design*/
 @media screen and (min-width: 767px) {
-    /*need to fix web contact form*/
+
     .bottom-formarea {
         width: 60%;
         display: flex;
@@ -63,7 +63,6 @@
     }
 
     .contact-icons {
-        /* need icons to be side by side and bigger */
         display: flex;
         justify-content: center;
         margin-left: auto;
@@ -75,14 +74,6 @@
         display: none;
     }
 
-    .social-icons-web {
-        /*need these to be stacked on top of each other*/
-        display: flex;
-        justify-content: center;
-        margin-left: auto;
-        margin-right: auto;
-        width: 50%;
-    }
 
     .follow-us-container {
         background-color: #5C5C5C;
@@ -90,6 +81,13 @@
         color: white;
     }
 
+
+    .social-icons-web p {
+    display: flex;
+    justify-content: center;
+    margin-left: auto;
+    margin-right: auto;
+    }
 
 
 }
