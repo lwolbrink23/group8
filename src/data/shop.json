@@ -10,7 +10,21 @@
     "about": "<li>Rejuvenating Serum: Formulated with nourishing ingredients to repair and strengthen each hair strand.</li><li>Specialized Shampoo: Gently cleanses, removing impurities while promoting a healthier scalp.</li><li>Moisture-Lock Conditioner: Works to lock in moisture, leaving your hair silky smooth and more resilient.</li>",
     "ingredients": "<p>Please refer to individual bottles for ingredient information.</p>",
     "revrating": "4.5",
-    "revamount": "42"
+    "revamount": "42",
+    "reviews": [
+    {
+      "user": "Sara Wilson",
+      "date": "10/15/23",
+      "profilepic": "wedding",
+      "comment": "This saved my damaged hair! I wish it came in bigger sizes."
+    },
+    {
+      "user": "Bob Wilson",
+      "date": "10/13/23",
+      "profilepic": "profile2",
+      "comment": "Love it."
+    }
+  ]
   },
   {
     "id": "iID1",
@@ -23,7 +37,21 @@
     "about": "<li>Nourishing Blend: Formulated with a potent blend of ingredients, this mask aims to revitalize, hydrate, and repair each strand.</li><li>Deep Penetration: The intensive treatment deeply penetrates each hair strand, leaving your hair feeling soft, manageable, and visibly rejuvenated.</li>",
     "ingredients": "<p>Water, Cetyl Alcohol, Behentrimonium Chloride, Shea Butter, Argan Oil, Panthenol, Aloe Vera Extract</p>",
     "revrating": "3.5",
-    "revamount": "22"
+    "revamount": "22",
+    "reviews": [
+    {
+      "user": "Sara Wilson",
+      "date": "10/15/23",
+      "profilepic": "",
+      "comment": "This saved my damaged hair! I wish it came in bigger sizes."
+    },
+    {
+      "user": "Billy Wilson",
+      "date": "10/13/23",
+      "profilepic": "",
+      "comment": "Love it."
+    }
+  ]
   },
   {
     "id": "iID2",
@@ -36,7 +64,21 @@
     "about": "<li>Preserve and enhance your hair color with our Color Protection Kit. This comprehensive kit includes a color-safe shampoo, conditioner, and a nourishing leave-in treatment. Specially formulated to extend the life of your color, leaving your hair vibrant, silky, and healthy.</li>",
     "ingredients": "<ul><li>Shampoo:<ul><li>Aqua (Water)</li><li>Sodium Lauroyl Sarcosinate</li><li>Cocamidopropyl Betaine</li><li>Glycerin</li><li>Polyquaternium-7</li><li>Panthenol</li><li>Fragrance</li></ul></li><li>Conditioner:<ul><li>Aqua (Water)</li><li>Cetearyl Alcohol</li><li>Behentrimonium Chloride</li><li>Glycerin</li><li>Dimethicone</li><li>Amodimethicone</li><li>Cetrimonium Chloride</li><li>Panthenol</li><li>Fragrance</li></ul></li><li>Leave-In Treatment:<ul><li>Aqua (Water)</li><li>Cyclopentasiloxane</li><li>Dimethicone</li><li>Argania Spinosa Kernel Oil</li><li>Hydrolyzed Keratin</li><li>Panthenol</li><li>Amodimethicone</li><li>Fragrance</li></ul></li></ul>",
     "revrating": "4.0",
-    "revamount": "87"
+    "revamount": "87",
+    "reviews": [
+    {
+      "user": "Sara Wilson",
+      "date": "10/15/23",
+      "profilepic": "",
+      "comment": "This saved my damaged hair! I wish it came in bigger sizes."
+    },
+    {
+      "user": "Billy Wilson",
+      "date": "10/13/23",
+      "profilepic": "",
+      "comment": "Love it."
+    }
+  ]
   },
   {
     "id": "iID3",
@@ -49,7 +91,21 @@
     "about": "<li>Provides strong hold and natural finish</li><li>Suitable for various hairstyles</li>",
     "ingredients": "<p>Lanolin, Beeswax, Castor Oil, Essential Oils, Water</p>",
     "revrating": "4.5",
-    "revamount": "24"
+    "revamount": "24",
+    "reviews": [
+    {
+      "user": "Sara Wilson",
+      "date": "10/15/23",
+      "profilepic": "",
+      "comment": "This saved my damaged hair! I wish it came in bigger sizes."
+    },
+    {
+      "user": "Billy Wilson",
+      "date": "10/13/23",
+      "profilepic": "",
+      "comment": "Love it."
+    }
+  ]
   },
   {
     "id": "iID4",
@@ -62,7 +118,21 @@
     "about": "<li>Enhances skin texture</li><li>Minimizes pores</li><li>Promotes healthy, even complexion</li>",
     "ingredients": "<p>Niacinamide (Vitamin B3), Hyaluronic Acid, Licorice Root Extract, Panthenol (Pro-Vitamin B5), Chamomile Extract, Glycerin, Green Tea Extract</p>",
     "revrating": "5.0",
-    "revamount": "42" 
+    "revamount": "42",
+    "reviews": [
+    {
+      "user": "Sara Wilson",
+      "date": "10/15/23",
+      "profilepic": "",
+      "comment": "This saved my damaged hair! I wish it came in bigger sizes."
+    },
+    {
+      "user": "Billy Wilson",
+      "date": "10/13/23",
+      "profilepic": "",
+      "comment": "Love it."
+    }
+  ]
   },
   {
     "id": "iID5",
@@ -75,7 +145,21 @@
     "about": "<li>Provides a radiant boost to the skin</li><li>Leaves skin refreshed and revitalized</li>",
     "ingredients": "<p>Aloe Vera Gel, Vitamin C, Hyaluronic Acid, and other ingredients</p>",
     "revrating": "5.0",
-    "revamount": "98"
+    "revamount": "98",
+    "reviews": [
+    {
+      "user": "Sara Wilson",
+      "date": "10/15/23",
+      "profilepic": "",
+      "comment": "This saved my damaged hair! I wish it came in bigger sizes."
+    },
+    {
+      "user": "Billy Wilson",
+      "date": "10/13/23",
+      "profilepic": "",
+      "comment": "Love it."
+    }
+  ]
   },
   {
     "id": "iID6",
@@ -88,7 +172,21 @@
     "about": "<li>Indulge your skin in daily luxury</li><li>Lightweight and fast-absorbing</li><li>Designed to keep skin moisturized and refreshed</li>",
     "ingredients": "<p>Shea Butter, Aloe Vera, Vitamin E, Coconut Oil, Chamomile Extract, Glycerin</p>",
     "revrating": "4.7",
-    "revamount": "30"
+    "revamount": "30",
+    "reviews": [
+    {
+      "user": "Sara Wilson",
+      "date": "10/15/23",
+      "profilepic": "",
+      "comment": "This saved my damaged hair! I wish it came in bigger sizes."
+    },
+    {
+      "user": "Billy Wilson",
+      "date": "10/13/23",
+      "profilepic": "",
+      "comment": "Love it."
+    }
+  ]
   },
   {
     "id": "iID7",
@@ -101,7 +199,21 @@
     "about": "<li>Indulge in the luxurious experience</li><li>Formulated with a blend of natural oils</li><li>Lightweight and fast-absorbing</li>",
     "ingredients": "<p>Sweet Almond Oil, Jojoba Oil, Argan Oil, Vitamin E, Lavender Essential Oil</p>",
     "revrating": "4.8",
-    "revamount": "25"
+    "revamount": "25",
+    "reviews": [
+    {
+      "user": "Sara Wilson",
+      "date": "10/15/23",
+      "profilepic": "",
+      "comment": "This saved my damaged hair! I wish it came in bigger sizes."
+    },
+    {
+      "user": "Billy Wilson",
+      "date": "10/13/23",
+      "profilepic": "",
+      "comment": "Love it."
+    }
+  ]
   },
   {
     "id": "iID8",
@@ -114,7 +226,21 @@
     "about": "<li>Includes essential makeup items for a flawless look</li><li>Suitable for all occasions</li>",
     "ingredients": "Please refer to individual packaging for product ingredients.",
     "revrating": "4.9",
-    "revamount": "36"
+    "revamount": "36",
+    "reviews": [
+    {
+      "user": "Sara Wilson",
+      "date": "10/15/23",
+      "profilepic": "",
+      "comment": "This saved my damaged hair! I wish it came in bigger sizes."
+    },
+    {
+      "user": "Billy Wilson",
+      "date": "10/13/23",
+      "profilepic": "",
+      "comment": "Love it."
+    }
+  ]
   },
   {
     "id": "iID9",
@@ -127,7 +253,21 @@
     "about": "<li>Comprehensive set of 11 brushes for various makeup applications</li><li>High-quality bristles for precise application and blending</li>",
     "ingredients": "N/A (The brushes are typically made from synthetic or natural bristles with handles made of various materials.)",
     "revrating": "5.0",
-    "revamount": "98"
+    "revamount": "98",
+    "reviews": [
+    {
+      "user": "Sara Wilson",
+      "date": "10/15/23",
+      "profilepic": "",
+      "comment": "This saved my damaged hair! I wish it came in bigger sizes."
+    },
+    {
+      "user": "Billy Wilson",
+      "date": "10/13/23",
+      "profilepic": "",
+      "comment": "Love it."
+    }
+  ]
   },
   {
     "id": "iID10",
@@ -140,7 +280,21 @@
     "about": "<li>Hydrating and revitalizing tonic for the skin</li><li>Lightweight and formulated for deep hydration</li>",
     "ingredients": "<p>Hyaluronic Acid, Aloe Vera Extract, Green Tea Extract, Witch Hazel, Chamomile Extract, Glycerin</p>",
     "revrating": "4.6",
-    "revamount": "72"
+    "revamount": "72",
+    "reviews": [
+    {
+      "user": "Sara Wilson",
+      "date": "10/15/23",
+      "profilepic": "",
+      "comment": "This saved my damaged hair! I wish it came in bigger sizes."
+    },
+    {
+      "user": "Billy Wilson",
+      "date": "10/13/23",
+      "profilepic": "",
+      "comment": "Love it."
+    }
+  ]
   },
   {
     "id": "iID11",
@@ -153,6 +307,20 @@
     "about": "<li>Transforms hair to nourish and strengthen</li><li>Adds a radiant shine and leaves hair feeling silky</li>",
     "ingredients": "<p>Argan Oil, Jojoba Oil, Coconut Oil, Vitamin E, Rosemary Extract, Peppermint Essential Oil</p>",
     "revrating": "4.9",
-    "revamount": "56"
+    "revamount": "56",
+    "reviews": [
+    {
+      "user": "Sara Wilson",
+      "date": "10/15/23",
+      "profilepic": "",
+      "comment": "This saved my damaged hair! I wish it came in bigger sizes."
+    },
+    {
+      "user": "Billy Wilson",
+      "date": "10/13/23",
+      "profilepic": "",
+      "comment": "Love it."
+    }
+  ]
   }
 ]

@@ -77,18 +77,18 @@ const SelectServices = () => {
         <img
           src={mugSpa}
           className="focus-image"
-          alt="woman getting her hair blow dried by a hair dresser"
+          alt="woman relaxing in a spa"
         />
         <div className="side-images-container">
           <img
             src={spaBlue}
             className="side-imagesH"
-            alt="woman getting her hair dyed by a hair dresser"
+            alt="woman using spa products"
           />
           <img
             src={relaxMassage}
             className="side-imagesH"
-            alt="man getting his hair cut my a barber"
+            alt="woman getting a massage"
           />
         </div>
       </div>

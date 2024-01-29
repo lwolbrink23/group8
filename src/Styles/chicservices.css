@@ -59,8 +59,8 @@
   }
 
   .check-mark {
-    width: 70px;
-    height: 70px;
+    width: 70px !important;
+    height: 70px !important;
     margin-left: 5px;
     pointer-events: none;
   }
@@ -119,6 +119,7 @@
     background-color: white;
     box-shadow: none;
     padding: 15px;
+    flex-shrink: 0;
   }
 
   .image-container {
@@ -157,6 +158,12 @@
     grid-column: 2 / 3;
   }
 
+    .side-images-containerB {
+      display: flex;
+      flex-direction: column;
+      grid-column: 2 / 3;
+    }
+
   .side-images {
     justify-self: left;
     margin-left: -50px;
@@ -182,7 +189,7 @@
     width: 78%;
     height: auto;
     max-width: 100%;
-    aspect-ratio: 1.83/ 1;
+    aspect-ratio: 1.72/ 1;
     object-fit: cover;
   }
   .side-imagesH {
@@ -196,8 +203,16 @@
   }
 
   .side-images-container > :first-child {
-    padding-bottom: 20px;
+    padding-bottom:10px;
   }
+
+.side-images-containerB> :first-child {
+  padding-bottom: 20px;
+}
+
+    .side-images-containerB> :last-child {
+      padding-bottom: 0;
+    }
 
   .select-serv {
     font: 700 32px Cormorant;

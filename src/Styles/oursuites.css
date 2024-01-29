@@ -1,172 +1,201 @@
+/*using this style sheet for contact us page form too!*/
+.fields {
+    width: 100%;
+    box-sizing: border-box;
+    margin-bottom: 10px;
+    height: 40px;
+    font-family: "poppins";
+}
+
+textarea.fields {
+    height: 80px;
+}
+
+textarea {
+    font-family: "poppins";
+
+}
+
+
 
 /*Web design*/
 @media screen and (min-width: 767px) {
 
-.centerit {
-    display: flex;
-    justify-content: center;
-}
-.blurb-container {
-    display: flex;
-    justify-content: space-between;
-    max-width: 75%;
-}
 
-.blurbs {
-    width: 48%;
-    box-sizing: border-box;
-    padding: 10px;
-    margin: 20px;
-    background-color: #BACA82;
-    box-shadow: 0 8px 8px rgba(0, 0, 0, 0.1);
-}
+    .centerit {
+        display: flex;
+        justify-content: center;
+    }
 
-img {
-    max-width: 100%;
-    max-height: 100%;
-    display: block;
-}
+    .blurb-container {
+        display: flex;
+        justify-content: space-between;
+        max-width: 75%;
+    }
+
+    .blurbs {
+        width: 48%;
+        box-sizing: border-box;
+        padding: 10px;
+        margin: 20px;
+        background-color: #BACA82;
+        box-shadow: 0 8px 8px rgba(0, 0, 0, 0.1);
+    }
+
+    img {
+        max-width: 100%;
+        max-height: 100%;
+        display: block;
+    }
 
 
-h1 {
-    text-align: center;
-    padding-top: 20px;
-}
+    h1 {
+        text-align: center;
+        padding-top: 20px;
+    }
 
-h2 {
-    padding: 5px
-}
+    h2 {
+        padding: 5px
+    }
 
-.container {
-    display: flex;
-    justify-content: center;
-    margin: 20px
-}
-.p {
-    text-align: center;
-    display: flex;
-    justify-content: center;
-    margin-left: 150px;
-    margin-right: 150px
- 
-}
-.pmain {
-    text-align: center;
-    display: flex;
-    justify-content: center;
-    margin-left: 150px;
-    margin-right: 150px
-}
-.rent-section {
-    align-items: center;
-    background-color: #5C5C5C;
-    box-shadow: 0 8px 8px rgba(0, 0, 0, 0.1);
-    color: white;
-}
+    .container {
+        display: flex;
+        justify-content: center;
+        margin: 20px;
+    }
 
-.formarea {
-    display: flex;
-    justify-content: center;
-    max-width: 60%;
-    margin: 0 auto;
-    display: flex;
-    flex-direction: column;
-    text-align: left;
-}
+    .p {
+        text-align: center;
+        display: flex;
+        justify-content: center;
+        margin-left: auto;
+        margin-right: auto;
+    }
 
-.fields {
-    display: flex;
-    justify-content: center;
-    width: 100%;
-    box-sizing: border-box;
-    margin-bottom: 10px;
-}
+    .pmain {
+        text-align: center;
+        display: flex;
+        justify-content: center;
+        margin-left: auto;
+        margin-right: auto;
+    }
 
-label {
-    margin-bottom: 5px;
-}
+    .rent-section {
+        align-items: center;
+        background-color: #5C5C5C;
+        box-shadow: 0 8px 8px rgba(0, 0, 0, 0.1);
+        color: white;
+    }
 
-.formarea button {
-    width: 50%;
-    padding: 10px;
-    box-sizing: border-box;
-    margin: 15px auto
-}
-}
 
+
+    .formarea {
+        display: flex;
+        justify-content: center;
+        max-width: 60%;
+        margin: 0 auto;
+        display: flex;
+        flex-direction: column;
+        text-align: left;
+    }
+
+    .fields {
+        display: flex;
+        justify-content: center;
+        width: 100%;
+        box-sizing: border-box;
+        margin-bottom: 10px;
+    }
+
+    label {
+        margin-bottom: 5px;
+    }
+
+    .formarea button {
+        width: 50%;
+        padding: 10px;
+        box-sizing: border-box;
+        margin: 15px auto
+    }
+}
 
 /* Mobile Design */
 @media screen and (max-width: 767px) {
-.blurb-container {
-    text-align: center;
-    height: 100vh;
-}
 
-.blurbs {
-    width: 80%;
-    box-sizing: border-box;
-    padding: 10px;
-    margin: 20px auto;
-    background-color: #BACA82;
-    box-shadow: 0 8px 8px rgba(0, 0, 0, 0.1);
-    align-items: center;
-    
+    .blurb-container {
+        text-align: center;
     }
 
-img {
-    max-width: 100%;
+    .blurbs {
+        width: 90%;
+        box-sizing: border-box;
+        padding: 10px;
+        margin: 20px auto;
+        background-color: #BACA82;
+        box-shadow: 0 8px 8px rgba(0, 0, 0, 0.1);
+        align-items: center;
+
     }
 
-h1 {
-    padding-top: 20px;
-    text-align: center;
-}
-h2 {
-    padding: 5px
-}
-.p {
-    text-align: center;
-    display: flex;
-    justify-content: center;
-    margin-left: 50px;
-    margin-right: 50px
-}
-.container {
-    display: flex;
-    justify-content: center;
-    margin: 20px
-}
+    img {
+        max-width: 100%;
+    }
 
-.rent-section {
-    text-align: center;
-    background-color: #5C5C5C;
-    margin: 10px;
-    box-shadow: 0 8px 8px rgba(0, 0, 0, 0.1);
-    color: white;
-    margin-top: 150px;
-}
+    h1 {
+        padding-top: 0px;
+        text-align: center;
+    }
 
-.formarea {
-    max-width: 90%;
-    margin: 0 auto;
-    display: flex;
-    flex-direction: column;
-    text-align: left;
-    box-shadow: 0 8px 8px rgba(0, 0, 0, 0.1);
-}
-.fields {
-    width: 100%;
-    box-sizing: border-box;
-    margin-bottom: 10px;
-}
-label {
-    margin-bottom: 5px;
-}
+    h2 {
+        padding: 5px
+    }
 
-.formarea button {
-    width: 50%;
-    padding: 10px;
-    box-sizing: border-box;
-    margin: 15px auto
-}
+    .p {
+        text-align: center;
+        display: flex;
+        justify-content: center;
+        margin-left: auto;
+        margin-right: auto;
+        width: 90%;
+    }
+
+    .container {
+        display: flex;
+        justify-content: center;
+        margin-left: auto;
+        margin-right: auto;
+        width: 90%;
+    }
+
+    .rent-section {
+        text-align: center;
+        background-color: #5C5C5C;
+        box-shadow: 0 8px 8px rgba(0, 0, 0, 0.1);
+        color: white;
+        margin-left: auto;
+        margin-right: auto;
+        width: 100%;
+    }
+
+    .formarea {
+        width: 90%;
+        margin-left: auto;
+        margin-right: auto;
+        display: flex;
+        flex-direction: column;
+        text-align: left;
+        box-shadow: 0 8px 8px rgba(0, 0, 0, 0.1);
+    }
+
+
+    label {
+        margin-bottom: 5px;
+    }
+
+    .formarea button {
+        width: 50%;
+        padding: 10px;
+        box-sizing: border-box;
+        margin: 15px auto;
+    }
 }

@@ -79,19 +79,19 @@ const SelectServices = () => {
         <img
           src={weddingDreamz}
           className="focus-image"
-          alt="woman getting her hair blow dried by a hair dresser"
+          alt="Bride getting a touch up for her makeup"
         />
-        <div className="side-images-container">
+        <div className="side-images-containerB">
           <img
             src={lashes}
             className="side-imagesB"
-            alt="woman getting her hair dyed by a hair dresser"
+            alt="woman getting her lashes done"
           />
-          <div className="side-images-container">
+          <div className="side-images-containerB">
             <img
               src={ringLight}
               className="side-imagesB"
-              alt="woman getting her hair dyed by a hair dresser"
+              alt="Professionals doing hair and makeup"
             />
           </div>
         </div>

@@ -1,0 +1,74 @@
+/*Web design*/
+@media screen and (min-width: 767px) {
+    /*need to fix web contact form*/
+
+    .toph1 {
+        display: none;
+    }
+
+    .bottomh1 {
+        color: white;
+    }
+
+    .contact-us-mobile {
+        display: none;
+    }
+
+    .contact-icons {
+        /* need icons to be side by side and bigger */
+        display: flex;
+        justify-content: center;
+        margin-left: auto;
+        margin-right: auto;
+        width: 40px;
+    }
+
+    .social-icons {
+        display: none;
+    }
+
+    .social-icons-web {
+        /*need these to be stacked on top of each other*/
+        display: flex;
+        justify-content: center;
+        margin-left: auto;
+        margin-right: auto;
+        width: 50%;
+    }
+
+    .follow-us-container {
+        background-color: #5C5C5C;
+        box-shadow: 0 8px 8px rgba(0, 0, 0, 0.1);
+        color: white;
+    }
+
+
+
+}
+
+/*mobile styles*/
+@media screen and (max-width: 767px) {
+    .blog-div {
+        display: none;
+    }
+
+    .follow-us-container {
+        display: none;
+    }
+
+    .contact-icons {
+        display: flex;
+        justify-content: center;
+        margin-left: auto;
+        margin-right: auto;
+        width: 40px;
+    }
+
+    .social-icons {
+        display: flex;
+        justify-content: center;
+        margin-left: auto;
+        margin-right: auto;
+        width: 50%;
+    }
+}

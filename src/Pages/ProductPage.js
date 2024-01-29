@@ -6,7 +6,7 @@ import Stars from "../assets/images/stars.png"
 import plusIcon from "../assets/icons/plus.png"
 import minusIcon from "../assets/icons/minus.png"
 import rating from "../assets/images/VisualRating.png"
-import Barber from '../assets/images/barber.png';
+import Empty from '../assets/images/emptyprofile.png';
 import React, { useState, useEffect } from 'react';
 import { useParams } from 'react-router-dom';
 import tempData from "../data/shop.json";
@@ -121,15 +121,18 @@ function ProductPage() {
     setValue(value + 1);
   };
 
-  const Review = () => {
+  const Review = ({ user, date, comment, profilepic }) => {
+
+    const profilePicPath = profilepic || 'emptyprofile';
+
     return (
       <div>
         <div className="review-block">
-          <img src={Barber} alt="profile pic" className="profile-pic"></img>
+          <img src={require(`../assets/images/${profilePicPath}.png`)} alt="profile pic" className="profile-pic"></img>
           <div className="review-info">
-            <p style={{ fontSize: "18px" }}><strong>Sara Wilson</strong>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;10/15/23</p>
+            <p style={{ fontSize: "18px" }}><strong>{user}</strong>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{date}</p>
             <img src={Stars} alt="stars" id="small-stars"></img>
-            <p>This saved my damaged hair! I wish it came in bigger sizes.</p>
+            <p>{comment}</p>
           </div>
         </div>
         <hr className="linebreak" />
@@ -185,9 +188,15 @@ function ProductPage() {
         </div>
         <div className="display-reviews">
           <p id="reviews-count">{product.revamount} Reviews</p>
-          <Review />
-          <Review />
-          <Review />
+          {product.reviews.map((review, index) => (
+            <Review
+              key={index}
+              user={review.user}
+              date={review.date}
+              comment={review.comment}
+              profilepic={review.profilepic}
+            />
+          ))}
         </div>
       </div>
     </div>
