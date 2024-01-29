@@ -5,6 +5,9 @@ import '../Styles/oursuites.css';
 import phone from "../assets/icons/icons8-phone-96.png";
 import email from "../assets/icons/icons8-email-100 (1).png";
 import location from "../assets/icons/icons8-location-100.png";
+import fb from "../assets/icons/facebook.png";
+import insta from "../assets/icons/instagram.png";
+import tiktok from "../assets/icons/tiktok.png";
 
 
 function ContactUs() {
@@ -56,6 +59,23 @@ function ContactUs() {
           className="contact-icons"
         />
         <br />
+        <div className="social-icons">
+          <img
+            src={fb}
+            alt="facebook icon"
+            className="contact-icons"
+          />
+          <img
+            src={insta}
+            alt="instagram icon"
+            className="contact-icons"
+          />
+          <img
+            src={tiktok}
+            alt="TikTok icon"
+            className="contact-icons"
+          />
+        </div>
         <p className='p'>
           @TheSuiteSpot
         </p>
