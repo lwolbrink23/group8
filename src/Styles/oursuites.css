@@ -1,4 +1,4 @@
-/*using this style sheet for contact us page too!*/
+/*using this style sheet for contact us page form too!*/
 .fields {
     width: 100%;
     box-sizing: border-box;
@@ -20,6 +20,7 @@ textarea {
 
 /*Web design*/
 @media screen and (min-width: 767px) {
+
 
     .centerit {
         display: flex;
@@ -86,6 +87,8 @@ textarea {
         color: white;
     }
 
+
+
     .formarea {
         display: flex;
         justify-content: center;
@@ -118,21 +121,6 @@ textarea {
 
 /* Mobile Design */
 @media screen and (max-width: 767px) {
-    .contact-icons {
-        display: flex;
-        justify-content: center;
-        margin-left: auto;
-        margin-right: auto;
-        width: 40px;
-    }
-
-    .social-icons {
-        display: flex;
-        justify-content: center;
-        margin-left: auto;
-        margin-right: auto;
-        width: 50%;
-    }
 
     .blurb-container {
         text-align: center;

@@ -2,6 +2,7 @@ import "../App.css";
 import PopupContact from '../Components/PopUpContact';
 import React, { useState } from 'react';
 import '../Styles/oursuites.css';
+import '../Styles/ContactUs.css';
 import phone from "../assets/icons/icons8-phone-96.png";
 import email from "../assets/icons/icons8-email-100 (1).png";
 import location from "../assets/icons/icons8-location-100.png";
@@ -75,6 +76,42 @@ function ContactUs() {
             alt="TikTok icon"
             className="contact-icons"
           />
+        </div>
+        <p className='p'>
+          @TheSuiteSpot
+        </p>
+      </div>
+
+      <div className="follow-us-container">
+        <h1>Follow Us</h1>
+        <p>
+          Stay updated with the latest trends - follow us on social media!
+        </p>
+        <div className="social-icons">
+          <img
+            src={fb}
+            alt="facebook icon"
+            className="contact-icons"
+          />
+          <p>
+            @TheSuiteSpotFB
+          </p>
+          <img
+            src={insta}
+            alt="instagram icon"
+            className="contact-icons"
+          />
+          <p>
+            @TheSuiteSpotInsta
+          </p>
+          <img
+            src={tiktok}
+            alt="TikTok icon"
+            className="contact-icons"
+          />
+          <p>
+            @TheSuiteSpot
+          </p>
         </div>
         <p className='p'>
           @TheSuiteSpot
