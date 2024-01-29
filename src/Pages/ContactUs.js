@@ -16,6 +16,37 @@ function ContactUs() {
   const openContact = () => setIsContactOpen(true);
   const closeContact = () => setIsContactOpen(false);
 
+  // State variables for each input field
+  const [nameValue, setNameValue] = useState("");
+  const [emailValue, setEmailValue] = useState("");
+  const [subjectValue, setSubjectValue] = useState("");
+  const [messageValue, setMessageValue] = useState("");
+
+  // Function to update the state based on input changes for each input field
+  const handleNameInputChange = (event) => {
+    setNameValue(event.target.value);
+  };
+
+  const handleEmailInputChange = (event) => {
+    setEmailValue(event.target.value);
+  };
+
+  const handleSubjectInputChange = (event) => {
+    setSubjectValue(event.target.value);
+  };
+
+  const handleMessageInputChange = (event) => {
+    setMessageValue(event.target.value);
+  };
+
+  // change button text color when disabled
+  const buttonStyle = {
+    color:
+      nameValue && emailValue && subjectValue && messageValue
+        ? "black"
+        : "#646464",
+  };
+
   return (
     <div>
       <div className="contactinfo-container">
@@ -52,6 +83,8 @@ function ContactUs() {
               className="fields"
               id="name"
               placeholder="Name"
+              value={nameValue}
+              onChange={handleNameInputChange}
             />
             <label htmlFor="email"></label>
             <input
@@ -59,6 +92,8 @@ function ContactUs() {
               className="fields"
               id="email"
               placeholder="Email"
+              value={emailValue}
+              onChange={handleEmailInputChange}
             />
             <label htmlFor="subject"></label>
             <input
@@ -66,10 +101,24 @@ function ContactUs() {
               className="fields"
               id="subject"
               placeholder="Subject"
+              value={subjectValue}
+              onChange={handleSubjectInputChange}
             />
             <label htmlFor="message"></label>
-            <textarea className="fields" placeholder="Message"></textarea>
-            <button type="button" onClick={openContact}>
+            <textarea
+              className="fields"
+              placeholder="Message"
+              value={messageValue}
+              onChange={handleMessageInputChange}
+            ></textarea>
+            <button
+              type="button"
+              onClick={openContact}
+              style={buttonStyle}
+              disabled={
+                !nameValue || !emailValue || !subjectValue || !messageValue
+              }
+            >
               Send Message
             </button>
             <PopupContact isOpen={isContactOpen} closePopup={closeContact} />
@@ -106,6 +155,8 @@ function ContactUs() {
               className="web-fields"
               id="name"
               placeholder="Name"
+              value={nameValue}
+              onChange={handleNameInputChange}
             />
             <label htmlFor="email"></label>
             <input
@@ -113,6 +164,8 @@ function ContactUs() {
               className="web-fields"
               id="contact-email"
               placeholder="Email"
+              value={emailValue}
+              onChange={handleEmailInputChange}
             />
             <label htmlFor="subject"></label>
             <input
@@ -120,10 +173,24 @@ function ContactUs() {
               className="web-fields"
               id="subject"
               placeholder="Subject"
+              value={subjectValue}
+              onChange={handleSubjectInputChange}
             />
             <label htmlFor="message"></label>
-            <textarea className="fields" placeholder="Message"></textarea>
-            <button type="button" onClick={openContact}>
+            <textarea
+              className="fields"
+              placeholder="Message"
+              value={messageValue}
+              onChange={handleMessageInputChange}
+            ></textarea>
+            <button
+              type="button"
+              onClick={openContact}
+              style={buttonStyle}
+              disabled={
+                !nameValue || !emailValue || !subjectValue || !messageValue
+              }
+            >
               Send Message
             </button>
             <PopupContact isOpen={isContactOpen} closePopup={closeContact} />
