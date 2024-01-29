@@ -46,6 +46,15 @@ function Blog() {
     setInputValue(event.target.value);
   };
 
+  const resetForm = () => {
+    setInputValue("");
+  };
+
+  const handleSubscribe = () => {
+    openBlog();
+    resetForm();
+  };
+
   // change button text color when disabled
   const buttonStyle = {
     color: inputValue ? "black" : "#646464", // Black when clickable, light grey when not
@@ -76,7 +85,7 @@ function Blog() {
               type="button"
               style={buttonStyle}
               disabled={!inputValue}
-              onClick={openBlog}
+              onClick={handleSubscribe}
             >
               Subscribe
             </button>
@@ -104,7 +113,7 @@ function Blog() {
         {BlogPosts.filter(
           (post) =>
             selectedCategory === "Filter by Topic" ||
-            post.category === selectedCategory,
+            post.category === selectedCategory
         ).map((post, index) => (
           <div key={index} className={`${post.category}`}>
             {post.category === "Hair" && (

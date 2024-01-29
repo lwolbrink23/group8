@@ -23,7 +23,7 @@ function Footer() {
     setInputValue("");
   };
 
-  const handleSendMessage = () => {
+  const handleSub = () => {
     openPopup();
     resetForm();
   };
@@ -71,7 +71,7 @@ function Footer() {
             onChange={handleInputChange}
           />
           <button
-            onClick={handleSendMessage}
+            onClick={handleSub}
             style={buttonStyle}
             disabled={!inputValue}
           >
