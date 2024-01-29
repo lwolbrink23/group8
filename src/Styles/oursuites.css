@@ -1,87 +1,6 @@
 /*using this style sheet for contact us page too!*/
 
 
-/* Mobile Design */
-@media screen and (max-width: 767px) {
-    .blurb-container {
-        text-align: center;
-        height: 100vh;
-    }
-
-    .blurbs {
-        width: 80%;
-        box-sizing: border-box;
-        padding: 10px;
-        margin: 20px auto;
-        background-color: #BACA82;
-        box-shadow: 0 8px 8px rgba(0, 0, 0, 0.1);
-        align-items: center;
-
-    }
-
-    img {
-        max-width: 100%;
-    }
-
-    h1 {
-        padding-top: 20px;
-        text-align: center;
-    }
-
-    h2 {
-        padding: 5px
-    }
-
-    .p {
-        text-align: center;
-        display: flex;
-        justify-content: center;
-        margin-left: auto;
-        margin-right: auto;
-    }
-
-    .container {
-        display: flex;
-        justify-content: center;
-        margin: 0px;
-    }
-
-    .rent-section {
-        text-align: center;
-        background-color: #5C5C5C;
-        margin: 10px;
-        box-shadow: 0 8px 8px rgba(0, 0, 0, 0.1);
-        color: white;
-        margin-top: 0;
-    }
-
-    .formarea {
-        max-width: 90%;
-        margin: 0 auto;
-        display: flex;
-        flex-direction: column;
-        text-align: left;
-        box-shadow: 0 8px 8px rgba(0, 0, 0, 0.1);
-    }
-
-    .fields {
-        width: 100%;
-        box-sizing: border-box;
-        margin-bottom: 10px;
-    }
-
-    label {
-        margin-bottom: 5px;
-    }
-
-    .formarea button {
-        width: 50%;
-        padding: 10px;
-        box-sizing: border-box;
-        margin: 15px auto;
-    }
-}
-
 /*Web design*/
 @media screen and (min-width: 767px) {
 
@@ -177,5 +96,90 @@
         padding: 10px;
         box-sizing: border-box;
         margin: 15px auto
+    }
+}
+
+/* Mobile Design */
+@media screen and (max-width: 767px) {
+    .blurb-container {
+        text-align: center;
+    }
+
+    .blurbs {
+        width: 90%;
+        box-sizing: border-box;
+        padding: 10px;
+        margin: 20px auto;
+        background-color: #BACA82;
+        box-shadow: 0 8px 8px rgba(0, 0, 0, 0.1);
+        align-items: center;
+
+    }
+
+    img {
+        max-width: 100%;
+    }
+
+    h1 {
+        padding-top: 0px;
+        text-align: center;
+    }
+
+    h2 {
+        padding: 5px
+    }
+
+    .p {
+        text-align: center;
+        display: flex;
+        justify-content: center;
+        margin-left: auto;
+        margin-right: auto;
+        width: 90%;
+    }
+
+    .container {
+        display: flex;
+        justify-content: center;
+        margin-left: auto;
+        margin-right: auto;
+        width: 90%;
+    }
+
+    .rent-section {
+        text-align: center;
+        background-color: #5C5C5C;
+        box-shadow: 0 8px 8px rgba(0, 0, 0, 0.1);
+        color: white;
+        margin-left: auto;
+        margin-right: auto;
+        width: 100%;
+    }
+
+    .formarea {
+        width: 90%;
+        margin-left: auto;
+        margin-right: auto;
+        display: flex;
+        flex-direction: column;
+        text-align: left;
+        box-shadow: 0 8px 8px rgba(0, 0, 0, 0.1);
+    }
+
+    .fields {
+        width: 100%;
+        box-sizing: border-box;
+        margin-bottom: 10px;
+    }
+
+    label {
+        margin-bottom: 5px;
+    }
+
+    .formarea button {
+        width: 50%;
+        padding: 10px;
+        box-sizing: border-box;
+        margin: 15px auto;
     }
 }
