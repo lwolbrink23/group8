@@ -82,7 +82,7 @@ function ContactUs() {
               type="text"
               className="fields"
               id="name"
-              placeholder="Name"
+              placeholder="Name*"
               value={nameValue}
               onChange={handleNameInputChange}
             />
@@ -91,7 +91,7 @@ function ContactUs() {
               type="text"
               className="fields"
               id="email"
-              placeholder="Email"
+              placeholder="Email*"
               value={emailValue}
               onChange={handleEmailInputChange}
             />
@@ -100,14 +100,14 @@ function ContactUs() {
               type="text"
               className="fields"
               id="subject"
-              placeholder="Subject"
+              placeholder="Subject*"
               value={subjectValue}
               onChange={handleSubjectInputChange}
             />
             <label htmlFor="message"></label>
             <textarea
               className="fields"
-              placeholder="Message"
+              placeholder=" Message*"
               value={messageValue}
               onChange={handleMessageInputChange}
             ></textarea>
@@ -154,7 +154,7 @@ function ContactUs() {
               type="text"
               className="web-fields"
               id="name"
-              placeholder="Name"
+              placeholder="Name*"
               value={nameValue}
               onChange={handleNameInputChange}
             />
@@ -163,7 +163,7 @@ function ContactUs() {
               type="text"
               className="web-fields"
               id="contact-email"
-              placeholder="Email"
+              placeholder="Email*"
               value={emailValue}
               onChange={handleEmailInputChange}
             />
@@ -172,14 +172,14 @@ function ContactUs() {
               type="text"
               className="web-fields"
               id="subject"
-              placeholder="Subject"
+              placeholder="Subject*"
               value={subjectValue}
               onChange={handleSubjectInputChange}
             />
             <label htmlFor="message"></label>
             <textarea
               className="fields"
-              placeholder="Message"
+              placeholder=" Message*"
               value={messageValue}
               onChange={handleMessageInputChange}
             ></textarea>
