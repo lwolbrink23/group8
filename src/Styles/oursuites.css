@@ -9,13 +9,14 @@
 
 textarea.fields {
     height: 80px;
-    /* Set your desired height for the textarea */
 }
 
 textarea {
     font-family: "poppins";
 
 }
+
+
 
 /*Web design*/
 @media screen and (min-width: 767px) {
@@ -117,6 +118,15 @@ textarea {
 
 /* Mobile Design */
 @media screen and (max-width: 767px) {
+    .contact-icons {
+        display: flex;
+        justify-content: center;
+        margin-left: auto;
+        margin-right: auto;
+        width: 40px;
+    }
+
+
     .blurb-container {
         text-align: center;
     }

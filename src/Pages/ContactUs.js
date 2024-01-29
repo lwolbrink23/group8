@@ -1,7 +1,11 @@
 import "../App.css";
 import PopupContact from '../Components/PopUpContact';
 import React, { useState } from 'react';
-import '../Styles/oursuites.css'
+import '../Styles/oursuites.css';
+import phone from "../assets/icons/icons8-phone-96.png";
+import email from "../assets/icons/icons8-email-100 (1).png";
+import location from "../assets/icons/icons8-location-100.png";
+
 
 function ContactUs() {
   const [isContactOpen, setIsContactOpen] = useState(false);
@@ -14,19 +18,31 @@ function ContactUs() {
       <div className="contactinfo-container">
         <h1>Contact Us</h1>
         <p className='p'>
-          Phone
+          Phone:
         </p>
         <p className='p'>
           223-133-2948
         </p>
+        <img
+          src={phone}
+          alt="phone icon"
+          className="contact-icons"
+        />
+        <br />
         <p className='p'>
-          Email
+          Email:
         </p>
         <p className='p'>
           thesuitespot@gmail.com
         </p>
+        <img
+          src={email}
+          alt="email icon"
+          className="contact-icons"
+        />
+        <br />
         <p className='p'>
-          Location
+          Location:
         </p>
         <p className='p'>
           2343 Suite Spot Way
@@ -34,6 +50,12 @@ function ContactUs() {
         <p className='p'>
           Orlando, FL 32804
         </p>
+        <img
+          src={location}
+          alt="location icon"
+          className="contact-icons"
+        />
+        <br />
         <p className='p'>
           @TheSuiteSpot
         </p>
@@ -62,7 +84,7 @@ function ContactUs() {
           </form>
         </div>
       </div>
-    </div>
+    </div >
   );
 }
 
