@@ -82,7 +82,7 @@ function ContactUs() {
         </p>
       </div>
       <div className='container'>
-        <div className="rent-section">
+        <div className="contact-us-mobile">
           <h1>Contact Us</h1>
           <div className='pmain'>
             <p>
@@ -107,7 +107,7 @@ function ContactUs() {
       </div>
       <div className="bottom-container">
         <div className="blog-div">
-          <h1>Follow Us</h1>
+          <h1 className="bottomh1">Follow Us</h1>
           <p>
             Stay updated with the latest trends - follow us on social media!
           </p>
@@ -139,7 +139,7 @@ function ContactUs() {
           </div>
         </div>
         <div className="blog-div">
-          <h1>Contact Us</h1>
+          <h1 className="bottomh1">Contact Us</h1>
           <div className='pmain'>
             <p>
               Contact us below and a manager will get back to you.
