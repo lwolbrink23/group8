@@ -93,28 +93,28 @@ function ContactUs() {
         </div>
         <div className="contact-bottom-div">
           <h1 className="bottomh1">Contact Us</h1>
-          <div className="pmain">
-            <p>Contact us below and a manager will get back to you.</p>
-          </div>
-          <form className="formarea">
+
+          <p>Contact us below and a manager will get back to you.</p>
+
+          <form className="bottom-formarea">
             <label htmlFor="name"></label>
             <input
               type="text"
-              className="fields"
+              className="web-fields"
               id="name"
               placeholder="Name"
             />
             <label htmlFor="email"></label>
             <input
               type="text"
-              className="fields"
-              id="email"
+              className="web-fields"
+              id="contact-email"
               placeholder="Email"
             />
             <label htmlFor="subject"></label>
             <input
               type="text"
-              className="fields"
+              className="web-fields"
               id="subject"
               placeholder="Subject"
             />

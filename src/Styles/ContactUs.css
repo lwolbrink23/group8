@@ -1,6 +1,26 @@
 /*Web design*/
 @media screen and (min-width: 767px) {
     /*need to fix web contact form*/
+    .bottom-formarea {
+        width: 60%;
+        display: flex;
+        justify-content: center;
+        margin: 0 auto;
+        display: flex;
+        flex-direction: column;
+        text-align: left;
+    }
+
+    .web-fields {
+        display: flex;
+        justify-content: center;
+        box-sizing: border-box;
+        width: 100%;
+        margin-bottom: 10px;
+        height: 40px;
+        font-family: "poppins";
+    }
+
     .contactinfo-container {
         margin-top: 40px;
         margin-bottom: -30px;
