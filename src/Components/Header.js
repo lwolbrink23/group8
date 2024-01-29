@@ -142,7 +142,7 @@ function Header() {
               </CustomLink>
             </li>
             <li>
-              <CustomLink to="/contactus" className="contact-link" onClick={toggleSidebar}>
+              <CustomLink to="/contact_us" className="contact-link" onClick={toggleSidebar}>
                 <img
                   src={contacticon}
                   alt="contact us icon"
