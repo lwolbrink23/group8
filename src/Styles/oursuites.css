@@ -50,7 +50,7 @@ textarea {
 
     h1 {
         text-align: center;
-        padding-top: 20px;
+        padding-top: 10px;
     }
 
     h2 {
@@ -71,12 +71,23 @@ textarea {
         margin-right: auto;
     }
 
+    .topOurSuitesp {
+        text-align: center;
+            display: flex;
+            justify-content: center;
+            margin-left: auto;
+            margin-right: auto;
+            width: 70%;
+    }
+
     .pmain {
         text-align: center;
         display: flex;
         justify-content: center;
         margin-left: auto;
         margin-right: auto;
+        width: 50%;
+        margin-top: -30px;
     }
 
     .rent-section {
@@ -84,6 +95,8 @@ textarea {
         background-color: #5C5C5C;
         box-shadow: 0 8px 8px rgba(0, 0, 0, 0.1);
         color: white;
+        width: 77%;
+        padding-bottom: 20px;
     }
 
 
@@ -91,7 +104,7 @@ textarea {
     .formarea {
         display: flex;
         justify-content: center;
-        max-width: 60%;
+        width: 50%;
         margin: 0 auto;
         display: flex;
         flex-direction: column;
@@ -158,6 +171,13 @@ textarea {
         width: 90%;
     }
 
+    .pmain {
+        width: 90%;
+        margin-left: auto;
+        margin-right: auto;
+        margin-top: -10px;
+    }
+
     .container {
         display: flex;
         justify-content: center;
@@ -173,6 +193,7 @@ textarea {
         color: white;
         margin-left: auto;
         margin-right: auto;
+        padding-bottom: 20px;
         width: 100%;
     }
 
