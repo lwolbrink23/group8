@@ -174,7 +174,7 @@
   .filter-dropdown {
     position: absolute;
     top: 650px;
-    right: 50px;
+    right: 160px;
   }
 
   .filter-dropdown select {
