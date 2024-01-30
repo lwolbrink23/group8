@@ -215,6 +215,13 @@ th { /*Table top header*/
 
 /* Styles for web*/
 @media screen and (min-width: 767px) {
+    .apptsInfoContainer {
+        width: 70%;
+    }
+
+    .orderInfoContainer {
+        width: 70%;
+    }
     .buttonsContainer {
         display: flex;
         flex-direction: column;
@@ -248,7 +255,7 @@ th { /*Table top header*/
             margin-right: auto;
             margin-top: 20px;
             margin-bottom: 20px;
-            width: 90%;
+            width: 70%;
         }
 
         .profileTop {
