@@ -134,6 +134,8 @@ function Checkout() {
         updatePaymentInfo(propertyName, value);
         //make sure only certain amount of digits
         if (propertyName === "cardNum") {
+          !/^\d{16}$/.test(value) &&
+            (errMsg = "Please enter a 16-digit number.");
         }
         // make sure only numbers, 2 digits
         else if (propertyName === "mm" || propertyName === "yy") {
@@ -146,10 +148,9 @@ function Checkout() {
         updatePaymentErr(propertyName, errMsg);
         break;
       default:
-      // Handle default case or do nothing
     }
   };
-  // debug handle change function
+  // debug handle change function.
   // useEffect(() => {
   //   console.log(personalInfo);
   // }, [personalInfo]);
@@ -307,6 +308,9 @@ function Checkout() {
               placeholder="City*"
               onChange={(e) => handleChange("address", "city", e.target.value)}
             />
+            {addressErr.city && (
+              <p style={{ color: "red" }}>{addressErr.city}</p>
+            )}
             {/* state input */}
             <input
               type="text"
@@ -352,6 +356,9 @@ function Checkout() {
               }
             />
           </div>
+          {paymentErr.cardNum && (
+            <p style={{ color: "red" }}>{paymentErr.cardNum}</p>
+          )}
           {/* mm/yy CVC */}
           <div className="cc-info">
             <input
@@ -359,18 +366,19 @@ function Checkout() {
               placeholder="mm*"
               onChange={(e) => handleChange("payment", "mm", e.target.value)}
             />
-
+            {paymentErr.mm && <p style={{ color: "red" }}>{paymentErr.mm}</p>}
             <input
               type="text"
               placeholder="yy*"
               onChange={(e) => handleChange("payment", "yy", e.target.value)}
             />
-
+            {paymentErr.yy && <p style={{ color: "red" }}>{paymentErr.yy}</p>}
             <input
               type="text"
               placeholder="CVC*"
               onChange={(e) => handleChange("payment", "cvc", e.target.value)}
             />
+            {paymentErr.cvc && <p style={{ color: "red" }}>{paymentErr.cvc}</p>}
           </div>
           {/* name on card */}
           <div>
