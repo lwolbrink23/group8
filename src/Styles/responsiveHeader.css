@@ -60,6 +60,10 @@
         align-items: center;
     }
 
+        .header-container.mobile-open nav {
+            display: block;
+        }
+
     nav ul {
         width: 100%; /*nav links grey part*/
         flex-direction: column;
@@ -107,8 +111,8 @@
         display: flex;
     }
 
-  nav ul li:hover>ul { /*makes subpages vertical*/
-      display: block;
+  nav ul li>ul { /*makes subpages vertical*/
+      display: none;
       position: relative;
       top: 0;
       left: 0;
@@ -139,6 +143,27 @@
       animation-duration: 0.8s;
       animation-fill-mode: forwards;
   }
+
+  .sidebar.show ul {
+      display: block;
+      /* show subpages when the sidebar has the 'show' class */
+  }
+
+  .sidebar.show ul li {
+      position: relative;
+  }
+
+  .sidebar.show ul li.isSidebarOpen>ul {
+      display: none !important;
+  }
+
+  .sidebar.show ul li>ul {
+      /*display: none;*/
+      padding-left: 44px;
+      width: 100%;
+      white-space: nowrap;
+  }
+
 }
 
 
