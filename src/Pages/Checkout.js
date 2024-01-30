@@ -96,64 +96,54 @@ function Checkout() {
   };
 
   const handleChange = (type, propertyName, value) => {
-    let errOccured = false;
+    let errMsg = "";
     switch (type) {
       // --------personal info--------
       case "personal":
         updatePersonalInfo(propertyName, value);
-        switch (propertyName) {
-          case "firstName":
-            // make sure no numbers
-            if (/\d/.test(value)) {
-              updatePersonalErr(propertyName, "Names must not contain numbers");
-              errOccured = true;
-            }
-            break;
-          case "phone":
-            // make sure only numbers
-            break;
-          default:
-            break;
+        // make sure no numbers
+        if (propertyName === "firstName" || propertyName === "lastName") {
+          /\d/.test(value) && (errMsg = "Names must not contain numbers.");
         }
-        !errOccured && updatePersonalErr(propertyName, "");
+        // make sure 10 digits
+        else {
+          !/^\d{10}$/.test(value) &&
+            (errMsg = "Please enter a 10-digit number.");
+        }
+        updatePersonalErr(propertyName, errMsg);
         break;
       // --------address info--------
       case "address":
         updateAddressInfo(propertyName, value);
-        switch (propertyName) {
-          case "city":
-            // make sure no numbers
-            break;
-          case "state":
-            // make sure only in certain values
-            break;
-          case "ZIP":
-            // make sure only numbers
-            break;
-          default:
-            break;
+        // make sure no numbers
+        if (propertyName === "city") {
+          /\d/.test(value) && (errMsg = "City name must not contain numbers.");
         }
+        // make sure valid state --NOT DONE
+        else if (propertyName === "state") {
+          !/^\d{10}$/.test(value) && (errMsg = "Please enter a valid state");
+        }
+        // make sure 5 digits
+        else if (propertyName === "zip") {
+          !/^\d{5}$/.test(value) && (errMsg = "Please enter a 5-digit number.");
+        }
+        updateAddressErr(propertyName, errMsg);
         break;
       // --------payment info--------
       case "payment":
         updatePaymentInfo(propertyName, value);
-        switch (propertyName) {
-          case "cardNum":
-            // make sure only numbers
-            //make sure only certain amount of digits
-            break;
-          case "mm":
-            // make sure only numbers, 2 digits
-            break;
-          case "yy":
-            // make sure only numbers, 2 digits
-            break;
-          case "cvc":
-            // make sure only numbers, 3 digits
-            break;
-          default:
-            break;
+        //make sure only certain amount of digits
+        if (propertyName === "cardNum") {
         }
+        // make sure only numbers, 2 digits
+        else if (propertyName === "mm" || propertyName === "yy") {
+          !/^\d{2}$/.test(value) && (errMsg = "Please enter a 2-digit number.");
+        }
+        // make sure only numbers, 3 digits
+        else if (propertyName === "cvc") {
+          !/^\d{3}$/.test(value) && (errMsg = "Please enter a 3-digit number.");
+        }
+        updatePaymentErr(propertyName, errMsg);
         break;
       default:
       // Handle default case or do nothing
@@ -260,6 +250,7 @@ function Checkout() {
       <main>
         <div id="shipping-info" className="cardbox">
           <h3>Shipping Information</h3>
+          {/* first name input */}
           <div>
             <input
               type="text"
@@ -270,6 +261,7 @@ function Checkout() {
               }
             />
           </div>
+          {/* last name input */}
           {personalErr.firstName && (
             <p style={{ color: "red" }}>{personalErr.firstName}</p>
           )}
@@ -285,6 +277,7 @@ function Checkout() {
           {personalErr.lastName && (
             <p style={{ color: "red" }}>{personalErr.lastName}</p>
           )}
+          {/* phone input */}
           <div>
             <input
               type="text"
@@ -294,6 +287,10 @@ function Checkout() {
               }
             />
           </div>
+          {personalErr.phone && (
+            <p style={{ color: "red" }}>{personalErr.phone}</p>
+          )}
+          {/* street address input */}
           <div>
             <input
               type="text"
@@ -303,23 +300,29 @@ function Checkout() {
               }
             />
           </div>
+          {/* city input */}
           <div className="ct-state">
             <input
               type="text"
               placeholder="City*"
               onChange={(e) => handleChange("address", "city", e.target.value)}
             />
+            {/* state input */}
             <input
               type="text"
               placeholder="State*"
               onChange={(e) => handleChange("address", "state", e.target.value)}
             />
-
+            {addressErr.state && (
+              <p style={{ color: "red" }}>{addressErr.state}</p>
+            )}
+            {/* zip input */}
             <input
               type="text"
               placeholder="ZIP Code*"
               onChange={(e) => handleChange("address", "zip", e.target.value)}
             />
+            {addressErr.zip && <p style={{ color: "red" }}>{addressErr.zip}</p>}
           </div>
         </div>
         <div id="payment-info" className="cardbox">
@@ -339,6 +342,7 @@ function Checkout() {
               </label>
             </div>
           ))}
+          {/* card input */}
           <div>
             <input
               type="text"
@@ -348,6 +352,7 @@ function Checkout() {
               }
             />
           </div>
+          {/* mm/yy CVC */}
           <div className="cc-info">
             <input
               type="text"
@@ -367,6 +372,7 @@ function Checkout() {
               onChange={(e) => handleChange("payment", "cvc", e.target.value)}
             />
           </div>
+          {/* name on card */}
           <div>
             <input type="text" placeholder="Name on Card*" required />
           </div>
