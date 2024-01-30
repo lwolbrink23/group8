@@ -4,7 +4,7 @@ import { Link } from "react-router-dom";
 import tempData from "../data/cart.json";
 import tempShopData from "../data/shop.json";
 import arrowIcon from "../assets/icons/white-arrow.svg";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 
 function Checkout() {
   // backend: check if user logged in. if logged in, get their info from the database and autofill in userAns
@@ -54,34 +54,91 @@ function Checkout() {
   const [selectedOption, setSelectedOption] = useState(null);
 
   // form val
+  // // make sure every field is filled & no errors
   // const isAnyFieldEmpty = Object.values(userAns)
   //   .flat(Infinity)
   //   .some((value) => value === "");
+  const updatePersonalInfo = (propertyName, value) => {
+    setPersonalInfo((prevInfo) => ({
+      ...prevInfo,
+      [propertyName]: value,
+    }));
+  };
+  const updateAddressInfo = (propertyName, value) => {
+    setAddressInfo((prevInfo) => ({
+      ...prevInfo,
+      [propertyName]: value,
+    }));
+  };
+  const updatePaymentInfo = (propertyName, value) => {
+    setPaymentInfo((prevInfo) => ({
+      ...prevInfo,
+      [propertyName]: value,
+    }));
+  };
 
-  const handleChange = (type, propertyName) => (e) => {
+  const handleChange = (type, propertyName, value) => {
     switch (type) {
+      // --------personal info--------
       case "personal":
-        setPersonalInfo((prevInfo) => ({
-          ...prevInfo,
-          [propertyName]: e,
-        }));
+        updatePersonalInfo(propertyName, value);
+        switch (propertyName) {
+          case "firstName":
+            // make sure no numbers
+            break;
+          case "phone":
+            // make sure only numbers
+            break;
+          default:
+            break;
+        }
         break;
+      // --------address info--------
       case "address":
-        setAddressInfo((prevInfo) => ({
-          ...prevInfo,
-          [propertyName]: e,
-        }));
+        updateAddressInfo(propertyName, value);
+        switch (propertyName) {
+          case "city":
+            // make sure no numbers
+            break;
+          case "state":
+            // make sure only in certain values
+            break;
+          case "ZIP":
+            // make sure only numbers
+            break;
+          default:
+            break;
+        }
         break;
+      // --------payment info--------
       case "payment":
-        setPaymentInfo((prevInfo) => ({
-          ...prevInfo,
-          [propertyName]: e,
-        }));
+        updatePaymentInfo(propertyName, value);
+        switch (propertyName) {
+          case "cardNum":
+            // make sure only numbers
+            //make sure only certain amount of digits
+            break;
+          case "mm":
+            // make sure only numbers, 2 digits
+            break;
+          case "yy":
+            // make sure only numbers, 2 digits
+            break;
+          case "cvc":
+            // make sure only numbers, 3 digits
+            break;
+          default:
+            break;
+        }
         break;
       default:
       // Handle default case or do nothing
     }
   };
+  // debug handle change function
+  // useEffect(() => {
+  //   console.log(personalInfo);
+  // }, [personalInfo]);
 
   // radio button stuff
   const options = [
@@ -180,12 +237,24 @@ function Checkout() {
         <div id="shipping-info" className="cardbox">
           <h3>Shipping Information</h3>
           <div>
-            <input type="text" placeholder="First Name*" required />
+            <input
+              type="text"
+              placeholder="First Name*"
+              required
+              onChange={(e) =>
+                handleChange("personal", "firstName", e.target.value)
+              }
+            />
           </div>
-          {personalErr.firstName && <p style={{ color: "red" }}>yee</p>}
+          {personalErr.firstName && (
+            <p style={{ color: "red" }}>{personalErr.firstName}</p>
+          )}
           <div>
             <input type="text" placeholder="Last Name*" required />
           </div>
+          {personalErr.lastName && (
+            <p style={{ color: "red" }}>{personalErr.lastName}</p>
+          )}
           <div>
             <input type="text" placeholder="Phone*" required />
           </div>
