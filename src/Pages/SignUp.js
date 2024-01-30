@@ -106,7 +106,7 @@ function SignUp() {
   };
   return (
     <div>
-      <h1>Sign Up</h1>
+      <h1 className="signupTitle">Sign Up</h1>
       <div className="contain">
         <form className="signupform">
           <p className="wonkyName">Name</p>
