@@ -6,7 +6,7 @@
     height: 450px;
     padding-top: 0px;
     margin: 0 auto;
-    margin-bottom: 88px;
+    margin-bottom: 80px;
     flex-shrink: 0;
   }
 
@@ -170,11 +170,13 @@
     height: 41px;
     flex-shrink: 0;
   }
-.filter-dropdown {
-  display: flex;
-  justify-content: flex-end;
-  padding-right: 25px;
-}
+
+  .filter-dropdown {
+    position: absolute;
+    top: 650px;
+    right: 50px;
+  }
+
   .filter-dropdown select {
     padding: 10px;
     font-family: Poppins;
@@ -186,194 +188,202 @@
     margin-bottom: 10px;
   }
 }
+/*feature query 4k screens*/
+@media screen and (min-width: 2500px) {
+  .filter-dropdown {
+    position: absolute;
+    top: 650px;
+    right: 700px;
+  }
+}
 /* Tablet Screen */
-@media screen  and (min-width: 767px) and (max-width: 1023px) {
+@media screen and (min-width: 767px) and (max-width: 1023px) {
   .main-blog-page {
-      position: relative;
-      width: 700px;
-      height: 450px;
-      padding-top: 0px;
-      margin: 0 auto;
-      margin-bottom: 20px;
-      flex-shrink: 0;
-    }
-  
-    .bg-image {
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      max-width: 700px;
-      height: 400px;
-      margin: 0;
-      flex-shrink: 0;
-      background: lightgray url("../assets/images/flower.jpeg") center/cover no-repeat;
-      box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
-    }
-  
-    .inner-container {
-      padding: 0 20px;
-    }
-  
-    .overlay-box {
-      display: flex;
-      position: relative;
-      margin: 0 auto;
-      bottom: 155%;
-      left: -13%;
-      max-width: 500px;
-      height: 268px;
-      flex-shrink: 0;
-      background-color: rgba(255, 255, 255, 0.63);
-      z-index: 1;
-    }
-  
-    .overlay-text {
-      position: relative;
-      bottom: 108%;
-      left: 6%;
-      z-index: 2;
-    }
-  
-    .header-1 {
-      font-size: 44px;
-      font-style: normal;
-      font-weight: 700;
-      line-height: normal;
-      padding-left: 0;
-      padding-right: 735px;
-      padding-top: 175px;
-      padding-bottom: 0;
-    }
-  
-    .sub-text {
-      padding-left: 85px;
-      width: 339px;
-      font-family: "Poppins";
-      font-size: 16px;
-      font-style: normal;
-      font-weight: 400;
-      line-height: normal;
-      margin-top: -17px;
-      margin-bottom: 27px;
-    }
-  
-    .subscribe {
-      width: 339px;
-      font-family: "Poppins";
-      font-size: 16px;
-      font-style: normal;
-      font-weight: 400;
-      line-height: normal;
-      padding-left: 85px;
-      white-space: nowrap;
-    }
-  
-    .sub-button {
-      margin-left: 17px;
-    }
-  
-    .email {
-      width: 222px;
-      height: 51px;
-      flex-shrink: 0;
-      margin-right: 10px;
-    }
-  
-    #email::placeholder {
-      color: #000;
-      font-family: "Poppins";
-      font-size: 14px;
-      font-style: normal;
-      font-weight: 400;
-      line-height: normal;
-    }
-  
-    .posts-container {
-      display: grid;
-      grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-      gap: 20px;
-      font-size: 14px;
-      list-style-type: none;
-      margin: 0 auto;
-      margin-bottom: 55px;
-      padding: 0 20px;
-      max-width: 1200px;
-    }
-  
-    .Hair,
-    .Massage,
-    .Makeup {
-      background: #fff;
-      box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
-      height: auto;
-      flex-shrink: 0;
-      padding: 20px;
-      box-sizing: border-box;
-      display: flex;
-      flex-direction: column;
-    }
-  
-    .Hair img,
-    .Massage img,
-    .Makeup img {
-      box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
-      max-width: 100%;
-      height: 200px;
-    }
-  
-    .Hair p,
-    .Massage p,
-    .Makeup p {
-      flex-grow: 1;
-      font-family: Poppins;
-      font-size: 12px;
-      font-style: normal;
-      font-weight: 400;
-      line-height: normal;
-      margin-top: 10px;
-    }
-  
-    .Hair h3,
-    .Massage h3,
-    .Makeup h3 {
-      color: var(--Vampire-Black, #090b0a);
-      text-align: start;
-      word-wrap: break-word;
-      white-space: normal;
-      font-family: Poppins;
-      font-size: 15px;
-      margin-bottom: 10px;
-    }
-  
-    .Hair button,
-    .Massage button,
-    .Makeup button {
-      display: block;
-      margin-left: auto;
-      margin-top: auto;
-    }
-  
-    #category {
-      width: 170px;
-      height: 41px;
-      flex-shrink: 0;
-    }
-    .filter-dropdown {
-      display: flex;
-      justify-content: flex-end;
-      padding-right: 25px;
-    }
-    .filter-dropdown select {
-      padding: 10px;
-      font-family: Poppins;
-      font-size: 15px;
-      font-style: normal;
-      font-weight: 400;
-      line-height: 183%;
-      display: block;
-      margin-bottom: 10px;
-    }
-  
+    position: relative;
+    width: 700px;
+    height: 450px;
+    padding-top: 0px;
+    margin: 0 auto;
+    margin-bottom: 20px;
+    flex-shrink: 0;
+  }
+
+  .bg-image {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    max-width: 700px;
+    height: 400px;
+    margin: 0;
+    flex-shrink: 0;
+    background: lightgray url("../assets/images/flower.jpeg") center/cover
+      no-repeat;
+    box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
+  }
+
+  .inner-container {
+    padding: 0 20px;
+  }
+
+  .overlay-box {
+    display: flex;
+    position: relative;
+    margin: 0 auto;
+    bottom: 155%;
+    left: -13%;
+    max-width: 500px;
+    height: 268px;
+    flex-shrink: 0;
+    background-color: rgba(255, 255, 255, 0.63);
+    z-index: 1;
+  }
+
+  .overlay-text {
+    position: relative;
+    bottom: 108%;
+    left: 6%;
+    z-index: 2;
+  }
+
+  .header-1 {
+    font-size: 44px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: normal;
+    padding-left: 0;
+    padding-right: 735px;
+    padding-top: 175px;
+    padding-bottom: 0;
+  }
+
+  .sub-text {
+    padding-left: 85px;
+    width: 339px;
+    font-family: "Poppins";
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+    margin-top: -17px;
+    margin-bottom: 27px;
+  }
+
+  .subscribe {
+    width: 339px;
+    font-family: "Poppins";
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+    padding-left: 85px;
+    white-space: nowrap;
+  }
+
+  .sub-button {
+    margin-left: 17px;
+  }
+
+  .email {
+    width: 222px;
+    height: 51px;
+    flex-shrink: 0;
+    margin-right: 10px;
+  }
+
+  #email::placeholder {
+    color: #000;
+    font-family: "Poppins";
+    font-size: 14px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+  }
+
+  .posts-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: 20px;
+    font-size: 14px;
+    list-style-type: none;
+    margin: 0 auto;
+    margin-bottom: 55px;
+    padding: 0 20px;
+    max-width: 1200px;
+  }
+
+  .Hair,
+  .Massage,
+  .Makeup {
+    background: #fff;
+    box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
+    height: auto;
+    flex-shrink: 0;
+    padding: 20px;
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: column;
+  }
+
+  .Hair img,
+  .Massage img,
+  .Makeup img {
+    box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
+    max-width: 100%;
+    height: 200px;
+  }
+
+  .Hair p,
+  .Massage p,
+  .Makeup p {
+    flex-grow: 1;
+    font-family: Poppins;
+    font-size: 12px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+    margin-top: 10px;
+  }
+
+  .Hair h3,
+  .Massage h3,
+  .Makeup h3 {
+    color: var(--Vampire-Black, #090b0a);
+    text-align: start;
+    word-wrap: break-word;
+    white-space: normal;
+    font-family: Poppins;
+    font-size: 15px;
+    margin-bottom: 10px;
+  }
+
+  .Hair button,
+  .Massage button,
+  .Makeup button {
+    display: block;
+    margin-left: auto;
+    margin-top: auto;
+  }
+
+  #category {
+    width: 170px;
+    height: 41px;
+    flex-shrink: 0;
+  }
+  .filter-dropdown {
+    display: flex;
+    justify-content: flex-end;
+    margin-right: 35px;
+  }
+  .filter-dropdown select {
+    padding: 5px;
+    font-family: Poppins;
+    font-size: 15px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 183%;
+    display: block;
+    margin-bottom: 10px;
+  }
 }
 
 /* Mobile Screen */
