@@ -63,19 +63,25 @@ function ContactUs() {
     <div>
       <div className="contactinfo-container">
         <h1 className="toph1">Contact Us</h1>
-        <p className="p">Phone:</p>
-        <p className="p">223-133-2948</p>
-        <img src={phone} alt="phone icon" className="contact-icons" />
-        <br />
-        <p className="p">Email:</p>
-        <p className="p">thesuitespot@gmail.com</p>
-        <img src={email} alt="email icon" className="contact-icons" />
-        <br />
-        <p className="p">Location:</p>
-        <p className="p">2343 Suite Spot Way</p>
-        <p className="p">Orlando, FL 32804</p>
-        <img src={location} alt="location icon" className="contact-icons" />
-        <br />
+        <div className="inlineWeb">
+          <img src={phone} alt="phone icon" className="contact-icons" />
+          <p className="p">Phone:</p>
+          <p className="p">223-133-2948</p>
+        </div>
+
+        <div className="inlineWeb">
+          <img src={email} alt="email icon" className="contact-icons" />
+          <p className="p">Email:</p>
+          <p className="p">thesuitespot@gmail.com</p>
+        </div>
+
+        <div className="inlineWeb">
+          <img src={location} alt="location icon" className="contact-icons" />
+          <p className="p">Location:</p>
+          <p className="p">2343 Suite Spot Way</p>
+          <p className="p">Orlando, FL 32804</p>
+        </div>
+
         <div className="social-icons">
           <img src={fb} alt="facebook icon" className="contact-icons" />
           <img src={insta} alt="instagram icon" className="contact-icons" />

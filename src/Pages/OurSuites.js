@@ -93,8 +93,8 @@ function OurSuites() {
           <h1>Rent a Suite</h1>
           <div className="pmain">
             <p>
-              Are you a Lifestyle Professional looking to lease a suite? Contact
-              us below, and a manager will get back to you.
+              Are you a Lifestyle Professional looking to lease a suite? <br />{" "}
+              Contact us below, and a manager will get back to you.
             </p>
           </div>
           <form className="formarea">

@@ -186,6 +186,7 @@
 .AppointmentsContainer {
     margin: 20px auto;
     text-align: center;
+    
 }
 
 .apptsInfoContainer {
@@ -199,6 +200,7 @@
     margin-top: 20px;
     margin-bottom: 20px;
     width: 90%;
+    padding-bottom: 20px;
 }
 
 table {
