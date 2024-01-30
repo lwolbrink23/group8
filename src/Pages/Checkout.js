@@ -5,6 +5,7 @@ import tempData from "../data/cart.json";
 import tempShopData from "../data/shop.json";
 import arrowIcon from "../assets/icons/white-arrow.svg";
 import { useEffect, useState } from "react";
+import { isValidUSState } from "../data/validStates";
 
 function Checkout() {
   // backend: check if user logged in. if logged in, get their info from the database and autofill in userAns
@@ -151,7 +152,7 @@ function Checkout() {
         }
         // make sure valid state --NOT DONE
         else if (propertyName === "state") {
-          !/^\d{10}$/.test(value) && (errMsg = "Please enter a valid state");
+          !isValidUSState(value) && (errMsg = "Please enter a valid state");
         }
         // make sure 5 digits
         else if (propertyName === "zip") {
