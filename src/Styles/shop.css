@@ -58,10 +58,24 @@ input {
 }
 
 #cart-icon {
-  position: absolute;
+  position: relative;
   right: 8%;
-  width: 53px;
+
   cursor: pointer;
+}
+#cart-icon img{
+  position: absolute;
+  
+}
+.cart-quantity {
+  position: absolute;
+  background-color: red;
+  color: white;
+  right: 7.8%;
+  top:10px;
+  border-radius: 50%;
+  padding: 5px 10px;
+  font-size: 12px;
 }
 
 /* shop items */
