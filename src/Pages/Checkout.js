@@ -4,35 +4,165 @@ import { Link } from "react-router-dom";
 import tempData from "../data/cart.json";
 import tempShopData from "../data/shop.json";
 import arrowIcon from "../assets/icons/white-arrow.svg";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 
 function Checkout() {
   // backend: check if user logged in. if logged in, get their info from the database and autofill in userAns
-  // const [userAns, setUserAns] = useState({
-  //   personal: {
-  //     firstName: "",
-  //     lastName: "",
-  //     phone: "",
-  //   },
-  //   address: { street: "", city: "", state: "", zip: "" },
-  //   payment: {
-  //     option: "",
-  //     cardNumber: "",
-  //     mm: "",
-  //     yy: "",
-  //     cvc: "",
-  //     name: "",
-  //   },
-  // });
+
+  // user inputs
+  const [personalInfo, setPersonalInfo] = useState({
+    firstName: "",
+    lastName: "",
+    phone: "",
+  });
+  const [addressInfo, setAddressInfo] = useState({
+    street: "",
+    city: "",
+    state: "",
+    zip: "",
+  });
+  const [paymentInfo, setPaymentInfo] = useState({
+    option: "",
+    cardNum: "",
+    mm: "",
+    yy: "",
+    cvc: "",
+    name: "",
+  });
+
+  // errors
+  const [personalErr, setPersonalErr] = useState({
+    firstName: "",
+    lastName: "",
+    phone: "",
+  });
+  const [addressErr, setAddressErr] = useState({
+    street: "",
+    city: "",
+    state: "",
+    zip: "",
+  });
+  const [paymentErr, setPaymentErr] = useState({
+    option: "",
+    cardNum: "",
+    mm: "",
+    yy: "",
+    cvc: "",
+    name: "",
+  });
 
   const [selectedOption, setSelectedOption] = useState(null);
 
   // form val
+  // // make sure every field is filled & no errors
   // const isAnyFieldEmpty = Object.values(userAns)
   //   .flat(Infinity)
   //   .some((value) => value === "");
+  const updatePersonalInfo = (propertyName, value) => {
+    setPersonalInfo((prevInfo) => ({
+      ...prevInfo,
+      [propertyName]: value,
+    }));
+  };
+  const updateAddressInfo = (propertyName, value) => {
+    setAddressInfo((prevInfo) => ({
+      ...prevInfo,
+      [propertyName]: value,
+    }));
+  };
+  const updatePaymentInfo = (propertyName, value) => {
+    setPaymentInfo((prevInfo) => ({
+      ...prevInfo,
+      [propertyName]: value,
+    }));
+  };
+  const updatePersonalErr = (propertyName, value) => {
+    setPersonalErr((prevInfo) => ({
+      ...prevInfo,
+      [propertyName]: value,
+    }));
+  };
+  const updateAddressErr = (propertyName, value) => {
+    setAddressErr((prevInfo) => ({
+      ...prevInfo,
+      [propertyName]: value,
+    }));
+  };
+  const updatePaymentErr = (propertyName, value) => {
+    setPaymentErr((prevInfo) => ({
+      ...prevInfo,
+      [propertyName]: value,
+    }));
+  };
 
-  const validateValues = () => {};
+  const handleChange = (type, propertyName, value) => {
+    let errOccured = false;
+    switch (type) {
+      // --------personal info--------
+      case "personal":
+        updatePersonalInfo(propertyName, value);
+        switch (propertyName) {
+          case "firstName":
+            // make sure no numbers
+            if (/\d/.test(value)) {
+              updatePersonalErr(propertyName, "Names must not contain numbers");
+              errOccured = true;
+            }
+            break;
+          case "phone":
+            // make sure only numbers
+            break;
+          default:
+            break;
+        }
+        !errOccured && updatePersonalErr(propertyName, "");
+        break;
+      // --------address info--------
+      case "address":
+        updateAddressInfo(propertyName, value);
+        switch (propertyName) {
+          case "city":
+            // make sure no numbers
+            break;
+          case "state":
+            // make sure only in certain values
+            break;
+          case "ZIP":
+            // make sure only numbers
+            break;
+          default:
+            break;
+        }
+        break;
+      // --------payment info--------
+      case "payment":
+        updatePaymentInfo(propertyName, value);
+        switch (propertyName) {
+          case "cardNum":
+            // make sure only numbers
+            //make sure only certain amount of digits
+            break;
+          case "mm":
+            // make sure only numbers, 2 digits
+            break;
+          case "yy":
+            // make sure only numbers, 2 digits
+            break;
+          case "cvc":
+            // make sure only numbers, 3 digits
+            break;
+          default:
+            break;
+        }
+        break;
+      default:
+      // Handle default case or do nothing
+    }
+  };
+  // debug handle change function
+  // useEffect(() => {
+  //   console.log(personalInfo);
+  // }, [personalInfo]);
 
   // radio button stuff
   const options = [
@@ -131,21 +261,65 @@ function Checkout() {
         <div id="shipping-info" className="cardbox">
           <h3>Shipping Information</h3>
           <div>
-            <input type="text" placeholder="First Name*" required />
+            <input
+              type="text"
+              placeholder="First Name*"
+              required
+              onChange={(e) =>
+                handleChange("personal", "firstName", e.target.value)
+              }
+            />
+          </div>
+          {personalErr.firstName && (
+            <p style={{ color: "red" }}>{personalErr.firstName}</p>
+          )}
+          <div>
+            <input
+              type="text"
+              placeholder="Last Name*"
+              onChange={(e) =>
+                handleChange("personal", "lastName", e.target.value)
+              }
+            />
+          </div>
+          {personalErr.lastName && (
+            <p style={{ color: "red" }}>{personalErr.lastName}</p>
+          )}
+          <div>
+            <input
+              type="text"
+              placeholder="Phone*"
+              onChange={(e) =>
+                handleChange("personal", "phone", e.target.value)
+              }
+            />
           </div>
           <div>
-            <input type="text" placeholder="Last Name*" required />
-          </div>
-          <div>
-            <input type="text" placeholder="Phone*" required />
-          </div>
-          <div>
-            <input type="text" placeholder="Street Address*" required />
+            <input
+              type="text"
+              placeholder="Street Address*"
+              onChange={(e) =>
+                handleChange("address", "street", e.target.value)
+              }
+            />
           </div>
           <div className="ct-state">
-            <input type="text" placeholder="City*" required />
-            <input type="text" placeholder="State*" required />
-            <input type="text" placeholder="ZIP Code*" required />
+            <input
+              type="text"
+              placeholder="City*"
+              onChange={(e) => handleChange("address", "city", e.target.value)}
+            />
+            <input
+              type="text"
+              placeholder="State*"
+              onChange={(e) => handleChange("address", "state", e.target.value)}
+            />
+
+            <input
+              type="text"
+              placeholder="ZIP Code*"
+              onChange={(e) => handleChange("address", "zip", e.target.value)}
+            />
           </div>
         </div>
         <div id="payment-info" className="cardbox">
@@ -166,14 +340,32 @@ function Checkout() {
             </div>
           ))}
           <div>
-            <input type="text" placeholder="Card Number*" required />
+            <input
+              type="text"
+              placeholder="Card Number*"
+              onChange={(e) =>
+                handleChange("payment", "cardNum", e.target.value)
+              }
+            />
           </div>
           <div className="cc-info">
-            <input type="text" placeholder="mm*" required />
+            <input
+              type="text"
+              placeholder="mm*"
+              onChange={(e) => handleChange("payment", "mm", e.target.value)}
+            />
 
-            <input type="text" placeholder="yy*" required />
+            <input
+              type="text"
+              placeholder="yy*"
+              onChange={(e) => handleChange("payment", "yy", e.target.value)}
+            />
 
-            <input type="text" placeholder="CVC*" required />
+            <input
+              type="text"
+              placeholder="CVC*"
+              onChange={(e) => handleChange("payment", "cvc", e.target.value)}
+            />
           </div>
           <div>
             <input type="text" placeholder="Name on Card*" required />
