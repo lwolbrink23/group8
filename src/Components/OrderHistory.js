@@ -5,17 +5,20 @@ import { Link } from "react-router-dom";
 
 function OrderHistory() {
   const OrderedHistoryItems = () => (
-    <div className="details">
+    <div className="orderHistoryDetails">
       {/* make the date & status dynamic later */}
-      <p>11/15/23</p>
-      <p>
-        <strong>Status: Processing</strong>
-      </p>
-      <Link to="/order_details" className="purp">
-        View Details
-      </Link>
+      <p className="date">11/15/23</p>
+      <div className="inline">
+        <p>
+          <strong>Status: Processing</strong>
+        </p>
+        <Link to="/order_details" className="align-right">
+          View Details
+        </Link>
+      </div>
       <ul className="dropdown-content width">
-        {tempData.map((item, i) => {
+        {/* only shows first 2 items in order */}
+        {tempData.slice(0, 2).map((item, i) => {
           let itemName = "";
           let itemPic = "";
 
@@ -31,7 +34,7 @@ function OrderHistory() {
                 src={require("../assets/images/shop/" + itemPic + ".png")}
                 alt=""
               ></img>
-              <div className="ordered-item-info">
+              <div className="item-history-info">
                 <p>
                   <span style={{ fontWeight: "bold" }}>{itemName}</span>
                   <br></br>
