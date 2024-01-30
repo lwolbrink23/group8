@@ -41,17 +41,13 @@ function Account() {
 
   const categories = ["Past 6 months", "Past Year", "All Time"];
 
-  const [orders, setOrders] = useState([]);
+  const [selectedOrder, setSelectedOrder] = useState("Ascending"); // Default to ascending order
 
-  useEffect(() => {
-    // Set orders using the imported data
-    setOrders(orderData);
-  }, []); // Empty dependency array means this effect runs once on mount
-
-  const getImagePath = (itemId) => {
-    const shopItem = tempShopData.find((item) => item.id === itemId);
-    return shopItem ? `../assets/images/shop/${shopItem.file}.png` : "";
+  const handleOrder = (order) => {
+    setSelectedOrder(order);
   };
+
+  const orders = ["Descending"];
 
   return (
     <div>
@@ -213,19 +209,38 @@ function Account() {
         <div className="infoRowTitle">
           <h3>Order History</h3>
         </div>
-        <div className="order-dropdown">
-          <select
-            id="category"
-            onChange={(e) => handleFilter(e.target.value)}
-            value={selectedCategory}
-          >
-            <option value="Past 1 month">Past 1 month</option>
-            {categories.map((category) => (
-              <option key={category} value={category}>
-                {category.charAt(0).toUpperCase() + category.slice(1)}
-              </option>
-            ))}
-          </select>
+        <div className="order-dropdown-container">
+          <div className="order-dropdown">
+            <select
+              className="custom-dropdown"
+              id="category"
+              onChange={(e) => handleFilter(e.target.value)}
+              value={selectedCategory}
+            >
+              <option value="Past 1 month">Past 1 month</option>
+              {categories.map((category) => (
+                <option key={category} value={category}>
+                  {category.charAt(0).toUpperCase() + category.slice(1)}
+                </option>
+              ))}
+            </select>
+          </div>
+          <div className="order-dropdown">
+            {/* ORDER: ASCENDING OR DESCENDING */}
+            <select
+              className="custom-dropdown"
+              id="order"
+              onChange={(e) => handleOrder(e.target.value)}
+              value={selectedOrder}
+            >
+              <option value="Ascending">Ascending</option>
+              {orders.map((order) => (
+                <option key={order} value={order}>
+                  {order.charAt(0).toUpperCase() + order.slice(1)}
+                </option>
+              ))}
+            </select>
+          </div>
         </div>
         <div className="orderHistory">
           <OrderHistory></OrderHistory>
