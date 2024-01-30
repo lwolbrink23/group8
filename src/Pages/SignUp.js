@@ -109,35 +109,36 @@ function SignUp() {
       <h1>Sign Up</h1>
       <div className="contain">
         <form className="signupform">
+          <p className="wonkyName">Name</p>
           <div className="inline">
-            <div>
-              <label htmlFor="firstname">First Name</label>
-              <input
-                type="text"
-                className="section1"
-                id="first"
-                value={firstNameValue}
-                onChange={handleFirstNameInputChange}
-              />
-            </div>
-            <div>
-              <label htmlFor="lastname">Last Name</label>
-              <input
-                type="text"
-                className="section1"
-                id="last"
-                value={lastNameValue}
-                onChange={handleLastNameInputChange}
-              />
-            </div>
+            <label htmlFor="firstname"></label>
+            <input
+              type="text"
+              className="nameField"
+              placeholder=" First Name*"
+              id="first"
+              value={firstNameValue}
+              onChange={handleFirstNameInputChange}
+            />
+
+            <label htmlFor="lastname"></label>
+            <input
+              type="text"
+              className="nameField"
+              id="last"
+              placeholder=" Last Name*"
+              value={lastNameValue}
+              onChange={handleLastNameInputChange}
+            />
           </div>
-          <div className="inline">
+          <div>
             <div>
               <label htmlFor="phonenumber">Phone Number</label>
               <input
                 type="text"
                 className="section1"
                 id="phone"
+                placeholder=" Phone Number*"
                 value={phoneValue}
                 onChange={handlePhoneInputChange}
               />
@@ -152,7 +153,8 @@ function SignUp() {
               <input
                 type="text"
                 className="section1"
-                id="email"
+                id="emailInput"
+                placeholder=" Email Address*"
                 value={emailValue}
                 onChange={handleEmailInputChange}
               />
@@ -166,16 +168,17 @@ function SignUp() {
           <label htmlFor="password">Password</label>
           <input
             type="password" // Change type to password for secure input
-            className="textarea"
+            className="section1"
+            placeholder=" Password*"
             id="password"
             value={pwValue}
             onChange={handlePwInputChange}
           />
-          <br></br>
           <label htmlFor="confirm">Confirm Password</label>
           <input
             type="password" // Change type to password for secure input
-            className="textarea"
+            className="section1"
+            placeholder=" Confirm Password*"
             id="confirm"
             value={confPwValue}
             onChange={handleConfPwInputChange}
@@ -185,7 +188,6 @@ function SignUp() {
               Passwords do not match. Please try again.
             </p>
           )}
-          <br></br>
 
           <button
             type="button"
@@ -208,7 +210,7 @@ function SignUp() {
         </form>
       </div>
       <div className="text-container">
-        <p classname="reg">
+        <p>
           Already have an account?{" "}
           <Link to="/login" className="purp">
             Log In

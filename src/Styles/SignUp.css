@@ -1,27 +1,72 @@
 /* General */
-.reg {
-    text-align: center;
+h1 {
+    margin-bottom: -20px;
+}
+.wonkyName {
+    margin-bottom: 0;
+}
+
+.signupform {
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    text-align: left;
+    width:40%;
+}
+
+.input p {
+    font-family: "poppins";
+}
+
+.nameField {
+    display: flex;
+        justify-content: center;
+        width: 100%;
+        box-sizing: border-box;
+        margin-bottom: 10px;
+        box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
+        border: none;
+        height: 50px;
+
+}
+
+.section1 {
+    display: flex;
+    justify-content: center;
+    width: 100%;
+    box-sizing: border-box;
+    margin-top: 0px;
+    margin-bottom: 20px;
+    box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
+    border: none;
+    height: 50px;
+}
+
+
+.signupform button {
+    padding: 15px 30px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
+    color: #5A5A5A;
+    font-family: Raleway;
+    font-size: 24px;
+    width: 300px;
+    margin: 0 auto;
 }
 
 .purp {
-    text-align: center;
     color: #8569B8;
 }
+
 .text-container,
 .contain {
     display: flex;
+    flex-direction: row;
     align-items: center;
     justify-content: center;
     margin-top: 20px;
-}
-
-.inline {
-    display: flex;
-    flex-direction: row;
-}
-
-.inline>div {
-    margin-right: 10px;
 }
 
 #confirm {
@@ -34,29 +79,9 @@
 
 /* Mobile */
 @media screen and (max-width: 767px) {
-    .signupform {
-        max-width: 100%;
-        margin: 0 auto;
-        display: flex;
-        flex-direction: column;
-        text-align: left;
-    }
-
-    .section1,
-    .textarea {
-        display: block;
-        width: 145px;
-        box-sizing: border-box;
-        margin-bottom: 10px;
-        box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
-        border: none;
-        height: 50px;
-
-    }
-
-    .textarea {
-        width: 300px;
-    }
+    .signupform { 
+        width: 80%;}
+   
 
     .signupform button {
         padding: 15px 30px;
@@ -72,57 +97,18 @@
     }
 }
 
-/* Web */
 @media screen and (min-width: 767px) {
-    .signupform {
-        margin: 0 auto;
+.inline {
         display: flex;
-        flex-direction: column;
-        text-align: left;
+        justify-content: space-between; 
+       
     }
 
-    .inline {
-        display: flex;
-        justify-content: center;
-        flex-direction: row;
+    /* Adjust the width of each nameField as needed */
+    .nameField {
+        width: 48%;
+        margin-left: -20px;
+
     }
 
-    .inline>div {
-        margin-right: 10px;
-    }
-
-    .section1 {
-        display: flex;
-        justify-content: center;
-        width: 218px;
-        box-sizing: border-box;
-        margin-bottom: 10px;
-        box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
-        border: none;
-        height: 50px;
-    }
-
-    .textarea {
-        justify-content: center;
-        box-sizing: border-box;
-        margin-bottom: 20px;
-        box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
-        border: none;
-        height: 50px;
-        width: 500px;
-        margin: 0 auto;
-    }
-
-    .signupform button {
-        padding: 15px 30px;
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
-        color: #5A5A5A;
-        font-family: Raleway;
-        font-size: 24px;
-        width: 300px;
-        margin: 0 auto;
-    }
 }
