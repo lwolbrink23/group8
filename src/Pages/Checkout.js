@@ -5,6 +5,7 @@ import tempData from "../data/cart.json";
 import tempShopData from "../data/shop.json";
 import arrowIcon from "../assets/icons/white-arrow.svg";
 import { useEffect, useState } from "react";
+import { isValidUSState } from "../data/validStates";
 
 function Checkout() {
   // backend: check if user logged in. if logged in, get their info from the database and autofill in userAns
@@ -151,7 +152,7 @@ function Checkout() {
         }
         // make sure valid state --NOT DONE
         else if (propertyName === "state") {
-          !/^\d{10}$/.test(value) && (errMsg = "Please enter a valid state");
+          !isValidUSState(value) && (errMsg = "Please enter a valid state");
         }
         // make sure 5 digits
         else if (propertyName === "zip") {
@@ -333,34 +334,47 @@ function Checkout() {
           </div>
           {/* city input */}
           <div className="ct-state">
-            <input
-              type="text"
-              placeholder="City*"
-              onChange={(e) => handleChange("address", "city", e.target.value)}
-            />
-            {addressErr.city && (
-              <p style={{ color: "red" }}>{addressErr.city}</p>
-            )}
+            <div>
+              <input
+                type="text"
+                placeholder="City*"
+                onChange={(e) =>
+                  handleChange("address", "city", e.target.value)
+                }
+              />
+              {addressErr.city && (
+                <p style={{ color: "red" }}>{addressErr.city}</p>
+              )}
+            </div>
             {/* state input */}
-            <input
-              type="text"
-              placeholder="State*"
-              onChange={(e) => handleChange("address", "state", e.target.value)}
-            />
-            {addressErr.state && (
-              <p style={{ color: "red" }}>{addressErr.state}</p>
-            )}
+            <div>
+              <input
+                type="text"
+                placeholder="State*"
+                onChange={(e) =>
+                  handleChange("address", "state", e.target.value)
+                }
+              />
+              {addressErr.state && (
+                <p style={{ color: "red" }}>{addressErr.state}</p>
+              )}
+            </div>
             {/* zip input */}
-            <input
-              type="text"
-              placeholder="ZIP Code*"
-              onChange={(e) => handleChange("address", "zip", e.target.value)}
-            />
-            {addressErr.zip && <p style={{ color: "red" }}>{addressErr.zip}</p>}
+            <div>
+              <input
+                type="text"
+                placeholder="ZIP Code*"
+                onChange={(e) => handleChange("address", "zip", e.target.value)}
+              />
+              {addressErr.zip && (
+                <p style={{ color: "red" }}>{addressErr.zip}</p>
+              )}
+            </div>
           </div>
         </div>
         <div id="payment-info" className="cardbox">
           <h3>Payment Method</h3>
+          {/* payment method radio */}
           {options.map((option) => (
             <div key={option.id}>
               <label>
@@ -391,24 +405,32 @@ function Checkout() {
           )}
           {/* mm/yy CVC */}
           <div className="cc-info">
-            <input
-              type="text"
-              placeholder="mm*"
-              onChange={(e) => handleChange("payment", "mm", e.target.value)}
-            />
-            {paymentErr.mm && <p style={{ color: "red" }}>{paymentErr.mm}</p>}
-            <input
-              type="text"
-              placeholder="yy*"
-              onChange={(e) => handleChange("payment", "yy", e.target.value)}
-            />
-            {paymentErr.yy && <p style={{ color: "red" }}>{paymentErr.yy}</p>}
-            <input
-              type="text"
-              placeholder="CVC*"
-              onChange={(e) => handleChange("payment", "cvc", e.target.value)}
-            />
-            {paymentErr.cvc && <p style={{ color: "red" }}>{paymentErr.cvc}</p>}
+            <div>
+              <input
+                type="text"
+                placeholder="mm*"
+                onChange={(e) => handleChange("payment", "mm", e.target.value)}
+              />
+              {paymentErr.mm && <p style={{ color: "red" }}>{paymentErr.mm}</p>}
+            </div>
+            <div>
+              <input
+                type="text"
+                placeholder="yy*"
+                onChange={(e) => handleChange("payment", "yy", e.target.value)}
+              />
+              {paymentErr.yy && <p style={{ color: "red" }}>{paymentErr.yy}</p>}
+            </div>
+            <div>
+              <input
+                type="text"
+                placeholder="CVC*"
+                onChange={(e) => handleChange("payment", "cvc", e.target.value)}
+              />
+              {paymentErr.cvc && (
+                <p style={{ color: "red" }}>{paymentErr.cvc}</p>
+              )}
+            </div>
           </div>
           {/* name on card */}
           <div>
