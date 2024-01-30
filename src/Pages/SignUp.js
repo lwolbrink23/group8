@@ -12,6 +12,7 @@ function SignUp() {
   const [pwValue, setPwValue] = useState("");
   const [confPwValue, setConfPwValue] = useState("");
   const [passwordsMatchError, setPasswordsMatchError] = useState(false);
+  const [phoneError, setPhoneError] = useState(false);
 
   const handleFirstNameInputChange = (event) => {
     setFirstNameValue(event.target.value);
@@ -26,7 +27,18 @@ function SignUp() {
   };
 
   const handlePhoneInputChange = (event) => {
-    setPhoneValue(event.target.value);
+    const value = event.target.value;
+    setPhoneValue(value);
+
+    // Validate the phone number
+    const isValid = isValidPhoneNumber(value);
+    setPhoneError(!isValid);
+  };
+
+  const isValidPhoneNumber = (phoneNumber) => {
+    // Basic check for a valid phone number (10 digits)
+    const phoneNumberRegex = /^\d{10}$/;
+    return phoneNumberRegex.test(phoneNumber);
   };
 
   const handlePwInputChange = (event) => {
@@ -73,7 +85,8 @@ function SignUp() {
       emailValue &&
       pwValue &&
       confPwValue &&
-      !passwordsMatchError
+      !passwordsMatchError &&
+      !phoneError
         ? "black"
         : "#646464",
   };
@@ -114,6 +127,11 @@ function SignUp() {
                 value={phoneValue}
                 onChange={handlePhoneInputChange}
               />
+              {phoneError && (
+                <p style={{ color: "red" }}>
+                  Please enter a 10-digit phone number.
+                </p>
+              )}
             </div>
             <div>
               <label htmlFor="email">Email Address</label>
@@ -159,7 +177,9 @@ function SignUp() {
               !emailValue ||
               !phoneValue ||
               !pwValue ||
-              !confPwValue
+              !confPwValue ||
+              passwordsMatchError ||
+              phoneError
             }
             onClick={handleSignUp}
           >
