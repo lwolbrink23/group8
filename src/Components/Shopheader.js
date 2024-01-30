@@ -12,7 +12,9 @@ function Shopheader(props) {
       <Link to="/cart">
         <div className="cart-icon">
           <img src={shopICON} alt="shopping cart" id="cart-icon"></img>
-          {1 > 0 && <span className="cart-quantity">{cartData.length}</span>}
+          {1 > 0 && (
+            <span className="cart-quantity bold">{cartData.length}</span>
+          )}
         </div>
       </Link>
     </div>
