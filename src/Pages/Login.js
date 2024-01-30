@@ -6,13 +6,27 @@ import { Link } from "react-router-dom";
 function Login() {
   const [emailValue, setEmailValue] = useState("");
   const [pwValue, setPwValue] = useState("");
+  const [emailError, setEmailError] = useState(false);
 
   const handleEmailInputChange = (event) => {
-    setEmailValue(event.target.value);
+    const value = event.target.value;
+    setEmailValue(value);
+
+    // Validate the email address
+    const isValid = isValidEmail(value);
+    // Set an error state or handle the validation result as needed
+    // For example:
+    setEmailError(!isValid);
   };
 
   const handlePwInputChange = (event) => {
     setPwValue(event.target.value);
+  };
+
+  const isValidEmail = (email) => {
+    // Basic check for a valid email address
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    return emailRegex.test(email);
   };
 
   const resetForm = () => {
@@ -41,10 +55,13 @@ function Login() {
             value={emailValue}
             onChange={handleEmailInputChange}
           />
+          {emailError && (
+            <p style={{ color: "red" }}>Please enter a valid email address.</p>
+          )}
           <br />
           <label htmlFor="password">Password</label>
           <input
-            type="text"
+            type="password"
             className="textarea"
             id="password"
             value={pwValue}
