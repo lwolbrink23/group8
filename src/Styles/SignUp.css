@@ -14,6 +14,10 @@
     width:40%;
 }
 
+.signupform input {
+    font-family: 'poppins';
+}
+
 .input p {
     font-family: "poppins";
 }
@@ -28,6 +32,15 @@
         border: none;
         height: 50px;
 
+}
+
+.inlineSignUp {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    margin: 0 auto;
+    gap: 10px
 }
 
 .section1 {
@@ -77,6 +90,11 @@
     background-color: white;
 }
 
+#first {
+    position: relative;
+    right: 10px
+}
+
 /* Mobile */
 @media screen and (max-width: 767px) {
     .signupform { 
@@ -98,16 +116,15 @@
 }
 
 @media screen and (min-width: 767px) {
-.inline {
+.inlineSignUp {
         display: flex;
-        justify-content: space-between; 
-       
+        justify-content: center; 
+        gap: 10px
     }
 
     /* Adjust the width of each nameField as needed */
     .nameField {
-        width: 48%;
-        margin-left: -20px;
+        width: 100%;
 
     }
 

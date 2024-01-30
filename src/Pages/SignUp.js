@@ -110,7 +110,7 @@ function SignUp() {
       <div className="contain">
         <form className="signupform">
           <p className="wonkyName">Name</p>
-          <div className="inline">
+          <div className="inlineSignUp">
             <label htmlFor="firstname"></label>
             <input
               type="text"
