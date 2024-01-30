@@ -20,6 +20,7 @@ function Header() {
     /* making side bar slide in and out */
   }
   const [isSidebarOpen, setIsSidebarOpen] = useState(false);
+  const [activeSubpage, setActiveSubpage] = useState(null);
   const sidebarRef = useRef(null);
 
   useEffect(() => {
@@ -54,8 +55,8 @@ function Header() {
     }
   };
 
-  const handleHamburgerClick = () => {
-    toggleSidebar(); // Call toggleSidebar to handle both state and animation
+  const toggleSubpage = (subpage) => {
+    setActiveSubpage(activeSubpage === subpage ? null : subpage);
   };
 
   useEffect(() => {
@@ -65,6 +66,15 @@ function Header() {
       sidebarRef.current.style.animationName = "slideOut";
     }
   }, [isSidebarOpen]);
+
+  const toggleSubpages = (event) => {
+    const parentListItem = event.currentTarget.parentNode;
+    const subpages = parentListItem.querySelector("ul");
+    if (subpages) {
+      subpages.style.display =
+        subpages.style.display === "block" ? "none" : "block";
+    }
+  };
 
   return (
     <header>
@@ -96,11 +106,8 @@ function Header() {
             className="profile-icon-mobile"
           />
         </Link>
-        <nav
-          ref={sidebarRef}
-          className={`sidebar ${isSidebarOpen ? "show" : ""}`}
-        >
-          <ul className={isHamburgerOpen ? "show" : ""}>
+        <nav ref={sidebarRef} className="sidebar">
+          <ul className={isSidebarOpen ? "show" : ""}>
             <li>
               <Link to="/" onClick={toggleSidebar}>
                 <img src={homeicon} alt="home icon" className="icon-mobile" />
@@ -119,7 +126,11 @@ function Header() {
                 </a>
               </div>
               <div id="about-mobile">
-                <a href="#" className="about-link">
+                <a
+                  href="#"
+                  className="about-link"
+                  onClick={() => toggleSubpage("about")}
+                >
                   <img
                     src={abouticon}
                     alt="about icon"
@@ -128,7 +139,11 @@ function Header() {
                   About
                 </a>
               </div>
-              <ul>
+              <ul
+                style={{
+                  display: activeSubpage === "about" ? "block" : "none",
+                }}
+              >
                 <li>
                   <CustomLink to="/ourstory" onClick={toggleSidebar}>
                     Our Story
@@ -190,7 +205,11 @@ function Header() {
                 </CustomLink>
               </div>
               <div id="account-mobile">
-                <CustomLink to="#">
+                <CustomLink
+                  to="#"
+                  className="account-link"
+                  onClick={() => toggleSubpage("account")}
+                >
                   <img
                     src={profileicon}
                     alt="profile icon"
@@ -199,7 +218,11 @@ function Header() {
                   Account
                 </CustomLink>
               </div>
-              <ul>
+              <ul
+                style={{
+                  display: activeSubpage === "account" ? "block" : "none",
+                }}
+              >
                 <li>
                   <CustomLink to="/Login" onClick={toggleSidebar}>
                     Login
