@@ -1,8 +1,8 @@
 import "../Styles/home.css"; // Import your styles
 import { Link } from "react-router-dom";
-import React, { useState } from 'react';
-import PopUpBlog from '../Components/PopUpBlog.js';
-import PopUpNews from '../Components/PopUpNews.js';
+import React, { useState } from "react";
+import PopUpBlog from "../Components/PopUpBlog.js";
+import PopUpNews from "../Components/PopUpNews.js";
 import MainCarousel from "../Components/MainCarousel.js";
 import WebGallery from "../Components/WebGallery.js";
 import promoBottle from "../assets/images/promo_bottle.png";
@@ -68,8 +68,8 @@ function Home() {
   const openNews = () => setIsNewsOpen(true);
   const closeNews = () => setIsNewsOpen(false);
 
-  const [blogEmail, setBlogEmail] = useState('');
-  const [newsEmail, setNewsEmail] = useState('');
+  const [blogEmail, setBlogEmail] = useState("");
+  const [newsEmail, setNewsEmail] = useState("");
 
   // Functions to handle input changes
   const handleBlogEmailChange = (e) => {
@@ -80,12 +80,27 @@ function Home() {
     setNewsEmail(e.target.value);
   };
 
+  const resetInput = () => {
+    setBlogEmail("");
+    setNewsEmail("");
+  };
+
+  const handleSubBlog = () => {
+    openBlog();
+    resetInput();
+  };
+
+  const handleSubNews = () => {
+    openNews();
+    resetInput();
+  };
+
   const buttonBlogStyle = {
-    color: blogEmail ? 'black' : '#646464', // Black when clickable, light grey when not
+    color: blogEmail ? "black" : "#646464", // Black when clickable, light grey when not
   };
 
   const buttonNewsStyle = {
-    color: newsEmail ? 'black' : '#646464', // Black when clickable, light grey when not
+    color: newsEmail ? "black" : "#646464", // Black when clickable, light grey when not
   };
   return (
     <div className="App">
@@ -239,7 +254,13 @@ function Home() {
                 value={blogEmail}
                 onChange={handleBlogEmailChange}
               />
-              <button type="button" className="blogButton" onClick={openBlog} disabled={!blogEmail} style={buttonBlogStyle}>
+              <button
+                type="button"
+                className="blogButton"
+                onClick={handleSubBlog}
+                disabled={!blogEmail}
+                style={buttonBlogStyle}
+              >
                 Subscribe
               </button>
               <PopUpBlog isOpen={isBlogOpen} closePopup={closeBlog} />
@@ -259,8 +280,16 @@ function Home() {
                 type="email"
                 placeholder="Enter your email"
                 className="newsInput"
+                value={newsEmail}
+                onChange={handleNewsEmailChange}
               />
-              <button type="button" className="blogButton" onClick={openNews} disabled={!newsEmail} style={buttonNewsStyle}>
+              <button
+                type="button"
+                className="blogButton"
+                onClick={handleSubNews}
+                disabled={!newsEmail}
+                style={buttonNewsStyle}
+              >
                 Subscribe
               </button>
               <PopUpNews isOpen={isNewsOpen} closePopup={closeNews} />

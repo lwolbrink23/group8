@@ -1,43 +1,93 @@
-import React from "react";
-import '../App.css';
-import '../Styles/Login.css';
-import { Link } from 'react-router-dom';
-
+import React, { useState } from "react";
+import "../App.css";
+import "../Styles/Login.css";
+import { Link } from "react-router-dom";
 
 function Login() {
-    return (
-        <div>
-            <h1>Log In</h1>
-            <div className="contain">
-            <form className="loginform">
-                <label htmlFor="email">Email</label>
-                <input type="text" className="textarea" id="email" />
-                <br/>
-                <label htmlFor="password">Password</label>
-                <input type="text" className="textarea" id="password" />
-                <br/>
-                <div className="checkbox-container">
-                <input type="checkbox" className="check" id="check"/>
-                <label htmlFor="check">Remember Me</label>
-                </div>
-                <Link to="/Account" style={{ display: 'flex', justifyContent: 'center', alignItems: 'center' }}>
-                <button type="button">
-                    LOG IN
-                </button>
-                </Link>
-            </form>
-            </div>
-            <p className="purp">Forgot your password?</p>
+  const [emailValue, setEmailValue] = useState("");
+  const [pwValue, setPwValue] = useState("");
 
-            <div className="text-container">
-            <p classname="reg">Not registered?</p>
-            <p className="purp"><Link to="/SignUp">Sign Up</Link></p>
-            </div>
+  const handleEmailInputChange = (event) => {
+    setEmailValue(event.target.value);
+  };
 
-        </div>
-    )
+  const handlePwInputChange = (event) => {
+    setPwValue(event.target.value);
+  };
+
+  const resetForm = () => {
+    setEmailValue("");
+    setPwValue("");
+  };
+
+  const handleLogin = () => {
+    resetForm();
+  };
+
+  const buttonStyle = {
+    color: emailValue && pwValue ? "black" : "#646464",
+  };
+
+  return (
+    <div>
+      <h1>Log In</h1>
+      <div className="contain">
+        <form className="loginform">
+          <label htmlFor="email">Email</label>
+          <input
+            type="text"
+            className="textarea"
+            id="email"
+            value={emailValue}
+            onChange={handleEmailInputChange}
+          />
+          <br />
+          <label htmlFor="password">Password</label>
+          <input
+            type="text"
+            className="textarea"
+            id="password"
+            value={pwValue}
+            onChange={handlePwInputChange}
+          />
+          <br />
+          <div className="checkbox-container">
+            <input type="checkbox" className="check" id="check" />
+            <label htmlFor="check">Remember Me</label>
+          </div>
+          <Link
+            to="/Account"
+            style={{
+              display: "flex",
+              justifyContent: "center",
+              alignItems: "center",
+              textDecorationLine: "none",
+            }}
+          >
+            <button
+              type="button"
+              className="logbutton"
+              style={buttonStyle}
+              disabled={!emailValue || !pwValue}
+              onClick={handleLogin}
+            >
+              LOG IN
+            </button>
+          </Link>
+        </form>
+      </div>
+      <p className="purp">Forgot your password?</p>
+
+      <div className="text-container">
+        <p classname="reg">
+          Not registered?{" "}
+          <Link to="/SignUp" className="purp">
+            Sign Up
+          </Link>
+        </p>
+      </div>
+    </div>
+  );
 }
 
 export default Login;
-
-
