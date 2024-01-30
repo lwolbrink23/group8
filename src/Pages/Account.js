@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import "../App.css";
 import "../Styles/account.css";
@@ -9,6 +9,9 @@ import lock from "../assets/icons/icons8-password-100.png";
 import apptActionIcon from "../assets/icons/apptaction.svg";
 import PopupPassword from "../Components/PopUpPassword";
 import PopupSignOut from "../Components/PopUpSignOut.js";
+import OrderHistory from "../Components/OrderHistory.js";
+import orderData from "../data/tempOrder.json";
+import tempShopData from "../data/shop.json"; // Import shop data
 
 function Account() {
   function showAppointmentDetails() {
@@ -37,6 +40,18 @@ function Account() {
   };
 
   const categories = ["Past 6 months", "Past Year", "All Time"];
+
+  const [orders, setOrders] = useState([]);
+
+  useEffect(() => {
+    // Set orders using the imported data
+    setOrders(orderData);
+  }, []); // Empty dependency array means this effect runs once on mount
+
+  const getImagePath = (itemId) => {
+    const shopItem = tempShopData.find((item) => item.id === itemId);
+    return shopItem ? `../assets/images/shop/${shopItem.file}.png` : "";
+  };
 
   return (
     <div>
@@ -198,31 +213,22 @@ function Account() {
         <div className="infoRowTitle">
           <h3>Order History</h3>
         </div>
+        <div className="order-dropdown">
+          <select
+            id="category"
+            onChange={(e) => handleFilter(e.target.value)}
+            value={selectedCategory}
+          >
+            <option value="Past 1 month">Past 1 month</option>
+            {categories.map((category) => (
+              <option key={category} value={category}>
+                {category.charAt(0).toUpperCase() + category.slice(1)}
+              </option>
+            ))}
+          </select>
+        </div>
         <div className="orderHistory">
-          <div className="order-dropdown">
-            <select
-              id="category"
-              onChange={(e) => handleFilter(e.target.value)}
-              value={selectedCategory}
-            >
-              <option value="Past 1 month">Past 1 month</option>
-              {categories.map((category) => (
-                <option key={category} value={category}>
-                  {category.charAt(0).toUpperCase() + category.slice(1)}
-                </option>
-              ))}
-            </select>
-
-            <div className="orderContainer">
-              <p className="orderDate">11/15/23</p>
-              <p>
-                <strong>Processing</strong>
-              </p>
-              <Link to="/order_details" className="purp">
-                View Details
-              </Link>
-            </div>
-          </div>
+          <OrderHistory></OrderHistory>
           {/* Display if there are no orders 
           <div className="noOrders">
             <p>No Order History</p>
