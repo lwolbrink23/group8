@@ -318,7 +318,7 @@ h3 {
         position: relative;
         top: 30%;
         left: 14%;
-        transform: translate(-50%, -100px);
+        transform: translate(-50%, -105px);
         z-index: 2;
         /* Set a higher z-index to ensure the button is on top */
     }
