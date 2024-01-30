@@ -13,6 +13,7 @@ function SignUp() {
   const [confPwValue, setConfPwValue] = useState("");
   const [passwordsMatchError, setPasswordsMatchError] = useState(false);
   const [phoneError, setPhoneError] = useState(false);
+  const [emailError, setEmailError] = useState(false);
 
   const handleFirstNameInputChange = (event) => {
     setFirstNameValue(event.target.value);
@@ -22,8 +23,21 @@ function SignUp() {
     setLastNameValue(event.target.value);
   };
 
+  const isValidEmail = (email) => {
+    // Basic check for a valid email address
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    return emailRegex.test(email);
+  };
+
   const handleEmailInputChange = (event) => {
-    setEmailValue(event.target.value);
+    const value = event.target.value;
+    setEmailValue(value);
+
+    // Validate the email address
+    const isValid = isValidEmail(value);
+    // Set an error state or handle the validation result as needed
+    // For example:
+    setEmailError(!isValid);
   };
 
   const handlePhoneInputChange = (event) => {
@@ -142,6 +156,11 @@ function SignUp() {
                 value={emailValue}
                 onChange={handleEmailInputChange}
               />
+              {emailError && (
+                <p style={{ color: "red" }}>
+                  Please enter a valid email address.
+                </p>
+              )}
             </div>
           </div>
           <label htmlFor="password">Password</label>
@@ -179,7 +198,8 @@ function SignUp() {
               !pwValue ||
               !confPwValue ||
               passwordsMatchError ||
-              phoneError
+              phoneError ||
+              emailError
             }
             onClick={handleSignUp}
           >
