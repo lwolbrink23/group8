@@ -8,22 +8,48 @@ import { useState } from "react";
 
 function Checkout() {
   // backend: check if user logged in. if logged in, get their info from the database and autofill in userAns
-  // const [userAns, setUserAns] = useState({
-  //   personal: {
-  //     firstName: "",
-  //     lastName: "",
-  //     phone: "",
-  //   },
-  //   address: { street: "", city: "", state: "", zip: "" },
-  //   payment: {
-  //     option: "",
-  //     cardNumber: "",
-  //     mm: "",
-  //     yy: "",
-  //     cvc: "",
-  //     name: "",
-  //   },
-  // });
+
+  // user inputs
+  const [personalInfo, setPersonalInfo] = useState({
+    firstName: "",
+    lastName: "",
+    phone: "",
+  });
+  const [addressInfo, setAddressInfo] = useState({
+    street: "",
+    city: "",
+    state: "",
+    zip: "",
+  });
+  const [paymentInfo, setPaymentInfo] = useState({
+    option: "",
+    cardNum: "",
+    mm: "",
+    yy: "",
+    cvc: "",
+    name: "",
+  });
+
+  // errors
+  const [personalErr, setPersonalErr] = useState({
+    firstName: "",
+    lastName: "",
+    phone: "",
+  });
+  const [addressErr, setAddressErr] = useState({
+    street: "",
+    city: "",
+    state: "",
+    zip: "",
+  });
+  const [paymentErr, setPaymentErr] = useState({
+    option: "",
+    cardNum: "",
+    mm: "",
+    yy: "",
+    cvc: "",
+    name: "",
+  });
 
   const [selectedOption, setSelectedOption] = useState(null);
 
@@ -32,7 +58,30 @@ function Checkout() {
   //   .flat(Infinity)
   //   .some((value) => value === "");
 
-  const validateValues = () => {};
+  const handleChange = (type, propertyName) => (e) => {
+    switch (type) {
+      case "personal":
+        setPersonalInfo((prevInfo) => ({
+          ...prevInfo,
+          [propertyName]: e,
+        }));
+        break;
+      case "address":
+        setAddressInfo((prevInfo) => ({
+          ...prevInfo,
+          [propertyName]: e,
+        }));
+        break;
+      case "payment":
+        setPaymentInfo((prevInfo) => ({
+          ...prevInfo,
+          [propertyName]: e,
+        }));
+        break;
+      default:
+      // Handle default case or do nothing
+    }
+  };
 
   // radio button stuff
   const options = [
@@ -133,6 +182,7 @@ function Checkout() {
           <div>
             <input type="text" placeholder="First Name*" required />
           </div>
+          {personalErr.firstName && <p style={{ color: "red" }}>yee</p>}
           <div>
             <input type="text" placeholder="Last Name*" required />
           </div>
