@@ -8,6 +8,7 @@ import { useEffect, useState } from "react";
 
 function Checkout() {
   // backend: check if user logged in. if logged in, get their info from the database and autofill in userAns
+  const [enableSubmit, setEnableSubmit] = useState(false);
 
   // user inputs
   const [personalInfo, setPersonalInfo] = useState({
@@ -22,7 +23,6 @@ function Checkout() {
     zip: "",
   });
   const [paymentInfo, setPaymentInfo] = useState({
-    option: "",
     cardNum: "",
     mm: "",
     yy: "",
@@ -55,9 +55,39 @@ function Checkout() {
 
   // form val
   // // make sure every field is filled & no errors
-  // const isAnyFieldEmpty = Object.values(userAns)
-  //   .flat(Infinity)
-  //   .some((value) => value === "");
+  const areAllFieldsEntered = () => {
+    // Check if all fields are non-empty
+    return (
+      Object.values(personalInfo).every((value) => value !== "") &&
+      Object.values(addressInfo).every((value) => value !== "") &&
+      Object.values(paymentInfo).every((value) => value !== "")
+    );
+  };
+  const areAllErrorsEmpty = () => {
+    // Check if all strings in error states are empty
+    return (
+      Object.values(personalErr).every((value) => value === "") &&
+      Object.values(addressErr).every((value) => value === "") &&
+      Object.values(paymentErr).every((value) => value === "")
+    );
+  };
+
+  useEffect(() => {
+    console.log(`all err: ${areAllErrorsEmpty()}`);
+    console.log(`all fields: ${areAllFieldsEntered()}`);
+    areAllErrorsEmpty() && areAllFieldsEntered()
+      ? setEnableSubmit(true)
+      : setEnableSubmit(false);
+  }, [
+    personalInfo,
+    addressInfo,
+    paymentInfo,
+    personalErr,
+    addressErr,
+    paymentErr,
+  ]);
+
+  // update states
   const updatePersonalInfo = (propertyName, value) => {
     setPersonalInfo((prevInfo) => ({
       ...prevInfo,
@@ -382,7 +412,11 @@ function Checkout() {
           </div>
           {/* name on card */}
           <div>
-            <input type="text" placeholder="Name on Card*" required />
+            <input
+              type="text"
+              placeholder="Name on Card*"
+              onChange={(e) => handleChange("payment", "name", e.target.value)}
+            />
           </div>
         </div>
         <div id="summary">
@@ -406,8 +440,15 @@ function Checkout() {
                 <p>Total</p>
                 <p>${total.toFixed(2)}</p>
               </div>
+              {/* submit button */}
+              {/* BACKEND: make function to save order into database */}
               <Link to={`/order_placed`}>
-                <button disabled={false}>Place Order</button>
+                <button
+                  disabled={!enableSubmit}
+                  style={enableSubmit ? { opacity: "1" } : { opacity: "0.5" }}
+                >
+                  Place Order
+                </button>
               </Link>
             </div>
           </div>
