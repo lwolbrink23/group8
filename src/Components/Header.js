@@ -56,6 +56,7 @@ function Header() {
   };
 
   const toggleSubpage = (subpage) => {
+    console.log("in toggleSubpage");
     setActiveSubpage(activeSubpage === subpage ? null : subpage);
   };
 
@@ -66,15 +67,6 @@ function Header() {
       sidebarRef.current.style.animationName = "slideOut";
     }
   }, [isSidebarOpen]);
-
-  const toggleSubpages = (event) => {
-    const parentListItem = event.currentTarget.parentNode;
-    const subpages = parentListItem.querySelector("ul");
-    if (subpages) {
-      subpages.style.display =
-        subpages.style.display === "block" ? "none" : "block";
-    }
-  };
 
   return (
     <header>
@@ -106,6 +98,7 @@ function Header() {
             className="profile-icon-mobile"
           />
         </Link>
+        {/* Nav links */}
         <nav ref={sidebarRef} className="sidebar">
           <ul className={isSidebarOpen ? "show" : ""}>
             <li>
@@ -116,14 +109,17 @@ function Header() {
             </li>
             <li>
               <div id="about-web">
-                <a href="/ourstory" className="about-link">
+                <CustomLink
+                  className="about-link"
+                  onClick={() => toggleSubpage("about")}
+                >
                   <img
                     src={abouticon}
                     alt="about icon"
                     className="icon-mobile"
                   />
                   About
-                </a>
+                </CustomLink>
               </div>
               <div id="about-mobile">
                 <a
@@ -195,7 +191,10 @@ function Header() {
             </li>
             <li>
               <div id="account-web">
-                <CustomLink to="/account">
+                <CustomLink
+                  className="about-link"
+                  onClick={() => toggleSubpage("account")}
+                >
                   <img
                     src={profileicon}
                     alt="profile icon"

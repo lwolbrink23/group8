@@ -170,12 +170,10 @@
 /* Styles for larger screens */
 @media screen and (min-width: 950px) {
     nav ul li:hover>ul {
-            display: block;
-            /* Add any additional styling for web navigation subpages on hover */
             display: grid;
-                top: 100%;
-                left: 0;
-                width: max-content;
+            top: 100%;
+            left: 0;
+            width: max-content;
         }
 
 
