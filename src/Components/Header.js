@@ -16,55 +16,61 @@ function Header() {
   const [isHamburgerOpen, setHamburgerOpen] = useState(false);
   const menuRef = useRef();
 
-  {/* making side bar slide in and out */ }
+  {
+    /* making side bar slide in and out */
+  }
   const [isSidebarOpen, setIsSidebarOpen] = useState(false);
   const sidebarRef = useRef(null);
 
   useEffect(() => {
     const handleClickOutside = (event) => {
-      if (menuRef.current && !menuRef.current.contains(event.target) && isSidebarOpen) {
+      if (
+        menuRef.current &&
+        !menuRef.current.contains(event.target) &&
+        isSidebarOpen
+      ) {
         toggleSidebar();
       }
     };
 
-    document.addEventListener('mousedown', handleClickOutside);
+    document.addEventListener("mousedown", handleClickOutside);
 
     return () => {
-      document.removeEventListener('mousedown', handleClickOutside);
+      document.removeEventListener("mousedown", handleClickOutside);
     };
   }, [isSidebarOpen]);
 
   const toggleSidebar = () => {
     if (isSidebarOpen) {
-      sidebarRef.current.style.animationName = 'slideOut';
+      sidebarRef.current.style.animationName = "slideOut";
       setTimeout(() => {
         setIsSidebarOpen(false);
         setHamburgerOpen(false);
-      }, 800)
+      }, 800);
     } else {
       setIsSidebarOpen(true);
       setHamburgerOpen(true);
-      sidebarRef.current.style.animationName = 'slideIn';
+      sidebarRef.current.style.animationName = "slideIn";
     }
   };
 
   const handleHamburgerClick = () => {
     toggleSidebar(); // Call toggleSidebar to handle both state and animation
-  }
+  };
 
   useEffect(() => {
     if (isSidebarOpen) {
-      sidebarRef.current.style.animationName = 'slideIn';
+      sidebarRef.current.style.animationName = "slideIn";
     } else {
-      sidebarRef.current.style.animationName = 'slideOut';
+      sidebarRef.current.style.animationName = "slideOut";
     }
   }, [isSidebarOpen]);
-
 
   return (
     <header>
       <div
-        ref={menuRef} className={`header-container ${isHamburgerOpen ? "mobile-open" : ""}`}
+        ref={menuRef}
+        className={`header-container ${isHamburgerOpen ? "mobile-open" : ""}`}
       >
         <Link to="/">
           <img src={logoWeb} alt="logo" className="logo-web" />
@@ -81,7 +87,7 @@ function Header() {
           </Link>
         </div>
         {/* Hamburger menu icon */}
-        <div id="hamburger-menu" onClick={handleHamburgerClick}></div>
+        <div id="hamburger-menu" onClick={toggleSidebar}></div>
         <Link to="/account">
           {" "}
           <img
@@ -90,7 +96,10 @@ function Header() {
             className="profile-icon-mobile"
           />
         </Link>
-        <nav ref={sidebarRef} className="sidebar">
+        <nav
+          ref={sidebarRef}
+          className={`sidebar ${isSidebarOpen ? "show" : ""}`}
+        >
           <ul className={isHamburgerOpen ? "show" : ""}>
             <li>
               <Link to="/" onClick={toggleSidebar}>
@@ -101,25 +110,39 @@ function Header() {
             <li>
               <div id="about-web">
                 <a href="/ourstory" className="about-link">
-                  <img src={abouticon} alt="about icon" className="icon-mobile" />
+                  <img
+                    src={abouticon}
+                    alt="about icon"
+                    className="icon-mobile"
+                  />
                   About
                 </a>
               </div>
               <div id="about-mobile">
                 <a href="#" className="about-link">
-                  <img src={abouticon} alt="about icon" className="icon-mobile" />
+                  <img
+                    src={abouticon}
+                    alt="about icon"
+                    className="icon-mobile"
+                  />
                   About
                 </a>
               </div>
               <ul>
                 <li>
-                  <CustomLink to="/ourstory" onClick={toggleSidebar}>Our Story</CustomLink>
+                  <CustomLink to="/ourstory" onClick={toggleSidebar}>
+                    Our Story
+                  </CustomLink>
                 </li>
                 <li>
-                  <CustomLink to="/oursuites" onClick={toggleSidebar}>Our Suites</CustomLink>
+                  <CustomLink to="/oursuites" onClick={toggleSidebar}>
+                    Our Suites
+                  </CustomLink>
                 </li>
                 <li>
-                  <CustomLink to="/ourservices" onClick={toggleSidebar}>Our Services</CustomLink>
+                  <CustomLink to="/ourservices" onClick={toggleSidebar}>
+                    Our Services
+                  </CustomLink>
                 </li>
               </ul>
             </li>
@@ -142,7 +165,11 @@ function Header() {
               </CustomLink>
             </li>
             <li>
-              <CustomLink to="/contact_us" className="contact-link" onClick={toggleSidebar}>
+              <CustomLink
+                to="/contact_us"
+                className="contact-link"
+                onClick={toggleSidebar}
+              >
                 <img
                   src={contacticon}
                   alt="contact us icon"
@@ -174,18 +201,26 @@ function Header() {
               </div>
               <ul>
                 <li>
-                  <CustomLink to="/Login" onClick={toggleSidebar}>Login</CustomLink>
+                  <CustomLink to="/Login" onClick={toggleSidebar}>
+                    Login
+                  </CustomLink>
                 </li>
                 <li>
-                  <CustomLink to="/SignUp" onClick={toggleSidebar}>Sign Up</CustomLink>
+                  <CustomLink to="/SignUp" onClick={toggleSidebar}>
+                    Sign Up
+                  </CustomLink>
                 </li>
                 <li>
-                  <CustomLink to="/Account" onClick={toggleSidebar}>Account</CustomLink>
+                  <CustomLink to="/Account" onClick={toggleSidebar}>
+                    Account
+                  </CustomLink>
                 </li>
               </ul>
             </li>
             <li>
-              <CustomLink to="/booknow" className="purp-button centerbutton"> {/*I added centerbutton as a class for the book now button because the previous css was messing with the buttons on the entire site. -Lindsey*/}
+              <CustomLink to="/booknow" className="purp-button centerbutton">
+                {" "}
+                {/*I added centerbutton as a class for the book now button because the previous css was messing with the buttons on the entire site. -Lindsey*/}
                 Book Now
               </CustomLink>
             </li>
