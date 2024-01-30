@@ -44,7 +44,7 @@ input {
   font-size: 44px;
 }
 #shop-banner h2 {
-  left: 16%;
+  left: 18%;
   bottom: 0;
   position: absolute;
   font-size: 36px;
@@ -58,10 +58,24 @@ input {
 }
 
 #cart-icon {
-  position: absolute;
+  position: relative;
   right: 8%;
-  width: 53px;
+
   cursor: pointer;
+}
+#cart-icon img{
+  position: absolute;
+  
+}
+.cart-quantity {
+  position: absolute;
+  background-color: #F06E6E;
+  color: white;
+  right: 7.6%;
+  top:5px;
+  border-radius: 50%;
+  padding: 2px 10px;
+  font-size: 20px;
 }
 
 /* shop items */

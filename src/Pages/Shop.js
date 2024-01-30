@@ -7,6 +7,7 @@ import shopICON from "../assets/icons/icons8-shopping-cart-100.png";
 import shopData from "../data/shop.json";
 import { Link, useLocation } from "react-router-dom";
 import React, { useEffect, useState } from "react";
+import Shopheader from "../Components/Shopheader";
 
 function ScrollToTop() {
   const location = useLocation();
@@ -123,12 +124,8 @@ function Shop() {
       <ScrollToTop />
       {/* title */}
       <div id="shop-banner">
-        <div className="title-container trans-white">
-          <h1>Shop</h1>
-          <Link to="/cart">
-            <img src={shopICON} alt="shopping cart" id="cart-icon"></img>
-          </Link>
-        </div>
+        <Shopheader htitle="Shop" disableBack={true} />
+
         <h2>
           Find all your <br></br> favorite products here.
         </h2>
