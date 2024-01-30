@@ -2,6 +2,8 @@
 
 .booknow-section {
     height: 100px;
+    position:relative;
+    top: -37px
 }
 
 .carousel-container-web {
@@ -251,6 +253,8 @@ h3 {
         flex-direction: column;
         justify-content: center;
         align-items: center;
+        position: relative;
+        top: 0px
     }
 
     .booknow-section button {

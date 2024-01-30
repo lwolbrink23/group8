@@ -2,11 +2,18 @@ import React, { useState } from "react";
 import "../App.css";
 import "../Styles/Login.css";
 import { Link } from "react-router-dom";
+import PopUpPassword from "../Components/PopUpPassword";
 
 function Login() {
   const [emailValue, setEmailValue] = useState("");
   const [pwValue, setPwValue] = useState("");
   const [emailError, setEmailError] = useState(false);
+
+  const [isContactOpen, setIsContactOpen] = useState(false);
+
+  const openContact = () => setIsContactOpen(true);
+  const closeContact = () => setIsContactOpen(false);
+
 
   const handleEmailInputChange = (event) => {
     const value = event.target.value;
@@ -93,8 +100,8 @@ function Login() {
           </Link>
         </form>
       </div>
-      <p className="purp">Forgot your password?</p>
-
+      <p className="purp" onClick={openContact} style={{ cursor: 'pointer' }}>Forgot your password?</p>
+      <PopUpPassword isOpen={isContactOpen} closePopup={closeContact} />
       <div className="text-container">
         <p classname="reg">
           Not registered?{" "}
