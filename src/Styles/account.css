@@ -1,3 +1,15 @@
+.order-dropdown select {
+    padding: 10px;
+    font-family: Poppins;
+    font-size: 15px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 183%;
+    display: block;
+    margin-bottom: 10px;
+}
+
+
 .profileTop {
     background-color: white;
     display: flex;
