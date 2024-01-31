@@ -6,6 +6,7 @@ import tempShopData from "../data/shop.json";
 import arrowIcon from "../assets/icons/white-arrow.svg";
 import { useEffect, useState } from "react";
 import { isValidUSState } from "../data/validStates";
+import CustomDropdown from "../Components/CustomDropdown";
 
 function Checkout() {
   // backend: check if user logged in. if logged in, get their info from the database and autofill in userAns
@@ -237,27 +238,6 @@ function Checkout() {
   const [dropdownVisible, setdropdownVisible] = useState(false);
   const [arrowRotation, setArrowRotation] = useState(270);
 
-  const CartDropdown = () => {
-    const toggleVisibility = () => {
-      setdropdownVisible(!dropdownVisible);
-      setArrowRotation(arrowRotation === 0 ? 270 : 0);
-    };
-
-    const arrowIconStyle = {
-      height: "15px",
-      transform: `rotate(${arrowRotation}deg)`,
-    };
-
-    return (
-      <div className="dropdown">
-        <div className="dropdown-btn" onClick={toggleVisibility}>
-          <h3>Items ordered ({tempData.length})</h3>
-          <img src={arrowIcon} alt="Arrow" style={arrowIconStyle} />
-        </div>
-        {dropdownVisible && <OrderedItems />}
-      </div>
-    );
-  };
   // calc totals
   const subtotal = () => {
     let t = 0;
@@ -444,7 +424,10 @@ function Checkout() {
         <div id="summary">
           <div id="cart-items">
             <h3>Review Order</h3>
-            <CartDropdown />
+            <CustomDropdown
+              title={`Items Ordered (${tempData.length})`}
+              ContentComponent={OrderedItems}
+            />
           </div>
           <div id="checkout-sum">
             <h3>Finish Checkout</h3>
