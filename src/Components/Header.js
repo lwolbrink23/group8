@@ -8,7 +8,13 @@ import blogicon from "../assets/icons/icons8-article-96.png";
 import faqicon from "../assets/icons/icons8-faq-96.png";
 import shopicon from "../assets/icons/icons8-shop-96.png";
 import contacticon from "../assets/icons/icons8-contact-96.png";
-import { Link, useMatch, useResolvedPath } from "react-router-dom";
+import {
+  Link,
+  useMatch,
+  useResolvedPath,
+  useNavigate,
+  useLocation,
+} from "react-router-dom";
 import "../Styles/header.css"; // main stylesheet
 import "../Styles/responsiveHeader.css"; // responsive stylesheet
 
@@ -22,6 +28,13 @@ function Header() {
   const [isSidebarOpen, setIsSidebarOpen] = useState(false);
   const [activeSubpage, setActiveSubpage] = useState(null);
   const sidebarRef = useRef(null);
+  const navigate = useNavigate();
+  const { pathname } = useLocation();
+
+  useEffect(() => {
+    // Reset activeSubpage when navigating to a new page
+    setActiveSubpage(null);
+  }, [pathname]);
 
   useEffect(() => {
     const handleClickOutside = (event) => {
