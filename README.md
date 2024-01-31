@@ -1,5 +1,5 @@
-# The Suite Spot Code - Group 8
-Welcome to The Suite Spot code!
+# The Suite Spot - Group 8
+Welcome to The Suite Spot repository!
 
 ## Prerequisites
 Before you begin, ensure you have the following installed on your machine:
@@ -9,7 +9,7 @@ Before you begin, ensure you have the following installed on your machine:
 To clone the repository and run it on your local machine, follow these steps:
 1. **Clone the repository:**
    Open your terminal and run the following git command:
-   <br/> git clone https://github.com/lwolbrink23/group8.git
+   <br/> `git clone https://github.com/lwolbrink23/group8.git`
    <br/>This command clones the repository to your local machine.
 
 2. **Navigate to the project directory:**
