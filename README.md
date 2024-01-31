@@ -1,4 +1,4 @@
-# The Suite Spot Code - Group 8
+# The Suite Spot - Group 8
 Welcome to The Suite Spot code!
 
 ## Prerequisites
