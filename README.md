@@ -1,5 +1,5 @@
 # The Suite Spot - Group 8
-Welcome to The Suite Spot code!
+Welcome to The Suite Spot repository!
 
 ## Prerequisites
 Before you begin, ensure you have the following installed on your machine:
