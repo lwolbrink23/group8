@@ -1,28 +1,36 @@
-import React, { useState } from 'react';
+import React, { useState } from "react";
 import "../Styles/footer.css";
 import Facebook from "../assets/icons/facebook.png";
 import Insta from "../assets/icons/instagram.png";
 import Tiktok from "../assets/icons/tiktok.png";
-import PopupNews from './PopUpNews';
+import PopupNews from "./PopUpNews";
 
 function Footer() {
-
   const [isPopupOpen, setIsPopupOpen] = useState(false);
 
   const openPopup = () => setIsPopupOpen(true);
   const closePopup = () => setIsPopupOpen(false);
 
   // State to keep track of the input value
-  const [inputValue, setInputValue] = useState('');
+  const [inputValue, setInputValue] = useState("");
 
   // Function to update the state based on input changes
   const handleInputChange = (event) => {
     setInputValue(event.target.value);
   };
 
+  const resetForm = () => {
+    setInputValue("");
+  };
+
+  const handleSub = () => {
+    openPopup();
+    resetForm();
+  };
+
   // change button text color when disabled
   const buttonStyle = {
-    color: inputValue ? 'black' : '#646464', // Black when clickable, light grey when not
+    color: inputValue ? "black" : "#646464", // Black when clickable, light grey when not
   };
 
   return (
@@ -56,8 +64,19 @@ function Footer() {
           <p>
             <strong>Join our Newsletter</strong>
           </p>
-          <input type="email" placeholder="Enter your email" value={inputValue} onChange={handleInputChange} />
-          <button onClick={openPopup} style={buttonStyle} disabled={!inputValue}>Subscribe</button>
+          <input
+            type="email"
+            placeholder="Enter your email"
+            value={inputValue}
+            onChange={handleInputChange}
+          />
+          <button
+            onClick={handleSub}
+            style={buttonStyle}
+            disabled={!inputValue}
+          >
+            Subscribe
+          </button>
           <PopupNews isOpen={isPopupOpen} closePopup={closePopup} />
           <div className="social-icons">
             {/* Replace # with your social media links */}

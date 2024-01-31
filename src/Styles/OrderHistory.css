@@ -1,0 +1,58 @@
+.order-details-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.item-history-info {
+    text-align: left;
+}
+
+.date {
+    position: relative;
+}
+
+.date::before,
+.date::after {
+    content: '';
+    position: absolute;
+    top: 50%;
+    width: 40%;
+    height: 1px;
+    background-color: black;
+    /* Change the color as needed */
+}
+
+.date::before {
+    left: 0;
+}
+
+.date::after {
+    right: 0;
+}
+
+#titles-right {
+    text-align: right;
+    
+}
+
+.width {
+    padding: 20px;
+    width: 100%;
+    max-width: 600px;
+    box-sizing: border-box;
+}
+
+
+.inline {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 94%;
+    margin: 0 auto;
+}
+
+
+
+

@@ -174,7 +174,11 @@ const SelectServices = () => {
                 <li key={index}>{service}</li>
               ))}
             </ul>
-            <button onClick={navigateToTime} className="continue" type="button">
+            <button onClick={navigateToTime} 
+            className="continue" 
+            type="button" 
+            disabled={selectedServices.length === 0} 
+            style={{ color: selectedServices.length === 0 ? 'grey' : 'initial' }}>
               CONTINUE
             </button>
           </div>

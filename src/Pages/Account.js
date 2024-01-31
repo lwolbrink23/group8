@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import "../App.css";
 import "../Styles/account.css";
@@ -8,7 +8,10 @@ import email from "../assets/icons/icons8-email-100 (1).png";
 import lock from "../assets/icons/icons8-password-100.png";
 import apptActionIcon from "../assets/icons/apptaction.svg";
 import PopupPassword from "../Components/PopUpPassword";
-import PopupSignOut from '../Components/PopUpSignOut.js';
+import PopupSignOut from "../Components/PopUpSignOut.js";
+import OrderHistory from "../Components/OrderHistory.js";
+import orderData from "../data/tempOrder.json";
+import tempShopData from "../data/shop.json"; // Import shop data
 
 function Account() {
   function showAppointmentDetails() {
@@ -30,6 +33,22 @@ function Account() {
   const openButton = () => setIsButtonOpen(true);
   const closeButton = () => setIsButtonOpen(false);
 
+  const [selectedCategory, setSelectedCategory] = useState("Past 1 month"); // Default to show all posts
+
+  const handleFilter = (category) => {
+    setSelectedCategory(category);
+  };
+
+  const categories = ["Past 6 months", "Past Year", "All Time"];
+
+  const [selectedOrder, setSelectedOrder] = useState("Ascending"); // Default to ascending order
+
+  const handleOrder = (order) => {
+    setSelectedOrder(order);
+  };
+
+  const orders = ["Descending"];
+
   return (
     <div>
       <div className="profileContainer">
@@ -46,7 +65,11 @@ function Account() {
             <button type="button" className="editButton">
               Edit Profile
             </button>
-            <button type="button" className="signoutButton" onClick={openButton}>
+            <button
+              type="button"
+              className="signoutButton"
+              onClick={openButton}
+            >
               Sign Out
             </button>
             <PopupSignOut isOpen={isButtonOpen} closePopup={closeButton} />
@@ -92,11 +115,39 @@ function Account() {
               </tr>
             </thead>
             <tbody>
+              {/* Fake appointment */}
+              <tr>
+                <td>May 15, 2024</td>
+                <td>Simply Chic Hair</td>
+                <td>Haircut</td>
+                <td>Marissa S.</td>
+                <td>
+                  <div className="apptActionContainer">
+                    <img
+                      src={apptActionIcon}
+                      alt="appointment menu"
+                      className="apptActionIcon"
+                      onClick={() => showAppointmentDetails()}
+                    />
+                    <Link to="/appointment/:id">
+                      <button
+                        onClick={() => navigateToAppointmentDetails()}
+                        className="apptDropdown"
+                      >
+                        Cancel Appointment
+                      </button>
+                    </Link>
+                    {/* Couldnt figure out how to put reschedule appt on dropdown. Maybe just have cancel option? */}
+                  </div>
+                </td>
+              </tr>
+              {/* Display "No Appointments" if there are no real appointments 
               <tr>
                 <td colSpan="5" className="noAppts">
                   No Appointments
                 </td>
               </tr>
+              */}
             </tbody>
           </table>
         </div>
@@ -142,12 +193,13 @@ function Account() {
                 </td>
               </tr>
 
-              {/* Display "No Appointments" if there are no real appointments */}
+              {/* Display "No Appointments" if there are no real appointments 
               <tr>
                 <td colSpan="5" className="noAppts">
                   No Appointments
                 </td>
               </tr>
+              */}
             </tbody>
           </table>
         </div>
@@ -157,11 +209,49 @@ function Account() {
         <div className="infoRowTitle">
           <h3>Order History</h3>
         </div>
+        <div className="order-dropdown-container">
+          <div className="order-dropdown">
+            <select
+              className="custom-dropdown"
+              id="category"
+              onChange={(e) => handleFilter(e.target.value)}
+              value={selectedCategory}
+            >
+              <option value="Past 1 month">Past 1 month</option>
+              {categories.map((category) => (
+                <option key={category} value={category}>
+                  {category.charAt(0).toUpperCase() + category.slice(1)}
+                </option>
+              ))}
+            </select>
+          </div>
+          <div className="order-dropdown">
+            {/* ORDER: ASCENDING OR DESCENDING */}
+            <select
+              className="custom-dropdown"
+              id="order"
+              onChange={(e) => handleOrder(e.target.value)}
+              value={selectedOrder}
+            >
+              <option value="Ascending">Ascending</option>
+              {orders.map((order) => (
+                <option key={order} value={order}>
+                  {order.charAt(0).toUpperCase() + order.slice(1)}
+                </option>
+              ))}
+            </select>
+          </div>
+        </div>
         <div className="orderHistory">
-          <p>No Order History</p>
-          <Link to="/shop">
-            <button class="shopButton">Shop Now</button>
-          </Link>
+          <OrderHistory></OrderHistory>
+          {/* Display if there are no orders 
+          <div className="noOrders">
+            <p>No Order History</p>
+            <Link to="/shop">
+              <button class="shopButton">Shop Now</button>
+            </Link>
+          </div>
+            */}
         </div>
       </div>
     </div>

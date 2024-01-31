@@ -1,0 +1,13 @@
+[
+  {
+    "orderId": "oID0",
+    "orderDate": "2024-02-01",
+    "status": "Processing",
+    "items": [
+      { "id": "iID0", "qty": 1, "price": 41.99,  "title": "Repair & Protect Kit",
+        "image": "repair-and-protect-kit.png" },
+      { "id": "iID1", "qty": 1, "price": 18.99,  "title": "Restorative Hair Mask",
+        "image": "restorative-hair-mask.png" }
+    ]
+  }
+]

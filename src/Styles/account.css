@@ -1,3 +1,48 @@
+.orderInfoContainer {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+    background-color: white;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 20px;
+    margin-bottom: 40px;
+    width: 90%;
+    text-align: center;
+}
+
+.custom-dropdown {
+    padding: 10px;
+    font-family: "Poppins";
+    font-size: 14px;
+    display: block;
+    margin-bottom: 10px;
+    width: 155px;
+}
+
+.order-dropdown-container {
+    width: 60%;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+}
+
+.order-dropdown {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    margin-right: 5px;
+    /* Add margin to the right of the first dropdown */
+}
+
+.order-dropdown+.order-dropdown {
+    margin-left: 5px;
+    /* Add margin to the left of the second dropdown */
+}
+
 .profileTop {
     background-color: white;
     display: flex;
@@ -141,6 +186,7 @@
 .AppointmentsContainer {
     margin: 20px auto;
     text-align: center;
+    
 }
 
 .apptsInfoContainer {
@@ -154,6 +200,7 @@
     margin-top: 20px;
     margin-bottom: 20px;
     width: 90%;
+    padding-bottom: 20px;
 }
 
 table {
@@ -177,22 +224,11 @@ th { /*Table top header*/
     font-weight: bold;
 }
 
-.orderInfoContainer {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
-    background-color: white;
-    margin-left: auto;
-    margin-right: auto;
-    margin-top: 20px;
-    margin-bottom: 40px;
-    width: 90%;
-    text-align: center;
-}
+
 
 .orderHistory {
     margin-bottom: 30px;
+    margin-top: 15px;
 }
 
 /* Styles for mobile*/
@@ -215,6 +251,13 @@ th { /*Table top header*/
 
 /* Styles for web*/
 @media screen and (min-width: 767px) {
+    .apptsInfoContainer {
+        width: 70%;
+    }
+
+    .orderInfoContainer {
+        width: 70%;
+    }
     .buttonsContainer {
         display: flex;
         flex-direction: column;
@@ -248,7 +291,7 @@ th { /*Table top header*/
             margin-right: auto;
             margin-top: 20px;
             margin-bottom: 20px;
-            width: 90%;
+            width: 70%;
         }
 
         .profileTop {
