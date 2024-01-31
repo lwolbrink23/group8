@@ -75,8 +75,6 @@ function Checkout() {
   };
 
   useEffect(() => {
-    console.log(`all err: ${areAllErrorsEmpty()}`);
-    console.log(`all fields: ${areAllFieldsEntered()}`);
     areAllErrorsEmpty() && areAllFieldsEntered()
       ? setEnableSubmit(true)
       : setEnableSubmit(false);
