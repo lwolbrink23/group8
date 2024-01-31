@@ -14,8 +14,14 @@ import orderData from "../data/tempOrder.json";
 import tempShopData from "../data/shop.json"; // Import shop data
 
 function Account() {
+  function showCxApptDropdown() {
+    const dropdown = document.querySelector(".cxApptDropdown");
+    dropdown.style.display =
+      dropdown.style.display === "none" ? "block" : "none";
+  }
+
   function showAppointmentDetails() {
-    const dropdown = document.querySelector(".apptDropdown");
+    const dropdown = document.querySelector(".viewApptDropdown");
     dropdown.style.display =
       dropdown.style.display === "none" ? "block" : "none";
   }
@@ -127,12 +133,12 @@ function Account() {
                       src={apptActionIcon}
                       alt="appointment menu"
                       className="apptActionIcon"
-                      onClick={() => showAppointmentDetails()}
+                      onClick={() => showCxApptDropdown()}
                     />
                     <Link to="/appointment/:id">
                       <button
                         onClick={() => navigateToAppointmentDetails()}
-                        className="apptDropdown"
+                        className="cxApptDropdown"
                       >
                         Cancel Appointment
                       </button>
@@ -184,7 +190,7 @@ function Account() {
                     <Link to="/appointment/:id">
                       <button
                         onClick={() => navigateToAppointmentDetails()}
-                        className="apptDropdown"
+                        className="viewApptDropdown"
                       >
                         View Details
                       </button>
