@@ -34,4 +34,4 @@ To launch the application on localhost, execute:
 <br/>This command starts the React application and opens it in your default web browser. By default, the application will run on `localhost:3000`.
 
 ## Usage
-The application should now be running in your browser. You can interact with it as you would with any other web application. Explore the various features and pages to understand the functionality of The Suite Spot code.
+The application should now be running in your browser. You can interact with it as you would with any other web application. Explore the various features and pages of The Suite Spot salon booking website!
