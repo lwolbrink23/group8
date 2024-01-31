@@ -253,7 +253,7 @@ function Header() {
               </ul>
             </li>
             <li>
-              <CustomLink to="/booknow" className="purp-button centerbutton">
+              <CustomLink to="/booknow" className="purp-button centerbutton" onClick={toggleSidebar}>
                 {" "}
                 {/*I added centerbutton as a class for the book now button because the previous css was messing with the buttons on the entire site. -Lindsey*/}
                 Book Now

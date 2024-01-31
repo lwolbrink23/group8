@@ -91,7 +91,10 @@ function SelectTime() {
                     <div className="appointment" id="appt-container">
                     </div>
                     {/*book now button*/}
-                    <button onClick={navigateToOverview} type="button">
+                    <button onClick={navigateToOverview} 
+                    type="button"
+                    disabled={!clickedTime}
+                    style={{ color: !clickedTime ? 'grey' : 'initial' }}>
                         CONTINUE
                     </button>
                 </div>
