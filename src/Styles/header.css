@@ -68,12 +68,6 @@ nav ul ul a:hover {
     background-color: #E7E7E7;
 }
 
-nav ul li:hover>ul {
-    display: grid;
-    top: 100%;
-    left: 0;
-    width: max-content;
-}
 
 .logo-web {
     max-width: 150px;

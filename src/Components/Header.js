@@ -8,7 +8,13 @@ import blogicon from "../assets/icons/icons8-article-96.png";
 import faqicon from "../assets/icons/icons8-faq-96.png";
 import shopicon from "../assets/icons/icons8-shop-96.png";
 import contacticon from "../assets/icons/icons8-contact-96.png";
-import { Link, useMatch, useResolvedPath } from "react-router-dom";
+import {
+  Link,
+  useMatch,
+  useResolvedPath,
+  useNavigate,
+  useLocation,
+} from "react-router-dom";
 import "../Styles/header.css"; // main stylesheet
 import "../Styles/responsiveHeader.css"; // responsive stylesheet
 
@@ -20,7 +26,15 @@ function Header() {
     /* making side bar slide in and out */
   }
   const [isSidebarOpen, setIsSidebarOpen] = useState(false);
+  const [activeSubpage, setActiveSubpage] = useState(null);
   const sidebarRef = useRef(null);
+  const navigate = useNavigate();
+  const { pathname } = useLocation();
+
+  useEffect(() => {
+    // Reset activeSubpage when navigating to a new page
+    setActiveSubpage(null);
+  }, [pathname]);
 
   useEffect(() => {
     const handleClickOutside = (event) => {
@@ -54,8 +68,9 @@ function Header() {
     }
   };
 
-  const handleHamburgerClick = () => {
-    toggleSidebar(); // Call toggleSidebar to handle both state and animation
+  const toggleSubpage = (subpage) => {
+    console.log("in toggleSubpage");
+    setActiveSubpage(activeSubpage === subpage ? null : subpage);
   };
 
   useEffect(() => {
@@ -96,11 +111,9 @@ function Header() {
             className="profile-icon-mobile"
           />
         </Link>
-        <nav
-          ref={sidebarRef}
-          className={`sidebar ${isSidebarOpen ? "show" : ""}`}
-        >
-          <ul className={isHamburgerOpen ? "show" : ""}>
+        {/* Nav links */}
+        <nav ref={sidebarRef} className="sidebar">
+          <ul className={isSidebarOpen ? "show" : ""}>
             <li>
               <Link to="/" onClick={toggleSidebar}>
                 <img src={homeicon} alt="home icon" className="icon-mobile" />
@@ -109,17 +122,24 @@ function Header() {
             </li>
             <li>
               <div id="about-web">
-                <a href="/ourstory" className="about-link">
+                <CustomLink
+                  className="about-link"
+                  onClick={() => toggleSubpage("about")}
+                >
                   <img
                     src={abouticon}
                     alt="about icon"
                     className="icon-mobile"
                   />
                   About
-                </a>
+                </CustomLink>
               </div>
               <div id="about-mobile">
-                <a href="#" className="about-link">
+                <a
+                  href="#"
+                  className="about-link"
+                  onClick={() => toggleSubpage("about")}
+                >
                   <img
                     src={abouticon}
                     alt="about icon"
@@ -128,7 +148,11 @@ function Header() {
                   About
                 </a>
               </div>
-              <ul>
+              <ul
+                style={{
+                  display: activeSubpage === "about" ? "block" : "none",
+                }}
+              >
                 <li>
                   <CustomLink to="/ourstory" onClick={toggleSidebar}>
                     Our Story
@@ -180,7 +204,10 @@ function Header() {
             </li>
             <li>
               <div id="account-web">
-                <CustomLink to="/account">
+                <CustomLink
+                  className="about-link"
+                  onClick={() => toggleSubpage("account")}
+                >
                   <img
                     src={profileicon}
                     alt="profile icon"
@@ -190,7 +217,11 @@ function Header() {
                 </CustomLink>
               </div>
               <div id="account-mobile">
-                <CustomLink to="#">
+                <CustomLink
+                  to="#"
+                  className="account-link"
+                  onClick={() => toggleSubpage("account")}
+                >
                   <img
                     src={profileicon}
                     alt="profile icon"
@@ -199,7 +230,11 @@ function Header() {
                   Account
                 </CustomLink>
               </div>
-              <ul>
+              <ul
+                style={{
+                  display: activeSubpage === "account" ? "block" : "none",
+                }}
+              >
                 <li>
                   <CustomLink to="/Login" onClick={toggleSidebar}>
                     Login
@@ -218,7 +253,7 @@ function Header() {
               </ul>
             </li>
             <li>
-              <CustomLink to="/booknow" className="purp-button centerbutton">
+              <CustomLink to="/booknow" className="purp-button centerbutton" onClick={toggleSidebar}>
                 {" "}
                 {/*I added centerbutton as a class for the book now button because the previous css was messing with the buttons on the entire site. -Lindsey*/}
                 Book Now
