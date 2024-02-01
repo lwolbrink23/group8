@@ -48,7 +48,7 @@
   .articles-contents {
     text-align: justify;
     margin: 0 10px;
-    padding: 0 230px 40px;
+    padding: 0 50px 40px;
     font-family: Poppins;
     font-size: 18px;
     font-style: normal;
@@ -135,6 +135,7 @@
     margin-top: 23px;
     position: absolute;
     left: 65%;
+    padding-right: 10px;
   }
   .pink-image {
     max-width: 100%;
@@ -154,17 +155,3 @@
   }
 }
 
-
-@media screen and (max-width: 1200px) {
-.articles-contents {
-  text-align: justify;
-  margin: 0 10px;
-  padding: 0 50px 40px;
-  font-family: Poppins;
-  font-size: 18px;
-  font-style: normal;
-  padding-top: 30px;
-  font-weight: 400;
-  line-height: normal;
-}
-}
