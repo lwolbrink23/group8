@@ -206,6 +206,7 @@
     margin: 0 auto;
     margin-bottom: 20px;
     flex-shrink: 0;
+    overflow: hidden;
   }
 
   .bg-image {
@@ -230,7 +231,7 @@
     position: relative;
     margin: 0 auto;
     bottom: 155%;
-    left: -13%;
+    left: -12%;
     max-width: 500px;
     height: 268px;
     flex-shrink: 0;
