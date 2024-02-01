@@ -25,6 +25,7 @@ function Checkout() {
     zip: "",
   });
   const [paymentInfo, setPaymentInfo] = useState({
+    option: "",
     cardNum: "",
     mm: "",
     yy: "",
@@ -52,8 +53,6 @@ function Checkout() {
     cvc: "",
     name: "",
   });
-
-  const [selectedOption, setSelectedOption] = useState(null);
 
   // form val
   // // make sure every field is filled & no errors
@@ -192,7 +191,10 @@ function Checkout() {
     { id: "card", label: "Add a new credit or debit card" },
   ];
   const handleOptionChange = (event) => {
-    setSelectedOption(event.target.value);
+    setPaymentInfo((prevPaymentInfo) => ({
+      ...prevPaymentInfo,
+      option: event.target.value,
+    }));
   };
 
   // dropdown content for cart
@@ -360,7 +362,7 @@ function Checkout() {
                   type="radio"
                   name="options"
                   value={option.id}
-                  checked={selectedOption === option.id}
+                  checked={paymentInfo.option === option.id}
                   onChange={handleOptionChange}
                 />
 
