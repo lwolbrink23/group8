@@ -425,6 +425,7 @@ function Checkout() {
             <CustomDropdown
               title={`Items Ordered (${tempData.length})`}
               ContentComponent={OrderedItems}
+              icon={"white-arrow.svg"}
             />
           </div>
           <div id="checkout-sum">
