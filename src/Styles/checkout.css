@@ -104,8 +104,19 @@ input[type="text"]:focus {
 }
 
 /* radio */
-#checkout input[type="radio"] {
+#checkout input[type="radio"],
+.radio-container img {
   margin: 7px 20px 7px 10px;
+}
+.last-radio,
+.hide-fields {
+  display: none;
+}
+.radio-container {
+  display: flex;
+}
+.radio-container img {
+  cursor: pointer;
 }
 #checkout label {
   display: inline-flex;

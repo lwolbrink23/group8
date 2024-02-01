@@ -3,10 +3,11 @@ import Shopheader from "../Components/Shopheader";
 import { Link } from "react-router-dom";
 import tempData from "../data/cart.json";
 import tempShopData from "../data/shop.json";
-import arrowIcon from "../assets/icons/white-arrow.svg";
 import { useEffect, useState } from "react";
 import { isValidUSState } from "../data/validStates";
 import CustomDropdown from "../Components/CustomDropdown";
+import purplePlusIcon from "../assets/icons/purple-plus.svg";
+import purpleCheckIcon from "../assets/icons/purple-check.svg";
 
 function Checkout() {
   // backend: check if user logged in. if logged in, get their info from the database and autofill in userAns
@@ -196,7 +197,12 @@ function Checkout() {
       option: event.target.value,
     }));
   };
-
+  const addNewCard = () => {
+    setPaymentInfo((prevPaymentInfo) => ({
+      ...prevPaymentInfo,
+      option: "card",
+    }));
+  };
   // dropdown content for cart
   const OrderedItems = () => (
     <ul className="dropdown-content">
@@ -355,70 +361,99 @@ function Checkout() {
         <div id="payment-info" className="cardbox">
           <h3>Payment Method</h3>
           {/* payment method radio */}
-          {options.map((option) => (
-            <div key={option.id}>
-              <label>
-                <input
-                  type="radio"
-                  name="options"
-                  value={option.id}
-                  checked={paymentInfo.option === option.id}
-                  onChange={handleOptionChange}
-                />
+          {options.map((option) => {
+            const isCard = option.id === "card";
+            return (
+              <div className="radio-container" key={option.id}>
+                {isCard && (
+                  <img
+                    src={
+                      paymentInfo.option === option.id
+                        ? purpleCheckIcon
+                        : purplePlusIcon
+                    }
+                    alt=""
+                    onClick={addNewCard}
+                  ></img>
+                )}
+                <label>
+                  <input
+                    type="radio"
+                    name="options"
+                    value={option.id}
+                    checked={paymentInfo.option === option.id}
+                    onChange={handleOptionChange}
+                    className={isCard && "last-radio"}
+                  />
 
-                {option.label}
-              </label>
-            </div>
-          ))}
+                  {option.label}
+                </label>
+              </div>
+            );
+          })}
           {/* card input */}
-          <div>
-            <input
-              type="text"
-              placeholder="Card Number*"
-              onChange={(e) =>
-                handleChange("payment", "cardNum", e.target.value)
-              }
-            />
-          </div>
-          {paymentErr.cardNum && (
-            <p style={{ color: "red" }}>{paymentErr.cardNum}</p>
-          )}
-          {/* mm/yy CVC */}
-          <div className="cc-info">
+          <div className={paymentInfo.option !== "card" && "hide-fields"}>
             <div>
               <input
                 type="text"
-                placeholder="mm*"
-                onChange={(e) => handleChange("payment", "mm", e.target.value)}
+                placeholder="Card Number*"
+                onChange={(e) =>
+                  handleChange("payment", "cardNum", e.target.value)
+                }
               />
-              {paymentErr.mm && <p style={{ color: "red" }}>{paymentErr.mm}</p>}
             </div>
+            {paymentErr.cardNum && (
+              <p style={{ color: "red" }}>{paymentErr.cardNum}</p>
+            )}
+            {/* mm/yy CVC */}
+            <div className="cc-info">
+              <div>
+                <input
+                  type="text"
+                  placeholder="mm*"
+                  onChange={(e) =>
+                    handleChange("payment", "mm", e.target.value)
+                  }
+                />
+                {paymentErr.mm && (
+                  <p style={{ color: "red" }}>{paymentErr.mm}</p>
+                )}
+              </div>
+              <div>
+                <input
+                  type="text"
+                  placeholder="yy*"
+                  onChange={(e) =>
+                    handleChange("payment", "yy", e.target.value)
+                  }
+                />
+                {paymentErr.yy && (
+                  <p style={{ color: "red" }}>{paymentErr.yy}</p>
+                )}
+              </div>
+              <div>
+                <input
+                  type="text"
+                  placeholder="CVC*"
+                  onChange={(e) =>
+                    handleChange("payment", "cvc", e.target.value)
+                  }
+                />
+                {paymentErr.cvc && (
+                  <p style={{ color: "red" }}>{paymentErr.cvc}</p>
+                )}
+              </div>
+            </div>
+            {/* name on card */}
             <div>
               <input
                 type="text"
-                placeholder="yy*"
-                onChange={(e) => handleChange("payment", "yy", e.target.value)}
+                placeholder="Name on Card*"
+                onChange={(e) =>
+                  handleChange("payment", "name", e.target.value)
+                }
               />
-              {paymentErr.yy && <p style={{ color: "red" }}>{paymentErr.yy}</p>}
             </div>
-            <div>
-              <input
-                type="text"
-                placeholder="CVC*"
-                onChange={(e) => handleChange("payment", "cvc", e.target.value)}
-              />
-              {paymentErr.cvc && (
-                <p style={{ color: "red" }}>{paymentErr.cvc}</p>
-              )}
-            </div>
-          </div>
-          {/* name on card */}
-          <div>
-            <input
-              type="text"
-              placeholder="Name on Card*"
-              onChange={(e) => handleChange("payment", "name", e.target.value)}
-            />
           </div>
         </div>
         <div id="summary">
