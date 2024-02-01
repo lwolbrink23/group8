@@ -141,7 +141,7 @@ const SelectServices = () => {
                     <img
                       src={purpCheck}
                       className="check-mark"
-                      alt="check mark"
+                      alt="checkmark"
                     />
                   </div>
                 ) : (

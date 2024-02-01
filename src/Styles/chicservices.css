@@ -63,12 +63,16 @@
     display: flex;
     align-items: center;
   }
-
+img {
+  max-width: fit-content;
+  max-height: fit-content;
+}
   .check-mark {
-    width: 70px !important;
-    height: 70px !important;
-    margin-left: 5px;
-    pointer-events: none;
+    max-width: 70px !important;
+      max-height: 70px !important;
+      margin-left: 5px;
+      pointer-events: none;
+      box-sizing: border-box;
   }
 
   .services-selected ul {
@@ -297,8 +301,8 @@
   }
 
   .check-mark {
-    width: 50px !important;
-    height: 50px !important;
+    max-width: 50px !important;
+    max-height: 50px !important;
     padding-right: 15px;
     pointer-events: none;
   }
