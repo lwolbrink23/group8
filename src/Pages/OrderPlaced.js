@@ -1,4 +1,3 @@
-import shopICON from "../assets/icons/icons8-shopping-cart-100.png";
 import checkICON from "../assets/icons/icons8-check-100.png";
 import tempData from "../data/cart.json";
 import tempShopData from "../data/shop.json";
@@ -72,7 +71,7 @@ function OrderPlaced() {
   return (
     <div id="order-placed">
       {/* title */}
-      <Shopheader htitle={"Checkout"} />
+      <Shopheader htitle={"Checkout"} disableBack={true} />
       {/* blurb */}
       <main>
         <article className="center-text">
