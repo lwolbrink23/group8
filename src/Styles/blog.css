@@ -202,13 +202,23 @@
 @media screen and (max-width: 767px) {
   .main-blog-page {
     position: relative;
-  }
+      display: flex;
+      flex-direction: column;
+    }
+  
+    .posts-container {
+      order: 2;
+      /* Move the posts container to be the second item in the flex container */
+    }
   .filter-dropdown {
       position: absolute;
-      top: 100%;
-        /* Position it right below .main-blog-page */
+        top: 100%;
+        /* Adjust the top position as needed */
         right: 0;
-        margin-right: 25px;
+        /* Align with the right side of the screen */
+        margin-top: 15px;
+        /* Add margin to create space between posts and filter dropdown */
+        margin-right: 30px;
     }
 
 
