@@ -34,12 +34,12 @@ function Shop() {
       try {
         // Fetch data from the backend
         const response = await fetch(`${BACKEND_ADDRESS}${endpoint}`);
-        console.log(response);
-        // if (!response.ok) {
-        //   throw new Error(`HTTP error! Status: ${response.status}`);
-        // }
-        // const jsonData = await response.json();
-        // setDataFunction(jsonData);
+        // console.log(await response.json());
+        if (!response.ok) {
+          throw new Error(`HTTP error! Status: ${response.status}`);
+        }
+        const jsonData = await response.json();
+        setDataFunction(jsonData);
       } catch (error) {
         console.error("Error fetching data:", error.message);
       }
