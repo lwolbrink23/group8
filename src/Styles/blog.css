@@ -103,14 +103,14 @@
 
   .posts-container {
     display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-    gap: 20px;
+    grid-template-columns: repeat(2, minmax(300px, 1fr));
+    gap: 15px;
     font-size: 14px;
     list-style-type: none;
     margin: 0 auto;
     margin-bottom: 55px;
     padding: 0 20px;
-    max-width: 1200px;
+    max-width: 1000px;
   }
 
   .Hair,
@@ -124,6 +124,8 @@
     box-sizing: border-box;
     display: flex;
     flex-direction: column;
+    max-width: 80%;
+    margin-left: 47px;
   }
 
   .Hair img,
