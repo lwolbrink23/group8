@@ -8,6 +8,7 @@ import shopData from "../data/shop.json";
 import { Link, useLocation } from "react-router-dom";
 import React, { useEffect, useState } from "react";
 import Shopheader from "../Components/Shopheader";
+const BACKEND_ADDRESS = "http://localhost:3003";
 
 function ScrollToTop() {
   const location = useLocation();
@@ -25,6 +26,29 @@ function Shop() {
   const scrollToTop = () => {
     window.scrollTo(0, 0);
   };
+  const [data, setData] = useState([]);
+  const [dataC, setDataC] = useState("");
+  useEffect(() => {
+    // Shortened version by ChatGPT
+    const fetchData = async (endpoint, setDataFunction) => {
+      try {
+        // Fetch data from the backend
+        const response = await fetch(`${BACKEND_ADDRESS}${endpoint}`);
+        console.log(response);
+        // if (!response.ok) {
+        //   throw new Error(`HTTP error! Status: ${response.status}`);
+        // }
+        // const jsonData = await response.json();
+        // setDataFunction(jsonData);
+      } catch (error) {
+        console.error("Error fetching data:", error.message);
+      }
+    };
+
+    // Usage example:
+    fetchData("/accounts", setData);
+    fetchData("/customers", setDataC);
+  }, []);
 
   // keeping track of item qty
   const [dynamicItems, setDynamicItems] = useState([]);
@@ -137,6 +161,9 @@ function Shop() {
           <ShopItems />
         </ul>
         <p className="right extra-space">Next Page</p>
+        {/* BACKEND TEST */}
+        <p>account id: {data.account_id}</p>
+        <p>customer username: {dataC.username}</p>
         {/* giftcard */}
         <h2 className="center">Gift Cards</h2>
         <div className="giftcard-grid box">

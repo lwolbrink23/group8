@@ -1,85 +1,32 @@
-import logo from "./logo.svg";
-import "./App.css";
-import { useEffect, useState } from "react";
-import { BACKEND_ADDRESS } from ".";
-// const BACKEND_ADDRESS = "http://localhost:3001"
+import { MongoClient, ServerApiVersion } from "mongodb";
+import express from "express";
+import cors from "cors";
+import "dotenv/config";
 
-function App() {
-  const [data, setData] = useState([]);
-  const [dataC, setDataC] = useState("");
-  useEffect(() => {
-    const fetchData = async () => {
-      try {
-        // fetch data from backend
-        const response = await fetch(`${BACKEND_ADDRESS}/accounts`);
+// import routes
+import exampleRoutes from "./routes/routes.js";
 
-        if (!response.ok) {
-          throw new Error(`HTTP error! Status: ${response.status}`);
-        }
-        const jsonData = await response.json();
-        setData(jsonData);
-      } catch (err) {
-        console.error("Error fetching data:", err.message);
-      }
-    };
+// these should be in a .env file so github wont scream in your emails that the database link has been leaked
+const PORT = process.env.PORT;
+const MONGODB_URI = process.env.MONGODB_URI;
 
-    const fetchData2 = async () => {
-      try {
-        // fetch data from backend
-        const response = await fetch(`${BACKEND_ADDRESS}/customers`);
+// port to run server
+const app = express();
+app.use(express.json());
+app.use(cors());
+app.listen(PORT, () => {
+  console.log(`Server is running on port ${PORT}`);
+});
 
-        if (!response.ok) {
-          throw new Error(`HTTP error! Status: ${response.status}`);
-        }
-        const jsonData = await response.json();
-        setDataC(jsonData);
-      } catch (err) {
-        console.error("Error fetching data:", err.message);
-      }
-    };
-    fetchData();
-    fetchData2();
+// connect to MongoDB
+const client = new MongoClient(MONGODB_URI, {
+  serverApi: {
+    version: ServerApiVersion.v1,
+    strict: true,
+    deprecationErrors: true,
+  },
+});
+await client.connect();
 
-    // Shortened version by ChatGPT
-    // const fetchData = async (endpoint, setDataFunction) => {
-    //   try {
-    //     // Fetch data from the backend
-    //     const response = await fetch(`${BACKEND_ADDRESS}${endpoint}`);
-
-    //     if (!response.ok) {
-    //       throw new Error(`HTTP error! Status: ${response.status}`);
-    //     }
-    //     const jsonData = await response.json();
-    //     setDataFunction(jsonData);
-    //   } catch (error) {
-    //     console.error('Error fetching data:', error.message);
-    //   }
-    // };
-
-    // // Usage example:
-    // fetchData('/accounts', setData);
-    // fetchData('/customers', setDataC);
-  }, []);
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>account id: {data.account_id}</p>
-        <p>customer username: {dataC.username}</p>
-        {/* <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p> */}
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
-}
-
-export default App;
+// use the imported routes here!!
+exampleRoutes(app, client);
