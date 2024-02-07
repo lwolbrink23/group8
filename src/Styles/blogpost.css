@@ -1,3 +1,19 @@
+.articles-contents {
+  text-align: justify;
+  margin: 0 10px;
+  padding: 0 50px 40px;
+  font-family: Poppins;
+  font-size: 18px;
+  font-style: normal;
+  padding-top: 30px;
+  font-weight: 400;
+  line-height: normal;
+  width: 60%;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+
 /* web screen */
 @media screen and (min-width: 767px) {
   .post1 {
@@ -8,7 +24,8 @@
     padding-top: 80px;
     display: flex;
     align-items: center;
-    max-width: 50%;
+    width: 60%;
+    height: 500px;
     flex-shrink: 0;
     position: relative;
     margin: 0 auto;
@@ -55,6 +72,9 @@
     padding-top: 30px;
     font-weight: 400;
     line-height: normal;
+    width: 60%;
+    margin-left: auto;
+    margin-right: auto;
   }
 
   .pink-image-container {
@@ -90,53 +110,34 @@
     position: relative;
     margin: 0 auto;
   }
-  .article-content {
-    padding: 0 30px 30px;
-    flex-shrink: 0;
-    font-family: Poppins;
-    margin-top: -35px;
-    font-size: 11px;
-    font-style: normal;
-    font-weight: 400;
-    line-height: normal;
-    text-align: justify;
-  }
+
   .articles-contents {
-    padding: 0 30px 30px;
-    flex-shrink: 0;
     font-family: Poppins;
     font-size: 11px;
     font-style: normal;
-    font-weight: 400;
-    line-height: normal;
     text-align: justify;
-    margin-bottom: -25px;
+    width: 80%;
+    margin-top: -35px;
   }
 
   .art-title {
     margin: 0 auto;
-    text-align: center;
-    max-width: max-content;
-    font-family: Poppins;
-    font-size: 15px;
-    font-style: normal;
-    font-weight: 700;
-    line-height: normal;
-    margin-top: 80px;
+      max-width: max-content;
+      font-family: Poppins;
+      
+      font-style: normal;
+      font-weight: 700;
+      line-height: normal;
+      margin-top: 10px;
   }
-  .category {
-    margin-top: 23px;
-    position: absolute;
-    left: 5%;
-    right: 4%;
+  .category, .author {
+    margin-left: auto;
+    margin-right: auto;
+    margin-bottom: -8px;
+    margin-top: 10px;
+    width: 80%
   }
 
-  .author {
-    margin-top: 23px;
-    position: absolute;
-    left: 65%;
-    padding-right: 10px;
-  }
   .pink-image {
     max-width: 100%;
     margin: 20px auto;
