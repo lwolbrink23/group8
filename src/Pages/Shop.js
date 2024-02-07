@@ -8,7 +8,7 @@ import shopData from "../data/shop.json";
 import { Link, useLocation } from "react-router-dom";
 import React, { useEffect, useState } from "react";
 import Shopheader from "../Components/Shopheader";
-const BACKEND_ADDRESS = "http://localhost:3003";
+import { BACKEND_ADDRESS } from "../App";
 
 function ScrollToTop() {
   const location = useLocation();

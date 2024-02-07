@@ -29,7 +29,7 @@ import Account from "./Pages/Account";
 import ApptDetails from "./Pages/ApptDetails";
 import ContactUs from "./Pages/ContactUs";
 import { Route, Routes } from "react-router-dom";
-
+export const BACKEND_ADDRESS = "http://localhost:3003";
 // this is only the home page elements
 function App() {
   return (
@@ -45,7 +45,10 @@ function App() {
           <Route path="/account" element={<Account />} />
           <Route path="/appointment/:id" element={<ApptDetails />} />
           <Route path="/blog" element={<Blog />} />
-          <Route path="/blog/blogpost/:category/:id" element={<BlogPostData />} />
+          <Route
+            path="/blog/blogpost/:category/:id"
+            element={<BlogPostData />}
+          />
           <Route path="/booknow" element={<BookNowDirectory />} />
           <Route path="/providerprofile/:id" element={<ProviderProfile />} />
           <Route
