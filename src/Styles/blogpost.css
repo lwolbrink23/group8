@@ -49,6 +49,7 @@
     font-weight: 700;
     line-height: normal;
     margin-top: 80px;
+    margin-bottom: 0px;
   }
 
   .category {
@@ -76,6 +77,7 @@
     width: 65%;
     margin-left: auto;
     margin-right: auto;
+    margin-top: -30px;
   }
 
   .pink-image-container {
