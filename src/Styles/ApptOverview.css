@@ -5,6 +5,10 @@
     justify-content: flex-end;
 }
 
+.cancelation-policy {
+    width: 75%;
+}
+
 #payment-method {
     display: flex;
     align-items: center;
