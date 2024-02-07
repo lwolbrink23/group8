@@ -90,25 +90,25 @@ function Blog() {
               Subscribe
             </button>
           </form>
+
+          <PopUpBlog isOpen={isBlogOpen} closePopup={closeBlog} />
         </div>
-        <PopUpBlog isOpen={isBlogOpen} closePopup={closeBlog} />
         <div className="overlay-box"></div>
+        <div className="filter-dropdown">
+          <select
+            id="category"
+            onChange={(e) => handleFilter(e.target.value)}
+            value={selectedCategory}
+          >
+            <option value="Filter by Topic">Filter by Topic</option>
+            {categories.map((category) => (
+              <option key={category} value={category}>
+                {category.charAt(0).toUpperCase() + category.slice(1)}
+              </option>
+            ))}
+          </select>
+        </div>
       </div>
-      <div className="filter-dropdown">
-        <select
-          id="category"
-          onChange={(e) => handleFilter(e.target.value)}
-          value={selectedCategory}
-        >
-          <option value="Filter by Topic">Filter by Topic</option>
-          {categories.map((category) => (
-            <option key={category} value={category}>
-              {category.charAt(0).toUpperCase() + category.slice(1)}
-            </option>
-          ))}
-        </select>
-      </div>
-      <br />
       <div className="posts-container">
         {BlogPosts.filter(
           (post) =>
