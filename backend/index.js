@@ -7,7 +7,7 @@ import "dotenv/config";
 import exampleRoutes from "./routes/routes.js";
 
 // these should be in a .env file so github wont scream in your emails that the database link has been leaked
-const PORT = process.env.PORT;
+const PORT = 3003;
 const MONGODB_URI = process.env.MONGODB_URI;
 
 // port to run server
