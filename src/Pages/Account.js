@@ -10,8 +10,7 @@ import apptActionIcon from "../assets/icons/apptaction.svg";
 import PopupPassword from "../Components/PopUpPassword";
 import PopupSignOut from "../Components/PopUpSignOut.js";
 import OrderHistory from "../Components/OrderHistory.js";
-import orderData from "../data/tempOrder.json";
-import tempShopData from "../data/shop.json"; // Import shop data
+import appointmentsData from "../data/schedAppointments.json"; // Import your JSON file
 
 function Account({ user }) {
   const [userData, setUserData] = useState(
@@ -22,6 +21,52 @@ function Account({ user }) {
       password: "password",
     }
   );
+
+  const [appointments, setAppointments] = useState([]);
+
+  useEffect(() => {
+    // Fetch appointments or set them directly from the JSON file
+    setAppointments(appointmentsData);
+  }, []);
+
+  // Function to render appointments
+  const renderAppointments = () => {
+    if (appointments.length === 0) {
+      return (
+        <tr>
+          <td colSpan="5" className="noAppts">
+            No Appointments
+          </td>
+        </tr>
+      );
+    }
+    return appointments.map((appointment) => (
+      <tr key={appointment.id}>
+        <td>{appointment.date}</td>
+        <td>{appointment.location}</td>
+        <td>{appointment.services}</td>
+        <td>{appointment.staff}</td>
+        <td>
+          <div className="apptActionContainer">
+            <img
+              src={apptActionIcon}
+              alt="appointment menu"
+              className="apptActionIcon"
+              onClick={() => showCxApptDropdown()}
+            />
+            <Link to={`/appointment/${appointment.id}`}>
+              <button
+                className="cxApptDropdown"
+                onClick={() => navigateToAppointmentDetails()}
+              >
+                Cancel Appointment
+              </button>
+            </Link>
+          </div>
+        </td>
+      </tr>
+    ));
+  };
 
   const [isContactOpen, setIsContactOpen] = useState(false);
   const [isButtonOpen, setIsButtonOpen] = useState(false);
@@ -127,41 +172,7 @@ function Account({ user }) {
                 <th></th> {/* 3 dots column - DO NOT DELETE */}
               </tr>
             </thead>
-            <tbody>
-              {/* Fake appointment */}
-              <tr>
-                <td>May 15, 2024</td>
-                <td>Simply Chic Hair</td>
-                <td>Haircut</td>
-                <td>Marissa S.</td>
-                <td>
-                  <div className="apptActionContainer">
-                    <img
-                      src={apptActionIcon}
-                      alt="appointment menu"
-                      className="apptActionIcon"
-                      onClick={() => showCxApptDropdown()}
-                    />
-                    <Link to="/appointment/:id">
-                      <button
-                        onClick={() => navigateToAppointmentDetails()}
-                        className="cxApptDropdown"
-                      >
-                        Cancel Appointment
-                      </button>
-                    </Link>
-                    {/* Couldnt figure out how to put reschedule appt on dropdown. Maybe just have cancel option? */}
-                  </div>
-                </td>
-              </tr>
-              {/* Display "No Appointments" if there are no real appointments 
-              <tr>
-                <td colSpan="5" className="noAppts">
-                  No Appointments
-                </td>
-              </tr>
-              */}
-            </tbody>
+            <tbody>{renderAppointments()}</tbody>
           </table>
         </div>
 
