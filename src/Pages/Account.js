@@ -102,7 +102,8 @@ function Account({ user }) {
             </div>
             <div className="infoRow">
               <img src={lock} alt="password icon" className="persIcons"></img>
-              <p type="password">{userData.password}</p>
+              <p type="password">{"*".repeat(userData.password.length)}</p>{" "}
+              {/* Hide password */}
               <button type="button" className="changePW" onClick={openContact}>
                 Change
               </button>
