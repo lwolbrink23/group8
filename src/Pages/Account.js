@@ -30,17 +30,23 @@ function Account({ user }) {
   }, []);
 
   // Function to render appointments
-  const renderAppointments = () => {
-    if (appointments.length === 0) {
+  const renderAppointments = (status) => {
+    const filteredAppointments = appointments.filter(
+      (appointment) => appointment.status === status
+    );
+
+    if (filteredAppointments.length === 0) {
       return (
         <tr>
           <td colSpan="5" className="noAppts">
-            No Appointments
+            No {status === "scheduled" ? "Scheduled" : "Appointment History"}{" "}
+            Appointments
           </td>
         </tr>
       );
     }
-    return appointments.map((appointment) => (
+
+    return filteredAppointments.map((appointment) => (
       <tr key={appointment.id}>
         <td>{appointment.date}</td>
         <td>{appointment.location}</td>
@@ -67,6 +73,12 @@ function Account({ user }) {
       </tr>
     ));
   };
+
+  // Render scheduled appointments
+  const renderScheduledAppointments = () => renderAppointments("scheduled");
+
+  // Render appointment history
+  const renderAppointmentHistory = () => renderAppointments("complete");
 
   const [isContactOpen, setIsContactOpen] = useState(false);
   const [isButtonOpen, setIsButtonOpen] = useState(false);
@@ -172,7 +184,7 @@ function Account({ user }) {
                 <th></th> {/* 3 dots column - DO NOT DELETE */}
               </tr>
             </thead>
-            <tbody>{renderAppointments()}</tbody>
+            <tbody>{renderScheduledAppointments()}</tbody>
           </table>
         </div>
 
@@ -190,41 +202,7 @@ function Account({ user }) {
                 <th></th> {/* 3 dots column - DO NOT DELETE */}
               </tr>
             </thead>
-            <tbody>
-              {/* Fake appointment */}
-              <tr>
-                <td>Sep 3, 2023</td>
-                <td>Simply Chic Hair</td>
-                <td>Full Balayage</td>
-                <td>Jean C.</td>
-                <td>
-                  <div className="apptActionContainer">
-                    <img
-                      src={apptActionIcon}
-                      alt="appointment menu"
-                      className="apptActionIcon"
-                      onClick={() => showAppointmentDetails()}
-                    />
-                    <Link to="/appointment/:id">
-                      <button
-                        onClick={() => navigateToAppointmentDetails()}
-                        className="viewApptDropdown"
-                      >
-                        View Details
-                      </button>
-                    </Link>
-                  </div>
-                </td>
-              </tr>
-
-              {/* Display "No Appointments" if there are no real appointments 
-              <tr>
-                <td colSpan="5" className="noAppts">
-                  No Appointments
-                </td>
-              </tr>
-              */}
-            </tbody>
+            <tbody>{renderAppointmentHistory()}</tbody>
           </table>
         </div>
       </div>
