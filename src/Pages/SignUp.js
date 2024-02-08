@@ -70,13 +70,22 @@ function SignUp() {
       return; // Stop sign-up process if passwords don't match
     }
 
-    // Perform sign-up logic here
+    // Create user data object
+    const userData = {
+      name: `${firstNameValue} ${lastNameValue}`,
+      phoneNumber: phoneValue,
+      email: emailValue,
+      password: pwValue,
+    };
+
+    console.log("User data:", userData);
+    // Perform sign-up logic here, e.g., API call to register the user
     // ...
 
     // Reset form after successful sign-up
     resetForm();
-    // Redirect to the account page
-    navigate("/Account");
+    // Please make sure it routes to the Account page with the user data: the code below is not correct I think. -Lilly
+    navigate("/Account", { state: { user: userData } });
   };
 
   const buttonStyle = {
