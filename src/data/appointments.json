@@ -1,0 +1,52 @@
+
+[
+  {
+    "id": 1,
+    "date": "May 15, 2024",
+    "location": "Simply Chic Hair",
+    "services": "Haircut",
+    "staff": "Marissa S.",
+    "status": "scheduled"
+  },
+  {
+    "id": 2,
+    "date": "May 16, 2024",
+    "location": "Polish Perfection",
+    "services": "Manicure",
+    "staff": "Jane D.",
+    "status": "scheduled"
+  },
+  {
+    "id": 3,
+    "date": "July 4, 2024",
+    "location": "Healing Hands Spa",
+    "services": "Swedish Massage",
+    "staff": "John D.",
+    "status": "scheduled"
+  },
+  {
+    "id": 4,
+    "date": "July 4, 2024",
+    "location": "Brush & Blush Beauty",
+    "services": "Bridal Makeup Package",
+    "staff": "Lucy A.",
+    "status": "scheduled"
+  },
+  {
+    "id": 5,
+    "date": "June 1, 2024",
+    "location": "Beauty Bliss Spa",
+    "services": "Massage",
+    "staff": "Alex W.",
+    "status": "cancelled"
+  },
+  {
+    "id": 6,
+    "date": "July 10, 2024",
+    "location": "Nail Nirvana",
+    "services": "Manicure",
+    "staff": "Sophie L.",
+    "status": "complete"
+  }
+
+]

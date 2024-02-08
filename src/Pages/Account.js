@@ -10,7 +10,7 @@ import apptActionIcon from "../assets/icons/apptaction.svg";
 import PopupPassword from "../Components/PopUpPassword";
 import PopupSignOut from "../Components/PopUpSignOut.js";
 import OrderHistory from "../Components/OrderHistory.js";
-import appointmentsData from "../data/schedAppointments.json"; // Import your JSON file
+import appointmentsData from "../data/appointments.json"; // Import your JSON file
 
 function Account({ user }) {
   const [userData, setUserData] = useState(
