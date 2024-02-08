@@ -3,14 +3,20 @@
     justify-content: center;
     align-items: center;
     padding: 20px;
+    margin-left: auto;
+    margin-right: auto;
 }
 
 .image-wrapper {
-    border-radius: 50%;
-    overflow: hidden;
-    width: 150px;
-    height: 150px;
-    margin-right: 20px;
+    display: flex;
+        flex-direction: column;
+        align-items: center;
+        border-radius: 50%;
+        overflow: hidden;
+        width: 200px;
+        height: 200px;
+        margin-right: 20px;
+        margin-top: 30px;
 }
 
 .image-wrapper img {
@@ -22,6 +28,19 @@
 
 .info {
     text-align: left;
+        margin-top: auto;
+        margin-left: 10px;
+        }
+
+.info p {
+    padding-top: 0px;
+    margin-left: 5px;
+    
+}
+
+.info h1 {
+    padding-top: 0px;
+    margin-bottom: 0px;
 }
 
 .purp-button:hover {
