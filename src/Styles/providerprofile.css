@@ -105,8 +105,8 @@
 }
 
 .thumbnail-container img {
-    width: 157px;
-    height: 99px;
+    width: 220px;
+    height: auto;
     margin: 5px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.25);
     /* Add more styling for thumbnails here */
