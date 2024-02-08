@@ -125,6 +125,9 @@ function Blog() {
             {post.category === "Makeup" && (
               <img src={allAges} alt={`${post.title} - ${post.category}`} />
             )}
+             {post.category === "Nails" && (
+              <img src={allAges} alt={`${post.title} - ${post.category}`} />
+            )}
             <h3>
               <b>{post.title}</b>
             </h3>
