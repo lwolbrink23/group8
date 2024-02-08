@@ -23,36 +23,22 @@ function SignUp() {
     setLastNameValue(event.target.value);
   };
 
-  const isValidEmail = (email) => {
-    // Basic check for a valid email address
-    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-    return emailRegex.test(email);
+  const handlePhoneInputChange = (event) => {
+    const phoneNumber = event.target.value;
+    setPhoneValue(phoneNumber);
+
+    // Validate phone number format
+    const isValidPhone = /^\(\d{3}\) \d{3}-\d{4}$/.test(phoneNumber);
+    setPhoneError(!isValidPhone);
   };
 
   const handleEmailInputChange = (event) => {
-    const value = event.target.value;
-    setEmailValue(value);
+    const email = event.target.value;
+    setEmailValue(email);
 
-    // Validate the email address
-    const isValid = isValidEmail(value);
-    // Set an error state or handle the validation result as needed
-    // For example:
-    setEmailError(!isValid);
-  };
-
-  const handlePhoneInputChange = (event) => {
-    const value = event.target.value;
-    setPhoneValue(value);
-
-    // Validate the phone number
-    const isValid = isValidPhoneNumber(value);
-    setPhoneError(!isValid);
-  };
-
-  const isValidPhoneNumber = (phoneNumber) => {
-    // Basic check for a valid phone number (10 digits)
-    const phoneNumberRegex = /^\d{10}$/;
-    return phoneNumberRegex.test(phoneNumber);
+    // Validate email format
+    const isValidEmail = /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
+    setEmailError(!isValidEmail);
   };
 
   const handlePwInputChange = (event) => {
@@ -62,11 +48,12 @@ function SignUp() {
   };
 
   const handleConfPwInputChange = (event) => {
-    setConfPwValue(event.target.value);
-    // Reset passwords match error when confirm password changes
-    setPasswordsMatchError(false);
-  };
+    const confirmPassword = event.target.value;
+    setConfPwValue(confirmPassword);
 
+    // Check if passwords match
+    setPasswordsMatchError(confirmPassword !== pwValue);
+  };
   const resetForm = () => {
     setFirstNameValue("");
     setLastNameValue("");
@@ -97,13 +84,16 @@ function SignUp() {
       firstNameValue &&
       lastNameValue &&
       emailValue &&
+      phoneValue &&
       pwValue &&
       confPwValue &&
       !passwordsMatchError &&
-      !phoneError
+      !phoneError &&
+      !emailError
         ? "black"
         : "#646464",
   };
+
   return (
     <div>
       <h1 className="signupTitle">Sign Up</h1>
@@ -138,13 +128,14 @@ function SignUp() {
                 type="text"
                 className="section1"
                 id="phone"
-                placeholder=" Phone Number*"
+                placeholder=" (xxx) xxx-xxxx*"
                 value={phoneValue}
                 onChange={handlePhoneInputChange}
               />
               {phoneError && (
                 <p style={{ color: "red" }}>
-                  Please enter a 10-digit phone number.
+                  Please enter a phone number in the following format: (xxx)
+                  xxx-xxxx.
                 </p>
               )}
             </div>
