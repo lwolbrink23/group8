@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import "../App.css";
 import "../Styles/account.css";
-import profilepic from "../assets/icons/icons8-person-female-100.png";
+import defaultProfilePic from "../assets/icons/icons8-person-female-100.png";
 import phone from "../assets/icons/icons8-phone-96.png";
 import email from "../assets/icons/icons8-email-100 (1).png";
 import lock from "../assets/icons/icons8-password-100.png";
@@ -13,7 +13,39 @@ import OrderHistory from "../Components/OrderHistory.js";
 import orderData from "../data/tempOrder.json";
 import tempShopData from "../data/shop.json"; // Import shop data
 
-function Account() {
+function Account({ user }) {
+  const [userData, setUserData] = useState(
+    user || {
+      name: "Jane Doe",
+      phoneNumber: "123-456-7890",
+      email: "email@email.com",
+      password: "password",
+    }
+  );
+
+  const [isContactOpen, setIsContactOpen] = useState(false);
+  const [isButtonOpen, setIsButtonOpen] = useState(false);
+  const [selectedCategory, setSelectedCategory] = useState("Past 1 month");
+  const [selectedOrder, setSelectedOrder] = useState("Ascending");
+
+  const openContact = () => setIsContactOpen(true);
+  const closeContact = () => setIsContactOpen(false);
+
+  const openButton = () => setIsButtonOpen(true);
+  const closeButton = () => setIsButtonOpen(false);
+
+  const handleFilter = (category) => {
+    setSelectedCategory(category);
+  };
+
+  const categories = ["Past 6 months", "Past Year", "All Time"];
+
+  const handleOrder = (order) => {
+    setSelectedOrder(order);
+  };
+
+  const orders = ["Descending"];
+
   function showCxApptDropdown() {
     const dropdown = document.querySelector(".cxApptDropdown");
     dropdown.style.display =
@@ -29,44 +61,18 @@ function Account() {
   const navigateToAppointmentDetails = () =>
     console.log("inside navigateToAppointmentDetails");
 
-  const [isContactOpen, setIsContactOpen] = useState(false);
-
-  const openContact = () => setIsContactOpen(true);
-  const closeContact = () => setIsContactOpen(false);
-
-  const [isButtonOpen, setIsButtonOpen] = useState(false);
-
-  const openButton = () => setIsButtonOpen(true);
-  const closeButton = () => setIsButtonOpen(false);
-
-  const [selectedCategory, setSelectedCategory] = useState("Past 1 month"); // Default to show all posts
-
-  const handleFilter = (category) => {
-    setSelectedCategory(category);
-  };
-
-  const categories = ["Past 6 months", "Past Year", "All Time"];
-
-  const [selectedOrder, setSelectedOrder] = useState("Ascending"); // Default to ascending order
-
-  const handleOrder = (order) => {
-    setSelectedOrder(order);
-  };
-
-  const orders = ["Descending"];
-
   return (
     <div>
       <div className="profileContainer">
         <div className="profileTop">
           <div class="profile-picture-container">
             <img
-              src={profilepic}
+              src={defaultProfilePic}
               alt="Profile picture"
               className="profile-picture"
             />
           </div>
-          <h2>Bob Smith</h2>
+          <h2>{userData.name}</h2>
           <div className="buttonsContainer">
             <button type="button" className="editButton">
               Edit Profile
@@ -88,15 +94,16 @@ function Account() {
             </div>
             <div className="infoRow">
               <img src={phone} alt="phone icon" className="persIcons"></img>
-              <p>(xxx) xxx-xxxx</p>
+              <p>{userData.phoneNumber}</p>
             </div>
             <div className="infoRow">
               <img src={email} alt="email icon" className="persIcons"></img>
-              <p>email@gmail.com</p>
+              <p>{userData.email}</p>
             </div>
             <div className="infoRow">
               <img src={lock} alt="password icon" className="persIcons"></img>
-              <p>password</p>
+              <p type="password">{"*".repeat(userData.password.length)}</p>{" "}
+              {/* Hide password */}
               <button type="button" className="changePW" onClick={openContact}>
                 Change
               </button>
