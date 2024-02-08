@@ -281,7 +281,8 @@
 
   .Hair,
   .Massage,
-  .Makeup {
+  .Makeup,
+  .Nails {
     display: flex;
     flex-direction: column;
     width: 80%;
@@ -293,7 +294,8 @@
 
   .Hair p,
   .Massage p,
-  .Makeup p {
+  .Makeup p,
+  .Nails p {
     font-family: "Poppins";
     font-size: 12px;
     font-style: normal;
@@ -302,7 +304,8 @@
   }
   .Hair h3,
   .Massage h3,
-  .Makeup h3 {
+  .Makeup h3,
+  .Nails h3 {
     font-family: Poppins;
     font-size: 15px;
     word-wrap: break-word;
@@ -311,7 +314,8 @@
 
   .Hair button,
   .Massage button,
-  .Makeup button {
+  .Makeup button,
+  .Nails button {
     margin: 10px 0 10px auto;
     display: block;
   }
