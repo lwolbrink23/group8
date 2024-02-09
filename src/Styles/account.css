@@ -280,10 +280,12 @@ th { /*Table top header*/
 @media screen and (min-width: 767px) {
     .apptsInfoContainer {
         width: 70%;
+        max-width: 1050px;
     }
 
     .orderInfoContainer {
         width: 70%;
+        max-width: 1050px;
     }
     .buttonsContainer {
         display: flex;
@@ -319,15 +321,13 @@ th { /*Table top header*/
             margin-top: 20px;
             margin-bottom: 20px;
             width: 70%;
+            max-width: 1050px;
         }
 
         .profileTop {
             flex: 0 0 30%; /* Adjust the percentage for the desired width */
         }
 
-        .persInfoContainer {
-            flex: 1;
-        }       
 
         .profileTop h2 {
             font-size: 20px;
@@ -336,6 +336,7 @@ th { /*Table top header*/
         .persInfoContainer {
             box-shadow: none;
             margin: 0;
+            flex: 1;
         }   
 
         .linesofInfo {
