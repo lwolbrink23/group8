@@ -6,7 +6,6 @@ import defaultProfilePic from "../assets/icons/icons8-person-female-100.png";
 import phone from "../assets/icons/icons8-phone-96.png";
 import email from "../assets/icons/icons8-email-100 (1).png";
 import lock from "../assets/icons/icons8-password-100.png";
-import apptActionIcon from "../assets/icons/apptaction.svg";
 import PopupPassword from "../Components/PopUpPassword";
 import PopupSignOut from "../Components/PopUpSignOut.js";
 import OrderHistory from "../Components/OrderHistory.js";

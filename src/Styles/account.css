@@ -12,6 +12,29 @@
     text-align: center;
 }
 
+.apptActionContainer {
+    position: relative;
+}
+
+
+.apptActionButton {
+    margin-left: auto;
+    margin-bottom: 0px;
+    cursor: pointer;
+    background-color: white;
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3);
+    padding: 0px;
+    font-family: "Poppins";
+    font-size: 13px;
+    width: 170px;
+    height: 30px;
+    display: block;
+    right: 100%;
+    text-align: center;
+    text-transform: none;
+        /*makes it stop being uppercase like other buttons*/
+}
+
 .custom-dropdown {
     padding: 10px;
     font-family: "Poppins";
@@ -112,34 +135,7 @@
     margin-bottom: 5px;
 }
 
-.apptActionIcon { /*3 dots icon*/
-    width: 8px;
-    cursor: pointer;
-    margin-left: auto;
-    
-}
 
-.apptActionContainer {
-    position: relative;
-}
-
-.viewApptDropdown,
-.cxApptDropdown {
-    display: none;
-    position: absolute;
-    right: 0;
-    background-color: white;
-    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3);
-    margin-top: 10px;
-    width: 250px;
-    padding: 10px;
-    text-align: center;
-    border-radius: 0;
-    font-family: "poppins";
-    cursor: pointer;
-    text-transform: none;
-    /*makes it stop being uppercase like other buttons*/
-}
 
 .persInfoContainer {
     display: flex;
