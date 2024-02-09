@@ -24,6 +24,8 @@ function Account({ user }) {
   );
 
   const [appointments, setAppointments] = useState([]);
+  // Add a state to hold the selected appointment details
+  const [selectedAppointment, setSelectedAppointment] = useState(null);
 
   useEffect(() => {
     // WILL NEED TO REPLACE THIS TO FETCH DATA FROM THE DATABASE
@@ -73,14 +75,36 @@ function Account({ user }) {
 
   // Function to handle appointment button click
   const handleActionClick = (appointment) => {
+    setSelectedAppointment(appointment);
     if (appointment.status === "scheduled") {
       // INSERT LOGIC TO CANCEL THE APPOINTMENT HERE THEN NAVIGATE TO THE DETAILS PAGE
       console.log("Cancel Appointment clicked for ID:", appointment.id);
-      navigate(`/appointment/${appointment.id}`);
+      navigate(`/appointment/${appointment.id}`, {
+        state: {
+          id: appointment.id,
+          status: appointment.status,
+          action: "cancel",
+          date: appointment.date,
+          time: appointment.time,
+          location: appointment.location,
+          services: appointment.services,
+          staff: appointment.staff,
+        },
+      });
     } else {
-      // Logic to view appointment details
       console.log("View Details clicked for ID:", appointment.id);
-      navigate(`/appointment/${appointment.id}`);
+      navigate(`/appointment/${appointment.id}`, {
+        state: {
+          id: appointment.id,
+          status: appointment.status,
+          action: "cancel",
+          date: appointment.date,
+          time: appointment.time,
+          location: appointment.location,
+          services: appointment.services,
+          staff: appointment.staff,
+        },
+      });
     }
   };
 
