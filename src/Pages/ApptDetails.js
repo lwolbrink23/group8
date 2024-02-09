@@ -26,6 +26,19 @@ function ApptDetails({ props }) {
     }
   };
 
+  const getStatusCancelBtn = (status) => {
+    switch (status) {
+      case "scheduled":
+        return "block";
+      case "cancelled":
+        return "none";
+      case "complete":
+        return "none";
+      default:
+        return ""; // Default color or handle unknown status
+    }
+  };
+
   return (
     <div>
       <div className="appt-heading">
@@ -77,8 +90,19 @@ function ApptDetails({ props }) {
           <p className="bolded">Staff</p>
           <p>{location.state.staff}</p>
         </div>
+        <div className="cancelApptBtnContainer">
+          <button
+            type="button"
+            className="cancelApptBtn"
+            style={{
+              display: getStatusCancelBtn(location.state.status),
+            }}
+          >
+            Cancel
+          </button>
+        </div>
         <Link to="/Account">
-          <button type="button" className="profile-">
+          <button type="button" className="profile-button">
             Back to Profile
           </button>
         </Link>
