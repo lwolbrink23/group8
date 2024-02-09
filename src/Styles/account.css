@@ -220,26 +220,6 @@ td {
 
 }
 
-/* Set a fixed width for the Services column */
-.table th:nth-child(2),
-.table td:nth-child(2) {
-    width: 200px;
-    /* Adjust the width as needed */
-}
-
-/* Set a fixed width for the Services column */
-.table th:nth-child(3),
-.table td:nth-child(3) {
-    width: 300px;
-    /* Adjust the width as needed */
-}
-
-/* Set a fixed width for the Services column */
-.table th:nth-child(4),
-.table td:nth-child(4) {
-    width: 100px;
-    /* Adjust the width as needed */
-}
 
 th { /*Table top header*/
     background-color: #D8E79C;
@@ -260,6 +240,33 @@ th { /*Table top header*/
 
 /* Styles for mobile*/
 @media screen and (max-width: 767px) {
+    .table tr,
+        .table td {
+            font-size: 11.5px;
+        }
+
+        .table th {
+            font-size: 13px;
+        }
+
+        .apptActionButton {
+            width: 85px;
+            height: 30px;
+            font-size: 12px;
+        }
+
+        .apptsInfoContainer {
+         min-width: 550px;
+        }
+
+        .orderInfoContainer { 
+            min-width: 550px;
+        }
+
+        .persInfoContainer {
+            min-width: 550px;
+        }
+
     .profile-picture-container {
             width: 100px;
             height: 100px;
@@ -274,18 +281,43 @@ th { /*Table top header*/
         .changePW {
             margin-left: 40px;
         }
+
 }
 
 /* Styles for web*/
 @media screen and (min-width: 767px) {
+    /* Set a fixed width for the Services column */
+        .table th:nth-child(2),
+        .table td:nth-child(2) {
+            width: 200px;
+            /* Adjust the width as needed */
+        }
+    
+        /* Set a fixed width for the Services column */
+        .table th:nth-child(3),
+        .table td:nth-child(3) {
+            width: 300px;
+            /* Adjust the width as needed */
+        }
+    
+        /* Set a fixed width for the Services column */
+        .table th:nth-child(4),
+        .table td:nth-child(4) {
+            width: 100px;
+            /* Adjust the width as needed */
+        }
+
+
     .apptsInfoContainer {
         width: 70%;
         max-width: 1050px;
+        min-width: 800px;
     }
 
     .orderInfoContainer {
         width: 70%;
         max-width: 1050px;
+        min-width: 800px;
     }
     .buttonsContainer {
         display: flex;
@@ -322,6 +354,7 @@ th { /*Table top header*/
             margin-bottom: 20px;
             width: 70%;
             max-width: 1050px;
+            min-width: 800px;
         }
 
         .profileTop {
