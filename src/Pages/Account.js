@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import "../App.css";
 import "../Styles/account.css";
 import defaultProfilePic from "../assets/icons/icons8-person-female-100.png";
@@ -13,6 +13,8 @@ import OrderHistory from "../Components/OrderHistory.js";
 import appointmentsData from "../data/appointments.json"; // Import your JSON file
 
 function Account({ user }) {
+  const navigate = useNavigate();
+
   const [userData, setUserData] = useState(
     user || {
       name: "Jane Doe",
@@ -54,20 +56,12 @@ function Account({ user }) {
         <td>{appointment.staff}</td>
         <td>
           <div className="apptActionContainer">
-            <img
-              src={apptActionIcon}
-              alt="appointment menu"
-              className="apptActionIcon"
-              onClick={() => showCxApptDropdown()}
-            />
-            <Link to={`/appointment/${appointment.id}`}>
-              <button
-                className="cxApptDropdown"
-                onClick={() => navigateToAppointmentDetails()}
-              >
-                Cancel Appointment
-              </button>
-            </Link>
+            <button
+              className="apptActionButton"
+              onClick={() => handleActionClick(appointment)}
+            >
+              {status === "scheduled" ? "Cancel Appointment" : "View Details"}
+            </button>
           </div>
         </td>
       </tr>
@@ -79,6 +73,19 @@ function Account({ user }) {
 
   // Render appointment history
   const renderAppointmentHistory = () => renderAppointments("complete");
+
+  // Function to handle appointment action click
+  const handleActionClick = (appointment) => {
+    if (appointment.status === "scheduled") {
+      // Logic to cancel appointment
+      console.log("Cancel Appointment clicked for ID:", appointment.id);
+      navigate(`/appointment/${appointment.id}`);
+    } else {
+      // Logic to view appointment details
+      console.log("View Details clicked for ID:", appointment.id);
+      navigate(`/appointment/${appointment.id}`);
+    }
+  };
 
   const [isContactOpen, setIsContactOpen] = useState(false);
   const [isButtonOpen, setIsButtonOpen] = useState(false);
@@ -102,21 +109,6 @@ function Account({ user }) {
   };
 
   const orders = ["Descending"];
-
-  function showCxApptDropdown() {
-    const dropdown = document.querySelector(".cxApptDropdown");
-    dropdown.style.display =
-      dropdown.style.display === "none" ? "block" : "none";
-  }
-
-  function showAppointmentDetails() {
-    const dropdown = document.querySelector(".viewApptDropdown");
-    dropdown.style.display =
-      dropdown.style.display === "none" ? "block" : "none";
-  }
-
-  const navigateToAppointmentDetails = () =>
-    console.log("inside navigateToAppointmentDetails");
 
   return (
     <div>
