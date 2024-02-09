@@ -6,7 +6,10 @@
     "location": "Simply Chic Hair",
     "services": "Haircut",
     "staff": "Marissa S.",
-    "status": "scheduled"
+    "status": "scheduled",
+    "time": "2:00pm",
+    "duration": "1 hr",
+    "price": "$50"
   },
   {
     "id": 2,
@@ -14,7 +17,10 @@
     "location": "Polish Perfection",
     "services": "Manicure",
     "staff": "Jane D.",
-    "status": "scheduled"
+    "status": "scheduled",
+    "time": "2:00pm",
+    "duration": "1 hr",
+    "price": "$50"
   },
   {
     "id": 3,
@@ -22,7 +28,10 @@
     "location": "Healing Hands Spa",
     "services": "Swedish Massage",
     "staff": "John D.",
-    "status": "scheduled"
+    "status": "scheduled",
+    "time": "2:00pm",
+    "duration": "1 hr",
+    "price": "$50"
   },
   {
     "id": 4,
@@ -30,7 +39,10 @@
     "location": "Brush & Blush Beauty",
     "services": "Bridal Makeup Package",
     "staff": "Lucy A.",
-    "status": "scheduled"
+    "status": "scheduled",
+    "time": "2:00pm",
+    "duration": "1 hr",
+    "price": "$50"
   },
   {
     "id": 5,
@@ -38,7 +50,10 @@
     "location": "Beauty Bliss Spa",
     "services": "Massage",
     "staff": "Alex W.",
-    "status": "canceled"
+    "status": "canceled",
+    "time": "2:00pm",
+    "duration": "1 hr",
+    "price": "$50"
   },
   {
     "id": 6,
@@ -46,7 +61,10 @@
     "location": "Polish Perfection",
     "services": "Acrylic Full Set",
     "staff": "Sophie L.",
-    "status": "complete"
+    "status": "complete",
+    "time": "2:00pm",
+    "duration": "1 hr",
+    "price": "$50"
   }
 
 ]

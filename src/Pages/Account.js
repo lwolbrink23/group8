@@ -9,7 +9,7 @@ import lock from "../assets/icons/icons8-password-100.png";
 import PopupPassword from "../Components/PopUpPassword";
 import PopupSignOut from "../Components/PopUpSignOut.js";
 import OrderHistory from "../Components/OrderHistory.js";
-import appointmentsData from "../data/appointments.json"; // Import your JSON file
+import appointmentsData from "../data/appointments.json";
 
 function Account({ user }) {
   const navigate = useNavigate();
@@ -26,7 +26,8 @@ function Account({ user }) {
   const [appointments, setAppointments] = useState([]);
 
   useEffect(() => {
-    // Fetch appointments or set them directly from the JSON file
+    // WILL NEED TO REPLACE THIS TO FETCH DATA FROM THE DATABASE
+    // Temporary fetch appointments from the JSON file:
     setAppointments(appointmentsData);
   }, []);
 
@@ -67,16 +68,13 @@ function Account({ user }) {
     ));
   };
 
-  // Render scheduled appointments
   const renderScheduledAppointments = () => renderAppointments("scheduled");
-
-  // Render appointment history
   const renderAppointmentHistory = () => renderAppointments("complete");
 
-  // Function to handle appointment action click
+  // Function to handle appointment button click
   const handleActionClick = (appointment) => {
     if (appointment.status === "scheduled") {
-      // Logic to cancel appointment
+      // INSERT LOGIC TO CANCEL THE APPOINTMENT HERE THEN NAVIGATE TO THE DETAILS PAGE
       console.log("Cancel Appointment clicked for ID:", appointment.id);
       navigate(`/appointment/${appointment.id}`);
     } else {
