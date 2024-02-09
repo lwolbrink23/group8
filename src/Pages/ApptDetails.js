@@ -78,6 +78,29 @@ function ApptDetails({ props }) {
           </div>
         </div>
 
+        <div className="table">
+          <table>
+            <thead>
+              <tr>
+                <th>Date</th>
+                <th>Location</th>
+                <th>Services</th>
+                <th>Staff</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr key={location.state.id}>
+                <td>{location.state.date}</td>
+                <td>{location.state.location}</td>
+                <td>{location.state.services}</td>
+                <td>{location.state.staff}</td>
+                <td></td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+
+        {/*MOBILE TABLE DISPLAY ONLY*/}
         <div className="bottom-section">
           <p className="bolded">Time</p>
           <p>{location.state.time}</p>

@@ -218,11 +218,17 @@
 
   }
 
+  .table {
+    display: none;
+  }
+
 }
 
 /* Web Design */
 @media screen and (min-width: 767px) {
-    
+    .bottom-section {
+        display: none;
+    }
 
 
 }
