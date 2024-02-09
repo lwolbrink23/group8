@@ -1,3 +1,4 @@
+
 .orderInfoContainer {
     display: flex;
     flex-direction: column;
@@ -22,7 +23,7 @@
     margin-bottom: 0px;
     cursor: pointer;
     background-color: white;
-    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3);
+    box-shadow: 0 1px 10px rgba(0, 0, 0, 0.3);
     padding: 0px;
     font-family: "Poppins";
     font-size: 13px;
@@ -179,6 +180,7 @@
     width: 100%;
     margin-top: -10px;
     text-align: center;
+    border-collapse: collapse;
 }
 
 .AppointmentsContainer {
@@ -204,12 +206,39 @@
 table {
     width: 100%;
     border-collapse: collapse;
+    margin-top: 0px;
+
 }
 
 th,
 td {
     padding: 8px;
-    text-align: center;
+        text-align: center;
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+
+}
+
+/* Set a fixed width for the Services column */
+.table th:nth-child(2),
+.table td:nth-child(2) {
+    width: 200px;
+    /* Adjust the width as needed */
+}
+
+/* Set a fixed width for the Services column */
+.table th:nth-child(3),
+.table td:nth-child(3) {
+    width: 300px;
+    /* Adjust the width as needed */
+}
+
+/* Set a fixed width for the Services column */
+.table th:nth-child(4),
+.table td:nth-child(4) {
+    width: 100px;
+    /* Adjust the width as needed */
 }
 
 th { /*Table top header*/
