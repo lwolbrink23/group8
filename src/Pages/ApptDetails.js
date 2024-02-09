@@ -13,6 +13,19 @@ function ApptDetails({ props }) {
     return <p>Error...</p>; // or handle the absence of data in some way
   }
 
+  const getStatusColor = (status) => {
+    switch (status) {
+      case "scheduled":
+        return "#e6e3e3";
+      case "cancelled":
+        return "red";
+      case "complete":
+        return "#89E569";
+      default:
+        return ""; // Default color or handle unknown status
+    }
+  };
+
   return (
     <div>
       <div className="appt-heading">
@@ -40,7 +53,14 @@ function ApptDetails({ props }) {
 
             <div className="status-container">
               <p className="bolded-status">Status:</p>
-              <p className="complete">{location.state.status.toUpperCase()}</p>
+              <p
+                className="complete"
+                style={{
+                  backgroundColor: getStatusColor(location.state.status),
+                }}
+              >
+                {location.state.status.toUpperCase()}
+              </p>
             </div>
           </div>
         </div>

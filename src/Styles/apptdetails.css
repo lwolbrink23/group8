@@ -54,12 +54,16 @@
     margin-top: -15px;
 }
 
+
+
 .complete {
     margin: 25px 10px;
-    background-color: #89E569;
     border-radius: 15px;
     width: 100px;
+    height: 22px;
 }
+
+
 
 .bolded,
 .bolded-title,
