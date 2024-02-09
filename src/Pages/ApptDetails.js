@@ -40,7 +40,7 @@ function ApptDetails({ props }) {
 
             <div className="status-container">
               <p className="bolded-status">Status:</p>
-              <p className="complete">{location.state.status}</p>
+              <p className="complete">{location.state.status.toUpperCase()}</p>
             </div>
           </div>
         </div>
