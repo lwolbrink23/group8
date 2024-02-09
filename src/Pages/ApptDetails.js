@@ -15,8 +15,6 @@ function ApptDetails({ props }) {
 
   return (
     <div>
-      <p>hello!</p>
-      {/*
       <div className="appt-heading">
         <h1 className="appt-title">Appointment Details</h1>
       </div>
@@ -27,7 +25,7 @@ function ApptDetails({ props }) {
           </div>
 
           <div className="middle-section">
-            <p className="bolded-title">{location}</p>
+            <p className="bolded-title">{location.state.location}</p>
             <div className="icon-move">
               <img
                 src={calendaricon}
@@ -35,36 +33,36 @@ function ApptDetails({ props }) {
                 className="calendar-icon"
               />
               <div className="icon-with-text">
-                <p>{location}</p>
-                <p>{location}</p>
+                <p>{location.state.date}</p>
+                <p>{location.state.time}</p>
               </div>
             </div>
 
             <div className="status-container">
               <p className="bolded-status">Status:</p>
-              <p className="complete">{location}</p>
+              <p className="complete">{location.state.status}</p>
             </div>
           </div>
         </div>
 
         <div className="bottom-section">
           <p className="bolded-time">Time</p>
-          <p>{location}</p>
+          <p>{location.state.time}</p>
           <p className="bolded">Duration</p>
-          <p>{location}</p>
+          <p>{location.state.duration}</p>
           <p className="bolded">Services</p>
-          <p>{location}</p>
+          <p>{location.state.services}</p>
           <p className="bolded">Price</p>
-          <p>{location}</p>
+          <p>{location.state.price}</p>
           <p className="bolded">Staff</p>
-          <p>{location}</p>
+          <p>{location.state.staff}</p>
         </div>
         <Link to="/Account">
           <button type="button" className="profile-">
             Back to Profile
           </button>
         </Link>
-  </div> */}
+      </div>
     </div>
   );
 }
