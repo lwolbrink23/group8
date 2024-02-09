@@ -1,13 +1,4 @@
 /* Common Styles */
-.appt-form {
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-    box-sizing: border-box;
-    justify-content: space-between;
-    margin: 0 20px 30px;
-    padding: 15px;
-    background-color: white;
-    text-align: center;
-}
 
 .appt-heading {
     background-color: #BACA82;
@@ -178,12 +169,12 @@
 
  .appt-heading {
     height: 60px;
-    width: 90%;
+    max-width: 90%;
     padding: 0;
  }
 
  .appt-form {
-    width: 90%
+    max-width: 90%
  }
 
  .prof-image {
@@ -218,7 +209,7 @@
 
   }
 
-  .table {
+  .apptDetails-table {
     display: none;
   }
 
@@ -226,9 +217,74 @@
 
 /* Web Design */
 @media screen and (min-width: 767px) {
+    .top-section {
+        width: 85%;
+        margin-left: auto;
+        margin-right: auto;
+        position: relative;
+    }
+
+    .middle-section {
+        position: relative;
+    }
+
+    .prof-image {
+            margin-left: 80px;
+            margin-right: -20px;
+            position: relative;
+        }
+
+
+    .apptDetails-table {
+        width: 100%;
+        margin-top: 10px;
+    }
+    .appt-title {
+            font-size: 34px;
+            padding-top: 13px;
+        }
+    
+        .appt-heading {
+            height: 70px;
+            max-width: 55%;
+            padding: 0;
+        }
+
+        .appt-form {
+            max-width: 55%;
+        }
+
+
     .bottom-section {
         display: none;
     }
 
+        .btns-container {
+            display: flex;
+            justify-content: center;
+                /* Center the container horizontally */
+                align-items: center;
+                /* Center the container vertically */
+                flex-direction: row;
+            margin-left: auto;
+            margin-right: auto;
+            margin-top: 40px;
+            margin-bottom: 10px;
+
+        }
+    
+         .profile-button {
+            margin-bottom: 0px;
+            width: 200px;
+            margin-left: 10px;
+            margin-top: 0px;
+        
+        }
+        
+         .cancelApptBtn {
+            width: 200px;
+            margin-top: 10px;
+            margin-right: 10px;
+        }
 
 }

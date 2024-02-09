@@ -78,21 +78,25 @@ function ApptDetails({ props }) {
           </div>
         </div>
 
-        <div className="table">
+        <div className="apptDetails-table">
           <table>
             <thead>
               <tr>
                 <th>Date</th>
-                <th>Location</th>
+                <th>Time</th>
+                <th>Duration</th>
                 <th>Services</th>
+                <th>Price</th>
                 <th>Staff</th>
               </tr>
             </thead>
             <tbody>
               <tr key={location.state.id}>
                 <td>{location.state.date}</td>
-                <td>{location.state.location}</td>
+                <td>{location.state.time}</td>
+                <td>{location.state.duration}</td>
                 <td>{location.state.services}</td>
+                <td>{location.state.price}</td>
                 <td>{location.state.staff}</td>
                 <td></td>
               </tr>
@@ -113,22 +117,24 @@ function ApptDetails({ props }) {
           <p className="bolded">Staff</p>
           <p>{location.state.staff}</p>
         </div>
-        <div className="cancelApptBtnContainer">
-          <button
-            type="button"
-            className="cancelApptBtn"
-            style={{
-              display: getStatusCancelBtn(location.state.status),
-            }}
-          >
-            Cancel
-          </button>
+        <div className="btns-container">
+          <div className="cancelApptBtnContainer">
+            <button
+              type="button"
+              className="cancelApptBtn"
+              style={{
+                display: getStatusCancelBtn(location.state.status),
+              }}
+            >
+              Cancel
+            </button>
+          </div>
+          <Link to="/Account">
+            <button type="button" className="profile-button">
+              Back to Profile
+            </button>
+          </Link>
         </div>
-        <Link to="/Account">
-          <button type="button" className="profile-button">
-            Back to Profile
-          </button>
-        </Link>
       </div>
     </div>
   );
