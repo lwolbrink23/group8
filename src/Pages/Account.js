@@ -62,7 +62,9 @@ function Account({ user }) {
               className="apptActionButton"
               onClick={() => handleActionClick(appointment)}
             >
-              {status === "scheduled" ? "Cancel Appointment" : "View Details"}
+              {status === "scheduled" ? "View Details" : "View Details"}
+              {/*change it to this if we want it to say "Cancel Appointment" on main account page:
+              {status === "scheduled" ? "Cancel Appointment" : "View Details"}*/}
             </button>
           </div>
         </td>
@@ -77,7 +79,7 @@ function Account({ user }) {
   const handleActionClick = (appointment) => {
     setSelectedAppointment(appointment);
     if (appointment.status === "scheduled") {
-      // INSERT LOGIC TO CANCEL THE APPOINTMENT HERE THEN NAVIGATE TO THE DETAILS PAGE
+      // DO NOT INSERT LOGIC HERE- THEY NEED TO CANCEL THE APPOINTMENT ON THE DETAILS PAGE
       console.log("Cancel Appointment clicked for ID:", appointment.id);
       navigate(`/appointment/${appointment.id}`, {
         state: {
@@ -91,6 +93,7 @@ function Account({ user }) {
           staff: appointment.staff,
           duration: appointment.duration,
           price: appointment.price,
+          provProfId: appointment.provProfId, // the ID on the provider profile page
         },
       });
     } else {
@@ -99,7 +102,7 @@ function Account({ user }) {
         state: {
           id: appointment.id,
           status: appointment.status,
-          action: "cancel",
+          action: "view",
           date: appointment.date,
           time: appointment.time,
           location: appointment.location,
@@ -107,6 +110,7 @@ function Account({ user }) {
           staff: appointment.staff,
           duration: appointment.duration,
           price: appointment.price,
+          provProfId: appointment.provProfId, // the ID on the provider profile page
         },
       });
     }

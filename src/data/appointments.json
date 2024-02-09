@@ -9,7 +9,8 @@
     "status": "scheduled",
     "time": "2:00pm",
     "duration": "1 hr",
-    "price": "$50"
+    "price": "$50",
+    "provProfId": "iID0"
   },
   {
     "id": 2,
@@ -20,7 +21,8 @@
     "status": "scheduled",
     "time": "2:00pm",
     "duration": "1 hr",
-    "price": "$50"
+    "price": "$50",
+    "provProfId": "iID1"
   },
   {
     "id": 3,
@@ -31,7 +33,8 @@
     "status": "scheduled",
     "time": "2:00pm",
     "duration": "1 hr",
-    "price": "$50"
+    "price": "$50",
+    "provProfId": "iID3"
   },
   {
     "id": 4,
@@ -42,7 +45,8 @@
     "status": "scheduled",
     "time": "2:00pm",
     "duration": "1 hr",
-    "price": "$50"
+    "price": "$50",
+    "provProfId": "iID2"
   },
   {
     "id": 5,
@@ -64,7 +68,8 @@
     "status": "complete",
     "time": "2:00pm",
     "duration": "1 hr",
-    "price": "$50"
+    "price": "$50",
+    "provProfId": "iID1"
   }
 
 ]

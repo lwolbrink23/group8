@@ -1,5 +1,5 @@
 import React from "react";
-import { Link, useLocation } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 import "../App.css";
 import "../Styles/apptdetails.css";
 import SimplyChicHair from "../assets/images/SimplyChicHair.png";
@@ -7,6 +7,7 @@ import calendaricon from "../assets/icons/calendaricon.png";
 
 function ApptDetails({ props }) {
   const location = useLocation();
+  const navigate = useNavigate();
   console.log(location);
 
   if (!location.state) {
@@ -37,6 +38,14 @@ function ApptDetails({ props }) {
       default:
         return ""; // Default color or handle unknown status
     }
+  };
+
+  // Function to rescheudle appointment
+  const rescheduleAppt = () => {
+    console.log("Rescheduled Appointment clicked for ID:", location.state.id);
+    // INSERT LOGIC HERE TO CANCEL THE APPOINTMENT
+    // THEN REROUTE THEM TO SPECIFIC PROVIDER PROFILE PAGE
+    navigate(`/providerprofile/${location.state.provProfId}`);
   };
 
   return (
@@ -129,11 +138,14 @@ function ApptDetails({ props }) {
               Cancel
             </button>
           </div>
-          <Link to="/Account">
-            <button type="button" className="profile-button">
-              Back to Profile
-            </button>
-          </Link>
+
+          <button
+            type="button"
+            className="profile-button"
+            onClick={() => rescheduleAppt()}
+          >
+            Reschedule
+          </button>
         </div>
       </div>
     </div>
