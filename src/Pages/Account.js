@@ -89,6 +89,8 @@ function Account({ user }) {
           location: appointment.location,
           services: appointment.services,
           staff: appointment.staff,
+          duration: appointment.duration,
+          price: appointment.price,
         },
       });
     } else {
@@ -103,6 +105,8 @@ function Account({ user }) {
           location: appointment.location,
           services: appointment.services,
           staff: appointment.staff,
+          duration: appointment.duration,
+          price: appointment.price,
         },
       });
     }
