@@ -79,7 +79,7 @@ function ApptDetails({ props }) {
         </div>
 
         <div className="bottom-section">
-          <p className="bolded-time">Time</p>
+          <p className="bolded">Time</p>
           <p>{location.state.time}</p>
           <p className="bolded">Duration</p>
           <p>{location.state.duration}</p>

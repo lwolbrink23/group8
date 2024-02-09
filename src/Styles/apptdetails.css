@@ -203,6 +203,21 @@
      object-fit: cover;
  }
 
+ .bottom-section p {
+    margin: 0;
+
+ }
+
+ .bolded {
+    font-size: 18px;
+ }
+
+  .bottom-section {
+    margin-top: -50px;
+    margin-bottom: 25px;
+
+  }
+
 }
 
 /* Web Design */
