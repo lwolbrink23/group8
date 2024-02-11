@@ -30,5 +30,5 @@ const client = new MongoClient(MONGODB_URI, {
 await client.connect();
 const database = client.db("TheSuiteSpot");
 // use the imported routes here!!
-exampleRoutes(app, client, client.db("sample_analytics"));
-shopRoutes(app, client, database)
+exampleRoutes(app, client.db("sample_analytics"));
+shopRoutes(app,  database)

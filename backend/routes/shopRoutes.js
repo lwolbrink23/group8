@@ -1,9 +1,9 @@
-const shopRoutes = (app, client, database) => {
+const shopRoutes = (app, database) => {
   // /shop route to get shop items
   app.get("/shop", async (req, res) => {
     try {
-      const collection = database.collection("accounts");
-      const result = await collection.findOne({ account_id: 198100 });
+      const collection = database.collection("Products");
+      const result = await collection.find().toArray();
       res.send(JSON.stringify(result));
     } catch (error) {
       console.error("Error fetching data:", error);

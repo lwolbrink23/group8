@@ -4,7 +4,7 @@ import giftCardIMG from "../assets/images/giftcard.png";
 import plusICON from "../assets/icons/black-plus.png";
 import minusICON from "../assets/icons/black-minus.png";
 import shopICON from "../assets/icons/icons8-shopping-cart-100.png";
-import shopData from "../data/shop.json";
+
 import { Link, useLocation } from "react-router-dom";
 import React, { useEffect, useState } from "react";
 import Shopheader from "../Components/Shopheader";
@@ -26,8 +26,9 @@ function Shop() {
   const scrollToTop = () => {
     window.scrollTo(0, 0);
   };
-  const [data, setData] = useState([]);
-  const [dataC, setDataC] = useState("");
+    // keeping track of item qty
+  const [dynamicItems, setDynamicItems] = useState([]);
+  const [shopData, setShopData] = useState([])
   useEffect(() => {
     // Shortened version by ChatGPT
     const fetchData = async (endpoint, setDataFunction) => {
@@ -35,6 +36,7 @@ function Shop() {
         // Fetch data from the backend
         const response = await fetch(`${BACKEND_ADDRESS}${endpoint}`);
         const jsonData = await response.json();
+        console.log(jsonData)
         setDataFunction(jsonData);
       } catch (error) {
         console.error("Error fetching data:", error.message);
@@ -42,12 +44,9 @@ function Shop() {
     };
 
     // Usage example:
-    fetchData("/accounts", setData);
-    fetchData("/customers", setDataC);
+    fetchData("/shop", setShopData);
   }, []);
 
-  // keeping track of item qty
-  const [dynamicItems, setDynamicItems] = useState([]);
 
   const handleIncrement = (itemId) => {
     setDynamicItems((prevItems) => {
@@ -157,9 +156,6 @@ function Shop() {
           <ShopItems />
         </ul>
         <p className="right extra-space">Next Page</p>
-        {/* BACKEND TEST */}
-        <p>account id: {data.account_id}</p>
-        <p>customer username: {dataC.username}</p>
         {/* giftcard */}
         <h2 className="center">Gift Cards</h2>
         <div className="giftcard-grid box">
