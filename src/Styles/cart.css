@@ -1,6 +1,6 @@
 /* general */
 #cart main {
-  padding: 52px 20vw;
+  padding: 52px 15vw;
   display: grid;
   grid-template-columns: auto auto;
   gap: 50px;
@@ -60,6 +60,9 @@
 
 .subtotal div {
   margin-top: 50px;
+}
+.subtotal .col-2  {
+  grid-template-columns: auto auto;
 }
 .subtotal .col-2 > p:last-child {
   text-align: right;
@@ -125,3 +128,10 @@
     margin: auto;
   }
 }
+@media screen and (max-width: 560px) {
+  .subtotal {
+    width: 100%;
+    margin: auto;
+  }
+}
+
