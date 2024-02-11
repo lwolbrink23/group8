@@ -5,6 +5,7 @@ import "dotenv/config";
 
 // import routes
 import exampleRoutes from "./routes/routes.js";
+import shopRoutes from "./routes/shopRoutes.js";
 
 // these should be in a .env file so github wont scream in your emails that the database link has been leaked
 const PORT = 3003;
@@ -27,6 +28,7 @@ const client = new MongoClient(MONGODB_URI, {
   },
 });
 await client.connect();
-
+const database = client.db("TheSuiteSpot");
 // use the imported routes here!!
-exampleRoutes(app, client);
+exampleRoutes(app, client, client.db("sample_analytics"));
+shopRoutes(app, client, database)
