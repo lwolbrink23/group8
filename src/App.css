@@ -179,3 +179,6 @@ input[type="radio"]:checked {
   font-family: "poppins", sans-serif;
   font-size: 20px;
 }
+.cursor-pointer {
+  cursor: pointer;
+}
