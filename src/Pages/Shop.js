@@ -3,9 +3,7 @@ import "../Styles/shop.css";
 import giftCardIMG from "../assets/images/giftcard.png";
 import plusICON from "../assets/icons/black-plus.png";
 import minusICON from "../assets/icons/black-minus.png";
-import greenCheckICON from "../assets/icons/icons8-checkmark-green.png";
-import purpleXICON from "../assets/icons/icons8-x-purple.png";
-
+import CartPopup from "../Components/CartPopup";
 import { Link, useLocation } from "react-router-dom";
 import React, { useEffect, useState } from "react";
 import Shopheader from "../Components/Shopheader";
@@ -80,8 +78,8 @@ function Shop() {
       qty: itemQty,
       img: itemImg,
     };
-    setCartPopup(cartPopInfo);
 
+    setCartPopup(cartPopInfo);
     setDynamicItems(updatedItems);
   };
 
@@ -152,41 +150,14 @@ function Shop() {
     });
   };
 
-  const CartPopup = () => (
-    <div id="cart-popup">
-      <div>
-        <img src={greenCheckICON}></img>
-        <p className="bold">Added to Cart!</p>
-        <img
-          src={purpleXICON}
-          className="cursor-pointer"
-          onClick={() => setCartPopup()}
-        ></img>
-      </div>
-      <hr />
-      <div id="cart-pop-div">
-        <img
-          src={require("../assets/images/shop/" + cartPopup.img + ".png")}
-          id="ca-po-img"
-          alt=""
-        ></img>
-        <div>
-          <p>{cartPopup.name}</p>
-          <p>${cartPopup.price}</p>
-          <p>Qty: {cartPopup.qty}</p>
-          <hr />
-          <p>You have 4 item(s) in your cart</p>
-        </div>
-      </div>
-    </div>
-  );
-
   // main JSX
   return (
     <div id="shop">
       <ScrollToTop />
       {/* title */}
-      {cartPopup && <CartPopup />}
+      {cartPopup && (
+        <CartPopup cartPopup={cartPopup} setCartPopup={setCartPopup} />
+      )}
       <div id="shop-banner">
         <Shopheader htitle="Shop" disableBack={true} />
 
