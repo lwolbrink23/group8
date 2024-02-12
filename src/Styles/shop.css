@@ -148,6 +148,25 @@ input {
 .giftcard-info {
   padding: 0 20px 10px 20px;
 }
+@media screen and (max-width: 1900px) {
+  #shop main {
+    padding: 52px 100px;
+  }
+  #shop-banner h2 {
+    left: 9%;
+  }
+}
+@media screen and (max-width: 1800px) {
+  #cart-popup {
+    width: 40vw;
+  }
+}
+
+@media screen and (max-width: 1300px) {
+  #cart-popup {
+    width: 70vw;
+  }
+}
 
 @media screen and (max-width: 1200px) {
   .items-container {
@@ -160,22 +179,17 @@ input {
     padding: 18px 100px;
   }
 }
-
-@media screen and (max-width: 1900px) {
-  #shop main {
-    padding: 52px 100px;
-  }
-  #shop-banner h2 {
-    left: 9%;
-  }
-}
-
-@media screen and (max-width: 1300px) {
+@media screen and (max-width: 1050px) {
   .giftcard-grid {
     width: 100%;
   }
 }
-
+@media screen and (max-width: 941px) {
+  #cart-popup {
+    width: 70vw;
+    top: 200px;
+  }
+}
 @media screen and (max-width: 767px) {
   .items-container {
     grid-template-columns: 1fr 1fr;
