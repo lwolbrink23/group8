@@ -15,14 +15,18 @@ function Account({ props }) {
   const location = useLocation();
   const navigate = useNavigate();
 
-  // const [userData, setUserData] = useState(
-  //  user || {
-  //    name: "Jane Doe",
-  //    phoneNumber: "123-456-7890",
-  //   email: "email@email.com",
-  //    password: "password",
-  //   }
-  // );
+
+  const [userData, setUserData] = useState(
+    location.state ? location.state : {
+      name: "Jane Doe",
+      phoneNumber: "(123) 456-7890",
+      email: "email@email.com",
+      password: "password",
+    }
+  );
+
+  console.log("location.state:", location.state);
+  console.log("userData:", userData);
 
   const [appointments, setAppointments] = useState([]);
   // Add a state to hold the selected appointment details
@@ -151,7 +155,7 @@ function Account({ props }) {
               className="profile-picture"
             />
           </div>
-          <h2>{location.state.name}</h2>
+          <h2>{userData.name}</h2>
           <div className="buttonsContainer">
             <button type="button" className="editButton">
               Edit Profile
@@ -173,15 +177,15 @@ function Account({ props }) {
             </div>
             <div className="infoRow">
               <img src={phone} alt="phone icon" className="persIcons"></img>
-              <p>{location.state.phoneNumber}</p>
+              <p>{userData.phoneNumber}</p>
             </div>
             <div className="infoRow">
               <img src={email} alt="email icon" className="persIcons"></img>
-              <p>{location.state.email}</p>
+              <p>{userData.email}</p>
             </div>
             <div className="infoRow">
               <img src={lock} alt="password icon" className="persIcons"></img>
-              <p type="password">{"*".repeat(location.state.password.length)}</p>{" "}
+              <p type="password">{"*".repeat(userData.password.length)}</p>{" "}
               {/* Hide password */}
               <button type="button" className="changePW" onClick={openContact}>
                 Change
