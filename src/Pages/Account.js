@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { Link, useNavigate } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 import "../App.css";
 import "../Styles/account.css";
 import defaultProfilePic from "../assets/icons/icons8-person-female-100.png";
@@ -11,17 +11,18 @@ import PopupSignOut from "../Components/PopUpSignOut.js";
 import OrderHistory from "../Components/OrderHistory.js";
 import appointmentsData from "../data/appointments.json";
 
-function Account({ user }) {
+function Account({ props }) {
+  const location = useLocation();
   const navigate = useNavigate();
 
-  const [userData, setUserData] = useState(
-    user || {
-      name: "Jane Doe",
-      phoneNumber: "123-456-7890",
-      email: "email@email.com",
-      password: "password",
-    }
-  );
+  // const [userData, setUserData] = useState(
+  //  user || {
+  //    name: "Jane Doe",
+  //    phoneNumber: "123-456-7890",
+  //   email: "email@email.com",
+  //    password: "password",
+  //   }
+  // );
 
   const [appointments, setAppointments] = useState([]);
   // Add a state to hold the selected appointment details
@@ -150,7 +151,7 @@ function Account({ user }) {
               className="profile-picture"
             />
           </div>
-          <h2>{userData.name}</h2>
+          <h2>{location.state.name}</h2>
           <div className="buttonsContainer">
             <button type="button" className="editButton">
               Edit Profile
@@ -172,15 +173,15 @@ function Account({ user }) {
             </div>
             <div className="infoRow">
               <img src={phone} alt="phone icon" className="persIcons"></img>
-              <p>{userData.phoneNumber}</p>
+              <p>{location.state.phoneNumber}</p>
             </div>
             <div className="infoRow">
               <img src={email} alt="email icon" className="persIcons"></img>
-              <p>{userData.email}</p>
+              <p>{location.state.email}</p>
             </div>
             <div className="infoRow">
               <img src={lock} alt="password icon" className="persIcons"></img>
-              <p type="password">{"*".repeat(userData.password.length)}</p>{" "}
+              <p type="password">{"*".repeat(location.state.password.length)}</p>{" "}
               {/* Hide password */}
               <button type="button" className="changePW" onClick={openContact}>
                 Change
