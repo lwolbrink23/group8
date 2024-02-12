@@ -8,6 +8,7 @@ import { Link, useLocation } from "react-router-dom";
 import React, { useEffect, useState } from "react";
 import Shopheader from "../Components/Shopheader";
 import { BACKEND_ADDRESS } from "../App";
+import Cookies from "js-cookie";
 
 function ScrollToTop() {
   const location = useLocation();
@@ -44,6 +45,8 @@ function Shop() {
 
     // Usage example:
     fetchData("/shop", setShopData);
+    // TODO: fetch cart data from database here
+    // fetch data from cookie
   }, []);
 
   const handleIncrement = (itemId) => {
@@ -78,7 +81,20 @@ function Shop() {
       qty: itemQty,
       img: itemImg,
     };
-
+    const addToCart = [
+      {
+        ProductID: "iID0",
+        Amount: 2,
+      },
+      {
+        ProductID: "iID2",
+        Amount: 1,
+      },
+    ];
+    Cookies.set("cart", JSON.stringify(addToCart), {
+      expires: 7,
+      path: "/",
+    });
     setCartPopup(cartPopInfo);
     setDynamicItems(updatedItems);
   };
