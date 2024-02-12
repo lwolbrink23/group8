@@ -58,9 +58,9 @@ input {
 }
 /* cart pop-up */
 #cart-popup {
-  width: 50%;
-  right: 30px;
-  top: 200px;
+  width: 25vw;
+  right: 8%;
+  top: 250px;
   background-color: rgb(255, 255, 255);
   z-index: 99;
   position: absolute;

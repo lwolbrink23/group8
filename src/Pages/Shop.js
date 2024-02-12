@@ -30,14 +30,14 @@ function Shop() {
   // keeping track of item qty
   const [dynamicItems, setDynamicItems] = useState([]);
   const [shopData, setShopData] = useState([]);
+  const [cartPopup, setCartPopup] = useState();
+
   useEffect(() => {
-    // Shortened version by ChatGPT
     const fetchData = async (endpoint, setDataFunction) => {
       try {
         // Fetch data from the backend
         const response = await fetch(`${BACKEND_ADDRESS}${endpoint}`);
         const jsonData = await response.json();
-        console.log(jsonData);
         setDataFunction(jsonData);
       } catch (error) {
         console.error("Error fetching data:", error.message);
@@ -72,8 +72,14 @@ function Shop() {
     );
   };
 
-  const handleAddToCart = (itemId) => {
+  const handleAddToCart = (itemId, itemName, itemPrice, itemQty) => {
     const updatedItems = dynamicItems.filter((item) => item.id !== itemId);
+    const cartPopInfo = {
+      name: itemName,
+      price: itemPrice,
+      qty: itemQty,
+    };
+    setCartPopup(cartPopInfo);
 
     setDynamicItems(updatedItems);
   };
@@ -125,7 +131,9 @@ function Shop() {
 
             <button
               className="button"
-              onClick={() => handleAddToCart(item.id)}
+              onClick={() =>
+                handleAddToCart(item.id, item.name, item.price, itemQty)
+              }
               disabled={!itemQty}
               style={{ opacity: !itemQty ? 0.5 : 1 }}
             >
@@ -137,29 +145,33 @@ function Shop() {
     });
   };
 
+  const CartPopup = () => (
+    <div id="cart-popup">
+      <div>
+        <img src={greenCheckICON}></img>
+        <p>Added to Cart!</p>
+        <img src={purpleXICON}></img>
+      </div>
+      <hr />
+      <div id="cart-pop-div">
+        <div className="ca-po-img"></div>
+        <div>
+          <p>Item name</p>
+          <p>$price</p>
+          <p>Qty: #</p>
+          <hr />
+          <p>You have 4 item(s) in your cart</p>
+        </div>
+      </div>
+    </div>
+  );
+
   // main JSX
   return (
     <div id="shop">
       <ScrollToTop />
       {/* title */}
-      <div id="cart-popup">
-        <div>
-          <img src={greenCheckICON}></img>
-          <p>Added to Cart!</p>
-          <img src={purpleXICON}></img>
-        </div>
-        <hr />
-        <div id="cart-pop-div">
-          <div className="ca-po-img"></div>
-          <div>
-            <p>Item name</p>
-            <p>$price</p>
-            <p>Qty: #</p>
-            <hr />
-            <p>You have 4 item(s) in your cart</p>
-          </div>
-        </div>
-      </div>
+      {cartPopup && <CartPopup />}
       <div id="shop-banner">
         <Shopheader htitle="Shop" disableBack={true} />
 
