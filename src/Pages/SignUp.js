@@ -94,7 +94,16 @@ function SignUp() {
         resetForm();
 
         // Redirect to the Account page with the user data
-        navigate("/Account", { state: { user: userData } });
+        //navigate("/Account", { state: { user: userData } });
+        navigate(`/Account/${userData.id}`, {
+          state: {
+            id: userData.email,
+            name: userData.name,
+            phoneNumber: userData.phoneNumber,
+            email: userData.email,
+            password: userData.password
+          },
+        });
         console.log("user data: ", userData)
       } else {
         // Handle error response
