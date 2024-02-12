@@ -2,7 +2,6 @@ import greenCheckICON from "../assets/icons/icons8-checkmark-green.png";
 import purpleXICON from "../assets/icons/icons8-x-purple.png";
 const CartPopup = ({ cartPopup, setCartPopup }) => (
   <div id="cart-popup">
-    {console.log(cartPopup)}
     <div>
       <img src={greenCheckICON}></img>
       <p className="bold">Added to Cart!</p>
