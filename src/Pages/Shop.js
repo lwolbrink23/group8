@@ -3,7 +3,8 @@ import "../Styles/shop.css";
 import giftCardIMG from "../assets/images/giftcard.png";
 import plusICON from "../assets/icons/black-plus.png";
 import minusICON from "../assets/icons/black-minus.png";
-import shopICON from "../assets/icons/icons8-shopping-cart-100.png";
+import greenCheckICON from "../assets/icons/icons8-checkmark-green.png";
+import purpleXICON from "../assets/icons/icons8-x-purple.png";
 
 import { Link, useLocation } from "react-router-dom";
 import React, { useEffect, useState } from "react";
@@ -26,9 +27,9 @@ function Shop() {
   const scrollToTop = () => {
     window.scrollTo(0, 0);
   };
-    // keeping track of item qty
+  // keeping track of item qty
   const [dynamicItems, setDynamicItems] = useState([]);
-  const [shopData, setShopData] = useState([])
+  const [shopData, setShopData] = useState([]);
   useEffect(() => {
     // Shortened version by ChatGPT
     const fetchData = async (endpoint, setDataFunction) => {
@@ -36,7 +37,7 @@ function Shop() {
         // Fetch data from the backend
         const response = await fetch(`${BACKEND_ADDRESS}${endpoint}`);
         const jsonData = await response.json();
-        console.log(jsonData)
+        console.log(jsonData);
         setDataFunction(jsonData);
       } catch (error) {
         console.error("Error fetching data:", error.message);
@@ -46,7 +47,6 @@ function Shop() {
     // Usage example:
     fetchData("/shop", setShopData);
   }, []);
-
 
   const handleIncrement = (itemId) => {
     setDynamicItems((prevItems) => {
@@ -142,6 +142,24 @@ function Shop() {
     <div id="shop">
       <ScrollToTop />
       {/* title */}
+      <div id="cart-popup">
+        <div>
+          <img src={greenCheckICON}></img>
+          <p>Added to Cart!</p>
+          <img src={purpleXICON}></img>
+        </div>
+        <hr />
+        <div id="cart-pop-div">
+          <div className="ca-po-img"></div>
+          <div>
+            <p>Item name</p>
+            <p>$price</p>
+            <p>Qty: #</p>
+            <hr />
+            <p>You have 4 item(s) in your cart</p>
+          </div>
+        </div>
+      </div>
       <div id="shop-banner">
         <Shopheader htitle="Shop" disableBack={true} />
 
