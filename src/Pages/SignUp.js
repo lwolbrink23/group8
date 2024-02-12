@@ -95,6 +95,7 @@ function SignUp() {
 
         // Redirect to the Account page with the user data
         navigate("/Account", { state: { user: userData } });
+        console.log("user data: ", userData)
       } else {
         // Handle error response
         console.error("Error creating user:", response.statusText);
