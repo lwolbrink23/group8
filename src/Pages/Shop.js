@@ -81,20 +81,24 @@ function Shop() {
       qty: itemQty,
       img: itemImg,
     };
-    const addToCart = [
-      {
-        ProductID: "iID0",
-        Amount: 2,
-      },
-      {
-        ProductID: "iID2",
-        Amount: 1,
-      },
-    ];
-    Cookies.set("cart", JSON.stringify(addToCart), {
-      expires: 7,
+    const newItem = {
+      id: itemId,
+      qty: itemQty,
+    };
+
+    // use cookie to store cart items if user not logged in
+    let cartCookie = Cookies.get("cart");
+    let newCartCookie = newItem;
+    if (cartCookie) {
+      cartCookie = JSON.parse(cartCookie);
+      newCartCookie = [...cartCookie, newItem];
+    }
+    Cookies.set("cart", JSON.stringify(newCartCookie), {
+      expires: 60,
       path: "/",
     });
+
+    // update frontend
     setCartPopup(cartPopInfo);
     setDynamicItems(updatedItems);
   };
