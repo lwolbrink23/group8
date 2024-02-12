@@ -240,9 +240,6 @@ function Checkout() {
       })}
     </ul>
   );
-  // drop down button
-  const [dropdownVisible, setdropdownVisible] = useState(false);
-  const [arrowRotation, setArrowRotation] = useState(270);
 
   // calc totals
   const subtotal = () => {
