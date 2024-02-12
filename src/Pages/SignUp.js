@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import "../App.css";
 import "../Styles/SignUp.css";
 import { Link, useNavigate } from "react-router-dom";
+import axios from "axios";
 
 function SignUp() {
   const navigate = useNavigate();
@@ -63,13 +64,12 @@ function SignUp() {
     setPasswordsMatchError(false);
   };
 
-  const handleSignUp = () => {
+  const handleSignUp = async () => {
     // Check if passwords match
     if (pwValue !== confPwValue) {
       setPasswordsMatchError(true);
       return; // Stop sign-up process if passwords don't match
     }
-
     // Create user data object
     const userData = {
       name: `${firstNameValue} ${lastNameValue}`,
@@ -78,27 +78,45 @@ function SignUp() {
       password: pwValue,
     };
 
-    console.log("User data:", userData);
-    // Perform sign-up logic here, e.g., API call to register the user
-    // ...
+    try {
+      // Make a POST request to the backend API to create a new user
+      const response = await fetch("http://localhost:3003/signup", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(userData),
+      });
 
-    // Reset form after successful sign-up
-    resetForm();
-    // Please make sure it routes to the Account page with the user data: the code below is not correct I think. -Lilly
-    navigate("/Account", { state: { user: userData } });
+      // Check if the request was successful (status code 2xx)
+      if (response.ok) {
+        // Reset form after successful sign-up
+        resetForm();
+
+        // Redirect to the Account page with the user data
+        navigate("/Account", { state: { user: userData } });
+      } else {
+        // Handle error response
+        console.error("Error creating user:", response.statusText);
+        // Display an error message to the user or perform other error-handling logic
+      }
+    } catch (error) {
+      console.error("Error creating user:", error);
+      // Handle network error or other unexpected errors
+    }
   };
 
   const buttonStyle = {
     color:
       firstNameValue &&
-      lastNameValue &&
-      emailValue &&
-      phoneValue &&
-      pwValue &&
-      confPwValue &&
-      !passwordsMatchError &&
-      !phoneError &&
-      !emailError
+        lastNameValue &&
+        emailValue &&
+        phoneValue &&
+        pwValue &&
+        confPwValue &&
+        !passwordsMatchError &&
+        !phoneError &&
+        !emailError
         ? "black"
         : "#646464",
   };

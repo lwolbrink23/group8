@@ -6,6 +6,8 @@ import "dotenv/config";
 // import routes
 import exampleRoutes from "./routes/routes.js";
 import shopRoutes from "./routes/shopRoutes.js";
+import userRoutes from "./routes/userRoutes.js";
+
 
 // these should be in a .env file so github wont scream in your emails that the database link has been leaked
 const PORT = 3003;
@@ -31,4 +33,5 @@ await client.connect();
 const database = client.db("TheSuiteSpot");
 // use the imported routes here!!
 exampleRoutes(app, client.db("sample_analytics"));
-shopRoutes(app,  database)
+shopRoutes(app, database);
+userRoutes(app, client, database); 
