@@ -11,6 +11,7 @@ import React, { useState, useEffect } from 'react';
 import { useParams } from 'react-router-dom';
 import tempData from "../data/shop.json";
 import { Link, useLocation } from 'react-router-dom';
+import Rating from '@mui/material/Rating';
 
 function ScrollToTop() {
   const location = useLocation();
@@ -158,7 +159,13 @@ function ProductPage() {
         <div className="product-section">
           <h2 className="titletext">{product.name}</h2>
           <div className="stars-section">
-            <img src={Stars} alt="stars" id="stars"></img>
+            <Rating name="read-only" value={product.revrating} readOnly precision={0.5} size="large"
+              sx={{
+                color: "#8569B8",
+                "& .MuiRating-iconEmpty": {
+                  color: "grey"
+                }
+              }} />
             <p>{product.revrating} ({product.revamount})</p>
           </div>
           <h2 id="money">${product.price}</h2>
@@ -179,10 +186,15 @@ function ProductPage() {
       <div className="reviews">
         <h1>Customer Reviews</h1>
         <div className="above-reviews">
-          <img src={rating} alt="rating system"></img>
           <div className="overall-rating">
             <p id="big">{product.revrating}</p>
-            <img src={Stars} alt="stars" id="stars"></img>
+            <Rating name="read-only" value={product.revrating} readOnly precision={0.5} size="large"
+              sx={{
+                color: "#8569B8",
+                "& .MuiRating-iconEmpty": {
+                  color: "grey"
+                }
+              }} />
             <p>{product.revamount} reviews</p>
           </div>
         </div>
