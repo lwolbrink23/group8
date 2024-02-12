@@ -75,14 +75,19 @@ input {
 #cart-popup > div:first-child > img:last-child {
   margin-left: auto;
 }
+#cart-popup .bold {
+  font-size: 15px;
+  margin-left: 5px;
+}
 #cart-popup hr {
   color: #aeaeae;
 }
 
-.ca-po-img {
+#ca-po-img {
   width: 100%;
   height: 100%;
   background-color: #aeaeae;
+  object-fit: cover;
 }
 #cart-pop-div {
   display: grid;

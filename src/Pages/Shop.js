@@ -72,12 +72,13 @@ function Shop() {
     );
   };
 
-  const handleAddToCart = (itemId, itemName, itemPrice, itemQty) => {
+  const handleAddToCart = (itemId, itemName, itemPrice, itemQty, itemImg) => {
     const updatedItems = dynamicItems.filter((item) => item.id !== itemId);
     const cartPopInfo = {
       name: itemName,
       price: itemPrice,
       qty: itemQty,
+      img: itemImg,
     };
     setCartPopup(cartPopInfo);
 
@@ -132,7 +133,13 @@ function Shop() {
             <button
               className="button"
               onClick={() =>
-                handleAddToCart(item.id, item.name, item.price, itemQty)
+                handleAddToCart(
+                  item.id,
+                  item.name,
+                  item.price,
+                  itemQty,
+                  item.file
+                )
               }
               disabled={!itemQty}
               style={{ opacity: !itemQty ? 0.5 : 1 }}
@@ -149,16 +156,24 @@ function Shop() {
     <div id="cart-popup">
       <div>
         <img src={greenCheckICON}></img>
-        <p>Added to Cart!</p>
-        <img src={purpleXICON}></img>
+        <p className="bold">Added to Cart!</p>
+        <img
+          src={purpleXICON}
+          className="cursor-pointer"
+          onClick={() => setCartPopup()}
+        ></img>
       </div>
       <hr />
       <div id="cart-pop-div">
-        <div className="ca-po-img"></div>
+        <img
+          src={require("../assets/images/shop/" + cartPopup.img + ".png")}
+          id="ca-po-img"
+          alt=""
+        ></img>
         <div>
-          <p>Item name</p>
-          <p>$price</p>
-          <p>Qty: #</p>
+          <p>{cartPopup.name}</p>
+          <p>${cartPopup.price}</p>
+          <p>Qty: {cartPopup.qty}</p>
           <hr />
           <p>You have 4 item(s) in your cart</p>
         </div>
