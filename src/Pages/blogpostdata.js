@@ -37,7 +37,7 @@ function BlogPostData() {
           alt={blogPost.title}
           className="main-image"
         />
-        <div className="container">
+        <div className="cat-container">
         <h4 className="category">Category: {blogPost.category}</h4>
         <h4 className="author">Author: {blogPost.author}</h4>
         </div>

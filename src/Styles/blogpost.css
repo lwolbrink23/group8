@@ -51,13 +51,12 @@
     margin-top: 80px;
     margin-bottom: 0px;
   }
-
   .category {
     white-space: nowrap;
     position: absolute;
     left: 25%;
     right: 64%;
-    padding-top: 55px;
+    padding-top: 10px;
   }
 
   .author {
@@ -65,7 +64,7 @@
     position: absolute;
     left: 64%;
     right: 24%;
-    padding-top: 55px;
+    padding-top: 10px;
   }
   .articles-contents {
     text-align: justify;
@@ -145,21 +144,23 @@
       margin-top: 10px;
       width: 80%;
   }
-  .container {
+.cat-container {
   display: flex;
-    justify-content: center;
-    flex-wrap: nowrap;
-    flex-shrink: 0;
- }
+  justify-content: center;
+  align-items: center;
+  flex-wrap: nowrap;
+  flex-shrink: 0;
+  margin-top: 10px;
+}
 
- .category,
- .author {
-   box-sizing: border-box;
-   margin-bottom: -8px;
-   margin-top: 10px;
-   width: 48%;
+.category,
+.author {
+  box-sizing: border-box;
+  padding-top: 10px;
+  width: 48%;
   max-width: 400px;
- }
+  text-align: center;
+}
 
   .pink-image {
     max-width: 100%;
