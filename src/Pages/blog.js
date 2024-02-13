@@ -7,6 +7,7 @@ import BlogPosts from "../data/blogposts.json";
 import hairWashing from "../assets/images/hairwashing.jpg";
 import kneadRelax from "../assets/images/relax.jpeg";
 import allAges from "../assets/images/allages.jpeg";
+import nailBlog from "../assets/images/nails-blog.webp";
 
 function ScrollToTop() {
   const location = useLocation();
@@ -126,7 +127,7 @@ function Blog() {
               <img src={allAges} alt={`${post.title} - ${post.category}`} />
             )}
              {post.category === "Nails" && (
-              <img src={allAges} alt={`${post.title} - ${post.category}`} />
+              <img src={nailBlog} alt={`${post.title} - ${post.category}`} />
             )}
             <h3>
               <b>{post.title}</b>

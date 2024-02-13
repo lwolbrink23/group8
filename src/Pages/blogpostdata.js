@@ -6,6 +6,7 @@ import hairWashing from "../assets/images/hairwashing.jpg";
 import relaxImage from "../assets/images/relax.jpeg";
 import allAgesImage from "../assets/images/allages.jpeg";
 import hairPink from "../assets/images/hair-pinkbg.jpeg";
+import nailBlog from "../assets/images/nails-blog.webp"
 import BackButton from "../Components/BackButton";
 
 function BlogPostData() {
@@ -22,6 +23,7 @@ function BlogPostData() {
     Hair: hairWashing,
     Massage: relaxImage,
     Makeup: allAgesImage,
+    Nails: nailBlog,
   };
 
   const paragraphs = blogPost.content.split("\n\n");
@@ -35,8 +37,10 @@ function BlogPostData() {
           alt={blogPost.title}
           className="main-image"
         />
+        <div className="container">
         <h4 className="category">Category: {blogPost.category}</h4>
         <h4 className="author">Author: {blogPost.author}</h4>
+        </div>
         <h2 className="art-title">{blogPost.title}</h2>
         {/* Render the content as paragraphs */}
         <div className="articles-contents">
