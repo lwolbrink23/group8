@@ -9,9 +9,9 @@ import rating from "../assets/images/VisualRating.png"
 import Empty from '../assets/images/emptyprofile.png';
 import React, { useState, useEffect } from 'react';
 import { useParams } from 'react-router-dom';
-import tempData from "../data/shop.json";
 import { Link, useLocation } from 'react-router-dom';
 import Rating from '@mui/material/Rating';
+import { BACKEND_ADDRESS } from "../App";
 
 function ScrollToTop() {
   const location = useLocation();
@@ -28,7 +28,32 @@ function ScrollToTop() {
 function ProductPage() {
 
   const { id } = useParams();
-  const product = tempData.find(item => item.id.toString() === id);
+
+  const [value, setValue] = useState(1);
+
+  const [product, setProduct] = useState(null);
+
+  useEffect(() => {
+
+    const fetchData = async (endpoint, setDataFunction) => {
+      try {
+        // Fetch data from the backend
+        const response = await fetch(`${BACKEND_ADDRESS}${endpoint}`);
+        const jsonData = await response.json();
+        setDataFunction(jsonData);
+      } catch (error) {
+        console.error("Error fetching data:", error.message);
+      }
+    };
+
+    fetchData(`/shop/${id}`, setProduct);
+
+  }, []);
+
+
+  if (!product) {
+    return <div>Loading product details...</div>;
+  }
 
   const AboutContent = () => (
     <div class="green-content">
@@ -108,7 +133,7 @@ function ProductPage() {
     );
   };
 
-  const [value, setValue] = useState(1);
+
 
   // Function to handle decrement
   const handleDecrement = () => {

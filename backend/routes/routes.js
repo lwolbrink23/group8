@@ -2,7 +2,6 @@ const exampleRoutes = (app, client, database) => {
   // example route
   app.get("/accounts", async (req, res) => {
     try {
-      
       const collection = database.collection("accounts");
       const result = await collection.findOne({ account_id: 198100 });
       res.send(JSON.stringify(result));
@@ -14,7 +13,6 @@ const exampleRoutes = (app, client, database) => {
 
   app.get("/customers", async (req, res) => {
     try {
-      
       const collection = database.collection("customers");
       const result = await collection.findOne({ username: "fmiller" });
       res.send(JSON.stringify(result));

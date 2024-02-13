@@ -11,5 +11,17 @@ const shopRoutes = (app, database) => {
     }
   });
 
+  app.get("/shop/:id", async (req, res) => {
+    try {
+      const collection = database.collection("Products");
+      const result = await collection.findOne({ id: req.params.id });
+      res.send(JSON.stringify(result));
+    } catch (error) {
+      console.error("Error fetching data:", error);
+      res.status(500).json({ error: "Internal Server Error" });
+    }
+  });
+
 };
 export default shopRoutes;
+
