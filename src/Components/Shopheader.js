@@ -10,17 +10,6 @@ import { useState, useEffect } from "react";
 function Shopheader(props) {
   const [cartItems, setCartItems] = useState("");
 
-  const countItems = () => {
-    let totalQty = 0;
-    if (cartItems) {
-      cartItems.forEach((item) => {
-        totalQty += item.qty;
-      });
-    }
-
-    return totalQty;
-  };
-
   useEffect(() => {
     const fetchCartData = async (endpoint, setDataFunction) => {
       try {
@@ -49,7 +38,9 @@ function Shopheader(props) {
       <Link to="/cart">
         <div className="cart-icon">
           <img src={shopICON} alt="shopping cart"></img>
-          {props.qty && <span className="cart-quantity bold">{props.qty}</span>}
+          {props.qty != 0 && (
+            <span className="cart-quantity bold">{props.qty}</span>
+          )}
         </div>
       </Link>
     </div>
