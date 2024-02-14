@@ -6,12 +6,28 @@ import tempShopData from "../data/shop.json";
 import Shopheader from "../Components/Shopheader";
 import { Link } from "react-router-dom";
 import { useState, useEffect } from "react";
+import Cookies from "js-cookie";
 
 function Cart() {
   // BACKEND: load cart data from database here
-  const [cartItems, setCartItems] = useState(tempData);
+  const [cartItems, setCartItems] = useState("");
   const [popupItem, setPopupItem] = useState("");
-
+  useEffect(() => {
+    const fetchCartData = async (endpoint, setDataFunction) => {
+      try {
+        // Fetch data from the backend
+        const response = await fetch(`/ADDRESS HERE`);
+        const jsonData = await response.json();
+        setDataFunction(jsonData);
+      } catch (error) {
+        console.error("Error fetching data:", error.message);
+      }
+    };
+    setCartItems(JSON.parse(Cookies.get("cart")) || "");
+    // TODO: fetch cart data from database here
+    // fetch data from cookie
+    // fetchCartData("/shop", setCartItems);
+  }, []);
   const countItems = () => {
     let totalQty = 0;
 
