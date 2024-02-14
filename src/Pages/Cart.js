@@ -11,6 +11,7 @@ function Cart() {
   // BACKEND: load cart data from database here
   const [cartItems, setCartItems] = useState("");
   const [popupItem, setPopupItem] = useState("");
+  // keep a state for login here, useeffect to update it
   useEffect(() => {
     const fetchCartData = async (endpoint, setDataFunction) => {
       try {
@@ -32,7 +33,7 @@ function Cart() {
   }, []);
 
   const updateCartBackend = (newCartItems) => {
-    // Backend: save cart here, to database if logged in, to cookie if not
+    // TODO: save cart here, to database if logged in, to cookie if not
     Cookies.set("cart", JSON.stringify(newCartItems), {
       expires: 60,
       path: "/",
@@ -57,7 +58,6 @@ function Cart() {
       const updatedItems = prevItems.map((item) =>
         item.id === itemId ? { ...item, qty: item.qty + 1 } : item
       );
-      updateCartBackend(updatedItems);
       return updatedItems;
     });
   };
@@ -73,7 +73,6 @@ function Cart() {
             ? { ...item, qty: item.qty - 1 }
             : item
         );
-        updateCartBackend(newArray);
         return newArray;
       });
     }
@@ -140,7 +139,7 @@ function Cart() {
         }
       }
     }
-    // BACKEND: save cart data into database here (?)
+    updateCartBackend(cartItems);
     return t.toFixed(2);
   };
 
@@ -164,7 +163,6 @@ function Cart() {
     const newArray = cartItems.filter((item) => item.id !== itemId);
     setCartItems(newArray);
     setPopupItem();
-    updateCartBackend(newArray);
   };
 
   const EmptyCart = () => (
