@@ -163,6 +163,7 @@ function Cart() {
     const newArray = cartItems.filter((item) => item.id !== itemId);
     setCartItems(newArray);
     setPopupItem();
+    updateCartBackend(newArray);
   };
 
   const EmptyCart = () => (
