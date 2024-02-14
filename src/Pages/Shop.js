@@ -42,11 +42,9 @@ function Shop() {
         console.error("Error fetching data:", error.message);
       }
     };
-
-    // Usage example:
-    fetchData("/shop", setShopData);
     // TODO: fetch cart data from database here
-    // fetch data from cookie
+    // TODO: fetch data from cookie if user not logged in
+    fetchData("/shop", setShopData);
   }, []);
 
   const handleIncrement = (itemId) => {
@@ -86,13 +84,19 @@ function Shop() {
       qty: itemQty,
     };
 
-    // use cookie to store cart items if user not logged in
+    // add item to cookie
     let cartCookie = Cookies.get("cart");
-    let newCartCookie = newItem;
-    if (cartCookie) {
-      cartCookie = JSON.parse(cartCookie);
-      newCartCookie = [...cartCookie, newItem];
+    let newCartCookie = cartCookie ? JSON.parse(cartCookie) : [];
+
+    const existingItemIndex = newCartCookie.findIndex(
+      (item) => item.id === newItem.id
+    );
+    if (existingItemIndex !== -1) {
+      newCartCookie[existingItemIndex].qty += newItem.qty;
+    } else {
+      newCartCookie.push(newItem);
     }
+
     Cookies.set("cart", JSON.stringify(newCartCookie), {
       expires: 60,
       path: "/",
