@@ -89,21 +89,31 @@ function SignUp() {
 
       // Check if the request was successful (status code 2xx)
       if (response.ok) {
-        // Reset form after successful sign-up
-        resetForm();
 
-        // Redirect to the Account page with the user data
-        //navigate("/Account", { state: { user: userData } });
-        navigate(`/Account/${userData.id}`, {
-          state: {
-            id: userData.email,
-            name: userData.name,
-            phoneNumber: userData.phoneNumber,
-            email: userData.email,
-            password: userData.password
-          },
-        });
-        console.log("user data: ", userData)
+
+        const responseData = await response.json(); // Assuming your server responds with the new user data
+        // Check if the response data contains user information
+        if (responseData.user) {
+          const newUser = responseData.user;
+          // Now you should have user data in the newUser object
+          console.log("new user:", newUser);
+
+          // Reset form after successful sign-up
+          resetForm();
+          // Redirect to the Account page with the user data
+          navigate(`/Account/${newUser._id.$oid}`, {
+            state: {
+              id: newUser._id.$oid,
+              name: newUser.name,
+              phoneNumber: newUser.phoneNumber,
+              email: newUser.email,
+              password: newUser.password,
+            },
+          });
+        } else {
+          // Handle case where user data is not returned
+          console.error("Error creating user: User data not found in response");
+        }
       } else {
         // Handle error response
         console.error("Error creating user:", response.statusText);

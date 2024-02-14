@@ -23,7 +23,7 @@ const userRoutes = (app, client, database) => {
             // Insert the new user into the 'User_Accounts' collection
             await database.collection("User_Accounts").insertOne(newUser);
 
-            res.status(201).json({ message: "User created successfully" });
+            res.status(201).json({ user: newUser, message: "User created successfully" });
         } catch (error) {
             console.error("Error creating user:", error);
             res.status(500).json({ error: "Internal Server Error", details: error.message });
