@@ -8,6 +8,8 @@ import exampleRoutes from "./routes/routes.js";
 import shopRoutes from "./routes/shopRoutes.js";
 import userRoutes from "./routes/userRoutes.js";
 import providerRoutes from "./routes/providerRoutes.js";
+import blogRoutes from "./routes/blogRoutes.js";
+import loginRoutes from "./routes/loginRoutes.js"
 
 
 // these should be in a .env file so github wont scream in your emails that the database link has been leaked
@@ -35,5 +37,7 @@ const database = client.db("TheSuiteSpot");
 // use the imported routes here!!
 exampleRoutes(app, client.db("sample_analytics"));
 shopRoutes(app, database);
-providerRoutes(app, database)
+providerRoutes(app, database);
+blogRoutes(app, database);
 userRoutes(app, client, database); 
+loginRoutes (app, database)

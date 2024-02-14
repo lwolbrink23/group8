@@ -3,11 +3,11 @@ import { Link, useLocation } from "react-router-dom";
 import PopUpBlog from "../Components/PopUpBlog.js";
 import "../App.css";
 import "../Styles/blog.css";
-import BlogPosts from "../data/blogposts.json";
 import hairWashing from "../assets/images/hairwashing.jpg";
 import kneadRelax from "../assets/images/relax.jpeg";
 import allAges from "../assets/images/allages.jpeg";
 import nailBlog from "../assets/images/nails-blog.webp";
+import { BACKEND_ADDRESS } from "../App";
 
 function ScrollToTop() {
   const location = useLocation();
@@ -60,6 +60,26 @@ function Blog() {
   const buttonStyle = {
     color: inputValue ? "black" : "#646464", // Black when clickable, light grey when not
   };
+
+  const [BlogPosts, setBlogPosts] = useState([]);
+
+  useEffect(() => {
+    const fetchData = async (endpoint, setDataFunction) => {
+      try {
+        // Fetch data from the backend
+        const response = await fetch(`${BACKEND_ADDRESS}${endpoint}`);
+        const jsonData = await response.json();
+        setDataFunction(jsonData);
+      } catch (error) {
+        console.error("Error fetching data:", error.message);
+      }
+    };
+
+    // Usage example:
+    fetchData("/blog", setBlogPosts);
+    // TODO: fetch cart data from database here
+    // fetch data from cookie
+  }, []);
 
   return (
     <div>
