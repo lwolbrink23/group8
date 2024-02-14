@@ -15,7 +15,7 @@ const blogRoutes = (app, database) => {
     try {
       const collection = database.collection("Blogs");
       const query = { id: req.params.id, category: req.params.category };
-      const result = await collection.findOne({ query });
+      const result = await collection.findOne(query);
       res.send(JSON.stringify(result));
     } catch (error) {
       console.error("Error fetching data:", error);

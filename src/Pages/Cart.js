@@ -22,12 +22,13 @@ function Cart() {
         console.error("Error fetching data:", error.message);
       }
     };
-    if (Cookies.get("cart"))
-      setCartItems(JSON.parse(Cookies.get("cart")) || "");
     // TODO: fetch cart data from database here
     // TODO: fetch data from cookie
     // if user is logged in and there are stuff in their cookie, merge both
     // fetchCartData("/shop", setCartItems);
+    if (Cookies.get("cart")) {
+      setCartItems(JSON.parse(Cookies.get("cart")));
+    }
   }, []);
 
   const updateCartBackend = (newCartItems) => {
@@ -41,9 +42,11 @@ function Cart() {
   const countItems = () => {
     let totalQty = 0;
 
-    cartItems.forEach((item) => {
-      totalQty += item.qty;
-    });
+    if (cartItems) {
+      cartItems.forEach((item) => {
+        totalQty += item.qty;
+      });
+    }
 
     return totalQty;
   };
@@ -179,7 +182,7 @@ function Cart() {
   return (
     <div id="cart">
       {/* title */}
-      <Shopheader htitle={"Cart"} />
+      <Shopheader htitle={"Cart"} qty={countItems()} />
       {popupItem && <Popup />}
 
       {!cartItems.length ? (
