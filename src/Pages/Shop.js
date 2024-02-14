@@ -86,18 +86,23 @@ function Shop() {
       qty: itemQty,
     };
 
-    // use cookie to store cart items if user not logged in
+    // Use cookie to store cart items if user not logged in
     let cartCookie = Cookies.get("cart");
-    let newCartCookie = newItem;
+    let newCartCookie = [];
+
     if (cartCookie) {
-      cartCookie = JSON.parse(cartCookie);
-      newCartCookie = [...cartCookie, newItem];
+      // Parse the existing cookie value
+      newCartCookie = JSON.parse(cartCookie);
     }
+
+    // Push the new item to the cart
+    newCartCookie.push(newItem);
+
+    // Set the updated cart cookie
     Cookies.set("cart", JSON.stringify(newCartCookie), {
       expires: 60,
       path: "/",
     });
-
     // update frontend
     setCartPopup(cartPopInfo);
     setDynamicItems(updatedItems);
