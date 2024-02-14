@@ -5,9 +5,31 @@ import Polish from '../assets/images/PolishPerfection.png';
 import Brush from '../assets/images/BrushBlushBeauty.png';
 import Hands from '../assets/images/HealingHandsSpa.png';
 import { Link } from 'react-router-dom';
-import suiteData from "../data/providers.json";
+// import suiteData from "../data/providers.json";
+import React, { useEffect, useState } from "react";
+import { BACKEND_ADDRESS } from "../App";
 
 function BookNowDirectory() {
+
+    const [suiteData, setSuiteData] = useState([]);
+    useEffect(() => {
+        const fetchData = async (endpoint, setDataFunction) => {
+            try {
+                // Fetch data from the backend
+                const response = await fetch(`${BACKEND_ADDRESS}${endpoint}`);
+                const jsonData = await response.json();
+                setDataFunction(jsonData);
+            } catch (error) {
+                console.error("Error fetching data:", error.message);
+            }
+        };
+
+        // Usage example:
+        fetchData("/providers", setSuiteData);
+        // TODO: fetch cart data from database here
+        // fetch data from cookie
+    }, []);
+
     return (
         <div>
             <h1 className="center">Directory</h1>
