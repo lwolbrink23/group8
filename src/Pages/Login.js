@@ -4,6 +4,7 @@ import "../Styles/Login.css";
 import { Link } from "react-router-dom";
 import PopUpPassword from "../Components/PopUpPassword";
 
+
 function Login() {
   const [emailValue, setEmailValue] = useState("");
   const [pwValue, setPwValue] = useState("");
@@ -41,9 +42,32 @@ function Login() {
     setPwValue("");
   };
 
-  const handleLogin = () => {
-    resetForm();
-  };
+const handleLogin = async () => {
+  try {
+    // Make a POST request to the backend login route
+    const response = await fetch("http://localhost:3003/login", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({ email: emailValue, password: pwValue }),
+    });
+
+    // Check if the request was successful
+    if (response.ok) {
+      // Redirect the user to the account page upon successful login
+      window.location.href = "/Account"; // Change the URL as needed
+    } else {
+      // Handle login failure (e.g., display an error message)
+      console.error("Login failed:", response.statusText);
+      // Perform any other error handling as needed
+    }
+  } catch (error) {
+    console.error("Error during login:", error);
+    // Handle network errors or other unexpected errors
+  }
+};
+
 
   const buttonStyle = {
     color: emailValue && pwValue ? "black" : "#646464",
