@@ -1,7 +1,7 @@
 const loginRoutes = (app, database) => {
 
 app.post('/login', async (req, res) => {
-    const { username, password } = req.body;
+    const { email, password } = req.body;
 
 // Check if user exists and authenticate
 const user = await database.collection("User_Accounts").findOne({ email });
