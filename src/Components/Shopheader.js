@@ -38,7 +38,6 @@ function Shopheader(props) {
     // fetchCartData("/shop", setCartItems);
     if (Cookies.get("cart")) {
       setCartItems(JSON.parse(Cookies.get("cart")));
-      console.log(props.qty);
     }
   }, []);
 
