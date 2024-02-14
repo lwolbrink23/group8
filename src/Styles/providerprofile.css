@@ -121,6 +121,11 @@
     display: none;
 }
 
+.lots-of-space {
+    margin-bottom: 1000px;
+    text-align: center;
+}
+
 @media screen and (max-width: 600px) {
     .image-wrapper {
         display: none;
