@@ -1,7 +1,6 @@
 import "../Styles/cart.css";
 import plusICON from "../assets/icons/black-plus.png";
 import minusICON from "../assets/icons/black-minus.png";
-import tempData from "../data/cart.json";
 import tempShopData from "../data/shop.json";
 import Shopheader from "../Components/Shopheader";
 import { Link } from "react-router-dom";
@@ -23,11 +22,22 @@ function Cart() {
         console.error("Error fetching data:", error.message);
       }
     };
-    setCartItems(JSON.parse(Cookies.get("cart")) || "");
+    if (Cookies.get("cart"))
+      setCartItems(JSON.parse(Cookies.get("cart")) || "");
     // TODO: fetch cart data from database here
-    // fetch data from cookie
+    // TODO: fetch data from cookie
+    // if user is logged in and there are stuff in their cookie, merge both
     // fetchCartData("/shop", setCartItems);
   }, []);
+
+  const updateCartBackend = (newCartItems) => {
+    // Backend: save cart here, to database if logged in, to cookie if not
+    Cookies.set("cart", JSON.stringify(newCartItems), {
+      expires: 60,
+      path: "/",
+    });
+  };
+
   const countItems = () => {
     let totalQty = 0;
 
@@ -44,6 +54,7 @@ function Cart() {
       const updatedItems = prevItems.map((item) =>
         item.id === itemId ? { ...item, qty: item.qty + 1 } : item
       );
+      updateCartBackend(updatedItems);
       return updatedItems;
     });
   };
@@ -53,13 +64,15 @@ function Cart() {
     if (itemQty === 1) {
       setPopupItem({ itemName, itemId });
     } else {
-      setCartItems((prevItems) =>
-        prevItems.map((item) =>
+      setCartItems((prevItems) => {
+        const newArray = prevItems.map((item) =>
           item.id === itemId && item.qty > 0
             ? { ...item, qty: item.qty - 1 }
             : item
-        )
-      );
+        );
+        updateCartBackend(newArray);
+        return newArray;
+      });
     }
   };
 
@@ -148,7 +161,7 @@ function Cart() {
     const newArray = cartItems.filter((item) => item.id !== itemId);
     setCartItems(newArray);
     setPopupItem();
-    // Backend: save cart here
+    updateCartBackend(newArray);
   };
 
   const EmptyCart = () => (

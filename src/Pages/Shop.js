@@ -44,6 +44,7 @@ function Shop() {
     };
     // TODO: fetch cart data from database here
     // TODO: fetch data from cookie if user not logged in
+    // if user is logged in and there are stuff in their cookie, merge both
     fetchData("/shop", setShopData);
   }, []);
 
