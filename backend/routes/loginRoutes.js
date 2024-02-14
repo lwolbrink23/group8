@@ -1,6 +1,7 @@
 // Assuming you have the necessary imports and setup for your server
 
 // Login route
+const loginRoutes = (app, client, database) => {
 app.post("/login", async (req, res) => {
     try {
         const { email, password } = req.body;
@@ -19,4 +20,5 @@ app.post("/login", async (req, res) => {
         console.error("Error during login:", error);
         res.status(500).json({ error: "Internal Server Error" });
     }
-});
+});}
+export default loginRoutes
