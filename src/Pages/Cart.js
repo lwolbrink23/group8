@@ -11,6 +11,7 @@ function Cart() {
   // BACKEND: load cart data from database here
   const [cartItems, setCartItems] = useState("");
   const [popupItem, setPopupItem] = useState("");
+  // keep a state for login here, useeffect to update it
   useEffect(() => {
     const fetchCartData = async (endpoint, setDataFunction) => {
       try {
@@ -22,16 +23,17 @@ function Cart() {
         console.error("Error fetching data:", error.message);
       }
     };
-    if (Cookies.get("cart"))
-      setCartItems(JSON.parse(Cookies.get("cart")) || "");
     // TODO: fetch cart data from database here
     // TODO: fetch data from cookie
     // if user is logged in and there are stuff in their cookie, merge both
     // fetchCartData("/shop", setCartItems);
+    if (Cookies.get("cart")) {
+      setCartItems(JSON.parse(Cookies.get("cart")));
+    }
   }, []);
 
   const updateCartBackend = (newCartItems) => {
-    // Backend: save cart here, to database if logged in, to cookie if not
+    // TODO: save cart here, to database if logged in, to cookie if not
     Cookies.set("cart", JSON.stringify(newCartItems), {
       expires: 60,
       path: "/",
@@ -41,9 +43,11 @@ function Cart() {
   const countItems = () => {
     let totalQty = 0;
 
-    cartItems.forEach((item) => {
-      totalQty += item.qty;
-    });
+    if (cartItems) {
+      cartItems.forEach((item) => {
+        totalQty += item.qty;
+      });
+    }
 
     return totalQty;
   };
@@ -54,7 +58,6 @@ function Cart() {
       const updatedItems = prevItems.map((item) =>
         item.id === itemId ? { ...item, qty: item.qty + 1 } : item
       );
-      updateCartBackend(updatedItems);
       return updatedItems;
     });
   };
@@ -70,7 +73,6 @@ function Cart() {
             ? { ...item, qty: item.qty - 1 }
             : item
         );
-        updateCartBackend(newArray);
         return newArray;
       });
     }
@@ -137,7 +139,7 @@ function Cart() {
         }
       }
     }
-    // BACKEND: save cart data into database here (?)
+    updateCartBackend(cartItems);
     return t.toFixed(2);
   };
 
@@ -179,7 +181,7 @@ function Cart() {
   return (
     <div id="cart">
       {/* title */}
-      <Shopheader htitle={"Cart"} />
+      <Shopheader htitle={"Cart"} qty={countItems()} />
       {popupItem && <Popup />}
 
       {!cartItems.length ? (
