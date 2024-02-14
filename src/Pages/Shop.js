@@ -174,6 +174,17 @@ function Shop() {
       );
     });
   };
+  const countItems = () => {
+    let totalQty = 0;
+    let cartCookie = Cookies.get("cart");
+    if (cartCookie) {
+      cartCookie = JSON.parse(cartCookie);
+      cartCookie.forEach((item) => {
+        totalQty += item.qty;
+      });
+    }
+    return totalQty;
+  };
 
   // main JSX
   return (
@@ -184,7 +195,7 @@ function Shop() {
         <CartPopup cartPopup={cartPopup} setCartPopup={setCartPopup} />
       )}
       <div id="shop-banner">
-        <Shopheader htitle="Shop" disableBack={true} />
+        <Shopheader htitle={"Cart"} qty={countItems()} />
 
         <h2>
           Find all your <br></br> favorite products here.
