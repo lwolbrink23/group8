@@ -1,8 +1,6 @@
 import "../Styles/checkout.css";
 import Shopheader from "../Components/Shopheader";
 import { Link } from "react-router-dom";
-
-import tempShopData from "../data/shop.json";
 import { useEffect, useState } from "react";
 import { isValidUSState } from "../data/validStates";
 import CustomDropdown from "../Components/CustomDropdown";
@@ -14,7 +12,7 @@ import Cookies from "js-cookie";
 function Checkout() {
   // backend: check if user logged in. if logged in, get their info from the database and autofill in userAns
   const [enableSubmit, setEnableSubmit] = useState(false);
-  const [shopData, setShopData] = useState();
+  const [shopData, setShopData] = useState([]);
   const [cartData, setCartData] = useState([]);
 
   useEffect(() => {
@@ -234,7 +232,7 @@ function Checkout() {
         let itemPic = "";
         let itemPrice = 0;
 
-        for (const shopItem of tempShopData) {
+        for (const shopItem of shopData) {
           if (item.id === shopItem.id) {
             itemName = shopItem.name;
             itemPic = shopItem.file;
@@ -270,9 +268,9 @@ function Checkout() {
   const subtotal = () => {
     let t = 0;
     for (const cartItem of cartData) {
-      for (const shopItem of tempShopData) {
+      for (const shopItem of shopData) {
         if (cartItem.id === shopItem.id) {
-          t += shopItem.price;
+          t += shopItem.price * cartItem.qty;
         }
       }
     }
