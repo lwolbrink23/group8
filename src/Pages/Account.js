@@ -134,7 +134,7 @@ function Account({ props }) {
   const [isContactOpen, setIsContactOpen] = useState(false);
   const [isButtonOpen, setIsButtonOpen] = useState(false);
   const [selectedCategory, setSelectedCategory] = useState("Past 1 month");
-  const [selectedOrder, setSelectedOrder] = useState("Ascending");
+  const [selectedOrder, setSelectedOrder] = useState("Newest to Oldest");
 
   const openContact = () => setIsContactOpen(true);
   const closeContact = () => setIsContactOpen(false);
@@ -152,7 +152,7 @@ function Account({ props }) {
     setSelectedOrder(order);
   };
 
-  const orders = ["Descending"];
+  const orders = ["Oldest to Newest"];
 
   return (
     <div>
@@ -283,7 +283,7 @@ function Account({ props }) {
                   onChange={(e) => handleOrder(e.target.value)}
                   value={selectedOrder}
                 >
-                  <option value="Ascending">Ascending</option>
+                  <option value="Ascending">Newest to Oldest</option>
                   {orders.map((order) => (
                     <option key={order} value={order}>
                       {order.charAt(0).toUpperCase() + order.slice(1)}
