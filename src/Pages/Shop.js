@@ -207,7 +207,8 @@ function Shop() {
           {/* mapping each shop item */}
           <ShopItems />
         </ul>
-        <p className="right extra-space">Next Page</p>
+        {/* <p className="right extra-space">Next Page</p> */}
+        <div className="extra-space"></div>
         {/* giftcard */}
         <h2 className="center">Gift Cards</h2>
         <div className="giftcard-grid box">
