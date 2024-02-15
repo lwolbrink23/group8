@@ -15,17 +15,18 @@ function Account({ props }) {
   const location = useLocation();
   const navigate = useNavigate();
 
-
   const [userData, setUserData] = useState(
-    location.state ? location.state : {
-      name: "Jane Doe",
-      phoneNumber: "(123) 456-7890",
-      email: "email@email.com",
-      password: "password",
-    }
+    location.state
+      ? location.state
+      : {
+          name: "Jane Doe",
+          phoneNumber: "(123) 456-7890",
+          email: "email@email.com",
+          password: "password",
+        }
   );
 
-  console.log("location.state:", location.state);
+  //console.log("location.state:", location.state);
   console.log("userData:", userData);
 
   const [appointments, setAppointments] = useState([]);
