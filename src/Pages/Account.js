@@ -15,19 +15,28 @@ function Account({ props }) {
   const location = useLocation();
   const navigate = useNavigate();
 
-  const [userData, setUserData] = useState(
-    location.state
-      ? location.state
-      : {
-          name: "Jane Doe",
-          phoneNumber: "(123) 456-7890",
-          email: "email@email.com",
-          password: "password",
-        }
-  );
+  const [userData, setUserData] = useState(null); // Initialize as null
 
-  console.log("location.state:", location.state);
-  console.log("userData:", userData);
+  useEffect(() => {
+    //asynch fetch of login data before rendering
+    // Check if location.state is available
+    if (location.state) {
+      // If available, setUserData with the provided data
+      setUserData(location.state);
+    } else {
+      // If not available, setUserData with the dummy data
+      setUserData({
+        name: "Jane Doe",
+        phoneNumber: "(123) 456-7890",
+        email: "email@email.com",
+        password: "password",
+      });
+      console.log("location.state is not available");
+    }
+  }, [location.state]); // useEffect dependency on location.state
+
+  //console.log("location.state:", location.state);
+  //console.log("userData:", userData);
 
   const [appointments, setAppointments] = useState([]);
   // Add a state to hold the selected appointment details
@@ -147,142 +156,162 @@ function Account({ props }) {
 
   return (
     <div>
-      <div className="profileContainer">
-        <div className="profileTop">
-          <div class="profile-picture-container">
-            <img
-              src={defaultProfilePic}
-              alt="Profile picture"
-              className="profile-picture"
-            />
+      {userData ? (
+        <>
+          <div className="profileContainer">
+            <div className="profileTop">
+              <div class="profile-picture-container">
+                <img
+                  src={defaultProfilePic}
+                  alt="Profile picture"
+                  className="profile-picture"
+                />
+              </div>
+              <h2>{userData.name}</h2>
+              <div className="buttonsContainer">
+                <button type="button" className="editButton">
+                  Edit Profile
+                </button>
+                <button
+                  type="button"
+                  className="signoutButton"
+                  onClick={openButton}
+                >
+                  Sign Out
+                </button>
+                <PopupSignOut isOpen={isButtonOpen} closePopup={closeButton} />
+              </div>
+            </div>
+            <div className="persInfoContainer">
+              <div className="linesofInfo">
+                <div className="infoRowTitle">
+                  <h3>Personal Information</h3>
+                </div>
+                <div className="infoRow">
+                  <img src={phone} alt="phone icon" className="persIcons"></img>
+                  <p>{userData.phoneNumber}</p>
+                </div>
+                <div className="infoRow">
+                  <img src={email} alt="email icon" className="persIcons"></img>
+                  <p>{userData.email}</p>
+                </div>
+                <div className="infoRow">
+                  <img
+                    src={lock}
+                    alt="password icon"
+                    className="persIcons"
+                  ></img>
+                  <p type="password">{"*".repeat(userData.password.length)}</p>{" "}
+                  {/* Hide password */}
+                  <button
+                    type="button"
+                    className="changePW"
+                    onClick={openContact}
+                  >
+                    Change
+                  </button>
+                  <PopupPassword
+                    isOpen={isContactOpen}
+                    closePopup={closeContact}
+                  />
+                </div>
+              </div>
+            </div>
           </div>
-          <h2>{userData.name}</h2>
-          <div className="buttonsContainer">
-            <button type="button" className="editButton">
-              Edit Profile
-            </button>
-            <button
-              type="button"
-              className="signoutButton"
-              onClick={openButton}
-            >
-              Sign Out
-            </button>
-            <PopupSignOut isOpen={isButtonOpen} closePopup={closeButton} />
-          </div>
-        </div>
-        <div className="persInfoContainer">
-          <div className="linesofInfo">
+          <div className="apptsInfoContainer">
             <div className="infoRowTitle">
-              <h3>Personal Information</h3>
+              <h3>Scheduled Appointments</h3>
             </div>
-            <div className="infoRow">
-              <img src={phone} alt="phone icon" className="persIcons"></img>
-              <p>{userData.phoneNumber}</p>
+            <div className="table">
+              <table>
+                <thead>
+                  <tr>
+                    <th>Date</th>
+                    <th>Location</th>
+                    <th>Services</th>
+                    <th>Staff</th>
+                    <th></th> {/* 3 dots column - DO NOT DELETE */}
+                  </tr>
+                </thead>
+                <tbody>{renderScheduledAppointments()}</tbody>
+              </table>
             </div>
-            <div className="infoRow">
-              <img src={email} alt="email icon" className="persIcons"></img>
-              <p>{userData.email}</p>
-            </div>
-            <div className="infoRow">
-              <img src={lock} alt="password icon" className="persIcons"></img>
-              <p type="password">{"*".repeat(userData.password.length)}</p>{" "}
-              {/* Hide password */}
-              <button type="button" className="changePW" onClick={openContact}>
-                Change
-              </button>
-              <PopupPassword isOpen={isContactOpen} closePopup={closeContact} />
-            </div>
-          </div>
-        </div>
-      </div>
-      <div className="apptsInfoContainer">
-        <div className="infoRowTitle">
-          <h3>Scheduled Appointments</h3>
-        </div>
-        <div className="table">
-          <table>
-            <thead>
-              <tr>
-                <th>Date</th>
-                <th>Location</th>
-                <th>Services</th>
-                <th>Staff</th>
-                <th></th> {/* 3 dots column - DO NOT DELETE */}
-              </tr>
-            </thead>
-            <tbody>{renderScheduledAppointments()}</tbody>
-          </table>
-        </div>
 
-        <div className="infoRowTitle">
-          <h3>Appointment History</h3>
-        </div>
-        <div className="table">
-          <table>
-            <thead>
-              <tr>
-                <th>Date</th>
-                <th>Location</th>
-                <th>Services</th>
-                <th>Staff</th>
-                <th></th> {/* 3 dots column - DO NOT DELETE */}
-              </tr>
-            </thead>
-            <tbody>{renderAppointmentHistory()}</tbody>
-          </table>
-        </div>
-      </div>
-
-      <div className="orderInfoContainer">
-        <div className="infoRowTitle">
-          <h3>Order History</h3>
-        </div>
-        <div className="order-dropdown-container">
-          <div className="order-dropdown">
-            <select
-              className="custom-dropdown"
-              id="category"
-              onChange={(e) => handleFilter(e.target.value)}
-              value={selectedCategory}
-            >
-              <option value="Past 1 month">Past 1 month</option>
-              {categories.map((category) => (
-                <option key={category} value={category}>
-                  {category.charAt(0).toUpperCase() + category.slice(1)}
-                </option>
-              ))}
-            </select>
+            <div className="infoRowTitle">
+              <h3>Appointment History</h3>
+            </div>
+            <div className="table">
+              <table>
+                <thead>
+                  <tr>
+                    <th>Date</th>
+                    <th>Location</th>
+                    <th>Services</th>
+                    <th>Staff</th>
+                    <th></th> {/* 3 dots column - DO NOT DELETE */}
+                  </tr>
+                </thead>
+                <tbody>{renderAppointmentHistory()}</tbody>
+              </table>
+            </div>
           </div>
-          <div className="order-dropdown">
-            {/* ORDER: ASCENDING OR DESCENDING */}
-            <select
-              className="custom-dropdown"
-              id="order"
-              onChange={(e) => handleOrder(e.target.value)}
-              value={selectedOrder}
-            >
-              <option value="Ascending">Ascending</option>
-              {orders.map((order) => (
-                <option key={order} value={order}>
-                  {order.charAt(0).toUpperCase() + order.slice(1)}
-                </option>
-              ))}
-            </select>
+          <div className="orderInfoContainer">
+            <div className="infoRowTitle">
+              <h3>Order History</h3>
+            </div>
+            <div className="order-dropdown-container">
+              <div className="order-dropdown">
+                <select
+                  className="custom-dropdown"
+                  id="category"
+                  onChange={(e) => handleFilter(e.target.value)}
+                  value={selectedCategory}
+                >
+                  <option value="Past 1 month">Past 1 month</option>
+                  {categories.map((category) => (
+                    <option key={category} value={category}>
+                      {category.charAt(0).toUpperCase() + category.slice(1)}
+                    </option>
+                  ))}
+                </select>
+              </div>
+              <div className="order-dropdown">
+                {/* ORDER: ASCENDING OR DESCENDING */}
+                <select
+                  className="custom-dropdown"
+                  id="order"
+                  onChange={(e) => handleOrder(e.target.value)}
+                  value={selectedOrder}
+                >
+                  <option value="Ascending">Ascending</option>
+                  {orders.map((order) => (
+                    <option key={order} value={order}>
+                      {order.charAt(0).toUpperCase() + order.slice(1)}
+                    </option>
+                  ))}
+                </select>
+              </div>
+            </div>
+            <div className="orderHistory">
+              <OrderHistory></OrderHistory>
+              {/* Display if there are no orders
+    <div className="noOrders">
+      <p>No Order History</p>
+      <Link to="/shop">
+        <button class="shopButton">Shop Now</button>
+      </Link>
+    </div>
+      */}
+            </div>
           </div>
+        </>
+      ) : (
+        <div>
+          <h1>Account not found</h1>
+          <p>Please log in to view your account.</p>
+          <Link to="/login">Log In</Link>
         </div>
-        <div className="orderHistory">
-          <OrderHistory></OrderHistory>
-          {/* Display if there are no orders 
-          <div className="noOrders">
-            <p>No Order History</p>
-            <Link to="/shop">
-              <button class="shopButton">Shop Now</button>
-            </Link>
-          </div>
-            */}
-        </div>
-      </div>
+      )}
     </div>
   );
 }
