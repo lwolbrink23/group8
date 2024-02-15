@@ -26,7 +26,7 @@ function Account({ props }) {
         }
   );
 
-  //console.log("location.state:", location.state);
+  console.log("location.state:", location.state);
   console.log("userData:", userData);
 
   const [appointments, setAppointments] = useState([]);
