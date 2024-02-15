@@ -280,11 +280,22 @@ function Checkout() {
   const shipCost = 14;
   const total = subtotal() + taxes + shipCost;
   // console.log(`${subtotal()}, ${taxes}, ${shipCost}, ${total}`);
+  const countItems = () => {
+    let totalQty = 0;
+
+    if (cartData) {
+      cartData.forEach((item) => {
+        totalQty += item.qty;
+      });
+    }
+
+    return totalQty;
+  };
 
   // main stuff
   return (
     <div id="checkout">
-      <Shopheader htitle={"Checkout"} />
+      <Shopheader htitle={"Cart"} qty={countItems()} />
       <main>
         <div id="shipping-info" className="cardbox">
           <h3>Shipping Information</h3>
