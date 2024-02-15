@@ -1,17 +1,40 @@
 import "../Styles/checkout.css";
 import Shopheader from "../Components/Shopheader";
 import { Link } from "react-router-dom";
-import tempData from "../data/cart.json";
+
 import tempShopData from "../data/shop.json";
 import { useEffect, useState } from "react";
 import { isValidUSState } from "../data/validStates";
 import CustomDropdown from "../Components/CustomDropdown";
 import purplePlusIcon from "../assets/icons/purple-plus.svg";
 import purpleCheckIcon from "../assets/icons/purple-check.svg";
+import { BACKEND_ADDRESS } from "../App";
+import Cookies from "js-cookie";
 
 function Checkout() {
   // backend: check if user logged in. if logged in, get their info from the database and autofill in userAns
   const [enableSubmit, setEnableSubmit] = useState(false);
+  const [shopData, setShopData] = useState();
+  const [cartData, setCartData] = useState([]);
+
+  useEffect(() => {
+    const fetchData = async (endpoint, setDataFunction) => {
+      try {
+        // Fetch data from the backend
+        const response = await fetch(`${BACKEND_ADDRESS}${endpoint}`);
+        const jsonData = await response.json();
+        setDataFunction(jsonData);
+      } catch (error) {
+        console.error("Error fetching data:", error.message);
+      }
+    };
+    // TODO: fetch cart data from database here
+    // TODO: fetch data from cookie if user not logged in
+    fetchData("/shop", setShopData);
+    if (Cookies.get("cart")) {
+      setCartData(JSON.parse(Cookies.get("cart")));
+    }
+  }, []);
 
   // user inputs
   const [personalInfo, setPersonalInfo] = useState({
@@ -206,14 +229,16 @@ function Checkout() {
   // dropdown content for cart
   const OrderedItems = () => (
     <ul className="dropdown-content">
-      {tempData.map((item, i) => {
+      {cartData.map((item, i) => {
         let itemName = "";
         let itemPic = "";
+        let itemPrice = 0;
 
         for (const shopItem of tempShopData) {
           if (item.id === shopItem.id) {
             itemName = shopItem.name;
             itemPic = shopItem.file;
+            itemPrice = shopItem.price;
           }
         }
 
@@ -234,7 +259,7 @@ function Checkout() {
                 </span>
               </p>
             </div>
-            <p className="align-right">${item.price}</p>
+            <p className="align-right">${itemPrice}</p>
           </li>
         );
       })}
@@ -244,7 +269,7 @@ function Checkout() {
   // calc totals
   const subtotal = () => {
     let t = 0;
-    for (const cartItem of tempData) {
+    for (const cartItem of cartData) {
       for (const shopItem of tempShopData) {
         if (cartItem.id === shopItem.id) {
           t += shopItem.price;
@@ -457,7 +482,7 @@ function Checkout() {
           <div id="cart-items">
             <h3>Review Order</h3>
             <CustomDropdown
-              title={`Items Ordered (${tempData.length})`}
+              title={`Items Ordered (${cartData.length})`}
               ContentComponent={OrderedItems}
               icon={"white-arrow.svg"}
             />
