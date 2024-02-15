@@ -1,11 +1,11 @@
 import React, { useState } from "react";
 import "../App.css";
 import "../Styles/Login.css";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import PopUpPassword from "../Components/PopUpPassword";
 
-
 function Login() {
+  const navigate = useNavigate();
   const [emailValue, setEmailValue] = useState("");
   const [pwValue, setPwValue] = useState("");
   const [emailError, setEmailError] = useState(false);
@@ -14,7 +14,6 @@ function Login() {
 
   const openContact = () => setIsContactOpen(true);
   const closeContact = () => setIsContactOpen(false);
-
 
   const handleEmailInputChange = (event) => {
     const value = event.target.value;
@@ -42,32 +41,50 @@ function Login() {
     setPwValue("");
   };
 
-const handleLogin = async () => {
-  try {
-    // Make a POST request to the backend login route
-    const response = await fetch("http://localhost:3003/login", {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify({ email: emailValue, password: pwValue }),
-    });
+  const handleLogin = async () => {
+    try {
+      const userData = {
+        email: emailValue,
+        password: pwValue,
+      };
 
-    // Check if the request was successful
-    if (response.ok) {
-      // Redirect the user to the account page upon successful login
-      window.location.href = "/Account"; // Change the URL as needed
-    } else {
-      // Handle login failure (e.g., display an error message)
-      console.error("Login failed:", response.statusText);
-      // Perform any other error handling as needed
+      const response = await fetch("http://localhost:3003/login", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(userData),
+      });
+
+      if (response.ok) {
+        const responseData = await response.json();
+        if (responseData.user) {
+          const loginUser = responseData.user;
+          console.log("Logged in user:", loginUser);
+
+          // Reset form after successful login
+          resetForm();
+
+          // Redirect to the Account page with the user data
+          navigate(`/Account/${loginUser._id}`, {
+            state: {
+              id: loginUser._id,
+              name: loginUser.name,
+              phoneNumber: loginUser.phoneNumber,
+              email: loginUser.email,
+              password: loginUser.password,
+            },
+          });
+        } else {
+          console.error("Error logging in: User data not found in response");
+        }
+      } else {
+        console.error("Error logging in:", response.statusText);
+      }
+    } catch (error) {
+      console.error("Error logging in:", error);
     }
-  } catch (error) {
-    console.error("Error during login:", error);
-    // Handle network errors or other unexpected errors
-  }
-};
-
+  };
 
   const buttonStyle = {
     color: emailValue && pwValue ? "black" : "#646464",
@@ -124,7 +141,9 @@ const handleLogin = async () => {
           </Link>
         </form>
       </div>
-      <p className="purp" onClick={openContact} style={{ cursor: 'pointer' }}>Forgot your password?</p>
+      <p className="purp" onClick={openContact} style={{ cursor: "pointer" }}>
+        Forgot your password?
+      </p>
       <PopUpPassword isOpen={isContactOpen} closePopup={closeContact} />
       <div className="text-container">
         <p classname="reg">
@@ -139,4 +158,3 @@ const handleLogin = async () => {
 }
 
 export default Login;
-
