@@ -89,21 +89,19 @@ function SignUp() {
 
       // Check if the request was successful (status code 2xx)
       if (response.ok) {
-
-
         const responseData = await response.json(); // Assuming your server responds with the new user data
         // Check if the response data contains user information
         if (responseData.user) {
           const newUser = responseData.user;
           // Now you should have user data in the newUser object
           console.log("new user:", newUser);
-
+          console.log("nnewUser._id: ", newUser._id);
           // Reset form after successful sign-up
           resetForm();
           // Redirect to the Account page with the user data
-          navigate(`/Account/${newUser._id.$oid}`, {
+          navigate(`/Account/${newUser._id}`, {
             state: {
-              id: newUser._id.$oid,
+              id: newUser._id,
               name: newUser.name,
               phoneNumber: newUser.phoneNumber,
               email: newUser.email,
@@ -128,14 +126,14 @@ function SignUp() {
   const buttonStyle = {
     color:
       firstNameValue &&
-        lastNameValue &&
-        emailValue &&
-        phoneValue &&
-        pwValue &&
-        confPwValue &&
-        !passwordsMatchError &&
-        !phoneError &&
-        !emailError
+      lastNameValue &&
+      emailValue &&
+      phoneValue &&
+      pwValue &&
+      confPwValue &&
+      !passwordsMatchError &&
+      !phoneError &&
+      !emailError
         ? "black"
         : "#646464",
   };
