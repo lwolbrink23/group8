@@ -207,7 +207,7 @@ function SignUp() {
           </div>
           <label htmlFor="password">Password</label>
           <input
-            type="password" // Change type to password for secure input
+            type="password" // secure input
             className="section1"
             placeholder=" Password*"
             id="password"
@@ -216,7 +216,7 @@ function SignUp() {
           />
           <label htmlFor="confirm">Confirm Password</label>
           <input
-            type="password" // Change type to password for secure input
+            type="password" // secure input
             className="section1"
             placeholder=" Confirm Password*"
             id="confirm"

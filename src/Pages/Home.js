@@ -1,4 +1,4 @@
-import "../Styles/home.css"; // Import your styles
+import "../Styles/home.css";
 import { Link } from "react-router-dom";
 import React, { useState } from "react";
 import PopUpBlog from "../Components/PopUpBlog.js";

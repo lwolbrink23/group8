@@ -4,7 +4,7 @@ import "../Styles/Login.css";
 import { Link, useNavigate } from "react-router-dom";
 import PopUpPassword from "../Components/PopUpPassword";
 import { useDispatch, useSelector } from "react-redux";
-import { loginUser } from "../Store/userSlice"; // Update the path
+import { loginUser } from "../Store/userSlice";
 
 function getUser() {
   let user = localStorage.getItem("user");
