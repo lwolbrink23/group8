@@ -11,6 +11,16 @@ import "../Styles/chicservices.css";
 import "../App.css";
 import { useState } from "react";
 
+function getUser() {
+  let user = localStorage.getItem("user");
+  if (user) {
+    user = JSON.parse(user);
+  } else {
+    user = null;
+  }
+  return user;
+}
+
 const SelectServices = () => {
   const [selectedServices, setSelectedServices] = useState([]);
   const [currentCategory, setCurrentCategory] = useState("featured");
@@ -63,7 +73,11 @@ const SelectServices = () => {
   const navigateToTime = () => {
     const totalCost = calculateTotalCost();
     navigate("/selecttime", {
-      state: { service: selectedServices, totalCost: totalCost, serviceName: 'Healing Hands Spa' },
+      state: {
+        service: selectedServices,
+        totalCost: totalCost,
+        serviceName: "Healing Hands Spa",
+      },
     });
   };
 
@@ -111,7 +125,11 @@ const SelectServices = () => {
           </div>
           <div id={currentCategory} className="category-list">
             {categories[currentCategory].map((service, index) => (
-              <div key={index} className={`item-${index + 1}`} onClick={() => toggleService(service)}>
+              <div
+                key={index}
+                className={`item-${index + 1}`}
+                onClick={() => toggleService(service)}
+              >
                 <p>{service}</p>
                 {selectedServices.includes(service) ? (
                   <div className="button-container">
@@ -119,7 +137,7 @@ const SelectServices = () => {
                       className="remove-button"
                       type="button"
                       onClick={(e) => {
-                         // Stop parent div click
+                        // Stop parent div click
                         e.stopPropagation();
                         removeFromSelectedServices(service);
                       }}
@@ -161,18 +179,22 @@ const SelectServices = () => {
           <h2 className="service-title">{`${selectedServices.length} services selected`}</h2>
           <div className="line"></div>
           <div className="text-style">
-          <ul>
-            {selectedServices.map((service, index) => (
-              <li key={index}>{service}</li>
-            ))}
-          </ul>
-          <button onClick={navigateToTime} 
-          className="continue" 
-          type="button"
-          disabled={selectedServices.length === 0} 
-          style={{ color: selectedServices.length === 0 ? 'grey' : 'initial' }}>
-            CONTINUE
-          </button>
+            <ul>
+              {selectedServices.map((service, index) => (
+                <li key={index}>{service}</li>
+              ))}
+            </ul>
+            <button
+              onClick={navigateToTime}
+              className="continue"
+              type="button"
+              disabled={selectedServices.length === 0}
+              style={{
+                color: selectedServices.length === 0 ? "grey" : "initial",
+              }}
+            >
+              CONTINUE
+            </button>
           </div>
         </div>
       </div>

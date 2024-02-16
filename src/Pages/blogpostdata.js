@@ -8,14 +8,26 @@ import hairPink from "../assets/images/hair-pinkbg.jpeg";
 import nailBlog from "../assets/images/nails-blog.webp";
 import "../Styles/blogpost.css";
 
+function getUser() {
+  let user = localStorage.getItem("user");
+  if (user) {
+    user = JSON.parse(user);
+  } else {
+    user = null;
+  }
+  return user;
+}
+
 function BlogPostData() {
   const { category, id } = useParams();
   const [blogPost, setBlogPost] = useState(null);
 
-   useEffect(() => {
+  useEffect(() => {
     const fetchBlogPost = async () => {
       try {
-        const response = await fetch(`http://localhost:3003/blog/blogpost/${category}/${id}`);
+        const response = await fetch(
+          `http://localhost:3003/blog/blogpost/${category}/${id}`
+        );
         if (!response.ok) {
           throw new Error("Failed to fetch blog post");
         }
@@ -27,7 +39,7 @@ function BlogPostData() {
     };
 
     fetchBlogPost();
-  }, [category, id]); 
+  }, [category, id]);
 
   if (!blogPost) {
     return <div>Loading...</div>;
@@ -46,7 +58,11 @@ function BlogPostData() {
     <div className="post1">
       <BackButton />
       <div className="post-general-info">
-        <img src={categoryToImage[category]} alt={blogPost.title} className="main-image" />
+        <img
+          src={categoryToImage[category]}
+          alt={blogPost.title}
+          className="main-image"
+        />
         <div className="cat-container">
           <h4 className="category">Category: {blogPost.category}</h4>
           <h4 className="author">Author: {blogPost.author}</h4>
@@ -56,16 +72,15 @@ function BlogPostData() {
           {paragraphs.map((paragraph, index) => (
             <p key={index}>
               {paragraph}
-              {category === "Hair" &&
-                index === 2 && (
-                  <div className="pink-image-container">
-                    <img
-                      className="pink-image"
-                      src={hairPink}
-                      alt="woman running fingers through her hair"
-                    />
-                  </div>
-                )}
+              {category === "Hair" && index === 2 && (
+                <div className="pink-image-container">
+                  <img
+                    className="pink-image"
+                    src={hairPink}
+                    alt="woman running fingers through her hair"
+                  />
+                </div>
+              )}
             </p>
           ))}
         </div>
@@ -75,4 +90,3 @@ function BlogPostData() {
 }
 
 export default BlogPostData;
-

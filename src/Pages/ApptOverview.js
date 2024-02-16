@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import { Link, useLocation, useNavigate } from "react-router-dom";
 import "../App.css";
 import "../Styles/ApptOverview.css";
@@ -6,6 +6,16 @@ import store from "../assets/icons/icons8-shop-96.png";
 import purpleLady from "../assets/icons/icons8-person-female-100.png";
 import calendar from "../assets/icons/icons8-event-accepted-tentatively-96.png";
 import BackButton from "../Components/BackButton";
+
+function getUser() {
+  let user = localStorage.getItem("user");
+  if (user) {
+    user = JSON.parse(user);
+  } else {
+    user = null;
+  }
+  return user;
+}
 
 function ScrollToTop() {
   const location = useLocation();
@@ -20,6 +30,9 @@ function ScrollToTop() {
 }
 
 function Overview() {
+  const [user, setUser] = useState(getUser());
+  console.log("active user: ", user);
+
   const scrollToTop = () => {
     window.scrollTo(0, 0);
   };

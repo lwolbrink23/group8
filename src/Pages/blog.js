@@ -9,6 +9,16 @@ import allAges from "../assets/images/allages.jpeg";
 import nailBlog from "../assets/images/nails-blog.webp";
 import { BACKEND_ADDRESS } from "../App";
 
+function getUser() {
+  let user = localStorage.getItem("user");
+  if (user) {
+    user = JSON.parse(user);
+  } else {
+    user = null;
+  }
+  return user;
+}
+
 function ScrollToTop() {
   const location = useLocation();
 
@@ -146,7 +156,7 @@ function Blog() {
             {post.category === "Makeup" && (
               <img src={allAges} alt={`${post.title} - ${post.category}`} />
             )}
-             {post.category === "Nails" && (
+            {post.category === "Nails" && (
               <img src={nailBlog} alt={`${post.title} - ${post.category}`} />
             )}
             <h3>

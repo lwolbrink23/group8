@@ -5,14 +5,15 @@ import App from "./App";
 import reportWebVitals from "./reportWebVitals";
 import { BrowserRouter } from "react-router-dom";
 import { Provider } from "react-redux";
+import store from "./Store/index.js";
 import { configureStore } from "@reduxjs/toolkit";
 import rootReducer from "./Store/rootReducer";
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
-const store = configureStore({
+/*const store = configureStore({
   reducer: rootReducer,
   // other middleware or options if needed
-});
+});*/
 
 root.render(
   <Provider store={store}>
