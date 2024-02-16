@@ -3,9 +3,13 @@ import "../App.css";
 import "../Styles/Login.css";
 import { Link, useNavigate } from "react-router-dom";
 import PopUpPassword from "../Components/PopUpPassword";
+import { useDispatch } from "react-redux";
+import { login } from "../Store/authActions"; // Update the path
 
 function Login() {
   const navigate = useNavigate();
+  const dispatch = useDispatch();
+
   const [emailValue, setEmailValue] = useState("");
   const [pwValue, setPwValue] = useState("");
   const [emailError, setEmailError] = useState(false);
@@ -64,7 +68,8 @@ function Login() {
 
           // Reset form after successful login
           resetForm();
-
+          const userID = loginUser._id;
+          dispatch(login(userID));
           // Redirect to the Account page with the user data
           navigate(`/Account/${loginUser._id}`, {
             state: {

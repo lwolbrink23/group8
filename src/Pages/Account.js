@@ -10,10 +10,21 @@ import PopupPassword from "../Components/PopUpPassword";
 import PopupSignOut from "../Components/PopUpSignOut.js";
 import OrderHistory from "../Components/OrderHistory.js";
 import appointmentsData from "../data/appointments.json";
+import { useSelector } from "react-redux";
+import { logout } from "../Store/authActions";
 
 function Account({ props }) {
   const location = useLocation();
   const navigate = useNavigate();
+  const isLoggedIn = useSelector((state) => state.auth.isLoggedIn);
+  const userId = useSelector((state) => state.auth.userId);
+
+  useEffect(() => {
+    if (!isLoggedIn) {
+      // Redirect to login page if not logged in
+      navigate("/login");
+    }
+  }, [isLoggedIn]);
 
   const [userData, setUserData] = useState(null); // Initialize as null
 
@@ -156,145 +167,160 @@ function Account({ props }) {
 
   return (
     <div>
-      {userData ? (
+      {isLoggedIn ? (
         <>
-          <div className="profileContainer">
-            <div className="profileTop">
-              <div class="profile-picture-container">
-                <img
-                  src={defaultProfilePic}
-                  alt="Profile picture"
-                  className="profile-picture"
-                />
+          {userData && userData.name ? ( // Check if userData is not null and has the 'name' property
+            <div>
+              <div className="profileContainer">
+                <div className="profileTop">
+                  <div class="profile-picture-container">
+                    <img
+                      src={defaultProfilePic}
+                      alt="Profile picture"
+                      className="profile-picture"
+                    />
+                  </div>
+                  <h2>{userData.name}</h2>
+                  <div className="buttonsContainer">
+                    <button type="button" className="editButton">
+                      Edit Profile
+                    </button>
+                    <button
+                      type="button"
+                      className="signoutButton"
+                      onClick={openButton}
+                    >
+                      Sign Out
+                    </button>
+                    <PopupSignOut
+                      isOpen={isButtonOpen}
+                      closePopup={closeButton}
+                    />
+                  </div>
+                </div>
+                <div className="persInfoContainer">
+                  <div className="linesofInfo">
+                    <div className="infoRowTitle">
+                      <h3>Personal Information</h3>
+                    </div>
+                    <div className="infoRow">
+                      <img
+                        src={phone}
+                        alt="phone icon"
+                        className="persIcons"
+                      ></img>
+                      <p>{userData.phoneNumber}</p>
+                    </div>
+                    <div className="infoRow">
+                      <img
+                        src={email}
+                        alt="email icon"
+                        className="persIcons"
+                      ></img>
+                      <p>{userData.email}</p>
+                    </div>
+                    <div className="infoRow">
+                      <img
+                        src={lock}
+                        alt="password icon"
+                        className="persIcons"
+                      ></img>
+                      <p type="password">
+                        {"*".repeat(userData.password.length)}
+                      </p>{" "}
+                      {/* Hide password */}
+                      <button
+                        type="button"
+                        className="changePW"
+                        onClick={openContact}
+                      >
+                        Change
+                      </button>
+                      <PopupPassword
+                        isOpen={isContactOpen}
+                        closePopup={closeContact}
+                      />
+                    </div>
+                  </div>
+                </div>
               </div>
-              <h2>{userData.name}</h2>
-              <div className="buttonsContainer">
-                <button type="button" className="editButton">
-                  Edit Profile
-                </button>
-                <button
-                  type="button"
-                  className="signoutButton"
-                  onClick={openButton}
-                >
-                  Sign Out
-                </button>
-                <PopupSignOut isOpen={isButtonOpen} closePopup={closeButton} />
-              </div>
-            </div>
-            <div className="persInfoContainer">
-              <div className="linesofInfo">
+              <div className="apptsInfoContainer">
                 <div className="infoRowTitle">
-                  <h3>Personal Information</h3>
+                  <h3>Scheduled Appointments</h3>
                 </div>
-                <div className="infoRow">
-                  <img src={phone} alt="phone icon" className="persIcons"></img>
-                  <p>{userData.phoneNumber}</p>
+                <div className="table">
+                  <table>
+                    <thead>
+                      <tr>
+                        <th>Date</th>
+                        <th>Location</th>
+                        <th>Services</th>
+                        <th>Staff</th>
+                        <th></th> {/* 3 dots column - DO NOT DELETE */}
+                      </tr>
+                    </thead>
+                    <tbody>{renderScheduledAppointments()}</tbody>
+                  </table>
                 </div>
-                <div className="infoRow">
-                  <img src={email} alt="email icon" className="persIcons"></img>
-                  <p>{userData.email}</p>
-                </div>
-                <div className="infoRow">
-                  <img
-                    src={lock}
-                    alt="password icon"
-                    className="persIcons"
-                  ></img>
-                  <p type="password">{"*".repeat(userData.password.length)}</p>{" "}
-                  {/* Hide password */}
-                  <button
-                    type="button"
-                    className="changePW"
-                    onClick={openContact}
-                  >
-                    Change
-                  </button>
-                  <PopupPassword
-                    isOpen={isContactOpen}
-                    closePopup={closeContact}
-                  />
-                </div>
-              </div>
-            </div>
-          </div>
-          <div className="apptsInfoContainer">
-            <div className="infoRowTitle">
-              <h3>Scheduled Appointments</h3>
-            </div>
-            <div className="table">
-              <table>
-                <thead>
-                  <tr>
-                    <th>Date</th>
-                    <th>Location</th>
-                    <th>Services</th>
-                    <th>Staff</th>
-                    <th></th> {/* 3 dots column - DO NOT DELETE */}
-                  </tr>
-                </thead>
-                <tbody>{renderScheduledAppointments()}</tbody>
-              </table>
-            </div>
 
-            <div className="infoRowTitle">
-              <h3>Appointment History</h3>
-            </div>
-            <div className="table">
-              <table>
-                <thead>
-                  <tr>
-                    <th>Date</th>
-                    <th>Location</th>
-                    <th>Services</th>
-                    <th>Staff</th>
-                    <th></th> {/* 3 dots column - DO NOT DELETE */}
-                  </tr>
-                </thead>
-                <tbody>{renderAppointmentHistory()}</tbody>
-              </table>
-            </div>
-          </div>
-          <div className="orderInfoContainer">
-            <div className="infoRowTitle">
-              <h3>Order History</h3>
-            </div>
-            <div className="order-dropdown-container">
-              <div className="order-dropdown">
-                <select
-                  className="custom-dropdown"
-                  id="category"
-                  onChange={(e) => handleFilter(e.target.value)}
-                  value={selectedCategory}
-                >
-                  <option value="Past 1 month">Past 1 month</option>
-                  {categories.map((category) => (
-                    <option key={category} value={category}>
-                      {category.charAt(0).toUpperCase() + category.slice(1)}
-                    </option>
-                  ))}
-                </select>
+                <div className="infoRowTitle">
+                  <h3>Appointment History</h3>
+                </div>
+                <div className="table">
+                  <table>
+                    <thead>
+                      <tr>
+                        <th>Date</th>
+                        <th>Location</th>
+                        <th>Services</th>
+                        <th>Staff</th>
+                        <th></th> {/* 3 dots column - DO NOT DELETE */}
+                      </tr>
+                    </thead>
+                    <tbody>{renderAppointmentHistory()}</tbody>
+                  </table>
+                </div>
               </div>
-              <div className="order-dropdown">
-                {/* ORDER: ASCENDING OR DESCENDING */}
-                <select
-                  className="custom-dropdown"
-                  id="order"
-                  onChange={(e) => handleOrder(e.target.value)}
-                  value={selectedOrder}
-                >
-                  <option value="Ascending">Newest to Oldest</option>
-                  {orders.map((order) => (
-                    <option key={order} value={order}>
-                      {order.charAt(0).toUpperCase() + order.slice(1)}
-                    </option>
-                  ))}
-                </select>
-              </div>
-            </div>
-            <div className="orderHistory">
-              <OrderHistory></OrderHistory>
-              {/* Display if there are no orders
+              <div className="orderInfoContainer">
+                <div className="infoRowTitle">
+                  <h3>Order History</h3>
+                </div>
+                <div className="order-dropdown-container">
+                  <div className="order-dropdown">
+                    <select
+                      className="custom-dropdown"
+                      id="category"
+                      onChange={(e) => handleFilter(e.target.value)}
+                      value={selectedCategory}
+                    >
+                      <option value="Past 1 month">Past 1 month</option>
+                      {categories.map((category) => (
+                        <option key={category} value={category}>
+                          {category.charAt(0).toUpperCase() + category.slice(1)}
+                        </option>
+                      ))}
+                    </select>
+                  </div>
+                  <div className="order-dropdown">
+                    {/* ORDER: ASCENDING OR DESCENDING */}
+                    <select
+                      className="custom-dropdown"
+                      id="order"
+                      onChange={(e) => handleOrder(e.target.value)}
+                      value={selectedOrder}
+                    >
+                      <option value="Ascending">Newest to Oldest</option>
+                      {orders.map((order) => (
+                        <option key={order} value={order}>
+                          {order.charAt(0).toUpperCase() + order.slice(1)}
+                        </option>
+                      ))}
+                    </select>
+                  </div>
+                </div>
+                <div className="orderHistory">
+                  <OrderHistory></OrderHistory>
+                  {/* Display if there are no orders
     <div className="noOrders">
       <p>No Order History</p>
       <Link to="/shop">
@@ -302,12 +328,15 @@ function Account({ props }) {
       </Link>
     </div>
       */}
+                </div>
+              </div>
             </div>
-          </div>
+          ) : (
+            <p>Loading... userData is null.</p> // or any loading indicator if userData is still null
+          )}
         </>
       ) : (
         <div>
-          <h1>Account not found</h1>
           <p>Please log in to view your account.</p>
           <Link to="/login">Log In</Link>
         </div>
