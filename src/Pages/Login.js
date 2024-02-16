@@ -4,7 +4,6 @@ import "../Styles/Login.css";
 import { Link, useNavigate } from "react-router-dom";
 import PopUpPassword from "../Components/PopUpPassword";
 import { useDispatch, useSelector } from "react-redux";
-import { login } from "../Store/authActions"; // Update the path
 import { loginUser } from "../Store/userSlice"; // Update the path
 
 function getUser() {
@@ -29,9 +28,6 @@ function Login() {
   const [user, setUser] = useState(getUser());
   console.log("active user: ", user);
 
-  //redux state
-  const { loading, error } = useSelector((state) => state.user);
-
   const openContact = () => setIsContactOpen(true);
   const closeContact = () => setIsContactOpen(false);
 
@@ -41,8 +37,6 @@ function Login() {
 
     // Validate the email address
     const isValid = isValidEmail(value);
-    // Set an error state or handle the validation result as needed
-    // For example:
     setEmailError(!isValid);
   };
 
@@ -51,7 +45,6 @@ function Login() {
   };
 
   const isValidEmail = (email) => {
-    // Basic check for a valid email address
     const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
     return emailRegex.test(email);
   };
@@ -82,8 +75,6 @@ function Login() {
           const existingUser = responseData.user;
           console.log("Logged in user:", existingUser);
 
-          // Reset form after successful login
-          //resetForm();
           const userID = existingUser._id;
 
           let userCredential = {
@@ -100,17 +91,6 @@ function Login() {
               navigate(`/Account/${userID}`);
             }
           });
-          /*
-          // Redirect to the Account page with the user data
-          navigate(`/Account/${existingUser._id}`, {
-            state: {
-              id: existingUser._id,
-              name: existingUser.name,
-              phoneNumber: existingUser.phoneNumber,
-              email: existingUser.email,
-              password: existingUser.password,
-            },
-          }); */
         } else {
           console.error("Error logging in: User data not found in response");
         }
@@ -157,7 +137,6 @@ function Login() {
             <label htmlFor="check">Remember Me</label>
           </div>
           <Link
-            //to="/Account/:id"
             style={{
               display: "flex",
               justifyContent: "center",
@@ -172,14 +151,9 @@ function Login() {
               disabled={!emailValue || !pwValue}
               onClick={handleLogin}
             >
-              {loading ? "Loading..." : "Log In"}
+              Log In
             </button>
           </Link>
-          {error && (
-            <div style={{ color: "red" }} role="alert">
-              {error}
-            </div>
-          )}
         </form>
       </div>
       <p className="purp" onClick={openContact} style={{ cursor: "pointer" }}>

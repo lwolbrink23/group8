@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { Link, useLocation, useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import "../App.css";
 import "../Styles/account.css";
 import defaultProfilePic from "../assets/icons/icons8-person-female-100.png";
@@ -10,8 +10,6 @@ import PopupPassword from "../Components/PopUpPassword";
 import PopupSignOut from "../Components/PopUpSignOut.js";
 import OrderHistory from "../Components/OrderHistory.js";
 import appointmentsData from "../data/appointments.json";
-import { useSelector, useDispatch } from "react-redux";
-//import { logout } from "../Store/authActions";
 
 function getUser() {
   let user = localStorage.getItem("user");
@@ -24,9 +22,7 @@ function getUser() {
 }
 
 function Account({ props }) {
-  const location = useLocation();
   const navigate = useNavigate();
-  const dispatch = useDispatch();
 
   const [user, setUser] = useState(getUser());
   console.log("active user: ", user);
@@ -142,7 +138,6 @@ function Account({ props }) {
   const openContact = () => setIsContactOpen(true);
   const closeContact = () => setIsContactOpen(false);
 
-  const openButton = () => setIsButtonOpen(true);
   const closeButton = () => setIsButtonOpen(false);
 
   const handleFilter = (category) => {
@@ -318,7 +313,7 @@ function Account({ props }) {
               </div>
             </div>
           ) : (
-            <p>Loading... user data is null.</p> // or any loading indicator if userData is still null
+            <p>Loading error... user data is null.</p> // or any loading indicator if userData is still null
           )}
         </>
       ) : (
