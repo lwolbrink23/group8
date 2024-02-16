@@ -30,11 +30,6 @@ function Account({ props }) {
 
   const [user, setUser] = useState(getUser());
   console.log("active user: ", user);
-  console.log("user.id: ", user.id);
-  console.log("user.name: ", user.name);
-  console.log("user.phoneNumber: ", user.phoneNumber);
-  console.log("user.email: ", user.email);
-  console.log("user.password: ", user.password);
 
   useEffect(() => {
     if (!user) {
