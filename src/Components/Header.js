@@ -92,7 +92,7 @@ function Header() {
           <img src={logoMobile} alt="logo" className="logo-mobile" />
         </Link>
         <div className="profile-container">
-          <Link to="/account">
+          <Link to="/account/:id">
             {" "}
             <img
               src={profileicon}
@@ -103,7 +103,7 @@ function Header() {
         </div>
         {/* Hamburger menu icon */}
         <div id="hamburger-menu" onClick={toggleSidebar}></div>
-        <Link to="/account">
+        <Link to="/account/:id">
           {" "}
           <img
             src={profileicon}
@@ -246,14 +246,18 @@ function Header() {
                   </CustomLink>
                 </li>
                 <li>
-                  <CustomLink to="/Account" onClick={toggleSidebar}>
+                  <CustomLink to="/account/:id" onClick={toggleSidebar}>
                     Account
                   </CustomLink>
                 </li>
               </ul>
             </li>
             <li>
-              <CustomLink to="/booknow" className="purp-button centerbutton" onClick={toggleSidebar}>
+              <CustomLink
+                to="/booknow"
+                className="purp-button centerbutton"
+                onClick={toggleSidebar}
+              >
                 {" "}
                 {/*I added centerbutton as a class for the book now button because the previous css was messing with the buttons on the entire site. -Lindsey*/}
                 Book Now
