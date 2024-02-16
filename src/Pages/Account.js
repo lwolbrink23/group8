@@ -30,44 +30,18 @@ function Account({ props }) {
 
   const [user, setUser] = useState(getUser());
   console.log("active user: ", user);
-  //const isLoggedIn = useSelector((state) => state.auth.isLoggedIn);
-  //const userId = useSelector((state) => state.auth.userId);
+  console.log("user.id: ", user.id);
+  console.log("user.name: ", user.name);
+  console.log("user.phoneNumber: ", user.phoneNumber);
+  console.log("user.email: ", user.email);
+  console.log("user.password: ", user.password);
+
   useEffect(() => {
     if (!user) {
       // Redirect to login page if not logged in
       navigate("/login");
     }
   }, [user, navigate]);
-  /*useEffect(() => {
-    if (!isLoggedIn) {
-      // Redirect to login page if not logged in
-      navigate("/login");
-    }
-  }, [isLoggedIn]); */
-
-  const [userData, setUserData] = useState(null); // Initialize as null
-
-  useEffect(() => {
-    //asynch fetch of login data before rendering
-    // Check if location.state is available
-    if (location.state) {
-      // If available, setUserData with the provided data
-      setUserData(location.state);
-    } else {
-      // If not available, setUserData with the dummy data
-      /*
-      setUserData({
-        name: "Jane Doe",
-        phoneNumber: "(123) 456-7890",
-        email: "email@email.com",
-        password: "password",
-      });  */
-      console.log("location.state is not available");
-    }
-  }, [location.state]); // useEffect dependency on location.state
-
-  //console.log("location.state:", location.state);
-  //console.log("userData:", userData);
 
   const [appointments, setAppointments] = useState([]);
   const [selectedAppointment, setSelectedAppointment] = useState(null);
@@ -114,8 +88,6 @@ function Account({ props }) {
               onClick={() => handleActionClick(appointment)}
             >
               {status === "scheduled" ? "View Details" : "View Details"}
-              {/*change it to this if we want it to say "Cancel Appointment" on main account page:
-              {status === "scheduled" ? "Cancel Appointment" : "View Details"}*/}
             </button>
           </div>
         </td>
@@ -194,7 +166,7 @@ function Account({ props }) {
     <div>
       {user ? (
         <>
-          {userData && userData.name ? ( // Check if userData is not null and has the 'name' property
+          {user && user.name ? ( // Check if user is not null and has the 'name' property
             <div>
               <div className="profileContainer">
                 <div className="profileTop">
@@ -205,13 +177,13 @@ function Account({ props }) {
                       className="profile-picture"
                     />
                   </div>
-                  <h2>{userData.name}</h2>
+                  <h2>{user.name}</h2>
                   <div className="buttonsContainer">
                     <button type="button" className="editButton">
                       Edit Profile
                     </button>
                     <button className="signoutButton" onClick={handleLogout}>
-                      Lign Out
+                      Sign Out
                     </button>
                     <PopupSignOut
                       isOpen={isButtonOpen}
@@ -230,7 +202,7 @@ function Account({ props }) {
                         alt="phone icon"
                         className="persIcons"
                       ></img>
-                      <p>{userData.phoneNumber}</p>
+                      <p>{user.phoneNumber}</p>
                     </div>
                     <div className="infoRow">
                       <img
@@ -238,7 +210,7 @@ function Account({ props }) {
                         alt="email icon"
                         className="persIcons"
                       ></img>
-                      <p>{userData.email}</p>
+                      <p>{user.email}</p>
                     </div>
                     <div className="infoRow">
                       <img
@@ -246,9 +218,7 @@ function Account({ props }) {
                         alt="password icon"
                         className="persIcons"
                       ></img>
-                      <p type="password">
-                        {"*".repeat(userData.password.length)}
-                      </p>{" "}
+                      <p type="password">{"*".repeat(user.password.length)}</p>{" "}
                       {/* Hide password */}
                       <button
                         type="button"
@@ -353,7 +323,7 @@ function Account({ props }) {
               </div>
             </div>
           ) : (
-            <p>Loading... userData is null.</p> // or any loading indicator if userData is still null
+            <p>Loading... user data is null.</p> // or any loading indicator if userData is still null
           )}
         </>
       ) : (
