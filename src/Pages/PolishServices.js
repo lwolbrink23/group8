@@ -24,6 +24,8 @@ function getUser() {
 const SelectServices = () => {
   const [selectedServices, setSelectedServices] = useState([]);
   const [currentCategory, setCurrentCategory] = useState("featured");
+  const [user, setUser] = useState(getUser());
+  console.log("active user: ", user);
 
   const categories = {
     featured: [

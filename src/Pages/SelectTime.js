@@ -18,6 +18,9 @@ function getUser() {
 }
 
 function SelectTime() {
+  const [user, setUser] = useState(getUser());
+  console.log("active user: ", user);
+
   const scrollToTop = () => {
     window.scrollTo(0, 0);
   };

@@ -24,6 +24,8 @@ function Checkout() {
   const [enableSubmit, setEnableSubmit] = useState(false);
   const [shopData, setShopData] = useState([]);
   const [cartData, setCartData] = useState([]);
+  const [user, setUser] = useState(getUser());
+  console.log("active user: ", user);
 
   useEffect(() => {
     const fetchData = async (endpoint, setDataFunction) => {

@@ -19,6 +19,8 @@ function ProviderProfile() {
   const { id } = useParams();
   // const suite = suiteData.find(item => item.id.toString() === id);
   const [suite, setSuite] = useState(null);
+  const [user, setUser] = useState(getUser());
+  console.log("active user: ", user);
 
   useEffect(() => {
     const fetchData = async (endpoint, setDataFunction) => {

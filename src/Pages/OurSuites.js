@@ -18,6 +18,8 @@ function getUser() {
 
 function OurSuites() {
   const [isContactOpen, setIsContactOpen] = useState(false);
+  const [user, setUser] = useState(getUser());
+  console.log("active user: ", user);
 
   const openContact = () => setIsContactOpen(true);
   const closeContact = () => setIsContactOpen(false);

@@ -18,6 +18,9 @@ function getUser() {
 }
 
 function OrderPlaced() {
+  const [user, setUser] = useState(getUser());
+  console.log("active user: ", user);
+
   const OrderedItems = () => (
     <ul className="dropdown-content">
       {tempData.map((item, i) => {

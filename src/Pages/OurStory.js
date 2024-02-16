@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import { Link, useLocation } from "react-router-dom";
 import "../App.css";
 import "../Styles/ourstory.css";
@@ -29,6 +29,9 @@ function ScrollToTop() {
 }
 
 function OurStory() {
+  const [user, setUser] = useState(getUser());
+  console.log("active user: ", user);
+
   const scrollToTop = () => {
     window.scrollTo(0, 0);
   };

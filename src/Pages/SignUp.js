@@ -15,6 +15,8 @@ function getUser() {
 
 function SignUp() {
   const navigate = useNavigate();
+  const [user, setUser] = useState(getUser());
+  console.log("active user: ", user);
   const [firstNameValue, setFirstNameValue] = useState("");
   const [lastNameValue, setLastNameValue] = useState("");
   const [emailValue, setEmailValue] = useState("");

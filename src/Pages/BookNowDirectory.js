@@ -21,6 +21,9 @@ function getUser() {
 
 function BookNowDirectory() {
   const [suiteData, setSuiteData] = useState([]);
+  const [user, setUser] = useState(getUser());
+  console.log("active user: ", user);
+
   useEffect(() => {
     const fetchData = async (endpoint, setDataFunction) => {
       try {

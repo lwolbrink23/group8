@@ -21,6 +21,8 @@ function getUser() {
 function BlogPostData() {
   const { category, id } = useParams();
   const [blogPost, setBlogPost] = useState(null);
+  const [user, setUser] = useState(getUser());
+  console.log("active user: ", user);
 
   useEffect(() => {
     const fetchBlogPost = async () => {

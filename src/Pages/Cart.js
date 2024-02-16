@@ -21,6 +21,9 @@ function Cart() {
   // BACKEND: load cart data from database here
   const [cartItems, setCartItems] = useState("");
   const [popupItem, setPopupItem] = useState("");
+  const [user, setUser] = useState(getUser());
+  console.log("active user: ", user);
+
   // keep a state for login here, useeffect to update it
   useEffect(() => {
     const fetchCartData = async (endpoint, setDataFunction) => {

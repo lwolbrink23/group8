@@ -24,6 +24,9 @@ function getUser() {
 }
 
 function ScrollToTop() {
+  const [user, setUser] = useState(getUser());
+  console.log("active user: ", user);
+
   const location = useLocation();
 
   useEffect(() => {

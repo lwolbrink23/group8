@@ -13,6 +13,9 @@ function getUser() {
 }
 
 function Faqs() {
+  const [user, setUser] = useState(getUser());
+  console.log("active user: ", user);
+
   const GeneralContent = () => (
     <div class="dropdown-content">
       <p>

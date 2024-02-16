@@ -14,6 +14,9 @@ function getUser() {
 }
 
 function OurServices() {
+  const [user, setUser] = useState(getUser());
+  console.log("active user: ", user);
+
   const HairContent = () => (
     <div class="dropdown-content">
       <strong>

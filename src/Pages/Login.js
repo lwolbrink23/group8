@@ -26,6 +26,8 @@ function Login() {
   const [emailError, setEmailError] = useState(false);
 
   const [isContactOpen, setIsContactOpen] = useState(false);
+  const [user, setUser] = useState(getUser());
+  console.log("active user: ", user);
 
   //redux state
   const { loading, error } = useSelector((state) => state.user);

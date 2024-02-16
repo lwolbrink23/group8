@@ -1,3 +1,4 @@
+import React, { useState } from "react";
 import "../Styles/OrderDetails.css";
 import tempData from "../data/cart.json";
 import tempShopData from "../data/shop.json";
@@ -14,6 +15,9 @@ function getUser() {
 }
 
 function OrderDetails() {
+  const [user, setUser] = useState(getUser());
+  console.log("active user: ", user);
+
   const OrderedItems = () => (
     <div className="details">
       {/* make the "status:_____" dynamic later */}
