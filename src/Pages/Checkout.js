@@ -295,7 +295,7 @@ function Checkout() {
   // main stuff
   return (
     <div id="checkout">
-      <Shopheader htitle={"Cart"} qty={countItems()} />
+      <Shopheader htitle={"Checkout"} qty={countItems()} />
       <main>
         <div id="shipping-info" className="cardbox">
           <h3>Shipping Information</h3>
@@ -491,7 +491,7 @@ function Checkout() {
           <div id="cart-items">
             <h3>Review Order</h3>
             <CustomDropdown
-              title={`Items Ordered (${cartData.length})`}
+              title={`Items Ordered (${countItems()})`}
               ContentComponent={OrderedItems}
               icon={"white-arrow.svg"}
             />
