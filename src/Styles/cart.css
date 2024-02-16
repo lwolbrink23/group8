@@ -49,6 +49,7 @@
 .item-interaction {
   display: flex;
   align-items: center;
+  height: 100%;
   gap: 20px;
 }
 .item-interaction img {

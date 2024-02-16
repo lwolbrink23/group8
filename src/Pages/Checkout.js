@@ -302,10 +302,41 @@ function Checkout() {
     return totalQty;
   };
 
+  // handle place order
+  const handlePlaceOrder = () => {
+    const cartWithData = cartData.map((item) => {
+      const product = shopData.find((product) => product.id === item.id);
+      return {
+        ...item,
+        price: product ? product.price : null,
+      };
+    });
+
+    const newOrder = {
+      id: "",
+      userID: "",
+      status: "Processing",
+      items: cartWithData,
+      shippingInfo: {
+        name: {
+          first: personalInfo.first,
+          last: personalInfo.last,
+        },
+        phone: personalInfo.phone,
+        addressInfo: {
+          street: addressInfo.street,
+          city: addressInfo.city,
+          state: addressInfo.state,
+          zip: addressInfo.zip,
+        },
+      },
+    };
+  };
+
   // main stuff
   return (
     <div id="checkout">
-      <Shopheader htitle={"Cart"} qty={countItems()} />
+      <Shopheader htitle={"Checkout"} qty={countItems()} />
       <main>
         <div id="shipping-info" className="cardbox">
           <h3>Shipping Information</h3>
@@ -501,7 +532,7 @@ function Checkout() {
           <div id="cart-items">
             <h3>Review Order</h3>
             <CustomDropdown
-              title={`Items Ordered (${cartData.length})`}
+              title={`Items Ordered (${countItems()})`}
               ContentComponent={OrderedItems}
               icon={"white-arrow.svg"}
             />
@@ -528,6 +559,7 @@ function Checkout() {
                 <button
                   disabled={!enableSubmit}
                   style={enableSubmit ? { opacity: "1" } : { opacity: "0.5" }}
+                  onClick={handlePlaceOrder}
                 >
                   Place Order
                 </button>
