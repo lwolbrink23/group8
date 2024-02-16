@@ -10,8 +10,8 @@ import PopupPassword from "../Components/PopUpPassword";
 import PopupSignOut from "../Components/PopUpSignOut.js";
 import OrderHistory from "../Components/OrderHistory.js";
 import appointmentsData from "../data/appointments.json";
-import { useSelector } from "react-redux";
-import { logout } from "../Store/authActions";
+import { useSelector, useDispatch } from "react-redux";
+//import { logout } from "../Store/authActions";
 
 function getUser() {
   let user = localStorage.getItem("user");
@@ -26,18 +26,26 @@ function getUser() {
 function Account({ props }) {
   const location = useLocation();
   const navigate = useNavigate();
-  const isLoggedIn = useSelector((state) => state.auth.isLoggedIn);
-  const userId = useSelector((state) => state.auth.userId);
+  const dispatch = useDispatch();
 
+  const [user, setUser] = useState(getUser());
+  console.log("active user: ", user);
+  //const isLoggedIn = useSelector((state) => state.auth.isLoggedIn);
+  //const userId = useSelector((state) => state.auth.userId);
   useEffect(() => {
+    if (!user) {
+      // Redirect to login page if not logged in
+      navigate("/login");
+    }
+  }, [user, navigate]);
+  /*useEffect(() => {
     if (!isLoggedIn) {
       // Redirect to login page if not logged in
       navigate("/login");
     }
-  }, [isLoggedIn]);
+  }, [isLoggedIn]); */
 
   const [userData, setUserData] = useState(null); // Initialize as null
-  const [user, setUser] = useState(getUser());
 
   useEffect(() => {
     //asynch fetch of login data before rendering
@@ -62,7 +70,6 @@ function Account({ props }) {
   //console.log("userData:", userData);
 
   const [appointments, setAppointments] = useState([]);
-  // Add a state to hold the selected appointment details
   const [selectedAppointment, setSelectedAppointment] = useState(null);
 
   useEffect(() => {
@@ -185,7 +192,7 @@ function Account({ props }) {
 
   return (
     <div>
-      {isLoggedIn ? (
+      {user ? (
         <>
           {userData && userData.name ? ( // Check if userData is not null and has the 'name' property
             <div>
