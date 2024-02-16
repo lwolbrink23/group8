@@ -54,9 +54,44 @@ function OurSuites() {
     setMessageValue("");
   };
 
-  const handleSendMessage = () => {
-    openContact();
-    resetForm();
+  const handleSendMessage = async () => {
+    try {
+      console.log("Form Data:", {
+        nameValue,
+        emailValue,
+        subjectValue,
+        messageValue,
+      });
+      // Create an object with the form data
+      const formData = {
+        name: nameValue,
+        email: emailValue,
+        subject: subjectValue,
+        message: messageValue,
+      };
+
+      // Make a POST request to your server endpoint
+      const response = await fetch("http://localhost:3003/rent-a-suite", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(formData),
+      });
+
+      // Check if the request was successful
+      if (response.ok) {
+        const responseData = await response.json();
+        console.log(responseData.message);
+        openContact();
+        resetForm();
+      } else {
+        const errorData = await response.json();
+        console.error("Error submitting suite rental request:", errorData);
+      }
+    } catch (error) {
+      console.error("Error submitting suite rental request:", error);
+    }
   };
 
   // change button text color when disabled
