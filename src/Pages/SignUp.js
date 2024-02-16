@@ -16,7 +16,6 @@ function getUser() {
 function SignUp() {
   const navigate = useNavigate();
   const [user, setUser] = useState(getUser());
-  console.log("active user: ", user);
   const [firstNameValue, setFirstNameValue] = useState("");
   const [lastNameValue, setLastNameValue] = useState("");
   const [emailValue, setEmailValue] = useState("");
@@ -26,6 +25,8 @@ function SignUp() {
   const [passwordsMatchError, setPasswordsMatchError] = useState(false);
   const [phoneError, setPhoneError] = useState(false);
   const [emailError, setEmailError] = useState(false);
+
+  console.log("active user: ", user);
 
   const handleFirstNameInputChange = (event) => {
     setFirstNameValue(event.target.value);
