@@ -107,19 +107,11 @@ function SignUp() {
           const newUser = responseData.user;
           // Now you should have user data in the newUser object
           console.log("new user:", newUser);
-          console.log("nnewUser._id: ", newUser._id);
+          console.log("newUser._id: ", newUser._id);
           // Reset form after successful sign-up
           resetForm();
-          // Redirect to the Account page with the user data
-          navigate(`/Account/${newUser._id}`, {
-            state: {
-              id: newUser._id,
-              name: newUser.name,
-              phoneNumber: newUser.phoneNumber,
-              email: newUser.email,
-              password: newUser.password,
-            },
-          });
+          // Need logic to log them in as the active user in order to navigate to their account page
+          navigate(`/Login`);
         } else {
           // Handle case where user data is not returned
           console.error("Error creating user: User data not found in response");
