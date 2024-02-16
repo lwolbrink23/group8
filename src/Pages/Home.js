@@ -98,15 +98,55 @@ function Home() {
     setNewsEmail("");
   };
 
-  const handleSubBlog = () => {
-    openBlog();
-    resetInput();
-  };
+const handleSubBlog = async () => {
+  try {
+    const response = await fetch("http://localhost:3003/subscribe", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({
+        email: blogEmail,
+        type: "blog",
+      }),
+    });
 
-  const handleSubNews = () => {
-    openNews();
-    resetInput();
-  };
+    if (response.ok) {
+      console.log("Successfully subscribed to blog");
+      openBlog();
+      resetInput();
+    } else {
+      console.error("Failed to subscribe to blog:", response.statusText);
+    }
+  } catch (error) {
+    console.error("Error subscribing to blog:", error);
+  }
+};
+
+const handleSubNews = async () => {
+  try {
+    const response = await fetch("http://localhost:3003/subscribe", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({
+        email: newsEmail,
+        type: "newsletter",
+      }),
+    });
+
+    if (response.ok) {
+      console.log("Successfully subscribed to newsletter");
+      openNews();
+      resetInput();
+    } else {
+      console.error("Failed to subscribe to newsletter:", response.statusText);
+    }
+  } catch (error) {
+    console.error("Error subscribing to newsletter:", error);
+  }
+};
 
   const buttonBlogStyle = {
     color: blogEmail ? "black" : "#646464", // Black when clickable, light grey when not

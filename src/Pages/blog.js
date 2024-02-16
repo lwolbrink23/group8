@@ -64,9 +64,29 @@ function Blog() {
     setInputValue("");
   };
 
-  const handleSubscribe = () => {
-    openBlog();
-    resetForm();
+ const handleSubscribe = async () => {
+    try {
+      const response = await fetch("http://localhost:3003/subscribe", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          email: inputValue,
+          type: "blog",
+        }),
+      });
+
+      if (response.ok) {
+        console.log("Successfully subscribed to blog");
+        openBlog();
+        resetForm();
+      } else {
+        console.error("Failed to subscribe to blog:", response.statusText);
+      }
+    } catch (error) {
+      console.error("Error subscribing to blog:", error);
+    }
   };
 
   // change button text color when disabled

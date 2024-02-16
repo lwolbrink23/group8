@@ -3,7 +3,7 @@ app.post("/subscribe", async (req, res) => {
   try {
     const { email, type } = req.body;
 
-    // Check if the email is already subscribed for the given type
+    // Check if the email is already subscribed
     const existingSubscription = await database
       .collection("Subscriptions")
       .findOne({ email, type });
@@ -20,7 +20,7 @@ app.post("/subscribe", async (req, res) => {
       type,
     };
 
-    // Insert the new subscription into the 'Subscriptions' collection
+    // Insert the new subscription
     await database.collection("Subscriptions").insertOne(newSubscription);
 
     res
