@@ -192,7 +192,11 @@ function Shop() {
       <ScrollToTop />
       {/* title */}
       {cartPopup && (
-        <CartPopup cartPopup={cartPopup} setCartPopup={setCartPopup} />
+        <CartPopup
+          cartPopup={cartPopup}
+          setCartPopup={setCartPopup}
+          qty={countItems()}
+        />
       )}
       <div id="shop-banner">
         <Shopheader htitle={"Cart"} qty={countItems()} />
