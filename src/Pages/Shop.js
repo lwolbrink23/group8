@@ -10,6 +10,16 @@ import Shopheader from "../Components/Shopheader";
 import { BACKEND_ADDRESS } from "../App";
 import Cookies from "js-cookie";
 
+function getUser() {
+  let user = localStorage.getItem("user");
+  if (user) {
+    user = JSON.parse(user);
+  } else {
+    user = null;
+  }
+  return user;
+}
+
 function ScrollToTop() {
   const location = useLocation();
 

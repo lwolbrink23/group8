@@ -7,6 +7,16 @@ import { Link } from "react-router-dom";
 import "../Styles/orderplaced.css";
 import Shopheader from "../Components/Shopheader";
 
+function getUser() {
+  let user = localStorage.getItem("user");
+  if (user) {
+    user = JSON.parse(user);
+  } else {
+    user = null;
+  }
+  return user;
+}
+
 function OrderPlaced() {
   const OrderedItems = () => (
     <ul className="dropdown-content">

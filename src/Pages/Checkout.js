@@ -9,6 +9,16 @@ import purpleCheckIcon from "../assets/icons/purple-check.svg";
 import { BACKEND_ADDRESS } from "../App";
 import Cookies from "js-cookie";
 
+function getUser() {
+  let user = localStorage.getItem("user");
+  if (user) {
+    user = JSON.parse(user);
+  } else {
+    user = null;
+  }
+  return user;
+}
+
 function Checkout() {
   // backend: check if user logged in. if logged in, get their info from the database and autofill in userAns
   const [enableSubmit, setEnableSubmit] = useState(false);

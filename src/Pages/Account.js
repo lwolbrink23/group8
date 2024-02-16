@@ -13,6 +13,16 @@ import appointmentsData from "../data/appointments.json";
 import { useSelector } from "react-redux";
 import { logout } from "../Store/authActions";
 
+function getUser() {
+  let user = localStorage.getItem("user");
+  if (user) {
+    user = JSON.parse(user);
+  } else {
+    user = null;
+  }
+  return user;
+}
+
 function Account({ props }) {
   const location = useLocation();
   const navigate = useNavigate();
@@ -27,6 +37,7 @@ function Account({ props }) {
   }, [isLoggedIn]);
 
   const [userData, setUserData] = useState(null); // Initialize as null
+  const [user, setUser] = useState(getUser());
 
   useEffect(() => {
     //asynch fetch of login data before rendering
@@ -59,6 +70,12 @@ function Account({ props }) {
     // Temporary fetch appointments from the JSON file:
     setAppointments(appointmentsData);
   }, []);
+
+  const handleLogout = () => {
+    setIsButtonOpen(true);
+    localStorage.removeItem("user");
+    setUser(null);
+  };
 
   // Function to render appointments
   const renderAppointments = (status) => {
@@ -186,12 +203,8 @@ function Account({ props }) {
                     <button type="button" className="editButton">
                       Edit Profile
                     </button>
-                    <button
-                      type="button"
-                      className="signoutButton"
-                      onClick={openButton}
-                    >
-                      Sign Out
+                    <button className="signoutButton" onClick={handleLogout}>
+                      Lign Out
                     </button>
                     <PopupSignOut
                       isOpen={isButtonOpen}

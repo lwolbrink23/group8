@@ -6,6 +6,16 @@ import "../Styles/oursuites.css";
 import oursuitesimg1 from "../assets/images/oursuitesimg1.png";
 import oursuitesimg2 from "../assets/images/oursuitesimg2.png";
 
+function getUser() {
+  let user = localStorage.getItem("user");
+  if (user) {
+    user = JSON.parse(user);
+  } else {
+    user = null;
+  }
+  return user;
+}
+
 function OurSuites() {
   const [isContactOpen, setIsContactOpen] = useState(false);
 

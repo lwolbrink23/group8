@@ -3,6 +3,16 @@ import "../App.css";
 import "../Styles/SignUp.css";
 import { Link, useNavigate } from "react-router-dom";
 
+function getUser() {
+  let user = localStorage.getItem("user");
+  if (user) {
+    user = JSON.parse(user);
+  } else {
+    user = null;
+  }
+  return user;
+}
+
 function SignUp() {
   const navigate = useNavigate();
   const [firstNameValue, setFirstNameValue] = useState("");

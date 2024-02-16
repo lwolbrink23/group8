@@ -3,6 +3,16 @@ import tempData from "../data/cart.json";
 import tempShopData from "../data/shop.json";
 import { Link } from "react-router-dom";
 
+function getUser() {
+  let user = localStorage.getItem("user");
+  if (user) {
+    user = JSON.parse(user);
+  } else {
+    user = null;
+  }
+  return user;
+}
+
 function OrderDetails() {
   const OrderedItems = () => (
     <div className="details">

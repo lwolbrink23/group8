@@ -28,6 +28,16 @@ import gall6 from "../assets/images/gall6.png";
 import gall7 from "../assets/images/gall7.png";
 import fivestars from "../assets/images/5stars.png";
 
+function getUser() {
+  let user = localStorage.getItem("user");
+  if (user) {
+    user = JSON.parse(user);
+  } else {
+    user = null;
+  }
+  return user;
+}
+
 function Home() {
   const mobilecarouselImages = [
     promoBottle,
@@ -70,6 +80,9 @@ function Home() {
 
   const [blogEmail, setBlogEmail] = useState("");
   const [newsEmail, setNewsEmail] = useState("");
+  const [user, setUser] = useState(getUser());
+
+  console.log("active user: ", user);
 
   // Functions to handle input changes
   const handleBlogEmailChange = (e) => {
@@ -102,6 +115,7 @@ function Home() {
   const buttonNewsStyle = {
     color: newsEmail ? "black" : "#646464", // Black when clickable, light grey when not
   };
+
   return (
     <div className="App">
       <div className="carousel-container-mobile">
