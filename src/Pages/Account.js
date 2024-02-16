@@ -36,12 +36,13 @@ function Account({ props }) {
       setUserData(location.state);
     } else {
       // If not available, setUserData with the dummy data
+      /*
       setUserData({
         name: "Jane Doe",
         phoneNumber: "(123) 456-7890",
         email: "email@email.com",
         password: "password",
-      });
+      });  */
       console.log("location.state is not available");
     }
   }, [location.state]); // useEffect dependency on location.state
