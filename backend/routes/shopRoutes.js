@@ -38,14 +38,15 @@ const shopRoutes = (app, database) => {
       });
     }
   });
+  // .find({ id: req.params.id })
   app.get("/order_placed/:id", async (req, res) => {
     try {
       const collection = database.collection("User_Orders");
       const result = await collection
         .find({ _id: new ObjectId(req.params.id) })
-        // .find({ id: req.params.id })
         .toArray();
       res.send(JSON.stringify(result));
+      console.log(JSON.stringify(result));
     } catch (error) {
       console.error("Error fetching data:", error);
       res.status(500).json({ error: "Internal Server Error" });
