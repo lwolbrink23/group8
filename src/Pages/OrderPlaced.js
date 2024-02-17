@@ -2,10 +2,11 @@ import checkICON from "../assets/icons/icons8-check-100.png";
 import tempData from "../data/cart.json";
 import tempShopData from "../data/shop.json";
 import arrowIcon from "../assets/icons/white-arrow.svg";
-import React, { useState } from "react";
-import { Link } from "react-router-dom";
+import React, { useState, useEffect } from "react";
+import { Link, useParams } from "react-router-dom";
 import "../Styles/orderplaced.css";
 import Shopheader from "../Components/Shopheader";
+import { BACKEND_ADDRESS } from "../App";
 
 function getUser() {
   let user = localStorage.getItem("user");
@@ -18,9 +19,25 @@ function getUser() {
 }
 
 function OrderPlaced() {
+  const { id } = useParams();
   const [user, setUser] = useState(getUser());
   console.log("active user: ", user);
 
+  const [cartData, setCartData] = useState([]);
+  useEffect(() => {
+    const fetchData = async (endpoint, setDataFunction) => {
+      try {
+        // Fetch data from the backend
+        const response = await fetch(`${BACKEND_ADDRESS}${endpoint}`);
+        const jsonData = await response.json();
+        setDataFunction(jsonData);
+        console.log(jsonData);
+      } catch (error) {
+        console.error("Error fetching data:", error.message);
+      }
+    };
+    fetchData(`/order_placed/${id}`, setCartData);
+  }, [id]);
   const OrderedItems = () => (
     <ul className="dropdown-content">
       {tempData.map((item, i) => {
