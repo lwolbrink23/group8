@@ -1,5 +1,4 @@
 import checkICON from "../assets/icons/icons8-check-100.png";
-import tempData from "../data/cart.json";
 import tempShopData from "../data/shop.json";
 import arrowIcon from "../assets/icons/white-arrow.svg";
 import React, { useState, useEffect } from "react";
@@ -21,26 +20,28 @@ function getUser() {
 function OrderPlaced() {
   const { id } = useParams();
   const [user, setUser] = useState(getUser());
+  const [cartData, setCartData] = useState([]);
+  const [shopData, setShopData] = useState([]);
   console.log("active user: ", user);
 
-  const [cartData, setCartData] = useState([]);
   useEffect(() => {
     const fetchData = async (endpoint, setDataFunction) => {
       try {
         // Fetch data from the backend
         const response = await fetch(`${BACKEND_ADDRESS}${endpoint}`);
         const jsonData = await response.json();
-        setDataFunction(jsonData);
         console.log(jsonData);
+        setDataFunction(jsonData.items);
       } catch (error) {
         console.error("Error fetching data:", error.message);
       }
     };
     fetchData(`/order_placed/${id}`, setCartData);
+    // fetchData("/shop", setShopData);
   }, [id]);
   const OrderedItems = () => (
     <ul className="dropdown-content">
-      {tempData.map((item, i) => {
+      {cartData.map((item, i) => {
         let itemName = "";
         let itemPic = "";
 
@@ -91,7 +92,7 @@ function OrderPlaced() {
     return (
       <div className="dropdown">
         <div className="dropdown-btn" onClick={toggleVisibility}>
-          <h3>Items ordered ({tempData.length})</h3>
+          <h3>Items ordered ({cartData.length})</h3>
           <img src={arrowIcon} alt="Arrow" style={arrowIconStyle} />
         </div>
         {dropdownVisible && <OrderedItems />}
