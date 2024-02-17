@@ -321,10 +321,7 @@ function Checkout() {
       status: "Processing",
       items: cartWithData,
       shippingInfo: {
-        name: {
-          first: personalInfo.first,
-          last: personalInfo.last,
-        },
+        name: `${personalInfo.first} ${personalInfo.last}`,
         phone: personalInfo.phone,
         addressInfo: {
           street: addressInfo.street,
@@ -350,11 +347,9 @@ function Checkout() {
       })
       .then((data) => {
         console.log("Order inserted successfully:", data);
-        // Do something after successful insertion
       })
       .catch((error) => {
         console.error("Error inserting order:", error);
-        // Handle errors
       });
   };
 
