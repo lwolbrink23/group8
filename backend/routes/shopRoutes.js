@@ -22,6 +22,20 @@ const shopRoutes = (app, database) => {
     }
   });
 
+  app.post("/checkout", async (req, res) => {
+    try {
+      const newOrder = req.body;
+      const result = await database
+        .collection("User_Orders")
+        .insertOne(newOrder);
+      res.status(201).json({ success: true, orderId: result.insertedId });
+    } catch (error) {
+      console.error("Error inserting order:", error);
+      res.status(500).json({
+        success: false,
+        error: "Failed to insert order into the database",
+      });
+    }
+  });
 };
 export default shopRoutes;
-

@@ -305,7 +305,8 @@ function Checkout() {
   };
 
   // handle place order
-  const handlePlaceOrder = () => {
+  const handlePlaceOrder = async () => {
+    // put a price in each item in cartdata
     const cartWithData = cartData.map((item) => {
       const product = shopData.find((product) => product.id === item.id);
       return {
@@ -333,6 +334,28 @@ function Checkout() {
         },
       },
     };
+
+    fetch(`${BACKEND_ADDRESS}/checkout`, {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(newOrder),
+    })
+      .then((response) => {
+        if (!response.ok) {
+          throw new Error("Failed to insert order into the database");
+        }
+        return response.json();
+      })
+      .then((data) => {
+        console.log("Order inserted successfully:", data);
+        // Do something after successful insertion
+      })
+      .catch((error) => {
+        console.error("Error inserting order:", error);
+        // Handle errors
+      });
   };
 
   // main stuff
