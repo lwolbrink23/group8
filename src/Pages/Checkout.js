@@ -1,6 +1,6 @@
 import "../Styles/checkout.css";
 import Shopheader from "../Components/Shopheader";
-import { Link, Navigate, useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import { useEffect, useState } from "react";
 import { isValidUSState } from "../data/validStates";
 import CustomDropdown from "../Components/CustomDropdown";
@@ -307,8 +307,6 @@ function Checkout() {
   };
 
   // handle place order
-
-  const [orderId, setOrderId] = useState(null);
   const handlePlaceOrder = async () => {
     // put a price in each item in cartdata
     const cartWithData = cartData.map((item) => {
@@ -325,7 +323,7 @@ function Checkout() {
       status: "Processing",
       items: cartWithData,
       shippingInfo: {
-        name: `${personalInfo.first} ${personalInfo.last}`,
+        name: `${personalInfo.firstName} ${personalInfo.lastName}`,
         phone: personalInfo.phone,
         addressInfo: {
           street: addressInfo.street,
@@ -351,7 +349,6 @@ function Checkout() {
       })
       .then((data) => {
         console.log("Order inserted successfully:", data);
-        setOrderId(data.id);
         navigate(`/order_placed/${data.orderId}`);
       })
       .catch((error) => {
@@ -581,7 +578,6 @@ function Checkout() {
               </div>
               {/* submit button */}
               {/* BACKEND: make function to save order into database */}
-              {/* <Link to={`/order_placed`}> */}
               <button
                 disabled={!enableSubmit}
                 style={enableSubmit ? { opacity: "1" } : { opacity: "0.5" }}
@@ -589,7 +585,6 @@ function Checkout() {
               >
                 Place Order
               </button>
-              {/* </Link> */}
             </div>
           </div>
         </div>
