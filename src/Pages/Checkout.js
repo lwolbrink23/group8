@@ -350,6 +350,7 @@ function Checkout() {
       .then((data) => {
         console.log("Order inserted successfully:", data);
         navigate(`/order_placed/${data.orderId}`);
+        Cookies.remove("cart");
       })
       .catch((error) => {
         console.error("Error inserting order:", error);
