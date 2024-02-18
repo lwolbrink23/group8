@@ -88,6 +88,7 @@ function SignUp() {
       phoneNumber: phoneValue,
       email: emailValue,
       password: pwValue,
+      shoppingCart: [],
     };
 
     try {
