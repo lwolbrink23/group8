@@ -76,7 +76,7 @@ input[type="text"]:focus {
 }
 /* review items */
 #checkout .dropdown-content {
-  height: 400px;
+  max-height: 400px;
   overflow-y: scroll;
   margin: 0 0 70px 0;
 }

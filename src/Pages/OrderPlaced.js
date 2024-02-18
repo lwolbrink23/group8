@@ -25,7 +25,7 @@ function OrderPlaced() {
   console.log("active user: ", user);
 
   useEffect(() => {
-    const fetchData = async (endpoint, setDataFunction) => {
+    const fetchCartData = async (endpoint, setDataFunction) => {
       try {
         // Fetch data from the backend
         const response = await fetch(`${BACKEND_ADDRESS}${endpoint}`);
@@ -36,8 +36,19 @@ function OrderPlaced() {
         console.error("Error fetching data:", error.message);
       }
     };
-    fetchData(`/order_placed/${id}`, setCartData);
-    // fetchData("/shop", setShopData);
+    const fetchShopData = async (endpoint, setDataFunction) => {
+      try {
+        // Fetch data from the backend
+        const response = await fetch(`${BACKEND_ADDRESS}${endpoint}`);
+        const jsonData = await response.json();
+        console.log(jsonData);
+        setDataFunction(jsonData);
+      } catch (error) {
+        console.error("Error fetching data:", error.message);
+      }
+    };
+    fetchCartData(`/order_placed/${id}`, setCartData);
+    fetchShopData("/shop", setShopData);
   }, [id]);
   const OrderedItems = () => (
     <ul className="dropdown-content">
@@ -45,7 +56,7 @@ function OrderPlaced() {
         let itemName = "";
         let itemPic = "";
 
-        for (const shopItem of tempShopData) {
+        for (const shopItem of shopData) {
           if (item.id === shopItem.id) {
             itemName = shopItem.name;
             itemPic = shopItem.file;
@@ -92,17 +103,27 @@ function OrderPlaced() {
     return (
       <div className="dropdown">
         <div className="dropdown-btn" onClick={toggleVisibility}>
-          <h3>Items ordered ({cartData.length})</h3>
+          <h3>Items ordered ({countItems()})</h3>
           <img src={arrowIcon} alt="Arrow" style={arrowIconStyle} />
         </div>
         {dropdownVisible && <OrderedItems />}
       </div>
     );
   };
+
+  const countItems = () => {
+    let totalQty = 0;
+
+    cartData.forEach((item) => {
+      totalQty += item.qty;
+    });
+
+    return totalQty;
+  };
   return (
     <div id="order-placed">
       {/* title */}
-      <Shopheader htitle={"Checkout"} disableBack={true} />
+      <Shopheader htitle={"Checkout"} disableBack={true} qty={0} />
       {/* blurb */}
       <main>
         <article className="center-text">
