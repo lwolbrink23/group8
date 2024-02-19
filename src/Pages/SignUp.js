@@ -3,8 +3,19 @@ import "../App.css";
 import "../Styles/SignUp.css";
 import { Link, useNavigate } from "react-router-dom";
 
+function getUser() {
+  let user = localStorage.getItem("user");
+  if (user) {
+    user = JSON.parse(user);
+  } else {
+    user = null;
+  }
+  return user;
+}
+
 function SignUp() {
   const navigate = useNavigate();
+  const [user, setUser] = useState(getUser());
   const [firstNameValue, setFirstNameValue] = useState("");
   const [lastNameValue, setLastNameValue] = useState("");
   const [emailValue, setEmailValue] = useState("");
@@ -15,6 +26,8 @@ function SignUp() {
   const [phoneError, setPhoneError] = useState(false);
   const [emailError, setEmailError] = useState(false);
 
+  console.log("active user: ", user);
+
   const handleFirstNameInputChange = (event) => {
     setFirstNameValue(event.target.value);
   };
@@ -24,20 +37,35 @@ function SignUp() {
   };
 
   const handlePhoneInputChange = (event) => {
-    const phoneNumber = event.target.value;
-    setPhoneValue(phoneNumber);
+    const digits = event.target.value.replace(/\D/g, '');
+    let formattedPhoneNumber = '';
 
-    // Validate phone number format
-    const isValidPhone = /^\(\d{3}\) \d{3}-\d{4}$/.test(phoneNumber);
+    // Format the digits according to the pattern
+    if (digits.length <= 3) {
+      formattedPhoneNumber = `(${digits}`;
+    } else if (digits.length > 3 && digits.length <= 6) {
+      formattedPhoneNumber = `(${digits.slice(0, 3)}) ${digits.slice(3)}`;
+    } else if (digits.length > 6) {
+      formattedPhoneNumber = `(${digits.slice(0, 3)}) ${digits.slice(3, 6)}-${digits.slice(6, 10)}`;
+    }
+
+    setPhoneValue(formattedPhoneNumber);
+  };
+
+  // Validate phone number format
+  const handlePhoneInputBlur = () => {
+    const isValidPhone = /^\(\d{3}\) \d{3}-\d{4}$/.test(phoneValue);
     setPhoneError(!isValidPhone);
   };
 
+  // Email input change handler
   const handleEmailInputChange = (event) => {
-    const email = event.target.value;
-    setEmailValue(email);
+    setEmailValue(event.target.value);
+  };
 
-    // Validate email format
-    const isValidEmail = /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
+  // Email input blur handler for validation
+  const handleEmailInputBlur = () => {
+    const isValidEmail = /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(emailValue);
     setEmailError(!isValidEmail);
   };
 
@@ -48,11 +76,12 @@ function SignUp() {
   };
 
   const handleConfPwInputChange = (event) => {
-    const confirmPassword = event.target.value;
-    setConfPwValue(confirmPassword);
+    setConfPwValue(event.target.value);
+  };
 
-    // Check if passwords match
-    setPasswordsMatchError(confirmPassword !== pwValue);
+  // New confirm password input blur handler for validation
+  const handleConfPwInputBlur = () => {
+    setPasswordsMatchError(confPwValue !== pwValue);
   };
   const resetForm = () => {
     setFirstNameValue("");
@@ -75,6 +104,7 @@ function SignUp() {
       phoneNumber: phoneValue,
       email: emailValue,
       password: pwValue,
+      shoppingCart: [],
     };
 
     try {
@@ -95,19 +125,11 @@ function SignUp() {
           const newUser = responseData.user;
           // Now you should have user data in the newUser object
           console.log("new user:", newUser);
-          console.log("nnewUser._id: ", newUser._id);
+          console.log("newUser._id: ", newUser._id);
           // Reset form after successful sign-up
           resetForm();
-          // Redirect to the Account page with the user data
-          navigate(`/Account/${newUser._id}`, {
-            state: {
-              id: newUser._id,
-              name: newUser.name,
-              phoneNumber: newUser.phoneNumber,
-              email: newUser.email,
-              password: newUser.password,
-            },
-          });
+          // Need logic to log them in as the active user in order to navigate to their account page
+          navigate(`/Login`);
         } else {
           // Handle case where user data is not returned
           console.error("Error creating user: User data not found in response");
@@ -126,14 +148,14 @@ function SignUp() {
   const buttonStyle = {
     color:
       firstNameValue &&
-      lastNameValue &&
-      emailValue &&
-      phoneValue &&
-      pwValue &&
-      confPwValue &&
-      !passwordsMatchError &&
-      !phoneError &&
-      !emailError
+        lastNameValue &&
+        emailValue &&
+        phoneValue &&
+        pwValue &&
+        confPwValue &&
+        !passwordsMatchError &&
+        !phoneError &&
+        !emailError
         ? "black"
         : "#646464",
   };
@@ -175,6 +197,7 @@ function SignUp() {
                 placeholder=" (xxx) xxx-xxxx*"
                 value={phoneValue}
                 onChange={handlePhoneInputChange}
+                onBlur={handlePhoneInputBlur}
               />
               {phoneError && (
                 <p style={{ color: "red" }}>
@@ -192,6 +215,7 @@ function SignUp() {
                 placeholder=" Email Address*"
                 value={emailValue}
                 onChange={handleEmailInputChange}
+                onBlur={handleEmailInputBlur}
               />
               {emailError && (
                 <p style={{ color: "red" }}>
@@ -202,7 +226,7 @@ function SignUp() {
           </div>
           <label htmlFor="password">Password</label>
           <input
-            type="password" // Change type to password for secure input
+            type="password" // secure input
             className="section1"
             placeholder=" Password*"
             id="password"
@@ -211,12 +235,13 @@ function SignUp() {
           />
           <label htmlFor="confirm">Confirm Password</label>
           <input
-            type="password" // Change type to password for secure input
+            type="password" // secure input
             className="section1"
             placeholder=" Confirm Password*"
             id="confirm"
             value={confPwValue}
             onChange={handleConfPwInputChange}
+            onBlur={handleConfPwInputBlur}
           />
           {passwordsMatchError && (
             <p style={{ color: "red" }}>

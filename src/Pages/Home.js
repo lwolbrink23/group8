@@ -1,4 +1,4 @@
-import "../Styles/home.css"; // Import your styles
+import "../Styles/home.css";
 import { Link } from "react-router-dom";
 import React, { useState } from "react";
 import PopUpBlog from "../Components/PopUpBlog.js";
@@ -27,6 +27,16 @@ import gall4 from "../assets/images/gall4.png";
 import gall6 from "../assets/images/gall6.png";
 import gall7 from "../assets/images/gall7.png";
 import fivestars from "../assets/images/5stars.png";
+
+function getUser() {
+  let user = localStorage.getItem("user");
+  if (user) {
+    user = JSON.parse(user);
+  } else {
+    user = null;
+  }
+  return user;
+}
 
 function Home() {
   const mobilecarouselImages = [
@@ -70,6 +80,9 @@ function Home() {
 
   const [blogEmail, setBlogEmail] = useState("");
   const [newsEmail, setNewsEmail] = useState("");
+  const [user, setUser] = useState(getUser());
+
+  console.log("active user: ", user);
 
   // Functions to handle input changes
   const handleBlogEmailChange = (e) => {
@@ -85,15 +98,55 @@ function Home() {
     setNewsEmail("");
   };
 
-  const handleSubBlog = () => {
-    openBlog();
-    resetInput();
-  };
+const handleSubBlog = async () => {
+  try {
+    const response = await fetch("http://localhost:3003/subscribe", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({
+        email: blogEmail,
+        type: "blog",
+      }),
+    });
 
-  const handleSubNews = () => {
-    openNews();
-    resetInput();
-  };
+    if (response.ok) {
+      console.log("Successfully subscribed to blog");
+      openBlog();
+      resetInput();
+    } else {
+      console.error("Failed to subscribe to blog:", response.statusText);
+    }
+  } catch (error) {
+    console.error("Error subscribing to blog:", error);
+  }
+};
+
+const handleSubNews = async () => {
+  try {
+    const response = await fetch("http://localhost:3003/subscribe", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({
+        email: newsEmail,
+        type: "newsletter",
+      }),
+    });
+
+    if (response.ok) {
+      console.log("Successfully subscribed to newsletter");
+      openNews();
+      resetInput();
+    } else {
+      console.error("Failed to subscribe to newsletter:", response.statusText);
+    }
+  } catch (error) {
+    console.error("Error subscribing to newsletter:", error);
+  }
+};
 
   const buttonBlogStyle = {
     color: blogEmail ? "black" : "#646464", // Black when clickable, light grey when not
@@ -102,6 +155,7 @@ function Home() {
   const buttonNewsStyle = {
     color: newsEmail ? "black" : "#646464", // Black when clickable, light grey when not
   };
+
   return (
     <div className="App">
       <div className="carousel-container-mobile">

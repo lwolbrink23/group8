@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { Link, useLocation, useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import "../App.css";
 import "../Styles/account.css";
 import defaultProfilePic from "../assets/icons/icons8-person-female-100.png";
@@ -10,48 +10,34 @@ import PopupPassword from "../Components/PopUpPassword";
 import PopupSignOut from "../Components/PopUpSignOut.js";
 import OrderHistory from "../Components/OrderHistory.js";
 import appointmentsData from "../data/appointments.json";
-import { useSelector } from "react-redux";
-import { logout } from "../Store/authActions";
+
+function getUser() {
+  let user = localStorage.getItem("user");
+  if (user) {
+    user = JSON.parse(user);
+  } else {
+    user = null;
+  }
+  return user;
+}
 
 function Account({ props }) {
-  const location = useLocation();
   const navigate = useNavigate();
-  const isLoggedIn = useSelector((state) => state.auth.isLoggedIn);
-  const userId = useSelector((state) => state.auth.userId);
+
+  const [user, setUser] = useState(getUser());
+  console.log("active user: ", user);
+  const userId = user.id;
 
   useEffect(() => {
-    if (!isLoggedIn) {
+    if (!user) {
       // Redirect to login page if not logged in
       navigate("/login");
-    }
-  }, [isLoggedIn]);
-
-  const [userData, setUserData] = useState(null); // Initialize as null
-
-  useEffect(() => {
-    //asynch fetch of login data before rendering
-    // Check if location.state is available
-    if (location.state) {
-      // If available, setUserData with the provided data
-      setUserData(location.state);
     } else {
-      // If not available, setUserData with the dummy data
-      /*
-      setUserData({
-        name: "Jane Doe",
-        phoneNumber: "(123) 456-7890",
-        email: "email@email.com",
-        password: "password",
-      });  */
-      console.log("location.state is not available");
+      navigate(`/account/${userId}`); // always displays user id in URL
     }
-  }, [location.state]); // useEffect dependency on location.state
-
-  //console.log("location.state:", location.state);
-  //console.log("userData:", userData);
+  }, [user, userId, navigate]);
 
   const [appointments, setAppointments] = useState([]);
-  // Add a state to hold the selected appointment details
   const [selectedAppointment, setSelectedAppointment] = useState(null);
 
   useEffect(() => {
@@ -59,6 +45,12 @@ function Account({ props }) {
     // Temporary fetch appointments from the JSON file:
     setAppointments(appointmentsData);
   }, []);
+
+  const handleLogout = () => {
+    setIsButtonOpen(true);
+    localStorage.removeItem("user");
+    setUser(null);
+  };
 
   // Function to render appointments
   const renderAppointments = (status) => {
@@ -90,8 +82,6 @@ function Account({ props }) {
               onClick={() => handleActionClick(appointment)}
             >
               {status === "scheduled" ? "View Details" : "View Details"}
-              {/*change it to this if we want it to say "Cancel Appointment" on main account page:
-              {status === "scheduled" ? "Cancel Appointment" : "View Details"}*/}
             </button>
           </div>
         </td>
@@ -151,7 +141,6 @@ function Account({ props }) {
   const openContact = () => setIsContactOpen(true);
   const closeContact = () => setIsContactOpen(false);
 
-  const openButton = () => setIsButtonOpen(true);
   const closeButton = () => setIsButtonOpen(false);
 
   const handleFilter = (category) => {
@@ -168,9 +157,9 @@ function Account({ props }) {
 
   return (
     <div>
-      {isLoggedIn ? (
+      {user ? (
         <>
-          {userData && userData.name ? ( // Check if userData is not null and has the 'name' property
+          {user && user.name ? ( // Check if user is not null and has the 'name' property
             <div>
               <div className="profileContainer">
                 <div className="profileTop">
@@ -181,16 +170,12 @@ function Account({ props }) {
                       className="profile-picture"
                     />
                   </div>
-                  <h2>{userData.name}</h2>
+                  <h2>{user.name}</h2>
                   <div className="buttonsContainer">
                     <button type="button" className="editButton">
                       Edit Profile
                     </button>
-                    <button
-                      type="button"
-                      className="signoutButton"
-                      onClick={openButton}
-                    >
+                    <button className="signoutButton" onClick={handleLogout}>
                       Sign Out
                     </button>
                     <PopupSignOut
@@ -210,7 +195,7 @@ function Account({ props }) {
                         alt="phone icon"
                         className="persIcons"
                       ></img>
-                      <p>{userData.phoneNumber}</p>
+                      <p>{user.phoneNumber}</p>
                     </div>
                     <div className="infoRow">
                       <img
@@ -218,7 +203,7 @@ function Account({ props }) {
                         alt="email icon"
                         className="persIcons"
                       ></img>
-                      <p>{userData.email}</p>
+                      <p>{user.email}</p>
                     </div>
                     <div className="infoRow">
                       <img
@@ -226,9 +211,7 @@ function Account({ props }) {
                         alt="password icon"
                         className="persIcons"
                       ></img>
-                      <p type="password">
-                        {"*".repeat(userData.password.length)}
-                      </p>{" "}
+                      <p type="password">{"*".repeat(user.password.length)}</p>{" "}
                       {/* Hide password */}
                       <button
                         type="button"
@@ -333,7 +316,7 @@ function Account({ props }) {
               </div>
             </div>
           ) : (
-            <p>Loading... userData is null.</p> // or any loading indicator if userData is still null
+            <p>Loading error... user data is null.</p> // or any loading indicator if userData is still null
           )}
         </>
       ) : (

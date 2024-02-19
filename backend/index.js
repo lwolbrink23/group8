@@ -10,6 +10,8 @@ import userRoutes from "./routes/userRoutes.js";
 import providerRoutes from "./routes/providerRoutes.js";
 import blogRoutes from "./routes/blogRoutes.js";
 import loginRoutes from "./routes/loginRoutes.js";
+import subscriptionRoutes from "./routes/subcriptionRoutes.js";
+import rentSuiteRoutes from "./rentSuiteRoutes.js";
 
 
 // these should be in a .env file so github wont scream in your emails that the database link has been leaked
@@ -40,4 +42,6 @@ shopRoutes(app, database);
 providerRoutes(app, database);
 blogRoutes(app, database);
 userRoutes(app, client, database);
-loginRoutes(app, database)
+loginRoutes(app, database);
+subscriptionRoutes(app, database);
+rentSuiteRoutes(app,database)

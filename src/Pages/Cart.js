@@ -7,10 +7,23 @@ import { Link } from "react-router-dom";
 import { useState, useEffect } from "react";
 import Cookies from "js-cookie";
 
+function getUser() {
+  let user = localStorage.getItem("user");
+  if (user) {
+    user = JSON.parse(user);
+  } else {
+    user = null;
+  }
+  return user;
+}
+
 function Cart() {
   // BACKEND: load cart data from database here
   const [cartItems, setCartItems] = useState("");
   const [popupItem, setPopupItem] = useState("");
+  const [user, setUser] = useState(getUser());
+  console.log("active user: ", user);
+
   // keep a state for login here, useeffect to update it
   useEffect(() => {
     const fetchCartData = async (endpoint, setDataFunction) => {

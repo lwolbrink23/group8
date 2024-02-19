@@ -10,6 +10,16 @@ import Shopheader from "../Components/Shopheader";
 import { BACKEND_ADDRESS } from "../App";
 import Cookies from "js-cookie";
 
+function getUser() {
+  let user = localStorage.getItem("user");
+  if (user) {
+    user = JSON.parse(user);
+  } else {
+    user = null;
+  }
+  return user;
+}
+
 function ScrollToTop() {
   const location = useLocation();
 
@@ -23,6 +33,9 @@ function ScrollToTop() {
 }
 
 function Shop() {
+  const [user, setUser] = useState(getUser());
+  console.log("active user: ", user);
+
   const scrollToTop = () => {
     window.scrollTo(0, 0);
   };
@@ -192,7 +205,11 @@ function Shop() {
       <ScrollToTop />
       {/* title */}
       {cartPopup && (
-        <CartPopup cartPopup={cartPopup} setCartPopup={setCartPopup} />
+        <CartPopup
+          cartPopup={cartPopup}
+          setCartPopup={setCartPopup}
+          qty={countItems()}
+        />
       )}
       <div id="shop-banner">
         <Shopheader htitle={"Cart"} qty={countItems()} />

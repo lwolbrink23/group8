@@ -32,7 +32,7 @@ const userRoutes = (app, client, database) => {
   // Signup route
   app.post("/signup", async (req, res) => {
     try {
-      const { name, phoneNumber, email, password } = req.body;
+      const { name, phoneNumber, email, password, shoppingCart } = req.body;
 
       // Check if user already exists with the given email
       const existingUser = await database
@@ -50,6 +50,7 @@ const userRoutes = (app, client, database) => {
         phoneNumber,
         email,
         password,
+        shoppingCart,
       };
 
       // Insert the new user into the 'User_Accounts' collection

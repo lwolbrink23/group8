@@ -10,8 +10,20 @@ import fb from "../assets/icons/facebook.png";
 import insta from "../assets/icons/instagram.png";
 import tiktok from "../assets/icons/tiktok.png";
 
+function getUser() {
+  let user = localStorage.getItem("user");
+  if (user) {
+    user = JSON.parse(user);
+  } else {
+    user = null;
+  }
+  return user;
+}
+
 function ContactUs() {
   const [isContactOpen, setIsContactOpen] = useState(false);
+  const [user, setUser] = useState(getUser());
+  console.log("active user: ", user);
 
   const openContact = () => setIsContactOpen(true);
   const closeContact = () => setIsContactOpen(false);

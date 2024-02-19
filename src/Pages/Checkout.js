@@ -1,6 +1,6 @@
 import "../Styles/checkout.css";
 import Shopheader from "../Components/Shopheader";
-import { Link } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import { useEffect, useState } from "react";
 import { isValidUSState } from "../data/validStates";
 import CustomDropdown from "../Components/CustomDropdown";
@@ -9,11 +9,25 @@ import purpleCheckIcon from "../assets/icons/purple-check.svg";
 import { BACKEND_ADDRESS } from "../App";
 import Cookies from "js-cookie";
 
+function getUser() {
+  let user = localStorage.getItem("user");
+  if (user) {
+    user = JSON.parse(user);
+  } else {
+    user = null;
+  }
+  return user;
+}
+
 function Checkout() {
   // backend: check if user logged in. if logged in, get their info from the database and autofill in userAns
   const [enableSubmit, setEnableSubmit] = useState(false);
   const [shopData, setShopData] = useState([]);
   const [cartData, setCartData] = useState([]);
+  const [user, setUser] = useState(getUser());
+
+  const navigate = useNavigate();
+  console.log("active user: ", user);
 
   useEffect(() => {
     const fetchData = async (endpoint, setDataFunction) => {
@@ -292,10 +306,61 @@ function Checkout() {
     return totalQty;
   };
 
+  // handle place order
+  const handlePlaceOrder = async () => {
+    // put a price in each item in cartdata
+    const cartWithData = cartData.map((item) => {
+      const product = shopData.find((product) => product.id === item.id);
+      return {
+        ...item,
+        price: product ? product.price : null,
+      };
+    });
+
+    const newOrder = {
+      id: "",
+      userID: "",
+      status: "Processing",
+      items: cartWithData,
+      shippingInfo: {
+        name: `${personalInfo.firstName} ${personalInfo.lastName}`,
+        phone: personalInfo.phone,
+        addressInfo: {
+          street: addressInfo.street,
+          city: addressInfo.city,
+          state: addressInfo.state,
+          zip: addressInfo.zip,
+        },
+      },
+    };
+
+    fetch(`${BACKEND_ADDRESS}/checkout`, {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(newOrder),
+    })
+      .then((response) => {
+        if (!response.ok) {
+          throw new Error("Failed to insert order into the database");
+        }
+        return response.json();
+      })
+      .then((data) => {
+        console.log("Order inserted successfully:", data);
+        navigate(`/order_placed/${data.orderId}`);
+        Cookies.remove("cart");
+      })
+      .catch((error) => {
+        console.error("Error inserting order:", error);
+      });
+  };
+
   // main stuff
   return (
     <div id="checkout">
-      <Shopheader htitle={"Cart"} qty={countItems()} />
+      <Shopheader htitle={"Checkout"} qty={countItems()} />
       <main>
         <div id="shipping-info" className="cardbox">
           <h3>Shipping Information</h3>
@@ -491,7 +556,7 @@ function Checkout() {
           <div id="cart-items">
             <h3>Review Order</h3>
             <CustomDropdown
-              title={`Items Ordered (${cartData.length})`}
+              title={`Items Ordered (${countItems()})`}
               ContentComponent={OrderedItems}
               icon={"white-arrow.svg"}
             />
@@ -514,14 +579,13 @@ function Checkout() {
               </div>
               {/* submit button */}
               {/* BACKEND: make function to save order into database */}
-              <Link to={`/order_placed`}>
-                <button
-                  disabled={!enableSubmit}
-                  style={enableSubmit ? { opacity: "1" } : { opacity: "0.5" }}
-                >
-                  Place Order
-                </button>
-              </Link>
+              <button
+                disabled={!enableSubmit}
+                style={enableSubmit ? { opacity: "1" } : { opacity: "0.5" }}
+                onClick={handlePlaceOrder}
+              >
+                Place Order
+              </button>
             </div>
           </div>
         </div>

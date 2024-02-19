@@ -9,6 +9,16 @@ import allAges from "../assets/images/allages.jpeg";
 import nailBlog from "../assets/images/nails-blog.webp";
 import { BACKEND_ADDRESS } from "../App";
 
+function getUser() {
+  let user = localStorage.getItem("user");
+  if (user) {
+    user = JSON.parse(user);
+  } else {
+    user = null;
+  }
+  return user;
+}
+
 function ScrollToTop() {
   const location = useLocation();
 
@@ -22,6 +32,9 @@ function ScrollToTop() {
 }
 
 function Blog() {
+  const [user, setUser] = useState(getUser());
+  console.log("active user: ", user);
+
   const scrollToTop = () => {
     window.scrollTo(0, 0);
   };
@@ -51,9 +64,29 @@ function Blog() {
     setInputValue("");
   };
 
-  const handleSubscribe = () => {
-    openBlog();
-    resetForm();
+ const handleSubscribe = async () => {
+    try {
+      const response = await fetch("http://localhost:3003/subscribe", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          email: inputValue,
+          type: "blog",
+        }),
+      });
+
+      if (response.ok) {
+        console.log("Successfully subscribed to blog");
+        openBlog();
+        resetForm();
+      } else {
+        console.error("Failed to subscribe to blog:", response.statusText);
+      }
+    } catch (error) {
+      console.error("Error subscribing to blog:", error);
+    }
   };
 
   // change button text color when disabled
@@ -146,7 +179,7 @@ function Blog() {
             {post.category === "Makeup" && (
               <img src={allAges} alt={`${post.title} - ${post.category}`} />
             )}
-             {post.category === "Nails" && (
+            {post.category === "Nails" && (
               <img src={nailBlog} alt={`${post.title} - ${post.category}`} />
             )}
             <h3>

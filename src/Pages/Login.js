@@ -3,8 +3,18 @@ import "../App.css";
 import "../Styles/Login.css";
 import { Link, useNavigate } from "react-router-dom";
 import PopUpPassword from "../Components/PopUpPassword";
-import { useDispatch } from "react-redux";
-import { login } from "../Store/authActions"; // Update the path
+import { useDispatch, useSelector } from "react-redux";
+import { loginUser } from "../Store/userSlice";
+
+function getUser() {
+  let user = localStorage.getItem("user");
+  if (user) {
+    user = JSON.parse(user);
+  } else {
+    user = null;
+  }
+  return user;
+}
 
 function Login() {
   const navigate = useNavigate();
@@ -15,6 +25,8 @@ function Login() {
   const [emailError, setEmailError] = useState(false);
 
   const [isContactOpen, setIsContactOpen] = useState(false);
+  const [user, setUser] = useState(getUser());
+  console.log("active user: ", user);
 
   const openContact = () => setIsContactOpen(true);
   const closeContact = () => setIsContactOpen(false);
@@ -25,8 +37,6 @@ function Login() {
 
     // Validate the email address
     const isValid = isValidEmail(value);
-    // Set an error state or handle the validation result as needed
-    // For example:
     setEmailError(!isValid);
   };
 
@@ -35,7 +45,6 @@ function Login() {
   };
 
   const isValidEmail = (email) => {
-    // Basic check for a valid email address
     const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
     return emailRegex.test(email);
   };
@@ -59,22 +68,24 @@ const handleLogin = async () => {
       if (response.ok) {
         const responseData = await response.json();
         if (responseData.user) {
-          const loginUser = responseData.user;
-          console.log("Logged in user:", loginUser);
+          const existingUser = responseData.user;
+          console.log("Logged in user:", existingUser);
 
-          // Reset form after successful login
-          resetForm();
-          const userID = loginUser._id;
-          dispatch(login(userID));
-          // Redirect to the Account page with the user data
-          navigate(`/Account/${loginUser._id}`, {
-            state: {
-              id: loginUser._id,
-              name: loginUser.name,
-              phoneNumber: loginUser.phoneNumber,
-              email: loginUser.email,
-              password: loginUser.password,
-            },
+          const userID = existingUser._id;
+
+          let userCredential = {
+            id: existingUser._id,
+            name: existingUser.name,
+            phoneNumber: existingUser.phoneNumber,
+            email: existingUser.email,
+            password: existingUser.password,
+          };
+
+          dispatch(loginUser(userCredential)).then((result) => {
+            if (result.payload) {
+              resetForm();
+              navigate(`/Account/${userID}`);
+            }
           });
         } else {
           console.error("Error logging in: User data not found in response");
@@ -122,7 +133,6 @@ const handleLogin = async () => {
             <label htmlFor="check">Remember Me</label>
           </div>
           <Link
-            to="/Account"
             style={{
               display: "flex",
               justifyContent: "center",
@@ -137,7 +147,7 @@ const handleLogin = async () => {
               disabled={!emailValue || !pwValue}
               onClick={handleLogin}
             >
-              LOG IN
+              Log In
             </button>
           </Link>
         </form>

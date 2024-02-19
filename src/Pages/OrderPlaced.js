@@ -1,20 +1,62 @@
 import checkICON from "../assets/icons/icons8-check-100.png";
-import tempData from "../data/cart.json";
 import tempShopData from "../data/shop.json";
 import arrowIcon from "../assets/icons/white-arrow.svg";
-import React, { useState } from "react";
-import { Link } from "react-router-dom";
+import React, { useState, useEffect } from "react";
+import { Link, useParams } from "react-router-dom";
 import "../Styles/orderplaced.css";
 import Shopheader from "../Components/Shopheader";
+import { BACKEND_ADDRESS } from "../App";
+
+function getUser() {
+  let user = localStorage.getItem("user");
+  if (user) {
+    user = JSON.parse(user);
+  } else {
+    user = null;
+  }
+  return user;
+}
 
 function OrderPlaced() {
+  const { id } = useParams();
+  const [user, setUser] = useState(getUser());
+  const [cartData, setCartData] = useState([]);
+  const [shopData, setShopData] = useState([]);
+  console.log("active user: ", user);
+
+  useEffect(() => {
+    const fetchCartData = async (endpoint, setDataFunction) => {
+      try {
+        // Fetch data from the backend
+        const response = await fetch(`${BACKEND_ADDRESS}${endpoint}`);
+        const jsonData = await response.json();
+        console.log(jsonData);
+        setDataFunction(jsonData.items);
+      } catch (error) {
+        console.error("Error fetching data:", error.message);
+      }
+    };
+    const fetchShopData = async (endpoint, setDataFunction) => {
+      try {
+        // Fetch data from the backend
+        const response = await fetch(`${BACKEND_ADDRESS}${endpoint}`);
+        const jsonData = await response.json();
+        console.log(jsonData);
+        setDataFunction(jsonData);
+      } catch (error) {
+        console.error("Error fetching data:", error.message);
+      }
+    };
+    fetchCartData(`/order_placed/${id}`, setCartData);
+    fetchShopData("/shop", setShopData);
+  }, [id]);
   const OrderedItems = () => (
     <ul className="dropdown-content">
-      {tempData.map((item, i) => {
+      {cartData.map((item, i) => {
         let itemName = "";
         let itemPic = "";
 
-        for (const shopItem of tempShopData) {
+        for (const shopItem of shopData) {
           if (item.id === shopItem.id) {
             itemName = shopItem.name;
             itemPic = shopItem.file;
@@ -61,17 +103,27 @@ function OrderPlaced() {
     return (
       <div className="dropdown">
         <div className="dropdown-btn" onClick={toggleVisibility}>
-          <h3>Items ordered ({tempData.length})</h3>
+          <h3>Items ordered ({countItems()})</h3>
           <img src={arrowIcon} alt="Arrow" style={arrowIconStyle} />
         </div>
         {dropdownVisible && <OrderedItems />}
       </div>
     );
   };
+
+  const countItems = () => {
+    let totalQty = 0;
+
+    cartData.forEach((item) => {
+      totalQty += item.qty;
+    });
+
+    return totalQty;
+  };
   return (
     <div id="order-placed">
       {/* title */}
-      <Shopheader htitle={"Checkout"} disableBack={true} />
+      <Shopheader htitle={"Checkout"} disableBack={true} qty={0} />
       {/* blurb */}
       <main>
         <article className="center-text">

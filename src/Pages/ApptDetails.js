@@ -1,13 +1,27 @@
-import React from "react";
+import React, { useState } from "react";
 import { Link, useLocation, useNavigate } from "react-router-dom";
 import "../App.css";
 import "../Styles/apptdetails.css";
 import SimplyChicHair from "../assets/images/SimplyChicHair.png";
 import calendaricon from "../assets/icons/calendaricon.png";
 
+function getUser() {
+  let user = localStorage.getItem("user");
+  if (user) {
+    user = JSON.parse(user);
+  } else {
+    user = null;
+  }
+  return user;
+}
+
 function ApptDetails({ props }) {
   const location = useLocation();
   const navigate = useNavigate();
+
+  const [user, setUser] = useState(getUser());
+  console.log("active user: ", user);
+
   console.log(location);
 
   if (!location.state) {

@@ -23,9 +23,29 @@ function Footer() {
     setInputValue("");
   };
 
-  const handleSub = () => {
-    openPopup();
-    resetForm();
+ const handleSub = async () => {
+    try {
+      const response = await fetch("http://localhost:3003/subscribe", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          email: inputValue,
+          type: "newsletter",
+        }),
+      });
+
+      if (response.ok) {
+        console.log("Successfully subscribed to newsletter");
+        openPopup();
+        resetForm();
+      } else {
+        console.error("Failed to subscribe to newsletter:", response.statusText);
+      }
+    } catch (error) {
+      console.error("Error subscribing to newsletter:", error);
+    }
   };
 
   // change button text color when disabled

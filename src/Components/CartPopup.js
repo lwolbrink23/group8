@@ -1,6 +1,6 @@
 import greenCheckICON from "../assets/icons/icons8-checkmark-green.png";
 import purpleXICON from "../assets/icons/icons8-x-purple.png";
-const CartPopup = ({ cartPopup, setCartPopup }) => (
+const CartPopup = ({ cartPopup, setCartPopup, qty }) => (
   <div id="cart-popup">
     <div>
       <img src={greenCheckICON}></img>
@@ -24,7 +24,9 @@ const CartPopup = ({ cartPopup, setCartPopup }) => (
         <p>${cartPopup.price}</p>
         <p>Qty: {cartPopup.qty}</p>
         <hr />
-        <p>You have 4 item(s) in your cart</p>
+        <p>
+          You have {qty} item{qty > 1 && "s"} in your cart
+        </p>
       </div>
     </div>
   </div>
