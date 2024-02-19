@@ -45,20 +45,16 @@ function Login() {
     setPwValue("");
   };
 
-  const handleLogin = async () => {
-    try {
-      const userData = {
-        email: emailValue,
-        password: pwValue,
-      };
-
-      const response = await fetch("http://localhost:3003/login", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify(userData),
-      });
+const handleLogin = async () => {
+  try {
+    // Make a POST request to the backend login route
+    const response = await fetch("http://localhost:3003/login", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({ email: emailValue, password: pwValue }),
+    });
 
       if (response.ok) {
         const responseData = await response.json();
