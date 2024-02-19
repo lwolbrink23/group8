@@ -7,6 +7,7 @@ import CustomDropdown from "../Components/CustomDropdown";
 import purplePlusIcon from "../assets/icons/purple-plus.svg";
 import purpleCheckIcon from "../assets/icons/purple-check.svg";
 import { BACKEND_ADDRESS } from "../App";
+import { fetchData } from "./Shop";
 import Cookies from "js-cookie";
 
 function getUser() {
@@ -30,16 +31,6 @@ function Checkout() {
   console.log("active user: ", user);
 
   useEffect(() => {
-    const fetchData = async (endpoint, setDataFunction) => {
-      try {
-        // Fetch data from the backend
-        const response = await fetch(`${BACKEND_ADDRESS}${endpoint}`);
-        const jsonData = await response.json();
-        setDataFunction(jsonData);
-      } catch (error) {
-        console.error("Error fetching data:", error.message);
-      }
-    };
     // TODO: fetch cart data from database here
     // TODO: fetch data from cookie if user not logged in
     fetchData("/shop", setShopData);

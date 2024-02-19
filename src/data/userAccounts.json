@@ -18,4 +18,16 @@
     }
   ],
   "ProfilePicture": ""
-}]
+},
+
+
+{"name":"Quynh Vo","phoneNumber":"(546) 546-5465","email":"mimitrucquynh@gmail.com","password":"m1","ShoppingCart": [
+    {
+      "id": "iID0",
+      "qty": 2
+    },
+    {
+      "id": "iID2",
+      "qty": 1
+    }
+  ]}]

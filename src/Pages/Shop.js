@@ -32,6 +32,18 @@ function ScrollToTop() {
   return null;
 }
 
+export const fetchData = async (endpoint, setDataFunction) => {
+  try {
+    // Fetch data from the backend
+    const response = await fetch(`${BACKEND_ADDRESS}${endpoint}`);
+    const jsonData = await response.json();
+    setDataFunction(jsonData);
+  } catch (error) {
+    console.error("Error fetching data:", error.message);
+  }
+};
+
+// MAIN SHOP FUNCTION
 function Shop() {
   const [user, setUser] = useState(getUser());
   console.log("active user: ", user);
@@ -43,19 +55,19 @@ function Shop() {
   const [dynamicItems, setDynamicItems] = useState([]);
   const [shopData, setShopData] = useState([]);
   const [cartPopup, setCartPopup] = useState();
+  const [cartItems, setCartItems] = useState([]);
 
   useEffect(() => {
-    const fetchData = async (endpoint, setDataFunction) => {
-      try {
-        // Fetch data from the backend
-        const response = await fetch(`${BACKEND_ADDRESS}${endpoint}`);
-        const jsonData = await response.json();
-        setDataFunction(jsonData);
-      } catch (error) {
-        console.error("Error fetching data:", error.message);
+    // TODO: fetch cart data from database here
+    const fetchCartData = async () => {
+      if (user) {
+        fetchData(`/user/${user.id}/cart`, setCartItems);
+      } else if (Cookies.get("cart")) {
+        return Cookies.get("cart");
       }
     };
-    // TODO: fetch cart data from database here
+    fetchCartData();
+
     // TODO: fetch data from cookie if user not logged in
     // if user is logged in and there are stuff in their cookie, merge both
     fetchData("/shop", setShopData);
@@ -85,7 +97,13 @@ function Shop() {
     );
   };
 
-  const handleAddToCart = (itemId, itemName, itemPrice, itemQty, itemImg) => {
+  const handleAddToCart = async (
+    itemId,
+    itemName,
+    itemPrice,
+    itemQty,
+    itemImg
+  ) => {
     const updatedItems = dynamicItems.filter((item) => item.id !== itemId);
     const cartPopInfo = {
       name: itemName,
@@ -97,24 +115,26 @@ function Shop() {
       id: itemId,
       qty: itemQty,
     };
-
-    // add item to cookie
-    let cartCookie = Cookies.get("cart");
-    let newCartCookie = cartCookie ? JSON.parse(cartCookie) : [];
-
-    const existingItemIndex = newCartCookie.findIndex(
-      (item) => item.id === newItem.id
-    );
-    if (existingItemIndex !== -1) {
-      newCartCookie[existingItemIndex].qty += newItem.qty;
+    if (user) {
     } else {
-      newCartCookie.push(newItem);
-    }
+      // add item to cookie
+      let cartCookie = Cookies.get("cart");
+      let newCartCookie = cartCookie ? JSON.parse(cartCookie) : [];
 
-    Cookies.set("cart", JSON.stringify(newCartCookie), {
-      expires: 60,
-      path: "/",
-    });
+      const existingItemIndex = newCartCookie.findIndex(
+        (item) => item.id === newItem.id
+      );
+      if (existingItemIndex !== -1) {
+        newCartCookie[existingItemIndex].qty += newItem.qty;
+      } else {
+        newCartCookie.push(newItem);
+      }
+
+      Cookies.set("cart", JSON.stringify(newCartCookie), {
+        expires: 60,
+        path: "/",
+      });
+    }
 
     // update frontend
     setCartPopup(cartPopInfo);

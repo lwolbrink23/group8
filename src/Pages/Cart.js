@@ -6,6 +6,8 @@ import Shopheader from "../Components/Shopheader";
 import { Link } from "react-router-dom";
 import { useState, useEffect } from "react";
 import Cookies from "js-cookie";
+import { fetchData } from "./Shop";
+import { BACKEND_ADDRESS } from "../App";
 
 function getUser() {
   let user = localStorage.getItem("user");
@@ -20,29 +22,21 @@ function getUser() {
 function Cart() {
   // BACKEND: load cart data from database here
   const [cartItems, setCartItems] = useState("");
+  const [shopData, setShopData] = useState(tempShopData);
   const [popupItem, setPopupItem] = useState("");
   const [user, setUser] = useState(getUser());
   console.log("active user: ", user);
 
   // keep a state for login here, useeffect to update it
   useEffect(() => {
-    const fetchCartData = async (endpoint, setDataFunction) => {
-      try {
-        // Fetch data from the backend
-        const response = await fetch(`/ADDRESS HERE`);
-        const jsonData = await response.json();
-        setDataFunction(jsonData);
-      } catch (error) {
-        console.error("Error fetching data:", error.message);
-      }
-    };
     // TODO: fetch cart data from database here
     // TODO: fetch data from cookie
     // if user is logged in and there are stuff in their cookie, merge both
-    // fetchCartData("/shop", setCartItems);
     if (Cookies.get("cart")) {
       setCartItems(JSON.parse(Cookies.get("cart")));
     }
+
+    fetchData("/shop", setShopData);
   }, []);
 
   const updateCartBackend = (newCartItems) => {
@@ -95,11 +89,11 @@ function Cart() {
   const CartItems = () => (
     <div className="cart-container">
       {cartItems.map((item, i) => {
-        let itemName;
-        let itemPic;
-        let itemPrice;
+        let itemName = "";
+        let itemPic = "";
+        let itemPrice = 0;
 
-        for (const shopItem of tempShopData) {
+        for (const shopItem of shopData) {
           if (item.id === shopItem.id) {
             itemName = shopItem.name;
             itemPic = shopItem.file;
@@ -146,7 +140,7 @@ function Cart() {
   const calcTotal = () => {
     let t = 0;
     for (const cartItem of cartItems) {
-      for (const shopItem of tempShopData) {
+      for (const shopItem of shopData) {
         if (cartItem.id === shopItem.id) {
           t += shopItem.price * cartItem.qty;
         }

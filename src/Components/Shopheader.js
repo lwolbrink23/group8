@@ -8,28 +8,6 @@ import { useState, useEffect } from "react";
 
 // backend: load cart data and count (?)
 function Shopheader(props) {
-  const [cartItems, setCartItems] = useState("");
-
-  useEffect(() => {
-    const fetchCartData = async (endpoint, setDataFunction) => {
-      try {
-        // Fetch data from the backend
-        const response = await fetch(`/ADDRESS HERE`);
-        const jsonData = await response.json();
-        setDataFunction(jsonData);
-      } catch (error) {
-        console.error("Error fetching data:", error.message);
-      }
-    };
-    // TODO: fetch cart data from database here
-    // TODO: fetch data from cookie
-    // if user is logged in and there are stuff in their cookie, merge both
-    // fetchCartData("/shop", setCartItems);
-    if (Cookies.get("cart")) {
-      setCartItems(JSON.parse(Cookies.get("cart")));
-    }
-  }, []);
-
   // main JSX
   return (
     <div className="title-container trans-white">
