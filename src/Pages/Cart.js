@@ -29,15 +29,27 @@ function Cart() {
 
   // keep a state for login here, useeffect to update it
   useEffect(() => {
+    const efetchData = async (endpoint, setDataFunction) => {
+      try {
+        // Fetch data from the backend
+        const response = await fetch(`${BACKEND_ADDRESS}${endpoint}`);
+        const jsonData = await response.json();
+        console.log(jsonData);
+        setShopData(jsonData);
+      } catch (error) {
+        console.error("Error fetching data:", error.message);
+      }
+    };
+    efetchData("/shop", setShopData);
+    console.log(`shopdata: ${shopData}`);
+
     // TODO: fetch cart data from database here
     // TODO: fetch data from cookie
     // if user is logged in and there are stuff in their cookie, merge both
     if (Cookies.get("cart")) {
       setCartItems(JSON.parse(Cookies.get("cart")));
     }
-
-    fetchData("/shop", setShopData);
-  }, []);
+  });
 
   const updateCartBackend = (newCartItems) => {
     // TODO: save cart here, to database if logged in, to cookie if not
