@@ -11,7 +11,8 @@ app.post("/login", async (req, res) => {
 
         // If user not found or password does not match
         if (!user || user.password !== password) {
-            return res.status(401).json({ error: "Invalid email or password" });
+            //return res.status(401).json({ error: "Invalid email or password" });
+            return console.log("User doesn't exist")
         }
 
         // If email and password match, login successful
