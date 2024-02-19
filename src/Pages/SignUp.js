@@ -37,20 +37,35 @@ function SignUp() {
   };
 
   const handlePhoneInputChange = (event) => {
-    const phoneNumber = event.target.value;
-    setPhoneValue(phoneNumber);
+    const digits = event.target.value.replace(/\D/g, '');
+    let formattedPhoneNumber = '';
 
-    // Validate phone number format
-    const isValidPhone = /^\(\d{3}\) \d{3}-\d{4}$/.test(phoneNumber);
+    // Format the digits according to the pattern
+    if (digits.length <= 3) {
+      formattedPhoneNumber = `(${digits}`;
+    } else if (digits.length > 3 && digits.length <= 6) {
+      formattedPhoneNumber = `(${digits.slice(0, 3)}) ${digits.slice(3)}`;
+    } else if (digits.length > 6) {
+      formattedPhoneNumber = `(${digits.slice(0, 3)}) ${digits.slice(3, 6)}-${digits.slice(6, 10)}`;
+    }
+
+    setPhoneValue(formattedPhoneNumber);
+  };
+
+  // Validate phone number format
+  const handlePhoneInputBlur = () => {
+    const isValidPhone = /^\(\d{3}\) \d{3}-\d{4}$/.test(phoneValue);
     setPhoneError(!isValidPhone);
   };
 
+  // Email input change handler
   const handleEmailInputChange = (event) => {
-    const email = event.target.value;
-    setEmailValue(email);
+    setEmailValue(event.target.value);
+  };
 
-    // Validate email format
-    const isValidEmail = /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
+  // Email input blur handler for validation
+  const handleEmailInputBlur = () => {
+    const isValidEmail = /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(emailValue);
     setEmailError(!isValidEmail);
   };
 
@@ -61,11 +76,12 @@ function SignUp() {
   };
 
   const handleConfPwInputChange = (event) => {
-    const confirmPassword = event.target.value;
-    setConfPwValue(confirmPassword);
+    setConfPwValue(event.target.value);
+  };
 
-    // Check if passwords match
-    setPasswordsMatchError(confirmPassword !== pwValue);
+  // New confirm password input blur handler for validation
+  const handleConfPwInputBlur = () => {
+    setPasswordsMatchError(confPwValue !== pwValue);
   };
   const resetForm = () => {
     setFirstNameValue("");
@@ -132,14 +148,14 @@ function SignUp() {
   const buttonStyle = {
     color:
       firstNameValue &&
-      lastNameValue &&
-      emailValue &&
-      phoneValue &&
-      pwValue &&
-      confPwValue &&
-      !passwordsMatchError &&
-      !phoneError &&
-      !emailError
+        lastNameValue &&
+        emailValue &&
+        phoneValue &&
+        pwValue &&
+        confPwValue &&
+        !passwordsMatchError &&
+        !phoneError &&
+        !emailError
         ? "black"
         : "#646464",
   };
@@ -181,6 +197,7 @@ function SignUp() {
                 placeholder=" (xxx) xxx-xxxx*"
                 value={phoneValue}
                 onChange={handlePhoneInputChange}
+                onBlur={handlePhoneInputBlur}
               />
               {phoneError && (
                 <p style={{ color: "red" }}>
@@ -198,6 +215,7 @@ function SignUp() {
                 placeholder=" Email Address*"
                 value={emailValue}
                 onChange={handleEmailInputChange}
+                onBlur={handleEmailInputBlur}
               />
               {emailError && (
                 <p style={{ color: "red" }}>
@@ -223,6 +241,7 @@ function SignUp() {
             id="confirm"
             value={confPwValue}
             onChange={handleConfPwInputChange}
+            onBlur={handleConfPwInputBlur}
           />
           {passwordsMatchError && (
             <p style={{ color: "red" }}>
