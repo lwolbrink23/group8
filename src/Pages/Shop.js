@@ -57,11 +57,29 @@ function Shop() {
   const [cartPopup, setCartPopup] = useState();
   const [cartItems, setCartItems] = useState([]);
 
-  // get cart data
+  const updateUserCart = async (userID, cartData) => {
+    try {
+      const response = await fetch(`/user/${userID}/cart`, {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({ cart: cartData }),
+      });
+
+      if (response.ok) {
+        const data = await response.json();
+        console.log(data); // Log success message or handle response data
+      } else {
+        console.error("Failed to update user cart:", response.statusText);
+      }
+    } catch (error) {
+      console.error("Error updating user cart:", error);
+    }
+  };
   // Function to merge two carts
   const mergeCarts = (cart1, cart2) => {
     const mergedCart = [...cart2];
-
     cart1.forEach((item1) => {
       const index = mergedCart.findIndex((item2) => item2.id === item1.id);
       if (index !== -1) {
@@ -76,12 +94,18 @@ function Shop() {
     return mergedCart;
   };
   const fetchCartData = async () => {
-    let cartCookie = JSON.parse(Cookies.get("cart"));
+    let cartCookie = "";
+    if (Cookies.get("cart")) {
+      cartCookie = JSON.parse(Cookies.get("cart"));
+    }
     if (user && cartCookie) {
       const response = await fetch(`${BACKEND_ADDRESS}/user/${user.id}/cart`);
       const jsonData = await response.json();
       const mergedCartItems = mergeCarts(cartCookie, jsonData);
       setCartItems(mergedCartItems);
+      console.log(mergedCartItems);
+      updateUserCart(user.id, mergedCartItems);
+      // Cookies.remove('cart')
     } else if (user) {
       fetchData(`/user/${user.id}/cart`, setCartItems);
     } else if (cartCookie) {
@@ -91,11 +115,7 @@ function Shop() {
   useEffect(() => {
     fetchData("/shop", setShopData);
     fetchCartData();
-  });
-
-  // useEffect(() => {
-  //   fetchCartData();
-  // }, [cartItems]);
+  }, []);
 
   const handleIncrement = (itemId) => {
     setDynamicItems((prevItems) => {

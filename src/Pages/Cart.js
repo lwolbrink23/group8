@@ -34,7 +34,7 @@ function Cart() {
         // Fetch data from the backend
         const response = await fetch(`${BACKEND_ADDRESS}${endpoint}`);
         const jsonData = await response.json();
-        console.log(jsonData);
+        // console.log(jsonData);
         setShopData(jsonData);
       } catch (error) {
         console.error("Error fetching data:", error.message);
