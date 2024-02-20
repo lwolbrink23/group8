@@ -58,8 +58,9 @@ function Shop() {
   const [cartItems, setCartItems] = useState([]);
 
   const updateUserCart = async (userID, cartData) => {
+    console.log(userID);
     try {
-      const response = await fetch(`/user/${userID}/cart`, {
+      const response = await fetch(`${BACKEND_ADDRESS}/user/${user.id}/cart`, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
