@@ -38,6 +38,7 @@ export const fetchData = async (endpoint, setDataFunction) => {
     const response = await fetch(`${BACKEND_ADDRESS}${endpoint}`);
     const jsonData = await response.json();
     setDataFunction(jsonData);
+    // console.log(jsonData);
   } catch (error) {
     console.error("Error fetching data:", error.message);
   }
@@ -57,21 +58,43 @@ function Shop() {
   const [cartPopup, setCartPopup] = useState();
   const [cartItems, setCartItems] = useState([]);
 
-  useEffect(() => {
-    // TODO: fetch cart data from database here
-    const fetchCartData = async () => {
-      if (user) {
-        fetchData(`/user/${user.id}/cart`, setCartItems);
-      } else if (Cookies.get("cart")) {
-        return Cookies.get("cart");
-      }
-    };
-    fetchCartData();
+  // get cart data
+  // Function to merge two carts
+  const mergeCarts = (cart1, cart2) => {
+    const mergedCart = [...cart2];
 
-    // TODO: fetch data from cookie if user not logged in
-    // if user is logged in and there are stuff in their cookie, merge both
+    cart1.forEach((item1) => {
+      const index = mergedCart.findIndex((item2) => item2.id === item1.id);
+      if (index !== -1) {
+        // Item exists in user's cart, update quantity
+        mergedCart[index].qty += item1.qty;
+      } else {
+        // Item doesn't exist in user's cart, add it
+        mergedCart.push(item1);
+      }
+    });
+
+    return mergedCart;
+  };
+  const fetchCartData = () => {
+    let cartCookie = JSON.parse(Cookies.get("cart"));
+    if (user && cartCookie) {
+      const mergedCartItems = mergeCarts(cartCookie, cartItems);
+      console.log(mergedCartItems);
+    } else if (user) {
+      fetchData(`/user/${user.id}/cart`, setCartItems);
+    } else if (cartCookie) {
+      setCartItems(cartCookie);
+    }
+  };
+  useEffect(() => {
+    fetchData(`/user/${user.id}/cart`, setCartItems);
     fetchData("/shop", setShopData);
   }, []);
+
+  useEffect(() => {
+    fetchCartData();
+  }, [cartItems]);
 
   const handleIncrement = (itemId) => {
     setDynamicItems((prevItems) => {

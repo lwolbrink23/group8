@@ -64,6 +64,7 @@ const shopRoutes = (app, database) => {
       });
       result = result.shoppingCart;
       res.send(JSON.stringify(result));
+      // console.log(result);
     } catch (error) {
       console.error("Error fetching data:", error);
       res.status(500).json({ error: "Internal Server Error" });
