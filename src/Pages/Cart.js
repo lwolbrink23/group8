@@ -41,7 +41,7 @@ function Cart() {
       }
     };
     efetchData("/shop", setShopData);
-    console.log(`shopdata: ${shopData}`);
+    // console.log(`shopdata: ${shopData}`);
 
     // TODO: fetch cart data from database here
     // TODO: fetch data from cookie

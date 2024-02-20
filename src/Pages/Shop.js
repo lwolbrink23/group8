@@ -38,7 +38,6 @@ export const fetchData = async (endpoint, setDataFunction) => {
     const response = await fetch(`${BACKEND_ADDRESS}${endpoint}`);
     const jsonData = await response.json();
     setDataFunction(jsonData);
-    // console.log(jsonData);
   } catch (error) {
     console.error("Error fetching data:", error.message);
   }
@@ -76,11 +75,13 @@ function Shop() {
 
     return mergedCart;
   };
-  const fetchCartData = () => {
+  const fetchCartData = async () => {
     let cartCookie = JSON.parse(Cookies.get("cart"));
     if (user && cartCookie) {
-      const mergedCartItems = mergeCarts(cartCookie, cartItems);
-      console.log(mergedCartItems);
+      const response = await fetch(`${BACKEND_ADDRESS}/user/${user.id}/cart`);
+      const jsonData = await response.json();
+      const mergedCartItems = mergeCarts(cartCookie, jsonData);
+      setCartItems(mergedCartItems);
     } else if (user) {
       fetchData(`/user/${user.id}/cart`, setCartItems);
     } else if (cartCookie) {
@@ -88,13 +89,13 @@ function Shop() {
     }
   };
   useEffect(() => {
-    fetchData(`/user/${user.id}/cart`, setCartItems);
     fetchData("/shop", setShopData);
-  }, []);
-
-  useEffect(() => {
     fetchCartData();
-  }, [cartItems]);
+  });
+
+  // useEffect(() => {
+  //   fetchCartData();
+  // }, [cartItems]);
 
   const handleIncrement = (itemId) => {
     setDynamicItems((prevItems) => {
@@ -232,13 +233,12 @@ function Shop() {
   };
   const countItems = () => {
     let totalQty = 0;
-    let cartCookie = Cookies.get("cart");
-    if (cartCookie) {
-      cartCookie = JSON.parse(cartCookie);
-      cartCookie.forEach((item) => {
-        totalQty += item.qty;
-      });
-    }
+
+    cartItems.forEach((item) => {
+      totalQty += item.qty;
+    });
+    // console.log(cartItems);
+
     return totalQty;
   };
 
