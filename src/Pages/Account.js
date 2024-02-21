@@ -25,7 +25,6 @@ function Account({ props }) {
   const navigate = useNavigate();
 
   const [user, setUser] = useState(getUser());
-  console.log("active user: ", user);
 
   useEffect(() => {
     if (!user) {
@@ -34,6 +33,7 @@ function Account({ props }) {
     } else {
       const userId = user.id;
       navigate(`/account/${userId}`); // always displays user id in URL
+      console.log("active user: ", user);
     }
   }, [user, navigate]);
 

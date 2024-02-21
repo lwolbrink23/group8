@@ -1,4 +1,3 @@
-
 [
   {
     "id": 1,
@@ -10,7 +9,9 @@
     "time": "2:00pm",
     "duration": "1 hr",
     "price": "$50",
-    "provProfId": "iID0"
+    "provProfId": "iID0",
+    "provProfPic": "example",
+    "userID": "65cd0f1d880e7e0898b64e74"
   },
   {
     "id": 2,
@@ -22,7 +23,8 @@
     "time": "2:00pm",
     "duration": "1 hr",
     "price": "$50",
-    "provProfId": "iID1"
+    "provProfId": "iID1",
+    "userID": "65cd0f1d880e7e0898b64e74"
   },
   {
     "id": 3,
@@ -34,7 +36,8 @@
     "time": "2:00pm",
     "duration": "1 hr",
     "price": "$50",
-    "provProfId": "iID3"
+    "provProfId": "iID3",
+    "userID": "65cd0f1d880e7e0898b64e74"
   },
   {
     "id": 4,
@@ -46,7 +49,8 @@
     "time": "2:00pm",
     "duration": "1 hr",
     "price": "$50",
-    "provProfId": "iID2"
+    "provProfId": "iID2",
+    "userID": "65cd0f1d880e7e0898b64e74"
   },
   {
     "id": 5,
@@ -57,7 +61,8 @@
     "status": "canceled",
     "time": "2:00pm",
     "duration": "1 hr",
-    "price": "$50"
+    "price": "$50",
+    "userID": "65cd0f1d880e7e0898b64e74"
   },
   {
     "id": 6,
@@ -69,7 +74,7 @@
     "time": "2:00pm",
     "duration": "1 hr",
     "price": "$50",
-    "provProfId": "iID1"
+    "provProfId": "iID1",
+    "userID": "65cd0f1d880e7e0898b64e74"
   }
-
 ]
