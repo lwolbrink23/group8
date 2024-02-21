@@ -11,9 +11,11 @@ import {
   countItems,
   fetchData,
   fetchCartData,
+  updateUserCartDB,
+  fetchCartDB,
 } from "./functions/shopFunctions";
 import { getUser, ScrollToTop } from "./functions/generalFunctions";
-import { BACKEND_ADDRESS } from "../App";
+import Cookies from "js-cookie";
 
 function ProductPage() {
   const { id } = useParams();
@@ -162,7 +164,57 @@ function ProductPage() {
       </div>
     );
   };
+  const handleAddToCart = async () => {
+    const cartPopInfo = {
+      name: product.name,
+      price: product.price,
+      qty: value,
+      img: product.file,
+    };
+    const newItem = {
+      id: product.id,
+      qty: value,
+    };
+    if (user) {
+      const cartDB = await fetchCartDB(user.id);
+      const existingItemIndex = cartDB.findIndex(
+        (item) => item.id === newItem.id
+      );
 
+      if (existingItemIndex !== -1) {
+        // If the item exists, update its quantity by adding the qty of the newItem
+        cartDB[existingItemIndex].qty += newItem.qty;
+      } else {
+        // If the item does not exist, add the newItem to the cart
+        cartDB.push(newItem);
+      }
+
+      setCartItems(cartDB);
+      updateUserCartDB(user.id, cartDB);
+    } else {
+      // add item to cookie
+      let cartCookie = Cookies.get("cart");
+      let newCartCookie = cartCookie ? JSON.parse(cartCookie) : [];
+
+      const existingItemIndex = newCartCookie.findIndex(
+        (item) => item.id === newItem.id
+      );
+      if (existingItemIndex !== -1) {
+        newCartCookie[existingItemIndex].qty += newItem.qty;
+      } else {
+        newCartCookie.push(newItem);
+      }
+
+      Cookies.set("cart", JSON.stringify(newCartCookie), {
+        expires: 60,
+        path: "/",
+      });
+      setCartItems(newCartCookie);
+    }
+
+    // update frontend
+    // setCartPopup(cartPopInfo);
+  };
   return (
     <div className="product-page">
       <ScrollToTop />
@@ -210,7 +262,10 @@ function ProductPage() {
             <p id="value">{value}</p>
             <button onClick={handleIncrement}>+</button>
           </div>
-          <button className="add-to-cart">Add to Cart</button>
+          <button className="add-to-cart" onClick={handleAddToCart}>
+            {" "}
+            Add to Cart
+          </button>
           <p>
             {product.size}
             <br />
