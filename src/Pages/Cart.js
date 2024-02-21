@@ -6,7 +6,7 @@ import Shopheader from "../Components/Shopheader";
 import { Link } from "react-router-dom";
 import { useState, useEffect } from "react";
 import Cookies from "js-cookie";
-import { fetchData } from "./functions/shopFunctions";
+import { fetchData, fetchCartData } from "./functions/shopFunctions";
 import { BACKEND_ADDRESS } from "../App";
 import { getUser } from "./functions/generalFunctions";
 
@@ -20,7 +20,7 @@ function Cart() {
 
   // keep a state for login here, useeffect to update it
   useEffect(() => {
-    const efetchData = async (endpoint, setDataFunction) => {
+    const fetchData = async (endpoint, setDataFunction) => {
       try {
         // Fetch data from the backend
         const response = await fetch(`${BACKEND_ADDRESS}${endpoint}`);
@@ -31,15 +31,8 @@ function Cart() {
         console.error("Error fetching data:", error.message);
       }
     };
-    efetchData("/shop", setShopData);
-    // console.log(`shopdata: ${shopData}`);
-
-    // TODO: fetch cart data from database here
-    // TODO: fetch data from cookie
-    // if user is logged in and there are stuff in their cookie, merge both
-    if (Cookies.get("cart")) {
-      setCartItems(JSON.parse(Cookies.get("cart")));
-    }
+    // fetchData("/shop", setShopData);
+    // fetchCartData(setCartItems, user);
   });
 
   const updateCartBackend = (newCartItems) => {

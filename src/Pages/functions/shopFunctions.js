@@ -1,4 +1,5 @@
 import { BACKEND_ADDRESS } from "../../App";
+import Cookies from "js-cookie";
 
 export const fetchData = async (endpoint, setDataFunction) => {
   try {
@@ -57,4 +58,22 @@ export const countItems = (arr) => {
     totalQty += item.qty;
   });
   return totalQty;
+};
+export const fetchCartData = async (setCartItems, user) => {
+  let cartCookie = "";
+  if (Cookies.get("cart")) {
+    cartCookie = JSON.parse(Cookies.get("cart"));
+  }
+  if (user && cartCookie) {
+    const cartDB = await fetchCartDB(user.id);
+    const mergedCartItems = mergeCarts(cartCookie, cartDB);
+    setCartItems(mergedCartItems);
+    updateUserCartDB(user.id, mergedCartItems);
+    Cookies.remove("cart");
+  } else if (user) {
+    const cartDB = await fetchCartDB(user.id);
+    setCartItems(cartDB);
+  } else if (cartCookie) {
+    setCartItems(cartCookie);
+  }
 };

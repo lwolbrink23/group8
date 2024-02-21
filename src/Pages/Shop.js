@@ -7,7 +7,6 @@ import CartPopup from "../Components/CartPopup";
 import { Link } from "react-router-dom";
 import React, { useEffect, useState } from "react";
 import Shopheader from "../Components/Shopheader";
-import { BACKEND_ADDRESS } from "../App";
 import Cookies from "js-cookie";
 import {
   updateUserCartDB,
@@ -15,6 +14,7 @@ import {
   fetchCartDB,
   mergeCarts,
   countItems,
+  fetchCartData,
 } from "./functions/shopFunctions";
 import { getUser, ScrollToTop } from "./functions/generalFunctions";
 
@@ -32,27 +32,9 @@ function Shop() {
   const [cartPopup, setCartPopup] = useState();
   const [cartItems, setCartItems] = useState([]);
 
-  const fetchCartData = async () => {
-    let cartCookie = "";
-    if (Cookies.get("cart")) {
-      cartCookie = JSON.parse(Cookies.get("cart"));
-    }
-    if (user && cartCookie) {
-      const cartDB = await fetchCartDB(user.id);
-      const mergedCartItems = mergeCarts(cartCookie, cartDB);
-      setCartItems(mergedCartItems);
-      updateUserCartDB(user.id, mergedCartItems);
-      Cookies.remove("cart");
-    } else if (user) {
-      const cartDB = await fetchCartDB(user.id);
-      setCartItems(cartDB);
-    } else if (cartCookie) {
-      setCartItems(cartCookie);
-    }
-  };
   useEffect(() => {
     fetchData("/shop", setShopData);
-    fetchCartData();
+    fetchCartData(setCartItems, user);
   }, []);
 
   const handleIncrement = (itemId) => {
@@ -131,6 +113,7 @@ function Shop() {
         expires: 60,
         path: "/",
       });
+      setCartItems(newCartCookie);
     }
 
     // update frontend
