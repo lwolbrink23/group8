@@ -7,12 +7,10 @@ import { Link } from "react-router-dom";
 import { useState, useEffect } from "react";
 import Cookies from "js-cookie";
 import {
-  fetchData,
   fetchCartData,
   updateUserCartDB,
   countItems,
 } from "./functions/shopFunctions";
-import { BACKEND_ADDRESS } from "../App";
 import { getUser } from "./functions/generalFunctions";
 
 function Cart() {

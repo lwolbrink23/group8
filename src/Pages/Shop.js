@@ -12,7 +12,6 @@ import {
   updateUserCartDB,
   fetchData,
   fetchCartDB,
-  mergeCarts,
   countItems,
   fetchCartData,
 } from "./functions/shopFunctions";
