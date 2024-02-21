@@ -14,6 +14,7 @@ import {
   fetchData,
   fetchCartDB,
   mergeCarts,
+  countItems,
 } from "./functions/shopFunctions";
 import { getUser, ScrollToTop } from "./functions/generalFunctions";
 
@@ -202,13 +203,6 @@ function Shop() {
         </li>
       );
     });
-  };
-  const countItems = (arr) => {
-    let totalQty = 0;
-    arr.forEach((item) => {
-      totalQty += item.qty;
-    });
-    return totalQty;
   };
 
   // main JSX

@@ -51,3 +51,10 @@ export const mergeCarts = (cart1, cart2) => {
 
   return mergedCart;
 };
+export const countItems = (arr) => {
+  let totalQty = 0;
+  arr.forEach((item) => {
+    totalQty += item.qty;
+  });
+  return totalQty;
+};
