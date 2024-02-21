@@ -12,7 +12,7 @@ import { getUser } from "./functions/generalFunctions";
 
 function Cart() {
   // BACKEND: load cart data from database here
-  const [cartItems, setCartItems] = useState("");
+  const [cartItems, setCartItems] = useState([]);
   const [shopData, setShopData] = useState(tempShopData);
   const [popupItem, setPopupItem] = useState("");
   const [user, setUser] = useState(getUser());
@@ -20,20 +20,8 @@ function Cart() {
 
   // keep a state for login here, useeffect to update it
   useEffect(() => {
-    const fetchData = async (endpoint, setDataFunction) => {
-      try {
-        // Fetch data from the backend
-        const response = await fetch(`${BACKEND_ADDRESS}${endpoint}`);
-        const jsonData = await response.json();
-        // console.log(jsonData);
-        setShopData(jsonData);
-      } catch (error) {
-        console.error("Error fetching data:", error.message);
-      }
-    };
-    // fetchData("/shop", setShopData);
-    // fetchCartData(setCartItems, user);
-  });
+    fetchCartData(setCartItems, user);
+  }, []);
 
   const updateCartBackend = (newCartItems) => {
     // TODO: save cart here, to database if logged in, to cookie if not
