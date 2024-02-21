@@ -286,6 +286,7 @@ function SignUp() {
           </Link>
         </p>
       </div>
+      <AccountExistsPopup isOpen={accountExistsError} closePopup={() => setAccountExistsError(false)} />
     </div>
   );
 }
