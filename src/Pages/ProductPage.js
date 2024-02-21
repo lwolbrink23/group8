@@ -1,41 +1,30 @@
 import "../Styles/productpage.css";
 import "../App.css";
-import shopICON from "../assets/icons/icons8-shopping-cart-100.png";
-import BackButton from "../Components/BackButton";
 import Stars from "../assets/images/stars.png";
 import plusIcon from "../assets/icons/plus.png";
 import minusIcon from "../assets/icons/minus.png";
-import rating from "../assets/images/VisualRating.png";
-import Empty from "../assets/images/emptyprofile.png";
 import React, { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
-import { Link, useLocation } from "react-router-dom";
 import Rating from "@mui/material/Rating";
 import Shopheader from "../Components/Shopheader";
-import { countItems } from "./functions/shopFunctions";
+import {
+  countItems,
+  fetchData,
+  fetchCartData,
+} from "./functions/shopFunctions";
 import { getUser, ScrollToTop } from "./functions/generalFunctions";
 import { BACKEND_ADDRESS } from "../App";
 
 function ProductPage() {
   const { id } = useParams();
-
   const [value, setValue] = useState(1);
-
   const [product, setProduct] = useState(null);
+  const [cartItems, setCartItems] = useState([]);
+  const [user, setUser] = useState(getUser());
 
   useEffect(() => {
-    const fetchData = async (endpoint, setDataFunction) => {
-      try {
-        // Fetch data from the backend
-        const response = await fetch(`${BACKEND_ADDRESS}${endpoint}`);
-        const jsonData = await response.json();
-        setDataFunction(jsonData);
-      } catch (error) {
-        console.error("Error fetching data:", error.message);
-      }
-    };
-
     fetchData(`/shop/${id}`, setProduct);
+    fetchCartData(setCartItems, user);
   }, []);
 
   if (!product) {
@@ -179,7 +168,11 @@ function ProductPage() {
       <ScrollToTop />
       {/* Header, Navigation, and other elements would go here */}
       <div id="product-banner">
-        <Shopheader htitle={"Shop"} qty={1} disableBack={true} />
+        <Shopheader
+          htitle={"Shop"}
+          qty={countItems(cartItems)}
+          disableBack={true}
+        />
       </div>
       <div className="product-info">
         <div className="product-section">
