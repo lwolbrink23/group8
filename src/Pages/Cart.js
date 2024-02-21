@@ -6,7 +6,7 @@ import Shopheader from "../Components/Shopheader";
 import { Link } from "react-router-dom";
 import { useState, useEffect } from "react";
 import Cookies from "js-cookie";
-import { fetchData } from "./Shop";
+import { fetchData } from "./functions/shopFunctions";
 import { BACKEND_ADDRESS } from "../App";
 
 function getUser() {

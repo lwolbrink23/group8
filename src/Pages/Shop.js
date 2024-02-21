@@ -9,39 +9,8 @@ import React, { useEffect, useState } from "react";
 import Shopheader from "../Components/Shopheader";
 import { BACKEND_ADDRESS } from "../App";
 import Cookies from "js-cookie";
-
-function getUser() {
-  let user = localStorage.getItem("user");
-  if (user) {
-    user = JSON.parse(user);
-  } else {
-    user = null;
-  }
-  return user;
-}
-
-function ScrollToTop() {
-  const location = useLocation();
-
-  useEffect(() => {
-    if (location.pathname === "/blogpost") {
-      window.scrollTo(0, 0);
-    }
-  }, [location.pathname]);
-
-  return null;
-}
-
-export const fetchData = async (endpoint, setDataFunction) => {
-  try {
-    // Fetch data from the backend
-    const response = await fetch(`${BACKEND_ADDRESS}${endpoint}`);
-    const jsonData = await response.json();
-    setDataFunction(jsonData);
-  } catch (error) {
-    console.error("Error fetching data:", error.message);
-  }
-};
+import { updateUserCartDB, fetchData } from "./functions/shopFunctions";
+import { getUser, ScrollToTop } from "./functions/generalFunctions";
 
 // MAIN SHOP FUNCTION
 function Shop() {
@@ -57,27 +26,6 @@ function Shop() {
   const [cartPopup, setCartPopup] = useState();
   const [cartItems, setCartItems] = useState([]);
 
-  const updateUserCart = async (userID, cartData) => {
-    console.log(userID);
-    try {
-      const response = await fetch(`${BACKEND_ADDRESS}/user/${user.id}/cart`, {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify({ cart: cartData }),
-      });
-
-      if (response.ok) {
-        const data = await response.json();
-        console.log(data); // Log success message or handle response data
-      } else {
-        console.error("Failed to update user cart:", response.statusText);
-      }
-    } catch (error) {
-      console.error("Error updating user cart:", error);
-    }
-  };
   // Function to merge two carts
   const mergeCarts = (cart1, cart2) => {
     const mergedCart = [...cart2];
@@ -104,9 +52,8 @@ function Shop() {
       const jsonData = await response.json();
       const mergedCartItems = mergeCarts(cartCookie, jsonData);
       setCartItems(mergedCartItems);
-      console.log(mergedCartItems);
-      updateUserCart(user.id, mergedCartItems);
-      // Cookies.remove('cart')
+      updateUserCartDB(user.id, mergedCartItems);
+      Cookies.remove("cart");
     } else if (user) {
       fetchData(`/user/${user.id}/cart`, setCartItems);
     } else if (cartCookie) {
@@ -161,6 +108,10 @@ function Shop() {
       qty: itemQty,
     };
     if (user) {
+      const response = await fetch(`${BACKEND_ADDRESS}/user/${user.id}/cart`);
+      const jsonData = await response.json();
+      setCartItems(jsonData);
+      // updateUserCartDB(user.id, newItem);
     } else {
       // add item to cookie
       let cartCookie = Cookies.get("cart");
@@ -276,7 +227,7 @@ function Shop() {
         />
       )}
       <div id="shop-banner">
-        <Shopheader htitle={"Cart"} qty={countItems()} />
+        <Shopheader htitle={"Shop"} qty={countItems()} />
 
         <h2>
           Find all your <br></br> favorite products here.

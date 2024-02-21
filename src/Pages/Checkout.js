@@ -7,7 +7,7 @@ import CustomDropdown from "../Components/CustomDropdown";
 import purplePlusIcon from "../assets/icons/purple-plus.svg";
 import purpleCheckIcon from "../assets/icons/purple-check.svg";
 import { BACKEND_ADDRESS } from "../App";
-import { fetchData } from "./Shop";
+import { fetchData } from "./functions/shopFunctions";
 import Cookies from "js-cookie";
 
 function getUser() {
