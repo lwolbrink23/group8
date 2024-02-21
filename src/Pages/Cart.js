@@ -6,7 +6,11 @@ import Shopheader from "../Components/Shopheader";
 import { Link } from "react-router-dom";
 import { useState, useEffect } from "react";
 import Cookies from "js-cookie";
-import { fetchData, fetchCartData } from "./functions/shopFunctions";
+import {
+  fetchData,
+  fetchCartData,
+  updateUserCartDB,
+} from "./functions/shopFunctions";
 import { BACKEND_ADDRESS } from "../App";
 import { getUser } from "./functions/generalFunctions";
 
@@ -24,11 +28,14 @@ function Cart() {
   }, []);
 
   const updateCartBackend = (newCartItems) => {
-    // TODO: save cart here, to database if logged in, to cookie if not
-    Cookies.set("cart", JSON.stringify(newCartItems), {
-      expires: 60,
-      path: "/",
-    });
+    if (user) {
+      updateUserCartDB(user.id, newCartItems);
+    } else {
+      Cookies.set("cart", JSON.stringify(newCartItems), {
+        expires: 60,
+        path: "/",
+      });
+    }
   };
 
   const countItems = () => {

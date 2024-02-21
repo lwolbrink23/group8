@@ -76,7 +76,6 @@ const shopRoutes = (app, database) => {
     try {
       // Extract cart data from the request body
       const { cart } = req.body;
-
       // Update the user's cart data in the database
       const collection = database.collection("User_Accounts");
       const result = await collection.updateOne(
