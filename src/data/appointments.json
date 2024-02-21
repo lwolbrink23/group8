@@ -24,6 +24,7 @@
     "duration": "1 hr",
     "price": "$50",
     "provProfId": "iID1",
+    "provProfPic": "example",
     "userID": "65cd0f1d880e7e0898b64e74"
   },
   {
@@ -37,6 +38,7 @@
     "duration": "1 hr",
     "price": "$50",
     "provProfId": "iID3",
+    "provProfPic": "example",
     "userID": "65cd0f1d880e7e0898b64e74"
   },
   {
@@ -50,6 +52,7 @@
     "duration": "1 hr",
     "price": "$50",
     "provProfId": "iID2",
+    "provProfPic": "example",
     "userID": "65cd0f1d880e7e0898b64e74"
   },
   {
@@ -62,6 +65,7 @@
     "time": "2:00pm",
     "duration": "1 hr",
     "price": "$50",
+    "provProfPic": "example",
     "userID": "65cd0f1d880e7e0898b64e74"
   },
   {
@@ -75,6 +79,7 @@
     "duration": "1 hr",
     "price": "$50",
     "provProfId": "iID1",
+    "provProfPic": "example",
     "userID": "65cd0f1d880e7e0898b64e74"
   }
 ]

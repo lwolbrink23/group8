@@ -110,7 +110,9 @@ function Account({ props }) {
           staff: appointment.staff,
           duration: appointment.duration,
           price: appointment.price,
-          provProfId: appointment.provProfId, // the ID on the provider profile page
+          provProfId: appointment.provProfId,
+          provProfPic: appointment.provProfPic,
+
         },
       });
     } else {
@@ -128,6 +130,7 @@ function Account({ props }) {
           duration: appointment.duration,
           price: appointment.price,
           provProfId: appointment.provProfId, // the ID on the provider profile page
+          provProfPic: appointment.provProfPic, // the profile picture of the provider
         },
       });
     }
@@ -172,9 +175,6 @@ function Account({ props }) {
                   </div>
                   <h2>{user.name}</h2>
                   <div className="buttonsContainer">
-                    <button type="button" className="editButton">
-                      Edit Profile
-                    </button>
                     <button className="signoutButton" onClick={handleLogout}>
                       Sign Out
                     </button>
