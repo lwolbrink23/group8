@@ -4,12 +4,17 @@ import giftCardIMG from "../assets/images/giftcard.png";
 import plusICON from "../assets/icons/black-plus.png";
 import minusICON from "../assets/icons/black-minus.png";
 import CartPopup from "../Components/CartPopup";
-import { Link, useLocation } from "react-router-dom";
+import { Link } from "react-router-dom";
 import React, { useEffect, useState } from "react";
 import Shopheader from "../Components/Shopheader";
 import { BACKEND_ADDRESS } from "../App";
 import Cookies from "js-cookie";
-import { updateUserCartDB, fetchData } from "./functions/shopFunctions";
+import {
+  updateUserCartDB,
+  fetchData,
+  fetchCartDB,
+  mergeCarts,
+} from "./functions/shopFunctions";
 import { getUser, ScrollToTop } from "./functions/generalFunctions";
 
 // MAIN SHOP FUNCTION
@@ -26,36 +31,20 @@ function Shop() {
   const [cartPopup, setCartPopup] = useState();
   const [cartItems, setCartItems] = useState([]);
 
-  // Function to merge two carts
-  const mergeCarts = (cart1, cart2) => {
-    const mergedCart = [...cart2];
-    cart1.forEach((item1) => {
-      const index = mergedCart.findIndex((item2) => item2.id === item1.id);
-      if (index !== -1) {
-        // Item exists in user's cart, update quantity
-        mergedCart[index].qty += item1.qty;
-      } else {
-        // Item doesn't exist in user's cart, add it
-        mergedCart.push(item1);
-      }
-    });
-
-    return mergedCart;
-  };
   const fetchCartData = async () => {
     let cartCookie = "";
     if (Cookies.get("cart")) {
       cartCookie = JSON.parse(Cookies.get("cart"));
     }
     if (user && cartCookie) {
-      const response = await fetch(`${BACKEND_ADDRESS}/user/${user.id}/cart`);
-      const jsonData = await response.json();
-      const mergedCartItems = mergeCarts(cartCookie, jsonData);
+      const cartDB = await fetchCartDB(user.id);
+      const mergedCartItems = mergeCarts(cartCookie, cartDB);
       setCartItems(mergedCartItems);
       updateUserCartDB(user.id, mergedCartItems);
       Cookies.remove("cart");
     } else if (user) {
-      fetchData(`/user/${user.id}/cart`, setCartItems);
+      const cartDB = await fetchCartDB(user.id);
+      setCartItems(cartDB);
     } else if (cartCookie) {
       setCartItems(cartCookie);
     }
@@ -108,9 +97,8 @@ function Shop() {
       qty: itemQty,
     };
     if (user) {
-      const response = await fetch(`${BACKEND_ADDRESS}/user/${user.id}/cart`);
-      const jsonData = await response.json();
-      setCartItems(jsonData);
+      const cartDB = await fetchCartDB(user.id);
+      setCartItems(cartDB);
       // updateUserCartDB(user.id, newItem);
     } else {
       // add item to cookie

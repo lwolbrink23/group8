@@ -10,6 +10,11 @@ export const fetchData = async (endpoint, setDataFunction) => {
     console.error("Error fetching data:", error.message);
   }
 };
+export const fetchCartDB = async (userID) => {
+  const response = await fetch(`${BACKEND_ADDRESS}/user/${userID}/cart`);
+  const jsonData = await response.json();
+  return jsonData;
+};
 
 export const updateUserCartDB = async (userID, cartData) => {
   try {
@@ -30,4 +35,19 @@ export const updateUserCartDB = async (userID, cartData) => {
   } catch (error) {
     console.error("Error updating user cart:", error);
   }
+};
+export const mergeCarts = (cart1, cart2) => {
+  const mergedCart = [...cart2];
+  cart1.forEach((item1) => {
+    const index = mergedCart.findIndex((item2) => item2.id === item1.id);
+    if (index !== -1) {
+      // Item exists in user's cart, update quantity
+      mergedCart[index].qty += item1.qty;
+    } else {
+      // Item doesn't exist in user's cart, add it
+      mergedCart.push(item1);
+    }
+  });
+
+  return mergedCart;
 };

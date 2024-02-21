@@ -8,16 +8,7 @@ import { useState, useEffect } from "react";
 import Cookies from "js-cookie";
 import { fetchData } from "./functions/shopFunctions";
 import { BACKEND_ADDRESS } from "../App";
-
-function getUser() {
-  let user = localStorage.getItem("user");
-  if (user) {
-    user = JSON.parse(user);
-  } else {
-    user = null;
-  }
-  return user;
-}
+import { getUser } from "./functions/generalFunctions";
 
 function Cart() {
   // BACKEND: load cart data from database here

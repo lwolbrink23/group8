@@ -1,36 +1,40 @@
-[{
-  "UserID": "uID1",
-  "Name": {
-    "First": "John",
-    "Last": "Doe"
+[
+  {
+    "UserID": "uID1",
+    "Name": {
+      "First": "John",
+      "Last": "Doe"
+    },
+    "Email": "johndoe@example.com",
+    "Password": "hashed_password_here",
+    "PhoneNumber": "+1234567890",
+    "ShoppingCart": [
+      {
+        "ProductID": "iID0",
+        "Amount": 2
+      },
+      {
+        "ProductID": "iID2",
+        "Amount": 1
+      }
+    ],
+    "ProfilePicture": ""
   },
-  "Email": "johndoe@example.com",
-  "Password": "hashed_password_here",
-  "PhoneNumber": "+1234567890",
-  "ShoppingCart": [
-    {
-      "ProductID": "iID0",
-      "Amount": 2
-    },
-    {
-      "ProductID": "iID2",
-      "Amount": 1
-    }
-  ],
-  "ProfilePicture": ""
-},
 
-
-{"name":"Quynh Vo",
-"phoneNumber":"(546) 546-5465",
-"email":"mimitrucquynh@gmail.com",
-"password":"m1","ShoppingCart": [
-    {
-      "id": "iID0",
-      "qty": 2
-    },
-    {
-      "id": "iID2",
-      "qty": 1
-    }
-  ]}]
+  {
+    "name": "Quynh Vo",
+    "phoneNumber": "(546) 546-5465",
+    "email": "mimitrucquynh@gmail.com",
+    "password": "m1",
+    "shoppingCart": [
+      {
+        "id": "iID0",
+        "qty": 2
+      },
+      {
+        "id": "iID2",
+        "qty": 1
+      }
+    ]
+  }
+]
