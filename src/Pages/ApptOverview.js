@@ -55,6 +55,43 @@ function Overview() {
       },
     });
   };
+  // in progress of this:
+  const handleBookNow = async () => {
+    try {
+      // Prepare booking data
+      const bookingData = {
+        selectedServices,
+        totalCost,
+        date: formattedDate,
+        time: clickedTime,
+        serviceName,
+      };
+
+      // Make a POST request to the backend booking route
+      const response = await fetch("http://localhost:3003/appt_overview", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(bookingData),
+      });
+
+      if (response.status === 200) {
+        // Handle success
+        console.log("Booking successful:", response.data);
+        // Navigate to confirmation page or do something else
+        navigate("/appointment_confirmed");
+      } else {
+        // Handle error
+        console.error("Error booking:", response.statusText);
+        // Optionally, display an error message to the user
+      }
+    } catch (error) {
+      // Handle network errors
+      console.error("Error booking:", error);
+      // Optionally, display an error message to the user
+    }
+  };
 
   return (
     <div>

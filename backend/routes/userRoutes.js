@@ -68,4 +68,37 @@ const userRoutes = (app, client, database) => {
   });
 };
 
+//for the bookings in appt_overview (in progress)
+pp.post("/bookings", async (req, res) => {
+  try {
+    const { userId, selectedServices, totalCost, date, time, serviceName } = req.body;
+
+    // Find the user by userId
+    const user = await database.collection("User_Accounts").findOne({ _id: userId });
+    if (!user) {
+      return res.status(404).json({ error: "User not found" });
+    }
+
+    // Create a new appointment object
+    const newAppointment = {
+      selectedServices,
+      totalCost,
+      date,
+      time,
+      serviceName,
+    };
+
+    // Add the new appointment to the user's appointments array
+    await database.collection("User_Accounts").updateOne(
+      { _id: userId },
+      { $push: { appointments: newAppointment } }
+    );
+
+    res.status(201).json({ appointment: newAppointment, message: "Appointment booked successfully" });
+  } catch (error) {
+    console.error("Error booking appointment:", error);
+    res.status(500).json({ error: "Internal Server Error", details: error.message });
+  }
+});
+
 export default userRoutes;
