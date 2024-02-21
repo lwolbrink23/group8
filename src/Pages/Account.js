@@ -26,16 +26,16 @@ function Account({ props }) {
 
   const [user, setUser] = useState(getUser());
   console.log("active user: ", user);
-  const userId = user.id;
 
   useEffect(() => {
     if (!user) {
       // Redirect to login page if not logged in
       navigate("/login");
     } else {
+      const userId = user.id;
       navigate(`/account/${userId}`); // always displays user id in URL
     }
-  }, [user, userId, navigate]);
+  }, [user, navigate]);
 
   const [appointments, setAppointments] = useState([]);
   const [selectedAppointment, setSelectedAppointment] = useState(null);
