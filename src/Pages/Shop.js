@@ -98,8 +98,20 @@ function Shop() {
     };
     if (user) {
       const cartDB = await fetchCartDB(user.id);
+      const existingItemIndex = cartDB.findIndex(
+        (item) => item.id === newItem.id
+      );
+
+      if (existingItemIndex !== -1) {
+        // If the item exists, update its quantity by adding the qty of the newItem
+        cartDB[existingItemIndex].qty += newItem.qty;
+      } else {
+        // If the item does not exist, add the newItem to the cart
+        cartDB.push(newItem);
+      }
+
       setCartItems(cartDB);
-      // updateUserCartDB(user.id, newItem);
+      updateUserCartDB(user.id, cartDB);
     } else {
       // add item to cookie
       let cartCookie = Cookies.get("cart");
@@ -191,14 +203,11 @@ function Shop() {
       );
     });
   };
-  const countItems = () => {
+  const countItems = (arr) => {
     let totalQty = 0;
-
-    cartItems.forEach((item) => {
+    arr.forEach((item) => {
       totalQty += item.qty;
     });
-    // console.log(cartItems);
-
     return totalQty;
   };
 
@@ -211,11 +220,11 @@ function Shop() {
         <CartPopup
           cartPopup={cartPopup}
           setCartPopup={setCartPopup}
-          qty={countItems()}
+          qty={countItems(cartItems)}
         />
       )}
       <div id="shop-banner">
-        <Shopheader htitle={"Shop"} qty={countItems()} />
+        <Shopheader htitle={"Shop"} qty={countItems(cartItems)} />
 
         <h2>
           Find all your <br></br> favorite products here.
