@@ -11,32 +11,10 @@ import React, { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
 import { Link, useLocation } from "react-router-dom";
 import Rating from "@mui/material/Rating";
+import Shopheader from "../Components/Shopheader";
+import { countItems } from "./functions/shopFunctions";
+import { getUser, ScrollToTop } from "./functions/generalFunctions";
 import { BACKEND_ADDRESS } from "../App";
-
-function getUser() {
-  let user = localStorage.getItem("user");
-  if (user) {
-    user = JSON.parse(user);
-  } else {
-    user = null;
-  }
-  return user;
-}
-
-function ScrollToTop() {
-  const [user, setUser] = useState(getUser());
-  console.log("active user: ", user);
-
-  const location = useLocation();
-
-  useEffect(() => {
-    if (location.pathname === "/blogpost") {
-      window.scrollTo(0, 0);
-    }
-  }, [location.pathname]);
-
-  return null;
-}
 
 function ProductPage() {
   const { id } = useParams();
@@ -201,11 +179,7 @@ function ProductPage() {
       <ScrollToTop />
       {/* Header, Navigation, and other elements would go here */}
       <div id="product-banner">
-        <div className="title-container trans-white">
-          <BackButton />
-          <h1>Shop</h1>
-          <img src={shopICON} alt="shopping cart" id="cart-icon"></img>
-        </div>
+        <Shopheader htitle={"Shop"} qty={1} disableBack={true} />
       </div>
       <div className="product-info">
         <div className="product-section">
