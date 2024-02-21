@@ -200,7 +200,11 @@ function Shop() {
         />
       )}
       <div id="shop-banner">
-        <Shopheader htitle={"Shop"} qty={countItems(cartItems)} />
+        <Shopheader
+          htitle={"Shop"}
+          qty={countItems(cartItems)}
+          disableBack={true}
+        />
 
         <h2>
           Find all your <br></br> favorite products here.
