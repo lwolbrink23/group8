@@ -15,6 +15,7 @@ function getUser() {
 
 function SignUp() {
   const navigate = useNavigate();
+  const [accountExistsError, setAccountExistsError] = useState(false); // State variable for account exists error
   const [user, setUser] = useState(getUser());
   const [firstNameValue, setFirstNameValue] = useState("");
   const [lastNameValue, setLastNameValue] = useState("");
@@ -90,6 +91,7 @@ function SignUp() {
     setPwValue("");
     setConfPwValue("");
     setPasswordsMatchError(false);
+    setAccountExistsError(false); // Reset account exists error state
   };
 
   const handleSignUp = async () => {
@@ -134,8 +136,15 @@ function SignUp() {
           // Handle case where user data is not returned
           console.error("Error creating user: User data not found in response");
         }
+      } else if (response.status === 409) {
+        // Account already exists
+        console.error("Error creating user:", response.statusText);
+        // Display error message to the user
+        setAccountExistsError(true); // Set account exists error state
+        // You might also want to reset the form fields here
+        resetForm();
       } else {
-        // Handle error response
+        // Handle other error responses
         console.error("Error creating user:", response.statusText);
         // Display an error message to the user or perform other error-handling logic
       }
@@ -280,5 +289,4 @@ function SignUp() {
     </div>
   );
 }
-
-export default SignUp;
+export default SignUp
