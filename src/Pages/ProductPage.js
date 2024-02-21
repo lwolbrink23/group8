@@ -16,6 +16,7 @@ import {
 } from "./functions/shopFunctions";
 import { getUser, ScrollToTop } from "./functions/generalFunctions";
 import Cookies from "js-cookie";
+import CartPopup from "../Components/CartPopup";
 
 function ProductPage() {
   const { id } = useParams();
@@ -23,6 +24,7 @@ function ProductPage() {
   const [product, setProduct] = useState(null);
   const [cartItems, setCartItems] = useState([]);
   const [user, setUser] = useState(getUser());
+  const [cartPopup, setCartPopup] = useState("");
 
   useEffect(() => {
     fetchData(`/shop/${id}`, setProduct);
@@ -212,19 +214,21 @@ function ProductPage() {
       setCartItems(newCartCookie);
     }
 
-    // update frontend
-    // setCartPopup(cartPopInfo);
+    setCartPopup(cartPopInfo);
   };
   return (
     <div className="product-page">
       <ScrollToTop />
       {/* Header, Navigation, and other elements would go here */}
-      <div id="product-banner">
-        <Shopheader
-          htitle={"Shop"}
+      {cartPopup && (
+        <CartPopup
+          cartPopup={cartPopup}
+          setCartPopup={setCartPopup}
           qty={countItems(cartItems)}
-          disableBack={true}
         />
+      )}
+      <div id="product-banner">
+        <Shopheader htitle={"Shop"} qty={countItems(cartItems)} />
       </div>
       <div className="product-info">
         <div className="product-section">
