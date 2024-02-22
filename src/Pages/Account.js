@@ -302,16 +302,18 @@ function Account({ props }) {
                     </select>
                   </div>
                 </div>
+
                 <div className="orderHistory">
-                  <OrderHistory></OrderHistory>
-                  {/* Display if there are no orders
-    <div className="noOrders">
-      <p>No Order History</p>
-      <Link to="/shop">
-        <button class="shopButton">Shop Now</button>
-      </Link>
-    </div>
-      */}
+                  {orders.length > 0 ? (
+                    <OrderHistory></OrderHistory>
+                  ) : (
+                    <div className="noOrders">
+                      <p>No Order History</p>
+                      <Link to="/shop">
+                        <button class="shopButton">Shop Now</button>
+                      </Link>
+                    </div>
+                  )}
                 </div>
               </div>
             </div>

@@ -54,6 +54,33 @@ function ApptDetails({ props }) {
     }
   };
 
+
+  const getStatusRebookBtn = (status) => {
+    switch (status) {
+      case "scheduled":
+        return "none";
+      case "cancelled":
+        return "none";
+      case "complete":
+        return "block";
+      default:
+        return ""; // Default color or handle unknown status
+    }
+  };
+
+  const getStatusRescheduleBtn = (status) => {
+    switch (status) {
+      case "scheduled":
+        return "block";
+      case "cancelled":
+        return "none";
+      case "complete":
+        return "none";
+      default:
+        return ""; // Default color or handle unknown status
+    }
+  };
+
   // Function to rescheudle appointment
   const rescheduleAppt = () => {
     console.log("Rescheduled Appointment clicked for ID:", location.state.id);
@@ -157,8 +184,21 @@ function ApptDetails({ props }) {
             type="button"
             className="profile-button"
             onClick={() => rescheduleAppt()}
+            style={{
+              display: getStatusRescheduleBtn(location.state.status),
+            }}
           >
             Reschedule
+          </button>
+          <button
+            type="button"
+            className="profile-button"
+            onClick={() => rescheduleAppt()}
+            style={{
+              display: getStatusRebookBtn(location.state.status),
+            }}
+          >
+            Rebook
           </button>
         </div>
       </div>

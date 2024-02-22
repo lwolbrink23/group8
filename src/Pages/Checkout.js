@@ -9,6 +9,7 @@ import purpleCheckIcon from "../assets/icons/purple-check.svg";
 import { BACKEND_ADDRESS } from "../App";
 import { fetchData } from "./functions/shopFunctions";
 import Cookies from "js-cookie";
+import { fetchCartData, countItems } from "./functions/shopFunctions";
 
 function getUser() {
   let user = localStorage.getItem("user");
@@ -24,7 +25,7 @@ function Checkout() {
   // backend: check if user logged in. if logged in, get their info from the database and autofill in userAns
   const [enableSubmit, setEnableSubmit] = useState(false);
   const [shopData, setShopData] = useState([]);
-  const [cartData, setCartData] = useState([]);
+  const [cartItems, setCartItems] = useState([]);
   const [user, setUser] = useState(getUser());
 
   const navigate = useNavigate();
@@ -34,9 +35,7 @@ function Checkout() {
     // TODO: fetch cart data from database here
     // TODO: fetch data from cookie if user not logged in
     fetchData("/shop", setShopData);
-    if (Cookies.get("cart")) {
-      setCartData(JSON.parse(Cookies.get("cart")));
-    }
+    fetchCartData(setCartItems, user);
   }, []);
 
   // user inputs
@@ -232,7 +231,7 @@ function Checkout() {
   // dropdown content for cart
   const OrderedItems = () => (
     <ul className="dropdown-content">
-      {cartData.map((item, i) => {
+      {cartItems.map((item, i) => {
         let itemName = "";
         let itemPic = "";
         let itemPrice = 0;
@@ -272,7 +271,7 @@ function Checkout() {
   // calc totals
   const subtotal = () => {
     let t = 0;
-    for (const cartItem of cartData) {
+    for (const cartItem of cartItems) {
       for (const shopItem of shopData) {
         if (cartItem.id === shopItem.id) {
           t += shopItem.price * cartItem.qty;
@@ -285,22 +284,11 @@ function Checkout() {
   const shipCost = 14;
   const total = subtotal() + taxes + shipCost;
   // console.log(`${subtotal()}, ${taxes}, ${shipCost}, ${total}`);
-  const countItems = () => {
-    let totalQty = 0;
-
-    if (cartData) {
-      cartData.forEach((item) => {
-        totalQty += item.qty;
-      });
-    }
-
-    return totalQty;
-  };
 
   // handle place order
   const handlePlaceOrder = async () => {
-    // put a price in each item in cartdata
-    const cartWithData = cartData.map((item) => {
+    // put a price in each item in cartItems
+    const cartWithData = cartItems.map((item) => {
       const product = shopData.find((product) => product.id === item.id);
       return {
         ...item,
@@ -351,7 +339,7 @@ function Checkout() {
   // main stuff
   return (
     <div id="checkout">
-      <Shopheader htitle={"Checkout"} qty={countItems()} />
+      <Shopheader htitle={"Checkout"} qty={countItems(cartItems)} />
       <main>
         <div id="shipping-info" className="cardbox">
           <h3>Shipping Information</h3>
@@ -547,7 +535,7 @@ function Checkout() {
           <div id="cart-items">
             <h3>Review Order</h3>
             <CustomDropdown
-              title={`Items Ordered (${countItems()})`}
+              title={`Items Ordered (${countItems(cartItems)})`}
               ContentComponent={OrderedItems}
               icon={"white-arrow.svg"}
             />

@@ -6,8 +6,11 @@ import Shopheader from "../Components/Shopheader";
 import { Link } from "react-router-dom";
 import { useState, useEffect } from "react";
 import Cookies from "js-cookie";
-import { fetchData, fetchCartData } from "./functions/shopFunctions";
-import { BACKEND_ADDRESS } from "../App";
+import {
+  fetchCartData,
+  updateUserCartDB,
+  countItems,
+} from "./functions/shopFunctions";
 import { getUser } from "./functions/generalFunctions";
 
 function Cart() {
@@ -24,23 +27,14 @@ function Cart() {
   }, []);
 
   const updateCartBackend = (newCartItems) => {
-    // TODO: save cart here, to database if logged in, to cookie if not
-    Cookies.set("cart", JSON.stringify(newCartItems), {
-      expires: 60,
-      path: "/",
-    });
-  };
-
-  const countItems = () => {
-    let totalQty = 0;
-
-    if (cartItems) {
-      cartItems.forEach((item) => {
-        totalQty += item.qty;
+    if (user) {
+      updateUserCartDB(user.id, newCartItems);
+    } else {
+      Cookies.set("cart", JSON.stringify(newCartItems), {
+        expires: 60,
+        path: "/",
       });
     }
-
-    return totalQty;
   };
 
   // increment & decrement
@@ -172,7 +166,7 @@ function Cart() {
   return (
     <div id="cart">
       {/* title */}
-      <Shopheader htitle={"Cart"} qty={countItems()} />
+      <Shopheader htitle={"Cart"} qty={countItems(cartItems)} />
       {popupItem && <Popup />}
 
       {!cartItems.length ? (
@@ -180,12 +174,12 @@ function Cart() {
       ) : (
         <main>
           <div>
-            <p>{countItems()} items in your cart</p>
+            <p>{countItems(cartItems)} items in your cart</p>
             <CartItems />
           </div>
           <div className="subtotal poppins-bigger">
             <div className="col-2">
-              <p>Subtotal ({countItems()} items)</p>
+              <p>Subtotal ({countItems(cartItems)} items)</p>
               <p>${calcTotal()}</p>
             </div>
             <Link to="/checkout">

@@ -1,63 +1,34 @@
 import "../Styles/productpage.css";
 import "../App.css";
-import shopICON from "../assets/icons/icons8-shopping-cart-100.png";
-import BackButton from "../Components/BackButton";
 import Stars from "../assets/images/stars.png";
 import plusIcon from "../assets/icons/plus.png";
 import minusIcon from "../assets/icons/minus.png";
-import rating from "../assets/images/VisualRating.png";
-import Empty from "../assets/images/emptyprofile.png";
 import React, { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
-import { Link, useLocation } from "react-router-dom";
 import Rating from "@mui/material/Rating";
-import { BACKEND_ADDRESS } from "../App";
-
-function getUser() {
-  let user = localStorage.getItem("user");
-  if (user) {
-    user = JSON.parse(user);
-  } else {
-    user = null;
-  }
-  return user;
-}
-
-function ScrollToTop() {
-  const [user, setUser] = useState(getUser());
-  console.log("active user: ", user);
-
-  const location = useLocation();
-
-  useEffect(() => {
-    if (location.pathname === "/blogpost") {
-      window.scrollTo(0, 0);
-    }
-  }, [location.pathname]);
-
-  return null;
-}
+import Shopheader from "../Components/Shopheader";
+import {
+  countItems,
+  fetchData,
+  fetchCartData,
+  updateUserCartDB,
+  fetchCartDB,
+} from "./functions/shopFunctions";
+import { getUser, ScrollToTop } from "./functions/generalFunctions";
+import Cookies from "js-cookie";
+import CartPopup from "../Components/CartPopup";
 
 function ProductPage() {
   const { id } = useParams();
-
   const [value, setValue] = useState(1);
-
   const [product, setProduct] = useState(null);
+  const [cartItems, setCartItems] = useState([]);
+  const [user, setUser] = useState(getUser());
+  const [cartPopup, setCartPopup] = useState("");
 
   useEffect(() => {
-    const fetchData = async (endpoint, setDataFunction) => {
-      try {
-        // Fetch data from the backend
-        const response = await fetch(`${BACKEND_ADDRESS}${endpoint}`);
-        const jsonData = await response.json();
-        setDataFunction(jsonData);
-      } catch (error) {
-        console.error("Error fetching data:", error.message);
-      }
-    };
-
     fetchData(`/shop/${id}`, setProduct);
+    fetchCartData(setCartItems, user);
   }, []);
 
   if (!product) {
@@ -195,17 +166,69 @@ function ProductPage() {
       </div>
     );
   };
+  const handleAddToCart = async () => {
+    const cartPopInfo = {
+      name: product.name,
+      price: product.price,
+      qty: value,
+      img: product.file,
+    };
+    const newItem = {
+      id: product.id,
+      qty: value,
+    };
+    if (user) {
+      const cartDB = await fetchCartDB(user.id);
+      const existingItemIndex = cartDB.findIndex(
+        (item) => item.id === newItem.id
+      );
 
+      if (existingItemIndex !== -1) {
+        // If the item exists, update its quantity by adding the qty of the newItem
+        cartDB[existingItemIndex].qty += newItem.qty;
+      } else {
+        // If the item does not exist, add the newItem to the cart
+        cartDB.push(newItem);
+      }
+
+      setCartItems(cartDB);
+      updateUserCartDB(user.id, cartDB);
+    } else {
+      // add item to cookie
+      let cartCookie = Cookies.get("cart");
+      let newCartCookie = cartCookie ? JSON.parse(cartCookie) : [];
+
+      const existingItemIndex = newCartCookie.findIndex(
+        (item) => item.id === newItem.id
+      );
+      if (existingItemIndex !== -1) {
+        newCartCookie[existingItemIndex].qty += newItem.qty;
+      } else {
+        newCartCookie.push(newItem);
+      }
+
+      Cookies.set("cart", JSON.stringify(newCartCookie), {
+        expires: 60,
+        path: "/",
+      });
+      setCartItems(newCartCookie);
+    }
+
+    setCartPopup(cartPopInfo);
+  };
   return (
     <div className="product-page">
       <ScrollToTop />
       {/* Header, Navigation, and other elements would go here */}
+      {cartPopup && (
+        <CartPopup
+          cartPopup={cartPopup}
+          setCartPopup={setCartPopup}
+          qty={countItems(cartItems)}
+        />
+      )}
       <div id="product-banner">
-        <div className="title-container trans-white">
-          <BackButton />
-          <h1>Shop</h1>
-          <img src={shopICON} alt="shopping cart" id="cart-icon"></img>
-        </div>
+        <Shopheader htitle={"Shop"} qty={countItems(cartItems)} />
       </div>
       <div className="product-info">
         <div className="product-section">
@@ -243,7 +266,10 @@ function ProductPage() {
             <p id="value">{value}</p>
             <button onClick={handleIncrement}>+</button>
           </div>
-          <button className="add-to-cart">Add to Cart</button>
+          <button className="add-to-cart" onClick={handleAddToCart}>
+            {" "}
+            Add to Cart
+          </button>
           <p>
             {product.size}
             <br />
