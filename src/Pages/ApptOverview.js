@@ -68,6 +68,7 @@ function Overview() {
         date: formattedDate,
         time: clickedTime,
         duration: duration,
+        bookStatus,
         serviceName,
       };
 
