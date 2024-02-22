@@ -73,19 +73,20 @@ const userRoutes = (app, client, database) => {
   app.post("/bookings", async (req, res) => {
 
     try {
-    const { userId, selectedServices, totalCost, date, time, serviceName, bookStatus, duration } = req.body;
+    const { userId, selectedServices, totalCost, date, time, 
+      serviceName, bookStatus, duration, provProfPic, provProfId, staff } = req.body;
 
     const newAppointment = {
       date: date,
       location: serviceName, 
-      services: selectedServices.join(", "), // Assuming selectedServices is an array
-      staff: "Marissa S.", 
+      services: selectedServices.join(", "), // each service selected is seperated by a comma
+      staff: staff, 
       status: bookStatus,
       time: time,
-      duration: duration, // Consider dynamically determining this based on the services selected
+      duration: duration, 
       price: `$${totalCost}`,
-      provProfId: "iID0", // This appears to be a provider profile ID
-      provProfPic: "insert_here", // Placeholder for a profile picture URL or similar
+      provProfId: provProfId, 
+      provProfPic: provProfPic, 
       userID: userId
     };
 
