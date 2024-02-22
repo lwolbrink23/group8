@@ -44,6 +44,9 @@ function Overview() {
   const clickedTime = location.state?.time;
   const serviceName = location.state?.serviceName || "Default Service Name";
   const bookStatus = "scheduled";
+  const provProfPic = location.state?.provProfPic;
+  const provProfId = location.state?.provProfId;
+  const staff = location.state?.staff;
 
   console.log(duration)
 
@@ -70,6 +73,9 @@ function Overview() {
         duration: duration,
         bookStatus,
         serviceName,
+        provProfPic,
+        provProfId,
+        staff
       };
 
       console.log(bookingData)

@@ -116,6 +116,9 @@ const SelectServices = () => {
         totalCost: totalCost,
         duration: duration,
         serviceName: "Simply Chic Hair",
+        provProfPic: "SimplyChicHair",
+        provProfId: "iID0",
+        staff: "Marissa S."
       },
     });
   };
