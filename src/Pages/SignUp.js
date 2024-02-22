@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import "../App.css";
 import "../Styles/SignUp.css";
 import { Link, useNavigate } from "react-router-dom";
-import AccountExistsPopup from "../Components/PopUpExistingUser";
+import PopUpExistingUser from "../Components/PopUpExistingUser";
 
 function getUser() {
   let user = localStorage.getItem("user");
@@ -287,7 +287,7 @@ function SignUp() {
           </Link>
         </p>
       </div>
-      <AccountExistsPopup isOpen={accountExistsError} closePopup={() => setAccountExistsError(false)} />
+      <PopUpExistingUser isOpen={accountExistsError} closePopup={() => setAccountExistsError(false)} />
     </div>
   );
 }
