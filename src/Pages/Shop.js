@@ -30,6 +30,7 @@ function Shop() {
   const [shopData, setShopData] = useState([]);
   const [cartPopup, setCartPopup] = useState();
   const [cartItems, setCartItems] = useState([]);
+  const [giftcardInput, setGiftcardInput] = useState();
 
   useEffect(() => {
     fetchData("/shop", setShopData);
@@ -187,6 +188,31 @@ function Shop() {
     });
   };
 
+  // giftcard stuff
+  const handleInputChange = (event) => {
+    let inputValue = event.target.value;
+
+    // Replace any non-numeric characters except for '.'
+    inputValue = inputValue.replace(/[^0-9.]/g, "");
+
+    // Remove all but the first period
+    const periodIndex = inputValue.indexOf(".");
+    if (periodIndex !== -1) {
+      inputValue =
+        inputValue.slice(0, periodIndex + 1) +
+        inputValue.slice(periodIndex + 1).replace(/\./g, "");
+    }
+
+    // Restrict the number of digits after the period to 2
+    const decimalIndex = inputValue.indexOf(".");
+    if (decimalIndex !== -1 && inputValue.slice(decimalIndex + 1).length > 2) {
+      inputValue = inputValue.slice(0, decimalIndex + 3);
+    }
+
+    setGiftcardInput(inputValue);
+  };
+
+  const handleAddGiftcard = () => {};
   // main JSX
   return (
     <div id="shop">
@@ -233,8 +259,15 @@ function Shop() {
             </p>
             <p>Enter an amount:</p>
             <div className="col-2">
-              <input></input>
-              <button className="button">Add to Cart</button>
+              <input value={giftcardInput} onChange={handleInputChange}></input>
+              <button
+                className="button"
+                disabled={!giftcardInput}
+                style={{ opacity: !giftcardInput ? 0.5 : 1 }}
+                onClick={handleAddGiftcard}
+              >
+                Add to Cart
+              </button>
             </div>
           </div>
         </div>
