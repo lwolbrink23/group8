@@ -73,21 +73,20 @@ const userRoutes = (app, client, database) => {
   app.post("/bookings", async (req, res) => {
 
     try {
-    const { userId, selectedServices, totalCost, date, time, serviceName } = req.body;
+    const { userId, selectedServices, totalCost, date, time, serviceName, bookStatus, duration } = req.body;
 
-    // Assuming you have a way to generate or obtain the following ids and other details
     const newAppointment = {
       date: date,
-      location: "Simply Chic Hair", // This might come from the request or be set based on other logic
+      location: serviceName, 
       services: selectedServices.join(", "), // Assuming selectedServices is an array
-      staff: "Marissa S.", // This could be dynamic based on the request or other business logic
-      status: "scheduled",
+      staff: "Marissa S.", 
+      status: bookStatus,
       time: time,
-      duration: "1 hr", // Consider dynamically determining this based on the services selected
+      duration: duration, // Consider dynamically determining this based on the services selected
       price: `$${totalCost}`,
-      provProfId: "iID0", // This appears to be a provider profile ID, adjust as needed
+      provProfId: "iID0", // This appears to be a provider profile ID
       provProfPic: "insert_here", // Placeholder for a profile picture URL or similar
-      userID: userId // Make sure this is passed correctly from the frontend
+      userID: userId
     };
 
     // Insert the newAppointment object into the MongoDB collection

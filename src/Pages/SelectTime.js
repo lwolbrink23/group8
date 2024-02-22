@@ -28,6 +28,7 @@ function SelectTime() {
   const location = useLocation();
   const selectedServices = location.state?.service || [];
   const totalCost = location.state?.totalCost || 0;
+  const duration = location.state?.duration || 0;
   const serviceName = location.state?.serviceName || "Default Service Name";
 
   const [selectedDate, setSelectedDate] = useState(new Date());
@@ -48,6 +49,7 @@ function SelectTime() {
       state: {
         service: selectedServices,
         totalCost: totalCost,
+        duration: duration,
         date: formattedDate,
         time: clickedTime,
         serviceName: serviceName,

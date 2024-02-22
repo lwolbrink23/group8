@@ -39,22 +39,16 @@ function Overview() {
   const location = useLocation();
   const selectedServices = location.state?.service || [];
   const totalCost = location.state?.totalCost || 0;
+  const duration = location.state?.duration || 0;
   const formattedDate = location.state?.date;
   const clickedTime = location.state?.time;
   const serviceName = location.state?.serviceName || "Default Service Name";
+  const bookStatus = "scheduled";
+
+  console.log(duration)
 
   const navigate = useNavigate();
-  const navigateToConfirmed = () => {
-    navigate("/appointment_confirmed", {
-      state: {
-        service: selectedServices,
-        totalCost: totalCost,
-        date: formattedDate,
-        time: clickedTime,
-        serviceName: serviceName,
-      },
-    });
-  };
+  
   // in progress of this:
   const handleBookNow = async () => {
     try {
@@ -73,6 +67,7 @@ function Overview() {
         totalCost,
         date: formattedDate,
         time: clickedTime,
+        duration: duration,
         serviceName,
       };
 
