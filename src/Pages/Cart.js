@@ -23,12 +23,12 @@ function Cart() {
 
   // keep a state for login here, useeffect to update it
   useEffect(() => {
-    fetchCartData(setCartItems, user);
+    fetchCartData(setCartItems, user, "cart");
   }, []);
 
   const updateCartBackend = (newCartItems) => {
     if (user) {
-      updateUserCartDB(user.id, newCartItems);
+      updateUserCartDB(user.id, newCartItems, "cart");
     } else {
       Cookies.set("cart", JSON.stringify(newCartItems), {
         expires: 60,

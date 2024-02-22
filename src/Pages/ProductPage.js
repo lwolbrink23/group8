@@ -28,7 +28,7 @@ function ProductPage() {
 
   useEffect(() => {
     fetchData(`/shop/${id}`, setProduct);
-    fetchCartData(setCartItems, user);
+    fetchCartData(setCartItems, user, "cart");
   }, []);
 
   if (!product) {
@@ -178,7 +178,7 @@ function ProductPage() {
       qty: value,
     };
     if (user) {
-      const cartDB = await fetchCartDB(user.id);
+      const cartDB = await fetchCartDB(user.id, "cart");
       const existingItemIndex = cartDB.findIndex(
         (item) => item.id === newItem.id
       );

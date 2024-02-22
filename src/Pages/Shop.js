@@ -1,6 +1,6 @@
 import "../App.css";
 import "../Styles/shop.css";
-import giftCardIMG from "../assets/images/giftcard.png";
+import giftCardIMG from "../assets/images/shop/giftcard.png";
 import plusICON from "../assets/icons/black-plus.png";
 import minusICON from "../assets/icons/black-minus.png";
 import CartPopup from "../Components/CartPopup";
@@ -31,11 +31,16 @@ function Shop() {
   const [cartPopup, setCartPopup] = useState();
   const [cartItems, setCartItems] = useState([]);
   const [giftcardInput, setGiftcardInput] = useState();
+  const [giftcards, setGiftcards] = useState([]);
 
   useEffect(() => {
     fetchData("/shop", setShopData);
-    fetchCartData(setCartItems, user);
+    fetchCartData(setCartItems, user, "cart");
+    fetchCartData(setGiftcards, user, "giftcard");
   }, []);
+  useEffect(() => {
+    console.log(giftcards);
+  }, [giftcards]);
 
   const handleIncrement = (itemId) => {
     setDynamicItems((prevItems) => {
@@ -80,7 +85,7 @@ function Shop() {
       qty: itemQty,
     };
     if (user) {
-      const cartDB = await fetchCartDB(user.id);
+      const cartDB = await fetchCartDB(user.id, "cart");
       const existingItemIndex = cartDB.findIndex(
         (item) => item.id === newItem.id
       );
@@ -212,7 +217,49 @@ function Shop() {
     setGiftcardInput(inputValue);
   };
 
-  const handleAddGiftcard = () => {};
+  const handleAddGiftcard = async () => {
+    const cartPopInfo = {
+      name: "Gift Card",
+      price: giftcardInput,
+      qty: 1,
+      img: "giftcard",
+    };
+    const newItem = {
+      type: "giftcard",
+      qty: 1,
+      price: giftcardInput,
+    };
+
+    const existingGiftCardIndex = giftcards.findIndex(
+      (giftCard) => giftCard.price === newItem.price
+    );
+    let newGiftArr = [];
+    if (existingGiftCardIndex !== -1) {
+      // If a gift card with the same price exists, update its quantity
+      const updatedGiftCardCart = [...giftcards];
+      updatedGiftCardCart[existingGiftCardIndex].qty += newItem.qty;
+      newGiftArr = updatedGiftCardCart;
+    } else {
+      // If no gift card with the same price exists, add the new gift card to the cart
+      newGiftArr = [...giftcards, newItem];
+    }
+    setGiftcards(newGiftArr);
+
+    if (user) {
+      // const cartDB = await fetchCartDB(user.id, "giftcard");
+      // updateUserCartDB(user.id, cartDB);
+    } else {
+      // add item to cookie
+      Cookies.set("giftcard", JSON.stringify(newGiftArr), {
+        expires: 60,
+        path: "/",
+      });
+    }
+
+    // update frontend
+    setCartPopup(cartPopInfo);
+    setGiftcardInput("");
+  };
   // main JSX
   return (
     <div id="shop">
@@ -222,13 +269,13 @@ function Shop() {
         <CartPopup
           cartPopup={cartPopup}
           setCartPopup={setCartPopup}
-          qty={countItems(cartItems)}
+          qty={countItems(cartItems) + countItems(giftcards)}
         />
       )}
       <div id="shop-banner">
         <Shopheader
           htitle={"Shop"}
-          qty={countItems(cartItems)}
+          qty={countItems(cartItems) + countItems(giftcards)}
           disableBack={true}
         />
 

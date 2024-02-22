@@ -35,7 +35,7 @@ function Checkout() {
     // TODO: fetch cart data from database here
     // TODO: fetch data from cookie if user not logged in
     fetchData("/shop", setShopData);
-    fetchCartData(setCartItems, user);
+    fetchCartData(setCartItems, user, "cart");
   }, []);
 
   // user inputs

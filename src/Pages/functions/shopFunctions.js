@@ -11,15 +11,15 @@ export const fetchData = async (endpoint, setDataFunction) => {
     console.error("Error fetching data:", error.message);
   }
 };
-export const fetchCartDB = async (userID) => {
-  const response = await fetch(`${BACKEND_ADDRESS}/user/${userID}/cart`);
+export const fetchCartDB = async (userID, type) => {
+  const response = await fetch(`${BACKEND_ADDRESS}/user/${userID}/${type}`);
   const jsonData = await response.json();
   return jsonData;
 };
 
-export const updateUserCartDB = async (userID, cartData) => {
+export const updateUserCartDB = async (userID, cartData, type) => {
   try {
-    const response = await fetch(`${BACKEND_ADDRESS}/user/${userID}/cart`, {
+    const response = await fetch(`${BACKEND_ADDRESS}/user/${userID}/${type}`, {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
@@ -59,19 +59,19 @@ export const countItems = (arr) => {
   });
   return totalQty;
 };
-export const fetchCartData = async (setCartItems, user) => {
+export const fetchCartData = async (setCartItems, user, type) => {
   let cartCookie = "";
-  if (Cookies.get("cart")) {
-    cartCookie = JSON.parse(Cookies.get("cart"));
+  if (Cookies.get(type)) {
+    cartCookie = JSON.parse(Cookies.get(type));
   }
   if (user && cartCookie) {
-    const cartDB = await fetchCartDB(user.id);
+    const cartDB = await fetchCartDB(user.id, type);
     const mergedCartItems = mergeCarts(cartCookie, cartDB);
     setCartItems(mergedCartItems);
     updateUserCartDB(user.id, mergedCartItems);
-    Cookies.remove("cart");
+    Cookies.remove(type);
   } else if (user) {
-    const cartDB = await fetchCartDB(user.id);
+    const cartDB = await fetchCartDB(user.id, type);
     setCartItems(cartDB);
   } else if (cartCookie) {
     setCartItems(cartCookie);

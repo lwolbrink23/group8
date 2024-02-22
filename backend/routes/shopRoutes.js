@@ -71,6 +71,22 @@ const shopRoutes = (app, database) => {
     }
   });
 
+  // get the user's giftcard cart
+  app.get("/user/:id/giftcard", async (req, res) => {
+    try {
+      const collection = database.collection("User_Accounts");
+      let result = await collection.findOne({
+        _id: new ObjectId(req.params.id),
+      });
+      // console.log(result);
+      result = result.giftcardCart;
+      res.send(JSON.stringify(result));
+    } catch (error) {
+      console.error("Error fetching data:", error);
+      res.status(500).json({ error: "Internal Server Error" });
+    }
+  });
+
   // post to update user's cart data
   app.post("/user/:id/cart", async (req, res) => {
     try {
