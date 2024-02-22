@@ -1,3 +1,5 @@
+import { ObjectId } from "mongodb";
+
 const userRoutes = (app, client, database) => {
   // Login route
   app.post("/login", async (req, res) => {
@@ -69,46 +71,48 @@ const userRoutes = (app, client, database) => {
 
   //for the bookings in appt_overview (in progress)
   app.post("/bookings", async (req, res) => {
+
     try {
-      const { userId, selectedServices, totalCost, date, time, serviceName } =
-        req.body;
+    const { userId, selectedServices, totalCost, date, time, serviceName } = req.body;
 
-      // Find the user by userId
-      const user = await database
-        .collection("User_Accounts")
-        .findOne({ _id: userId });
-      if (!user) {
-        return res.status(404).json({ error: "User not found" });
-      }
+    // Assuming you have a way to generate or obtain the following ids and other details
+    const newAppointment = {
+      date: date,
+      location: "Simply Chic Hair", // This might come from the request or be set based on other logic
+      services: selectedServices.join(", "), // Assuming selectedServices is an array
+      staff: "Marissa S.", // This could be dynamic based on the request or other business logic
+      status: "scheduled",
+      time: time,
+      duration: "1 hr", // Consider dynamically determining this based on the services selected
+      price: `$${totalCost}`,
+      provProfId: "iID0", // This appears to be a provider profile ID, adjust as needed
+      provProfPic: "insert_here", // Placeholder for a profile picture URL or similar
+      userID: userId // Make sure this is passed correctly from the frontend
+    };
 
-      // Create a new appointment object
-      const newAppointment = {
-        selectedServices,
-        totalCost,
-        date,
-        time,
-        serviceName,
-      };
+    // Insert the newAppointment object into the MongoDB collection
+    const result = await database.collection("User_Accounts").updateOne(
+      { _id: new ObjectId(userId) },
+      { $push: { appointments: newAppointment } }
+    );
 
-      // Add the new appointment to the user's appointments array
-      await database
-        .collection("User_Accounts")
-        .updateOne(
-          { _id: userId },
-          { $push: { appointments: newAppointment } }
-        );
-
-      res.status(201).json({
-        appointment: newAppointment,
-        message: "Appointment booked successfully",
-      });
-    } catch (error) {
-      console.error("Error booking appointment:", error);
-      res
-        .status(500)
-        .json({ error: "Internal Server Error", details: error.message });
+      if (result.matchedCount === 0) {
+      return res.status(404).json({ error: "User not found" });
     }
-  });
+
+    if (result.modifiedCount === 0) {
+      return res.status(400).json({ error: "Appointment could not be booked" });
+    }
+
+    res.status(201).json({
+      message: "Appointment booked successfully",
+      appointment: newAppointment
+    });
+  } catch (error) {
+    console.error("Error booking appointment:", error);
+    res.status(500).json({ error: "Internal Server Error", details: error.message });
+  }
+});
 };
 
 export default userRoutes;
