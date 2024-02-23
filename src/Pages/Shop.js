@@ -227,7 +227,7 @@ function Shop() {
     const newItem = {
       type: "giftcard",
       qty: 1,
-      price: giftcardInput,
+      price: parseFloat(giftcardInput),
     };
 
     const existingGiftCardIndex = giftcards.findIndex(
@@ -246,10 +246,8 @@ function Shop() {
     setGiftcards(newGiftArr);
 
     if (user) {
-      // const cartDB = await fetchCartDB(user.id, "giftcard");
-      // updateUserCartDB(user.id, cartDB);
+      updateUserCartDB(user.id, newGiftArr, "giftcard");
     } else {
-      // add item to cookie
       Cookies.set("giftcard", JSON.stringify(newGiftArr), {
         expires: 60,
         path: "/",
