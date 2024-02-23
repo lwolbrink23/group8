@@ -28,11 +28,11 @@ function Cart() {
     fetchCartData(setGiftcards, user, "giftcard");
   }, []);
 
-  const updateCartBackend = (newCartItems) => {
+  const updateCartBackend = (newCartItems, type) => {
     if (user) {
-      updateUserCartDB(user.id, newCartItems, "cart");
+      updateUserCartDB(user.id, newCartItems, type);
     } else {
-      Cookies.set("cart", JSON.stringify(newCartItems), {
+      Cookies.set(type, JSON.stringify(newCartItems), {
         expires: 60,
         path: "/",
       });
@@ -151,7 +151,12 @@ function Cart() {
         }
       }
     }
-    updateCartBackend(cartItems);
+    giftcards.forEach((item) => {
+      t += item.price * item.qty;
+    });
+    updateCartBackend(cartItems, "cart");
+    updateCartBackend(giftcards, "giftcard");
+
     return t.toFixed(2);
   };
 
@@ -169,10 +174,16 @@ function Cart() {
     </div>
   );
   const deleteItem = () => {
-    const newArray = cartItems.filter((item) => item.id !== popupItem.itemId);
-    setCartItems(newArray);
+    let newArray = [];
+    if (popupItem.type === "cart") {
+      newArray = cartItems.filter((item) => item.id !== popupItem.itemId);
+      setCartItems(newArray);
+    } else {
+      newArray = giftcards.filter((item) => item.price !== popupItem.itemId);
+      setGiftcards(newArray);
+    }
     setPopupItem();
-    updateCartBackend(newArray);
+    updateCartBackend(newArray, popupItem.type);
   };
 
   const EmptyCart = () => (
