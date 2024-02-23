@@ -67,7 +67,7 @@ function Cart() {
 
     // handle if qty is 1 and user press decrment
     if (itemQty === 1) {
-      setPopupItem({ itemName, itemId });
+      setPopupItem({ itemName, itemId, type });
     } else {
       isGift ? setGiftcards(change) : setCartItems(change);
     }
@@ -162,17 +162,14 @@ function Cart() {
         <p>Delete this item from your cart?</p>
         <p className="bold">{popupItem.itemName}</p>
         <button onClick={() => setPopupItem()}>Cancel</button>
-        <button
-          onClick={() => deleteItem(popupItem.itemId)}
-          className="red-btn"
-        >
+        <button onClick={() => deleteItem()} className="red-btn">
           Delete Item
         </button>
       </div>
     </div>
   );
-  const deleteItem = (itemId) => {
-    const newArray = cartItems.filter((item) => item.id !== itemId);
+  const deleteItem = () => {
+    const newArray = cartItems.filter((item) => item.id !== popupItem.itemId);
     setCartItems(newArray);
     setPopupItem();
     updateCartBackend(newArray);

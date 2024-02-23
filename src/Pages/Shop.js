@@ -96,7 +96,7 @@ function Shop() {
       }
 
       setCartItems(cartDB);
-      updateUserCartDB(user.id, cartDB);
+      updateUserCartDB(user.id, cartDB, "cart");
     } else {
       // add item to cookie
       let cartCookie = Cookies.get("cart");
