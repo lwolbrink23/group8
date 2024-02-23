@@ -76,8 +76,13 @@ const userRoutes = (app, client, database) => {
     const { userId, selectedServices, totalCost, date, time, 
       serviceName, bookStatus, duration, provProfPic, provProfId, staff } = req.body;
 
+    const user = await database.collection('User_Accounts').findOne({ _id: new ObjectId(userId) });
+    const maxId = user.appointments.reduce((max, appointment) => Math.max(max, appointment.id), 0);
+    const newAppointmentId = maxId + 1;
+
     const newAppointment = {
       date: date,
+      id: newAppointmentId,
       location: serviceName, 
       services: selectedServices.join(", "), // each service selected is seperated by a comma
       staff: staff, 
