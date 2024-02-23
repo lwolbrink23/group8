@@ -35,12 +35,15 @@ function Account({ props }) {
       const userId = user.id;
       navigate(`/account/${userId}`); // always displays user id in URL
       console.log("active user: ", user);
-      //*******DO NOT DELETE ANY OF THE CODE ABOVE THIS COMMENT, THIS FUNCTION IS VERY IMPORTANT*************
+      //*******DO NOT DELETE ANY OF THE CODE ABOVE THIS COMMENT, THIS useEffect FUNCTION IS VERY IMPORTANT******
 
       // this is the code that I can't quite figure out yet to retrieve the appointments:
       const fetchAppts = async () => {
-        const userId = user.id;
         try {
+          const user = getUser();
+          const userId = user.id;
+
+          // Make a GET request to the backend
           const response = await fetch(
             `http://localhost:3003/account/${userId}/appointments`,
             {
