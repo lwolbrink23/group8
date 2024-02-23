@@ -30,15 +30,14 @@ function Account({ props }) {
 
   useEffect(() => {
     if (!user) {
-      // Redirect to login page if not logged in
       navigate("/login");
     } else {
       const userId = user.id;
       navigate(`/account/${userId}`); // always displays user id in URL
       console.log("active user: ", user);
-      //DO NOT DELETE ANY OF THE CODE ABOVE THIS COMMENT, THIS FUNCTION IS VERY IMPORTANT
+      //*******DO NOT DELETE ANY OF THE CODE ABOVE THIS COMMENT, THIS FUNCTION IS VERY IMPORTANT*************
 
-      // Fetch appointments from the database - this is the code that I can't quite figure out yet to retrieve the appointments:
+      // this is the code that I can't quite figure out yet to retrieve the appointments:
       const fetchAppts = async () => {
         const userId = user.id;
         try {
