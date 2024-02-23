@@ -127,7 +127,7 @@ const SelectServices = () => {
         duration: duration,
         serviceName: "Polish Perfection",
         provProfPic: "PolishPerfection",
-        provProfId: "iID1",
+        provProfId: "2",
         staff: "Polly W."
       },
     });

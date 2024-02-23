@@ -109,7 +109,7 @@ const SelectServices = () => {
         duration: duration,
         serviceName: "Brush & Blush Beauty",
         provProfPic: "BrushBlushBeauty",
-        provProfId: "iID2",
+        provProfId: "4",
         staff: "Jessica V."
       },
     });

@@ -107,7 +107,7 @@ const SelectServices = () => {
         duration: duration,
         serviceName: "Healing Hands Spa",
         provProfPic: "HealingHandsSpa",
-        provProfId: "iID3",
+        provProfId: "3",
         staff: "Hannah B."
       },
     });
