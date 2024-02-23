@@ -76,6 +76,7 @@ function Cart() {
   // map out cart items
   const CartItems = () => {
     const mergedItems = [...cartItems, ...giftcards];
+
     return (
       <div className="cart-container">
         {mergedItems.map((item, i) => {
@@ -201,20 +202,27 @@ function Cart() {
   return (
     <div id="cart">
       {/* title */}
-      <Shopheader htitle={"Cart"} qty={countItems(cartItems)} />
+      <Shopheader
+        htitle={"Cart"}
+        qty={countItems(cartItems) + countItems(giftcards)}
+      />
       {popupItem && <Popup />}
 
-      {!cartItems.length ? (
+      {!cartItems.length && !giftcards.length ? (
         <EmptyCart />
       ) : (
         <main>
           <div>
-            <p>{countItems(cartItems)} items in your cart</p>
+            <p>
+              {countItems(cartItems) + countItems(giftcards)} items in your cart
+            </p>
             <CartItems />
           </div>
           <div className="subtotal poppins-bigger">
             <div className="col-2">
-              <p>Subtotal ({countItems(cartItems)} items)</p>
+              <p>
+                Subtotal ({countItems(cartItems) + countItems(giftcards)} items)
+              </p>
               <p>${calcTotal()}</p>
             </div>
             <Link to="/checkout">
