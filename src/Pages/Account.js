@@ -25,6 +25,8 @@ function Account({ props }) {
   const navigate = useNavigate();
 
   const [user, setUser] = useState(getUser());
+  const [appointments, setAppointments] = useState([]);
+  const [selectedAppointment, setSelectedAppointment] = useState(null);
 
   useEffect(() => {
     if (!user) {
@@ -34,17 +36,48 @@ function Account({ props }) {
       const userId = user.id;
       navigate(`/account/${userId}`); // always displays user id in URL
       console.log("active user: ", user);
+      //DO NOT DELETE ANY OF THE CODE ABOVE THIS COMMENT, THIS FUNCTION IS VERY IMPORTANT
+
+      // Fetch appointments from the database - this is the code that I can't quite figure out yet to retrieve the appointments:
+      const fetchAppts = async () => {
+        const userId = user.id;
+        try {
+          const response = await fetch(
+            `http://localhost:3003/account/${userId}/appointments`,
+            {
+              method: "GET",
+              headers: {
+                "Content-Type": "application/json",
+              },
+            }
+          );
+
+          if (response.ok) {
+            const userAppointments = await response.json();
+            console.log("User Appointments:", userAppointments);
+            setAppointments(userAppointments);
+          } else {
+            console.error(
+              "Error retrieving user appointments:",
+              response.statusText
+            );
+          }
+        } catch (error) {
+          console.error("Error retrieving user appointments:", error);
+        }
+      };
+
+      fetchAppts();
     }
   }, [user, navigate]);
 
-  const [appointments, setAppointments] = useState([]);
-  const [selectedAppointment, setSelectedAppointment] = useState(null);
+  /* this is the old function that set the appointments data from the temporary JSON file
 
   useEffect(() => {
-    // WILL NEED TO REPLACE THIS TO FETCH DATA FROM THE DATABASE
     // Temporary fetch appointments from the JSON file:
     setAppointments(appointmentsData);
   }, []);
+  */
 
   const handleLogout = () => {
     setIsButtonOpen(true);
@@ -112,7 +145,6 @@ function Account({ props }) {
           price: appointment.price,
           provProfId: appointment.provProfId,
           provProfPic: appointment.provProfPic,
-
         },
       });
     } else {
