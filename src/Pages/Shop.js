@@ -38,9 +38,6 @@ function Shop() {
     fetchCartData(setCartItems, user, "cart");
     fetchCartData(setGiftcards, user, "giftcard");
   }, []);
-  useEffect(() => {
-    console.log(giftcards);
-  }, [giftcards]);
 
   const handleIncrement = (itemId) => {
     setDynamicItems((prevItems) => {
@@ -225,7 +222,7 @@ function Shop() {
       img: "giftcard",
     };
     const newItem = {
-      type: "giftcard",
+      id: "giftcard",
       qty: 1,
       price: parseFloat(giftcardInput),
     };

@@ -16,12 +16,12 @@
     ],
     "giftcardCart": [
       {
-        "type": "giftcard",
+        "id": "giftcard",
         "qty": 2,
         "price": 15
       },
       {
-        "type": "giftcard",
+        "id": "giftcard",
         "qty": 1,
         "price": 10
       }

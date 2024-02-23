@@ -16,6 +16,7 @@ import { getUser } from "./functions/generalFunctions";
 function Cart() {
   // BACKEND: load cart data from database here
   const [cartItems, setCartItems] = useState([]);
+  const [giftcards, setGiftcards] = useState([]);
   const [shopData, setShopData] = useState(tempShopData);
   const [popupItem, setPopupItem] = useState("");
   const [user, setUser] = useState(getUser());
@@ -24,6 +25,7 @@ function Cart() {
   // keep a state for login here, useeffect to update it
   useEffect(() => {
     fetchCartData(setCartItems, user, "cart");
+    fetchCartData(setGiftcards, user, "giftcard");
   }, []);
 
   const updateCartBackend = (newCartItems) => {
@@ -38,81 +40,106 @@ function Cart() {
   };
 
   // increment & decrement
-  const handleIncrement = (itemId) => {
-    setCartItems((prevItems) => {
+  const handleIncrement = (itemId, type) => {
+    const isGift = type === "giftcard";
+    const prop = isGift ? "price" : "id";
+    const change = (prevItems) => {
       const updatedItems = prevItems.map((item) =>
-        item.id === itemId ? { ...item, qty: item.qty + 1 } : item
+        item[prop] === itemId ? { ...item, qty: item.qty + 1 } : item
       );
       return updatedItems;
-    });
+    };
+    isGift ? setGiftcards(change) : setCartItems(change);
   };
 
-  const handleDecrement = (itemId, itemName, itemQty) => {
+  const handleDecrement = (itemId, itemName, itemQty, type) => {
+    const isGift = type === "giftcard";
+    const prop = isGift ? "price" : "id";
+
+    const change = (prevItems) => {
+      const newArray = prevItems.map((item) =>
+        item[prop] === itemId && item.qty > 0
+          ? { ...item, qty: item.qty - 1 }
+          : item
+      );
+      return newArray;
+    };
+
     // handle if qty is 1 and user press decrment
     if (itemQty === 1) {
       setPopupItem({ itemName, itemId });
     } else {
-      setCartItems((prevItems) => {
-        const newArray = prevItems.map((item) =>
-          item.id === itemId && item.qty > 0
-            ? { ...item, qty: item.qty - 1 }
-            : item
-        );
-        return newArray;
-      });
+      isGift ? setGiftcards(change) : setCartItems(change);
     }
   };
 
   // map out cart items
-  const CartItems = () => (
-    <div className="cart-container">
-      {cartItems.map((item, i) => {
-        let itemName = "";
-        let itemPic = "";
-        let itemPrice = 0;
-
-        for (const shopItem of shopData) {
-          if (item.id === shopItem.id) {
-            itemName = shopItem.name;
-            itemPic = shopItem.file;
-            itemPrice = shopItem.price;
+  const CartItems = () => {
+    const mergedItems = [...cartItems, ...giftcards];
+    return (
+      <div className="cart-container">
+        {mergedItems.map((item, i) => {
+          const isGift = item.id === "giftcard";
+          let itemName = isGift ? "Gift Card" : "";
+          let itemPic = isGift ? "giftcard" : "";
+          let itemPrice = isGift ? item.price : 0;
+          if (!isGift) {
+            for (const shopItem of shopData) {
+              if (item.id === shopItem.id) {
+                itemName = shopItem.name;
+                itemPic = shopItem.file;
+                itemPrice = shopItem.price;
+              }
+            }
           }
-        }
-        return (
-          <div className="cart-item" key={i}>
-            <img
-              src={require("../assets/images/shop/" + itemPic + ".png")}
-              alt=""
-            ></img>
-            <div>
-              <p className="rem-top-margin">
-                {itemName}
-                <br></br> instock
-              </p>
-              <div className="item-interaction">
-                <img
-                  src={minusICON}
-                  alt="subtract item"
-                  className="mouse-hover"
-                  onClick={() => handleDecrement(item.id, itemName, item.qty)}
-                ></img>
-                <p className="item-amount poppins-bigger bold">{item.qty}</p>
-                <img
-                  src={plusICON}
-                  alt="add item"
-                  className="mouse-hover"
-                  onClick={() => handleIncrement(item.id)}
-                ></img>
+          return (
+            <div className="cart-item" key={i}>
+              <img
+                src={require("../assets/images/shop/" + itemPic + ".png")}
+                alt=""
+              ></img>
+              <div>
+                <p className="rem-top-margin">
+                  {itemName}
+                  <br></br> instock
+                </p>
+                <div className="item-interaction">
+                  <img
+                    src={minusICON}
+                    alt="subtract item"
+                    className="mouse-hover"
+                    onClick={() =>
+                      handleDecrement(
+                        isGift ? item.price : item.id,
+                        itemName,
+                        item.qty,
+                        isGift ? "giftcard" : "cart"
+                      )
+                    }
+                  ></img>
+                  <p className="item-amount poppins-bigger bold">{item.qty}</p>
+                  <img
+                    src={plusICON}
+                    alt="add item"
+                    className="mouse-hover"
+                    onClick={() =>
+                      handleIncrement(
+                        isGift ? item.price : item.id,
+                        isGift ? "giftcard" : "cart"
+                      )
+                    }
+                  ></img>
+                </div>
               </div>
+              <p className="align-right poppins-bigger rem-top-margin">
+                ${itemPrice}
+              </p>
             </div>
-            <p className="align-right poppins-bigger rem-top-margin">
-              ${itemPrice}
-            </p>
-          </div>
-        );
-      })}
-    </div>
-  );
+          );
+        })}
+      </div>
+    );
+  };
 
   // calculate totals
   const calcTotal = () => {
