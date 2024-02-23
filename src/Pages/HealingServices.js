@@ -79,11 +79,11 @@ const SelectServices = () => {
     // Format the result into a readable string
     let formattedTime = "";
     if (hours > 0) {
-      formattedTime += `${hours} hr${hours > 1 ? 's' : ''}`; // Handle plural
+      formattedTime += `${hours} hr${hours > 1 ? "s" : ""}`; // Handle plural
     }
     if (minutes > 0) {
       if (formattedTime.length > 0) formattedTime += ", "; // Add "and" if there are also hours
-      formattedTime += `${minutes} min${minutes > 1 ? 's' : ''}`; // Handle plural
+      formattedTime += `${minutes} min${minutes > 1 ? "s" : ""}`; // Handle plural
     }
 
     return formattedTime || "0 minutes"; // Return "0 minutes" if no services are selected
@@ -107,8 +107,8 @@ const SelectServices = () => {
         duration: duration,
         serviceName: "Healing Hands Spa",
         provProfPic: "HealingHandsSpa",
-        provProfId: "3",
-        staff: "Hannah B."
+        provProfId: "iID3",
+        staff: "Hannah B.",
       },
     });
   };
