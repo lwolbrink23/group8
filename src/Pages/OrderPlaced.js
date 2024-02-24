@@ -112,6 +112,12 @@ function OrderPlaced() {
             and grooming needs.<br></br> You will receive a confirmation email
             shortly.
           </p>
+          {giftcardData && (
+            <p>
+              Please allow a maximum of 24 hours <br></br>for the delivery of
+              your gift card codes to your email.
+            </p>
+          )}
           <Link to="/" className="home-desktop">
             <button className="button">Back to Home</button>
           </Link>
