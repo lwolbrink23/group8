@@ -37,10 +37,11 @@ export const updateUserCartDB = async (userID, cartData, type) => {
     console.error("Error updating user cart:", error);
   }
 };
-export const mergeCarts = (cart1, cart2) => {
+export const mergeCarts = (cart1, cart2, type) => {
+  const prop = type === "cart" ? "id" : "price";
   const mergedCart = [...cart2];
   cart1.forEach((item1) => {
-    const index = mergedCart.findIndex((item2) => item2.id === item1.id);
+    const index = mergedCart.findIndex((item2) => item2[prop] === item1[prop]);
     if (index !== -1) {
       // Item exists in user's cart, update quantity
       mergedCart[index].qty += item1.qty;
@@ -49,7 +50,6 @@ export const mergeCarts = (cart1, cart2) => {
       mergedCart.push(item1);
     }
   });
-
   return mergedCart;
 };
 export const countItems = (arr) => {
@@ -66,9 +66,9 @@ export const fetchCartData = async (setCartItems, user, type) => {
   }
   if (user && cartCookie) {
     const cartDB = await fetchCartDB(user.id, type);
-    const mergedCartItems = mergeCarts(cartCookie, cartDB);
+    const mergedCartItems = mergeCarts(cartCookie, cartDB, type);
     setCartItems(mergedCartItems);
-    updateUserCartDB(user.id, mergedCartItems);
+    updateUserCartDB(user.id, mergedCartItems, type);
     Cookies.remove(type);
   } else if (user) {
     const cartDB = await fetchCartDB(user.id, type);
