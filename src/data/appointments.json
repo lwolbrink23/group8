@@ -9,9 +9,51 @@
     "time": "2:00pm",
     "duration": "1 hr",
     "price": "$50",
+    "provProfId": "iID0",
+    "provProfPic": "SimplyChicHair.png",
+    "userID": "65cd0f1d880e7e0898b64e74"
+  },
+  {
+    "id": 2,
+    "date": "May 16, 2024",
+    "location": "Polish Perfection",
+    "services": "Manicure",
+    "staff": "Jane D.",
+    "status": "scheduled",
+    "time": "2:00pm",
+    "duration": "1 hr",
+    "price": "$50",
+    "provProfId": "iID1",
+    "provProfPic": "PolishPerfection.png",
+    "userID": "65cd0f1d880e7e0898b64e74"
+  },
+  {
+    "id": 3,
+    "date": "July 4, 2024",
+    "location": "Healing Hands Spa",
+    "services": "Swedish Massage",
+    "staff": "John D.",
+    "status": "scheduled",
+    "time": "2:00pm",
+    "duration": "1 hr",
+    "price": "$50",
+    "provProfId": "iID3",
+    "provProfPic": "HealingHandsSpa.png",
+    "userID": "65cd0f1d880e7e0898b64e74"
+  },
+  {
+    "id": 4,
+    "date": "July 4, 2024",
+    "location": "Brush & Blush Beauty",
+    "services": "Bridal Makeup Package",
+    "staff": "Lucy A.",
+    "status": "scheduled",
+    "time": "2:00pm",
+    "duration": "1 hr",
+    "price": "$50",
     "provProfId": "iID2",
-    "provProfPic": "BrushBlushBeauty",
-    "userID": "65ce8f67e42b7cf189eda0db"
+    "provProfPic": "BrushBlushBeauty.png",
+    "userID": "65cd0f1d880e7e0898b64e74"
   },
 
   {
@@ -38,7 +80,7 @@
     "duration": "1 hr",
     "price": "$50",
     "provProfId": "iID1",
-    "provProfPic": "example",
+    "provProfPic": "PolishPerfection.png",
     "userID": "65cd0f1d880e7e0898b64e74"
   }
 ]
