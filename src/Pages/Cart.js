@@ -204,7 +204,7 @@ function Cart() {
       {/* title */}
       <Shopheader
         htitle={"Cart"}
-        qty={countItems(cartItems) + countItems(giftcards)}
+        qty={countItems([...cartItems, ...giftcards])}
       />
       {popupItem && <Popup />}
 
@@ -213,16 +213,12 @@ function Cart() {
       ) : (
         <main>
           <div>
-            <p>
-              {countItems(cartItems) + countItems(giftcards)} items in your cart
-            </p>
+            <p>{countItems([...cartItems, ...giftcards])} items in your cart</p>
             <CartItems />
           </div>
           <div className="subtotal poppins-bigger">
             <div className="col-2">
-              <p>
-                Subtotal ({countItems(cartItems) + countItems(giftcards)} items)
-              </p>
+              <p>Subtotal ({countItems([...cartItems, ...giftcards])} items)</p>
               <p>${calcTotal()}</p>
             </div>
             <Link to="/checkout">

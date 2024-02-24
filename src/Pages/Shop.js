@@ -264,13 +264,13 @@ function Shop() {
         <CartPopup
           cartPopup={cartPopup}
           setCartPopup={setCartPopup}
-          qty={countItems(cartItems) + countItems(giftcards)}
+          qty={countItems([...cartItems, ...giftcards])}
         />
       )}
       <div id="shop-banner">
         <Shopheader
           htitle={"Shop"}
-          qty={countItems(cartItems) + countItems(giftcards)}
+          qty={countItems([...cartItems, ...giftcards])}
           disableBack={true}
         />
 

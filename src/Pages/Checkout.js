@@ -7,7 +7,7 @@ import CustomDropdown from "../Components/CustomDropdown";
 import purplePlusIcon from "../assets/icons/purple-plus.svg";
 import purpleCheckIcon from "../assets/icons/purple-check.svg";
 import { BACKEND_ADDRESS } from "../App";
-import { fetchData } from "./functions/shopFunctions";
+import { fetchData, updateUserCartDB } from "./functions/shopFunctions";
 import Cookies from "js-cookie";
 import { fetchCartData, countItems } from "./functions/shopFunctions";
 
@@ -26,16 +26,16 @@ function Checkout() {
   const [enableSubmit, setEnableSubmit] = useState(false);
   const [shopData, setShopData] = useState([]);
   const [cartItems, setCartItems] = useState([]);
+  const [giftcards, setGiftcards] = useState([]);
   const [user, setUser] = useState(getUser());
 
   const navigate = useNavigate();
   console.log("active user: ", user);
 
   useEffect(() => {
-    // TODO: fetch cart data from database here
-    // TODO: fetch data from cookie if user not logged in
     fetchData("/shop", setShopData);
     fetchCartData(setCartItems, user, "cart");
+    fetchCartData(setGiftcards, user, "giftcard");
   }, []);
 
   // user inputs
@@ -229,44 +229,48 @@ function Checkout() {
     }));
   };
   // dropdown content for cart
-  const OrderedItems = () => (
-    <ul className="dropdown-content">
-      {cartItems.map((item, i) => {
-        let itemName = "";
-        let itemPic = "";
-        let itemPrice = 0;
-
-        for (const shopItem of shopData) {
-          if (item.id === shopItem.id) {
-            itemName = shopItem.name;
-            itemPic = shopItem.file;
-            itemPrice = shopItem.price;
+  const OrderedItems = () => {
+    const mergedItems = [...cartItems, ...giftcards];
+    return (
+      <ul className="dropdown-content">
+        {mergedItems.map((item, i) => {
+          const isGift = item.id === "giftcard";
+          let itemName = isGift ? "Gift Card" : "";
+          let itemPic = isGift ? "giftcard" : "";
+          let itemPrice = isGift ? item.price : 0;
+          if (!isGift) {
+            for (const shopItem of shopData) {
+              if (item.id === shopItem.id) {
+                itemName = shopItem.name;
+                itemPic = shopItem.file;
+                itemPrice = shopItem.price;
+              }
+            }
           }
-        }
-
-        return (
-          <li className="ordered-item" key={i}>
-            <img
-              src={require("../assets/images/shop/" + itemPic + ".png")}
-              alt=""
-            ></img>
-            <div className="ordered-item-info">
-              <p>
-                <span>{itemName}</span>
-                <br></br>
-                <span style={{ fontSize: "13px" }}>quantity</span>
-                <br></br>
-                <span id="item-qty" className="bold poppins-bigger">
-                  {item.qty}
-                </span>
-              </p>
-            </div>
-            <p className="align-right">${itemPrice}</p>
-          </li>
-        );
-      })}
-    </ul>
-  );
+          return (
+            <li className="ordered-item" key={i}>
+              <img
+                src={require("../assets/images/shop/" + itemPic + ".png")}
+                alt=""
+              ></img>
+              <div className="ordered-item-info">
+                <p>
+                  <span>{itemName}</span>
+                  <br></br>
+                  <span style={{ fontSize: "13px" }}>quantity</span>
+                  <br></br>
+                  <span id="item-qty" className="bold poppins-bigger">
+                    {item.qty}
+                  </span>
+                </p>
+              </div>
+              <p className="align-right">${itemPrice}</p>
+            </li>
+          );
+        })}
+      </ul>
+    );
+  };
 
   // calc totals
   const subtotal = () => {
@@ -278,6 +282,9 @@ function Checkout() {
         }
       }
     }
+    giftcards.forEach((item) => {
+      t += item.price * item.qty;
+    });
     return t;
   };
   const taxes = subtotal() * 0.06;
@@ -300,7 +307,7 @@ function Checkout() {
       id: "",
       userID: "",
       status: "Processing",
-      items: cartWithData,
+      cart: { items: cartWithData, giftcards },
       shippingInfo: {
         name: `${personalInfo.firstName} ${personalInfo.lastName}`,
         phone: personalInfo.phone,
@@ -330,6 +337,9 @@ function Checkout() {
         console.log("Order inserted successfully:", data);
         navigate(`/order_placed/${data.orderId}`);
         Cookies.remove("cart");
+        Cookies.remove("giftcard");
+        updateUserCartDB(user.id, [], "cart");
+        updateUserCartDB(user.id, [], "giftcard");
       })
       .catch((error) => {
         console.error("Error inserting order:", error);
@@ -339,7 +349,10 @@ function Checkout() {
   // main stuff
   return (
     <div id="checkout">
-      <Shopheader htitle={"Checkout"} qty={countItems(cartItems)} />
+      <Shopheader
+        htitle={"Checkout"}
+        qty={countItems([...cartItems, ...giftcards])}
+      />
       <main>
         <div id="shipping-info" className="cardbox">
           <h3>Shipping Information</h3>
@@ -535,7 +548,10 @@ function Checkout() {
           <div id="cart-items">
             <h3>Review Order</h3>
             <CustomDropdown
-              title={`Items Ordered (${countItems(cartItems)})`}
+              title={`Items Ordered (${countItems([
+                ...cartItems,
+                ...giftcards,
+              ])})`}
               ContentComponent={OrderedItems}
               icon={"white-arrow.svg"}
             />

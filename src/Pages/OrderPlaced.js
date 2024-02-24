@@ -6,86 +6,71 @@ import { Link, useParams } from "react-router-dom";
 import "../Styles/orderplaced.css";
 import Shopheader from "../Components/Shopheader";
 import { BACKEND_ADDRESS } from "../App";
-
-function getUser() {
-  let user = localStorage.getItem("user");
-  if (user) {
-    user = JSON.parse(user);
-  } else {
-    user = null;
-  }
-  return user;
-}
+import { getUser } from "./functions/generalFunctions";
+import {
+  countItems,
+  fetchDataReturn,
+  fetchData,
+} from "./functions/shopFunctions";
 
 function OrderPlaced() {
   const { id } = useParams();
   const [user, setUser] = useState(getUser());
   const [cartData, setCartData] = useState([]);
+  const [giftcardData, setGiftcardData] = useState([]);
   const [shopData, setShopData] = useState([]);
   console.log("active user: ", user);
 
   useEffect(() => {
-    const fetchCartData = async (endpoint, setDataFunction) => {
-      try {
-        // Fetch data from the backend
-        const response = await fetch(`${BACKEND_ADDRESS}${endpoint}`);
-        const jsonData = await response.json();
-        console.log(jsonData);
-        setDataFunction(jsonData.items);
-      } catch (error) {
-        console.error("Error fetching data:", error.message);
-      }
+    const fetchOrderData = async () => {
+      const orderInfo = await fetchDataReturn(`/order_placed/${id}`);
+      setCartData(orderInfo.cart.items);
+      setGiftcardData(orderInfo.cart.giftcards);
     };
-    const fetchShopData = async (endpoint, setDataFunction) => {
-      try {
-        // Fetch data from the backend
-        const response = await fetch(`${BACKEND_ADDRESS}${endpoint}`);
-        const jsonData = await response.json();
-        console.log(jsonData);
-        setDataFunction(jsonData);
-      } catch (error) {
-        console.error("Error fetching data:", error.message);
-      }
-    };
-    fetchCartData(`/order_placed/${id}`, setCartData);
-    fetchShopData("/shop", setShopData);
+    fetchOrderData();
+    fetchData("/shop", setShopData);
   }, [id]);
-  const OrderedItems = () => (
-    <ul className="dropdown-content">
-      {cartData.map((item, i) => {
-        let itemName = "";
-        let itemPic = "";
-
-        for (const shopItem of shopData) {
-          if (item.id === shopItem.id) {
-            itemName = shopItem.name;
-            itemPic = shopItem.file;
+  const OrderedItems = () => {
+    const mergedItems = [...cartData, ...giftcardData];
+    return (
+      <ul className="dropdown-content">
+        {mergedItems.map((item, i) => {
+          const isGift = item.id === "giftcard";
+          let itemName = isGift ? "Gift Card" : "";
+          let itemPic = isGift ? "giftcard" : "";
+          if (!isGift) {
+            for (const shopItem of shopData) {
+              if (item.id === shopItem.id) {
+                itemName = shopItem.name;
+                itemPic = shopItem.file;
+              }
+            }
           }
-        }
 
-        return (
-          <li className="ordered-item" key={i}>
-            <img
-              src={require("../assets/images/shop/" + itemPic + ".png")}
-              alt=""
-            ></img>
-            <div className="ordered-item-info">
-              <p>
-                <span>{itemName}</span>
-                <br></br>
-                <span style={{ fontSize: "13px" }}>quantity</span>
-                <br></br>
-                <span id="item-qty" className="bold poppins-bigger">
-                  {item.qty}
-                </span>
-              </p>
-            </div>
-            <p className="align-right">${item.price}</p>
-          </li>
-        );
-      })}
-    </ul>
-  );
+          return (
+            <li className="ordered-item" key={i}>
+              <img
+                src={require("../assets/images/shop/" + itemPic + ".png")}
+                alt=""
+              ></img>
+              <div className="ordered-item-info">
+                <p>
+                  <span>{itemName}</span>
+                  <br></br>
+                  <span style={{ fontSize: "13px" }}>quantity</span>
+                  <br></br>
+                  <span id="item-qty" className="bold poppins-bigger">
+                    {item.qty}
+                  </span>
+                </p>
+              </div>
+              <p className="align-right">${item.price}</p>
+            </li>
+          );
+        })}
+      </ul>
+    );
+  };
   const CartDropdown = () => {
     const [dropdownVisible, setdropdownVisible] = useState(false);
     const [arrowRotation, setArrowRotation] = useState(270);
@@ -103,7 +88,7 @@ function OrderPlaced() {
     return (
       <div className="dropdown">
         <div className="dropdown-btn" onClick={toggleVisibility}>
-          <h3>Items ordered ({countItems()})</h3>
+          <h3>Items ordered ({countItems([...cartData, ...giftcardData])})</h3>
           <img src={arrowIcon} alt="Arrow" style={arrowIconStyle} />
         </div>
         {dropdownVisible && <OrderedItems />}
@@ -111,15 +96,6 @@ function OrderPlaced() {
     );
   };
 
-  const countItems = () => {
-    let totalQty = 0;
-
-    cartData.forEach((item) => {
-      totalQty += item.qty;
-    });
-
-    return totalQty;
-  };
   return (
     <div id="order-placed">
       {/* title */}
