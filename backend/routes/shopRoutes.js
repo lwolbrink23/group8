@@ -62,8 +62,7 @@ const shopRoutes = (app, database) => {
       let result = await collection.findOne({
         _id: new ObjectId(req.params.id),
       });
-      // console.log(result);
-      result = result.shoppingCart;
+      result = result.shoppingCart.items;
       res.send(JSON.stringify(result));
     } catch (error) {
       console.error("Error fetching data:", error);
@@ -79,7 +78,7 @@ const shopRoutes = (app, database) => {
         _id: new ObjectId(req.params.id),
       });
       // console.log(result);
-      result = result.giftcardCart;
+      result = result.shoppingCart.giftcards;
       res.send(JSON.stringify(result));
     } catch (error) {
       console.error("Error fetching data:", error);
@@ -96,7 +95,7 @@ const shopRoutes = (app, database) => {
       const collection = database.collection("User_Accounts");
       const result = await collection.updateOne(
         { _id: new ObjectId(req.params.id) },
-        { $set: { shoppingCart: cart } }
+        { $set: { "shoppingCart.items": cart } }
       );
 
       if (result.modifiedCount === 1) {
@@ -121,7 +120,7 @@ const shopRoutes = (app, database) => {
       const collection = database.collection("User_Accounts");
       const result = await collection.updateOne(
         { _id: new ObjectId(req.params.id) },
-        { $set: { giftcardCart: cart } }
+        { $set: { "shoppingCart.giftcards": cart } }
       );
 
       if (result.modifiedCount === 1) {

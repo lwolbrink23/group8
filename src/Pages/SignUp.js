@@ -39,8 +39,8 @@ function SignUp() {
   };
 
   const handlePhoneInputChange = (event) => {
-    const digits = event.target.value.replace(/\D/g, '');
-    let formattedPhoneNumber = '';
+    const digits = event.target.value.replace(/\D/g, "");
+    let formattedPhoneNumber = "";
 
     // Format the digits according to the pattern
     if (digits.length <= 3) {
@@ -48,7 +48,10 @@ function SignUp() {
     } else if (digits.length > 3 && digits.length <= 6) {
       formattedPhoneNumber = `(${digits.slice(0, 3)}) ${digits.slice(3)}`;
     } else if (digits.length > 6) {
-      formattedPhoneNumber = `(${digits.slice(0, 3)}) ${digits.slice(3, 6)}-${digits.slice(6, 10)}`;
+      formattedPhoneNumber = `(${digits.slice(0, 3)}) ${digits.slice(
+        3,
+        6
+      )}-${digits.slice(6, 10)}`;
     }
 
     setPhoneValue(formattedPhoneNumber);
@@ -107,7 +110,10 @@ function SignUp() {
       phoneNumber: phoneValue,
       email: emailValue,
       password: pwValue,
-      shoppingCart: [],
+      shoppingCart: {
+        items: [],
+        giftcards: [],
+      },
     };
 
     try {
@@ -158,14 +164,14 @@ function SignUp() {
   const buttonStyle = {
     color:
       firstNameValue &&
-        lastNameValue &&
-        emailValue &&
-        phoneValue &&
-        pwValue &&
-        confPwValue &&
-        !passwordsMatchError &&
-        !phoneError &&
-        !emailError
+      lastNameValue &&
+      emailValue &&
+      phoneValue &&
+      pwValue &&
+      confPwValue &&
+      !passwordsMatchError &&
+      !phoneError &&
+      !emailError
         ? "black"
         : "#646464",
   };
@@ -287,8 +293,11 @@ function SignUp() {
           </Link>
         </p>
       </div>
-      <PopUpExistingUser isOpen={accountExistsError} closePopup={() => setAccountExistsError(false)} />
+      <PopUpExistingUser
+        isOpen={accountExistsError}
+        closePopup={() => setAccountExistsError(false)}
+      />
     </div>
   );
 }
-export default SignUp
+export default SignUp;
