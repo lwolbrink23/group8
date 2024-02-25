@@ -3,6 +3,7 @@ import { Link } from "react-router-dom";
 import React, { useState } from "react";
 import PopUpBlog from "../Components/PopUpBlog.js";
 import PopUpNews from "../Components/PopUpNews.js";
+import PopupInvalid from "../Components/invalidEmail.js";
 import MainCarousel from "../Components/MainCarousel.js";
 import WebGallery from "../Components/WebGallery.js";
 import promoBottle from "../assets/images/promo_bottle.png";
@@ -78,6 +79,10 @@ function Home() {
   const openNews = () => setIsNewsOpen(true);
   const closeNews = () => setIsNewsOpen(false);
 
+  const [isInvalidEmailPopupOpen, setIsInvalidEmailPopupOpen] = useState(false);
+  const openInvalidEmailPopup = () => setIsInvalidEmailPopupOpen(true);
+  const closeInvalidEmailPopup = () => setIsInvalidEmailPopupOpen(false);
+
   const [blogEmail, setBlogEmail] = useState("");
   const [newsEmail, setNewsEmail] = useState("");
   const [user, setUser] = useState(getUser());
@@ -98,55 +103,67 @@ function Home() {
     setNewsEmail("");
   };
 
-const handleSubBlog = async () => {
-  try {
-    const response = await fetch("http://localhost:3003/subscribe", {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify({
-        email: blogEmail,
-        type: "blog",
-      }),
-    });
+  // Email RegEx
+  const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 
-    if (response.ok) {
-      console.log("Successfully subscribed to blog");
-      openBlog();
-      resetInput();
-    } else {
-      console.error("Failed to subscribe to blog:", response.statusText);
+  const handleSubBlog = async () => {
+    if (!emailRegex.test(blogEmail)) {
+      openInvalidEmailPopup();
+      return;
     }
-  } catch (error) {
-    console.error("Error subscribing to blog:", error);
-  }
-};
 
-const handleSubNews = async () => {
-  try {
-    const response = await fetch("http://localhost:3003/subscribe", {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify({
-        email: newsEmail,
-        type: "newsletter",
-      }),
-    });
+    try {
+      const response = await fetch("http://localhost:3003/subscribe", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          email: blogEmail,
+          type: "blog",
+        }),
+      });
 
-    if (response.ok) {
-      console.log("Successfully subscribed to newsletter");
-      openNews();
-      resetInput();
-    } else {
-      console.error("Failed to subscribe to newsletter:", response.statusText);
+      if (response.ok) {
+        console.log("Successfully subscribed to blog");
+        openBlog();
+        resetInput();
+      } else {
+        console.error("Failed to subscribe to blog:", response.statusText);
+      }
+    } catch (error) {
+      console.error("Error subscribing to blog:", error);
     }
-  } catch (error) {
-    console.error("Error subscribing to newsletter:", error);
-  }
-};
+  };
+
+  const handleSubNews = async () => {
+    if (!emailRegex.test(newsEmail)) {
+      openInvalidEmailPopup();
+      return;
+    }
+    try {
+      const response = await fetch("http://localhost:3003/subscribe", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          email: newsEmail,
+          type: "newsletter",
+        }),
+      });
+
+      if (response.ok) {
+        console.log("Successfully subscribed to newsletter");
+        openNews();
+        resetInput();
+      } else {
+        console.error("Failed to subscribe to newsletter:", response.statusText);
+      }
+    } catch (error) {
+      console.error("Error subscribing to newsletter:", error);
+    }
+  };
 
   const buttonBlogStyle = {
     color: blogEmail ? "black" : "#646464", // Black when clickable, light grey when not
@@ -351,6 +368,9 @@ const handleSubNews = async () => {
           </div>
         </div>
       </div>
+
+      {/* Invalid Email Popup */}
+      <PopupInvalid isOpen={isInvalidEmailPopupOpen} closePopup={closeInvalidEmailPopup} />
     </div>
   );
 }
