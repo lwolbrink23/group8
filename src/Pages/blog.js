@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { Link, useLocation } from "react-router-dom";
+import PopupInvalid from "../Components/invalidEmail.js";
 import PopUpBlog from "../Components/PopUpBlog.js";
 import "../App.css";
 import "../Styles/blog.css";
@@ -52,37 +53,25 @@ function Blog() {
   const openBlog = () => setIsBlogOpen(true);
   const closeBlog = () => setIsBlogOpen(false);
 
-  // State to keep track of the input value
+  const [isInvalidEmailPopupOpen, setIsInvalidEmailPopupOpen] = useState(false);
+
+  const openInvalidEmailPopup = () => setIsInvalidEmailPopupOpen(true);
+  const closeInvalidEmailPopup = () => setIsInvalidEmailPopupOpen(false);
+
   const [inputValue, setInputValue] = useState("");
-  // State to manage email validation
-  const [emailError, setEmailError] = useState(false);
 
-  // Function to validate email
-  const isValidEmail = (email) => {
-    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-    return emailRegex.test(email);
-  };
-
-  // Function to update the state based on input changes
   const handleInputChange = (event) => {
-    const value = event.target.value;
-    setInputValue(value);
-
-    // Validate the email address
-    const isValid = isValidEmail(value);
-    setEmailError(!isValid);
+    setInputValue(event.target.value);
   };
 
   const resetForm = () => {
     setInputValue("");
-    // Reset email validation error
-    setEmailError(false);
   };
 
   const handleSubscribe = async () => {
-    // Check if email is valid before subscribing
-    if (!isValidEmail(inputValue)) {
-      alert("Please enter a valid email address");
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    if (!emailRegex.test(inputValue)) {
+      openInvalidEmailPopup();
       return;
     }
 
@@ -110,9 +99,8 @@ function Blog() {
     }
   };
 
-  // change button text color when disabled
   const buttonStyle = {
-    color: inputValue ? "black" : "#646464", // Black when clickable, light grey when not
+    color: inputValue ? "black" : "#646464",
   };
 
   const [BlogPosts, setBlogPosts] = useState([]);
@@ -120,7 +108,6 @@ function Blog() {
   useEffect(() => {
     const fetchData = async (endpoint, setDataFunction) => {
       try {
-        // Fetch data from the backend
         const response = await fetch(`${BACKEND_ADDRESS}${endpoint}`);
         const jsonData = await response.json();
         setDataFunction(jsonData);
@@ -129,10 +116,7 @@ function Blog() {
       }
     };
 
-    // Usage example:
     fetchData("/blog", setBlogPosts);
-    // TODO: fetch cart data from database here
-    // fetch data from cookie
   }, []);
 
   return (
@@ -146,8 +130,6 @@ function Blog() {
           <p className="sub-text">
             Stay up to date with the latest news from The Suite Spot!
           </p>
-          {/* Background image added in CSS*/}
-          <div className="overlay-container">
           <form className="subscribe">
             <input
               type="text"
@@ -157,22 +139,16 @@ function Blog() {
               value={inputValue}
               onChange={handleInputChange}
             />
-            {emailError && (
-              <div className="error-overlay">
-      <p style={{ color: "red" }}>Please enter a valid email address.</p>
-    </div>
-            )}
             <button
               type="button"
               style={buttonStyle}
-              disabled={!inputValue || emailError}
+              disabled={!inputValue}
               onClick={handleSubscribe}
             >
               Subscribe
             </button>
           </form>
-          </div>
-
+          <PopupInvalid isOpen={isInvalidEmailPopupOpen} closePopup={closeInvalidEmailPopup} />
           <PopUpBlog isOpen={isBlogOpen} closePopup={closeBlog} />
         </div>
         <div className="overlay-box"></div>
