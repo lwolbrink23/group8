@@ -89,6 +89,10 @@ function ApptDetails({ props }) {
     navigate(`/providerprofile/${location.state.provProfId}`);
   };
 
+   // Path for the image
+  const provProfPic = location.state.provProfPic;
+  const imagePath = `../assets/images/${provProfPic}.png`;
+
   return (
     <div>
       <div className="appt-heading">
@@ -97,7 +101,7 @@ function ApptDetails({ props }) {
       <div className="appt-form">
         <div className="top-section">
           <div className="prof-image">
-            <img src={SimplyChicHair} alt="Simply Chic Hair" />
+           <img src={require(imagePath).default} alt={provProfPic} />
           </div>
 
           <div className="middle-section">
