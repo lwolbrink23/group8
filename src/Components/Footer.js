@@ -62,7 +62,10 @@ function Footer() {
         openPopup();
         resetForm();
       } else {
-        console.error("Failed to subscribe to newsletter:", response.statusText);
+        console.error(
+          "Failed to subscribe to newsletter:",
+          response.statusText,
+        );
       }
     } catch (error) {
       console.error("Error subscribing to newsletter:", error);
@@ -105,15 +108,17 @@ function Footer() {
           <p>
             <strong>Join our Newsletter</strong>
           </p>
+          {emailError && (
+            <p style={{ color: "red", margin: 0, padding: "5px" }}>
+              Please enter a valid email address.
+            </p>
+          )}
           <input
             type="email"
             placeholder="Enter your email"
             value={inputValue}
             onChange={handleInputChange}
           />
-          {emailError && (
-            <p style={{ color: "red" }}>Please enter a valid email address.</p>
-          )}
           <button
             onClick={handleSub}
             style={buttonStyle}
