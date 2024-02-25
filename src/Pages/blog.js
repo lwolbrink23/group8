@@ -54,17 +54,38 @@ function Blog() {
 
   // State to keep track of the input value
   const [inputValue, setInputValue] = useState("");
+  // State to manage email validation
+  const [emailError, setEmailError] = useState(false);
+
+  // Function to validate email
+  const isValidEmail = (email) => {
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    return emailRegex.test(email);
+  };
 
   // Function to update the state based on input changes
   const handleInputChange = (event) => {
-    setInputValue(event.target.value);
+    const value = event.target.value;
+    setInputValue(value);
+
+    // Validate the email address
+    const isValid = isValidEmail(value);
+    setEmailError(!isValid);
   };
 
   const resetForm = () => {
     setInputValue("");
+    // Reset email validation error
+    setEmailError(false);
   };
 
- const handleSubscribe = async () => {
+  const handleSubscribe = async () => {
+    // Check if email is valid before subscribing
+    if (!isValidEmail(inputValue)) {
+      alert("Please enter a valid email address");
+      return;
+    }
+
     try {
       const response = await fetch("http://localhost:3003/subscribe", {
         method: "POST",
@@ -126,6 +147,7 @@ function Blog() {
             Stay up to date with the latest news from The Suite Spot!
           </p>
           {/* Background image added in CSS*/}
+          <div className="overlay-container">
           <form className="subscribe">
             <input
               type="text"
@@ -135,15 +157,21 @@ function Blog() {
               value={inputValue}
               onChange={handleInputChange}
             />
+            {emailError && (
+              <div className="error-overlay">
+      <p style={{ color: "red" }}>Please enter a valid email address.</p>
+    </div>
+            )}
             <button
               type="button"
               style={buttonStyle}
-              disabled={!inputValue}
+              disabled={!inputValue || emailError}
               onClick={handleSubscribe}
             >
               Subscribe
             </button>
           </form>
+          </div>
 
           <PopUpBlog isOpen={isBlogOpen} closePopup={closeBlog} />
         </div>
