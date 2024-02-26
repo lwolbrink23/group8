@@ -101,6 +101,9 @@ function ApptDetails({ props }) {
     return text.length > maxLength ? `${text.slice(0, maxLength)}...` : text;
   };
 
+  const date = new Date(location.state.date);
+  const formattedDate = date.toLocaleDateString('en-US', { month: 'short', day: 'numeric', year: 'numeric' });
+
   return (
     <div>
       <div className="appt-heading">
@@ -125,7 +128,7 @@ function ApptDetails({ props }) {
                 className="calendar-icon"
               />
               <div className="icon-with-text">
-                <p>{location.state.date}</p>
+                <p>{formattedDate}</p>
                 <p>{location.state.time}</p>
               </div>
             </div>
@@ -158,7 +161,7 @@ function ApptDetails({ props }) {
             </thead>
             <tbody>
               <tr key={location.state.id}>
-                <td>{location.state.date}</td>
+                <td>{formattedDate}</td>
                 <td>{location.state.time}</td>
                 <td>{location.state.duration}</td>
                 <td>{truncateText(location.state.services, 24)}</td>
