@@ -323,6 +323,7 @@ function Checkout() {
           zip: addressInfo.zip,
         },
       },
+      date: Date.now(),
     };
 
     fetch(`${BACKEND_ADDRESS}/checkout`, {
