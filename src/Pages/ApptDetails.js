@@ -3,6 +3,9 @@ import { Link, useLocation, useNavigate } from "react-router-dom";
 import "../App.css";
 import "../Styles/apptdetails.css";
 import SimplyChicHair from "../assets/images/SimplyChicHair.png";
+import PolishPerfection from "../assets/images/PolishPerfection.png"
+import BlushBrush from "../assets/images/BrushBlushBeauty.png"
+import HealingHands from "../assets/images/HealingHandsSpa.png"
 import calendaricon from "../assets/icons/calendaricon.png";
 
 function getUser() {
@@ -89,9 +92,10 @@ function ApptDetails({ props }) {
     navigate(`/providerprofile/${location.state.provProfId}`);
   };
 
-   // Path for the image
+   // Render the image dynamically based on the provProfPic
   const provProfPic = location.state.provProfPic;
-  const imagePath = `../assets/images/${provProfPic}.png`;
+
+
 
   return (
     <div>
@@ -101,7 +105,10 @@ function ApptDetails({ props }) {
       <div className="appt-form">
         <div className="top-section">
           <div className="prof-image">
-           <img src={require(imagePath).default} alt={provProfPic} />
+         <img
+            src={require("../assets/images/" + provProfPic + ".png")}
+            alt="Simply Chic Hair"
+          />
           </div>
 
           <div className="middle-section">
