@@ -62,6 +62,7 @@ function Account({ props }) {
     return text.length > maxLength ? `${text.slice(0, maxLength)}...` : text;
   };
 
+
   // Function to render appointments
   const renderAppointments = (status) => {
     const filteredAppointments = appointments.filter(
@@ -80,24 +81,29 @@ function Account({ props }) {
 
     return (
       <>
-        {filteredAppointments.map((appointment) => (
-          <tr key={appointment.id}>
-            <td key="filteredappts1">{appointment.date}</td>
-            <td key="filteredappts2">{appointment.location}</td>
-            <td key="filteredappts3">{truncateText(appointment.services, 24)}</td> {/* Adjust the character limit as needed */}
-            <td key="filteredappts4">{appointment.staff}</td>
-            <td key="filteredappts5">
-              <div className="apptActionContainer">
-                <button
-                  className="apptActionButton"
-                  onClick={() => handleActionClick(appointment)}
-                >
-                  {status === "scheduled" ? "View Details" : "View Details"}
-                </button>
-              </div>
-            </td>
-          </tr>
-        ))}
+        {filteredAppointments.map((appointment) => {
+          const date = new Date(appointment.date);
+          const formattedDate = date.toLocaleDateString('en-US', { month: 'short', day: 'numeric', year: 'numeric' });
+
+          return (
+            <tr key={appointment.id}>
+              <td key="filteredappts1">{formattedDate}</td>
+              <td key="filteredappts2">{appointment.location}</td>
+              <td key="filteredappts3">{truncateText(appointment.services, 24)}</td> {/* Adjust the character limit as needed */}
+              <td key="filteredappts4">{appointment.staff}</td>
+              <td key="filteredappts5">
+                <div className="apptActionContainer">
+                  <button
+                    className="apptActionButton"
+                    onClick={() => handleActionClick(appointment)}
+                  >
+                    {status === "scheduled" ? "View Details" : "View Details"}
+                  </button>
+                </div>
+              </td>
+            </tr>
+          );
+        })}
       </>
     );
   };

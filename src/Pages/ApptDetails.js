@@ -167,7 +167,7 @@ function ApptDetails({ props }) {
           <p className="bolded">Duration</p>
           <p>{location.state.duration}</p>
           <p className="bolded">Services</p>
-          <p>{location.state.services}</p>
+          <p>{truncateText(location.state.services, 24)}</p>
           <p className="bolded">Price</p>
           <p>{location.state.price}</p>
           <p className="bolded">Staff</p>
