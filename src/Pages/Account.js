@@ -15,16 +15,8 @@ import {
   fetchApptsDB,
   fetchDataReturn
 } from "./functions/accountFunctions";
+import { getUser } from "./functions/generalFunctions";
 
-function getUser() {
-  let user = localStorage.getItem("user");
-  if (user) {
-    user = JSON.parse(user);
-  } else {
-    user = null;
-  }
-  return user;
-}
 
 function Account({ props }) {
   const navigate = useNavigate();
@@ -32,42 +24,6 @@ function Account({ props }) {
   const [user, setUser] = useState(getUser());
   const [appointments, setAppointments] = useState([]);
   const [selectedAppointment, setSelectedAppointment] = useState(null);
-
-  // this is the code that I can't quite figure out yet to retrieve the appointments:
-  const fetchAppts = async () => {
-    try {
-      if (!user || !user.id) {
-        console.error('User or user ID not available.');
-        return;
-      }
-
-      // Make a GET request to the backend
-      const response = await fetch(
-        `http://localhost:3003/account/appointments/${user.id}`,
-        {
-          method: "GET",
-          headers: {
-            "Content-Type": "application/json",
-            //"Authorization": `Bearer ${user.accessToken}`, // Include your authentication token
-            // "X-User-ID": user.id, // Include the user ID in a custom header
-          },
-        }
-      );
-
-      if (response.ok) {
-        const userAppointments = await response.json();
-        console.log("User Appointments:", userAppointments);
-        setAppointments(userAppointments);
-      } else {
-        console.error(
-          "Error retrieving user appointments:",
-          response.statusText
-        );
-      }
-    } catch (error) {
-      console.error("Error retrieving user appointments:", error);
-    }
-  };
 
 
   //*******DO NOT DELETE THESE useEffect FUNCTIONS******
@@ -83,20 +39,13 @@ function Account({ props }) {
       navigate(`/account/${userId}`); // always displays user id in URL
       console.log("active user: ", user);
 
-      // Call the fetchAppts function when the component mounts
-      // fetchAppts();
+      // Call the fetch function when the component mounts
       fetchData("/appointments", setAppointments);
       console.log("appointments from DB: ", appointments);
       // fetchApptsDB(setCartItems, user, "cart");
     }
-  }, [user, navigate, fetchAppts]);
+  }, [user, navigate]);
 
-  /* this is the old function that set the appointments data from the temporary JSON file
-  useEffect(() => {
-    // Temporary fetch appointments from the JSON file:
-    setAppointments(appointmentsData);
-  }, []);
-  */
 
   const handleLogout = () => {
     setIsButtonOpen(true);

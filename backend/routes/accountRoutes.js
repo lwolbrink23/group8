@@ -8,7 +8,7 @@ const accountRoutes = (app, database) => {
       const collection = database.collection("User_Accounts");
       const result = await collection.findOne({ id: req.params.id });
       res.send(JSON.stringify(result));
-      console.log("result: ", result)
+      console.log("result._id: ", result._id)
     } catch (error) {
       console.error("Error fetching user appointments:", error);
       return res.status(500).json({ error: "Internal Server Error" });
