@@ -10,6 +10,11 @@ import PopupPassword from "../Components/PopUpPassword";
 import PopupSignOut from "../Components/PopUpSignOut.js";
 import OrderHistory from "../Components/OrderHistory.js";
 import appointmentsData from "../data/appointments.json";
+import {
+  fetchData,
+  fetchApptsDB,
+  fetchDataReturn
+} from "./functions/accountFunctions";
 
 function getUser() {
   let user = localStorage.getItem("user");
@@ -31,18 +36,20 @@ function Account({ props }) {
   // this is the code that I can't quite figure out yet to retrieve the appointments:
   const fetchAppts = async () => {
     try {
-      if (!user.id) {
+      if (!user || !user.id) {
         console.error('User or user ID not available.');
         return;
       }
 
       // Make a GET request to the backend
       const response = await fetch(
-        `http://localhost:3003/account/appointments`,
+        `http://localhost:3003/account/appointments/${user.id}`,
         {
           method: "GET",
           headers: {
             "Content-Type": "application/json",
+            //"Authorization": `Bearer ${user.accessToken}`, // Include your authentication token
+            // "X-User-ID": user.id, // Include the user ID in a custom header
           },
         }
       );
@@ -63,19 +70,26 @@ function Account({ props }) {
   };
 
 
-  //*******DO NOT DELETE THIS useEffect FUNCTION******
+  //*******DO NOT DELETE THESE useEffect FUNCTIONS******
   useEffect(() => {
     if (!user) {
       navigate("/login");
-    } else {
+    }
+  }, [user, navigate]);
+
+  useEffect(() => {
+    if (user) {
       const userId = user.id;
       navigate(`/account/${userId}`); // always displays user id in URL
       console.log("active user: ", user);
 
       // Call the fetchAppts function when the component mounts
-      fetchAppts();
+      // fetchAppts();
+      fetchData("/appointments", setAppointments);
+      console.log("appointments from DB: ", appointments);
+      // fetchApptsDB(setCartItems, user, "cart");
     }
-  }, [user, navigate]);
+  }, [user, navigate, fetchAppts]);
 
   /* this is the old function that set the appointments data from the temporary JSON file
   useEffect(() => {
