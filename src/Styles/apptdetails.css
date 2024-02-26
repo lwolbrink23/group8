@@ -227,6 +227,7 @@
         margin-left: auto;
         margin-right: auto;
         position: relative;
+
     }
 
     .middle-section {
@@ -254,10 +255,12 @@
         height: 70px;
         max-width: 55%;
         padding: 0;
+        min-width: 600px;
     }
 
     .appt-form {
         max-width: 55%;
+        min-width: 600px;
     }
 
 
