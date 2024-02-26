@@ -305,9 +305,15 @@ function Checkout() {
 
     const newOrder = {
       id: "",
-      userID: "",
+      userID: user ? user.id : "",
       status: "Processing",
       cart: { items: cartWithData, giftcards },
+      costs: {
+        subtotal: subtotal(),
+        taxes: taxes,
+        shipCost: shipCost,
+        total: total,
+      },
       shippingInfo: {
         name: `${personalInfo.firstName} ${personalInfo.lastName}`,
         phone: personalInfo.phone,
