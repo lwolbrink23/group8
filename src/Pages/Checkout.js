@@ -304,7 +304,6 @@ function Checkout() {
     });
 
     const newOrder = {
-      id: "",
       userID: user ? user.id : "",
       status: "Processing",
       cart: { items: cartWithData, giftcards },
