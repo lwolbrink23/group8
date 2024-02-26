@@ -27,9 +27,9 @@ const accountRoutes = (app, database) => {
       const collection = database.collection("User_Accounts");
       const result = await collection.find({ _id: new ObjectId(userId) }).toArray();
       // res.send(JSON.stringify(result));
-      console.log("result: ", result)
       if (result.length > 0) {
-        res.status(200).json(result);
+        const appointments = result.map(item => item.appointments);
+        res.status(200).json(appointments);
       } else {
         res.status(404).json({ error: "User not found" });
       }
