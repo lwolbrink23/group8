@@ -21,8 +21,9 @@ export const fetchDataReturn = async (endpoint) => {
         console.error("Error fetching data:", error.message);
     }
 };
-export const fetchApptsDB = async (userID, type) => {
-    const response = await fetch(`${BACKEND_ADDRESS}/user/${userID}/${type}`);
+
+export const fetchApptsDB = async (userID) => {
+    const response = await fetch(`${BACKEND_ADDRESS}/appointments/${userID}`);
     const jsonData = await response.json();
     return jsonData;
 };

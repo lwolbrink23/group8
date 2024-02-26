@@ -34,16 +34,25 @@ function Account({ props }) {
   }, [user, navigate]);
 
   useEffect(() => {
-    if (user) {
-      const userId = user.id;
-      navigate(`/account/${userId}`); // always displays user id in URL
-      console.log("active user: ", user);
+    const fetchData = async () => {
+      try {
+        if (user) {
+          const userId = user.id;
+          navigate(`/account/${userId}`); // always displays user id in URL
+          console.log("active user: ", user);
 
-      // Call the fetch function when the component mounts
-      fetchData("/appointments", setAppointments);
-      console.log("appointments from DB: ", appointments);
-      // fetchApptsDB(setCartItems, user, "cart");
-    }
+          // Call the fetch function when the component mounts
+          const apptDBResult = await fetchApptsDB(user.id);
+          setAppointments(apptDBResult);
+          console.log("appointments: ", apptDBResult);
+        }
+      } catch (error) {
+        console.error("Error fetching user appointments:", error);
+      }
+    };
+
+    fetchData(); // Call the async function immediately
+
   }, [user, navigate]);
 
 
