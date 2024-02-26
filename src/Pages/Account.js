@@ -9,11 +9,8 @@ import lock from "../assets/icons/icons8-password-100.png";
 import PopupPassword from "../Components/PopUpPassword";
 import PopupSignOut from "../Components/PopUpSignOut.js";
 import OrderHistory from "../Components/OrderHistory.js";
-import appointmentsData from "../data/appointments.json";
 import {
-  fetchData,
   fetchApptsDB,
-  fetchDataReturn
 } from "./functions/accountFunctions";
 import { getUser } from "./functions/generalFunctions";
 
@@ -62,6 +59,10 @@ function Account({ props }) {
     setUser(null);
   };
 
+  const truncateText = (text, maxLength) => {
+    return text.length > maxLength ? `${text.slice(0, maxLength)}...` : text;
+  };
+
   // Function to render appointments
   const renderAppointments = (status) => {
     const filteredAppointments = appointments.filter(
@@ -83,7 +84,7 @@ function Account({ props }) {
       <tr key={appointment.id}>
         <td>{appointment.date}</td>
         <td>{appointment.location}</td>
-        <td>{appointment.services}</td>
+        <td>{truncateText(appointment.services, 24)}</td> {/* Adjust the character limit as needed */}
         <td>{appointment.staff}</td>
         <td>
           <div className="apptActionContainer">
