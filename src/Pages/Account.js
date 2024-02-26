@@ -40,7 +40,7 @@ function Account({ props }) {
           // Call the fetch function when the component mounts
           const apptDBResult = await fetchApptsDB(user.id);
           setAppointments(apptDBResult);
-          //console.log("appointments: ", apptDBResult);
+          console.log("appointments: ", apptDBResult);
         }
       } catch (error) {
         console.error("Error fetching user appointments:", error);
@@ -72,7 +72,7 @@ function Account({ props }) {
       return (
         <tr key="noAppointments">
           <td colSpan="5" className="noAppts" key="noAppointmentsTd">
-            No {status === "scheduled" ? "Scheduled" : "Appointment History"}
+            No {status === "scheduled" ? "Scheduled" : "Appointments"}
           </td>
         </tr>
       );
@@ -110,7 +110,8 @@ function Account({ props }) {
     setSelectedAppointment(appointment);
     if (appointment.status === "scheduled") {
       // DO NOT INSERT LOGIC HERE- THEY NEED TO CANCEL THE APPOINTMENT ON THE DETAILS PAGE
-      console.log("Cancel Appointment clicked for ID:", appointment.id);
+      console.log("View Details clicked for ID:", appointment.id);
+      console.log("appointment: ", appointment);
       navigate(`/appointment/${appointment.id}`, {
         state: {
           id: appointment.id,
