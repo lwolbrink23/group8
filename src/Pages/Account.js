@@ -36,7 +36,6 @@ function Account({ props }) {
         if (user) {
           const userId = user.id;
           navigate(`/account/${userId}`); // always displays user id in URL
-          console.log("active user: ", user);
 
           // Call the fetch function when the component mounts
           const apptDBResult = await fetchApptsDB(user.id);
@@ -63,6 +62,7 @@ function Account({ props }) {
     return text.length > maxLength ? `${text.slice(0, maxLength)}...` : text;
   };
 
+
   // Function to render appointments
   const renderAppointments = (status) => {
     const filteredAppointments = appointments.filter(
@@ -71,33 +71,41 @@ function Account({ props }) {
 
     if (filteredAppointments.length === 0) {
       return (
-        <tr>
-          <td colSpan="5" className="noAppts">
-            No {status === "scheduled" ? "Scheduled" : "Appointment History"}{" "}
-            Appointments
+        <tr key="noAppointments">
+          <td colSpan="5" className="noAppts" key="noAppointmentsTd">
+            No {status === "scheduled" ? "Scheduled" : "Appointments"}
           </td>
         </tr>
       );
     }
 
-    return filteredAppointments.map((appointment) => (
-      <tr key={appointment.id}>
-        <td>{appointment.date}</td>
-        <td>{appointment.location}</td>
-        <td>{truncateText(appointment.services, 24)}</td> {/* Adjust the character limit as needed */}
-        <td>{appointment.staff}</td>
-        <td>
-          <div className="apptActionContainer">
-            <button
-              className="apptActionButton"
-              onClick={() => handleActionClick(appointment)}
-            >
-              {status === "scheduled" ? "View Details" : "View Details"}
-            </button>
-          </div>
-        </td>
-      </tr>
-    ));
+    return (
+      <>
+        {filteredAppointments.map((appointment) => {
+          const date = new Date(appointment.date);
+          const formattedDate = date.toLocaleDateString('en-US', { month: 'short', day: 'numeric', year: 'numeric' });
+
+          return (
+            <tr key={appointment.id}>
+              <td key="filteredappts1">{formattedDate}</td>
+              <td key="filteredappts2">{appointment.location}</td>
+              <td key="filteredappts3">{truncateText(appointment.services, 24)}</td> {/* Adjust the character limit as needed */}
+              <td key="filteredappts4">{appointment.staff}</td>
+              <td key="filteredappts5">
+                <div className="apptActionContainer">
+                  <button
+                    className="apptActionButton"
+                    onClick={() => handleActionClick(appointment)}
+                  >
+                    {status === "scheduled" ? "View Details" : "View Details"}
+                  </button>
+                </div>
+              </td>
+            </tr>
+          );
+        })}
+      </>
+    );
   };
 
   const renderScheduledAppointments = () => renderAppointments("scheduled");
@@ -108,7 +116,8 @@ function Account({ props }) {
     setSelectedAppointment(appointment);
     if (appointment.status === "scheduled") {
       // DO NOT INSERT LOGIC HERE- THEY NEED TO CANCEL THE APPOINTMENT ON THE DETAILS PAGE
-      console.log("Cancel Appointment clicked for ID:", appointment.id);
+      console.log("View Details clicked for ID:", appointment.id);
+      console.log("appointment: ", appointment);
       navigate(`/appointment/${appointment.id}`, {
         state: {
           id: appointment.id,
@@ -176,7 +185,7 @@ function Account({ props }) {
             <div>
               <div className="profileContainer">
                 <div className="profileTop">
-                  <div class="profile-picture-container">
+                  <div className="profile-picture-container">
                     <img
                       src={defaultProfilePic}
                       alt="Profile picture"
@@ -245,12 +254,12 @@ function Account({ props }) {
                 <div className="table">
                   <table>
                     <thead>
-                      <tr>
-                        <th>Date</th>
-                        <th>Location</th>
-                        <th>Services</th>
-                        <th>Staff</th>
-                        <th></th> {/* 3 dots column - DO NOT DELETE */}
+                      <tr key="schedTable">
+                        <th key="schedTable1">Date</th>
+                        <th key="schedTable2">Location</th>
+                        <th key="schedTable3">Services</th>
+                        <th key="schedTable4">Staff</th>
+                        <th key="schedTable5"></th>{/* 3 dots column - DO NOT DELETE */}
                       </tr>
                     </thead>
                     <tbody>{renderScheduledAppointments()}</tbody>
@@ -263,12 +272,12 @@ function Account({ props }) {
                 <div className="table">
                   <table>
                     <thead>
-                      <tr>
-                        <th>Date</th>
-                        <th>Location</th>
-                        <th>Services</th>
-                        <th>Staff</th>
-                        <th></th> {/* 3 dots column - DO NOT DELETE */}
+                      <tr key="historyTable">
+                        <th key="historyTable1">Date</th>
+                        <th key="historyTable2">Location</th>
+                        <th key="historyTable3">Services</th>
+                        <th key="historyTable4">Staff</th>
+                        <th key="historyTable5"></th> {/* 3 dots column - DO NOT DELETE */}
                       </tr>
                     </thead>
                     <tbody>{renderAppointmentHistory()}</tbody>
