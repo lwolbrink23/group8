@@ -2,10 +2,6 @@ import React, { useState } from "react";
 import { Link, useLocation, useNavigate } from "react-router-dom";
 import "../App.css";
 import "../Styles/apptdetails.css";
-import SimplyChicHair from "../assets/images/SimplyChicHair.png";
-import PolishPerfection from "../assets/images/PolishPerfection.png"
-import BlushBrush from "../assets/images/BrushBlushBeauty.png"
-import HealingHands from "../assets/images/HealingHandsSpa.png"
 import calendaricon from "../assets/icons/calendaricon.png";
 
 function getUser() {
@@ -91,11 +87,8 @@ function ApptDetails({ props }) {
     navigate(`/providerprofile/${location.state.provProfId}`);
   };
 
-   // Render the image dynamically based on the provProfPic
   // Path for the image
   const provProfPic = location.state.provProfPic;
-
-
 
   const truncateText = (text, maxLength) => {
     return text.length > maxLength ? `${text.slice(0, maxLength)}...` : text;
@@ -112,11 +105,10 @@ function ApptDetails({ props }) {
       <div className="appt-form">
         <div className="top-section">
           <div className="prof-image">
-         <img
+           <img
             src={require("../assets/images/" + provProfPic + ".png")}
-            alt="Simply Chic Hair"
+            alt="Provider Profile"
           />
-            <img src={imagePath} alt="Provider profile picture" />
           </div>
 
           <div className="middle-section">
