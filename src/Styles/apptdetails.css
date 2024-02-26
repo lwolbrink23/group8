@@ -99,18 +99,18 @@
 
 .cancelApptBtn {
     background-color: #F8A0A0;
-        border-radius: 15px;
-        width: 200px;
-        margin-left: auto;
-        margin-right: auto;
-        margin-top: -20px;
-        margin-bottom: 10px;
+    border-radius: 15px;
+    width: 200px;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: -20px;
+    margin-bottom: 10px;
 
 }
 
 .cancelApptBtn:hover {
     background-color: #ee6363;
-        color: white;
+    color: white;
 }
 
 .calendar-icon {
@@ -162,56 +162,61 @@
 
 /* Mobile Design */
 @media screen and (max-width: 767px) {
- .appt-title {
-    font-size: 30px;
-    padding-top: 10px;
- }
+    .appt-title {
+        font-size: 30px;
+        padding-top: 10px;
+    }
 
- .appt-heading {
-    height: 60px;
-    max-width: 90%;
-    padding: 0;
- }
+    .appt-heading {
+        height: 60px;
+        max-width: 90%;
+        padding: 0;
+    }
 
- .appt-form {
-    max-width: 90%
- }
+    .appt-form {
+        max-width: 90%
+    }
 
- .prof-image {
-     margin-left: 0px;
-     margin-right: 16px;
- }
+    .prof-image {
+        margin-left: 0px;
+        margin-right: 16px;
+    }
 
- .middle-section {
-    width: 70%
- }
+    .middle-section {
+        width: 70%
+    }
 
- .prof-image img {
- 
-     height: 120px;
-     width: 125px;
-     margin-top: -33px;
-     object-fit: cover;
- }
+    .prof-image img {
 
- .bottom-section p {
-    margin: 0;
+        height: 120px;
+        width: 125px;
+        margin-top: -33px;
+        object-fit: cover;
+    }
 
- }
+    .bottom-section p {
+        margin: 0;
 
- .bolded {
-    font-size: 18px;
- }
+    }
 
-  .bottom-section {
-    margin-top: -50px;
-    margin-bottom: 25px;
+    .bolded {
+        font-size: 18px;
+    }
 
-  }
+    .bottom-section {
+        margin-top: -50px;
+        margin-bottom: 25px;
 
-  .apptDetails-table {
-    display: none;
-  }
+    }
+
+    .apptDetails-table {
+        display: none;
+    }
+
+    .profile-button {
+        margin-left: auto;
+        margin-right: auto;
+    }
 
 }
 
@@ -222,6 +227,7 @@
         margin-left: auto;
         margin-right: auto;
         position: relative;
+
     }
 
     .middle-section {
@@ -229,62 +235,65 @@
     }
 
     .prof-image {
-            margin-left: 80px;
-            margin-right: -20px;
-            position: relative;
-        }
+        margin-left: 80px;
+        margin-right: -20px;
+        position: relative;
+    }
 
 
     .apptDetails-table {
         width: 100%;
         margin-top: 10px;
     }
-    .appt-title {
-            font-size: 34px;
-            padding-top: 13px;
-        }
-    
-        .appt-heading {
-            height: 70px;
-            max-width: 55%;
-            padding: 0;
-        }
 
-        .appt-form {
-            max-width: 55%;
-        }
+    .appt-title {
+        font-size: 34px;
+        padding-top: 13px;
+    }
+
+    .appt-heading {
+        height: 70px;
+        max-width: 55%;
+        padding: 0;
+        min-width: 600px;
+    }
+
+    .appt-form {
+        max-width: 55%;
+        min-width: 600px;
+    }
 
 
     .bottom-section {
         display: none;
     }
 
-        .btns-container {
-            display: flex;
-            justify-content: center;
-                /* Center the container horizontally */
-                align-items: center;
-                /* Center the container vertically */
-                flex-direction: row;
-            margin-left: auto;
-            margin-right: auto;
-            margin-top: 40px;
-            margin-bottom: 10px;
+    .btns-container {
+        display: flex;
+        justify-content: center;
+        /* Center the container horizontally */
+        align-items: center;
+        /* Center the container vertically */
+        flex-direction: row;
+        margin-left: auto;
+        margin-right: auto;
+        margin-top: 40px;
+        margin-bottom: 10px;
 
-        }
-    
-         .profile-button {
-            margin-bottom: 0px;
-            width: 200px;
-            margin-left: 10px;
-            margin-top: 0px;
-        
-        }
-        
-         .cancelApptBtn {
-            width: 200px;
-            margin-top: 10px;
-            margin-right: 10px;
-        }
+    }
+
+    .profile-button {
+        margin-bottom: 0px;
+        width: 200px;
+        margin-left: 10px;
+        margin-top: 0px;
+
+    }
+
+    .cancelApptBtn {
+        width: 200px;
+        margin-top: 10px;
+        margin-right: 10px;
+    }
 
 }

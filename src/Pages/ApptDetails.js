@@ -3,6 +3,9 @@ import { Link, useLocation, useNavigate } from "react-router-dom";
 import "../App.css";
 import "../Styles/apptdetails.css";
 import SimplyChicHair from "../assets/images/SimplyChicHair.png";
+import PolishPerfection from "../assets/images/PolishPerfection.png"
+import BlushBrush from "../assets/images/BrushBlushBeauty.png"
+import HealingHands from "../assets/images/HealingHandsSpa.png"
 import calendaricon from "../assets/icons/calendaricon.png";
 
 function getUser() {
@@ -20,9 +23,8 @@ function ApptDetails({ props }) {
   const navigate = useNavigate();
 
   const [user, setUser] = useState(getUser());
-  console.log("active user: ", user);
 
-  console.log(location);
+  console.log("location.state: ", location.state);
 
   if (!location.state) {
     return <p>Error...</p>; // or handle the absence of data in some way
@@ -89,9 +91,18 @@ function ApptDetails({ props }) {
     navigate(`/providerprofile/${location.state.provProfId}`);
   };
 
-   // Path for the image
+   // Render the image dynamically based on the provProfPic
+  // Path for the image
   const provProfPic = location.state.provProfPic;
-  const imagePath = `../assets/images/${provProfPic}.png`;
+
+
+
+  const truncateText = (text, maxLength) => {
+    return text.length > maxLength ? `${text.slice(0, maxLength)}...` : text;
+  };
+
+  const date = new Date(location.state.date);
+  const formattedDate = date.toLocaleDateString('en-US', { month: 'short', day: 'numeric', year: 'numeric' });
 
   return (
     <div>
@@ -101,7 +112,11 @@ function ApptDetails({ props }) {
       <div className="appt-form">
         <div className="top-section">
           <div className="prof-image">
-           <img src={require(imagePath).default} alt={provProfPic} />
+         <img
+            src={require("../assets/images/" + provProfPic + ".png")}
+            alt="Simply Chic Hair"
+          />
+            <img src={imagePath} alt="Provider profile picture" />
           </div>
 
           <div className="middle-section">
@@ -113,7 +128,7 @@ function ApptDetails({ props }) {
                 className="calendar-icon"
               />
               <div className="icon-with-text">
-                <p>{location.state.date}</p>
+                <p>{formattedDate}</p>
                 <p>{location.state.time}</p>
               </div>
             </div>
@@ -146,10 +161,10 @@ function ApptDetails({ props }) {
             </thead>
             <tbody>
               <tr key={location.state.id}>
-                <td>{location.state.date}</td>
+                <td>{formattedDate}</td>
                 <td>{location.state.time}</td>
                 <td>{location.state.duration}</td>
-                <td>{location.state.services}</td>
+                <td>{truncateText(location.state.services, 24)}</td>
                 <td>{location.state.price}</td>
                 <td>{location.state.staff}</td>
                 <td></td>
@@ -165,7 +180,7 @@ function ApptDetails({ props }) {
           <p className="bolded">Duration</p>
           <p>{location.state.duration}</p>
           <p className="bolded">Services</p>
-          <p>{location.state.services}</p>
+          <p>{truncateText(location.state.services, 24)}</p>
           <p className="bolded">Price</p>
           <p>{location.state.price}</p>
           <p className="bolded">Staff</p>
