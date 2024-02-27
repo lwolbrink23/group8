@@ -34,7 +34,7 @@ const userRoutes = (app, client, database) => {
   // Signup route
   app.post("/signup", async (req, res) => {
     try {
-      const { name, phoneNumber, email, password, shoppingCart } = req.body;
+      const { name, phoneNumber, email, password, appointments, shoppingCart } = req.body;
 
       // Check if user already exists with the given email
       const existingUser = await database
@@ -52,6 +52,7 @@ const userRoutes = (app, client, database) => {
         phoneNumber,
         email,
         password,
+        appointments,
         shoppingCart,
       };
 
@@ -73,51 +74,51 @@ const userRoutes = (app, client, database) => {
   app.post("/bookings", async (req, res) => {
 
     try {
-    const { userId, selectedServices, totalCost, date, time, 
-      serviceName, bookStatus, duration, provProfPic, provProfId, staff } = req.body;
+      const { userId, selectedServices, totalCost, date, time,
+        serviceName, bookStatus, duration, provProfPic, provProfId, staff } = req.body;
 
-    const user = await database.collection('User_Accounts').findOne({ _id: new ObjectId(userId) });
-    const maxId = user.appointments.reduce((max, appointment) => Math.max(max, appointment.id), 0);
-    const newAppointmentId = maxId + 1;
+      const user = await database.collection('User_Accounts').findOne({ _id: new ObjectId(userId) });
+      const maxId = user.appointments.reduce((max, appointment) => Math.max(max, appointment.id), 0);
+      const newAppointmentId = maxId + 1;
 
-    const newAppointment = {
-      date: date,
-      id: newAppointmentId,
-      location: serviceName, 
-      services: selectedServices.join(", "), // each service selected is seperated by a comma
-      staff: staff, 
-      status: bookStatus,
-      time: time,
-      duration: duration, 
-      price: `$${totalCost}`,
-      provProfId: provProfId, 
-      provProfPic: provProfPic, 
-      userID: userId
-    };
+      const newAppointment = {
+        date: date,
+        id: newAppointmentId,
+        location: serviceName,
+        services: selectedServices.join(", "), // each service selected is seperated by a comma
+        staff: staff,
+        status: bookStatus,
+        time: time,
+        duration: duration,
+        price: `$${totalCost}`,
+        provProfId: provProfId,
+        provProfPic: provProfPic,
+        userID: userId
+      };
 
-    // Insert the newAppointment object into the MongoDB collection
-    const result = await database.collection("User_Accounts").updateOne(
-      { _id: new ObjectId(userId) },
-      { $push: { appointments: newAppointment } }
-    );
+      // Insert the newAppointment object into the MongoDB collection
+      const result = await database.collection("User_Accounts").updateOne(
+        { _id: new ObjectId(userId) },
+        { $push: { appointments: newAppointment } }
+      );
 
       if (result.matchedCount === 0) {
-      return res.status(404).json({ error: "User not found" });
-    }
+        return res.status(404).json({ error: "User not found" });
+      }
 
-    if (result.modifiedCount === 0) {
-      return res.status(400).json({ error: "Appointment could not be booked" });
-    }
+      if (result.modifiedCount === 0) {
+        return res.status(400).json({ error: "Appointment could not be booked" });
+      }
 
-    res.status(201).json({
-      message: "Appointment booked successfully",
-      appointment: newAppointment
-    });
-  } catch (error) {
-    console.error("Error booking appointment:", error);
-    res.status(500).json({ error: "Internal Server Error", details: error.message });
-  }
-});
+      res.status(201).json({
+        message: "Appointment booked successfully",
+        appointment: newAppointment
+      });
+    } catch (error) {
+      console.error("Error booking appointment:", error);
+      res.status(500).json({ error: "Internal Server Error", details: error.message });
+    }
+  });
 };
 
 export default userRoutes;
