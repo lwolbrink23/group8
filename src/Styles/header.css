@@ -37,6 +37,32 @@ nav a {
     /* Padding for regular nav items */
 }
 
+.account-link-button,  .about-link-button{
+    color: #090B0A;
+    font-family: 'cormorant-bold', serif;
+    font-size: 18px;
+    text-decoration: none;
+    padding: 10px 20px;
+        /* Padding for regular nav items */
+    background-color: white;
+    transition: background-color 0.3s ease;
+    border-radius: 0;
+    text-shadow: none;
+    text-transform: none !important;
+    border: none;
+    box-shadow: none !important;
+        /* Remove the drop shadow */
+}
+
+.account-link-button:hover , .about-link-button:hover{
+    background-color: #E7E7E7;
+}
+
+.account-link-button:focus , .about-link-button:focus{
+    outline: none;
+    /* Remove outline on focus, add if necessary */
+}
+
 nav a.contact-link {
     /* Makes "Contact Us" link fit on one line*/
     white-space: nowrap;

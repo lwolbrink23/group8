@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { Link, useLocation, useNavigate } from "react-router-dom";
+import { useLocation, useNavigate } from "react-router-dom";
 import "../App.css";
 import "../Styles/apptdetails.css";
 import calendaricon from "../assets/icons/calendaricon.png";
@@ -52,7 +52,6 @@ function ApptDetails({ props }) {
     }
   };
 
-
   const getStatusRebookBtn = (status) => {
     switch (status) {
       case "scheduled":
@@ -95,7 +94,11 @@ function ApptDetails({ props }) {
   };
 
   const date = new Date(location.state.date);
-  const formattedDate = date.toLocaleDateString('en-US', { month: 'short', day: 'numeric', year: 'numeric' });
+  const formattedDate = date.toLocaleDateString("en-US", {
+    month: "short",
+    day: "numeric",
+    year: "numeric",
+  });
 
   return (
     <div>
@@ -105,10 +108,10 @@ function ApptDetails({ props }) {
       <div className="appt-form">
         <div className="top-section">
           <div className="prof-image">
-           <img
-            src={require("../assets/images/" + provProfPic + ".png")}
-            alt="Provider Profile"
-          />
+            <img
+              src={require("../assets/images/" + provProfPic + ".png")}
+              alt="Provider Profile"
+            />
           </div>
 
           <div className="middle-section">

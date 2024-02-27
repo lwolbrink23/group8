@@ -1,6 +1,44 @@
 /* Styles for smaller screens (mobile) */
 @media screen and (max-width: 950px) {
 
+    .account-link-button, .about-link-button {
+            color: #090B0A;
+            font-family: 'cormorant-bold', serif;
+            font-size: 18px;
+            text-decoration: none;
+            padding: 10px 20px;
+            background-color: white;
+            transition: background-color 0.3s ease;
+            /* Add transition for hover effect */
+            text-transform: none;
+            /* Prevent uppercase transformation */
+            text-shadow: none;
+            /* Remove text shadow */
+            border: none;
+            /* Remove the border */
+            box-shadow: none;
+            /* Remove the drop shadow */
+    
+            /* Additional styles to align to the left */
+            text-align: left;
+            width: 100%;
+            /* Make the button take full width */
+            display: flex;
+            align-items: center;
+            justify-content: flex-start;
+        }
+    
+        .account-link-button:hover, .about-link-button:hover {
+            background-color: #E7E7E7;
+        }
+    
+        .account-link-button:focus, .about-link-button:focus {
+            outline: none;
+            /* Remove outline on focus, add if necessary */
+        }
+
+
+
     nav {
         display: none;/*hide nav at first*/
         grid-area: nav;

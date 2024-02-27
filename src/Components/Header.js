@@ -122,8 +122,8 @@ function Header() {
             </li>
             <li key="about">
               <div id="about-web">
-                <CustomLink
-                  className="about-link"
+                <button
+                  className="about-link-button"
                   onClick={() => toggleSubpage("about")}
                 >
                   <img
@@ -132,12 +132,11 @@ function Header() {
                     className="icon-mobile"
                   />
                   About
-                </CustomLink>
+                </button>
               </div>
               <div id="about-mobile">
-                <a
-                  href="#"
-                  className="about-link"
+                <button
+                  className="about-link-button"
                   onClick={() => toggleSubpage("about")}
                 >
                   <img
@@ -146,7 +145,7 @@ function Header() {
                     className="icon-mobile"
                   />
                   About
-                </a>
+                </button>
               </div>
               <ul
                 style={{
@@ -204,8 +203,8 @@ function Header() {
             </li>
             <li key="account">
               <div id="account-web">
-                <CustomLink
-                  className="about-link"
+                <button
+                  className="account-link-button"
                   onClick={() => toggleSubpage("account")}
                 >
                   <img
@@ -214,12 +213,12 @@ function Header() {
                     className="icon-mobile"
                   />
                   Account
-                </CustomLink>
+                </button>
               </div>
               <div id="account-mobile">
-                <CustomLink
+                <button
                   to="#"
-                  className="account-link"
+                  className="account-link-button"
                   onClick={() => toggleSubpage("account")}
                 >
                   <img
@@ -228,7 +227,7 @@ function Header() {
                     className="icon-mobile"
                   />
                   Account
-                </CustomLink>
+                </button>
               </div>
               <ul
                 style={{
