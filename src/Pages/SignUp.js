@@ -110,6 +110,7 @@ function SignUp() {
       phoneNumber: phoneValue,
       email: emailValue,
       password: pwValue,
+      appointments: [],
       shoppingCart: {
         items: [],
         giftcards: [],
@@ -164,14 +165,14 @@ function SignUp() {
   const buttonStyle = {
     color:
       firstNameValue &&
-      lastNameValue &&
-      emailValue &&
-      phoneValue &&
-      pwValue &&
-      confPwValue &&
-      !passwordsMatchError &&
-      !phoneError &&
-      !emailError
+        lastNameValue &&
+        emailValue &&
+        phoneValue &&
+        pwValue &&
+        confPwValue &&
+        !passwordsMatchError &&
+        !phoneError &&
+        !emailError
         ? "black"
         : "#646464",
   };
