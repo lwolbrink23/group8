@@ -28,7 +28,7 @@ function ScrollToTop() {
 
 function Confirmed() {
   const [user, setUser] = useState(getUser());
-  console.log("active user: ", user);
+
 
   const scrollToTop = () => {
     window.scrollTo(0, 0);
@@ -85,12 +85,6 @@ function Confirmed() {
               <b>Company</b>
             </h3>
             <p>{serviceName}</p>
-          </div>
-          <div id="location">
-            <h3>
-              <b>Location</b>
-            </h3>
-            <p>The Suite Spot Suite #1</p>
           </div>
         </div>
         <Link to="/" onClick={scrollToTop}>

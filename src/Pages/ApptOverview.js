@@ -51,14 +51,14 @@ function Overview() {
   console.log(duration)
 
   const navigate = useNavigate();
-  
+
   // in progress of this:
   const handleBookNow = async () => {
     try {
 
       const user = getUser();
       console.log(user.id);
-        if (!user || !user.id) {
+      if (!user || !user.id) {
         console.error("User not found. Please log in.");
         // Optionally, redirect to a login page or show an error message
         return;
@@ -91,10 +91,10 @@ function Overview() {
 
       if (response.status === 201) {
         // Handle success
-        
+
         const data = await response.json();
         console.log("Booking successful:", data);
-        navigate("/appointment_confirmed");
+        navigate("/appointment_confirmed", { state: { service: selectedServices, totalCost: totalCost, date: formattedDate, time: clickedTime, serviceName: serviceName } });
         // Navigate to confirmation page or do something else
       } else {
         // Handle error
