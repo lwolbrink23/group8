@@ -7,7 +7,7 @@ function OrderHistory() {
   const OrderedHistoryItems = () => (
     <div className="orderHistoryDetails">
       {/* make the date & status dynamic later */}
-      <p className="date">{tempData.date["$numberDouble"]}</p>
+      <p className="date">{new Date(Number(tempData.date["$numberDouble"])).toLocaleDateString()}</p>
       <div className="inline">
         <p>
           <strong>Status: {tempData.status}</strong>
