@@ -162,8 +162,21 @@ function Checkout() {
         }
         // make sure 10 digits
         else {
-          !/^\d{10}$/.test(value) &&
-            (errMsg = "Please enter a 10-digit number.");
+          const digits = value.replace(/\D/g, "");
+          let formattedPhoneNumber = "";
+
+          // Format the digits according to the pattern
+          if (digits.length <= 3) {
+            formattedPhoneNumber = `(${digits}`;
+          } else if (digits.length > 3 && digits.length <= 6) {
+            formattedPhoneNumber = `(${digits.slice(0, 3)}) ${digits.slice(3)}`;
+          } else if (digits.length > 6) {
+            formattedPhoneNumber = `(${digits.slice(0, 3)}) ${digits.slice(
+              3,
+              6
+            )}-${digits.slice(6, 10)}`;
+          }
+          updatePersonalInfo(propertyName, formattedPhoneNumber);
         }
         updatePersonalErr(propertyName, errMsg);
         break;
@@ -367,6 +380,7 @@ function Checkout() {
             <input
               type="text"
               placeholder="First Name*"
+              value={personalInfo.firstName}
               required
               onChange={(e) =>
                 handleChange("personal", "firstName", e.target.value)
@@ -381,6 +395,7 @@ function Checkout() {
             <input
               type="text"
               placeholder="Last Name*"
+              value={personalInfo.lastName}
               onChange={(e) =>
                 handleChange("personal", "lastName", e.target.value)
               }
@@ -394,6 +409,7 @@ function Checkout() {
             <input
               type="text"
               placeholder="Phone*"
+              value={personalInfo.phone}
               onChange={(e) =>
                 handleChange("personal", "phone", e.target.value)
               }
@@ -407,6 +423,7 @@ function Checkout() {
             <input
               type="text"
               placeholder="Street Address*"
+              value={addressInfo.street}
               onChange={(e) =>
                 handleChange("address", "street", e.target.value)
               }
@@ -418,6 +435,7 @@ function Checkout() {
               <input
                 type="text"
                 placeholder="City*"
+                value={addressInfo.city}
                 onChange={(e) =>
                   handleChange("address", "city", e.target.value)
                 }
@@ -431,6 +449,7 @@ function Checkout() {
               <input
                 type="text"
                 placeholder="State*"
+                value={addressInfo.state}
                 onChange={(e) =>
                   handleChange("address", "state", e.target.value)
                 }
@@ -444,6 +463,7 @@ function Checkout() {
               <input
                 type="text"
                 placeholder="ZIP Code*"
+                value={addressInfo.zip}
                 onChange={(e) => handleChange("address", "zip", e.target.value)}
               />
               {addressErr.zip && (
@@ -491,6 +511,7 @@ function Checkout() {
               <input
                 type="text"
                 placeholder="Card Number*"
+                value={paymentInfo.cardNum}
                 onChange={(e) =>
                   handleChange("payment", "cardNum", e.target.value)
                 }
@@ -505,6 +526,7 @@ function Checkout() {
                 <input
                   type="text"
                   placeholder="mm*"
+                  value={paymentInfo.mm}
                   onChange={(e) =>
                     handleChange("payment", "mm", e.target.value)
                   }
@@ -517,6 +539,7 @@ function Checkout() {
                 <input
                   type="text"
                   placeholder="yy*"
+                  value={paymentInfo.yy}
                   onChange={(e) =>
                     handleChange("payment", "yy", e.target.value)
                   }
@@ -529,6 +552,7 @@ function Checkout() {
                 <input
                   type="text"
                   placeholder="CVC*"
+                  value={paymentInfo.cvc}
                   onChange={(e) =>
                     handleChange("payment", "cvc", e.target.value)
                   }
@@ -543,6 +567,7 @@ function Checkout() {
               <input
                 type="text"
                 placeholder="Name on Card*"
+                value={paymentInfo.name}
                 onChange={(e) =>
                   handleChange("payment", "name", e.target.value)
                 }
