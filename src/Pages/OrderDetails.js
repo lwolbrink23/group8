@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import "../Styles/OrderDetails.css";
-import tempData from "../data/cart.json";
+import tempData from "../data/temporaryUser_Orders.json";
 import tempShopData from "../data/shop.json";
 import { Link } from "react-router-dom";
 
@@ -76,10 +76,10 @@ function OrderDetails() {
         </div>
         <div id="titles-right">
           <p>{new Date(Number(tempData.date["$numberDouble"])).toLocaleString()}</p>
-          <p>${tempData.costs.subtotal["$numberDouble"]}</p>
-          <p>${tempData.costs.shipCost["$numberInt"]}</p>
-          <p>${tempData.costs.taxes["$numberDouble"]}</p>
-          <p>${tempData.costs.total["$numberDouble"]}</p>
+          <p>${parseFloat(tempData.costs.subtotal["$numberDouble"]).toFixed(2)}</p>
+          <p>${parseFloat(tempData.costs.shipCost["$numberInt"]).toFixed(2)}</p>
+          <p>${parseFloat(tempData.costs.taxes["$numberDouble"]).toFixed(2)}</p>
+          <p>${parseFloat(tempData.costs.total["$numberDouble"]).toFixed(2)}</p>
         </div>
       </div>
       <hr />
