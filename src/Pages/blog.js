@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { Link, useLocation } from "react-router-dom";
+import PopupInvalid from "../Components/invalidEmail.js";
 import PopUpBlog from "../Components/PopUpBlog.js";
 import "../App.css";
 import "../Styles/blog.css";
@@ -52,10 +53,13 @@ function Blog() {
   const openBlog = () => setIsBlogOpen(true);
   const closeBlog = () => setIsBlogOpen(false);
 
-  // State to keep track of the input value
+  const [isInvalidEmailPopupOpen, setIsInvalidEmailPopupOpen] = useState(false);
+
+  const openInvalidEmailPopup = () => setIsInvalidEmailPopupOpen(true);
+  const closeInvalidEmailPopup = () => setIsInvalidEmailPopupOpen(false);
+
   const [inputValue, setInputValue] = useState("");
 
-  // Function to update the state based on input changes
   const handleInputChange = (event) => {
     setInputValue(event.target.value);
   };
@@ -64,7 +68,13 @@ function Blog() {
     setInputValue("");
   };
 
- const handleSubscribe = async () => {
+  const handleSubscribe = async () => {
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    if (!emailRegex.test(inputValue)) {
+      openInvalidEmailPopup();
+      return;
+    }
+
     try {
       const response = await fetch("http://localhost:3003/subscribe", {
         method: "POST",
@@ -89,9 +99,8 @@ function Blog() {
     }
   };
 
-  // change button text color when disabled
   const buttonStyle = {
-    color: inputValue ? "black" : "#646464", // Black when clickable, light grey when not
+    color: inputValue ? "black" : "#646464",
   };
 
   const [BlogPosts, setBlogPosts] = useState([]);
@@ -99,7 +108,6 @@ function Blog() {
   useEffect(() => {
     const fetchData = async (endpoint, setDataFunction) => {
       try {
-        // Fetch data from the backend
         const response = await fetch(`${BACKEND_ADDRESS}${endpoint}`);
         const jsonData = await response.json();
         setDataFunction(jsonData);
@@ -108,10 +116,7 @@ function Blog() {
       }
     };
 
-    // Usage example:
     fetchData("/blog", setBlogPosts);
-    // TODO: fetch cart data from database here
-    // fetch data from cookie
   }, []);
 
   return (
@@ -125,7 +130,6 @@ function Blog() {
           <p className="sub-text">
             Stay up to date with the latest news from The Suite Spot!
           </p>
-          {/* Background image added in CSS*/}
           <form className="subscribe">
             <input
               type="text"
@@ -144,7 +148,7 @@ function Blog() {
               Subscribe
             </button>
           </form>
-
+          <PopupInvalid isOpen={isInvalidEmailPopupOpen} closePopup={closeInvalidEmailPopup} />
           <PopUpBlog isOpen={isBlogOpen} closePopup={closeBlog} />
         </div>
         <div className="overlay-box"></div>

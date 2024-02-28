@@ -1,6 +1,6 @@
 import "../App.css";
 import "../Styles/shop.css";
-import giftCardIMG from "../assets/images/giftcard.png";
+import giftCardIMG from "../assets/images/shop/giftcard.png";
 import plusICON from "../assets/icons/black-plus.png";
 import minusICON from "../assets/icons/black-minus.png";
 import CartPopup from "../Components/CartPopup";
@@ -30,10 +30,13 @@ function Shop() {
   const [shopData, setShopData] = useState([]);
   const [cartPopup, setCartPopup] = useState();
   const [cartItems, setCartItems] = useState([]);
+  const [giftcardInput, setGiftcardInput] = useState();
+  const [giftcards, setGiftcards] = useState([]);
 
   useEffect(() => {
     fetchData("/shop", setShopData);
-    fetchCartData(setCartItems, user);
+    fetchCartData(setCartItems, user, "cart");
+    fetchCartData(setGiftcards, user, "giftcard");
   }, []);
 
   const handleIncrement = (itemId) => {
@@ -79,7 +82,7 @@ function Shop() {
       qty: itemQty,
     };
     if (user) {
-      const cartDB = await fetchCartDB(user.id);
+      const cartDB = await fetchCartDB(user.id, "cart");
       const existingItemIndex = cartDB.findIndex(
         (item) => item.id === newItem.id
       );
@@ -93,7 +96,7 @@ function Shop() {
       }
 
       setCartItems(cartDB);
-      updateUserCartDB(user.id, cartDB);
+      updateUserCartDB(user.id, cartDB, "cart");
     } else {
       // add item to cookie
       let cartCookie = Cookies.get("cart");
@@ -187,6 +190,71 @@ function Shop() {
     });
   };
 
+  // giftcard stuff
+  const handleInputChange = (event) => {
+    let inputValue = event.target.value;
+
+    // Replace any non-numeric characters except for '.'
+    inputValue = inputValue.replace(/[^0-9.]/g, "");
+
+    // Remove all but the first period
+    const periodIndex = inputValue.indexOf(".");
+    if (periodIndex !== -1) {
+      inputValue =
+        inputValue.slice(0, periodIndex + 1) +
+        inputValue.slice(periodIndex + 1).replace(/\./g, "");
+    }
+
+    // Restrict the number of digits after the period to 2
+    const decimalIndex = inputValue.indexOf(".");
+    if (decimalIndex !== -1 && inputValue.slice(decimalIndex + 1).length > 2) {
+      inputValue = inputValue.slice(0, decimalIndex + 3);
+    }
+
+    setGiftcardInput(inputValue);
+  };
+
+  const handleAddGiftcard = async () => {
+    const cartPopInfo = {
+      name: "Gift Card",
+      price: giftcardInput,
+      qty: 1,
+      img: "giftcard",
+    };
+    const newItem = {
+      id: "giftcard",
+      qty: 1,
+      price: parseFloat(giftcardInput),
+    };
+
+    const existingGiftCardIndex = giftcards.findIndex(
+      (giftCard) => giftCard.price === newItem.price
+    );
+    let newGiftArr = [];
+    if (existingGiftCardIndex !== -1) {
+      // If a gift card with the same price exists, update its quantity
+      const updatedGiftCardCart = [...giftcards];
+      updatedGiftCardCart[existingGiftCardIndex].qty += newItem.qty;
+      newGiftArr = updatedGiftCardCart;
+    } else {
+      // If no gift card with the same price exists, add the new gift card to the cart
+      newGiftArr = [...giftcards, newItem];
+    }
+    setGiftcards(newGiftArr);
+
+    if (user) {
+      updateUserCartDB(user.id, newGiftArr, "giftcard");
+    } else {
+      Cookies.set("giftcard", JSON.stringify(newGiftArr), {
+        expires: 60,
+        path: "/",
+      });
+    }
+
+    // update frontend
+    setCartPopup(cartPopInfo);
+    setGiftcardInput("");
+  };
   // main JSX
   return (
     <div id="shop">
@@ -196,13 +264,13 @@ function Shop() {
         <CartPopup
           cartPopup={cartPopup}
           setCartPopup={setCartPopup}
-          qty={countItems(cartItems)}
+          qty={countItems([...cartItems, ...giftcards])}
         />
       )}
       <div id="shop-banner">
         <Shopheader
           htitle={"Shop"}
-          qty={countItems(cartItems)}
+          qty={countItems([...cartItems, ...giftcards])}
           disableBack={true}
         />
 
@@ -233,8 +301,15 @@ function Shop() {
             </p>
             <p>Enter an amount:</p>
             <div className="col-2">
-              <input></input>
-              <button className="button">Add to Cart</button>
+              <input value={giftcardInput} onChange={handleInputChange}></input>
+              <button
+                className="button"
+                disabled={!giftcardInput}
+                style={{ opacity: !giftcardInput ? 0.5 : 1 }}
+                onClick={handleAddGiftcard}
+              >
+                Add to Cart
+              </button>
             </div>
           </div>
         </div>

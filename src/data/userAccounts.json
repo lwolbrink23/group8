@@ -13,6 +13,49 @@
         "id": "iID2",
         "qty": 1
       }
+    ],
+    "giftcardCart": [
+      {
+        "id": "giftcard",
+        "qty": 2,
+        "price": 15
+      },
+      {
+        "id": "giftcard",
+        "qty": 1,
+        "price": 10
+      }
     ]
+  },
+
+  {
+    "name": "Quynh Vo",
+    "phoneNumber": "(546) 546-5465",
+    "email": "mimitrucquynh@gmail.com",
+    "password": "m1",
+    "shoppingCart": {
+      "items": [
+        {
+          "id": "iID0",
+          "qty": 2
+        },
+        {
+          "id": "iID2",
+          "qty": 1
+        }
+      ],
+      "giftcards": [
+        {
+          "type": "giftcard",
+          "qty": 2,
+          "price": 15
+        },
+        {
+          "type": "giftcard",
+          "qty": 1,
+          "price": 10
+        }
+      ]
+    }
   }
 ]

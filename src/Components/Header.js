@@ -114,16 +114,16 @@ function Header() {
         {/* Nav links */}
         <nav ref={sidebarRef} className="sidebar">
           <ul className={isSidebarOpen ? "show" : ""}>
-            <li>
+            <li key="home">
               <Link to="/" onClick={toggleSidebar}>
                 <img src={homeicon} alt="home icon" className="icon-mobile" />
                 Home
               </Link>
             </li>
-            <li>
+            <li key="about">
               <div id="about-web">
-                <CustomLink
-                  className="about-link"
+                <button
+                  className="about-link-button"
                   onClick={() => toggleSubpage("about")}
                 >
                   <img
@@ -132,12 +132,11 @@ function Header() {
                     className="icon-mobile"
                   />
                   About
-                </CustomLink>
+                </button>
               </div>
               <div id="about-mobile">
-                <a
-                  href="#"
-                  className="about-link"
+                <button
+                  className="about-link-button"
                   onClick={() => toggleSubpage("about")}
                 >
                   <img
@@ -146,49 +145,49 @@ function Header() {
                     className="icon-mobile"
                   />
                   About
-                </a>
+                </button>
               </div>
               <ul
                 style={{
                   display: activeSubpage === "about" ? "block" : "none",
                 }}
               >
-                <li>
+                <li key="our story">
                   <CustomLink to="/ourstory" onClick={toggleSidebar}>
                     Our Story
                   </CustomLink>
                 </li>
-                <li>
+                <li key="our suites">
                   <CustomLink to="/oursuites" onClick={toggleSidebar}>
                     Our Suites
                   </CustomLink>
                 </li>
-                <li>
+                <li key="services">
                   <CustomLink to="/ourservices" onClick={toggleSidebar}>
                     Our Services
                   </CustomLink>
                 </li>
               </ul>
             </li>
-            <li>
+            <li key="blog">
               <CustomLink to="/blog" onClick={toggleSidebar}>
                 <img src={blogicon} alt="blog icon" className="icon-mobile" />
                 Blog
               </CustomLink>
             </li>
-            <li>
+            <li key="faq">
               <CustomLink to="/faqs" onClick={toggleSidebar}>
                 <img src={faqicon} alt="FAQ icon" className="icon-mobile" />
                 FAQ's
               </CustomLink>
             </li>
-            <li>
+            <li key="shop">
               <CustomLink to="/shop" onClick={toggleSidebar}>
                 <img src={shopicon} alt="shop icon" className="icon-mobile" />
                 Shop
               </CustomLink>
             </li>
-            <li>
+            <li key="contact">
               <CustomLink
                 to="/contact_us"
                 className="contact-link"
@@ -202,10 +201,10 @@ function Header() {
                 Contact Us
               </CustomLink>
             </li>
-            <li>
+            <li key="account">
               <div id="account-web">
-                <CustomLink
-                  className="about-link"
+                <button
+                  className="account-link-button"
                   onClick={() => toggleSubpage("account")}
                 >
                   <img
@@ -214,12 +213,12 @@ function Header() {
                     className="icon-mobile"
                   />
                   Account
-                </CustomLink>
+                </button>
               </div>
               <div id="account-mobile">
-                <CustomLink
+                <button
                   to="#"
-                  className="account-link"
+                  className="account-link-button"
                   onClick={() => toggleSubpage("account")}
                 >
                   <img
@@ -228,31 +227,31 @@ function Header() {
                     className="icon-mobile"
                   />
                   Account
-                </CustomLink>
+                </button>
               </div>
               <ul
                 style={{
                   display: activeSubpage === "account" ? "block" : "none",
                 }}
               >
-                <li>
+                <li key="login">
                   <CustomLink to="/Login" onClick={toggleSidebar}>
                     Login
                   </CustomLink>
                 </li>
-                <li>
+                <li key="signup">
                   <CustomLink to="/SignUp" onClick={toggleSidebar}>
                     Sign Up
                   </CustomLink>
                 </li>
-                <li>
+                <li key="acct">
                   <CustomLink to="/account/:id" onClick={toggleSidebar}>
                     Account
                   </CustomLink>
                 </li>
               </ul>
             </li>
-            <li>
+            <li key="booknow">
               <CustomLink
                 to="/booknow"
                 className="purp-button centerbutton"

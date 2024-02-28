@@ -1,3 +1,5 @@
+import { ObjectId } from "mongodb";
+
 const userRoutes = (app, client, database) => {
   // Login route
   app.post("/login", async (req, res) => {
@@ -30,12 +32,19 @@ const userRoutes = (app, client, database) => {
   });
 
   // Signup route
+<<<<<<< HEAD
 app.post("/signup", async (req, res) => {
   try {
     console.log("Received signup request:", req.body); // Log received signup request
+=======
+  app.post("/signup", async (req, res) => {
+    try {
+      const { name, phoneNumber, email, password, appointments, shoppingCart } = req.body;
+>>>>>>> 9e51e0ec813d0794fbb5846564a62f23de610b17
 
     const { name, phoneNumber, email, password, shoppingCart } = req.body;
 
+<<<<<<< HEAD
     // Check if user already exists with the given email
     const existingUser = await database
       .collection("User_Accounts")
@@ -46,6 +55,17 @@ app.post("/signup", async (req, res) => {
         .status(400)
         .json({ error: "User with this email already exists" });
     }
+=======
+      // Create a new user document
+      const newUser = {
+        name,
+        phoneNumber,
+        email,
+        password,
+        appointments,
+        shoppingCart,
+      };
+>>>>>>> 9e51e0ec813d0794fbb5846564a62f23de610b17
 
     console.log("Creating new user:", email); // Log new user creation
 
@@ -76,44 +96,51 @@ app.post("/signup", async (req, res) => {
 
   //for the bookings in appt_overview (in progress)
   app.post("/bookings", async (req, res) => {
-    try {
-      const { userId, selectedServices, totalCost, date, time, serviceName } =
-        req.body;
 
-      // Find the user by userId
-      const user = await database
-        .collection("User_Accounts")
-        .findOne({ _id: userId });
-      if (!user) {
+    try {
+      const { userId, selectedServices, totalCost, date, time,
+        serviceName, bookStatus, duration, provProfPic, provProfId, staff } = req.body;
+
+      const user = await database.collection('User_Accounts').findOne({ _id: new ObjectId(userId) });
+      const maxId = user.appointments.reduce((max, appointment) => Math.max(max, appointment.id), 0);
+      const newAppointmentId = maxId + 1;
+
+      const newAppointment = {
+        date: date,
+        id: newAppointmentId,
+        location: serviceName,
+        services: selectedServices.join(", "), // each service selected is seperated by a comma
+        staff: staff,
+        status: bookStatus,
+        time: time,
+        duration: duration,
+        price: `$${totalCost}`,
+        provProfId: provProfId,
+        provProfPic: provProfPic,
+        userID: userId
+      };
+
+      // Insert the newAppointment object into the MongoDB collection
+      const result = await database.collection("User_Accounts").updateOne(
+        { _id: new ObjectId(userId) },
+        { $push: { appointments: newAppointment } }
+      );
+
+      if (result.matchedCount === 0) {
         return res.status(404).json({ error: "User not found" });
       }
 
-      // Create a new appointment object
-      const newAppointment = {
-        selectedServices,
-        totalCost,
-        date,
-        time,
-        serviceName,
-      };
-
-      // Add the new appointment to the user's appointments array
-      await database
-        .collection("User_Accounts")
-        .updateOne(
-          { _id: userId },
-          { $push: { appointments: newAppointment } }
-        );
+      if (result.modifiedCount === 0) {
+        return res.status(400).json({ error: "Appointment could not be booked" });
+      }
 
       res.status(201).json({
-        appointment: newAppointment,
         message: "Appointment booked successfully",
+        appointment: newAppointment
       });
     } catch (error) {
       console.error("Error booking appointment:", error);
-      res
-        .status(500)
-        .json({ error: "Internal Server Error", details: error.message });
+      res.status(500).json({ error: "Internal Server Error", details: error.message });
     }
   });
 };

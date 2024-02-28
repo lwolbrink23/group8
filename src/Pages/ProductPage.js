@@ -23,12 +23,14 @@ function ProductPage() {
   const [value, setValue] = useState(1);
   const [product, setProduct] = useState(null);
   const [cartItems, setCartItems] = useState([]);
+  const [giftcards, setGiftcards] = useState([]);
   const [user, setUser] = useState(getUser());
   const [cartPopup, setCartPopup] = useState("");
 
   useEffect(() => {
     fetchData(`/shop/${id}`, setProduct);
-    fetchCartData(setCartItems, user);
+    fetchCartData(setCartItems, user, "cart");
+    fetchCartData(setGiftcards, user, "giftcard");
   }, []);
 
   if (!product) {
@@ -178,7 +180,7 @@ function ProductPage() {
       qty: value,
     };
     if (user) {
-      const cartDB = await fetchCartDB(user.id);
+      const cartDB = await fetchCartDB(user.id, "cart");
       const existingItemIndex = cartDB.findIndex(
         (item) => item.id === newItem.id
       );
@@ -192,7 +194,7 @@ function ProductPage() {
       }
 
       setCartItems(cartDB);
-      updateUserCartDB(user.id, cartDB);
+      updateUserCartDB(user.id, cartDB, "cart");
     } else {
       // add item to cookie
       let cartCookie = Cookies.get("cart");
@@ -224,11 +226,14 @@ function ProductPage() {
         <CartPopup
           cartPopup={cartPopup}
           setCartPopup={setCartPopup}
-          qty={countItems(cartItems)}
+          qty={countItems([...cartItems, ...giftcards])}
         />
       )}
       <div id="product-banner">
-        <Shopheader htitle={"Shop"} qty={countItems(cartItems)} />
+        <Shopheader
+          htitle={"Shop"}
+          qty={countItems([...cartItems, ...giftcards])}
+        />
       </div>
       <div className="product-info">
         <div className="product-section">

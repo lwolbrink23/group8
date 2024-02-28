@@ -31,15 +31,15 @@ const SelectServices = () => {
   // make categories
   const categories = {
     featured: [
-      "Classic Makeup Application\n$40",
-      "Glamorous Evening Makeup\n$75",
-      "Natural Makeup Look\n$45",
-      "Bridal Makeup Package\n$150",
-      "Editorial/\nFashion Makeup\n$70",
-      "Special Effects Makeup\n$80",
-      "Makeup Lesson\n$60",
-      "Group Makeup Session\n$150",
-      "Men's Grooming\n$40",
+      "Classic Makeup Application\n30 minutes\n$40",
+      "Glamorous Evening Makeup\n30 minutes\n$75",
+      "Natural Makeup Look\n30 minutes\n$45",
+      "Bridal Makeup Package\n30 minutes\n$150",
+      "Editorial/Fashion Makeup\n30 minutes\n$70",
+      "Special Effects Makeup\n30 minutes\n$80",
+      "Makeup Lesson\n30 minutes\n$60",
+      "Group Makeup Session\n30 minutes\n$150",
+      "Men's Grooming\n30 minutes\n$40",
     ],
   };
 
@@ -66,6 +66,31 @@ const SelectServices = () => {
 
   const navigate = useNavigate();
 
+  // Function to calculate and format the total amount of time for selected services
+  const totalTimeFormatted = () => {
+    const totalMinutes = selectedServices.reduce((total, service) => {
+      const timePart = service.split("\n")[1]; // Extracts the line with the time (e.g., "30 minutes")
+      const minutes = parseInt(timePart); // Extracts numerical value
+      return total + minutes;
+    }, 0);
+
+    // Convert total minutes into hours and minutes
+    const hours = Math.floor(totalMinutes / 60);
+    const minutes = totalMinutes % 60;
+
+    // Format the result into a readable string
+    let formattedTime = "";
+    if (hours > 0) {
+      formattedTime += `${hours} hr${hours > 1 ? "s" : ""}`; // Handle plural
+    }
+    if (minutes > 0) {
+      if (formattedTime.length > 0) formattedTime += ", "; // Add "and" if there are also hours
+      formattedTime += `${minutes} min${minutes > 1 ? "s" : ""}`; // Handle plural
+    }
+
+    return formattedTime || "0 minutes"; // Return "0 minutes" if no services are selected
+  };
+
   const calculateTotalCost = () => {
     return selectedServices.reduce((total, service) => {
       const pricePart = service.split("\n").pop(); // Extracts the last line (e.g., "$75")
@@ -76,11 +101,16 @@ const SelectServices = () => {
 
   const navigateToTime = () => {
     const totalCost = calculateTotalCost();
+    const duration = totalTimeFormatted();
     navigate("/selecttime", {
       state: {
         service: selectedServices,
         totalCost: totalCost,
+        duration: duration,
         serviceName: "Brush & Blush Beauty",
+        provProfPic: "BrushBlushBeauty",
+        provProfId: "iID2",
+        staff: "Jessica V.",
       },
     });
   };

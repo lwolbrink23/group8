@@ -39,8 +39,8 @@ function SignUp() {
   };
 
   const handlePhoneInputChange = (event) => {
-    const digits = event.target.value.replace(/\D/g, '');
-    let formattedPhoneNumber = '';
+    const digits = event.target.value.replace(/\D/g, "");
+    let formattedPhoneNumber = "";
 
     // Format the digits according to the pattern
     if (digits.length <= 3) {
@@ -48,7 +48,10 @@ function SignUp() {
     } else if (digits.length > 3 && digits.length <= 6) {
       formattedPhoneNumber = `(${digits.slice(0, 3)}) ${digits.slice(3)}`;
     } else if (digits.length > 6) {
-      formattedPhoneNumber = `(${digits.slice(0, 3)}) ${digits.slice(3, 6)}-${digits.slice(6, 10)}`;
+      formattedPhoneNumber = `(${digits.slice(0, 3)}) ${digits.slice(
+        3,
+        6
+      )}-${digits.slice(6, 10)}`;
     }
 
     setPhoneValue(formattedPhoneNumber);
@@ -95,6 +98,7 @@ function SignUp() {
     setAccountExistsError(false); // Reset account exists error state
   };
 
+<<<<<<< HEAD
  const handleSignUp = async () => {
   // Check if passwords match
   if (pwValue !== confPwValue) {
@@ -110,6 +114,26 @@ function SignUp() {
     password: pwValue,
     shoppingCart: [],
   };
+=======
+  const handleSignUp = async () => {
+    // Check if passwords match
+    if (pwValue !== confPwValue) {
+      setPasswordsMatchError(true);
+      return; // Stop sign-up process if passwords don't match
+    }
+    // Create user data object
+    const userData = {
+      name: `${firstNameValue} ${lastNameValue}`,
+      phoneNumber: phoneValue,
+      email: emailValue,
+      password: pwValue,
+      appointments: [],
+      shoppingCart: {
+        items: [],
+        giftcards: [],
+      },
+    };
+>>>>>>> 9e51e0ec813d0794fbb5846564a62f23de610b17
 
   try {
     // Make a POST request to the backend API to create a new user
@@ -290,8 +314,11 @@ console.log("After setting accountExistsError state:", accountExistsError);
           </Link>
         </p>
       </div>
-      <PopUpExistingUser isOpen={accountExistsError} closePopup={() => setAccountExistsError(false)} />
+      <PopUpExistingUser
+        isOpen={accountExistsError}
+        closePopup={() => setAccountExistsError(false)}
+      />
     </div>
   );
 }
-export default SignUp
+export default SignUp;

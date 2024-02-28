@@ -39,36 +39,49 @@ function Overview() {
   const location = useLocation();
   const selectedServices = location.state?.service || [];
   const totalCost = location.state?.totalCost || 0;
+  const duration = location.state?.duration || 0;
   const formattedDate = location.state?.date;
   const clickedTime = location.state?.time;
   const serviceName = location.state?.serviceName || "Default Service Name";
+  const bookStatus = "scheduled";
+  const provProfPic = location.state?.provProfPic;
+  const provProfId = location.state?.provProfId;
+  const staff = location.state?.staff;
+
+  console.log(duration)
 
   const navigate = useNavigate();
-  const navigateToConfirmed = () => {
-    navigate("/appointment_confirmed", {
-      state: {
-        service: selectedServices,
-        totalCost: totalCost,
-        date: formattedDate,
-        time: clickedTime,
-        serviceName: serviceName,
-      },
-    });
-  };
+
   // in progress of this:
   const handleBookNow = async () => {
     try {
+
+      const user = getUser();
+      console.log(user.id);
+      if (!user || !user.id) {
+        console.error("User not found. Please log in.");
+        // Optionally, redirect to a login page or show an error message
+        return;
+      }
       // Prepare booking data
       const bookingData = {
+        userId: user.id,
         selectedServices,
         totalCost,
         date: formattedDate,
         time: clickedTime,
+        duration: duration,
+        bookStatus,
         serviceName,
+        provProfPic,
+        provProfId,
+        staff
       };
 
+      console.log(bookingData)
+
       // Make a POST request to the backend booking route
-      const response = await fetch("http://localhost:3003/appt_overview", {
+      const response = await fetch("http://localhost:3003/bookings", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -76,11 +89,13 @@ function Overview() {
         body: JSON.stringify(bookingData),
       });
 
-      if (response.status === 200) {
+      if (response.status === 201) {
         // Handle success
-        console.log("Booking successful:", response.data);
+
+        const data = await response.json();
+        console.log("Booking successful:", data);
+        navigate("/appointment_confirmed", { state: { service: selectedServices, totalCost: totalCost, date: formattedDate, time: clickedTime, serviceName: serviceName } });
         // Navigate to confirmation page or do something else
-        navigate("/appointment_confirmed");
       } else {
         // Handle error
         console.error("Error booking:", response.statusText);
@@ -181,7 +196,7 @@ function Overview() {
           <button
             type="button"
             className="purp-button"
-            onClick={navigateToConfirmed}
+            onClick={handleBookNow}
           >
             Book Now
           </button>

@@ -5,6 +5,7 @@ import "dotenv/config";
 
 // import routes
 import exampleRoutes from "./routes/routes.js";
+import accountRoutes from "./routes/accountRoutes.js";
 import shopRoutes from "./routes/shopRoutes.js";
 import userRoutes from "./routes/userRoutes.js";
 import providerRoutes from "./routes/providerRoutes.js";
@@ -12,7 +13,6 @@ import blogRoutes from "./routes/blogRoutes.js";
 import loginRoutes from "./routes/loginRoutes.js";
 import subscriptionRoutes from "./routes/subcriptionRoutes.js";
 import rentSuiteRoutes from "./rentSuiteRoutes.js";
-
 
 // these should be in a .env file so github wont scream in your emails that the database link has been leaked
 const PORT = 3003;
@@ -44,4 +44,5 @@ blogRoutes(app, database);
 userRoutes(app, client, database);
 loginRoutes(app, database);
 subscriptionRoutes(app, database);
-rentSuiteRoutes(app,database)
+rentSuiteRoutes(app, database);
+accountRoutes(app, database);

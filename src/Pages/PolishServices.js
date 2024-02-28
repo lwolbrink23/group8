@@ -83,6 +83,31 @@ const SelectServices = () => {
 
   const navigate = useNavigate();
 
+  // Function to calculate and format the total amount of time for selected services
+  const totalTimeFormatted = () => {
+    const totalMinutes = selectedServices.reduce((total, service) => {
+      const timePart = service.split("\n")[1]; // Extracts the line with the time (e.g., "30 minutes")
+      const minutes = parseInt(timePart); // Extracts numerical value
+      return total + minutes;
+    }, 0);
+
+    // Convert total minutes into hours and minutes
+    const hours = Math.floor(totalMinutes / 60);
+    const minutes = totalMinutes % 60;
+
+    // Format the result into a readable string
+    let formattedTime = "";
+    if (hours > 0) {
+      formattedTime += `${hours} hr${hours > 1 ? "s" : ""}`; // Handle plural
+    }
+    if (minutes > 0) {
+      if (formattedTime.length > 0) formattedTime += ", "; // Add "and" if there are also hours
+      formattedTime += `${minutes} min${minutes > 1 ? "s" : ""}`; // Handle plural
+    }
+
+    return formattedTime || "0 minutes"; // Return "0 minutes" if no services are selected
+  };
+
   const calculateTotalCost = () => {
     return selectedServices.reduce((total, service) => {
       const pricePart = service.split("\n").pop();
@@ -93,11 +118,17 @@ const SelectServices = () => {
 
   const navigateToTime = () => {
     const totalCost = calculateTotalCost();
+    const duration = totalTimeFormatted();
     navigate("/selecttime", {
       state: {
         service: selectedServices,
         totalCost: totalCost,
         serviceName: "Polish Perfection",
+        duration: duration,
+        serviceName: "Polish Perfection",
+        provProfPic: "PolishPerfection",
+        provProfId: "iID1",
+        staff: "Polly W.",
       },
     });
   };

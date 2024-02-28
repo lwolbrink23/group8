@@ -7,7 +7,7 @@ import CustomDropdown from "../Components/CustomDropdown";
 import purplePlusIcon from "../assets/icons/purple-plus.svg";
 import purpleCheckIcon from "../assets/icons/purple-check.svg";
 import { BACKEND_ADDRESS } from "../App";
-import { fetchData } from "./functions/shopFunctions";
+import { fetchData, updateUserCartDB } from "./functions/shopFunctions";
 import Cookies from "js-cookie";
 import { fetchCartData, countItems } from "./functions/shopFunctions";
 
@@ -26,16 +26,16 @@ function Checkout() {
   const [enableSubmit, setEnableSubmit] = useState(false);
   const [shopData, setShopData] = useState([]);
   const [cartItems, setCartItems] = useState([]);
+  const [giftcards, setGiftcards] = useState([]);
   const [user, setUser] = useState(getUser());
 
   const navigate = useNavigate();
   console.log("active user: ", user);
 
   useEffect(() => {
-    // TODO: fetch cart data from database here
-    // TODO: fetch data from cookie if user not logged in
     fetchData("/shop", setShopData);
-    fetchCartData(setCartItems, user);
+    fetchCartData(setCartItems, user, "cart");
+    fetchCartData(setGiftcards, user, "giftcard");
   }, []);
 
   // user inputs
@@ -162,8 +162,21 @@ function Checkout() {
         }
         // make sure 10 digits
         else {
-          !/^\d{10}$/.test(value) &&
-            (errMsg = "Please enter a 10-digit number.");
+          const digits = value.replace(/\D/g, "");
+          let formattedPhoneNumber = "";
+
+          // Format the digits according to the pattern
+          if (digits.length <= 3) {
+            formattedPhoneNumber = `(${digits}`;
+          } else if (digits.length > 3 && digits.length <= 6) {
+            formattedPhoneNumber = `(${digits.slice(0, 3)}) ${digits.slice(3)}`;
+          } else if (digits.length > 6) {
+            formattedPhoneNumber = `(${digits.slice(0, 3)}) ${digits.slice(
+              3,
+              6
+            )}-${digits.slice(6, 10)}`;
+          }
+          updatePersonalInfo(propertyName, formattedPhoneNumber);
         }
         updatePersonalErr(propertyName, errMsg);
         break;
@@ -180,6 +193,8 @@ function Checkout() {
         }
         // make sure 5 digits
         else if (propertyName === "zip") {
+          // const newVal = value.replace(/\D/g, ""); // Remove non-numeric characters
+          // updateAddressInfo(propertyName, newVal.substring(0, 5)); // Limit input to 5 characters
           !/^\d{5}$/.test(value) && (errMsg = "Please enter a 5-digit number.");
         }
         updateAddressErr(propertyName, errMsg);
@@ -229,44 +244,48 @@ function Checkout() {
     }));
   };
   // dropdown content for cart
-  const OrderedItems = () => (
-    <ul className="dropdown-content">
-      {cartItems.map((item, i) => {
-        let itemName = "";
-        let itemPic = "";
-        let itemPrice = 0;
-
-        for (const shopItem of shopData) {
-          if (item.id === shopItem.id) {
-            itemName = shopItem.name;
-            itemPic = shopItem.file;
-            itemPrice = shopItem.price;
+  const OrderedItems = () => {
+    const mergedItems = [...cartItems, ...giftcards];
+    return (
+      <ul className="dropdown-content">
+        {mergedItems.map((item, i) => {
+          const isGift = item.id === "giftcard";
+          let itemName = isGift ? "Gift Card" : "";
+          let itemPic = isGift ? "giftcard" : "";
+          let itemPrice = isGift ? item.price : 0;
+          if (!isGift) {
+            for (const shopItem of shopData) {
+              if (item.id === shopItem.id) {
+                itemName = shopItem.name;
+                itemPic = shopItem.file;
+                itemPrice = shopItem.price;
+              }
+            }
           }
-        }
-
-        return (
-          <li className="ordered-item" key={i}>
-            <img
-              src={require("../assets/images/shop/" + itemPic + ".png")}
-              alt=""
-            ></img>
-            <div className="ordered-item-info">
-              <p>
-                <span>{itemName}</span>
-                <br></br>
-                <span style={{ fontSize: "13px" }}>quantity</span>
-                <br></br>
-                <span id="item-qty" className="bold poppins-bigger">
-                  {item.qty}
-                </span>
-              </p>
-            </div>
-            <p className="align-right">${itemPrice}</p>
-          </li>
-        );
-      })}
-    </ul>
-  );
+          return (
+            <li className="ordered-item" key={i}>
+              <img
+                src={require("../assets/images/shop/" + itemPic + ".png")}
+                alt=""
+              ></img>
+              <div className="ordered-item-info">
+                <p>
+                  <span>{itemName}</span>
+                  <br></br>
+                  <span style={{ fontSize: "13px" }}>quantity</span>
+                  <br></br>
+                  <span id="item-qty" className="bold poppins-bigger">
+                    {item.qty}
+                  </span>
+                </p>
+              </div>
+              <p className="align-right">${itemPrice}</p>
+            </li>
+          );
+        })}
+      </ul>
+    );
+  };
 
   // calc totals
   const subtotal = () => {
@@ -278,6 +297,9 @@ function Checkout() {
         }
       }
     }
+    giftcards.forEach((item) => {
+      t += item.price * item.qty;
+    });
     return t;
   };
   const taxes = subtotal() * 0.06;
@@ -297,10 +319,15 @@ function Checkout() {
     });
 
     const newOrder = {
-      id: "",
-      userID: "",
+      userID: user ? user.id : "",
       status: "Processing",
-      items: cartWithData,
+      cart: { items: cartWithData, giftcards },
+      costs: {
+        subtotal: subtotal(),
+        taxes: taxes,
+        shipCost: shipCost,
+        total: total,
+      },
       shippingInfo: {
         name: `${personalInfo.firstName} ${personalInfo.lastName}`,
         phone: personalInfo.phone,
@@ -311,6 +338,7 @@ function Checkout() {
           zip: addressInfo.zip,
         },
       },
+      date: Date.now(),
     };
 
     fetch(`${BACKEND_ADDRESS}/checkout`, {
@@ -330,6 +358,9 @@ function Checkout() {
         console.log("Order inserted successfully:", data);
         navigate(`/order_placed/${data.orderId}`);
         Cookies.remove("cart");
+        Cookies.remove("giftcard");
+        updateUserCartDB(user.id, [], "cart");
+        updateUserCartDB(user.id, [], "giftcard");
       })
       .catch((error) => {
         console.error("Error inserting order:", error);
@@ -339,7 +370,10 @@ function Checkout() {
   // main stuff
   return (
     <div id="checkout">
-      <Shopheader htitle={"Checkout"} qty={countItems(cartItems)} />
+      <Shopheader
+        htitle={"Checkout"}
+        qty={countItems([...cartItems, ...giftcards])}
+      />
       <main>
         <div id="shipping-info" className="cardbox">
           <h3>Shipping Information</h3>
@@ -348,6 +382,7 @@ function Checkout() {
             <input
               type="text"
               placeholder="First Name*"
+              value={personalInfo.firstName}
               required
               onChange={(e) =>
                 handleChange("personal", "firstName", e.target.value)
@@ -362,6 +397,7 @@ function Checkout() {
             <input
               type="text"
               placeholder="Last Name*"
+              value={personalInfo.lastName}
               onChange={(e) =>
                 handleChange("personal", "lastName", e.target.value)
               }
@@ -375,6 +411,7 @@ function Checkout() {
             <input
               type="text"
               placeholder="Phone*"
+              value={personalInfo.phone}
               onChange={(e) =>
                 handleChange("personal", "phone", e.target.value)
               }
@@ -388,6 +425,7 @@ function Checkout() {
             <input
               type="text"
               placeholder="Street Address*"
+              value={addressInfo.street}
               onChange={(e) =>
                 handleChange("address", "street", e.target.value)
               }
@@ -399,6 +437,7 @@ function Checkout() {
               <input
                 type="text"
                 placeholder="City*"
+                value={addressInfo.city}
                 onChange={(e) =>
                   handleChange("address", "city", e.target.value)
                 }
@@ -412,6 +451,7 @@ function Checkout() {
               <input
                 type="text"
                 placeholder="State*"
+                value={addressInfo.state}
                 onChange={(e) =>
                   handleChange("address", "state", e.target.value)
                 }
@@ -425,6 +465,7 @@ function Checkout() {
               <input
                 type="text"
                 placeholder="ZIP Code*"
+                value={addressInfo.zip}
                 onChange={(e) => handleChange("address", "zip", e.target.value)}
               />
               {addressErr.zip && (
@@ -472,6 +513,7 @@ function Checkout() {
               <input
                 type="text"
                 placeholder="Card Number*"
+                value={paymentInfo.cardNum}
                 onChange={(e) =>
                   handleChange("payment", "cardNum", e.target.value)
                 }
@@ -486,6 +528,7 @@ function Checkout() {
                 <input
                   type="text"
                   placeholder="mm*"
+                  value={paymentInfo.mm}
                   onChange={(e) =>
                     handleChange("payment", "mm", e.target.value)
                   }
@@ -498,6 +541,7 @@ function Checkout() {
                 <input
                   type="text"
                   placeholder="yy*"
+                  value={paymentInfo.yy}
                   onChange={(e) =>
                     handleChange("payment", "yy", e.target.value)
                   }
@@ -510,6 +554,7 @@ function Checkout() {
                 <input
                   type="text"
                   placeholder="CVC*"
+                  value={paymentInfo.cvc}
                   onChange={(e) =>
                     handleChange("payment", "cvc", e.target.value)
                   }
@@ -524,6 +569,7 @@ function Checkout() {
               <input
                 type="text"
                 placeholder="Name on Card*"
+                value={paymentInfo.name}
                 onChange={(e) =>
                   handleChange("payment", "name", e.target.value)
                 }
@@ -535,7 +581,10 @@ function Checkout() {
           <div id="cart-items">
             <h3>Review Order</h3>
             <CustomDropdown
-              title={`Items Ordered (${countItems(cartItems)})`}
+              title={`Items Ordered (${countItems([
+                ...cartItems,
+                ...giftcards,
+              ])})`}
               ContentComponent={OrderedItems}
               icon={"white-arrow.svg"}
             />

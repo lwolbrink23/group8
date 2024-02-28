@@ -13,17 +13,38 @@ function Footer() {
 
   // State to keep track of the input value
   const [inputValue, setInputValue] = useState("");
+  // State to manage email validation
+  const [emailError, setEmailError] = useState(false);
+
+  // Function to validate email
+  const isValidEmail = (email) => {
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    return emailRegex.test(email);
+  };
 
   // Function to update the state based on input changes
   const handleInputChange = (event) => {
-    setInputValue(event.target.value);
+    const value = event.target.value;
+    setInputValue(value);
+
+    // Validate the email address
+    const isValid = isValidEmail(value);
+    setEmailError(!isValid);
   };
 
   const resetForm = () => {
     setInputValue("");
+    // Reset email validation error
+    setEmailError(false);
   };
 
- const handleSub = async () => {
+  const handleSub = async () => {
+    // Check if email is valid before subscribing
+    if (!isValidEmail(inputValue)) {
+      alert("Please enter a valid email address");
+      return;
+    }
+
     try {
       const response = await fetch("http://localhost:3003/subscribe", {
         method: "POST",
@@ -41,7 +62,10 @@ function Footer() {
         openPopup();
         resetForm();
       } else {
-        console.error("Failed to subscribe to newsletter:", response.statusText);
+        console.error(
+          "Failed to subscribe to newsletter:",
+          response.statusText,
+        );
       }
     } catch (error) {
       console.error("Error subscribing to newsletter:", error);
@@ -84,6 +108,11 @@ function Footer() {
           <p>
             <strong>Join our Newsletter</strong>
           </p>
+          {emailError && (
+            <p style={{ color: "red", margin: 0, padding: "5px" }}>
+              Please enter a valid email address.
+            </p>
+          )}
           <input
             type="email"
             placeholder="Enter your email"
@@ -93,13 +122,12 @@ function Footer() {
           <button
             onClick={handleSub}
             style={buttonStyle}
-            disabled={!inputValue}
+            disabled={!inputValue || emailError}
           >
             Subscribe
           </button>
           <PopupNews isOpen={isPopupOpen} closePopup={closePopup} />
           <div className="social-icons">
-            {/* Replace # with your social media links */}
             <a href="#">
               <img src={Facebook} alt="Facebook" />
             </a>
