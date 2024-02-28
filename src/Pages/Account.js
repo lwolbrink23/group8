@@ -177,6 +177,7 @@ function Account({ props }) {
 
   const orders = ["Oldest to Newest"];
 
+
   return (
     <div>
       {user ? (
@@ -229,8 +230,10 @@ function Account({ props }) {
                         src={lock}
                         alt="password icon"
                         className="persIcons"
-                      ></img>
-                      <p type="password">{"*".repeat(user.password.length)}</p>{" "}
+                      ></img>              
+                        <p type="password">
+                      {"*".repeat(user.password.length)}
+                      </p>{" "}
                       {/* Hide password */}
                       <button
                         type="button"

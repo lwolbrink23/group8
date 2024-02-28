@@ -10,16 +10,7 @@ import { BACKEND_ADDRESS } from "../App";
 import { fetchData, updateUserCartDB } from "./functions/shopFunctions";
 import Cookies from "js-cookie";
 import { fetchCartData, countItems } from "./functions/shopFunctions";
-
-function getUser() {
-  let user = localStorage.getItem("user");
-  if (user) {
-    user = JSON.parse(user);
-  } else {
-    user = null;
-  }
-  return user;
-}
+import { getUser } from "./functions/generalFunctions";
 
 function Checkout() {
   // backend: check if user logged in. if logged in, get their info from the database and autofill in userAns
@@ -30,9 +21,9 @@ function Checkout() {
   const [user, setUser] = useState(getUser());
 
   const navigate = useNavigate();
-  console.log("active user: ", user);
 
   useEffect(() => {
+    console.log("active user: ", user);
     fetchData("/shop", setShopData);
     fetchCartData(setCartItems, user, "cart");
     fetchCartData(setGiftcards, user, "giftcard");
