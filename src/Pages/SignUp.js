@@ -27,6 +27,7 @@ function SignUp() {
   const [passwordsMatchError, setPasswordsMatchError] = useState(false);
   const [phoneError, setPhoneError] = useState(false);
   const [emailError, setEmailError] = useState(false);
+  const [passwordShow, setPasswordShow] = useState(false)
 
   console.log("active user: ", user);
 
@@ -165,6 +166,10 @@ setAccountExistsError(true); // Set accountExistsError state
 console.log("After setting accountExistsError state:", accountExistsError);
 };
 
+const isPasswordVisible = () => {
+  setPasswordShow(!passwordShow);
+};
+
   const buttonStyle = {
     color:
       firstNameValue &&
@@ -245,7 +250,7 @@ console.log("After setting accountExistsError state:", accountExistsError);
           </div>
           <label htmlFor="password">Password</label>
           <input
-            type="password" // secure input
+            type={passwordShow ? "text" : "password"} // secure input
             className="section1"
             placeholder=" Password*"
             id="password"
@@ -253,8 +258,9 @@ console.log("After setting accountExistsError state:", accountExistsError);
             onChange={handlePwInputChange}
           />
           <label htmlFor="confirm">Confirm Password</label>
+          <div className="passcontain">
           <input
-            type="password" // secure input
+            type={passwordShow ? "text" : "password"}
             className="section1"
             placeholder=" Confirm Password*"
             id="confirm"
@@ -262,6 +268,18 @@ console.log("After setting accountExistsError state:", accountExistsError);
             onChange={handleConfPwInputChange}
             onBlur={handleConfPwInputBlur}
           />
+          <span
+          className="eye-icon" 
+          onClick={isPasswordVisible}
+          style ={{ cursor: "pointer"}}
+          >
+            {passwordShow ? (
+              <i className="fas fa-eye-slash"></i>
+            ) : (
+              <i className="fas fa-eye"></i>
+            )}
+          </span>
+          </div>
           {passwordsMatchError && (
             <p style={{ color: "red" }}>
               Passwords do not match. Please try again.
