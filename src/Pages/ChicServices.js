@@ -106,13 +106,24 @@ const SelectServices = () => {
       return total + price;
     }, 0);
   };
+  // I want to create a funciton that returns the name of the service
+  const extractServiceName = () => {
+    selectedServices.reduce((service) => {
+    const name = service.split("\n")[0];
+    return name;
+    })
+  }
+
+  
 
   const navigateToTime = () => {
     const totalCost = calculateTotalCost();
     const duration = totalTimeFormatted();
+    const serviceName = extractServiceName();
+    console.log(serviceName)
     navigate("/selecttime", {
       state: {
-        service: selectedServices,
+        service: serviceName,
         totalCost: totalCost,
         duration: duration,
         serviceName: "Simply Chic Hair",
