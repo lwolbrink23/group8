@@ -47,6 +47,7 @@ function Overview() {
   const provProfPic = location.state?.provProfPic;
   const provProfId = location.state?.provProfId;
   const staff = location.state?.staff;
+  const serviceTitle = location.state?.serviceTitle;
 
   console.log(duration)
 
@@ -66,7 +67,7 @@ function Overview() {
       // Prepare booking data
       const bookingData = {
         userId: user.id,
-        selectedServices,
+        serviceTitle,
         totalCost,
         date: formattedDate,
         time: clickedTime,

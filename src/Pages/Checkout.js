@@ -10,16 +10,7 @@ import { BACKEND_ADDRESS } from "../App";
 import { fetchData, updateUserCartDB } from "./functions/shopFunctions";
 import Cookies from "js-cookie";
 import { fetchCartData, countItems } from "./functions/shopFunctions";
-
-function getUser() {
-  let user = localStorage.getItem("user");
-  if (user) {
-    user = JSON.parse(user);
-  } else {
-    user = null;
-  }
-  return user;
-}
+import { getUser } from "./functions/generalFunctions";
 
 function Checkout() {
   // backend: check if user logged in. if logged in, get their info from the database and autofill in userAns
@@ -30,9 +21,9 @@ function Checkout() {
   const [user, setUser] = useState(getUser());
 
   const navigate = useNavigate();
-  console.log("active user: ", user);
 
   useEffect(() => {
+    console.log("active user: ", user);
     fetchData("/shop", setShopData);
     fetchCartData(setCartItems, user, "cart");
     fetchCartData(setGiftcards, user, "giftcard");
@@ -150,6 +141,10 @@ function Checkout() {
     }));
   };
 
+  const validateValues = () => {
+    console.log("validate on blur & on clicking submit");
+  };
+
   const handleChange = (type, propertyName, value) => {
     let errMsg = "";
     switch (type) {
@@ -204,8 +199,27 @@ function Checkout() {
         updatePaymentInfo(propertyName, value);
         //make sure only certain amount of digits
         if (propertyName === "cardNum") {
-          !/^\d{16}$/.test(value) &&
-            (errMsg = "Please enter a 16-digit number.");
+          let digits = value.replace(/\D/g, "");
+          let formattedString = "";
+          if (digits.length <= 4) {
+            formattedString = digits;
+          } else if (digits.length > 4 && digits.length <= 8) {
+            formattedString = `${digits.slice(0, 4)} ${digits.slice(4)}`;
+          } else if (digits.length > 8 && digits.length <= 12) {
+            formattedString = `${digits.slice(0, 4)} ${digits.slice(
+              4,
+              8
+            )} ${digits.slice(8)}`;
+          } else if (digits.length > 12) {
+            formattedString = `${digits.slice(0, 4)} ${digits.slice(
+              4,
+              8
+            )} ${digits.slice(8, 12)} ${digits.slice(12)}`;
+          }
+          formattedString = formattedString.slice(0, 19);
+          updatePaymentInfo(propertyName, formattedString);
+          // !/^\d{16}$/.test(value) &&
+          //   (errMsg = "Please enter a 16-digit number.");
         }
         // make sure only numbers, 2 digits
         else if (propertyName === "mm" || propertyName === "yy") {
