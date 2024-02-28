@@ -28,6 +28,14 @@
     margin-bottom: 40px;
 }
 
+.eye-icon {
+    position: absolute;
+    top: 50%;
+    right: 10px;
+    transform: translateY(-50%);
+    cursor: pointer;
+}
+
 
 
 /* Mobile */
