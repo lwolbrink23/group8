@@ -144,7 +144,7 @@ function SignUp() {
           // Handle case where user data is not returned
           console.error("Error creating user: User data not found in response");
         }
-      } else if (response.status === 409) {
+      } else if (response.status === 400) {
         // Account already exists
         console.error("Error creating user:", response.statusText);
         // Display error message to the user
@@ -160,6 +160,9 @@ function SignUp() {
       console.error("Error creating user:", error);
       // Handle network error or other unexpected errors
     }
+    console.log("Before setting accountExistsError state:", accountExistsError);
+    setAccountExistsError(true); // Set accountExistsError state
+    console.log("After setting accountExistsError state:", accountExistsError);
   };
 
   const buttonStyle = {
@@ -176,7 +179,6 @@ function SignUp() {
         ? "black"
         : "#646464",
   };
-
   return (
     <div>
       <h1 className="signupTitle">Sign Up</h1>

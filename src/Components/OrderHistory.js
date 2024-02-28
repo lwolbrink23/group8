@@ -7,10 +7,10 @@ function OrderHistory() {
   const OrderedHistoryItems = () => (
     <div className="orderHistoryDetails">
       {/* make the date & status dynamic later */}
-      <p className="date">11/15/23</p>
+      <p className="date">{tempData.date["$numberDouble"]}</p>
       <div className="inline">
         <p>
-          <strong>Status: Processing</strong>
+          <strong>Status: {tempData.status}</strong>
         </p>
         <Link to="/order_details" className="align-right">
           View Details
@@ -18,10 +18,11 @@ function OrderHistory() {
       </div>
       <ul className="dropdown-content width">
         {/* only shows first 2 items in order */}
-        {tempData.slice(0, 2).map((item, i) => {
+        {tempData.cart.items.slice(0, 2).map((item, i) => {
           let itemName = "";
           let itemPic = "";
 
+          // Assuming tempShopData is an array containing shop items
           for (const shopItem of tempShopData) {
             if (item.id === shopItem.id) {
               itemName = shopItem.name;
@@ -40,10 +41,10 @@ function OrderHistory() {
                   <br></br>
                   <span style={{ fontSize: "13px" }}>quantity</span>
                   <br></br>
-                  <span id="item-qty">{item.qty}</span>
+                  <span id="item-qty">{item.qty["$numberInt"]}</span>
                 </p>
               </div>
-              <p className="align-right">${item.price}</p>
+              <p className="align-right">${item.price["$numberDouble"]}</p>
             </li>
           );
         })}
