@@ -52,8 +52,21 @@ function OrderHistory() {
   );
 
   function OrderHistoryDetails() {
+    if (tempData.length === 0) {
+      // Display a message when there are no orders
+      return (
+        <div className="noAppts">
+          <p>No Order History</p>
+          <Link to="/shop">
+            <button className="shopButton">Shop Now</button>
+          </Link>
+        </div>
+      );
+    }
+
     return (
       <div>
+        {/* Map through orders only if there are orders */}
         {tempData.map((order, index) => (
           <OrderedHistoryItems key={index} order={order} />
         ))}
