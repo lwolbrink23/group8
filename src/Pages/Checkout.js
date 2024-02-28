@@ -150,6 +150,10 @@ function Checkout() {
     }));
   };
 
+  const validateValues = () => {
+    console.log("validate on blur & on clicking submit");
+  };
+
   const handleChange = (type, propertyName, value) => {
     let errMsg = "";
     switch (type) {
@@ -204,8 +208,27 @@ function Checkout() {
         updatePaymentInfo(propertyName, value);
         //make sure only certain amount of digits
         if (propertyName === "cardNum") {
-          !/^\d{16}$/.test(value) &&
-            (errMsg = "Please enter a 16-digit number.");
+          let digits = value.replace(/\D/g, "");
+          let formattedString = "";
+          if (digits.length <= 4) {
+            formattedString = digits;
+          } else if (digits.length > 4 && digits.length <= 8) {
+            formattedString = `${digits.slice(0, 4)} ${digits.slice(4)}`;
+          } else if (digits.length > 8 && digits.length <= 12) {
+            formattedString = `${digits.slice(0, 4)} ${digits.slice(
+              4,
+              8
+            )} ${digits.slice(8)}`;
+          } else if (digits.length > 12) {
+            formattedString = `${digits.slice(0, 4)} ${digits.slice(
+              4,
+              8
+            )} ${digits.slice(8, 12)} ${digits.slice(12)}`;
+          }
+          formattedString = formattedString.slice(0, 19);
+          updatePaymentInfo(propertyName, formattedString);
+          // !/^\d{16}$/.test(value) &&
+          //   (errMsg = "Please enter a 16-digit number.");
         }
         // make sure only numbers, 2 digits
         else if (propertyName === "mm" || propertyName === "yy") {
