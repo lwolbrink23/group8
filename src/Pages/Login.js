@@ -98,6 +98,21 @@ const handleLogin = async () => {
     }
   };
 
+    function togglePasswordVisibility() {
+    const passwordInput = document.getElementById("passwordInput");
+    const eyeIcon = document.getElementById("togglePassword").querySelector("i");
+
+    if (passwordInput.type === "password") {
+      passwordInput.type = "text";
+      eyeIcon.classList.remove("fa-eye");
+      eyeIcon.classList.add("fa-eye-slash");
+    } else {
+      passwordInput.type = "password";
+      eyeIcon.classList.remove("fa-eye-slash");
+      eyeIcon.classList.add("fa-eye");
+    }
+  }
+
   const buttonStyle = {
     color: emailValue && pwValue ? "black" : "#646464",
   };
@@ -127,6 +142,9 @@ const handleLogin = async () => {
             value={pwValue}
             onChange={handlePwInputChange}
           />
+          <span id="togglePassword" class="eye-icon" onClick="togglePasswordVisibility()">
+          <i class="fas fa-eye"></i>
+          </span>
           <br />
           <div className="checkbox-container">
             <input type="checkbox" className="check" id="check" />

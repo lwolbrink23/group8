@@ -32,19 +32,12 @@ const userRoutes = (app, client, database) => {
   });
 
   // Signup route
-<<<<<<< HEAD
 app.post("/signup", async (req, res) => {
   try {
     console.log("Received signup request:", req.body); // Log received signup request
-=======
-  app.post("/signup", async (req, res) => {
-    try {
-      const { name, phoneNumber, email, password, appointments, shoppingCart } = req.body;
->>>>>>> 9e51e0ec813d0794fbb5846564a62f23de610b17
 
     const { name, phoneNumber, email, password, shoppingCart } = req.body;
 
-<<<<<<< HEAD
     // Check if user already exists with the given email
     const existingUser = await database
       .collection("User_Accounts")
@@ -55,17 +48,6 @@ app.post("/signup", async (req, res) => {
         .status(400)
         .json({ error: "User with this email already exists" });
     }
-=======
-      // Create a new user document
-      const newUser = {
-        name,
-        phoneNumber,
-        email,
-        password,
-        appointments,
-        shoppingCart,
-      };
->>>>>>> 9e51e0ec813d0794fbb5846564a62f23de610b17
 
     console.log("Creating new user:", email); // Log new user creation
 

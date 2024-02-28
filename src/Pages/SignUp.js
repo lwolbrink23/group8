@@ -98,23 +98,6 @@ function SignUp() {
     setAccountExistsError(false); // Reset account exists error state
   };
 
-<<<<<<< HEAD
- const handleSignUp = async () => {
-  // Check if passwords match
-  if (pwValue !== confPwValue) {
-    setPasswordsMatchError(true);
-    return; // Stop sign-up process if passwords don't match
-  }
-
-  // Create user data object
-  const userData = {
-    name: `${firstNameValue} ${lastNameValue}`,
-    phoneNumber: phoneValue,
-    email: emailValue,
-    password: pwValue,
-    shoppingCart: [],
-  };
-=======
   const handleSignUp = async () => {
     // Check if passwords match
     if (pwValue !== confPwValue) {
@@ -133,7 +116,6 @@ function SignUp() {
         giftcards: [],
       },
     };
->>>>>>> 9e51e0ec813d0794fbb5846564a62f23de610b17
 
   try {
     // Make a POST request to the backend API to create a new user
