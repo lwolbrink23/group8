@@ -4,13 +4,12 @@ import tempShopData from "../data/shop.json";
 import { Link } from "react-router-dom";
 
 function OrderHistory() {
-  const OrderedHistoryItems = () => (
+  const OrderedHistoryItems = ({ order }) => (
     <div className="orderHistoryDetails">
-      {/* make the date & status dynamic later */}
-      <p className="date">{new Date(Number(tempData.date["$numberDouble"])).toLocaleDateString()}</p>
+      <p className="date">{new Date(Number(order.date["$numberDouble"])).toLocaleDateString()}</p>
       <div className="inline">
         <p>
-          <strong>Status: {tempData.status}</strong>
+          <strong>Status: {order.status}</strong>
         </p>
         <Link to="/order_details" className="align-right">
           View Details
@@ -18,7 +17,7 @@ function OrderHistory() {
       </div>
       <ul className="dropdown-content width">
         {/* only shows first 2 items in order */}
-        {tempData.cart.items.slice(0, 2).map((item, i) => {
+        {order.cart.items.slice(0, 2).map((item, i) => {
           let itemName = "";
           let itemPic = "";
 
@@ -55,7 +54,9 @@ function OrderHistory() {
   function OrderHistoryDetails() {
     return (
       <div>
-        <OrderedHistoryItems />
+        {tempData.map((order, index) => (
+          <OrderedHistoryItems key={index} order={order} />
+        ))}
       </div>
     );
   }
