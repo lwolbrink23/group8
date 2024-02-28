@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import "../Styles/OrderDetails.css";
-import tempData from "../data/cart.json";
+import tempData from "../data/temporaryUser_Orders.json";
 import tempShopData from "../data/shop.json";
 import { Link } from "react-router-dom";
 
