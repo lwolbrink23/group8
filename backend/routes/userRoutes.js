@@ -36,7 +36,7 @@ app.post("/signup", async (req, res) => {
   try {
     console.log("Received signup request:", req.body); // Log received signup request
 
-    const { name, phoneNumber, email, password, shoppingCart } = req.body;
+    const { name, phoneNumber, email, password, appointments, shoppingCart } = req.body;
 
     // Check if user already exists with the given email
     const existingUser = await database
@@ -57,6 +57,7 @@ app.post("/signup", async (req, res) => {
       phoneNumber,
       email,
       password,
+      appointments, 
       shoppingCart,
     };
 
