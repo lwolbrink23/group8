@@ -99,18 +99,29 @@ const SelectServices = () => {
     }, 0);
   };
 
+  const extractServiceName = () => {
+  // Check if there are selected services and return an empty array if none
+  if (selectedServices.length === 0) return [];
+
+  // Map over selectedServices to extract and return the service names
+  return selectedServices.map(service => service.split("\n")[0]);
+}
+
   const navigateToTime = () => {
     const totalCost = calculateTotalCost();
     const duration = totalTimeFormatted();
+    const serviceTitle = extractServiceName();
+    console.log(serviceTitle)
     navigate("/selecttime", {
       state: {
         service: selectedServices,
+        serviceTitle: serviceTitle,
         totalCost: totalCost,
         duration: duration,
-        serviceName: "Brush & Blush Beauty",
-        provProfPic: "BrushBlushBeauty",
-        provProfId: "iID2",
-        staff: "Jessica V.",
+        serviceName: "Simply Chic Hair",
+        provProfPic: "SimplyChicHair",
+        provProfId: "iID0",
+        staff: "Marissa S.",
       },
     });
   };
