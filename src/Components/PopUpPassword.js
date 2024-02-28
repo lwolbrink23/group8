@@ -2,18 +2,27 @@ import React, { useState } from 'react';
 import '../Styles/Popup.css';
 
 const PopupPassword = ({ isOpen, closePopup }) => {
-
     const [email, setEmail] = useState('');
     const [submitted, setSubmitted] = useState(false);
+    const [emailError, setEmailError] = useState('');
 
     if (!isOpen) return null;
 
+    // reset user errors
     const handleEmailChange = (event) => {
         setEmail(event.target.value);
+        setEmailError(''); 
     };
 
     const handleSubmit = () => {
-        // Implement email validation and submission logic here if needed
+        // Basic email validation using a regular expression
+        const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+        if (!emailRegex.test(email)) {
+            setEmailError('Please enter a valid email address');
+            return; 
+        }
+
+        // Implement submission logic here if needed
         setSubmitted(true);
         // Here you can also trigger the email sending logic
     };
@@ -32,8 +41,8 @@ const PopupPassword = ({ isOpen, closePopup }) => {
     return (
         <div className="popup-background">
             <div className="popup-container">
-                {/*add dynamic html in here*/}
                 <label>Enter Your Email <br /></label>
+                 {emailError && <p style={{ color: 'red' }}>{emailError}</p>}
                 <input type="email" value={email} onChange={handleEmailChange} className="popup-input" />
                 <button onClick={handleSubmit} disabled={!email}>Submit</button>
                 <button onClick={closePopup}>Close</button>

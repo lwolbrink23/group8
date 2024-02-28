@@ -36,7 +36,7 @@ app.post("/signup", async (req, res) => {
   try {
     console.log("Received signup request:", req.body); // Log received signup request
 
-    const { name, phoneNumber, email, password, shoppingCart } = req.body;
+    const { name, phoneNumber, email, password, appointments, shoppingCart } = req.body;
 
     // Check if user already exists with the given email
     const existingUser = await database
@@ -57,6 +57,7 @@ app.post("/signup", async (req, res) => {
       phoneNumber,
       email,
       password,
+      appointments, 
       shoppingCart,
     };
 
@@ -80,7 +81,7 @@ app.post("/signup", async (req, res) => {
   app.post("/bookings", async (req, res) => {
 
     try {
-      const { userId, selectedServices, totalCost, date, time,
+      const { userId, serviceTitle, totalCost, date, time,
         serviceName, bookStatus, duration, provProfPic, provProfId, staff } = req.body;
 
       const user = await database.collection('User_Accounts').findOne({ _id: new ObjectId(userId) });
@@ -91,7 +92,7 @@ app.post("/signup", async (req, res) => {
         date: date,
         id: newAppointmentId,
         location: serviceName,
-        services: selectedServices.join(", "), // each service selected is seperated by a comma
+        services: serviceTitle.join(", "), // each service selected is seperated by a comma
         staff: staff,
         status: bookStatus,
         time: time,
