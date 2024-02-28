@@ -1,7 +1,6 @@
 import "../Styles/cart.css";
 import plusICON from "../assets/icons/black-plus.png";
 import minusICON from "../assets/icons/black-minus.png";
-import tempShopData from "../data/shop.json";
 import Shopheader from "../Components/Shopheader";
 import { Link } from "react-router-dom";
 import { useState, useEffect } from "react";
@@ -10,6 +9,7 @@ import {
   fetchCartData,
   updateUserCartDB,
   countItems,
+  fetchData,
 } from "./functions/shopFunctions";
 import { getUser } from "./functions/generalFunctions";
 
@@ -17,13 +17,15 @@ function Cart() {
   // BACKEND: load cart data from database here
   const [cartItems, setCartItems] = useState([]);
   const [giftcards, setGiftcards] = useState([]);
-  const [shopData, setShopData] = useState(tempShopData);
+  const [shopData, setShopData] = useState([]);
   const [popupItem, setPopupItem] = useState("");
   const [user, setUser] = useState(getUser());
   console.log("active user: ", user);
 
   // keep a state for login here, useeffect to update it
+
   useEffect(() => {
+    fetchData("/shop", setShopData);
     fetchCartData(setCartItems, user, "cart");
     fetchCartData(setGiftcards, user, "giftcard");
   }, []);
@@ -214,7 +216,7 @@ function Cart() {
         <main>
           <div>
             <p>{countItems([...cartItems, ...giftcards])} items in your cart</p>
-            <CartItems />
+            {shopData.length && <CartItems />}
           </div>
           <div className="subtotal poppins-bigger">
             <div className="col-2">
