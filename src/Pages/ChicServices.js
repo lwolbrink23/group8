@@ -108,22 +108,24 @@ const SelectServices = () => {
   };
   // I want to create a funciton that returns the name of the service
   const extractServiceName = () => {
-    selectedServices.reduce((service) => {
-    const name = service.split("\n")[0];
-    return name;
-    })
-  }
+  // Check if there are selected services and return an empty array if none
+  if (selectedServices.length === 0) return [];
+
+  // Map over selectedServices to extract and return the service names
+  return selectedServices.map(service => service.split("\n")[0]);
+}
 
   
 
   const navigateToTime = () => {
     const totalCost = calculateTotalCost();
     const duration = totalTimeFormatted();
-    const serviceName = extractServiceName();
-    console.log(serviceName)
+    const serviceTitle = extractServiceName();
+    console.log(serviceTitle)
     navigate("/selecttime", {
       state: {
-        service: serviceName,
+        service: selectedServices,
+        serviceTitle: serviceTitle,
         totalCost: totalCost,
         duration: duration,
         serviceName: "Simply Chic Hair",
