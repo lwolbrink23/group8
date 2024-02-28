@@ -98,23 +98,6 @@ function SignUp() {
     setAccountExistsError(false); // Reset account exists error state
   };
 
-<<<<<<< HEAD
- const handleSignUp = async () => {
-  // Check if passwords match
-  if (pwValue !== confPwValue) {
-    setPasswordsMatchError(true);
-    return; // Stop sign-up process if passwords don't match
-  }
-
-  // Create user data object
-  const userData = {
-    name: `${firstNameValue} ${lastNameValue}`,
-    phoneNumber: phoneValue,
-    email: emailValue,
-    password: pwValue,
-    shoppingCart: [],
-  };
-=======
   const handleSignUp = async () => {
     // Check if passwords match
     if (pwValue !== confPwValue) {
@@ -133,55 +116,54 @@ function SignUp() {
         giftcards: [],
       },
     };
->>>>>>> 9e51e0ec813d0794fbb5846564a62f23de610b17
 
-  try {
-    // Make a POST request to the backend API to create a new user
-    const response = await fetch("http://localhost:3003/signup", {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify(userData),
-    });
+    try {
+      // Make a POST request to the backend API to create a new user
+      const response = await fetch("http://localhost:3003/signup", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(userData),
+      });
 
-    // Check if the request was successful (status code 2xx)
-    if (response.ok) {
-      const responseData = await response.json(); // Assuming your server responds with the new user data
-      // Check if the response data contains user information
-      if (responseData.user) {
-        const newUser = responseData.user;
-        // Now you should have user data in the newUser object
-        console.log("new user:", newUser);
-        console.log("newUser._id: ", newUser._id);
-        // Reset form after successful sign-up
+      // Check if the request was successful (status code 2xx)
+      if (response.ok) {
+        const responseData = await response.json(); // Assuming your server responds with the new user data
+        // Check if the response data contains user information
+        if (responseData.user) {
+          const newUser = responseData.user;
+          // Now you should have user data in the newUser object
+          console.log("new user:", newUser);
+          console.log("newUser._id: ", newUser._id);
+          // Reset form after successful sign-up
+          resetForm();
+          // Need logic to log them in as the active user in order to navigate to their account page
+          navigate(`/Login`);
+        } else {
+          // Handle case where user data is not returned
+          console.error("Error creating user: User data not found in response");
+        }
+      } else if (response.status === 400) {
+        // Account already exists
+        console.error("Error creating user:", response.statusText);
+        // Display error message to the user
+        setAccountExistsError(true); // Set account exists error state
+        // You might also want to reset the form fields here
         resetForm();
-        // Need logic to log them in as the active user in order to navigate to their account page
-        navigate(`/Login`);
       } else {
-        // Handle case where user data is not returned
-        console.error("Error creating user: User data not found in response");
+        // Handle other error responses
+        console.error("Error creating user:", response.statusText);
+        // Display an error message to the user or perform other error-handling logic
       }
-    } else if (response.status === 400) {
-      // Account already exists
-      console.error("Error creating user:", response.statusText);
-      // Display error message to the user
-      setAccountExistsError(true); // Set account exists error state
-      // You might also want to reset the form fields here
-      resetForm();
-    } else {
-      // Handle other error responses
-      console.error("Error creating user:", response.statusText);
-      // Display an error message to the user or perform other error-handling logic
+    } catch (error) {
+      console.error("Error creating user:", error);
+      // Handle network error or other unexpected errors
     }
-  } catch (error) {
-    console.error("Error creating user:", error);
-    // Handle network error or other unexpected errors
-  }
-  console.log("Before setting accountExistsError state:", accountExistsError);
-setAccountExistsError(true); // Set accountExistsError state
-console.log("After setting accountExistsError state:", accountExistsError);
-};
+    console.log("Before setting accountExistsError state:", accountExistsError);
+    setAccountExistsError(true); // Set accountExistsError state
+    console.log("After setting accountExistsError state:", accountExistsError);
+  };
 
   const buttonStyle = {
     color:

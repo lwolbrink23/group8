@@ -22,10 +22,10 @@ function OrderDetails() {
     <div className="details">
       {/* make the "status:_____" dynamic later */}
       <p className="center">
-        <strong>status: pending</strong>
+        <strong>status: {tempData.status}</strong>
       </p>
       <ul className="dropdown-content width">
-        {tempData.map((item, i) => {
+        {tempData.cart.items.map((item, i) => {
           let itemName = "";
           let itemPic = "";
 
@@ -47,10 +47,10 @@ function OrderDetails() {
                   <br></br>
                   <span style={{ fontSize: "13px" }}>quantity</span>
                   <br></br>
-                  <span id="item-qty">{item.qty}</span>
+                  <span id="item-qty">{item.qty["$numberInt"]}</span>
                 </p>
               </div>
-              <p className="align-right">${item.price}</p>
+              <p className="align-right">${item.price["$numberDouble"]}</p>
             </li>
           );
         })}
@@ -75,11 +75,11 @@ function OrderDetails() {
           </p>
         </div>
         <div id="titles-right">
-          <p>11/15/23 6:23 pm</p>
-          <p>$19.98</p>
-          <p>$6.18</p>
-          <p>$1.19</p>
-          <p>$27.35</p>
+          <p>{new Date(Number(tempData.date["$numberDouble"])).toLocaleString()}</p>
+          <p>${tempData.costs.subtotal["$numberDouble"]}</p>
+          <p>${tempData.costs.shipCost["$numberInt"]}</p>
+          <p>${tempData.costs.taxes["$numberDouble"]}</p>
+          <p>${tempData.costs.total["$numberDouble"]}</p>
         </div>
       </div>
       <hr />
@@ -95,11 +95,11 @@ function OrderDetails() {
             <strong>Shipping Address</strong>
           </p>
           <p>
-            Bob Smith
+            {tempData.shippingInfo.name}
             <br />
-            123 Main St
+            {tempData.shippingInfo.addressInfo.street}
             <br />
-            Orlando, FL 32829
+            {tempData.shippingInfo.addressInfo.city}, {tempData.shippingInfo.addressInfo.state} {tempData.shippingInfo.addressInfo.zip}
           </p>
         </div>
       </div>
