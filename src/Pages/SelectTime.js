@@ -33,6 +33,7 @@ function SelectTime() {
   const provProfPic = location.state?.provProfPic
   const provProfId = location.state?.provProfId
   const staff = location.state?.staff
+  const serviceTitle = location.state?.serviceTitle
 
   const [selectedDate, setSelectedDate] = useState(new Date());
 
@@ -51,6 +52,7 @@ function SelectTime() {
     navigate("/appointment_overview", {
       state: {
         service: selectedServices,
+        serviceTitle: serviceTitle,
         totalCost: totalCost,
         duration: duration,
         date: formattedDate,

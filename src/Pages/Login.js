@@ -5,6 +5,8 @@ import { Link, useNavigate } from "react-router-dom";
 import PopUpPassword from "../Components/PopUpPassword";
 import { useDispatch, useSelector } from "react-redux";
 import { loginUser } from "../Store/userSlice";
+import '@fortawesome/fontawesome-free/css/all.min.css';
+
 
 function getUser() {
   let user = localStorage.getItem("user");
@@ -23,6 +25,7 @@ function Login() {
   const [emailValue, setEmailValue] = useState("");
   const [pwValue, setPwValue] = useState("");
   const [emailError, setEmailError] = useState(false);
+  const [passwordVisible, setPasswordVisible] = useState(false)
 
   const [isContactOpen, setIsContactOpen] = useState(false);
   const [user, setUser] = useState(getUser());
@@ -97,21 +100,9 @@ const handleLogin = async () => {
       console.error("Error logging in:", error);
     }
   };
-
-    function togglePasswordVisibility() {
-    const passwordInput = document.getElementById("passwordInput");
-    const eyeIcon = document.getElementById("togglePassword").querySelector("i");
-
-    if (passwordInput.type === "password") {
-      passwordInput.type = "text";
-      eyeIcon.classList.remove("fa-eye");
-      eyeIcon.classList.add("fa-eye-slash");
-    } else {
-      passwordInput.type = "password";
-      eyeIcon.classList.remove("fa-eye-slash");
-      eyeIcon.classList.add("fa-eye");
-    }
-  }
+   const togglePasswordVisibility = () => {
+    setPasswordVisible(!passwordVisible);
+  };
 
   const buttonStyle = {
     color: emailValue && pwValue ? "black" : "#646464",
@@ -135,16 +126,26 @@ const handleLogin = async () => {
           )}
           <br />
           <label htmlFor="password">Password</label>
+          <div className="password-container">
           <input
-            type="password"
+            type={passwordVisible ? "text" : "password"}
             className="textarea"
             id="password"
             value={pwValue}
             onChange={handlePwInputChange}
           />
-          <span id="togglePassword" class="eye-icon" onClick="togglePasswordVisibility()">
-          <i class="fas fa-eye"></i>
+          <span
+          className="eye-icon" 
+          onClick={togglePasswordVisibility}
+          style ={{ cursor: "pointer"}}
+          >
+            {passwordVisible ? (
+              <i className="fas fa-eye-slash"></i>
+            ) : (
+              <i className="fas fa-eye"></i>
+            )}
           </span>
+          </div>
           <br />
           <div className="checkbox-container">
             <input type="checkbox" className="check" id="check" />
