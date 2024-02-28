@@ -32,20 +32,30 @@ const userRoutes = (app, client, database) => {
   });
 
   // Signup route
+<<<<<<< HEAD
+app.post("/signup", async (req, res) => {
+  try {
+    console.log("Received signup request:", req.body); // Log received signup request
+=======
   app.post("/signup", async (req, res) => {
     try {
       const { name, phoneNumber, email, password, appointments, shoppingCart } = req.body;
+>>>>>>> 9e51e0ec813d0794fbb5846564a62f23de610b17
 
-      // Check if user already exists with the given email
-      const existingUser = await database
-        .collection("User_Accounts")
-        .findOne({ email });
-      if (existingUser) {
-        return res
-          .status(400)
-          .json({ error: "User with this email already exists" });
-      }
+    const { name, phoneNumber, email, password, shoppingCart } = req.body;
 
+<<<<<<< HEAD
+    // Check if user already exists with the given email
+    const existingUser = await database
+      .collection("User_Accounts")
+      .findOne({ email });
+    if (existingUser) {
+      console.log("User with this email already exists:", email); // Log existing user
+      return res
+        .status(400)
+        .json({ error: "User with this email already exists" });
+    }
+=======
       // Create a new user document
       const newUser = {
         name,
@@ -55,20 +65,34 @@ const userRoutes = (app, client, database) => {
         appointments,
         shoppingCart,
       };
+>>>>>>> 9e51e0ec813d0794fbb5846564a62f23de610b17
 
-      // Insert the new user into the 'User_Accounts' collection
-      await database.collection("User_Accounts").insertOne(newUser);
+    console.log("Creating new user:", email); // Log new user creation
 
-      res
-        .status(201)
-        .json({ user: newUser, message: "User created successfully" });
-    } catch (error) {
-      console.error("Error creating user:", error);
-      res
-        .status(500)
-        .json({ error: "Internal Server Error", details: error.message });
-    }
-  });
+    // Create a new user document
+    const newUser = {
+      name,
+      phoneNumber,
+      email,
+      password,
+      shoppingCart,
+    };
+
+    // Insert the new user into the 'User_Accounts' collection
+    await database.collection("User_Accounts").insertOne(newUser);
+
+    console.log("User created successfully:", email); // Log successful user creation
+
+    res
+      .status(201)
+      .json({ user: newUser, message: "User created successfully" });
+  } catch (error) {
+    console.error("Error creating user:", error);
+    res
+      .status(500)
+      .json({ error: "Internal Server Error", details: error.message });
+  }
+});
 
   //for the bookings in appt_overview (in progress)
   app.post("/bookings", async (req, res) => {
