@@ -106,7 +106,7 @@ const SelectServices = () => {
       return total + price;
     }, 0);
   };
-  // I want to create a funciton that returns the name of the service
+
   const extractServiceName = () => {
   // Check if there are selected services and return an empty array if none
   if (selectedServices.length === 0) return [];
