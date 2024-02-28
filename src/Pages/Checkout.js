@@ -143,6 +143,29 @@ function Checkout() {
 
   const validateValues = () => {
     console.log("validate on blur & on clicking submit");
+    // Validate personalInfo
+    Object.keys(personalInfo).forEach((key) => {
+      let errMsg = "";
+      if (key === "firstName") {
+        /\d/.test(personalInfo.firstName) &&
+          (errMsg = "Names must not contain numbers.");
+      }
+      updatePersonalErr(key, errMsg);
+    });
+
+    // Validate addressInfo
+    Object.keys(addressInfo).forEach((key) => {
+      // if (key === 'street') {
+      //     // Validate street
+      // }
+    });
+
+    // Validate paymentInfo
+    Object.keys(paymentInfo).forEach((key) => {
+      // if (key === 'cardNum') {
+      //     // Validate cardNum
+      // }
+    });
   };
 
   const handleChange = (type, propertyName, value) => {
@@ -153,7 +176,8 @@ function Checkout() {
         updatePersonalInfo(propertyName, value);
         // make sure no numbers
         if (propertyName === "firstName" || propertyName === "lastName") {
-          /\d/.test(value) && (errMsg = "Names must not contain numbers.");
+          const newVal = value.replace(/\d/g, "");
+          updatePersonalInfo(propertyName, newVal);
         }
         // make sure 10 digits
         else {
@@ -411,10 +435,11 @@ function Checkout() {
               type="text"
               placeholder="First Name*"
               value={personalInfo.firstName}
-              required
+              onBlur={validateValues}
               onChange={(e) =>
                 handleChange("personal", "firstName", e.target.value)
               }
+              required
             />
           </div>
           {/* last name input */}
@@ -426,6 +451,7 @@ function Checkout() {
               type="text"
               placeholder="Last Name*"
               value={personalInfo.lastName}
+              onBlur={validateValues}
               onChange={(e) =>
                 handleChange("personal", "lastName", e.target.value)
               }
@@ -440,6 +466,7 @@ function Checkout() {
               type="text"
               placeholder="Phone*"
               value={personalInfo.phone}
+              onBlur={validateValues}
               onChange={(e) =>
                 handleChange("personal", "phone", e.target.value)
               }
@@ -454,6 +481,7 @@ function Checkout() {
               type="text"
               placeholder="Street Address*"
               value={addressInfo.street}
+              onBlur={validateValues}
               onChange={(e) =>
                 handleChange("address", "street", e.target.value)
               }
@@ -466,6 +494,7 @@ function Checkout() {
                 type="text"
                 placeholder="City*"
                 value={addressInfo.city}
+                onBlur={validateValues}
                 onChange={(e) =>
                   handleChange("address", "city", e.target.value)
                 }
@@ -480,6 +509,7 @@ function Checkout() {
                 type="text"
                 placeholder="State*"
                 value={addressInfo.state}
+                onBlur={validateValues}
                 onChange={(e) =>
                   handleChange("address", "state", e.target.value)
                 }
@@ -494,6 +524,7 @@ function Checkout() {
                 type="text"
                 placeholder="ZIP Code*"
                 value={addressInfo.zip}
+                onBlur={validateValues}
                 onChange={(e) => handleChange("address", "zip", e.target.value)}
               />
               {addressErr.zip && (
@@ -525,6 +556,7 @@ function Checkout() {
                     type="radio"
                     name="options"
                     value={option.id}
+                    onBlur={validateValues}
                     checked={paymentInfo.option === option.id}
                     onChange={handleOptionChange}
                     className={isCard && "last-radio"}
@@ -542,6 +574,7 @@ function Checkout() {
                 type="text"
                 placeholder="Card Number*"
                 value={paymentInfo.cardNum}
+                onBlur={validateValues}
                 onChange={(e) =>
                   handleChange("payment", "cardNum", e.target.value)
                 }
@@ -557,6 +590,7 @@ function Checkout() {
                   type="text"
                   placeholder="mm*"
                   value={paymentInfo.mm}
+                  onBlur={validateValues}
                   onChange={(e) =>
                     handleChange("payment", "mm", e.target.value)
                   }
@@ -570,6 +604,7 @@ function Checkout() {
                   type="text"
                   placeholder="yy*"
                   value={paymentInfo.yy}
+                  onBlur={validateValues}
                   onChange={(e) =>
                     handleChange("payment", "yy", e.target.value)
                   }
@@ -583,6 +618,7 @@ function Checkout() {
                   type="text"
                   placeholder="CVC*"
                   value={paymentInfo.cvc}
+                  onBlur={validateValues}
                   onChange={(e) =>
                     handleChange("payment", "cvc", e.target.value)
                   }
@@ -598,6 +634,7 @@ function Checkout() {
                 type="text"
                 placeholder="Name on Card*"
                 value={paymentInfo.name}
+                onBlur={validateValues}
                 onChange={(e) =>
                   handleChange("payment", "name", e.target.value)
                 }
@@ -634,7 +671,6 @@ function Checkout() {
                 <p>${total.toFixed(2)}</p>
               </div>
               {/* submit button */}
-              {/* BACKEND: make function to save order into database */}
               <button
                 disabled={!enableSubmit}
                 style={enableSubmit ? { opacity: "1" } : { opacity: "0.5" }}
