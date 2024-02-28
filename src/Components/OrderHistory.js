@@ -1,5 +1,5 @@
 import "../Styles/OrderHistory.css";
-import tempData from "../data/cart.json";
+import tempData from "../data/temporaryUser_Orders.json";
 import tempShopData from "../data/shop.json";
 import { Link } from "react-router-dom";
 
@@ -7,7 +7,7 @@ function OrderHistory() {
   const OrderedHistoryItems = () => (
     <div className="orderHistoryDetails">
       {/* make the date & status dynamic later */}
-      <p className="date">{tempData.date["$numberDouble"]}</p>
+      <p className="date">{new Date(Number(tempData.date["$numberDouble"])).toLocaleDateString()}</p>
       <div className="inline">
         <p>
           <strong>Status: {tempData.status}</strong>
