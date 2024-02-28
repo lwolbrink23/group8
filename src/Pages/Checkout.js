@@ -193,6 +193,8 @@ function Checkout() {
         }
         // make sure 5 digits
         else if (propertyName === "zip") {
+          // const newVal = value.replace(/\D/g, ""); // Remove non-numeric characters
+          // updateAddressInfo(propertyName, newVal.substring(0, 5)); // Limit input to 5 characters
           !/^\d{5}$/.test(value) && (errMsg = "Please enter a 5-digit number.");
         }
         updateAddressErr(propertyName, errMsg);
