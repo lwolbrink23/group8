@@ -27,6 +27,7 @@ function SignUp() {
   const [passwordsMatchError, setPasswordsMatchError] = useState(false);
   const [phoneError, setPhoneError] = useState(false);
   const [emailError, setEmailError] = useState(false);
+  const [passwordShow, setPasswordShow] = useState(false)
 
   console.log("active user: ", user);
 
@@ -117,52 +118,56 @@ function SignUp() {
       },
     };
 
-  try {
-    // Make a POST request to the backend API to create a new user
-    const response = await fetch("http://localhost:3003/signup", {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify(userData),
-    });
+    try {
+      // Make a POST request to the backend API to create a new user
+      const response = await fetch("http://localhost:3003/signup", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(userData),
+      });
 
-    // Check if the request was successful (status code 2xx)
-    if (response.ok) {
-      const responseData = await response.json(); // Assuming your server responds with the new user data
-      // Check if the response data contains user information
-      if (responseData.user) {
-        const newUser = responseData.user;
-        // Now you should have user data in the newUser object
-        console.log("new user:", newUser);
-        console.log("newUser._id: ", newUser._id);
-        // Reset form after successful sign-up
+      // Check if the request was successful (status code 2xx)
+      if (response.ok) {
+        const responseData = await response.json(); // Assuming your server responds with the new user data
+        // Check if the response data contains user information
+        if (responseData.user) {
+          const newUser = responseData.user;
+          // Now you should have user data in the newUser object
+          console.log("new user:", newUser);
+          console.log("newUser._id: ", newUser._id);
+          // Reset form after successful sign-up
+          resetForm();
+          // Need logic to log them in as the active user in order to navigate to their account page
+          navigate(`/Login`);
+        } else {
+          // Handle case where user data is not returned
+          console.error("Error creating user: User data not found in response");
+        }
+      } else if (response.status === 400) {
+        // Account already exists
+        console.error("Error creating user:", response.statusText);
+        // Display error message to the user
+        setAccountExistsError(true); // Set account exists error state
+        // You might also want to reset the form fields here
         resetForm();
-        // Need logic to log them in as the active user in order to navigate to their account page
-        navigate(`/Login`);
       } else {
-        // Handle case where user data is not returned
-        console.error("Error creating user: User data not found in response");
+        // Handle other error responses
+        console.error("Error creating user:", response.statusText);
+        // Display an error message to the user or perform other error-handling logic
       }
-    } else if (response.status === 400) {
-      // Account already exists
-      console.error("Error creating user:", response.statusText);
-      // Display error message to the user
-      setAccountExistsError(true); // Set account exists error state
-      // You might also want to reset the form fields here
-      resetForm();
-    } else {
-      // Handle other error responses
-      console.error("Error creating user:", response.statusText);
-      // Display an error message to the user or perform other error-handling logic
+    } catch (error) {
+      console.error("Error creating user:", error);
+      // Handle network error or other unexpected errors
     }
-  } catch (error) {
-    console.error("Error creating user:", error);
-    // Handle network error or other unexpected errors
-  }
-  console.log("Before setting accountExistsError state:", accountExistsError);
-setAccountExistsError(true); // Set accountExistsError state
-console.log("After setting accountExistsError state:", accountExistsError);
+    console.log("Before setting accountExistsError state:", accountExistsError);
+    setAccountExistsError(true); // Set accountExistsError state
+    console.log("After setting accountExistsError state:", accountExistsError);
+  };
+
+const isPasswordVisible = () => {
+  setPasswordShow(!passwordShow);
 };
 
   const buttonStyle = {
@@ -245,7 +250,7 @@ console.log("After setting accountExistsError state:", accountExistsError);
           </div>
           <label htmlFor="password">Password</label>
           <input
-            type="password" // secure input
+            type={passwordShow ? "text" : "password"} // secure input
             className="section1"
             placeholder=" Password*"
             id="password"
@@ -253,8 +258,9 @@ console.log("After setting accountExistsError state:", accountExistsError);
             onChange={handlePwInputChange}
           />
           <label htmlFor="confirm">Confirm Password</label>
+          <div className="passcontain">
           <input
-            type="password" // secure input
+            type={passwordShow ? "text" : "password"}
             className="section1"
             placeholder=" Confirm Password*"
             id="confirm"
@@ -262,6 +268,18 @@ console.log("After setting accountExistsError state:", accountExistsError);
             onChange={handleConfPwInputChange}
             onBlur={handleConfPwInputBlur}
           />
+          <span
+          className="eye-icon" 
+          onClick={isPasswordVisible}
+          style ={{ cursor: "pointer"}}
+          >
+            {passwordShow ? (
+              <i className="fas fa-eye-slash"></i>
+            ) : (
+              <i className="fas fa-eye"></i>
+            )}
+          </span>
+          </div>
           {passwordsMatchError && (
             <p style={{ color: "red" }}>
               Passwords do not match. Please try again.

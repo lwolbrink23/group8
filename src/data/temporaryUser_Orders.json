@@ -1,0 +1,76 @@
+{
+  "_id": {
+    "$oid": "65df7f5082b87d52abcab026"
+  },
+  "userID": "65ce8f67e42b7cf189eda0db",
+  "status": "Processing",
+  "cart": {
+    "items": [
+      {
+        "id": "iID3",
+        "qty": {
+          "$numberInt": "4"
+        },
+        "price": {
+          "$numberDouble": "9.99"
+        }
+      },
+      {
+        "id": "iID5",
+        "qty": {
+          "$numberInt": "2"
+        },
+        "price": {
+          "$numberDouble": "14.99"
+        }
+      }
+    ],
+    "giftcards": [
+      {
+        "id": "giftcard",
+        "qty": {
+          "$numberInt": "2"
+        },
+        "price": {
+          "$numberInt": "14"
+        }
+      },
+      {
+        "id": "giftcard",
+        "qty": {
+          "$numberInt": "1"
+        },
+        "price": {
+          "$numberInt": "12"
+        }
+      }
+    ]
+  },
+  "costs": {
+    "subtotal": {
+      "$numberDouble": "109.94"
+    },
+    "taxes": {
+      "$numberDouble": "6.5964"
+    },
+    "shipCost": {
+      "$numberInt": "14"
+    },
+    "total": {
+      "$numberDouble": "130.53640000000001"
+    }
+  },
+  "shippingInfo": {
+    "name": "Quynh Vo",
+    "phone": "4077972019",
+    "addressInfo": {
+      "street": "something",
+      "city": "Orlando",
+      "state": "FL",
+      "zip": "32825"
+    }
+  },
+  "date": {
+    "$numberDouble": "1708986937412.0"
+  }
+}

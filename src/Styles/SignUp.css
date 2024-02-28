@@ -81,6 +81,17 @@
     justify-content: center;
     margin-top: 20px;
 }
+.passcontain {
+    position: relative;
+}
+
+.eye-icon {
+    position: absolute;
+    top: 50%;
+    right: 5px;
+    transform: translateY(-50%);
+    cursor: pointer;
+}
 
 #confirm {
     background-color: white;

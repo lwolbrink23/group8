@@ -162,6 +162,7 @@
 
 /* Mobile Design */
 @media screen and (max-width: 767px) {
+
     .appt-title {
         font-size: 30px;
         padding-top: 10px;
