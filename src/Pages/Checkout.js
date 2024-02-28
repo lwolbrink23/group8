@@ -186,16 +186,16 @@ function Checkout() {
         // make sure no numbers
         if (propertyName === "city") {
           /\d/.test(value) && (errMsg = "City name must not contain numbers.");
-        }
-        // make sure valid state --NOT DONE
-        else if (propertyName === "state") {
+        } else if (propertyName === "state") {
           !isValidUSState(value) && (errMsg = "Please enter a valid state");
         }
         // make sure 5 digits
         else if (propertyName === "zip") {
-          // const newVal = value.replace(/\D/g, ""); // Remove non-numeric characters
-          // updateAddressInfo(propertyName, newVal.substring(0, 5)); // Limit input to 5 characters
-          !/^\d{5}$/.test(value) && (errMsg = "Please enter a 5-digit number.");
+          let digits = value.replace(/\D/g, "");
+          digits = digits.slice(0, 5);
+          updateAddressInfo(propertyName, digits);
+          !/^\d{5}$/.test(digits) &&
+            (errMsg = "Please enter a 5-digit number.");
         }
         updateAddressErr(propertyName, errMsg);
         break;
@@ -209,11 +209,25 @@ function Checkout() {
         }
         // make sure only numbers, 2 digits
         else if (propertyName === "mm" || propertyName === "yy") {
-          !/^\d{2}$/.test(value) && (errMsg = "Please enter a 2-digit number.");
+          let digits = value.replace(/\D/g, "");
+          digits = digits.slice(0, 2);
+          updatePaymentInfo(propertyName, digits);
+          if (propertyName === "mm" && (digits < 1 || digits > 12)) {
+            errMsg = "Please enter a valid month (1-12)";
+          } else if (
+            propertyName === "yy" &&
+            digits < new Date().getFullYear() % 100
+          ) {
+            errMsg = "Please enter a valid year";
+          }
         }
         // make sure only numbers, 3 digits
         else if (propertyName === "cvc") {
-          !/^\d{3}$/.test(value) && (errMsg = "Please enter a 3-digit number.");
+          let digits = value.replace(/\D/g, "");
+          digits = digits.slice(0, 3);
+          updatePaymentInfo(propertyName, digits);
+          !/^\d{3}$/.test(digits) &&
+            (errMsg = "Please enter a 3-digit number.");
         }
         updatePaymentErr(propertyName, errMsg);
         break;
