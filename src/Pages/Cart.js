@@ -20,11 +20,11 @@ function Cart() {
   const [shopData, setShopData] = useState([]);
   const [popupItem, setPopupItem] = useState("");
   const [user, setUser] = useState(getUser());
-  console.log("active user: ", user);
 
   // keep a state for login here, useeffect to update it
 
   useEffect(() => {
+    console.log("active user: ", user);
     fetchData("/shop", setShopData);
     fetchCartData(setCartItems, user, "cart");
     fetchCartData(setGiftcards, user, "giftcard");
