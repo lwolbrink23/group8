@@ -1,9 +1,27 @@
 import "../Styles/OrderHistory.css";
 //import tempData from "../data/temporaryUser_Orders.json";
 import ShopData from "../data/shop.json";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 
 function OrderHistory({ dbOrders }) {
+  const navigate = useNavigate();
+  //handle view details button click
+  const handleViewDetails = (order) => {
+    navigate(`/order_details/${order._id}`, {
+      state: {
+        order: {
+          cart: order.cart,
+          costs: order.costs,
+          date: order.date,
+          status: order.status,
+          shippingInfo: order.shippingInfo,
+          userID: order.userID,
+          _id: order._id,
+        },
+      },
+    }); // Pass the appointment information in the state
+  };
+
   const OrderedHistoryItems = ({ order }) => (
     <div className="orderHistoryDetails">
       <p className="date">
@@ -13,26 +31,35 @@ function OrderHistory({ dbOrders }) {
         <p>
           <strong>Status: {order.status}</strong>
         </p>
-        <Link
+        <button
+          className="apptActionButton"
+          onClick={() => handleViewDetails(order)}
+        >
+          View Details
+        </button>
+        {/*<Link
           to={{
             pathname: `/order_details/${order._id}`,
             state: {
-              cart: order.cart,
-              costs: order.costs,
-              date: order.date,
-              status: order.status,
-              shippingInfo: order.shippingInfo,
-              userID: order.userID,
-              _id: order._id,
+              order: {
+                cart: order.cart,
+                costs: order.costs,
+                date: order.date,
+                status: order.status,
+                shippingInfo: order.shippingInfo,
+                userID: order.userID,
+                _id: order._id,
+              },
             }, // Pass the order information in the state
           }}
           className="align-right"
         >
           View Details
         </Link>
+        */}
       </div>
       <ul className="dropdown-content width">
-        {/* only shows first 2 items in order */}
+        {/* only shows first 2 items in order*/}
         {order.cart.items.slice(0, 2).map((item, i) => {
           let itemName = "";
           let itemPic = "";

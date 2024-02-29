@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import { useLocation, useNavigate, Link } from "react-router-dom";
 import "../Styles/OrderDetails.css";
 import ShopData from "../data/shop.json";
+import { useParams } from "react-router-dom";
 
 function getUser() {
   let user = localStorage.getItem("user");
@@ -14,15 +15,18 @@ function getUser() {
 }
 
 function OrderDetails({ props }) {
-  const [user, setUser] = useState(getUser());
-  console.log("active user: ", user);
   const location = useLocation();
-  const order = location.state ? location.state : null;
+  const navigate = useNavigate();
+  const [user, setUser] = useState(getUser());
+  const { id } = useParams();
+  console.log("active user: ", user);
   console.log("location.state: ", location.state);
 
-  if (!order) {
-    return <p>Error... !order</p>; // or handle the absence of data in some way
+  if (!location.state) {
+    return <p>Error...</p>; // or handle the absence of data in some way
   }
+
+  const order = location.state.order;
 
   const OrderedItems = () => (
     <div className="details">
