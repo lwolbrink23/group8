@@ -16,10 +16,7 @@ function getUser() {
 
 function OrderDetails({ props }) {
   const location = useLocation();
-  //const navigate = useNavigate();
   const [user, setUser] = useState(getUser());
-  //const { id } = useParams();
-  //console.log("active user: ", user);
   console.log("location.state: ", location.state);
 
   if (!location.state) {
@@ -30,7 +27,6 @@ function OrderDetails({ props }) {
 
   const OrderedItems = () => (
     <div className="details">
-      {/* make the "status:_____" dynamic later */}
       <p className="center">
         <strong>Status: {order.status}</strong>
       </p>

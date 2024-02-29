@@ -118,13 +118,11 @@ function Account({ props }) {
   const renderScheduledAppointments = () => renderAppointments("scheduled");
   const renderAppointmentHistory = () => renderAppointments("complete");
 
-  // Function to handle appointment button click
+  // Function to handle appointment view details button click & pass state to next page
   const handleActionClick = (appointment) => {
     setSelectedAppointment(appointment);
     if (appointment.status === "scheduled") {
-      // DO NOT INSERT LOGIC HERE- THEY NEED TO CANCEL THE APPOINTMENT ON THE DETAILS PAGE
       console.log("View Details clicked for ID:", appointment.id);
-      console.log("appointment: ", appointment);
       navigate(`/appointment/${appointment.id}`, {
         state: {
           id: appointment.id,
@@ -267,7 +265,7 @@ function Account({ props }) {
                         <th key="schedTable3">Services</th>
                         <th key="schedTable4">Staff</th>
                         <th key="schedTable5"></th>
-                        {/* 3 dots column - DO NOT DELETE */}
+                        {/* ^View Details Button Column - DO NOT DELETE */}
                       </tr>
                     </thead>
                     <tbody>{renderScheduledAppointments()}</tbody>
@@ -286,7 +284,7 @@ function Account({ props }) {
                         <th key="historyTable3">Services</th>
                         <th key="historyTable4">Staff</th>
                         <th key="historyTable5"></th>{" "}
-                        {/* 3 dots column - DO NOT DELETE */}
+                        {/* ^View Details Button Column - DO NOT DELETE */}
                       </tr>
                     </thead>
                     <tbody>{renderAppointmentHistory()}</tbody>

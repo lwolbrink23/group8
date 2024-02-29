@@ -1,5 +1,4 @@
 import "../Styles/OrderHistory.css";
-//import tempData from "../data/temporaryUser_Orders.json";
 import ShopData from "../data/shop.json";
 import { Link, useNavigate } from "react-router-dom";
 
@@ -37,26 +36,6 @@ function OrderHistory({ dbOrders }) {
         >
           View Details
         </button>
-        {/*<Link
-          to={{
-            pathname: `/order_details/${order._id}`,
-            state: {
-              order: {
-                cart: order.cart,
-                costs: order.costs,
-                date: order.date,
-                status: order.status,
-                shippingInfo: order.shippingInfo,
-                userID: order.userID,
-                _id: order._id,
-              },
-            }, // Pass the order information in the state
-          }}
-          className="align-right"
-        >
-          View Details
-        </Link>
-        */}
       </div>
       <ul className="dropdown-content width">
         {/* only shows first 2 items in order*/}

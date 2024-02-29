@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { useLocation, useNavigate, Link } from "react-router-dom";
+import { useLocation, useNavigate } from "react-router-dom";
 import "../App.css";
 import "../Styles/apptdetails.css";
 import calendaricon from "../assets/icons/calendaricon.png";
@@ -218,7 +218,6 @@ function ApptDetails({ props }) {
           </button>
         </div>
       </div>
-
     </div>
   );
 }
