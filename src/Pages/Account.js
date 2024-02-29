@@ -42,6 +42,7 @@ function Account({ props }) {
           const ordersDBResult = await fetchOrdersDB(user.id);
           setdbOrders(ordersDBResult);
           console.log("orders: ", ordersDBResult);
+          setdbOrders(ordersDBResult);
         }
       } catch (error) {
         console.error("Error fetching user info:", error);
@@ -330,7 +331,7 @@ function Account({ props }) {
                 </div>
 
                 <div className="orderHistory">
-                  <OrderHistory></OrderHistory>
+                  <OrderHistory dbOrders={dbOrders}></OrderHistory>
                 </div>
               </div>
             </div>

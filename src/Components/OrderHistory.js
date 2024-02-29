@@ -1,12 +1,14 @@
 import "../Styles/OrderHistory.css";
-import tempData from "../data/temporaryUser_Orders.json";
-import tempShopData from "../data/shop.json";
+//import tempData from "../data/temporaryUser_Orders.json";
+import ShopData from "../data/shop.json";
 import { Link } from "react-router-dom";
 
-function OrderHistory() {
+function OrderHistory({ dbOrders }) {
   const OrderedHistoryItems = ({ order }) => (
     <div className="orderHistoryDetails">
-      <p className="date">{new Date(Number(order.date["$numberDouble"])).toLocaleDateString()}</p>
+      <p className="date">
+        {new Date(Number(order.date["$numberDouble"])).toLocaleDateString()}
+      </p>
       <div className="inline">
         <p>
           <strong>Status: {order.status}</strong>
@@ -21,8 +23,8 @@ function OrderHistory() {
           let itemName = "";
           let itemPic = "";
 
-          // Assuming tempShopData is an array containing shop items
-          for (const shopItem of tempShopData) {
+          // ShopData is an array containing shop items
+          for (const shopItem of ShopData) {
             if (item.id === shopItem.id) {
               itemName = shopItem.name;
               itemPic = shopItem.file;
@@ -52,7 +54,7 @@ function OrderHistory() {
   );
 
   function OrderHistoryDetails() {
-    if (tempData.length === 0) {
+    if (dbOrders.length === 0) {
       // Display a message when there are no orders
       return (
         <div className="noAppts">
@@ -67,7 +69,7 @@ function OrderHistory() {
     return (
       <div>
         {/* Map through orders only if there are orders */}
-        {tempData.map((order, index) => (
+        {dbOrders.map((order, index) => (
           <OrderedHistoryItems key={index} order={order} />
         ))}
       </div>
