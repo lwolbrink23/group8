@@ -9,19 +9,16 @@ import lock from "../assets/icons/icons8-password-100.png";
 import PopupPassword from "../Components/PopUpPassword";
 import PopupSignOut from "../Components/PopUpSignOut.js";
 import OrderHistory from "../Components/OrderHistory.js";
-import {
-  fetchApptsDB,
-} from "./functions/accountFunctions";
+import { fetchApptsDB, fetchOrdersDB } from "./functions/accountFunctions";
 import { getUser } from "./functions/generalFunctions";
-
 
 function Account({ props }) {
   const navigate = useNavigate();
 
   const [user, setUser] = useState(getUser());
   const [appointments, setAppointments] = useState([]);
+  const [dbOrders, setdbOrders] = useState([]);
   const [selectedAppointment, setSelectedAppointment] = useState(null);
-
 
   //*******DO NOT DELETE THESE useEffect FUNCTIONS******
   useEffect(() => {
@@ -41,16 +38,18 @@ function Account({ props }) {
           const apptDBResult = await fetchApptsDB(user.id);
           setAppointments(apptDBResult);
           console.log("appointments: ", apptDBResult);
+
+          const ordersDBResult = await fetchOrdersDB(user.id);
+          setdbOrders(ordersDBResult);
+          console.log("orders: ", ordersDBResult);
         }
       } catch (error) {
-        console.error("Error fetching user appointments:", error);
+        console.error("Error fetching user info:", error);
       }
     };
 
     fetchData(); // Call the async function immediately
-
   }, [user, navigate]);
-
 
   const handleLogout = () => {
     setIsButtonOpen(true);
@@ -61,7 +60,6 @@ function Account({ props }) {
   const truncateText = (text, maxLength) => {
     return text.length > maxLength ? `${text.slice(0, maxLength)}...` : text;
   };
-
 
   // Function to render appointments
   const renderAppointments = (status) => {
@@ -83,13 +81,20 @@ function Account({ props }) {
       <>
         {filteredAppointments.map((appointment) => {
           const date = new Date(appointment.date);
-          const formattedDate = date.toLocaleDateString('en-US', { month: 'short', day: 'numeric', year: 'numeric' });
+          const formattedDate = date.toLocaleDateString("en-US", {
+            month: "short",
+            day: "numeric",
+            year: "numeric",
+          });
 
           return (
             <tr key={appointment.id}>
               <td key="filteredappts1">{formattedDate}</td>
               <td key="filteredappts2">{appointment.location}</td>
-              <td key="filteredappts3">{truncateText(appointment.services, 24)}</td> {/* Adjust the character limit as needed */}
+              <td key="filteredappts3">
+                {truncateText(appointment.services, 24)}
+              </td>{" "}
+              {/* Adjust the character limit as needed */}
               <td key="filteredappts4">{appointment.staff}</td>
               <td key="filteredappts5">
                 <div className="apptActionContainer">
@@ -177,7 +182,6 @@ function Account({ props }) {
 
   const orders = ["Oldest to Newest"];
 
-
   return (
     <div>
       {user ? (
@@ -230,10 +234,8 @@ function Account({ props }) {
                         src={lock}
                         alt="password icon"
                         className="persIcons"
-                      ></img>              
-                        <p type="password">
-                      {"*".repeat(user.password.length)}
-                      </p>{" "}
+                      ></img>
+                      <p type="password">{"*".repeat(user.password.length)}</p>{" "}
                       {/* Hide password */}
                       <button
                         type="button"
@@ -262,7 +264,8 @@ function Account({ props }) {
                         <th key="schedTable2">Location</th>
                         <th key="schedTable3">Services</th>
                         <th key="schedTable4">Staff</th>
-                        <th key="schedTable5"></th>{/* 3 dots column - DO NOT DELETE */}
+                        <th key="schedTable5"></th>
+                        {/* 3 dots column - DO NOT DELETE */}
                       </tr>
                     </thead>
                     <tbody>{renderScheduledAppointments()}</tbody>
@@ -280,7 +283,8 @@ function Account({ props }) {
                         <th key="historyTable2">Location</th>
                         <th key="historyTable3">Services</th>
                         <th key="historyTable4">Staff</th>
-                        <th key="historyTable5"></th> {/* 3 dots column - DO NOT DELETE */}
+                        <th key="historyTable5"></th>{" "}
+                        {/* 3 dots column - DO NOT DELETE */}
                       </tr>
                     </thead>
                     <tbody>{renderAppointmentHistory()}</tbody>
@@ -327,7 +331,6 @@ function Account({ props }) {
 
                 <div className="orderHistory">
                   <OrderHistory></OrderHistory>
-
                 </div>
               </div>
             </div>
