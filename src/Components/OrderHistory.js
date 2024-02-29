@@ -13,7 +13,21 @@ function OrderHistory({ dbOrders }) {
         <p>
           <strong>Status: {order.status}</strong>
         </p>
-        <Link to="/order_details" className="align-right">
+        <Link
+          to={{
+            pathname: `/order_details/${order._id}`,
+            state: {
+              cart: order.cart,
+              costs: order.costs,
+              date: order.date,
+              status: order.status,
+              shippingInfo: order.shippingInfo,
+              userID: order.userID,
+              _id: order._id,
+            }, // Pass the order information in the state
+          }}
+          className="align-right"
+        >
           View Details
         </Link>
       </div>

@@ -1,8 +1,7 @@
 import React, { useState } from "react";
+import { useLocation, useNavigate, Link } from "react-router-dom";
 import "../Styles/OrderDetails.css";
-import tempData from "../data/temporaryUser_Orders.json";
-import tempShopData from "../data/shop.json";
-import { Link } from "react-router-dom";
+import ShopData from "../data/shop.json";
 
 function getUser() {
   let user = localStorage.getItem("user");
@@ -14,22 +13,29 @@ function getUser() {
   return user;
 }
 
-function OrderDetails() {
+function OrderDetails({ props }) {
   const [user, setUser] = useState(getUser());
   console.log("active user: ", user);
+  const location = useLocation();
+  const order = location.state ? location.state : null;
+  console.log("location.state: ", location.state);
+
+  if (!order) {
+    return <p>Error... !order</p>; // or handle the absence of data in some way
+  }
 
   const OrderedItems = () => (
     <div className="details">
       {/* make the "status:_____" dynamic later */}
       <p className="center">
-        <strong>status: {tempData.status}</strong>
+        <strong>status: {order.status}</strong>
       </p>
       <ul className="dropdown-content width">
-        {tempData.cart.items.map((item, i) => {
+        {order.cart.items.map((item, i) => {
           let itemName = "";
           let itemPic = "";
 
-          for (const shopItem of tempShopData) {
+          for (const shopItem of ShopData) {
             if (item.id === shopItem.id) {
               itemName = shopItem.name;
               itemPic = shopItem.file;
@@ -75,11 +81,13 @@ function OrderDetails() {
           </p>
         </div>
         <div id="titles-right">
-          <p>{new Date(Number(tempData.date["$numberDouble"])).toLocaleString()}</p>
-          <p>${parseFloat(tempData.costs.subtotal["$numberDouble"]).toFixed(2)}</p>
-          <p>${parseFloat(tempData.costs.shipCost["$numberInt"]).toFixed(2)}</p>
-          <p>${parseFloat(tempData.costs.taxes["$numberDouble"]).toFixed(2)}</p>
-          <p>${parseFloat(tempData.costs.total["$numberDouble"]).toFixed(2)}</p>
+          <p>
+            {new Date(Number(order.date["$numberDouble"])).toLocaleString()}
+          </p>
+          <p>${parseFloat(order.costs.subtotal["$numberDouble"]).toFixed(2)}</p>
+          <p>${parseFloat(order.costs.shipCost["$numberInt"]).toFixed(2)}</p>
+          <p>${parseFloat(order.costs.taxes["$numberDouble"]).toFixed(2)}</p>
+          <p>${parseFloat(order.costs.total["$numberDouble"]).toFixed(2)}</p>
         </div>
       </div>
       <hr />
@@ -95,24 +103,18 @@ function OrderDetails() {
             <strong>Shipping Address</strong>
           </p>
           <p>
-            {tempData.shippingInfo.name}
+            {order.shippingInfo.name}
             <br />
-            {tempData.shippingInfo.addressInfo.street}
+            {order.shippingInfo.addressInfo.street}
             <br />
-            {tempData.shippingInfo.addressInfo.city}, {tempData.shippingInfo.addressInfo.state} {tempData.shippingInfo.addressInfo.zip}
+            {order.shippingInfo.addressInfo.city},{" "}
+            {order.shippingInfo.addressInfo.state}{" "}
+            {order.shippingInfo.addressInfo.zip}
           </p>
         </div>
       </div>
     </div>
   );
-
-  function OrderDetails() {
-    return (
-      <div>
-        <OrderedItems />
-      </div>
-    );
-  }
 
   function CancelConfirm() {
     return (
@@ -145,7 +147,7 @@ function OrderDetails() {
   return (
     <div className="order-details-container">
       <h1>Order Details</h1>
-      <OrderDetails />
+      <OrderedItems />
       <Link
         to="/Account"
         style={{
