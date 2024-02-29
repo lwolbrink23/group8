@@ -42,6 +42,7 @@ function Account({ props }) {
           const ordersDBResult = await fetchOrdersDB(user.id);
           setdbOrders(ordersDBResult);
           console.log("orders: ", ordersDBResult);
+
           setdbOrders(ordersDBResult);
         }
       } catch (error) {

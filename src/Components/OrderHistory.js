@@ -7,7 +7,7 @@ function OrderHistory({ dbOrders }) {
   const OrderedHistoryItems = ({ order }) => (
     <div className="orderHistoryDetails">
       <p className="date">
-        {new Date(Number(order.date["$numberDouble"])).toLocaleDateString()}
+        {new Date(Number(order.date)).toLocaleDateString()}
       </p>
       <div className="inline">
         <p>
@@ -45,7 +45,7 @@ function OrderHistory({ dbOrders }) {
                   <span id="item-qty">{item.qty["$numberInt"]}</span>
                 </p>
               </div>
-              <p className="align-right">${item.price["$numberDouble"]}</p>
+              <p className="align-right">${item.price}</p>
             </li>
           );
         })}
