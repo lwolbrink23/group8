@@ -16,10 +16,10 @@ function getUser() {
 
 function OrderDetails({ props }) {
   const location = useLocation();
-  const navigate = useNavigate();
+  //const navigate = useNavigate();
   const [user, setUser] = useState(getUser());
-  const { id } = useParams();
-  console.log("active user: ", user);
+  //const { id } = useParams();
+  //console.log("active user: ", user);
   console.log("location.state: ", location.state);
 
   if (!location.state) {
@@ -32,7 +32,7 @@ function OrderDetails({ props }) {
     <div className="details">
       {/* make the "status:_____" dynamic later */}
       <p className="center">
-        <strong>status: {order.status}</strong>
+        <strong>Status: {order.status}</strong>
       </p>
       <ul className="dropdown-content width">
         {order.cart.items.map((item, i) => {
@@ -57,10 +57,10 @@ function OrderDetails({ props }) {
                   <br></br>
                   <span style={{ fontSize: "13px" }}>quantity</span>
                   <br></br>
-                  <span id="item-qty">{item.qty["$numberInt"]}</span>
+                  <span id="item-qty">{item.qty}</span>
                 </p>
               </div>
-              <p className="align-right">${item.price["$numberDouble"]}</p>
+              <p className="align-right">${item.price}</p>
             </li>
           );
         })}
@@ -85,13 +85,11 @@ function OrderDetails({ props }) {
           </p>
         </div>
         <div id="titles-right">
-          <p>
-            {new Date(Number(order.date["$numberDouble"])).toLocaleString()}
-          </p>
-          <p>${parseFloat(order.costs.subtotal["$numberDouble"]).toFixed(2)}</p>
-          <p>${parseFloat(order.costs.shipCost["$numberInt"]).toFixed(2)}</p>
-          <p>${parseFloat(order.costs.taxes["$numberDouble"]).toFixed(2)}</p>
-          <p>${parseFloat(order.costs.total["$numberDouble"]).toFixed(2)}</p>
+          <p>{new Date(Number(order.date)).toLocaleString()}</p>
+          <p>${parseFloat(order.costs.subtotal).toFixed(2)}</p>
+          <p>${parseFloat(order.costs.shipCost).toFixed(2)}</p>
+          <p>${parseFloat(order.costs.taxes).toFixed(2)}</p>
+          <p>${parseFloat(order.costs.total).toFixed(2)}</p>
         </div>
       </div>
       <hr />
@@ -120,6 +118,8 @@ function OrderDetails({ props }) {
     </div>
   );
 
+  {
+    /* I don't think we need this funcitonality -Lilly 
   function CancelConfirm() {
     return (
       <div className="cancel-details">
@@ -146,6 +146,8 @@ function OrderDetails({ props }) {
         </p>
       </div>
     );
+  }
+  */
   }
 
   return (
