@@ -2,6 +2,8 @@ import React, { useState } from "react";
 import "../App.css";
 import "../Styles/SignUp.css";
 import { Link, useNavigate } from "react-router-dom";
+import { useDispatch } from "react-redux";
+import { loginUser } from "../Store/userSlice";
 import PopUpExistingUser from "../Components/PopUpExistingUser";
 
 function getUser() {
@@ -16,6 +18,7 @@ function getUser() {
 
 function SignUp() {
   const navigate = useNavigate();
+  const dispatch = useDispatch();
   const [accountExistsError, setAccountExistsError] = useState(false); // State variable for account exists error
   const [user, setUser] = useState(getUser());
   const [firstNameValue, setFirstNameValue] = useState("");
@@ -27,7 +30,7 @@ function SignUp() {
   const [passwordsMatchError, setPasswordsMatchError] = useState(false);
   const [phoneError, setPhoneError] = useState(false);
   const [emailError, setEmailError] = useState(false);
-  const [passwordShow, setPasswordShow] = useState(false)
+  const [passwordShow, setPasswordShow] = useState(false);
 
   console.log("active user: ", user);
 
@@ -43,33 +46,26 @@ function SignUp() {
     const digits = event.target.value.replace(/\D/g, "");
     let formattedPhoneNumber = "";
 
-    // Format the digits according to the pattern
     if (digits.length <= 3) {
       formattedPhoneNumber = `(${digits}`;
     } else if (digits.length > 3 && digits.length <= 6) {
       formattedPhoneNumber = `(${digits.slice(0, 3)}) ${digits.slice(3)}`;
     } else if (digits.length > 6) {
-      formattedPhoneNumber = `(${digits.slice(0, 3)}) ${digits.slice(
-        3,
-        6
-      )}-${digits.slice(6, 10)}`;
+      formattedPhoneNumber = `(${digits.slice(0, 3)}) ${digits.slice(3, 6)}-${digits.slice(6, 10)}`;
     }
 
     setPhoneValue(formattedPhoneNumber);
   };
 
-  // Validate phone number format
   const handlePhoneInputBlur = () => {
     const isValidPhone = /^\(\d{3}\) \d{3}-\d{4}$/.test(phoneValue);
     setPhoneError(!isValidPhone);
   };
 
-  // Email input change handler
   const handleEmailInputChange = (event) => {
     setEmailValue(event.target.value);
   };
 
-  // Email input blur handler for validation
   const handleEmailInputBlur = () => {
     const isValidEmail = /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(emailValue);
     setEmailError(!isValidEmail);
@@ -77,7 +73,6 @@ function SignUp() {
 
   const handlePwInputChange = (event) => {
     setPwValue(event.target.value);
-    // Reset passwords match error when password changes
     setPasswordsMatchError(false);
   };
 
@@ -85,10 +80,10 @@ function SignUp() {
     setConfPwValue(event.target.value);
   };
 
-  // New confirm password input blur handler for validation
   const handleConfPwInputBlur = () => {
     setPasswordsMatchError(confPwValue !== pwValue);
   };
+
   const resetForm = () => {
     setFirstNameValue("");
     setLastNameValue("");
@@ -96,16 +91,15 @@ function SignUp() {
     setPwValue("");
     setConfPwValue("");
     setPasswordsMatchError(false);
-    setAccountExistsError(false); // Reset account exists error state
+   setAccountExistsError(false);
   };
 
   const handleSignUp = async () => {
-    // Check if passwords match
     if (pwValue !== confPwValue) {
       setPasswordsMatchError(true);
-      return; // Stop sign-up process if passwords don't match
+      return;
     }
-    // Create user data object
+
     const userData = {
       name: `${firstNameValue} ${lastNameValue}`,
       phoneNumber: phoneValue,
@@ -119,7 +113,6 @@ function SignUp() {
     };
 
     try {
-      // Make a POST request to the backend API to create a new user
       const response = await fetch("http://localhost:3003/signup", {
         method: "POST",
         headers: {
@@ -128,62 +121,62 @@ function SignUp() {
         body: JSON.stringify(userData),
       });
 
-      // Check if the request was successful (status code 2xx)
       if (response.ok) {
-        const responseData = await response.json(); // Assuming your server responds with the new user data
-        // Check if the response data contains user information
+        const responseData = await response.json();
+
         if (responseData.user) {
           const newUser = responseData.user;
-          // Now you should have user data in the newUser object
           console.log("new user:", newUser);
           console.log("newUser._id: ", newUser._id);
-          // Reset form after successful sign-up
-          resetForm();
-          // Need logic to log them in as the active user in order to navigate to their account page
-          navigate(`/Login`);
+
+          let userCredential = {
+            id: newUser._id,
+            name: newUser.name,
+            phoneNumber: newUser.phoneNumber,
+            email: newUser.email,
+            password: newUser.password,
+          };
+
+          await dispatch(loginUser(userCredential)).then((result) => {
+            if (result.payload) {
+              resetForm();
+              navigate(`/Account/${newUser._id}`);
+            }
+          });
         } else {
-          // Handle case where user data is not returned
           console.error("Error creating user: User data not found in response");
         }
       } else if (response.status === 400) {
-        // Account already exists
         console.error("Error creating user:", response.statusText);
-        // Display error message to the user
-        setAccountExistsError(true); // Set account exists error state
-        // You might also want to reset the form fields here
+       setAccountExistsError(true);
         resetForm();
       } else {
-        // Handle other error responses
         console.error("Error creating user:", response.statusText);
-        // Display an error message to the user or perform other error-handling logic
       }
     } catch (error) {
       console.error("Error creating user:", error);
-      // Handle network error or other unexpected errors
     }
-    console.log("Before setting accountExistsError state:", accountExistsError);
-    setAccountExistsError(true); // Set accountExistsError state
-    console.log("After setting accountExistsError state:", accountExistsError);
   };
 
-const isPasswordVisible = () => {
-  setPasswordShow(!passwordShow);
-};
+  const isPasswordVisible = () => {
+    setPasswordShow(!passwordShow);
+  };
 
   const buttonStyle = {
     color:
       firstNameValue &&
-        lastNameValue &&
-        emailValue &&
-        phoneValue &&
-        pwValue &&
-        confPwValue &&
-        !passwordsMatchError &&
-        !phoneError &&
-        !emailError
+      lastNameValue &&
+      emailValue &&
+      phoneValue &&
+      pwValue &&
+      confPwValue &&
+      !passwordsMatchError &&
+      !phoneError &&
+      !emailError
         ? "black"
         : "#646464",
   };
+
   return (
     <div>
       <h1 className="signupTitle">Sign Up</h1>
@@ -250,7 +243,7 @@ const isPasswordVisible = () => {
           </div>
           <label htmlFor="password">Password</label>
           <input
-            type={passwordShow ? "text" : "password"} // secure input
+            type={passwordShow ? "text" : "password"}
             className="section1"
             placeholder=" Password*"
             id="password"
@@ -259,26 +252,26 @@ const isPasswordVisible = () => {
           />
           <label htmlFor="confirm">Confirm Password</label>
           <div className="passcontain">
-          <input
-            type={passwordShow ? "text" : "password"}
-            className="section1"
-            placeholder=" Confirm Password*"
-            id="confirm"
-            value={confPwValue}
-            onChange={handleConfPwInputChange}
-            onBlur={handleConfPwInputBlur}
-          />
-          <span
-          className="eye-icon" 
-          onClick={isPasswordVisible}
-          style ={{ cursor: "pointer"}}
-          >
-            {passwordShow ? (
-              <i className="fas fa-eye-slash"></i>
-            ) : (
-              <i className="fas fa-eye"></i>
-            )}
-          </span>
+            <input
+              type={passwordShow ? "text" : "password"}
+              className="section1"
+              placeholder=" Confirm Password*"
+              id="confirm"
+              value={confPwValue}
+              onChange={handleConfPwInputChange}
+              onBlur={handleConfPwInputBlur}
+            />
+            <span
+              className="eye-icon"
+              onClick={isPasswordVisible}
+              style={{ cursor: "pointer" }}
+            >
+              {passwordShow ? (
+                <i className="fas fa-eye-slash"></i>
+              ) : (
+                <i className="fas fa-eye"></i>
+              )}
+            </span>
           </div>
           {passwordsMatchError && (
             <p style={{ color: "red" }}>
@@ -314,11 +307,12 @@ const isPasswordVisible = () => {
           </Link>
         </p>
       </div>
-      <PopUpExistingUser
+       <PopUpExistingUser
         isOpen={accountExistsError}
         closePopup={() => setAccountExistsError(false)}
       />
     </div>
   );
 }
+
 export default SignUp;
