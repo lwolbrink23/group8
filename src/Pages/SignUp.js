@@ -1,26 +1,17 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import "../App.css";
 import "../Styles/SignUp.css";
 import { Link, useNavigate } from "react-router-dom";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux"; 
 import { loginUser } from "../Store/userSlice";
 import PopUpExistingUser from "../Components/PopUpExistingUser";
 
-function getUser() {
-  let user = localStorage.getItem("user");
-  if (user) {
-    user = JSON.parse(user);
-  } else {
-    user = null;
-  }
-  return user;
-}
 
 function SignUp() {
   const navigate = useNavigate();
   const dispatch = useDispatch();
-  const [accountExistsError, setAccountExistsError] = useState(false); // State variable for account exists error
-  const [user, setUser] = useState(getUser());
+  const user = useSelector((state) => state.user.user);
+  const [accountExistsError, setAccountExistsError] = useState(false);
   const [firstNameValue, setFirstNameValue] = useState("");
   const [lastNameValue, setLastNameValue] = useState("");
   const [emailValue, setEmailValue] = useState("");
@@ -32,7 +23,12 @@ function SignUp() {
   const [emailError, setEmailError] = useState(false);
   const [passwordShow, setPasswordShow] = useState(false);
 
+  // Use the Redux user state instead of the local state
   console.log("active user: ", user);
+
+useEffect(() => {
+  console.log("accountExistsError changed:", accountExistsError);
+}, [accountExistsError]);
 
   const handleFirstNameInputChange = (event) => {
     setFirstNameValue(event.target.value);
@@ -94,69 +90,71 @@ function SignUp() {
    setAccountExistsError(false);
   };
 
-  const handleSignUp = async () => {
-    if (pwValue !== confPwValue) {
-      setPasswordsMatchError(true);
-      return;
-    }
+const handleSignUp = async () => {
+  if (pwValue !== confPwValue) {
+    setPasswordsMatchError(true);
+    return;
+  }
 
-    const userData = {
-      name: `${firstNameValue} ${lastNameValue}`,
-      phoneNumber: phoneValue,
-      email: emailValue,
-      password: pwValue,
-      appointments: [],
-      shoppingCart: {
-        items: [],
-        giftcards: [],
-      },
-    };
-
-    try {
-      const response = await fetch("http://localhost:3003/signup", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify(userData),
-      });
-
-      if (response.ok) {
-        const responseData = await response.json();
-
-        if (responseData.user) {
-          const newUser = responseData.user;
-          console.log("new user:", newUser);
-          console.log("newUser._id: ", newUser._id);
-
-          let userCredential = {
-            id: newUser._id,
-            name: newUser.name,
-            phoneNumber: newUser.phoneNumber,
-            email: newUser.email,
-            password: newUser.password,
-          };
-
-          await dispatch(loginUser(userCredential)).then((result) => {
-            if (result.payload) {
-              resetForm();
-              navigate(`/Account/${newUser._id}`);
-            }
-          });
-        } else {
-          console.error("Error creating user: User data not found in response");
-        }
-      } else if (response.status === 400) {
-        console.error("Error creating user:", response.statusText);
-       setAccountExistsError(true);
-        resetForm();
-      } else {
-        console.error("Error creating user:", response.statusText);
-      }
-    } catch (error) {
-      console.error("Error creating user:", error);
-    }
+  const userData = {
+    name: `${firstNameValue} ${lastNameValue}`,
+    phoneNumber: phoneValue,
+    email: emailValue,
+    password: pwValue,
+    appointments: [],
+    shoppingCart: {
+      items: [],
+      giftcards: [],
+    },
   };
+
+  try {
+    const response = await fetch("http://localhost:3003/signup", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(userData),
+    });
+
+    if (response.ok) {
+      const responseData = await response.json();
+
+      if (responseData.user) {
+        const newUser = responseData.user;
+
+        let userCredential = {
+          id: newUser._id,
+          name: newUser.name,
+          phoneNumber: newUser.phoneNumber,
+          email: newUser.email,
+          password: newUser.password,
+        };
+
+        await dispatch(loginUser(userCredential)).then((result) => {
+          if (result.payload) {
+            resetForm();
+            navigate(`/Account/${newUser._id}`);
+          }
+        });
+        return;
+      }
+
+      console.error("Error creating user: User data not found in response");
+    } else if (response.status === 400) {
+      console.error("Error creating user:", response.statusText);
+      resetForm();
+      setAccountExistsError(true);
+      return;
+    } else {
+      console.error("Error creating user:", response.statusText);
+    }
+  } catch (error) {
+    console.error("Error creating user:", error);
+  }
+};
+;
+
 
   const isPasswordVisible = () => {
     setPasswordShow(!passwordShow);
