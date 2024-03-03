@@ -12,7 +12,7 @@ import providerRoutes from "./routes/providerRoutes.js";
 import blogRoutes from "./routes/blogRoutes.js";
 import loginRoutes from "./routes/loginRoutes.js";
 import subscriptionRoutes from "./routes/subcriptionRoutes.js";
-import rentSuiteRoutes from "./rentSuiteRoutes.js";
+import rentSuiteRoutes from "./routes/rentSuiteRoutes.js";
 
 // these should be in a .env file so github wont scream in your emails that the database link has been leaked
 const PORT = 3003;
