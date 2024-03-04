@@ -135,7 +135,7 @@ const handleLogin = async () => {
             onChange={handlePwInputChange}
           />
           <span
-          className="eye-icon" 
+          className="eye-icon1" 
           onClick={togglePasswordVisibility}
           style ={{ cursor: "pointer"}}
           >
