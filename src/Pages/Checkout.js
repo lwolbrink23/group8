@@ -106,58 +106,77 @@ function Checkout() {
     addressErr,
     paymentErr,
   ]);
-
   const validateValues = (type) => {
     console.log("validate on blur & on clicking submit");
+    let err = false;
     switch (type) {
       case "phone":
-        !/^\(\d{3}\) \d{3}-\d{4}$/.test(personalInfo.phone)
-          ? updateInfo(
-              setPersonalErr,
-              "phone",
-              "Please enter a 10 digit phone number"
-            )
-          : updateInfo(setPersonalErr, "phone", "");
+        if (!/^\(\d{3}\) \d{3}-\d{4}$/.test(personalInfo.phone)) {
+          updateInfo(
+            setPersonalErr,
+            "phone",
+            "Please enter a 10 digit phone number"
+          );
+          err = true;
+        } else {
+          updateInfo(setPersonalErr, "phone", "");
+        }
         break;
 
       case "zip":
-        !/^\d{5}$/.test(addressInfo.zip)
-          ? updateInfo(setAddressErr, "zip", "Please enter a 5 digit number")
-          : updateInfo(setAddressErr, "zip", "");
-        break;
-      case "city":
-        /\d/.test(addressInfo.city)
-          ? updateInfo(setAddressErr, "city", "Please enter a valid city")
-          : updateInfo(setAddressErr, "city", "");
-        break;
-      case "state":
-        !isValidUSState(addressInfo.state)
-          ? updateInfo(setAddressErr, "state", "Please enter a valid state")
-          : updateInfo(setAddressErr, "state", "");
+        if (!/^\d{5}$/.test(addressInfo.zip)) {
+          updateInfo(setAddressErr, "zip", "Please enter a 5 digit number");
+          err = true;
+        } else {
+          updateInfo(setAddressErr, "zip", "");
+        }
         break;
 
-      case "cc":
-        !/^\d{4}\s\d{4}\s\d{4}\s\d{4}$/.test(paymentInfo.cardNum)
-          ? updateInfo(
-              setPaymentErr,
-              "cardNum",
-              "Please enter a 16-digit number"
-            )
-          : updateInfo(setPaymentErr, "cardNum", "");
+      case "city":
+        if (/\d/.test(addressInfo.city)) {
+          updateInfo(setAddressErr, "city", "Please enter a valid city");
+          err = true;
+        } else {
+          updateInfo(setAddressErr, "city", "");
+        }
         break;
+
+      case "state":
+        if (!isValidUSState(addressInfo.state)) {
+          updateInfo(setAddressErr, "state", "Please enter a valid state");
+          err = true;
+        } else {
+          updateInfo(setAddressErr, "state", "");
+        }
+        break;
+
+      case "cardNum":
+        if (!/^\d{4}\s\d{4}\s\d{4}\s\d{4}$/.test(paymentInfo.cardNum)) {
+          updateInfo(
+            setPaymentErr,
+            "cardNum",
+            "Please enter a 16-digit number"
+          );
+          err = true;
+        } else {
+          updateInfo(setPaymentErr, "cardNum", "");
+        }
+        break;
+
       case "cvc":
-        !/^\d{3}$/.test(paymentInfo.cvc)
-          ? updateInfo(setPaymentErr, "cvc", "Please enter a 3-digit number")
-          : updateInfo(setPaymentErr, "cvc", "");
+        if (!/^\d{3}$/.test(paymentInfo.cvc)) {
+          updateInfo(setPaymentErr, "cvc", "Please enter a 3-digit number");
+          err = true;
+        } else {
+          updateInfo(setPaymentErr, "cvc", "");
+        }
         break;
 
       default:
+        err = true;
+        break;
+        return err;
     }
-    // Validate personalInfo
-
-    // validate address
-
-    // validate payment
   };
 
   const handleChange = (type, propertyName, value) => {
@@ -340,7 +359,19 @@ function Checkout() {
 
   // handle place order
   const handlePlaceOrder = async () => {
+    if (
+      validateValues("phone") ||
+      validateValues("zip") ||
+      validateValues("city") ||
+      validateValues("state") ||
+      validateValues("cc") ||
+      validateValues("cvc")
+    ) {
+      return;
+    }
+
     // put a price in each item in cartItems
+
     const cartWithData = cartItems.map((item) => {
       const product = shopData.find((product) => product.id === item.id);
       return {
