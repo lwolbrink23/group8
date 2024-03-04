@@ -14,6 +14,16 @@
     background-color: #F8A0A0;
 }
 
+.closebtnemail {
+    background-color: #F8A0A0;
+}
+
+.closebtnemail:hover {
+    background-color: #F8A0A0;
+        background-color: #ee6363;
+        color: white;
+}
+
 .cancelPopupBtn:hover {
     background-color: #F8A0A0;
     background-color: #ee6363;

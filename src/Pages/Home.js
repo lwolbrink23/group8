@@ -85,7 +85,7 @@ function Home() {
 
   const [blogEmail, setBlogEmail] = useState("");
   const [newsEmail, setNewsEmail] = useState("");
-  const [user, setUser] = useState(getUser());
+  const user = useState(getUser());
 
   console.log("active user: ", user);
 
@@ -158,7 +158,10 @@ function Home() {
         openNews();
         resetInput();
       } else {
-        console.error("Failed to subscribe to newsletter:", response.statusText);
+        console.error(
+          "Failed to subscribe to newsletter:",
+          response.statusText
+        );
       }
     } catch (error) {
       console.error("Error subscribing to newsletter:", error);
@@ -370,7 +373,10 @@ function Home() {
       </div>
 
       {/* Invalid Email Popup */}
-      <PopupInvalid isOpen={isInvalidEmailPopupOpen} closePopup={closeInvalidEmailPopup} />
+      <PopupInvalid
+        isOpen={isInvalidEmailPopupOpen}
+        closePopup={closeInvalidEmailPopup}
+      />
     </div>
   );
 }

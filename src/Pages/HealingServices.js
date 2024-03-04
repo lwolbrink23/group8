@@ -11,21 +11,9 @@ import "../Styles/chicservices.css";
 import "../App.css";
 import { useState } from "react";
 
-function getUser() {
-  let user = localStorage.getItem("user");
-  if (user) {
-    user = JSON.parse(user);
-  } else {
-    user = null;
-  }
-  return user;
-}
-
 const SelectServices = () => {
   const [selectedServices, setSelectedServices] = useState([]);
   const [currentCategory, setCurrentCategory] = useState("featured");
-  const [user, setUser] = useState(getUser());
-  console.log("active user: ", user);
 
   const categories = {
     featured: [
@@ -98,18 +86,18 @@ const SelectServices = () => {
   };
 
   const extractServiceName = () => {
-  // Check if there are selected services and return an empty array if none
-  if (selectedServices.length === 0) return [];
+    // Check if there are selected services and return an empty array if none
+    if (selectedServices.length === 0) return [];
 
-  // Map over selectedServices to extract and return the service names
-  return selectedServices.map(service => service.split("\n")[0]);
-}
+    // Map over selectedServices to extract and return the service names
+    return selectedServices.map((service) => service.split("\n")[0]);
+  };
 
   const navigateToTime = () => {
     const totalCost = calculateTotalCost();
     const duration = totalTimeFormatted();
     const serviceTitle = extractServiceName();
-    console.log(serviceTitle)
+    console.log(serviceTitle);
     navigate("/selecttime", {
       state: {
         service: selectedServices,

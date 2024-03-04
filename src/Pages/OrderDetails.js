@@ -1,22 +1,10 @@
-import React, { useState } from "react";
-import { useLocation, useNavigate, Link } from "react-router-dom";
+import React from "react";
+import { useLocation, Link } from "react-router-dom";
 import "../Styles/OrderDetails.css";
 import ShopData from "../data/shop.json";
-import { useParams } from "react-router-dom";
-
-function getUser() {
-  let user = localStorage.getItem("user");
-  if (user) {
-    user = JSON.parse(user);
-  } else {
-    user = null;
-  }
-  return user;
-}
 
 function OrderDetails({ props }) {
   const location = useLocation();
-  const [user, setUser] = useState(getUser());
   console.log("location.state: ", location.state);
 
   if (!location.state) {
@@ -124,10 +112,10 @@ function OrderDetails({ props }) {
           This action cannot be undone. Please review your decision carefully
           before proceeding.
         </p>
-        <div className="buttons">
+
           <button id="back">Go Back</button>
           <button id="confirm">Confirm</button>
-        </div>
+
       </div>
     );
   }

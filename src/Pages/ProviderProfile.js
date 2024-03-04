@@ -1,7 +1,7 @@
 import "../App.css";
 import "../Styles/providerprofile.css";
-import suiteData from "../data/providers.json";
-import { useParams, useNavigate, Link } from "react-router-dom";
+//import suiteData from "../data/providers.json";
+import { useParams, Link } from "react-router-dom";
 import React, { useEffect, useState } from "react";
 import { BACKEND_ADDRESS } from "../App";
 
@@ -19,7 +19,7 @@ function ProviderProfile() {
   const { id } = useParams();
   // const suite = suiteData.find(item => item.id.toString() === id);
   const [suite, setSuite] = useState(null);
-  const [user, setUser] = useState(getUser());
+  const user = useState(getUser());
   console.log("active user: ", user);
 
   useEffect(() => {
@@ -35,7 +35,7 @@ function ProviderProfile() {
     };
 
     fetchData(`/providers/${id}`, setSuite);
-  }, []);
+  }, [id]);
 
   if (!suite) {
     return <div className="lots-of-space">Loading provider details...</div>;

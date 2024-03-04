@@ -1,20 +1,10 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect } from "react";
 import { Link, useLocation } from "react-router-dom";
 import "../App.css";
 import "../Styles/ourstory.css";
 import scissors from "../assets/icons/scissors-whitebg.png";
 import diamond from "../assets/icons/diamond-whitebg.png";
 import shootingStar from "../assets/icons/star-whitebg.png";
-
-function getUser() {
-  let user = localStorage.getItem("user");
-  if (user) {
-    user = JSON.parse(user);
-  } else {
-    user = null;
-  }
-  return user;
-}
 
 function ScrollToTop() {
   const location = useLocation();
@@ -29,9 +19,6 @@ function ScrollToTop() {
 }
 
 function OurStory() {
-  const [user, setUser] = useState(getUser());
-  console.log("active user: ", user);
-
   const scrollToTop = () => {
     window.scrollTo(0, 0);
   };

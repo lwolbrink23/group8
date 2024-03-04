@@ -1,11 +1,11 @@
 import checkICON from "../assets/icons/icons8-check-100.png";
-import tempShopData from "../data/shop.json";
+//import tempShopData from "../data/shop.json";
 import arrowIcon from "../assets/icons/white-arrow.svg";
 import React, { useState, useEffect } from "react";
 import { Link, useParams } from "react-router-dom";
 import "../Styles/orderplaced.css";
 import Shopheader from "../Components/Shopheader";
-import { BACKEND_ADDRESS } from "../App";
+//import { BACKEND_ADDRESS } from "../App";
 import { getUser } from "./functions/generalFunctions";
 import {
   countItems,
@@ -15,7 +15,7 @@ import {
 
 function OrderPlaced() {
   const { id } = useParams();
-  const [user, setUser] = useState(getUser());
+  const user = useState(getUser());
   const [cartData, setCartData] = useState([]);
   const [giftcardData, setGiftcardData] = useState([]);
   const [shopData, setShopData] = useState([]);
