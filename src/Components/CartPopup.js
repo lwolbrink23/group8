@@ -3,7 +3,7 @@ import purpleXICON from "../assets/icons/icons8-x-purple.png";
 const CartPopup = ({ cartPopup, setCartPopup, qty }) => (
   <div id="cart-popup">
     <div>
-      <img src={greenCheckICON}></img>
+      <img src={greenCheckICON} alt="Green check icon"></img>
       <p className="bold">Added to Cart!</p>
       <img
         src={purpleXICON}

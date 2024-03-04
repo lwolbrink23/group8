@@ -19,7 +19,7 @@ function Account({ props }) {
   const [appointments, setAppointments] = useState([]);
   const [dbOrders, setdbOrders] = useState([]);
   const [selectedAppointment, setSelectedAppointment] = useState(null); // do not delete this variable even though it says unused!
-  // ****^ do not delete this variable even though it says unused!
+  // ****^ do not delete this variable even though it says unused! It is used in the handleActionClick function
 
   useEffect(() => {
     if (!user) {
