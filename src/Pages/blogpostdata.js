@@ -8,21 +8,9 @@ import hairPink from "../assets/images/hair-pinkbg.jpeg";
 import nailBlog from "../assets/images/nails-blog.webp";
 import "../Styles/blogpost.css";
 
-function getUser() {
-  let user = localStorage.getItem("user");
-  if (user) {
-    user = JSON.parse(user);
-  } else {
-    user = null;
-  }
-  return user;
-}
-
 function BlogPostData() {
   const { category, id } = useParams();
   const [blogPost, setBlogPost] = useState(null);
-  const [user, setUser] = useState(getUser());
-  console.log("active user: ", user);
 
   useEffect(() => {
     const fetchBlogPost = async () => {
