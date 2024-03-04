@@ -128,7 +128,7 @@ const userRoutes = (app, client, database) => {
   });
 
 
-  app.post("/api/appointments/cancel", async (req, res) => {
+  app.post("/cancel", async (req, res) => {
     try {
       const { userId, appointmentId } = req.body;
       const updateResult = await database.collection("User_Accounts").updateOne(

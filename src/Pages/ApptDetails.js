@@ -29,6 +29,7 @@ function ApptDetails({ props }) {
   const [user, setUser] = useState(getUser());
 
   console.log("location.state: ", location.state);
+  const [appointmentStatus, setAppointmentStatus] = useState(location.state.status);
 
   if (!location.state) {
     return <p>Error...</p>; // or handle the absence of data in some way
@@ -39,7 +40,7 @@ function ApptDetails({ props }) {
       case "scheduled":
         return "#e6e3e3";
       case "cancelled":
-        return "red";
+        return "#fca0a2";
       case "complete":
         return "#89E569";
       default:
@@ -104,7 +105,7 @@ function ApptDetails({ props }) {
       const userId = user.id;
       console.log(userId)
       // API call to update the status in the database
-      const response = await fetch(`/api/appointments/cancel`, {
+      const response = await fetch(`http://localhost:3003/cancel`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
@@ -116,8 +117,7 @@ function ApptDetails({ props }) {
 
       if (response.ok) {
         console.log('Appointment cancelled successfully');
-        // Optionally, refresh the appointment details or redirect the user
-        // navigate('/some/path');
+        setAppointmentStatus('cancelled');
       } else {
         console.error('Failed to cancel the appointment');
         // Handle failure (e.g., show an error message to the user)
@@ -177,10 +177,10 @@ function ApptDetails({ props }) {
               <p
                 className="complete"
                 style={{
-                  backgroundColor: getStatusColor(location.state.status),
+                  backgroundColor: getStatusColor(appointmentStatus),
                 }}
               >
-                {location.state.status.toUpperCase()}
+                {appointmentStatus.toUpperCase()}
               </p>
             </div>
           </div>
@@ -227,39 +227,51 @@ function ApptDetails({ props }) {
         </div>
         <PopUpCancel isOpen={isPopUpOpen} closePopUp={closePopUp} cancelAppt={cancelAppt} />
         <div className="btns-container">
-          <div className="cancelApptBtnContainer">
+          {appointmentStatus !== 'cancelled' ? (
+            <>
+              <div className="cancelApptBtnContainer">
+                <button
+                  type="button"
+                  className="cancelApptBtn"
+                  style={{
+                    display: getStatusCancelBtn(location.state.status),
+                  }}
+                  onClick={() => openPopUp()}
+                >
+                  Cancel
+                </button>
+              </div>
+
+              <button
+                type="button"
+                className="profile-button"
+                onClick={() => rescheduleAppt()}
+                style={{
+                  display: getStatusRescheduleBtn(location.state.status),
+                }}
+              >
+                Reschedule
+              </button>
+              <button
+                type="button"
+                className="profile-button"
+                onClick={() => rescheduleAppt()}
+                style={{
+                  display: getStatusRebookBtn(location.state.status),
+                }}
+              >
+                Rebook
+              </button>
+            </>
+          ) : (
             <button
               type="button"
-              className="cancelApptBtn"
-              style={{
-                display: getStatusCancelBtn(location.state.status),
-              }}
-              onClick={() => openPopUp()}
+              className="goBackBtn"
+              onClick={() => navigate(-1)}
             >
-              Cancel
+              Go Back
             </button>
-          </div>
-
-          <button
-            type="button"
-            className="profile-button"
-            onClick={() => rescheduleAppt()}
-            style={{
-              display: getStatusRescheduleBtn(location.state.status),
-            }}
-          >
-            Reschedule
-          </button>
-          <button
-            type="button"
-            className="profile-button"
-            onClick={() => rescheduleAppt()}
-            style={{
-              display: getStatusRebookBtn(location.state.status),
-            }}
-          >
-            Rebook
-          </button>
+          )}
         </div>
       </div>
     </div>
