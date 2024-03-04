@@ -22,7 +22,7 @@ function SignUp() {
   const [phoneError, setPhoneError] = useState(false);
   const [emailError, setEmailError] = useState(false);
   const [passwordShow, setPasswordShow] = useState(false);
-
+  const [confPasswordShow, setConfPasswordShow] = useState(false);
   // Use the Redux user state instead of the local state
   console.log("active user: ", user);
 
@@ -156,9 +156,14 @@ const handleSignUp = async () => {
 ;
 
 
-  const isPasswordVisible = () => {
+  const passwordVisible = () => {
     setPasswordShow(!passwordShow);
   };
+
+  const isConfirmPasswordVisible = () => {
+    setConfPasswordShow(!confPasswordShow);
+  };
+
 
   const buttonStyle = {
     color:
@@ -239,29 +244,19 @@ const handleSignUp = async () => {
               )}
             </div>
           </div>
-          <label htmlFor="password">Password</label>
-          <input
-            type={passwordShow ? "text" : "password"}
-            className="section1"
-            placeholder=" Password*"
-            id="password"
-            value={pwValue}
-            onChange={handlePwInputChange}
-          />
-          <label htmlFor="confirm">Confirm Password</label>
-          <div className="passcontain">
-            <input
-              type={passwordShow ? "text" : "password"}
-              className="section1"
-              placeholder=" Confirm Password*"
-              id="confirm"
-              value={confPwValue}
-              onChange={handleConfPwInputChange}
-              onBlur={handleConfPwInputBlur}
-            />
-            <span
-              className="eye-icon"
-              onClick={isPasswordVisible}
+        <label htmlFor="password">Password</label>
+      <div className="passcontain2">
+        <input
+          type={passwordShow ? "text" : "password"}
+          className="section1"
+          placeholder=" Password*"
+          id="password"
+          value={pwValue}
+          onChange={handlePwInputChange}
+        />
+        <span
+          className="eye-icon"
+          onClick={passwordVisible} // This function should control only the password visibility
               style={{ cursor: "pointer" }}
             >
               {passwordShow ? (
@@ -271,6 +266,30 @@ const handleSignUp = async () => {
               )}
             </span>
           </div>
+          <label htmlFor="confirm">Confirm Password</label>
+          <div className="passcontain">
+            <input
+              type={confPasswordShow ? "text" : "password"} // Change this to use confPasswordShow
+              className="section2"
+              placeholder=" Confirm Password*"
+              id="confirm"
+              value={confPwValue}
+              onChange={handleConfPwInputChange}
+              onBlur={handleConfPwInputBlur}
+            />
+            <span
+              className="eye-icon"
+              onClick={isConfirmPasswordVisible} // This function should control only the confirm password visibility
+              style={{ cursor: "pointer" }}
+            >
+              {confPasswordShow ? ( // Change this to use confPasswordShow
+                <i className="fas fa-eye-slash"></i>
+              ) : (
+                <i className="fas fa-eye"></i>
+              )}
+            </span>
+          </div>
+
           {passwordsMatchError && (
             <p style={{ color: "red" }}>
               Passwords do not match. Please try again.

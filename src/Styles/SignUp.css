@@ -43,7 +43,7 @@
     gap: 10px
 }
 
-.section1 {
+.section1, .section2 {
     display: flex;
     justify-content: center;
     width: 100%;
@@ -81,7 +81,7 @@
     justify-content: center;
     margin-top: 20px;
 }
-.passcontain {
+.passcontain, .passcontain2 {
     position: relative;
 }
 
