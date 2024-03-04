@@ -2,22 +2,9 @@ import React, { useState } from "react";
 import "../App.css";
 import arrowIcon from "../assets/icons/arrow.png";
 
-function getUser() {
-  let user = localStorage.getItem("user");
-  if (user) {
-    user = JSON.parse(user);
-  } else {
-    user = null;
-  }
-  return user;
-}
-
 function Faqs() {
-  const user = useState(getUser());
-  console.log("active user: ", user);
-
   const GeneralContent = () => (
-    <div class="dropdown-content">
+    <div className="dropdown-content">
       <p>
         <strong>
           Q: What makes "The Suite Spot" different from traditional salons?
@@ -88,7 +75,7 @@ function Faqs() {
   );
 
   const HairContent = () => (
-    <div class="dropdown-content">
+    <div className="dropdown-content">
       <p>
         <strong>Q: How often should I get my hair trimmed?</strong>
       </p>
@@ -153,7 +140,7 @@ function Faqs() {
   );
 
   const NailContent = () => (
-    <div class="dropdown-content">
+    <div className="dropdown-content">
       <p>
         <strong>
           Q: How often should I schedule a fill for my acrylic nails?
@@ -211,7 +198,7 @@ function Faqs() {
   );
 
   const MakeupContent = () => (
-    <div class="dropdown-content">
+    <div className="dropdown-content">
       <p>
         <strong>
           Q: How far in advance should I book a makeup appointment for my event?
@@ -259,7 +246,7 @@ function Faqs() {
   );
 
   const MassageContent = () => (
-    <div class="dropdown-content">
+    <div className="dropdown-content">
       <p>
         <strong>
           Q: What should I expect during my first massage session?
@@ -327,9 +314,9 @@ function Faqs() {
     };
 
     return (
-      <div class="dropdown">
+      <div className="dropdown">
         <div
-          class="dropdown-btn"
+          className="dropdown-btn"
           onClick={toggleGeneralVisibility}
           style={{ cursor: "pointer" }}
         >
@@ -356,9 +343,9 @@ function Faqs() {
     };
 
     return (
-      <div class="dropdown">
+      <div className="dropdown">
         <div
-          class="dropdown-btn"
+          className="dropdown-btn"
           onClick={toggleHairVisibility}
           style={{ cursor: "pointer" }}
         >
@@ -385,9 +372,9 @@ function Faqs() {
     };
 
     return (
-      <div class="dropdown">
+      <div className="dropdown">
         <div
-          class="dropdown-btn"
+          className="dropdown-btn"
           onClick={toggleNailsVisibility}
           style={{ cursor: "pointer" }}
         >
@@ -414,9 +401,9 @@ function Faqs() {
     };
 
     return (
-      <div class="dropdown">
+      <div className="dropdown">
         <div
-          class="dropdown-btn"
+          className="dropdown-btn"
           onClick={toggleMakeupVisibility}
           style={{ cursor: "pointer" }}
         >
@@ -443,9 +430,9 @@ function Faqs() {
     };
 
     return (
-      <div class="dropdown">
+      <div className="dropdown">
         <div
-          class="dropdown-btn"
+          className="dropdown-btn"
           onClick={toggleMassageVisibility}
           style={{ cursor: "pointer" }}
         >
@@ -459,13 +446,13 @@ function Faqs() {
 
   return (
     <div>
-      <h1 class="center">FAQ's</h1>
+      <h1 className="center">FAQ's</h1>
       <GeneralDropdown />
       <HairDropdown />
       <NailsDropdown />
       <MakeupDropdown />
       <MassageDropdown />
-      <div class="extra-space"></div>
+      <div className="extra-space"></div>
     </div>
   );
 }
