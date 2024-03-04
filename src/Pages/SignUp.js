@@ -2,10 +2,9 @@ import React, { useState, useEffect } from "react";
 import "../App.css";
 import "../Styles/SignUp.css";
 import { Link, useNavigate } from "react-router-dom";
-import { useDispatch, useSelector } from "react-redux"; 
+import { useDispatch, useSelector } from "react-redux";
 import { loginUser } from "../Store/userSlice";
 import PopUpExistingUser from "../Components/PopUpExistingUser";
-
 
 function SignUp() {
   const navigate = useNavigate();
@@ -23,12 +22,8 @@ function SignUp() {
   const [emailError, setEmailError] = useState(false);
   const [passwordShow, setPasswordShow] = useState(false);
   const [confPasswordShow, setConfPasswordShow] = useState(false);
-  // Use the Redux user state instead of the local state
-  console.log("active user: ", user);
 
-useEffect(() => {
-  console.log("accountExistsError changed:", accountExistsError);
-}, [accountExistsError]);
+  //console.log("active user: ", user);
 
   const handleFirstNameInputChange = (event) => {
     setFirstNameValue(event.target.value);
@@ -47,7 +42,10 @@ useEffect(() => {
     } else if (digits.length > 3 && digits.length <= 6) {
       formattedPhoneNumber = `(${digits.slice(0, 3)}) ${digits.slice(3)}`;
     } else if (digits.length > 6) {
-      formattedPhoneNumber = `(${digits.slice(0, 3)}) ${digits.slice(3, 6)}-${digits.slice(6, 10)}`;
+      formattedPhoneNumber = `(${digits.slice(0, 3)}) ${digits.slice(
+        3,
+        6
+      )}-${digits.slice(6, 10)}`;
     }
 
     setPhoneValue(formattedPhoneNumber);
@@ -87,75 +85,72 @@ useEffect(() => {
     setPwValue("");
     setConfPwValue("");
     setPasswordsMatchError(false);
-   setAccountExistsError(false);
+    setAccountExistsError(false);
   };
 
-const handleSignUp = async () => {
-  if (pwValue !== confPwValue) {
-    setPasswordsMatchError(true);
-    return;
-  }
-
-  const userData = {
-    name: `${firstNameValue} ${lastNameValue}`,
-    phoneNumber: phoneValue,
-    email: emailValue,
-    password: pwValue,
-    appointments: [],
-    shoppingCart: {
-      items: [],
-      giftcards: [],
-    },
-  };
-
-  try {
-    const response = await fetch("http://localhost:3003/signup", {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify(userData),
-    });
-
-    if (response.ok) {
-      const responseData = await response.json();
-
-      if (responseData.user) {
-        const newUser = responseData.user;
-
-        let userCredential = {
-          id: newUser._id,
-          name: newUser.name,
-          phoneNumber: newUser.phoneNumber,
-          email: newUser.email,
-          password: newUser.password,
-        };
-
-        await dispatch(loginUser(userCredential)).then((result) => {
-          if (result.payload) {
-            resetForm();
-            navigate(`/Account/${newUser._id}`);
-          }
-        });
-        return;
-      }
-
-      console.error("Error creating user: User data not found in response");
-    } else if (response.status === 400) {
-      console.error("Error creating user:", response.statusText);
-      resetForm();
-      setAccountExistsError(true);
+  const handleSignUp = async () => {
+    if (pwValue !== confPwValue) {
+      setPasswordsMatchError(true);
       return;
-    } else {
-      console.error("Error creating user:", response.statusText);
     }
-  } catch (error) {
-    console.error("Error creating user:", error);
-  }
-};
-;
 
+    const userData = {
+      name: `${firstNameValue} ${lastNameValue}`,
+      phoneNumber: phoneValue,
+      email: emailValue,
+      password: pwValue,
+      appointments: [],
+      shoppingCart: {
+        items: [],
+        giftcards: [],
+      },
+    };
 
+    try {
+      const response = await fetch("http://localhost:3003/signup", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(userData),
+      });
+
+      if (response.ok) {
+        const responseData = await response.json();
+
+        if (responseData.user) {
+          const newUser = responseData.user;
+
+          let userCredential = {
+            id: newUser._id,
+            name: newUser.name,
+            phoneNumber: newUser.phoneNumber,
+            email: newUser.email,
+            password: newUser.password,
+          };
+
+          await dispatch(loginUser(userCredential)).then((result) => {
+            if (result.payload) {
+              resetForm();
+              navigate(`/Account/${newUser._id}`);
+            }
+          });
+          return;
+        }
+
+        console.error("Error creating user: User data not found in response");
+      } else if (response.status === 400) {
+        console.error("Error creating user:", response.statusText);
+        resetForm();
+        setAccountExistsError(true);
+        return;
+      } else {
+        console.error("Error creating user:", response.statusText);
+      }
+    } catch (error) {
+      console.error("Error creating user:", error);
+    }
+  };
   const passwordVisible = () => {
     setPasswordShow(!passwordShow);
   };
@@ -163,7 +158,6 @@ const handleSignUp = async () => {
   const isConfirmPasswordVisible = () => {
     setConfPasswordShow(!confPasswordShow);
   };
-
 
   const buttonStyle = {
     color:
@@ -244,19 +238,19 @@ const handleSignUp = async () => {
               )}
             </div>
           </div>
-        <label htmlFor="password">Password</label>
-      <div className="passcontain2">
-        <input
-          type={passwordShow ? "text" : "password"}
-          className="section1"
-          placeholder=" Password*"
-          id="password"
-          value={pwValue}
-          onChange={handlePwInputChange}
-        />
-        <span
-          className="eye-icon"
-          onClick={passwordVisible} // This function should control only the password visibility
+          <label htmlFor="password">Password</label>
+          <div className="passcontain2">
+            <input
+              type={passwordShow ? "text" : "password"}
+              className="section1"
+              placeholder=" Password*"
+              id="password"
+              value={pwValue}
+              onChange={handlePwInputChange}
+            />
+            <span
+              className="eye-icon"
+              onClick={passwordVisible} // This function should control only the password visibility
               style={{ cursor: "pointer" }}
             >
               {passwordShow ? (
@@ -324,7 +318,7 @@ const handleSignUp = async () => {
           </Link>
         </p>
       </div>
-       <PopUpExistingUser
+      <PopUpExistingUser
         isOpen={accountExistsError}
         closePopup={() => setAccountExistsError(false)}
       />
