@@ -17,7 +17,6 @@ function getUser() {
 }
 
 function ApptDetails({ props }) {
-
   const [isPopUpOpen, setIsPopUpOpen] = useState(false);
 
   const openPopUp = () => setIsPopUpOpen(true);
@@ -29,7 +28,9 @@ function ApptDetails({ props }) {
   const [user, setUser] = useState(getUser());
 
   console.log("location.state: ", location.state);
-  const [appointmentStatus, setAppointmentStatus] = useState(location.state.status);
+  const [appointmentStatus, setAppointmentStatus] = useState(
+    location.state.status
+  );
 
   if (!location.state) {
     return <p>Error...</p>; // or handle the absence of data in some way
@@ -97,18 +98,18 @@ function ApptDetails({ props }) {
 
   // LOGIC TO CHANGE THE DATA FROM "SCHEDULED" TO "CANCELLED"
   const cancelAppt = async () => {
-    console.log("clicked")
+    console.log("clicked");
 
     try {
       // Assuming `location.state.id` is the appointment ID
       const appointmentId = location.state.id;
       const userId = user.id;
-      console.log(userId)
+      console.log(userId);
       // API call to update the status in the database
       const response = await fetch(`http://localhost:3003/cancel`, {
-        method: 'POST',
+        method: "POST",
         headers: {
-          'Content-Type': 'application/json',
+          "Content-Type": "application/json",
         },
         body: JSON.stringify({ userId, appointmentId }),
         // You might not need a body if the API endpoint implicitly sets status to 'cancelled'
@@ -116,18 +117,17 @@ function ApptDetails({ props }) {
       });
 
       if (response.ok) {
-        console.log('Appointment cancelled successfully');
-        setAppointmentStatus('cancelled');
+        console.log("Appointment cancelled successfully");
+        setAppointmentStatus("cancelled");
       } else {
-        console.error('Failed to cancel the appointment');
+        console.error("Failed to cancel the appointment");
         // Handle failure (e.g., show an error message to the user)
       }
     } catch (error) {
-      console.error('Error cancelling the appointment:', error);
+      console.error("Error cancelling the appointment:", error);
       // Handle errors (e.g., network issues, server errors)
     }
   };
-
 
   // Path for the image
   const provProfPic = location.state.provProfPic;
@@ -225,9 +225,13 @@ function ApptDetails({ props }) {
           <p className="bolded">Staff</p>
           <p>{location.state.staff}</p>
         </div>
-        <PopUpCancel isOpen={isPopUpOpen} closePopUp={closePopUp} cancelAppt={cancelAppt} />
+        <PopUpCancel
+          isOpen={isPopUpOpen}
+          closePopUp={closePopUp}
+          cancelAppt={cancelAppt}
+        />
         <div className="btns-container">
-          {appointmentStatus !== 'cancelled' ? (
+          {appointmentStatus !== "cancelled" ? (
             <>
               <div className="cancelApptBtnContainer">
                 <button
@@ -269,7 +273,7 @@ function ApptDetails({ props }) {
               className="goBackBtn"
               onClick={() => navigate(-1)}
             >
-              Go Back
+              Back to Profile
             </button>
           )}
         </div>
