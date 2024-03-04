@@ -18,9 +18,9 @@ function Account({ props }) {
   const [user, setUser] = useState(getUser());
   const [appointments, setAppointments] = useState([]);
   const [dbOrders, setdbOrders] = useState([]);
-  const [selectedAppointment, setSelectedAppointment] = useState(null);
+  const [selectedAppointment, setSelectedAppointment] = useState(null); // do not delete this variable even though it says unused!
+  // ****^ do not delete this variable even though it says unused!
 
-  //*******DO NOT DELETE THESE useEffect FUNCTIONS******
   useEffect(() => {
     if (!user) {
       navigate("/login");
@@ -193,7 +193,7 @@ function Account({ props }) {
                   <div className="profile-picture-container">
                     <img
                       src={defaultProfilePic}
-                      alt="Profile picture"
+                      alt="Profile"
                       className="profile-picture"
                     />
                   </div>

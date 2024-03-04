@@ -6,7 +6,7 @@ const WebGallery = ({ images }) => {
     <div className="image-gallery">
       {images.map((image, index) => (
         <div key={index} className="image-item">
-          <img src={image} alt={`Image ${index + 1}`} />
+          <img src={image} alt={` ${index + 1}`} />
         </div>
       ))}
     </div>
