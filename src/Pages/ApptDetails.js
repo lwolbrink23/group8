@@ -91,6 +91,7 @@ function ApptDetails({ props }) {
   // Function to rescheudle appointment
   const rescheduleAppt = () => {
     console.log("Rescheduled Appointment clicked for ID:", location.state.id);
+    cancelAppt()
     // INSERT LOGIC HERE TO CANCEL THE APPOINTMENT
     // THEN REROUTE THEM TO SPECIFIC PROVIDER PROFILE PAGE
     navigate(`/providerprofile/${location.state.provProfId}`);

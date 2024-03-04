@@ -22,6 +22,8 @@ function Login() {
   const navigate = useNavigate();
   const dispatch = useDispatch();
 
+  const [loginError, setLoginError] = useState('');
+
   const [emailValue, setEmailValue] = useState("");
   const [pwValue, setPwValue] = useState("");
   const [emailError, setEmailError] = useState(false);
@@ -95,6 +97,8 @@ const handleLogin = async () => {
         }
       } else {
         console.error("Error logging in:", response.statusText);
+        // make error appear in login page
+        setLoginError('Incorrect email or password. Please try again.');
       }
     } catch (error) {
       console.error("Error logging in:", error);
@@ -151,6 +155,7 @@ const handleLogin = async () => {
             <input type="checkbox" className="check" id="check" />
             <label htmlFor="check">Remember Me</label>
           </div>
+          {loginError && <p style={{ color: 'red', textAlign: 'center'}}>{loginError}</p>}
           <Link
             style={{
               display: "flex",
