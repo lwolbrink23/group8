@@ -32,50 +32,50 @@ const userRoutes = (app, client, database) => {
   });
 
   // Signup route
-app.post("/signup", async (req, res) => {
-  try {
-    console.log("Received signup request:", req.body); // Log received signup request
+  app.post("/signup", async (req, res) => {
+    try {
+      console.log("Received signup request:", req.body); // Log received signup request
 
-    const { name, phoneNumber, email, password, appointments, shoppingCart } = req.body;
+      const { name, phoneNumber, email, password, appointments, shoppingCart } = req.body;
 
-    // Check if user already exists with the given email
-    const existingUser = await database
-      .collection("User_Accounts")
-      .findOne({ email });
-    if (existingUser) {
-      console.log("User with this email already exists:", email); // Log existing user
-      return res
-        .status(400)
-        .json({ error: "User with this email already exists" });
+      // Check if user already exists with the given email
+      const existingUser = await database
+        .collection("User_Accounts")
+        .findOne({ email });
+      if (existingUser) {
+        console.log("User with this email already exists:", email); // Log existing user
+        return res
+          .status(400)
+          .json({ error: "User with this email already exists" });
+      }
+
+      console.log("Creating new user:", email); // Log new user creation
+
+      // Create a new user document
+      const newUser = {
+        name,
+        phoneNumber,
+        email,
+        password,
+        appointments,
+        shoppingCart,
+      };
+
+      // Insert the new user into the 'User_Accounts' collection
+      await database.collection("User_Accounts").insertOne(newUser);
+
+      console.log("User created successfully:", email); // Log successful user creation
+
+      res
+        .status(201)
+        .json({ user: newUser, message: "User created successfully" });
+    } catch (error) {
+      console.error("Error creating user:", error);
+      res
+        .status(500)
+        .json({ error: "Internal Server Error", details: error.message });
     }
-
-    console.log("Creating new user:", email); // Log new user creation
-
-    // Create a new user document
-    const newUser = {
-      name,
-      phoneNumber,
-      email,
-      password,
-      appointments, 
-      shoppingCart,
-    };
-
-    // Insert the new user into the 'User_Accounts' collection
-    await database.collection("User_Accounts").insertOne(newUser);
-
-    console.log("User created successfully:", email); // Log successful user creation
-
-    res
-      .status(201)
-      .json({ user: newUser, message: "User created successfully" });
-  } catch (error) {
-    console.error("Error creating user:", error);
-    res
-      .status(500)
-      .json({ error: "Internal Server Error", details: error.message });
-  }
-});
+  });
 
   //for the bookings in appt_overview (in progress)
   app.post("/bookings", async (req, res) => {
@@ -124,6 +124,27 @@ app.post("/signup", async (req, res) => {
     } catch (error) {
       console.error("Error booking appointment:", error);
       res.status(500).json({ error: "Internal Server Error", details: error.message });
+    }
+  });
+
+
+  app.post("/api/appointments/cancel", async (req, res) => {
+    try {
+      const { userId, appointmentId } = req.body;
+      const updateResult = await database.collection("User_Accounts").updateOne(
+        { _id: new ObjectId(userId), "appointments.id": appointmentId },
+        { $set: { "appointments.$.status": "cancelled" } }
+      );
+
+      if (updateResult.modifiedCount === 0) {
+        res.status(404).send("Appointment not found or already cancelled.");
+        return;
+      }
+
+      res.status(200).json({ message: "Appointment cancelled successfully" });
+    } catch (error) {
+      console.error("Error cancelling appointment:", error);
+      res.status(500).json({ error: "Internal Server Error", details: error.toString() });
     }
   });
 };

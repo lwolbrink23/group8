@@ -94,9 +94,40 @@ function ApptDetails({ props }) {
     navigate(`/providerprofile/${location.state.provProfId}`);
   };
 
-  const cancelAppt = () => {
+  // LOGIC TO CHANGE THE DATA FROM "SCHEDULED" TO "CANCELLED"
+  const cancelAppt = async () => {
     console.log("clicked")
-  }
+
+    try {
+      // Assuming `location.state.id` is the appointment ID
+      const appointmentId = location.state.id;
+      const userId = user.id;
+      console.log(userId)
+      // API call to update the status in the database
+      const response = await fetch(`/api/appointments/cancel`, {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({ userId, appointmentId }),
+        // You might not need a body if the API endpoint implicitly sets status to 'cancelled'
+        // body: JSON.stringify({ status: 'cancelled' }),
+      });
+
+      if (response.ok) {
+        console.log('Appointment cancelled successfully');
+        // Optionally, refresh the appointment details or redirect the user
+        // navigate('/some/path');
+      } else {
+        console.error('Failed to cancel the appointment');
+        // Handle failure (e.g., show an error message to the user)
+      }
+    } catch (error) {
+      console.error('Error cancelling the appointment:', error);
+      // Handle errors (e.g., network issues, server errors)
+    }
+  };
+
 
   // Path for the image
   const provProfPic = location.state.provProfPic;
