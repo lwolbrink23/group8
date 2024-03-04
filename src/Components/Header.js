@@ -12,7 +12,18 @@ import { Link, useMatch, useResolvedPath, useLocation } from "react-router-dom";
 import "../Styles/header.css"; // main stylesheet
 import "../Styles/responsiveHeader.css"; // responsive stylesheet
 
+function getUser() {
+  let user = localStorage.getItem("user");
+  if (user) {
+    user = JSON.parse(user);
+  } else {
+    user = null;
+  }
+  return user;
+}
+
 function Header() {
+  const user = getUser();
   const [isHamburgerOpen, setHamburgerOpen] = useState(false);
   const menuRef = useRef();
 
@@ -225,21 +236,29 @@ function Header() {
                   display: activeSubpage === "account" ? "block" : "none",
                 }}
               >
-                <li key="login">
-                  <CustomLink to="/Login" onClick={toggleSidebar}>
-                    Login
-                  </CustomLink>
-                </li>
-                <li key="signup">
-                  <CustomLink to="/SignUp" onClick={toggleSidebar}>
-                    Sign Up
-                  </CustomLink>
-                </li>
-                <li key="acct">
-                  <CustomLink to="/account/:id" onClick={toggleSidebar}>
-                    Account
-                  </CustomLink>
-                </li>
+                {/* Display "Login" and "Sign Up" links only if there is no active user */}
+                {!user && (
+                  <>
+                    <li key="login">
+                      <CustomLink to="/Login" onClick={toggleSidebar}>
+                        Login
+                      </CustomLink>
+                    </li>
+                    <li key="signup">
+                      <CustomLink to="/SignUp" onClick={toggleSidebar}>
+                        Sign Up
+                      </CustomLink>
+                    </li>
+                  </>
+                )}
+                {/* Display "Account" link only if there is an active user */}
+                {user && (
+                  <li key="acct">
+                    <CustomLink to="/account/:id" onClick={toggleSidebar}>
+                      My Account
+                    </CustomLink>
+                  </li>
+                )}
               </ul>
             </li>
             <li key="booknow">
