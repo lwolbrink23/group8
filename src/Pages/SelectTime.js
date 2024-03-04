@@ -1,11 +1,10 @@
-import React, { useEffect, useState } from "react";
-import { Link, useLocation, useNavigate, useParams } from "react-router-dom";
+import React, { useState } from "react";
+import { useLocation, useNavigate } from "react-router-dom";
 import "../App.css";
 import "../Styles/ApptOverview.css";
 import "../Styles/SelectTime.css";
 import BackButton from "../Components/BackButton";
 import Calendar from "react-calendar";
-import suiteData from "../data/providers.json";
 
 function getUser() {
   let user = localStorage.getItem("user");
@@ -18,22 +17,22 @@ function getUser() {
 }
 
 function SelectTime() {
-  const [user, setUser] = useState(getUser());
+  const user = useState(getUser());
   console.log("active user: ", user);
 
-  const scrollToTop = () => {
+  /* const scrollToTop = () => {
     window.scrollTo(0, 0);
-  };
+  }; */
 
   const location = useLocation();
   const selectedServices = location.state?.service || [];
   const totalCost = location.state?.totalCost || 0;
   const duration = location.state?.duration || 0;
   const serviceName = location.state?.serviceName || "Default Service Name";
-  const provProfPic = location.state?.provProfPic
-  const provProfId = location.state?.provProfId
-  const staff = location.state?.staff
-  const serviceTitle = location.state?.serviceTitle
+  const provProfPic = location.state?.provProfPic;
+  const provProfId = location.state?.provProfId;
+  const staff = location.state?.staff;
+  const serviceTitle = location.state?.serviceTitle;
 
   const [selectedDate, setSelectedDate] = useState(new Date());
 
@@ -60,7 +59,7 @@ function SelectTime() {
         serviceName: serviceName,
         provProfPic: provProfPic,
         provProfId: provProfId,
-        staff: staff
+        staff: staff,
       },
     });
   };

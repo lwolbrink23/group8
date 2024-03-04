@@ -13,7 +13,7 @@ function getUser() {
 }
 
 function Faqs() {
-  const [user, setUser] = useState(getUser());
+  const user = useState(getUser());
   console.log("active user: ", user);
 
   const GeneralContent = () => (

@@ -3,10 +3,9 @@ import "../App.css";
 import "../Styles/Login.css";
 import { Link, useNavigate } from "react-router-dom";
 import PopUpPassword from "../Components/PopUpPassword";
-import { useDispatch, useSelector } from "react-redux";
+import { useDispatch } from "react-redux";
 import { loginUser } from "../Store/userSlice";
-import '@fortawesome/fontawesome-free/css/all.min.css';
-
+import "@fortawesome/fontawesome-free/css/all.min.css";
 
 function getUser() {
   let user = localStorage.getItem("user");
@@ -25,10 +24,10 @@ function Login() {
   const [emailValue, setEmailValue] = useState("");
   const [pwValue, setPwValue] = useState("");
   const [emailError, setEmailError] = useState(false);
-  const [passwordVisible, setPasswordVisible] = useState(false)
+  const [passwordVisible, setPasswordVisible] = useState(false);
 
   const [isContactOpen, setIsContactOpen] = useState(false);
-  const [user, setUser] = useState(getUser());
+  const user = useState(getUser());
   console.log("active user: ", user);
 
   const openContact = () => setIsContactOpen(true);
@@ -57,16 +56,16 @@ function Login() {
     setPwValue("");
   };
 
-const handleLogin = async () => {
-  try {
-    // Make a POST request to the backend login route
-    const response = await fetch("http://localhost:3003/login", {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify({ email: emailValue, password: pwValue }),
-    });
+  const handleLogin = async () => {
+    try {
+      // Make a POST request to the backend login route
+      const response = await fetch("http://localhost:3003/login", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({ email: emailValue, password: pwValue }),
+      });
 
       if (response.ok) {
         const responseData = await response.json();
@@ -100,7 +99,7 @@ const handleLogin = async () => {
       console.error("Error logging in:", error);
     }
   };
-   const togglePasswordVisibility = () => {
+  const togglePasswordVisibility = () => {
     setPasswordVisible(!passwordVisible);
   };
 
@@ -127,24 +126,24 @@ const handleLogin = async () => {
           <br />
           <label htmlFor="password">Password</label>
           <div className="password-container">
-          <input
-            type={passwordVisible ? "text" : "password"}
-            className="textarea"
-            id="password"
-            value={pwValue}
-            onChange={handlePwInputChange}
-          />
-          <span
-          className="eye-icon1" 
-          onClick={togglePasswordVisibility}
-          style ={{ cursor: "pointer"}}
-          >
-            {passwordVisible ? (
-              <i className="fas fa-eye-slash"></i>
-            ) : (
-              <i className="fas fa-eye"></i>
-            )}
-          </span>
+            <input
+              type={passwordVisible ? "text" : "password"}
+              className="textarea"
+              id="password"
+              value={pwValue}
+              onChange={handlePwInputChange}
+            />
+            <span
+              className="eye-icon1"
+              onClick={togglePasswordVisibility}
+              style={{ cursor: "pointer" }}
+            >
+              {passwordVisible ? (
+                <i className="fas fa-eye-slash"></i>
+              ) : (
+                <i className="fas fa-eye"></i>
+              )}
+            </span>
           </div>
           <br />
           <div className="checkbox-container">

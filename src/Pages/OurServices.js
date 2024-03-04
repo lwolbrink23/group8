@@ -3,20 +3,7 @@ import "../App.css";
 import arrowIcon from "../assets/icons/arrow.png";
 import { Link } from "react-router-dom";
 
-function getUser() {
-  let user = localStorage.getItem("user");
-  if (user) {
-    user = JSON.parse(user);
-  } else {
-    user = null;
-  }
-  return user;
-}
-
 function OurServices() {
-  const [user, setUser] = useState(getUser());
-  console.log("active user: ", user);
-
   const HairContent = () => (
     <div class="dropdown-content">
       <strong>
