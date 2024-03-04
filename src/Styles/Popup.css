@@ -10,6 +10,16 @@
     z-index: 1000;
 }
 
+.cancelPopupBtn {
+    background-color: #F8A0A0;
+}
+
+.cancelPopupBtn:hover {
+    background-color: #F8A0A0;
+    background-color: #ee6363;
+        color: white;
+}
+
 .popup-container h2 {
     color:#000;
     margin-bottom: 20px;
@@ -17,6 +27,7 @@
 
 .popup-container button {
     margin: 10px;
+    width: 150px;
 }
 
 .popup-container p {
