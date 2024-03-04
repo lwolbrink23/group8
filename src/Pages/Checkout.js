@@ -192,7 +192,12 @@ function Checkout() {
           );
           const data = await response.json();
           const { results } = data;
-          if (results && results.length > 0) {
+          console.log(data);
+          if (
+            results &&
+            results.length > 0 &&
+            results[0].geometry.location_type === "ROOFTOP "
+          ) {
             const { lat, lng } = results[0].geometry.location;
             console.log(`Latitude: ${lat}, Longitude: ${lng}`);
             updateInfo(setAddressErr, "address", "");
