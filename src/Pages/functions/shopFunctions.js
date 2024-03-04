@@ -87,3 +87,10 @@ export const fetchCartData = async (setCartItems, user, type) => {
     setCartItems(cartCookie);
   }
 };
+
+export const updateInfo = (setFunction, propertyName, value) => {
+  setFunction((prevInfo) => ({
+    ...prevInfo,
+    [propertyName]: value,
+  }));
+};

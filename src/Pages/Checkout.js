@@ -7,7 +7,11 @@ import CustomDropdown from "../Components/CustomDropdown";
 import purplePlusIcon from "../assets/icons/purple-plus.svg";
 import purpleCheckIcon from "../assets/icons/purple-check.svg";
 import { BACKEND_ADDRESS } from "../App";
-import { fetchData, updateUserCartDB } from "./functions/shopFunctions";
+import {
+  fetchData,
+  updateUserCartDB,
+  updateInfo,
+} from "./functions/shopFunctions";
 import Cookies from "js-cookie";
 import { fetchCartData, countItems } from "./functions/shopFunctions";
 import { getUser } from "./functions/generalFunctions";
@@ -103,69 +107,57 @@ function Checkout() {
     paymentErr,
   ]);
 
-  // update states
-  const updatePersonalInfo = (propertyName, value) => {
-    setPersonalInfo((prevInfo) => ({
-      ...prevInfo,
-      [propertyName]: value,
-    }));
-  };
-  const updateAddressInfo = (propertyName, value) => {
-    setAddressInfo((prevInfo) => ({
-      ...prevInfo,
-      [propertyName]: value,
-    }));
-  };
-  const updatePaymentInfo = (propertyName, value) => {
-    setPaymentInfo((prevInfo) => ({
-      ...prevInfo,
-      [propertyName]: value,
-    }));
-  };
-  const updatePersonalErr = (propertyName, value) => {
-    setPersonalErr((prevInfo) => ({
-      ...prevInfo,
-      [propertyName]: value,
-    }));
-  };
-  const updateAddressErr = (propertyName, value) => {
-    setAddressErr((prevInfo) => ({
-      ...prevInfo,
-      [propertyName]: value,
-    }));
-  };
-  const updatePaymentErr = (propertyName, value) => {
-    setPaymentErr((prevInfo) => ({
-      ...prevInfo,
-      [propertyName]: value,
-    }));
-  };
-
-  const validateValues = () => {
+  const validateValues = (type) => {
     console.log("validate on blur & on clicking submit");
+    switch (type) {
+      case "phone":
+        !/^\(\d{3}\) \d{3}-\d{4}$/.test(personalInfo.phone)
+          ? updateInfo(
+              setPersonalErr,
+              "phone",
+              "Please enter a 10 digit phone number"
+            )
+          : updateInfo(setPersonalErr, "phone", "");
+        break;
+
+      case "zip":
+        !/^\d{5}$/.test(addressInfo.zip)
+          ? updateInfo(setAddressErr, "zip", "Please enter a 5 digit number")
+          : updateInfo(setAddressErr, "zip", "");
+        break;
+      case "city":
+        /\d/.test(addressInfo.city)
+          ? updateInfo(setAddressErr, "city", "Please enter a valid city")
+          : updateInfo(setAddressErr, "city", "");
+        break;
+      case "state":
+        !isValidUSState(addressInfo.state)
+          ? updateInfo(setAddressErr, "state", "Please enter a valid state")
+          : updateInfo(setAddressErr, "state", "");
+        break;
+
+      case "cc":
+        !/^\d{4}\s\d{4}\s\d{4}\s\d{4}$/.test(paymentInfo.cardNum)
+          ? updateInfo(
+              setPaymentErr,
+              "cardNum",
+              "Please enter a 16-digit number"
+            )
+          : updateInfo(setPaymentErr, "cardNum", "");
+        break;
+      case "cvc":
+        !/^\d{3}$/.test(paymentInfo.cvc)
+          ? updateInfo(setPaymentErr, "cvc", "Please enter a 3-digit number")
+          : updateInfo(setPaymentErr, "cvc", "");
+        break;
+
+      default:
+    }
     // Validate personalInfo
-    Object.keys(personalInfo).forEach((key) => {
-      let errMsg = "";
-      if (key === "firstName") {
-        /\d/.test(personalInfo.firstName) &&
-          (errMsg = "Names must not contain numbers.");
-      }
-      updatePersonalErr(key, errMsg);
-    });
 
-    // Validate addressInfo
-    Object.keys(addressInfo).forEach((key) => {
-      // if (key === 'street') {
-      //     // Validate street
-      // }
-    });
+    // validate address
 
-    // Validate paymentInfo
-    Object.keys(paymentInfo).forEach((key) => {
-      // if (key === 'cardNum') {
-      //     // Validate cardNum
-      // }
-    });
+    // validate payment
   };
 
   const handleChange = (type, propertyName, value) => {
@@ -173,11 +165,11 @@ function Checkout() {
     switch (type) {
       // --------personal info--------
       case "personal":
-        updatePersonalInfo(propertyName, value);
+        updateInfo(setPersonalInfo, propertyName, value);
         // make sure no numbers
         if (propertyName === "firstName" || propertyName === "lastName") {
           const newVal = value.replace(/\d/g, "");
-          updatePersonalInfo(propertyName, newVal);
+          updateInfo(setPersonalInfo, propertyName, newVal);
         }
         // make sure 10 digits
         else {
@@ -195,32 +187,23 @@ function Checkout() {
               6
             )}-${digits.slice(6, 10)}`;
           }
-          updatePersonalInfo(propertyName, formattedPhoneNumber);
+          updateInfo(setPersonalInfo, propertyName, formattedPhoneNumber);
         }
-        updatePersonalErr(propertyName, errMsg);
+
         break;
       // --------address info--------
       case "address":
-        updateAddressInfo(propertyName, value);
-        // make sure no numbers
-        if (propertyName === "city") {
-          /\d/.test(value) && (errMsg = "City name must not contain numbers.");
-        } else if (propertyName === "state") {
-          !isValidUSState(value) && (errMsg = "Please enter a valid state");
-        }
+        updateInfo(setAddressInfo, propertyName, value);
         // make sure 5 digits
-        else if (propertyName === "zip") {
+        if (propertyName === "zip") {
           let digits = value.replace(/\D/g, "");
           digits = digits.slice(0, 5);
-          updateAddressInfo(propertyName, digits);
-          !/^\d{5}$/.test(digits) &&
-            (errMsg = "Please enter a 5-digit number.");
+          updateInfo(setAddressInfo, propertyName, digits);
         }
-        updateAddressErr(propertyName, errMsg);
         break;
       // --------payment info--------
       case "payment":
-        updatePaymentInfo(propertyName, value);
+        updateInfo(setPaymentInfo, propertyName, value);
         //make sure only certain amount of digits
         if (propertyName === "cardNum") {
           let digits = value.replace(/\D/g, "");
@@ -241,15 +224,13 @@ function Checkout() {
             )} ${digits.slice(8, 12)} ${digits.slice(12)}`;
           }
           formattedString = formattedString.slice(0, 19);
-          updatePaymentInfo(propertyName, formattedString);
-          // !/^\d{16}$/.test(value) &&
-          //   (errMsg = "Please enter a 16-digit number.");
+          updateInfo(setPaymentInfo, propertyName, formattedString);
         }
         // make sure only numbers, 2 digits
         else if (propertyName === "mm" || propertyName === "yy") {
           let digits = value.replace(/\D/g, "");
           digits = digits.slice(0, 2);
-          updatePaymentInfo(propertyName, digits);
+          updateInfo(setPaymentInfo, propertyName, digits);
           if (propertyName === "mm" && (digits < 1 || digits > 12)) {
             errMsg = "Please enter a valid month (1-12)";
           } else if (
@@ -263,11 +244,9 @@ function Checkout() {
         else if (propertyName === "cvc") {
           let digits = value.replace(/\D/g, "");
           digits = digits.slice(0, 3);
-          updatePaymentInfo(propertyName, digits);
-          !/^\d{3}$/.test(digits) &&
-            (errMsg = "Please enter a 3-digit number.");
+          updateInfo(setPaymentInfo, propertyName, digits);
         }
-        updatePaymentErr(propertyName, errMsg);
+        updateInfo(setPaymentErr, propertyName, errMsg);
         break;
       default:
     }
@@ -435,7 +414,7 @@ function Checkout() {
               type="text"
               placeholder="First Name*"
               value={personalInfo.firstName}
-              onBlur={validateValues}
+              onBlur={() => validateValues("firstName")}
               onChange={(e) =>
                 handleChange("personal", "firstName", e.target.value)
               }
@@ -451,7 +430,7 @@ function Checkout() {
               type="text"
               placeholder="Last Name*"
               value={personalInfo.lastName}
-              onBlur={validateValues}
+              onBlur={() => validateValues("lastName")}
               onChange={(e) =>
                 handleChange("personal", "lastName", e.target.value)
               }
@@ -466,7 +445,7 @@ function Checkout() {
               type="text"
               placeholder="Phone*"
               value={personalInfo.phone}
-              onBlur={validateValues}
+              onBlur={() => validateValues("phone")}
               onChange={(e) =>
                 handleChange("personal", "phone", e.target.value)
               }
@@ -481,7 +460,7 @@ function Checkout() {
               type="text"
               placeholder="Street Address*"
               value={addressInfo.street}
-              onBlur={validateValues}
+              onBlur={() => validateValues("street")}
               onChange={(e) =>
                 handleChange("address", "street", e.target.value)
               }
@@ -494,7 +473,7 @@ function Checkout() {
                 type="text"
                 placeholder="City*"
                 value={addressInfo.city}
-                onBlur={validateValues}
+                onBlur={() => validateValues("city")}
                 onChange={(e) =>
                   handleChange("address", "city", e.target.value)
                 }
@@ -509,7 +488,7 @@ function Checkout() {
                 type="text"
                 placeholder="State*"
                 value={addressInfo.state}
-                onBlur={validateValues}
+                onBlur={() => validateValues("state")}
                 onChange={(e) =>
                   handleChange("address", "state", e.target.value)
                 }
@@ -524,7 +503,7 @@ function Checkout() {
                 type="text"
                 placeholder="ZIP Code*"
                 value={addressInfo.zip}
-                onBlur={validateValues}
+                onBlur={() => validateValues("zip")}
                 onChange={(e) => handleChange("address", "zip", e.target.value)}
               />
               {addressErr.zip && (
@@ -556,7 +535,6 @@ function Checkout() {
                     type="radio"
                     name="options"
                     value={option.id}
-                    onBlur={validateValues}
                     checked={paymentInfo.option === option.id}
                     onChange={handleOptionChange}
                     className={isCard && "last-radio"}
@@ -574,7 +552,7 @@ function Checkout() {
                 type="text"
                 placeholder="Card Number*"
                 value={paymentInfo.cardNum}
-                onBlur={validateValues}
+                onBlur={() => validateValues("cardNum")}
                 onChange={(e) =>
                   handleChange("payment", "cardNum", e.target.value)
                 }
@@ -590,7 +568,7 @@ function Checkout() {
                   type="text"
                   placeholder="mm*"
                   value={paymentInfo.mm}
-                  onBlur={validateValues}
+                  onBlur={() => validateValues("mm")}
                   onChange={(e) =>
                     handleChange("payment", "mm", e.target.value)
                   }
@@ -604,7 +582,7 @@ function Checkout() {
                   type="text"
                   placeholder="yy*"
                   value={paymentInfo.yy}
-                  onBlur={validateValues}
+                  onBlur={() => validateValues("yy")}
                   onChange={(e) =>
                     handleChange("payment", "yy", e.target.value)
                   }
@@ -618,7 +596,7 @@ function Checkout() {
                   type="text"
                   placeholder="CVC*"
                   value={paymentInfo.cvc}
-                  onBlur={validateValues}
+                  onBlur={() => validateValues("cvc")}
                   onChange={(e) =>
                     handleChange("payment", "cvc", e.target.value)
                   }
@@ -634,7 +612,7 @@ function Checkout() {
                 type="text"
                 placeholder="Name on Card*"
                 value={paymentInfo.name}
-                onBlur={validateValues}
+                onBlur={() => validateValues("name")}
                 onChange={(e) =>
                   handleChange("payment", "name", e.target.value)
                 }
