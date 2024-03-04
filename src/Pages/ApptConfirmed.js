@@ -1,18 +1,8 @@
 import React, { useEffect, useState } from "react";
-import { Link, useLocation, useNavigate } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
 import "../App.css";
 import "../Styles/ApptConfirmed.css";
 import purpleCheck from "../assets/icons/icons8-check-100.png";
-
-function getUser() {
-  let user = localStorage.getItem("user");
-  if (user) {
-    user = JSON.parse(user);
-  } else {
-    user = null;
-  }
-  return user;
-}
 
 function ScrollToTop() {
   const location = useLocation();
@@ -27,8 +17,6 @@ function ScrollToTop() {
 }
 
 function Confirmed() {
-  const [user, setUser] = useState(getUser());
-
   const scrollToTop = () => {
     window.scrollTo(0, 0);
   };
