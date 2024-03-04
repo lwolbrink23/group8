@@ -29,7 +29,6 @@ function ScrollToTop() {
 function Confirmed() {
   const [user, setUser] = useState(getUser());
 
-
   const scrollToTop = () => {
     window.scrollTo(0, 0);
   };
@@ -64,9 +63,9 @@ function Confirmed() {
           </p>
         </div>
         <div className="appt-details">
-          <h1>
+          <h2>
             <strong>Appointment Details</strong>
-          </h1>
+          </h2>
           <div id="appt-date-time-service">
             <h3>
               <b>Appointment</b>
