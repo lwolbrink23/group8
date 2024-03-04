@@ -19,7 +19,8 @@ import { getUser, ScrollToTop } from "./functions/generalFunctions";
 
 // MAIN SHOP FUNCTION
 function Shop() {
-  const [user, setUser] = useState(getUser());
+  const [user, setUser] = useState([]);
+  setUser(getUser());
 
   const scrollToTop = () => {
     window.scrollTo(0, 0);
@@ -37,7 +38,7 @@ function Shop() {
     fetchData("/shop", setShopData);
     fetchCartData(setCartItems, user, "cart");
     fetchCartData(setGiftcards, user, "giftcard");
-  }, []);
+  }, [user]);
 
   const handleIncrement = (itemId) => {
     setDynamicItems((prevItems) => {

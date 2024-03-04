@@ -10,16 +10,6 @@ import allAges from "../assets/images/allages.jpeg";
 import nailBlog from "../assets/images/nails-blog.webp";
 import { BACKEND_ADDRESS } from "../App";
 
-function getUser() {
-  let user = localStorage.getItem("user");
-  if (user) {
-    user = JSON.parse(user);
-  } else {
-    user = null;
-  }
-  return user;
-}
-
 function ScrollToTop() {
   const location = useLocation();
 
@@ -33,9 +23,6 @@ function ScrollToTop() {
 }
 
 function Blog() {
-  const [user, setUser] = useState(getUser());
-  console.log("active user: ", user);
-
   const scrollToTop = () => {
     window.scrollTo(0, 0);
   };
@@ -148,7 +135,10 @@ function Blog() {
               Subscribe
             </button>
           </form>
-          <PopupInvalid isOpen={isInvalidEmailPopupOpen} closePopup={closeInvalidEmailPopup} />
+          <PopupInvalid
+            isOpen={isInvalidEmailPopupOpen}
+            closePopup={closeInvalidEmailPopup}
+          />
           <PopUpBlog isOpen={isBlogOpen} closePopup={closeBlog} />
         </div>
         <div className="overlay-box"></div>
@@ -193,8 +183,9 @@ function Blog() {
             <Link
               to={`/blog/blogpost/${post.category}/${post.id}`}
               onClick={scrollToTop}
+              style={{ textDecoration: "none" }}
             >
-              <button type="button">Read More</button>
+              <button>Read More</button>
             </Link>
           </div>
         ))}
