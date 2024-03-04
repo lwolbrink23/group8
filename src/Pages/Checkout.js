@@ -16,6 +16,8 @@ import Cookies from "js-cookie";
 import { fetchCartData, countItems } from "./functions/shopFunctions";
 import { getUser } from "./functions/generalFunctions";
 
+const GOOGLE_MAP_API_KEY = "AIzaSyCT8_IaZMXkjq56W857InU9Dvhl1UL5XrU";
+
 function Checkout() {
   // backend: check if user logged in. if logged in, get their info from the database and autofill in userAns
   const [enableSubmit, setEnableSubmit] = useState(false);
@@ -65,6 +67,7 @@ function Checkout() {
     city: "",
     state: "",
     zip: "",
+    address: "",
   });
   const [paymentErr, setPaymentErr] = useState({
     option: "",
@@ -106,8 +109,8 @@ function Checkout() {
     addressErr,
     paymentErr,
   ]);
-  const validateValues = (type) => {
-    console.log("validate on blur & on clicking submit");
+  const validateValues = async (type) => {
+    console.log("validate on blur & on clicking submit: " + type);
     let err = false;
     switch (type) {
       case "phone":
@@ -171,7 +174,42 @@ function Checkout() {
           updateInfo(setPaymentErr, "cvc", "");
         }
         break;
+      case "address":
+        try {
+          const address = {
+            street: addressInfo.street,
+            city: addressInfo.city,
+            state: addressInfo.state,
+            postalCode: addressInfo.zip,
+            country: "USA",
+          };
+          const fullAddress = `${address.street}, ${address.city}, ${address.state} ${address.postalCode}, ${address.country}`;
 
+          const response = await fetch(
+            `https://maps.googleapis.com/maps/api/geocode/json?address=${encodeURIComponent(
+              fullAddress
+            )}&key=${GOOGLE_MAP_API_KEY}`
+          );
+          const data = await response.json();
+          const { results } = data;
+          if (results && results.length > 0) {
+            const { lat, lng } = results[0].geometry.location;
+            console.log(`Latitude: ${lat}, Longitude: ${lng}`);
+            updateInfo(setAddressErr, "address", "");
+          } else {
+            console.error("No results found");
+            updateInfo(
+              setAddressErr,
+              "address",
+              "Please enter a valid address"
+            );
+            err = true;
+          }
+        } catch (error) {
+          console.error("Error fetching data:", error);
+        }
+
+        break;
       default:
         err = true;
         break;
@@ -359,6 +397,8 @@ function Checkout() {
 
   // handle place order
   const handlePlaceOrder = async () => {
+    validateValues("address");
+
     if (
       validateValues("phone") ||
       validateValues("zip") ||
@@ -542,6 +582,9 @@ function Checkout() {
               )}
             </div>
           </div>
+          {addressErr.address && (
+            <p style={{ color: "red" }}>{addressErr.address}</p>
+          )}
         </div>
         <div id="payment-info" className="cardbox">
           <h3>Payment Method</h3>
