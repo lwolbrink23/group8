@@ -102,38 +102,6 @@ function OrderDetails({ props }) {
     </div>
   );
 
-  {
-    /* I don't think we need this funcitonality -Lilly 
-  function CancelConfirm() {
-    return (
-      <div className="cancel-details">
-        <p>Cancel this Order?</p>
-        <p>
-          This action cannot be undone. Please review your decision carefully
-          before proceeding.
-        </p>
-
-          <button id="back">Go Back</button>
-          <button id="confirm">Confirm</button>
-
-      </div>
-    );
-  }
-
-  function Canceled() {
-    return (
-      <div className="cancel-details">
-        <p>Your Order has been Canceled.</p>
-        <p>
-          Your order of 2 items has been canceled. A confirmation email will be
-          sent within 24 hours.
-        </p>
-      </div>
-    );
-  }
-  */
-  }
-
   return (
     <div className="order-details-container">
       <h1>Order Details</h1>

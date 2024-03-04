@@ -1,4 +1,4 @@
-import React, { useState, useRef, useEffect } from "react";
+import React, { useState, useRef, useEffect, useCallback } from "react";
 import logoWeb from "../assets/logo/TSS Circle logo Transparent.png";
 import logoMobile from "../assets/logo/TSS Horizontal Logo Transparent.png";
 import profileicon from "../assets/icons/icons8-person-female-100.png";
@@ -8,13 +8,7 @@ import blogicon from "../assets/icons/icons8-article-96.png";
 import faqicon from "../assets/icons/icons8-faq-96.png";
 import shopicon from "../assets/icons/icons8-shop-96.png";
 import contacticon from "../assets/icons/icons8-contact-96.png";
-import {
-  Link,
-  useMatch,
-  useResolvedPath,
-  useNavigate,
-  useLocation,
-} from "react-router-dom";
+import { Link, useMatch, useResolvedPath, useLocation } from "react-router-dom";
 import "../Styles/header.css"; // main stylesheet
 import "../Styles/responsiveHeader.css"; // responsive stylesheet
 
@@ -22,14 +16,25 @@ function Header() {
   const [isHamburgerOpen, setHamburgerOpen] = useState(false);
   const menuRef = useRef();
 
-  {
-    /* making side bar slide in and out */
-  }
+  /* making side bar slide in and out */
   const [isSidebarOpen, setIsSidebarOpen] = useState(false);
   const [activeSubpage, setActiveSubpage] = useState(null);
   const sidebarRef = useRef(null);
-  const navigate = useNavigate();
   const { pathname } = useLocation();
+
+  const toggleSidebar = useCallback(() => {
+    if (isSidebarOpen) {
+      sidebarRef.current.style.animationName = "slideOut";
+      setTimeout(() => {
+        setIsSidebarOpen(false);
+        setHamburgerOpen(false);
+      }, 800);
+    } else {
+      setIsSidebarOpen(true);
+      setHamburgerOpen(true);
+      sidebarRef.current.style.animationName = "slideIn";
+    }
+  }, [isSidebarOpen, setIsSidebarOpen, setHamburgerOpen, sidebarRef]);
 
   useEffect(() => {
     // Reset activeSubpage when navigating to a new page
@@ -52,21 +57,7 @@ function Header() {
     return () => {
       document.removeEventListener("mousedown", handleClickOutside);
     };
-  }, [isSidebarOpen]);
-
-  const toggleSidebar = () => {
-    if (isSidebarOpen) {
-      sidebarRef.current.style.animationName = "slideOut";
-      setTimeout(() => {
-        setIsSidebarOpen(false);
-        setHamburgerOpen(false);
-      }, 800);
-    } else {
-      setIsSidebarOpen(true);
-      setHamburgerOpen(true);
-      sidebarRef.current.style.animationName = "slideIn";
-    }
-  };
+  }, [isSidebarOpen, toggleSidebar, menuRef]);
 
   const toggleSubpage = (subpage) => {
     console.log("in toggleSubpage");
@@ -258,7 +249,6 @@ function Header() {
                 onClick={toggleSidebar}
               >
                 {" "}
-                {/*I added centerbutton as a class for the book now button because the previous css was messing with the buttons on the entire site. -Lindsey*/}
                 Book Now
               </CustomLink>
             </li>

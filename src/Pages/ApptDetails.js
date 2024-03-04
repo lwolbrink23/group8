@@ -25,7 +25,7 @@ function ApptDetails({ props }) {
   const location = useLocation();
   const navigate = useNavigate();
 
-  const [user, setUser] = useState(getUser());
+  const user = useState(getUser());
 
   console.log("location.state: ", location.state);
   const [appointmentStatus, setAppointmentStatus] = useState(
@@ -91,7 +91,7 @@ function ApptDetails({ props }) {
   // Function to rescheudle appointment
   const rescheduleAppt = () => {
     console.log("Rescheduled Appointment clicked for ID:", location.state.id);
-    cancelAppt()
+    cancelAppt();
     // INSERT LOGIC HERE TO CANCEL THE APPOINTMENT
     // THEN REROUTE THEM TO SPECIFIC PROVIDER PROFILE PAGE
     navigate(`/providerprofile/${location.state.provProfId}`);

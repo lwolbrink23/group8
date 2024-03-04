@@ -1,9 +1,5 @@
 import "../App.css";
 import "../Styles/booknow.css";
-import SimplyChicHair from "../assets/images/SimplyChicHair.png";
-import Polish from "../assets/images/PolishPerfection.png";
-import Brush from "../assets/images/BrushBlushBeauty.png";
-import Hands from "../assets/images/HealingHandsSpa.png";
 import { Link } from "react-router-dom";
 // import suiteData from "../data/providers.json";
 import React, { useEffect, useState } from "react";
@@ -21,7 +17,7 @@ function getUser() {
 
 function BookNowDirectory() {
   const [suiteData, setSuiteData] = useState([]);
-  const [user, setUser] = useState(getUser());
+  const user = useState(getUser());
   console.log("active user: ", user);
 
   useEffect(() => {

@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { Link, useLocation, useNavigate } from "react-router-dom";
+import { useLocation, useNavigate } from "react-router-dom";
 import "../App.css";
 import "../Styles/ApptOverview.css";
 import store from "../assets/icons/icons8-shop-96.png";
@@ -30,12 +30,13 @@ function ScrollToTop() {
 }
 
 function Overview() {
-  const [user, setUser] = useState(getUser());
+  const user = useState(getUser());
   console.log("active user: ", user);
 
-  const scrollToTop = () => {
+  /*const scrollToTop = () => {
     window.scrollTo(0, 0);
-  };
+  }; */
+
   const location = useLocation();
   const selectedServices = location.state?.service || [];
   const totalCost = location.state?.totalCost || 0;
@@ -49,14 +50,13 @@ function Overview() {
   const staff = location.state?.staff;
   const serviceTitle = location.state?.serviceTitle;
 
-  console.log(duration)
+  console.log(duration);
 
   const navigate = useNavigate();
 
   // in progress of this:
   const handleBookNow = async () => {
     try {
-
       const user = getUser();
       console.log(user.id);
       if (!user || !user.id) {
@@ -76,10 +76,10 @@ function Overview() {
         serviceName,
         provProfPic,
         provProfId,
-        staff
+        staff,
       };
 
-      console.log(bookingData)
+      console.log(bookingData);
 
       // Make a POST request to the backend booking route
       const response = await fetch("http://localhost:3003/bookings", {
@@ -95,7 +95,15 @@ function Overview() {
 
         const data = await response.json();
         console.log("Booking successful:", data);
-        navigate("/appointment_confirmed", { state: { service: selectedServices, totalCost: totalCost, date: formattedDate, time: clickedTime, serviceName: serviceName } });
+        navigate("/appointment_confirmed", {
+          state: {
+            service: selectedServices,
+            totalCost: totalCost,
+            date: formattedDate,
+            time: clickedTime,
+            serviceName: serviceName,
+          },
+        });
         // Navigate to confirmation page or do something else
       } else {
         // Handle error
@@ -194,11 +202,7 @@ function Overview() {
             </div>
           </div>
           {/*book now button*/}
-          <button
-            type="button"
-            className="purp-button"
-            onClick={handleBookNow}
-          >
+          <button type="button" className="purp-button" onClick={handleBookNow}>
             Book Now
           </button>
         </div>
