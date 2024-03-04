@@ -71,7 +71,7 @@ function Header() {
   }, [isSidebarOpen, toggleSidebar, menuRef]);
 
   const toggleSubpage = (subpage) => {
-    console.log("in toggleSubpage");
+    //console.log("in toggleSubpage");
     setActiveSubpage(activeSubpage === subpage ? null : subpage);
   };
 
