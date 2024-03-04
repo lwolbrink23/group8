@@ -4,6 +4,7 @@ import "../App.css";
 import "../Styles/apptdetails.css";
 import calendaricon from "../assets/icons/calendaricon.png";
 import BackButton from "../Components/BackButton";
+import PopUpCancel from "../Components/PopUpCancel";
 
 function getUser() {
   let user = localStorage.getItem("user");
@@ -16,6 +17,12 @@ function getUser() {
 }
 
 function ApptDetails({ props }) {
+
+  const [isPopUpOpen, setIsPopUpOpen] = useState(false);
+
+  const openPopUp = () => setIsPopUpOpen(true);
+  const closePopUp = () => setIsPopUpOpen(false);
+
   const location = useLocation();
   const navigate = useNavigate();
 
@@ -86,6 +93,10 @@ function ApptDetails({ props }) {
     // THEN REROUTE THEM TO SPECIFIC PROVIDER PROFILE PAGE
     navigate(`/providerprofile/${location.state.provProfId}`);
   };
+
+  const cancelAppt = () => {
+    console.log("clicked")
+  }
 
   // Path for the image
   const provProfPic = location.state.provProfPic;
@@ -183,6 +194,7 @@ function ApptDetails({ props }) {
           <p className="bolded">Staff</p>
           <p>{location.state.staff}</p>
         </div>
+        <PopUpCancel isOpen={isPopUpOpen} closePopUp={closePopUp} cancelAppt={cancelAppt} />
         <div className="btns-container">
           <div className="cancelApptBtnContainer">
             <button
@@ -191,6 +203,7 @@ function ApptDetails({ props }) {
               style={{
                 display: getStatusCancelBtn(location.state.status),
               }}
+              onClick={() => openPopUp()}
             >
               Cancel
             </button>
