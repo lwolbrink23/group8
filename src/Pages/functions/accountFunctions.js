@@ -1,5 +1,4 @@
 import { BACKEND_ADDRESS } from "../../App";
-import Cookies from "js-cookie";
 
 export const fetchData = async (endpoint, setDataFunction) => {
   try {
