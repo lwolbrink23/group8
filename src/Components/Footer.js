@@ -64,7 +64,7 @@ function Footer() {
       } else {
         console.error(
           "Failed to subscribe to newsletter:",
-          response.statusText,
+          response.statusText
         );
       }
     } catch (error) {
@@ -128,13 +128,13 @@ function Footer() {
           </button>
           <PopupNews isOpen={isPopupOpen} closePopup={closePopup} />
           <div className="social-icons">
-            <a href="#">
+            <a href="https://www.facebook.com">
               <img src={Facebook} alt="Facebook" />
             </a>
-            <a href="#">
+            <a href="https://www.instagram.com">
               <img src={Insta} alt="Instagram" />
             </a>
-            <a href="#">
+            <a href="https://www.tiktok.com">
               <img src={Tiktok} alt="TikTok" />
             </a>
           </div>
