@@ -14,13 +14,14 @@ import {
 import { getUser } from "./functions/generalFunctions";
 
 function Cart() {
+  const user = getUser();
   // BACKEND: load cart data from database here
   const [cartItems, setCartItems] = useState([]);
   const [giftcards, setGiftcards] = useState([]);
   const [shopData, setShopData] = useState([]);
   const [popupItem, setPopupItem] = useState("");
-  const user = getUser();
-
+  const [scrollPosition, setScrollPosition] = useState(0);
+  const scrollableDivRef = useRef(null);
   // keep a state for login here, useeffect to update it
 
   useEffect(() => {
@@ -40,45 +41,46 @@ function Cart() {
       });
     }
   };
-  const [scrollPosition, setScrollPosition] = useState(0);
-  const scrollableDivRef = useRef(null);
-  useEffect(() => {
-    if (scrollableDivRef.current) {
-      scrollableDivRef.current.scrollTop = scrollPosition;
-    }
-  }, [scrollPosition]);
 
   // increment & decrement
   const handleIncrement = (itemId, type) => {
     const isGift = type === "giftcard";
     const prop = isGift ? "price" : "id";
-    const change = (prevItems) => {
-      const updatedItems = prevItems.map((item) =>
-        item[prop] === itemId ? { ...item, qty: item.qty + 1 } : item
-      );
-      return updatedItems;
-    };
-    isGift ? setGiftcards(change) : setCartItems(change);
+
+    const updatedItems = isGift
+      ? giftcards.map((item) =>
+          item[prop] === itemId ? { ...item, qty: item.qty + 1 } : item
+        )
+      : cartItems.map((item) =>
+          item[prop] === itemId ? { ...item, qty: item.qty + 1 } : item
+        );
+
+    isGift ? setGiftcards(updatedItems) : setCartItems(updatedItems);
+
+    updateCartBackend(updatedItems, type);
   };
 
   const handleDecrement = (itemId, itemName, itemQty, type) => {
     const isGift = type === "giftcard";
     const prop = isGift ? "price" : "id";
 
-    const change = (prevItems) => {
-      const newArray = prevItems.map((item) =>
-        item[prop] === itemId && item.qty > 0
-          ? { ...item, qty: item.qty - 1 }
-          : item
-      );
-      return newArray;
-    };
+    const newArray = isGift
+      ? giftcards.map((item) =>
+          item[prop] === itemId && item.qty > 0
+            ? { ...item, qty: item.qty - 1 }
+            : item
+        )
+      : cartItems.map((item) =>
+          item[prop] === itemId && item.qty > 0
+            ? { ...item, qty: item.qty - 1 }
+            : item
+        );
 
-    // handle if qty is 1 and user press decrment
     if (itemQty === 1) {
       setPopupItem({ itemName, itemId, type });
     } else {
-      isGift ? setGiftcards(change) : setCartItems(change);
+      isGift ? setGiftcards(newArray) : setCartItems(newArray);
+      updateCartBackend(newArray, type);
     }
   };
 
@@ -168,8 +170,6 @@ function Cart() {
     giftcards.forEach((item) => {
       t += item.price * item.qty;
     });
-    updateCartBackend(cartItems, "cart");
-    updateCartBackend(giftcards, "giftcard");
 
     return t.toFixed(2);
   };
