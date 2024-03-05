@@ -19,6 +19,7 @@ function OrderPlaced() {
   const [cartData, setCartData] = useState([]);
   const [giftcardData, setGiftcardData] = useState([]);
   const [shopData, setShopData] = useState([]);
+  const [shippingInfo, setShippingInfo] = useState("");
   console.log("active user: ", user);
 
   useEffect(() => {
@@ -26,10 +27,11 @@ function OrderPlaced() {
       const orderInfo = await fetchDataReturn(`/order_placed/${id}`);
       setCartData(orderInfo.cart.items);
       setGiftcardData(orderInfo.cart.giftcards);
+      setShippingInfo(orderInfo.shippingInfo.addressInfo);
     };
     fetchOrderData();
     fetchData("/shop", setShopData);
-  }, [id]);
+  }, []);
   const OrderedItems = () => {
     const mergedItems = [...cartData, ...giftcardData];
     return (
@@ -112,12 +114,18 @@ function OrderPlaced() {
             and grooming needs.<br></br> You will receive a confirmation email
             shortly.
           </p>
-          {giftcardData && (
+
+          <p>
+            <span className="bold">Ship to:</span> {shippingInfo.street},{" "}
+            {shippingInfo.city}, {shippingInfo.state} {shippingInfo.zip}
+          </p>
+
+          {/* {giftcardData && (
             <p>
               Please allow a maximum of 24 hours <br></br>for the delivery of
               your gift card codes to your email.
             </p>
-          )}
+          )} */}
           <Link to="/" className="home-desktop">
             <button className="button">Back to Home</button>
           </Link>

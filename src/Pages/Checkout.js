@@ -161,7 +161,7 @@ function Checkout() {
           err = true;
         } else {
           updateInfo(setAddressErr, "zip", "");
-          validateValues("address");
+          updateInfo(setAddressErr, "address", "");
         }
         break;
 
@@ -208,14 +208,14 @@ function Checkout() {
         break;
       case "address":
         const { results } = await validateAddress(addressInfo);
-        console.log(results);
+        // console.log(results);
         if (
           results &&
           results.length > 0 &&
           results[0].geometry.location_type === "ROOFTOP"
         ) {
-          const { lat, lng } = results[0].geometry.location;
-          console.log(`Latitude: ${lat}, Longitude: ${lng}`);
+          // const { lat, lng } = results[0].geometry.location;
+          // console.log(`Latitude: ${lat}, Longitude: ${lng}`);
           updateInfo(setAddressErr, "address", "");
         } else {
           console.error("No results found");
@@ -423,6 +423,34 @@ function Checkout() {
       return;
     }
 
+    let Ccity = "";
+    let Cstate = "";
+    let Czip = "";
+
+    const address = {
+      street: addressInfo.street,
+    };
+    const { results } = await validateAddress(address);
+
+    if (
+      results &&
+      results.length > 0 &&
+      results[0].geometry.location_type === "ROOFTOP"
+    ) {
+      const addressComponents = results[0].address_components;
+      addressComponents.forEach((component) => {
+        if (component.types.includes("locality")) {
+          Ccity = component.long_name.toUpperCase();
+        }
+        if (component.types.includes("administrative_area_level_1")) {
+          Cstate = component.short_name;
+        }
+        if (component.types.includes("postal_code")) {
+          Czip = component.long_name;
+        }
+      });
+    }
+
     // put a price in each item in cartItems
 
     const cartWithData = cartItems.map((item) => {
@@ -433,6 +461,7 @@ function Checkout() {
       };
     });
 
+    // create new order
     const newOrder = {
       userID: user ? user.id : "",
       status: "Processing",
@@ -447,15 +476,16 @@ function Checkout() {
         name: `${personalInfo.firstName} ${personalInfo.lastName}`,
         phone: personalInfo.phone,
         addressInfo: {
-          street: addressInfo.street,
-          city: addressInfo.city,
-          state: addressInfo.state,
-          zip: addressInfo.zip,
+          street: addressInfo.street.toUpperCase(),
+          city: Ccity,
+          state: Cstate,
+          zip: Czip,
         },
       },
       date: Date.now(),
     };
 
+    // put in database
     fetch(`${BACKEND_ADDRESS}/checkout`, {
       method: "POST",
       headers: {
