@@ -11,12 +11,13 @@ import {
   fetchData,
   updateUserCartDB,
   updateInfo,
+  validateAddress,
 } from "./functions/shopFunctions";
 import Cookies from "js-cookie";
 import { fetchCartData, countItems } from "./functions/shopFunctions";
 import { getUser } from "./functions/generalFunctions";
 
-const GOOGLE_MAP_API_KEY = "AIzaSyCT8_IaZMXkjq56W857InU9Dvhl1UL5XrU";
+const GOOGLE_MAP_API_KEY = "AIzaSyB2LNpd3jJc9IAULUcx031ac2E2vQCIWOE";
 
 function Checkout() {
   // backend: check if user logged in. if logged in, get their info from the database and autofill in userAns
@@ -110,7 +111,7 @@ function Checkout() {
     paymentErr,
   ]);
   const validateValues = async (type) => {
-    console.log("validate on blur & on clicking submit: " + type);
+    // console.log("validate on blur & on clicking submit: " + type);
     let err = false;
     switch (type) {
       case "phone":
@@ -132,6 +133,7 @@ function Checkout() {
           err = true;
         } else {
           updateInfo(setAddressErr, "zip", "");
+          validateValues("address");
         }
         break;
 
@@ -141,6 +143,7 @@ function Checkout() {
           err = true;
         } else {
           updateInfo(setAddressErr, "city", "");
+          updateInfo(setAddressErr, "address", "");
         }
         break;
 
@@ -150,6 +153,7 @@ function Checkout() {
           err = true;
         } else {
           updateInfo(setAddressErr, "state", "");
+          updateInfo(setAddressErr, "address", "");
         }
         break;
 
@@ -176,27 +180,12 @@ function Checkout() {
         break;
       case "address":
         try {
-          const address = {
-            street: addressInfo.street,
-            city: addressInfo.city,
-            state: addressInfo.state,
-            postalCode: addressInfo.zip,
-            country: "USA",
-          };
-          const fullAddress = `${address.street}, ${address.city}, ${address.state} ${address.postalCode}, ${address.country}`;
-
-          const response = await fetch(
-            `https://maps.googleapis.com/maps/api/geocode/json?address=${encodeURIComponent(
-              fullAddress
-            )}&key=${GOOGLE_MAP_API_KEY}`
-          );
-          const data = await response.json();
-          const { results } = data;
-          console.log(data);
+          const { results } = await validateAddress(addressInfo);
+          console.log(results);
           if (
             results &&
             results.length > 0 &&
-            results[0].geometry.location_type === "ROOFTOP "
+            results[0].geometry.location_type === "ROOFTOP"
           ) {
             const { lat, lng } = results[0].geometry.location;
             console.log(`Latitude: ${lat}, Longitude: ${lng}`);
@@ -216,10 +205,10 @@ function Checkout() {
 
         break;
       default:
-        err = true;
+        // err = true;
         break;
-        return err;
     }
+    return err;
   };
 
   const handleChange = (type, propertyName, value) => {
@@ -402,15 +391,14 @@ function Checkout() {
 
   // handle place order
   const handlePlaceOrder = async () => {
-    validateValues("address");
-
     if (
-      validateValues("phone") ||
-      validateValues("zip") ||
-      validateValues("city") ||
-      validateValues("state") ||
-      validateValues("cc") ||
-      validateValues("cvc")
+      (await validateValues("address")) ||
+      (await validateValues("phone")) ||
+      (await validateValues("zip")) ||
+      (await validateValues("city")) ||
+      (await validateValues("state")) ||
+      (await validateValues("cc")) ||
+      (await validateValues("cvc"))
     ) {
       return;
     }

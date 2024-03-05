@@ -94,3 +94,27 @@ export const updateInfo = (setFunction, propertyName, value) => {
     [propertyName]: value,
   }));
 };
+
+const GOOGLE_MAP_API_KEY = "AIzaSyB2LNpd3jJc9IAULUcx031ac2E2vQCIWOE";
+export const validateAddress = async (addressInfo) => {
+  try {
+    const address = {
+      street: addressInfo.street,
+      city: addressInfo.city,
+      state: addressInfo.state,
+      postalCode: addressInfo.zip,
+      country: "USA",
+    };
+    const fullAddress = `${address.street}, ${address.city}, ${address.state} ${address.postalCode}, ${address.country}`;
+
+    const response = await fetch(
+      `https://maps.googleapis.com/maps/api/geocode/json?address=${encodeURIComponent(
+        fullAddress
+      )}&key=${GOOGLE_MAP_API_KEY}`
+    );
+    const data = await response.json();
+    return data;
+  } catch (error) {
+    console.error("Error fetching data:", error);
+  }
+};
