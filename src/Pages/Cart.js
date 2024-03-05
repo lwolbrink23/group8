@@ -19,7 +19,7 @@ function Cart() {
   const [giftcards, setGiftcards] = useState([]);
   const [shopData, setShopData] = useState([]);
   const [popupItem, setPopupItem] = useState("");
-  const user = useState(getUser());
+  const user = getUser();
 
   // keep a state for login here, useeffect to update it
 
@@ -28,7 +28,7 @@ function Cart() {
     fetchData("/shop", setShopData);
     fetchCartData(setCartItems, user, "cart");
     fetchCartData(setGiftcards, user, "giftcard");
-  }, [user]);
+  }, []);
 
   const updateCartBackend = (newCartItems, type) => {
     if (user) {

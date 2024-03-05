@@ -24,7 +24,7 @@ function Checkout() {
   const [shopData, setShopData] = useState([]);
   const [cartItems, setCartItems] = useState([]);
   const [giftcards, setGiftcards] = useState([]);
-  const user = useState(getUser());
+  const user = getUser();
 
   const navigate = useNavigate();
 
@@ -33,7 +33,7 @@ function Checkout() {
     fetchData("/shop", setShopData);
     fetchCartData(setCartItems, user, "cart");
     fetchCartData(setGiftcards, user, "giftcard");
-  }, [user]);
+  }, []);
 
   // user inputs
   const [personalInfo, setPersonalInfo] = useState({
