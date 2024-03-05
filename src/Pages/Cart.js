@@ -3,7 +3,7 @@ import plusICON from "../assets/icons/black-plus.png";
 import minusICON from "../assets/icons/black-minus.png";
 import Shopheader from "../Components/Shopheader";
 import { Link } from "react-router-dom";
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef } from "react";
 import Cookies from "js-cookie";
 import {
   fetchCartData,
@@ -40,6 +40,13 @@ function Cart() {
       });
     }
   };
+  const [scrollPosition, setScrollPosition] = useState(0);
+  const scrollableDivRef = useRef(null);
+  useEffect(() => {
+    if (scrollableDivRef.current) {
+      scrollableDivRef.current.scrollTop = scrollPosition;
+    }
+  }, [scrollPosition]);
 
   // increment & decrement
   const handleIncrement = (itemId, type) => {
@@ -80,7 +87,11 @@ function Cart() {
     const mergedItems = [...cartItems, ...giftcards];
 
     return (
-      <div className="cart-container">
+      <div
+        className="cart-container"
+        ref={scrollableDivRef}
+        onScroll={() => setScrollPosition(scrollableDivRef.current.scrollTop)}
+      >
         {mergedItems.map((item, i) => {
           const isGift = item.id === "giftcard";
           let itemName = isGift ? "Gift Card" : "";
