@@ -41,6 +41,7 @@ function Checkout() {
     firstName: "",
     lastName: "",
     phone: "",
+    email: "",
   });
   const [addressInfo, setAddressInfo] = useState({
     street: "",
@@ -62,6 +63,7 @@ function Checkout() {
     firstName: "",
     lastName: "",
     phone: "",
+    email: "",
   });
   const [addressErr, setAddressErr] = useState({
     street: "",
@@ -114,6 +116,14 @@ function Checkout() {
     // console.log("validate on blur & on clicking submit: " + type);
     let err = false;
     switch (type) {
+      case "email":
+        if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(personalInfo.email)) {
+          updateInfo(setPersonalErr, "email", "Please enter a valid email");
+          err = true;
+        } else {
+          updateInfo(setPersonalErr, "email", "");
+        }
+        break;
       case "phone":
         if (!/^\(\d{3}\) \d{3}-\d{4}$/.test(personalInfo.phone)) {
           updateInfo(
@@ -243,7 +253,7 @@ function Checkout() {
           updateInfo(setPersonalInfo, propertyName, newVal);
         }
         // make sure 10 digits
-        else {
+        else if (propertyName === "phone") {
           const digits = value.replace(/\D/g, "");
           let formattedPhoneNumber = "";
 
@@ -413,6 +423,7 @@ function Checkout() {
   const handlePlaceOrder = async () => {
     if (
       (await validateValues("address")) ||
+      (await validateValues("email")) ||
       (await validateValues("phone")) ||
       (await validateValues("zip")) ||
       (await validateValues("city")) ||
@@ -475,6 +486,7 @@ function Checkout() {
       shippingInfo: {
         name: `${personalInfo.firstName} ${personalInfo.lastName}`,
         phone: personalInfo.phone,
+        email: personalInfo.email,
         addressInfo: {
           street: addressInfo.street.toUpperCase(),
           city: Ccity,
@@ -552,6 +564,21 @@ function Checkout() {
           </div>
           {personalErr.lastName && (
             <p style={{ color: "red" }}>{personalErr.lastName}</p>
+          )}
+          {/* email input */}
+          <div>
+            <input
+              type="text"
+              placeholder="Email*"
+              value={personalInfo.email}
+              onBlur={() => validateValues("email")}
+              onChange={(e) =>
+                handleChange("personal", "email", e.target.value)
+              }
+            />
+          </div>
+          {personalErr.email && (
+            <p style={{ color: "red" }}>{personalErr.email}</p>
           )}
           {/* phone input */}
           <div>
