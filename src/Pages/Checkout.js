@@ -126,6 +126,34 @@ function Checkout() {
           updateInfo(setPersonalErr, "phone", "");
         }
         break;
+      case "street":
+        const street = async () => {
+          const address = {
+            street: addressInfo.street,
+          };
+          const { results } = await validateAddress(address);
+
+          if (
+            results &&
+            results.length > 0 &&
+            results[0].geometry.location_type === "ROOFTOP"
+          ) {
+            const addressComponents = results[0].address_components;
+            addressComponents.forEach((component) => {
+              if (component.types.includes("locality")) {
+                updateInfo(setAddressInfo, "city", component.long_name);
+              }
+              if (component.types.includes("administrative_area_level_1")) {
+                updateInfo(setAddressInfo, "state", component.short_name);
+              }
+              if (component.types.includes("postal_code")) {
+                updateInfo(setAddressInfo, "zip", component.long_name);
+              }
+            });
+          }
+        };
+        street();
+        break;
 
       case "zip":
         if (!/^\d{5}$/.test(addressInfo.zip)) {
@@ -179,28 +207,20 @@ function Checkout() {
         }
         break;
       case "address":
-        try {
-          const { results } = await validateAddress(addressInfo);
-          console.log(results);
-          if (
-            results &&
-            results.length > 0 &&
-            results[0].geometry.location_type === "ROOFTOP"
-          ) {
-            const { lat, lng } = results[0].geometry.location;
-            console.log(`Latitude: ${lat}, Longitude: ${lng}`);
-            updateInfo(setAddressErr, "address", "");
-          } else {
-            console.error("No results found");
-            updateInfo(
-              setAddressErr,
-              "address",
-              "Please enter a valid address"
-            );
-            err = true;
-          }
-        } catch (error) {
-          console.error("Error fetching data:", error);
+        const { results } = await validateAddress(addressInfo);
+        console.log(results);
+        if (
+          results &&
+          results.length > 0 &&
+          results[0].geometry.location_type === "ROOFTOP"
+        ) {
+          const { lat, lng } = results[0].geometry.location;
+          console.log(`Latitude: ${lat}, Longitude: ${lng}`);
+          updateInfo(setAddressErr, "address", "");
+        } else {
+          console.error("No results found");
+          updateInfo(setAddressErr, "address", "Please enter a valid address");
+          err = true;
         }
 
         break;
