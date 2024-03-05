@@ -207,6 +207,17 @@ function Checkout() {
           updateInfo(setPaymentErr, "cardNum", "");
         }
         break;
+      case "validCard":
+        const curDate = new Date();
+        const curMonth = curDate.getMonth() + 1;
+        const curYear = curDate.getFullYear() % 100;
+        if (paymentInfo.mm <= curMonth && paymentInfo.yy <= curYear) {
+          updateInfo(setPaymentErr, "name", "Please enter an unexpired card");
+          err = true;
+        } else {
+          updateInfo(setPaymentErr, "name", "");
+        }
+        break;
 
       case "cvc":
         if (!/^\d{3}$/.test(paymentInfo.cvc)) {
@@ -423,6 +434,7 @@ function Checkout() {
   const handlePlaceOrder = async () => {
     if (
       (await validateValues("address")) ||
+      (await validateValues("validCard")) ||
       (await validateValues("email")) ||
       (await validateValues("phone")) ||
       (await validateValues("zip")) ||
@@ -712,7 +724,7 @@ function Checkout() {
                   type="text"
                   placeholder="mm*"
                   value={paymentInfo.mm}
-                  onBlur={() => validateValues("mm")}
+                  onBlur={() => validateValues("validCard")}
                   onChange={(e) =>
                     handleChange("payment", "mm", e.target.value)
                   }
@@ -726,7 +738,7 @@ function Checkout() {
                   type="text"
                   placeholder="yy*"
                   value={paymentInfo.yy}
-                  onBlur={() => validateValues("yy")}
+                  onBlur={() => validateValues("validCard")}
                   onChange={(e) =>
                     handleChange("payment", "yy", e.target.value)
                   }
@@ -761,6 +773,9 @@ function Checkout() {
                   handleChange("payment", "name", e.target.value)
                 }
               />
+              {paymentErr.name && (
+                <p style={{ color: "red" }}>{paymentErr.name}</p>
+              )}
             </div>
           </div>
         </div>
