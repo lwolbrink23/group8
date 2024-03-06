@@ -20,8 +20,6 @@ function Cart() {
   const [giftcards, setGiftcards] = useState([]);
   const [shopData, setShopData] = useState([]);
   const [popupItem, setPopupItem] = useState("");
-  const [scrollPosition, setScrollPosition] = useState(0);
-  const scrollableDivRef = useRef(null);
   // keep a state for login here, useeffect to update it
 
   useEffect(() => {
@@ -89,11 +87,7 @@ function Cart() {
     const mergedItems = [...cartItems, ...giftcards];
 
     return (
-      <div
-        className="cart-container"
-        ref={scrollableDivRef}
-        onScroll={() => setScrollPosition(scrollableDivRef.current.scrollTop)}
-      >
+      <div className="cart-container">
         {mergedItems.map((item, i) => {
           const isGift = item.id === "giftcard";
           let itemName = isGift ? "Gift Card" : "";
