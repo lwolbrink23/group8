@@ -25,7 +25,7 @@ function ApptDetails({ props }) {
   const location = useLocation();
   const navigate = useNavigate();
 
-  const user = useState(getUser());
+  const [user, setUser] = useState(getUser());
 
   console.log("location.state: ", location.state);
   const [appointmentStatus, setAppointmentStatus] = useState(
@@ -113,8 +113,7 @@ function ApptDetails({ props }) {
           "Content-Type": "application/json",
         },
         body: JSON.stringify({ userId, appointmentId }),
-        // You might not need a body if the API endpoint implicitly sets status to 'cancelled'
-        // body: JSON.stringify({ status: 'cancelled' }),
+
       });
 
       if (response.ok) {
