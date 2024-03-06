@@ -24,7 +24,6 @@ export const fetchDataReturn = async (endpoint) => {
 export const fetchCartDB = async (userID, type) => {
   const response = await fetch(`${BACKEND_ADDRESS}/user/${userID}/${type}`);
   const jsonData = await response.json();
-  console.log(jsonData);
   return jsonData;
 };
 
