@@ -25,13 +25,13 @@ function ProductPage() {
   const [cartItems, setCartItems] = useState([]);
   const [giftcards, setGiftcards] = useState([]);
   const [cartPopup, setCartPopup] = useState("");
-  const user = getUser();
+  const [user, setUser] = useState(getUser());
 
   useEffect(() => {
     fetchData(`/shop/${id}`, setProduct);
     fetchCartData(setCartItems, user, "cart");
     fetchCartData(setGiftcards, user, "giftcard");
-  }, [id, user]);
+  }, []);
 
   if (!product) {
     return <div>Loading product details...</div>;
