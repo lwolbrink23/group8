@@ -4,7 +4,6 @@ import cors from "cors";
 import "dotenv/config";
 
 // import routes
-import exampleRoutes from "./routes/routes.js";
 import accountRoutes from "./routes/accountRoutes.js";
 import shopRoutes from "./routes/shopRoutes.js";
 import userRoutes from "./routes/userRoutes.js";
@@ -37,7 +36,6 @@ const client = new MongoClient(MONGODB_URI, {
 await client.connect();
 const database = client.db("TheSuiteSpot");
 // use the imported routes here!!
-exampleRoutes(app, client.db("sample_analytics"));
 shopRoutes(app, database);
 providerRoutes(app, database);
 blogRoutes(app, database);
