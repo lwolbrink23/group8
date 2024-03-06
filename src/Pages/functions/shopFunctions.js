@@ -78,7 +78,7 @@ export const fetchCartData = async (setCartItems, user, type) => {
     const cartDB = await fetchCartDB(user.id, type);
     const mergedCartItems = mergeCarts(cartCookie, cartDB, type);
     setCartItems(mergedCartItems);
-    updateUserCartDB(user.id, mergedCartItems, type);
+    await updateUserCartDB(user.id, mergedCartItems, type);
     Cookies.remove(type);
   } else if (user) {
     const cartDB = await fetchCartDB(user.id, type);
