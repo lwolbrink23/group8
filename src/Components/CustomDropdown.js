@@ -16,14 +16,14 @@ const CustomDropdown = ({ title, ContentComponent, icon }) => {
 
   return (
     <div className="dropdown">
-      <div className="dropdown-btn" onClick={toggleVisibility}>
+      <button className="dropdown-btn" onClick={toggleVisibility}>
         <h3>{title}</h3>
         <img
           src={require(`../assets/icons/${icon}`)}
           alt="Arrow"
           style={arrowIconStyle}
         />
-      </div>
+      </button>
       {dropdownVisible && <ContentComponent />}
     </div>
   );

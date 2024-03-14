@@ -549,7 +549,7 @@ function Checkout() {
         <div className="checkout-dropdown cardbox" id="shipping-info">
           <button
             onClick={() => setOpenShipInfo(!openShipInfo)}
-            className="dropdown-toggle"
+            className="dropdown-btn"
           >
             <span>Shipping Information</span>
             <img
@@ -690,7 +690,7 @@ function Checkout() {
         <div className="checkout-dropdown cardbox" id="payment-info">
           <button
             onClick={() => setOpenPayInfo(!openPayInfo)}
-            className="dropdown-toggle"
+            className="dropdown-btn"
           >
             <span>Payment Method</span>
             <img

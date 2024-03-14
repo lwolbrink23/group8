@@ -123,8 +123,7 @@ input[type="text"]:focus {
   align-items: center;
   color: #000000;
 }
-/* dropdown */
-.checkout-dropdown button {
+#checkout .dropdown-btn {
   font-size: 25px;
   font-family: "cormorant-bold", serif;
   text-transform: none;
@@ -135,6 +134,9 @@ input[type="text"]:focus {
   box-shadow: none;
   border-radius: 0%;
   padding: 23px;
+}
+/* dropdown */
+.checkout-dropdown button {
   display: flex;
   align-items: center;
   justify-content: space-between;
