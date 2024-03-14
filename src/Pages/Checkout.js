@@ -548,13 +548,12 @@ function Checkout() {
         qty={countItems([...cartItems, ...giftcards])}
       />
       <main>
-        <div className="shop-dropdown">
+        <div className="checkout-dropdown cardbox" id="shipping-info">
           <button onClick={toggleDropdown} className="dropdown-toggle">
             Shipping Information
           </button>
           {isOpen && (
-            <div id="shipping-info" className="cardbox">
-              <h3>Shipping Information</h3>
+            <div className="checkout-dropdown-content">
               {/* First name input */}
               <div>
                 <input
