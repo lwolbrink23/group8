@@ -536,8 +536,8 @@ function Checkout() {
         console.error("Error inserting order:", error);
       });
   };
-  const [openShipInfo, setOpenShipInfo] = useState(false);
-  const [openPayInfo, setOpenPayInfo] = useState(false);
+  const [openShipInfo, setOpenShipInfo] = useState(true);
+  const [openPayInfo, setOpenPayInfo] = useState(true);
   // main stuff
   return (
     <div id="checkout">
