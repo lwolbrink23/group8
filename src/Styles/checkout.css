@@ -128,18 +128,26 @@ input[type="text"]:focus {
   font-size: 25px;
   font-family: "cormorant-bold", serif;
   text-transform: none;
+  font-weight: normal;
   text-align: left;
   padding: 0;
   background-color: rgb(255, 255, 255);
   box-shadow: none;
   border-radius: 0%;
   padding: 23px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.dropdown-arrow {
+  width: 15px;
+  height: 15px;
 }
 .checkout-dropdown {
   padding: 0;
 }
 .checkout-dropdown-content {
-  padding: 23px;
+  padding: 0 23px 23px 23px;
 }
 /* responsive */
 @media screen and (max-width: 1750px) {

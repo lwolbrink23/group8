@@ -7,6 +7,7 @@ import CustomDropdown from "../Components/CustomDropdown";
 import purplePlusIcon from "../assets/icons/purple-plus.svg";
 import purpleCheckIcon from "../assets/icons/purple-check.svg";
 import { BACKEND_ADDRESS } from "../App";
+import dropDownArrow from "../assets/icons/purple-arrow.svg";
 import {
   fetchData,
   updateUserCartDB,
@@ -550,7 +551,13 @@ function Checkout() {
             onClick={() => setOpenShipInfo(!openShipInfo)}
             className="dropdown-toggle"
           >
-            Shipping Information
+            <span>Shipping Information</span>
+            <img
+              src={dropDownArrow}
+              className="dropdown-arrow"
+              style={{ transform: `rotate(${openShipInfo ? 90 : 0}deg)` }}
+              alt="toggle dropdown"
+            />
           </button>
           {openShipInfo && (
             <div className="checkout-dropdown-content">
@@ -685,7 +692,13 @@ function Checkout() {
             onClick={() => setOpenPayInfo(!openPayInfo)}
             className="dropdown-toggle"
           >
-            Payment Method
+            <span>Payment Method</span>
+            <img
+              src={dropDownArrow}
+              className="dropdown-arrow"
+              style={{ transform: `rotate(${openPayInfo ? 90 : 0}deg)` }}
+              alt="toggle dropdown"
+            />
           </button>
           {openPayInfo && (
             <div className="checkout-dropdown-content">
