@@ -535,6 +535,10 @@ function Checkout() {
         console.error("Error inserting order:", error);
       });
   };
+  const [isOpen, setIsOpen] = useState(false);
+  const toggleDropdown = () => {
+    setIsOpen(!isOpen);
+  };
 
   // main stuff
   return (
@@ -544,128 +548,137 @@ function Checkout() {
         qty={countItems([...cartItems, ...giftcards])}
       />
       <main>
-        <div id="shipping-info" className="cardbox">
-          <h3>Shipping Information</h3>
-          {/* first name input */}
-          <div>
-            <input
-              type="text"
-              placeholder="First Name*"
-              value={personalInfo.firstName}
-              onBlur={() => validateValues("firstName")}
-              onChange={(e) =>
-                handleChange("personal", "firstName", e.target.value)
-              }
-              required
-            />
-          </div>
-          {/* last name input */}
-          {personalErr.firstName && (
-            <p style={{ color: "red" }}>{personalErr.firstName}</p>
-          )}
-          <div>
-            <input
-              type="text"
-              placeholder="Last Name*"
-              value={personalInfo.lastName}
-              onBlur={() => validateValues("lastName")}
-              onChange={(e) =>
-                handleChange("personal", "lastName", e.target.value)
-              }
-            />
-          </div>
-          {personalErr.lastName && (
-            <p style={{ color: "red" }}>{personalErr.lastName}</p>
-          )}
-          {/* email input */}
-          <div>
-            <input
-              type="text"
-              placeholder="Email*"
-              value={personalInfo.email}
-              onBlur={() => validateValues("email")}
-              onChange={(e) =>
-                handleChange("personal", "email", e.target.value)
-              }
-            />
-          </div>
-          {personalErr.email && (
-            <p style={{ color: "red" }}>{personalErr.email}</p>
-          )}
-          {/* phone input */}
-          <div>
-            <input
-              type="text"
-              placeholder="Phone*"
-              value={personalInfo.phone}
-              onBlur={() => validateValues("phone")}
-              onChange={(e) =>
-                handleChange("personal", "phone", e.target.value)
-              }
-            />
-          </div>
-          {personalErr.phone && (
-            <p style={{ color: "red" }}>{personalErr.phone}</p>
-          )}
-          {/* street address input */}
-          <div>
-            <input
-              type="text"
-              placeholder="Street Address*"
-              value={addressInfo.street}
-              onBlur={() => validateValues("street")}
-              onChange={(e) =>
-                handleChange("address", "street", e.target.value)
-              }
-            />
-          </div>
-          {/* city input */}
-          <div className="ct-state">
-            <div>
-              <input
-                type="text"
-                placeholder="City*"
-                value={addressInfo.city}
-                onBlur={() => validateValues("city")}
-                onChange={(e) =>
-                  handleChange("address", "city", e.target.value)
-                }
-              />
-              {addressErr.city && (
-                <p style={{ color: "red" }}>{addressErr.city}</p>
+        <div className="shop-dropdown">
+          <button onClick={toggleDropdown} className="dropdown-toggle">
+            Shipping Information
+          </button>
+          {isOpen && (
+            <div id="shipping-info" className="cardbox">
+              <h3>Shipping Information</h3>
+              {/* First name input */}
+              <div>
+                <input
+                  type="text"
+                  placeholder="First Name*"
+                  value={personalInfo.firstName}
+                  onBlur={() => validateValues("firstName")}
+                  onChange={(e) =>
+                    handleChange("personal", "firstName", e.target.value)
+                  }
+                  required
+                />
+              </div>
+              {personalErr.firstName && (
+                <p style={{ color: "red" }}>{personalErr.firstName}</p>
+              )}
+              {/* Last name input */}
+              <div>
+                <input
+                  type="text"
+                  placeholder="Last Name*"
+                  value={personalInfo.lastName}
+                  onBlur={() => validateValues("lastName")}
+                  onChange={(e) =>
+                    handleChange("personal", "lastName", e.target.value)
+                  }
+                />
+              </div>
+              {personalErr.lastName && (
+                <p style={{ color: "red" }}>{personalErr.lastName}</p>
+              )}
+              {/* Email input */}
+              <div>
+                <input
+                  type="text"
+                  placeholder="Email*"
+                  value={personalInfo.email}
+                  onBlur={() => validateValues("email")}
+                  onChange={(e) =>
+                    handleChange("personal", "email", e.target.value)
+                  }
+                />
+              </div>
+              {personalErr.email && (
+                <p style={{ color: "red" }}>{personalErr.email}</p>
+              )}
+              {/* Phone input */}
+              <div>
+                <input
+                  type="text"
+                  placeholder="Phone*"
+                  value={personalInfo.phone}
+                  onBlur={() => validateValues("phone")}
+                  onChange={(e) =>
+                    handleChange("personal", "phone", e.target.value)
+                  }
+                />
+              </div>
+              {personalErr.phone && (
+                <p style={{ color: "red" }}>{personalErr.phone}</p>
+              )}
+              {/* Street address input */}
+              <div>
+                <input
+                  type="text"
+                  placeholder="Street Address*"
+                  value={addressInfo.street}
+                  onBlur={() => validateValues("street")}
+                  onChange={(e) =>
+                    handleChange("address", "street", e.target.value)
+                  }
+                />
+              </div>
+              {/* City input */}
+              <div className="ct-state">
+                <div>
+                  <input
+                    type="text"
+                    placeholder="City*"
+                    value={addressInfo.city}
+                    onBlur={() => validateValues("city")}
+                    onChange={(e) =>
+                      handleChange("address", "city", e.target.value)
+                    }
+                  />
+                  {addressErr.city && (
+                    <p style={{ color: "red" }}>{addressErr.city}</p>
+                  )}
+                </div>
+                {/* State input */}
+                <div>
+                  <input
+                    type="text"
+                    placeholder="State*"
+                    value={addressInfo.state}
+                    onBlur={() => validateValues("state")}
+                    onChange={(e) =>
+                      handleChange("address", "state", e.target.value)
+                    }
+                  />
+                  {addressErr.state && (
+                    <p style={{ color: "red" }}>{addressErr.state}</p>
+                  )}
+                </div>
+                {/* ZIP input */}
+                <div>
+                  <input
+                    type="text"
+                    placeholder="ZIP Code*"
+                    value={addressInfo.zip}
+                    onBlur={() => validateValues("zip")}
+                    onChange={(e) =>
+                      handleChange("address", "zip", e.target.value)
+                    }
+                  />
+                  {addressErr.zip && (
+                    <p style={{ color: "red" }}>{addressErr.zip}</p>
+                  )}
+                </div>
+              </div>
+              {addressErr.address && (
+                <p style={{ color: "red" }}>{addressErr.address}</p>
               )}
             </div>
-            {/* state input */}
-            <div>
-              <input
-                type="text"
-                placeholder="State*"
-                value={addressInfo.state}
-                onBlur={() => validateValues("state")}
-                onChange={(e) =>
-                  handleChange("address", "state", e.target.value)
-                }
-              />
-              {addressErr.state && (
-                <p style={{ color: "red" }}>{addressErr.state}</p>
-              )}
-            </div>
-            {/* zip input */}
-            <div>
-              <input
-                type="text"
-                placeholder="ZIP Code*"
-                value={addressInfo.zip}
-                onBlur={() => validateValues("zip")}
-                onChange={(e) => handleChange("address", "zip", e.target.value)}
-              />
-              {addressErr.zip && (
-                <p style={{ color: "red" }}>{addressErr.zip}</p>
-              )}
-            </div>
-          </div>
-          {addressErr.address && (
-            <p style={{ color: "red" }}>{addressErr.address}</p>
           )}
         </div>
         <div id="payment-info" className="cardbox">
