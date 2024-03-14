@@ -535,11 +535,8 @@ function Checkout() {
         console.error("Error inserting order:", error);
       });
   };
-  const [isOpen, setIsOpen] = useState(false);
-  const toggleDropdown = () => {
-    setIsOpen(!isOpen);
-  };
-
+  const [openShipInfo, setOpenShipInfo] = useState(false);
+  const [openPayInfo, setOpenPayInfo] = useState(false);
   // main stuff
   return (
     <div id="checkout">
@@ -549,10 +546,13 @@ function Checkout() {
       />
       <main>
         <div className="checkout-dropdown cardbox" id="shipping-info">
-          <button onClick={toggleDropdown} className="dropdown-toggle">
+          <button
+            onClick={() => setOpenShipInfo(!openShipInfo)}
+            className="dropdown-toggle"
+          >
             Shipping Information
           </button>
-          {isOpen && (
+          {openShipInfo && (
             <div className="checkout-dropdown-content">
               {/* First name input */}
               <div>
@@ -680,116 +680,124 @@ function Checkout() {
             </div>
           )}
         </div>
-        <div id="payment-info" className="cardbox">
-          <h3>Payment Method</h3>
-          {/* payment method radio */}
-          {options.map((option) => {
-            const isCard = option.id === "card";
-            return (
-              <div className="radio-container" key={option.id}>
-                {isCard && (
-                  <img
-                    src={
-                      paymentInfo.option === option.id
-                        ? purpleCheckIcon
-                        : purplePlusIcon
-                    }
-                    alt=""
-                    onClick={addNewCard}
-                  ></img>
-                )}
-                <label>
+        <div className="checkout-dropdown cardbox" id="payment-info">
+          <button
+            onClick={() => setOpenPayInfo(!openPayInfo)}
+            className="dropdown-toggle"
+          >
+            Payment Method
+          </button>
+          {openPayInfo && (
+            <div className="checkout-dropdown-content">
+              {/* payment method radio */}
+              {options.map((option) => {
+                const isCard = option.id === "card";
+                return (
+                  <div className="radio-container" key={option.id}>
+                    {isCard && (
+                      <img
+                        src={
+                          paymentInfo.option === option.id
+                            ? purpleCheckIcon
+                            : purplePlusIcon
+                        }
+                        alt=""
+                        onClick={addNewCard}
+                      ></img>
+                    )}
+                    <label>
+                      <input
+                        type="radio"
+                        name="options"
+                        value={option.id}
+                        checked={paymentInfo.option === option.id}
+                        onChange={handleOptionChange}
+                        className={isCard && "last-radio"}
+                      />
+                      {option.label}
+                    </label>
+                  </div>
+                );
+              })}
+              {/* card input */}
+              <div className={paymentInfo.option !== "card" && "hide-fields"}>
+                <div>
                   <input
-                    type="radio"
-                    name="options"
-                    value={option.id}
-                    checked={paymentInfo.option === option.id}
-                    onChange={handleOptionChange}
-                    className={isCard && "last-radio"}
+                    type="text"
+                    placeholder="Card Number*"
+                    value={paymentInfo.cardNum}
+                    onBlur={() => validateValues("cardNum")}
+                    onChange={(e) =>
+                      handleChange("payment", "cardNum", e.target.value)
+                    }
                   />
-
-                  {option.label}
-                </label>
+                  {paymentErr.cardNum && (
+                    <p style={{ color: "red" }}>{paymentErr.cardNum}</p>
+                  )}
+                </div>
+                {/* mm/yy CVC */}
+                <div className="cc-info">
+                  <div>
+                    <input
+                      type="text"
+                      placeholder="mm*"
+                      value={paymentInfo.mm}
+                      onBlur={() => validateValues("validCard")}
+                      onChange={(e) =>
+                        handleChange("payment", "mm", e.target.value)
+                      }
+                    />
+                    {paymentErr.mm && (
+                      <p style={{ color: "red" }}>{paymentErr.mm}</p>
+                    )}
+                  </div>
+                  <div>
+                    <input
+                      type="text"
+                      placeholder="yy*"
+                      value={paymentInfo.yy}
+                      onBlur={() => validateValues("validCard")}
+                      onChange={(e) =>
+                        handleChange("payment", "yy", e.target.value)
+                      }
+                    />
+                    {paymentErr.yy && (
+                      <p style={{ color: "red" }}>{paymentErr.yy}</p>
+                    )}
+                  </div>
+                  <div>
+                    <input
+                      type="text"
+                      placeholder="CVC*"
+                      value={paymentInfo.cvc}
+                      onBlur={() => validateValues("cvc")}
+                      onChange={(e) =>
+                        handleChange("payment", "cvc", e.target.value)
+                      }
+                    />
+                    {paymentErr.cvc && (
+                      <p style={{ color: "red" }}>{paymentErr.cvc}</p>
+                    )}
+                  </div>
+                </div>
+                {/* name on card */}
+                <div>
+                  <input
+                    type="text"
+                    placeholder="Name on Card*"
+                    value={paymentInfo.name}
+                    onBlur={() => validateValues("name")}
+                    onChange={(e) =>
+                      handleChange("payment", "name", e.target.value)
+                    }
+                  />
+                  {paymentErr.name && (
+                    <p style={{ color: "red" }}>{paymentErr.name}</p>
+                  )}
+                </div>
               </div>
-            );
-          })}
-          {/* card input */}
-          <div className={paymentInfo.option !== "card" && "hide-fields"}>
-            <div>
-              <input
-                type="text"
-                placeholder="Card Number*"
-                value={paymentInfo.cardNum}
-                onBlur={() => validateValues("cardNum")}
-                onChange={(e) =>
-                  handleChange("payment", "cardNum", e.target.value)
-                }
-              />
             </div>
-            {paymentErr.cardNum && (
-              <p style={{ color: "red" }}>{paymentErr.cardNum}</p>
-            )}
-            {/* mm/yy CVC */}
-            <div className="cc-info">
-              <div>
-                <input
-                  type="text"
-                  placeholder="mm*"
-                  value={paymentInfo.mm}
-                  onBlur={() => validateValues("validCard")}
-                  onChange={(e) =>
-                    handleChange("payment", "mm", e.target.value)
-                  }
-                />
-                {paymentErr.mm && (
-                  <p style={{ color: "red" }}>{paymentErr.mm}</p>
-                )}
-              </div>
-              <div>
-                <input
-                  type="text"
-                  placeholder="yy*"
-                  value={paymentInfo.yy}
-                  onBlur={() => validateValues("validCard")}
-                  onChange={(e) =>
-                    handleChange("payment", "yy", e.target.value)
-                  }
-                />
-                {paymentErr.yy && (
-                  <p style={{ color: "red" }}>{paymentErr.yy}</p>
-                )}
-              </div>
-              <div>
-                <input
-                  type="text"
-                  placeholder="CVC*"
-                  value={paymentInfo.cvc}
-                  onBlur={() => validateValues("cvc")}
-                  onChange={(e) =>
-                    handleChange("payment", "cvc", e.target.value)
-                  }
-                />
-                {paymentErr.cvc && (
-                  <p style={{ color: "red" }}>{paymentErr.cvc}</p>
-                )}
-              </div>
-            </div>
-            {/* name on card */}
-            <div>
-              <input
-                type="text"
-                placeholder="Name on Card*"
-                value={paymentInfo.name}
-                onBlur={() => validateValues("name")}
-                onChange={(e) =>
-                  handleChange("payment", "name", e.target.value)
-                }
-              />
-              {paymentErr.name && (
-                <p style={{ color: "red" }}>{paymentErr.name}</p>
-              )}
-            </div>
-          </div>
+          )}
         </div>
         <div id="summary">
           <div id="cart-items">
