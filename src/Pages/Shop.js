@@ -161,7 +161,6 @@ function Shop() {
                 tabIndex={0}
                 onKeyDown={(event) => {
                   if (event.key === "Enter") {
-                    console.log("Enter key pressed");
                     handleDecrement(item.id);
                   }
                 }}
@@ -175,7 +174,6 @@ function Shop() {
                 tabIndex={0}
                 onKeyDown={(event) => {
                   if (event.key === "Enter") {
-                    console.log("Enter key pressed");
                     handleIncrement(item.id);
                   }
                 }}

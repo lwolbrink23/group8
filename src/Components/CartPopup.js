@@ -10,6 +10,12 @@ const CartPopup = ({ cartPopup, setCartPopup, qty }) => (
         className="cursor-pointer"
         onClick={() => setCartPopup()}
         alt="close cart pop up"
+        tabIndex={0}
+        onKeyDown={(event) => {
+          if (event.key === "Enter") {
+            setCartPopup();
+          }
+        }}
       ></img>
     </div>
     <hr />
