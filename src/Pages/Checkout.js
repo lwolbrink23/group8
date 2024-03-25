@@ -371,7 +371,7 @@ function Checkout() {
   const OrderedItems = () => {
     const mergedItems = [...cartItems, ...giftcards];
     return (
-      <ul className="dropdown-content">
+      <ul>
         {mergedItems.map((item, i) => {
           const isGift = item.id === "giftcard";
           let itemName = isGift ? "Gift Card" : "";

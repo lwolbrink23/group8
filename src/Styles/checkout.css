@@ -86,6 +86,9 @@ input[type="text"]:focus {
   width: 50%;
 }
 /* item dropdown */
+#summary .dropdown ul {
+  padding: 0;
+}
 #summary #cart-items .dropdown {
   margin: initial;
   width: 100%;

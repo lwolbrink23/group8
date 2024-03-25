@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { motion, AnimatePresence } from "framer-motion";
 
 const CustomDropdown = ({ title, ContentComponent, icon }) => {
   const [dropdownVisible, setDropdownVisible] = useState(false);
@@ -24,8 +25,20 @@ const CustomDropdown = ({ title, ContentComponent, icon }) => {
           style={arrowIconStyle}
         />
       </button>
-      {dropdownVisible && <ContentComponent />}
+      <AnimatePresence>
+        {dropdownVisible && (
+          <motion.div
+            className="dropdown-content"
+            initial={{ opacity: 0, height: 0 }}
+            animate={{ opacity: 1, height: "auto" }}
+            exit={{ opacity: 0, height: 0 }}
+          >
+            <ContentComponent />
+          </motion.div>
+        )}
+      </AnimatePresence>
     </div>
   );
 };
+
 export default CustomDropdown;
