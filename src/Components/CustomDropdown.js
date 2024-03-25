@@ -13,18 +13,21 @@ const CustomDropdown = ({ title, ContentComponent, icon }) => {
   const arrowIconStyle = {
     height: "15px",
     transform: `rotate(${arrowRotation}deg)`,
+    transition: "all 0.5s ease",
   };
 
   return (
-    <div className="dropdown">
-      <button className="dropdown-btn" onClick={toggleVisibility}>
-        <h3>{title}</h3>
-        <img
-          src={require(`../assets/icons/${icon}`)}
-          alt="Arrow"
-          style={arrowIconStyle}
-        />
-      </button>
+    <>
+      <div className="dropdown">
+        <button className="dropdown-btn" onClick={toggleVisibility}>
+          <h3>{title}</h3>
+          <img
+            src={require(`../assets/icons/${icon}`)}
+            alt="Arrow"
+            style={arrowIconStyle}
+          />
+        </button>
+      </div>
       <AnimatePresence>
         {dropdownVisible && (
           <motion.div
@@ -37,7 +40,7 @@ const CustomDropdown = ({ title, ContentComponent, icon }) => {
           </motion.div>
         )}
       </AnimatePresence>
-    </div>
+    </>
   );
 };
 
