@@ -158,6 +158,13 @@ function Shop() {
                 alt="subtract item"
                 className="mouse-hover"
                 onClick={() => handleDecrement(item.id)}
+                tabIndex={0}
+                onKeyDown={(event) => {
+                  if (event.key === "Enter") {
+                    console.log("Enter key pressed");
+                    handleDecrement(item.id);
+                  }
+                }}
               ></img>
               <p className="item-amount poppins-bigger">{itemQty}</p>
               <img
@@ -165,6 +172,13 @@ function Shop() {
                 alt="add item"
                 className="mouse-hover"
                 onClick={() => handleIncrement(item.id)}
+                tabIndex={0}
+                onKeyDown={(event) => {
+                  if (event.key === "Enter") {
+                    console.log("Enter key pressed");
+                    handleIncrement(item.id);
+                  }
+                }}
               ></img>
             </div>
 
