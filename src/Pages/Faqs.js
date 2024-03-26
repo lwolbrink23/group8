@@ -1,6 +1,5 @@
 import React, { useState } from "react";
 import "../App.css";
-import arrowIcon from "../assets/icons/arrow.png";
 import CustomDropdown from "../Components/CustomDropdown";
 
 function Faqs() {
