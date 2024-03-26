@@ -100,6 +100,9 @@ input[type="text"]:focus {
   width: initial;
   margin: initial;
 }
+#summary #cart-items .dropdown-content p {
+  margin: 0;
+}
 #summary #cart-items .dropdown-btn {
   background-color: #5c5c5c;
   color: white;
