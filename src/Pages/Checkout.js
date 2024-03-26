@@ -17,6 +17,7 @@ import {
 import Cookies from "js-cookie";
 import { fetchCartData, countItems } from "./functions/shopFunctions";
 import { getUser } from "./functions/generalFunctions";
+import { motion, AnimatePresence } from "framer-motion";
 
 const GOOGLE_MAP_API_KEY = "AIzaSyB2LNpd3jJc9IAULUcx031ac2E2vQCIWOE";
 
@@ -538,6 +539,31 @@ function Checkout() {
   };
   const [openShipInfo, setOpenShipInfo] = useState(true);
   const [openPayInfo, setOpenPayInfo] = useState(true);
+  const containerVariants = {
+    visible: {
+      opacity: 1,
+      height: "auto",
+      transition: {
+        delayChildren: 0.5,
+        staggerChildren: 0.5,
+        type: "spring",
+        stiffness: 100,
+        mass: 0.3,
+      },
+    },
+    hidden: {
+      opacity: 0,
+      height: 0,
+      transition: {
+        delayChildren: 0.5,
+        staggerChildren: 0.5,
+        type: "spring",
+        stiffness: 100,
+        mass: 0.3,
+      },
+    },
+  };
+
   // main stuff
   return (
     <div id="checkout">
@@ -546,7 +572,8 @@ function Checkout() {
         qty={countItems([...cartItems, ...giftcards])}
       />
       <main>
-        <div className="checkout-dropdown cardbox" id="shipping-info">
+        {/* SHIPPING DROPDOWN */}
+        <div className="checkout-dropdown" id="shipping-info">
           <button
             onClick={() => setOpenShipInfo(!openShipInfo)}
             className="dropdown-btn"
@@ -559,134 +586,159 @@ function Checkout() {
               alt="toggle dropdown"
             />
           </button>
-          {openShipInfo && (
-            <div className="checkout-dropdown-content">
-              {/* First name input */}
-              <div>
-                <input
-                  type="text"
-                  placeholder="First Name*"
-                  value={personalInfo.firstName}
-                  onBlur={() => validateValues("firstName")}
-                  onChange={(e) =>
-                    handleChange("personal", "firstName", e.target.value)
-                  }
-                  required
-                />
-              </div>
-              {personalErr.firstName && (
-                <p style={{ color: "red" }}>{personalErr.firstName}</p>
-              )}
-              {/* Last name input */}
-              <div>
-                <input
-                  type="text"
-                  placeholder="Last Name*"
-                  value={personalInfo.lastName}
-                  onBlur={() => validateValues("lastName")}
-                  onChange={(e) =>
-                    handleChange("personal", "lastName", e.target.value)
-                  }
-                />
-              </div>
-              {personalErr.lastName && (
-                <p style={{ color: "red" }}>{personalErr.lastName}</p>
-              )}
-              {/* Email input */}
-              <div>
-                <input
-                  type="text"
-                  placeholder="Email*"
-                  value={personalInfo.email}
-                  onBlur={() => validateValues("email")}
-                  onChange={(e) =>
-                    handleChange("personal", "email", e.target.value)
-                  }
-                />
-              </div>
-              {personalErr.email && (
-                <p style={{ color: "red" }}>{personalErr.email}</p>
-              )}
-              {/* Phone input */}
-              <div>
-                <input
-                  type="text"
-                  placeholder="Phone*"
-                  value={personalInfo.phone}
-                  onBlur={() => validateValues("phone")}
-                  onChange={(e) =>
-                    handleChange("personal", "phone", e.target.value)
-                  }
-                />
-              </div>
-              {personalErr.phone && (
-                <p style={{ color: "red" }}>{personalErr.phone}</p>
-              )}
-              {/* Street address input */}
-              <div>
-                <input
-                  type="text"
-                  placeholder="Street Address*"
-                  value={addressInfo.street}
-                  onBlur={() => validateValues("street")}
-                  onChange={(e) =>
-                    handleChange("address", "street", e.target.value)
-                  }
-                />
-              </div>
-              {/* City input */}
-              <div className="ct-state">
-                <div>
+          <AnimatePresence>
+            {openShipInfo && (
+              <motion.div
+                className="checkout-dropdown-content"
+                initial="hidden"
+                animate="visible"
+                exit="hidden"
+                variants={containerVariants}
+              >
+                {/* First name input */}
+                <motion.div>
                   <input
                     type="text"
-                    placeholder="City*"
-                    value={addressInfo.city}
-                    onBlur={() => validateValues("city")}
+                    placeholder="First Name*"
+                    value={personalInfo.firstName}
+                    onBlur={() => validateValues("firstName")}
                     onChange={(e) =>
-                      handleChange("address", "city", e.target.value)
+                      handleChange("personal", "firstName", e.target.value)
                     }
+                    required
                   />
-                  {addressErr.city && (
-                    <p style={{ color: "red" }}>{addressErr.city}</p>
-                  )}
-                </div>
-                {/* State input */}
-                <div>
+                </motion.div>
+                {personalErr.firstName && (
+                  <motion.p style={{ color: "red" }}>
+                    {personalErr.firstName}
+                  </motion.p>
+                )}
+                {/* Last name input */}
+                <motion.div>
                   <input
                     type="text"
-                    placeholder="State*"
-                    value={addressInfo.state}
-                    onBlur={() => validateValues("state")}
+                    placeholder="Last Name*"
+                    value={personalInfo.lastName}
+                    onBlur={() => validateValues("lastName")}
                     onChange={(e) =>
-                      handleChange("address", "state", e.target.value)
+                      handleChange("personal", "lastName", e.target.value)
                     }
                   />
-                  {addressErr.state && (
-                    <p style={{ color: "red" }}>{addressErr.state}</p>
-                  )}
-                </div>
-                {/* ZIP input */}
-                <div>
+                </motion.div>
+                {personalErr.lastName && (
+                  <motion.p style={{ color: "red" }}>
+                    {personalErr.lastName}
+                  </motion.p>
+                )}
+                {/* Email input */}
+                <motion.div>
                   <input
                     type="text"
-                    placeholder="ZIP Code*"
-                    value={addressInfo.zip}
-                    onBlur={() => validateValues("zip")}
+                    placeholder="Email*"
+                    value={personalInfo.email}
+                    onBlur={() => validateValues("email")}
                     onChange={(e) =>
-                      handleChange("address", "zip", e.target.value)
+                      handleChange("personal", "email", e.target.value)
                     }
                   />
-                  {addressErr.zip && (
-                    <p style={{ color: "red" }}>{addressErr.zip}</p>
-                  )}
-                </div>
-              </div>
-              {addressErr.address && (
-                <p style={{ color: "red" }}>{addressErr.address}</p>
-              )}
-            </div>
-          )}
+                </motion.div>
+                {personalErr.email && (
+                  <motion.p style={{ color: "red" }}>
+                    {personalErr.email}
+                  </motion.p>
+                )}
+                {/* Phone input */}
+                <motion.div>
+                  <input
+                    type="text"
+                    placeholder="Phone*"
+                    value={personalInfo.phone}
+                    onBlur={() => validateValues("phone")}
+                    onChange={(e) =>
+                      handleChange("personal", "phone", e.target.value)
+                    }
+                  />
+                </motion.div>
+                {personalErr.phone && (
+                  <motion.p style={{ color: "red" }}>
+                    {personalErr.phone}
+                  </motion.p>
+                )}
+                {/* Street address input */}
+                <motion.div>
+                  <input
+                    type="text"
+                    placeholder="Street Address*"
+                    value={addressInfo.street}
+                    onBlur={() => validateValues("street")}
+                    onChange={(e) =>
+                      handleChange("address", "street", e.target.value)
+                    }
+                  />
+                </motion.div>
+                {/* City input */}
+                <motion.div className="ct-state">
+                  <motion.div>
+                    <input
+                      type="text"
+                      placeholder="City*"
+                      value={addressInfo.city}
+                      onBlur={() => validateValues("city")}
+                      onChange={(e) =>
+                        handleChange("address", "city", e.target.value)
+                      }
+                    />
+                    {addressErr.city && (
+                      <motion.p style={{ color: "red" }}>
+                        {addressErr.city}
+                      </motion.p>
+                    )}
+                  </motion.div>
+                  {/* State input */}
+                  <motion.div>
+                    <input
+                      type="text"
+                      placeholder="State*"
+                      value={addressInfo.state}
+                      onBlur={() => validateValues("state")}
+                      onChange={(e) =>
+                        handleChange("address", "state", e.target.value)
+                      }
+                    />
+                    {addressErr.state && (
+                      <motion.p style={{ color: "red" }}>
+                        {addressErr.state}
+                      </motion.p>
+                    )}
+                  </motion.div>
+                  {/* ZIP input */}
+                  <motion.div>
+                    <input
+                      type="text"
+                      placeholder="ZIP Code*"
+                      value={addressInfo.zip}
+                      onBlur={() => validateValues("zip")}
+                      onChange={(e) =>
+                        handleChange("address", "zip", e.target.value)
+                      }
+                    />
+                    {addressErr.zip && (
+                      <motion.p style={{ color: "red" }}>
+                        {addressErr.zip}
+                      </motion.p>
+                    )}
+                  </motion.div>
+                </motion.div>
+                {addressErr.address && (
+                  <motion.p style={{ color: "red" }}>
+                    {addressErr.address}
+                  </motion.p>
+                )}
+              </motion.div>
+            )}
+          </AnimatePresence>
         </div>
+        {/* PAYMENT DROPDOWN */}
         <div className="checkout-dropdown cardbox" id="payment-info">
           <button
             onClick={() => setOpenPayInfo(!openPayInfo)}
