@@ -19,27 +19,36 @@ const CustomDropdown = ({ title, ContentComponent, icon }) => {
   return (
     <>
       <div className="dropdown">
-        <button className="dropdown-btn" onClick={toggleVisibility}>
+        <div
+          className="dropdown-btn"
+          onClick={toggleVisibility}
+          tabIndex={0}
+          onKeyDown={(event) => {
+            if (event.key === "Enter") {
+              toggleVisibility();
+            }
+          }}
+        >
           <h3>{title}</h3>
           <img
             src={require(`../assets/icons/${icon}`)}
             alt="Arrow"
             style={arrowIconStyle}
           />
-        </button>
+        </div>
+        <AnimatePresence>
+          {dropdownVisible && (
+            <motion.div
+              className="dropdown-content"
+              initial={{ opacity: 0, height: 0 }}
+              animate={{ opacity: 1, height: "auto" }}
+              exit={{ opacity: 0, height: 0 }}
+            >
+              <ContentComponent />
+            </motion.div>
+          )}
+        </AnimatePresence>
       </div>
-      <AnimatePresence>
-        {dropdownVisible && (
-          <motion.div
-            className="dropdown-content"
-            initial={{ opacity: 0, height: 0 }}
-            animate={{ opacity: 1, height: "auto" }}
-            exit={{ opacity: 0, height: 0 }}
-          >
-            <ContentComponent />
-          </motion.div>
-        )}
-      </AnimatePresence>
     </>
   );
 };

@@ -1,10 +1,11 @@
 import React, { useState } from "react";
 import "../App.css";
 import arrowIcon from "../assets/icons/arrow.png";
+import CustomDropdown from "../Components/CustomDropdown";
 
 function Faqs() {
   const GeneralContent = () => (
-    <div className="dropdown-content">
+    <>
       <p>
         <strong>
           Q: What makes "The Suite Spot" different from traditional salons?
@@ -71,11 +72,11 @@ function Faqs() {
         guardian. Guardians must sign a waiver in advance for unaccompanied
         minors.
       </p>
-    </div>
+    </>
   );
 
   const HairContent = () => (
-    <div className="dropdown-content">
+    <>
       <p>
         <strong>Q: How often should I get my hair trimmed?</strong>
       </p>
@@ -136,11 +137,11 @@ function Faqs() {
         stylist. Please refer to their individual policies on adjustments or
         refunds.
       </p>
-    </div>
+    </>
   );
 
   const NailContent = () => (
-    <div className="dropdown-content">
+    <>
       <p>
         <strong>
           Q: How often should I schedule a fill for my acrylic nails?
@@ -194,11 +195,11 @@ function Faqs() {
         environment. Our tools and equipment are sterilized between each use,
         and disposable items are used whenever possible.
       </p>
-    </div>
+    </>
   );
 
   const MakeupContent = () => (
-    <div className="dropdown-content">
+    <>
       <p>
         <strong>
           Q: How far in advance should I book a makeup appointment for my event?
@@ -242,11 +243,11 @@ function Faqs() {
         and ensures that you are completely satisfied with the makeup before
         your event.
       </p>
-    </div>
+    </>
   );
 
   const MassageContent = () => (
-    <div className="dropdown-content">
+    <>
       <p>
         <strong>
           Q: What should I expect during my first massage session?
@@ -296,162 +297,37 @@ function Faqs() {
         The choice between the two depends on your preferences and therapeutic
         goals.
       </p>
-    </div>
+    </>
   );
-
-  const GeneralDropdown = () => {
-    const [isGeneralVisible, setGeneralVisibility] = useState(false);
-    const [arrowRotation, setArrowRotation] = useState(0);
-
-    const toggleGeneralVisibility = () => {
-      setGeneralVisibility(!isGeneralVisible);
-      setArrowRotation(arrowRotation === 0 ? 90 : 0);
-    };
-
-    const arrowIconStyle = {
-      height: "15px",
-      transform: `rotate(${arrowRotation}deg)`,
-    };
-
-    return (
-      <div className="dropdown">
-        <div
-          className="dropdown-btn"
-          onClick={toggleGeneralVisibility}
-          style={{ cursor: "pointer" }}
-        >
-          <h3>General</h3>
-          <img src={arrowIcon} alt="Arrow" style={arrowIconStyle} />
-        </div>
-        {isGeneralVisible && <GeneralContent />}
-      </div>
-    );
-  };
-
-  const HairDropdown = () => {
-    const [isHairVisible, setHairVisibility] = useState(false);
-    const [arrowRotation, setArrowRotation] = useState(0);
-
-    const toggleHairVisibility = () => {
-      setHairVisibility(!isHairVisible);
-      setArrowRotation(arrowRotation === 0 ? 90 : 0);
-    };
-
-    const arrowIconStyle = {
-      height: "15px",
-      transform: `rotate(${arrowRotation}deg)`,
-    };
-
-    return (
-      <div className="dropdown">
-        <div
-          className="dropdown-btn"
-          onClick={toggleHairVisibility}
-          style={{ cursor: "pointer" }}
-        >
-          <h3>Hair</h3>
-          <img src={arrowIcon} alt="Arrow" style={arrowIconStyle} />
-        </div>
-        {isHairVisible && <HairContent />}
-      </div>
-    );
-  };
-
-  const NailsDropdown = () => {
-    const [isNailsVisible, setNailsVisibility] = useState(false);
-    const [arrowRotation, setArrowRotation] = useState(0);
-
-    const toggleNailsVisibility = () => {
-      setNailsVisibility(!isNailsVisible);
-      setArrowRotation(arrowRotation === 0 ? 90 : 0);
-    };
-
-    const arrowIconStyle = {
-      height: "15px",
-      transform: `rotate(${arrowRotation}deg)`,
-    };
-
-    return (
-      <div className="dropdown">
-        <div
-          className="dropdown-btn"
-          onClick={toggleNailsVisibility}
-          style={{ cursor: "pointer" }}
-        >
-          <h3>Nails</h3>
-          <img src={arrowIcon} alt="Arrow" style={arrowIconStyle} />
-        </div>
-        {isNailsVisible && <NailContent />}
-      </div>
-    );
-  };
-
-  const MakeupDropdown = () => {
-    const [isMakeupVisible, setMakeupVisibility] = useState(false);
-    const [arrowRotation, setArrowRotation] = useState(0);
-
-    const toggleMakeupVisibility = () => {
-      setMakeupVisibility(!isMakeupVisible);
-      setArrowRotation(arrowRotation === 0 ? 90 : 0);
-    };
-
-    const arrowIconStyle = {
-      height: "15px",
-      transform: `rotate(${arrowRotation}deg)`,
-    };
-
-    return (
-      <div className="dropdown">
-        <div
-          className="dropdown-btn"
-          onClick={toggleMakeupVisibility}
-          style={{ cursor: "pointer" }}
-        >
-          <h3>Makeup</h3>
-          <img src={arrowIcon} alt="Arrow" style={arrowIconStyle} />
-        </div>
-        {isMakeupVisible && <MakeupContent />}
-      </div>
-    );
-  };
-
-  const MassageDropdown = () => {
-    const [isMassageVisible, setMassageVisibility] = useState(false);
-    const [arrowRotation, setArrowRotation] = useState(0);
-
-    const toggleMassageVisibility = () => {
-      setMassageVisibility(!isMassageVisible);
-      setArrowRotation(arrowRotation === 0 ? 90 : 0);
-    };
-
-    const arrowIconStyle = {
-      height: "15px",
-      transform: `rotate(${arrowRotation}deg)`,
-    };
-
-    return (
-      <div className="dropdown">
-        <div
-          className="dropdown-btn"
-          onClick={toggleMassageVisibility}
-          style={{ cursor: "pointer" }}
-        >
-          <h3>Massage</h3>
-          <img src={arrowIcon} alt="Arrow" style={arrowIconStyle} />
-        </div>
-        {isMassageVisible && <MassageContent />}
-      </div>
-    );
-  };
 
   return (
     <div>
       <h1 className="center">FAQ's</h1>
-      <GeneralDropdown />
-      <HairDropdown />
-      <NailsDropdown />
-      <MakeupDropdown />
-      <MassageDropdown />
+      <CustomDropdown
+        title="General"
+        icon="arrow.png"
+        ContentComponent={GeneralContent}
+      />
+      <CustomDropdown
+        title="Hair"
+        icon="arrow.png"
+        ContentComponent={HairContent}
+      />
+      <CustomDropdown
+        title="Nails"
+        icon="arrow.png"
+        ContentComponent={NailContent}
+      />
+      <CustomDropdown
+        title="Makeup"
+        icon="arrow.png"
+        ContentComponent={MakeupContent}
+      />
+      <CustomDropdown
+        title="Massage"
+        icon="arrow.png"
+        ContentComponent={MassageContent}
+      />
       <div className="extra-space"></div>
     </div>
   );
