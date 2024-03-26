@@ -1,6 +1,6 @@
-import Arrow from "../assets/icons/circlearrow.png"
-import { useNavigate } from 'react-router-dom';
-import "../Styles/backbutton.css"
+import Arrow from "../assets/icons/circlearrow.png";
+import { useNavigate } from "react-router-dom";
+import "../Styles/backbutton.css";
 
 /* 
 Welcome to the Back Button component. Whenever you need a back button in cour code, just:
@@ -13,16 +13,29 @@ THEN THIS:
 */
 
 function BackButton() {
+  let navigate = useNavigate();
 
-    let navigate = useNavigate();
+  function handleBack() {
+    navigate(-1);
+  }
 
-    function handleBack() {
-        navigate(-1);
-    }
-
-    return (
-        <div><img src={Arrow} alt="back arrow" onClick={handleBack} id="arrow" style={{ cursor: 'pointer' }}></img></div>
-    );
+  return (
+    <div>
+      <img
+        src={Arrow}
+        alt="back arrow"
+        onClick={handleBack}
+        tabIndex={0}
+        onKeyDown={(event) => {
+          if (event.key === "Enter") {
+            handleBack();
+          }
+        }}
+        id="arrow"
+        style={{ cursor: "pointer" }}
+      ></img>
+    </div>
+  );
 }
 
-export default BackButton
+export default BackButton;
