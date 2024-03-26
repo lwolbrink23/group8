@@ -28,6 +28,7 @@ import gall4 from "../assets/images/gall4.png";
 import gall6 from "../assets/images/gall6.png";
 import gall7 from "../assets/images/gall7.png";
 import fivestars from "../assets/images/5stars.png";
+import { BACKEND_ADDRESS } from "../App.js";
 
 function getUser() {
   let user = localStorage.getItem("user");
@@ -113,7 +114,7 @@ function Home() {
     }
 
     try {
-      const response = await fetch("http://localhost:3003/subscribe", {
+      const response = await fetch(`${BACKEND_ADDRESS}/subscribe`, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -142,7 +143,7 @@ function Home() {
       return;
     }
     try {
-      const response = await fetch("http://localhost:3003/subscribe", {
+      const response = await fetch(`${BACKEND_ADDRESS}/subscribe`, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
