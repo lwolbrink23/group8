@@ -19,15 +19,15 @@ const CustomDropdown = ({ title, ContentComponent, icon }) => {
   return (
     <>
       <div className="dropdown">
-        <div
+        <button
           className="dropdown-btn"
           onClick={toggleVisibility}
-          tabIndex={0}
-          onKeyDown={(event) => {
-            if (event.key === "Enter") {
-              toggleVisibility();
-            }
-          }}
+          // tabIndex={0}
+          // onKeyDown={(event) => {
+          //   if (event.key === "Enter") {
+          //     toggleVisibility();
+          //   }
+          // }}
         >
           <h3>{title}</h3>
           <img
@@ -35,7 +35,7 @@ const CustomDropdown = ({ title, ContentComponent, icon }) => {
             alt="Arrow"
             style={arrowIconStyle}
           />
-        </div>
+        </button>
         <AnimatePresence>
           {dropdownVisible && (
             <motion.div
