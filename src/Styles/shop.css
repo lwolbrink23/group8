@@ -148,6 +148,25 @@ input {
 .giftcard-info {
   padding: 0 20px 10px 20px;
 }
+
+.item-interact {
+  font-family: "raleway";
+  font-size: 15px;
+  text-transform: uppercase;
+  color: #090b0a;
+  cursor: pointer;
+  padding: 0;
+  margin: 0;
+  box-shadow: none;
+  border-radius: 0;
+  border: none;
+  background-color: white;
+  width: 23px;
+  height: 23px;
+}
+.item-interact:hover {
+  background-color: white;
+}
 @media screen and (max-width: 1900px) {
   #shop main {
     padding: 52px 100px;

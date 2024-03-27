@@ -153,31 +153,27 @@ function Shop() {
           {/* item interactions */}
           <div className="center-children">
             <div className="center-v">
-              <img
-                src={minusICON}
-                alt="subtract item"
-                className="mouse-hover"
+              <button
+                className="item-interact"
                 onClick={() => handleDecrement(item.id)}
-                tabIndex={0}
-                onKeyDown={(event) => {
-                  if (event.key === "Enter") {
-                    handleDecrement(item.id);
-                  }
-                }}
-              ></img>
+              >
+                <img
+                  src={minusICON}
+                  alt="subtract item"
+                  className="mouse-hover"
+                ></img>
+              </button>
               <p className="item-amount poppins-bigger">{itemQty}</p>
-              <img
-                src={plusICON}
-                alt="add item"
-                className="mouse-hover"
+              <button
+                className="item-interact"
                 onClick={() => handleIncrement(item.id)}
-                tabIndex={0}
-                onKeyDown={(event) => {
-                  if (event.key === "Enter") {
-                    handleIncrement(item.id);
-                  }
-                }}
-              ></img>
+              >
+                <img
+                  src={plusICON}
+                  alt="add item"
+                  className="mouse-hover"
+                ></img>
+              </button>
             </div>
 
             <button
