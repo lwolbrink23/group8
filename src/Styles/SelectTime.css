@@ -48,3 +48,9 @@
     align-items: center;
     text-align: center;
 }
+
+.past-date {
+    opacity: 0.5;
+    pointer-events: none;
+}
+

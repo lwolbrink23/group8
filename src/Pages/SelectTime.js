@@ -20,10 +20,6 @@ function SelectTime() {
   const user = useState(getUser());
   console.log("active user: ", user);
 
-  /* const scrollToTop = () => {
-    window.scrollTo(0, 0);
-  }; */
-
   const location = useLocation();
   const selectedServices = location.state?.service || [];
   const totalCost = location.state?.totalCost || 0;
@@ -64,21 +60,24 @@ function SelectTime() {
     });
   };
 
-  // State to track the clicked time button
   const [clickedTime, setClickedTime] = useState(null);
 
-  // Click handler that sets the clicked time
   const handleTimeClick = (time) => {
     setClickedTime(time);
+  };
+
+   const isPastDate = (date) => {
+    const today = new Date();
+    return date < today;
   };
 
   return (
     <div>
       <div className="title-container trans-white">
         <BackButton />
-        <h1>{serviceName}</h1> {/*make the provider name display here instead*/}
+        <h1>{serviceName}</h1>
       </div>
-      <div className="arrow-container">{/*back arrow*/}</div>
+      <div className="arrow-container"></div>
       <div className="overview-container">
         <div className="time extra-space">
           <p>
@@ -86,13 +85,15 @@ function SelectTime() {
           </p>
           <Calendar
             className="calendar"
-            onChange={handleDateChange} // Handle date change
-            value={selectedDate} // Step 3: Control calendar's selected date
+            onChange={handleDateChange}
+            value={selectedDate}
+            tileClassName={({ date }) =>
+              isPastDate(date) ? "past-date" : null
+            } // Apply CSS class to past dates
           />
         </div>
         <div className="times">
           <h3>{formattedDate}</h3>
-          {/* List of time buttons */}
           {[
             "9:00 AM",
             "10:00 AM",
@@ -115,16 +116,15 @@ function SelectTime() {
         <div className="overview" id="booking-overview">
           <h2>Overview</h2>
           {selectedServices.map((service, index) => {
-            const parts = service.split("\n"); // Split the service string into parts
+            const parts = service.split("\n");
             return (
               <div key={index} id="booked-service" className="OverviewDeats">
                 <p>
                   {parts[0]}
                   <br />
                   {parts[1]}
-                </p>{" "}
-                {/* Service name */}
-                <p>{parts[2]}</p> {/* Service duration and price */}
+                </p>
+                <p>{parts[2]}</p>
               </div>
             );
           })}
@@ -133,7 +133,6 @@ function SelectTime() {
             <strong>Total: ${totalCost}</strong>
           </p>
           <div className="appointment" id="appt-container"></div>
-          {/*book now button*/}
           <button
             onClick={navigateToOverview}
             type="button"
