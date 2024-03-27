@@ -135,6 +135,9 @@ button:hover {
   border-radius: 0%;
   min-width: 100%;
 }
+.dropdown-btn:hover {
+  background-color: white;
+}
 
 .dropdown-btn img {
   height: 15px;
