@@ -2,10 +2,11 @@ import React, { useState } from "react";
 import "../App.css";
 import arrowIcon from "../assets/icons/arrow.png";
 import { Link } from "react-router-dom";
+import CustomDropdown from "../Components/CustomDropdown";
 
 function OurServices() {
   const HairContent = () => (
-    <div class="dropdown-content">
+    <>
       <strong>
         <p>Haircut</p>
       </strong>
@@ -71,11 +72,11 @@ function OurServices() {
           <button class="purp-button">Book Now</button>
         </Link>
       </div>
-    </div>
+    </>
   );
 
   const NailContent = () => (
-    <div class="dropdown-content">
+    <>
       <strong>
         <p>Basic Manicure</p>
       </strong>
@@ -226,11 +227,11 @@ function OurServices() {
           <button class="purp-button">Book Now</button>
         </Link>
       </div>
-    </div>
+    </>
   );
 
   const MakeupContent = () => (
-    <div class="dropdown-content">
+    <>
       <strong>
         <p>Classic Makeup Application</p>
       </strong>
@@ -313,11 +314,11 @@ function OurServices() {
           <button class="purp-button">Book Now</button>
         </Link>
       </div>
-    </div>
+    </>
   );
 
   const MassageContent = () => (
-    <div class="dropdown-content">
+    <>
       <strong>
         <p>Swedish Massage</p>
       </strong>
@@ -395,131 +396,32 @@ function OurServices() {
           <button class="purp-button">Book Now</button>
         </Link>
       </div>
-    </div>
+    </>
   );
-
-  const HairDropdown = () => {
-    const [isHairVisible, setHairVisibility] = useState(false);
-    const [arrowRotation, setArrowRotation] = useState(0);
-
-    const toggleHairVisibility = () => {
-      setHairVisibility(!isHairVisible);
-      setArrowRotation(arrowRotation === 0 ? 90 : 0);
-    };
-
-    const arrowIconStyle = {
-      height: "15px",
-      transform: `rotate(${arrowRotation}deg)`,
-    };
-
-    return (
-      <div class="dropdown">
-        <div
-          class="dropdown-btn"
-          onClick={toggleHairVisibility}
-          style={{ cursor: "pointer" }}
-        >
-          <h3>Hair</h3>
-          <img src={arrowIcon} alt="Arrow" style={arrowIconStyle} />
-        </div>
-        {isHairVisible && <HairContent />}
-      </div>
-    );
-  };
-  const NailsDropdown = () => {
-    const [isNailsVisible, setNailsVisibility] = useState(false);
-    const [arrowRotation, setArrowRotation] = useState(0);
-
-    const toggleNailsVisibility = () => {
-      setNailsVisibility(!isNailsVisible);
-      setArrowRotation(arrowRotation === 0 ? 90 : 0);
-    };
-
-    const arrowIconStyle = {
-      height: "15px",
-      transform: `rotate(${arrowRotation}deg)`,
-    };
-
-    return (
-      <div class="dropdown">
-        <div
-          class="dropdown-btn"
-          onClick={toggleNailsVisibility}
-          style={{ cursor: "pointer" }}
-        >
-          <h3>Nails</h3>
-          <img src={arrowIcon} alt="Arrow" style={arrowIconStyle} />
-        </div>
-        {isNailsVisible && <NailContent />}
-      </div>
-    );
-  };
-
-  const MakeupDropdown = () => {
-    const [isMakeupVisible, setMakeupVisibility] = useState(false);
-    const [arrowRotation, setArrowRotation] = useState(0);
-
-    const toggleMakeupVisibility = () => {
-      setMakeupVisibility(!isMakeupVisible);
-      setArrowRotation(arrowRotation === 0 ? 90 : 0);
-    };
-
-    const arrowIconStyle = {
-      height: "15px",
-      transform: `rotate(${arrowRotation}deg)`,
-    };
-
-    return (
-      <div class="dropdown">
-        <div
-          class="dropdown-btn"
-          onClick={toggleMakeupVisibility}
-          style={{ cursor: "pointer" }}
-        >
-          <h3>Makeup</h3>
-          <img src={arrowIcon} alt="Arrow" style={arrowIconStyle} />
-        </div>
-        {isMakeupVisible && <MakeupContent />}
-      </div>
-    );
-  };
-
-  const MassageDropdown = () => {
-    const [isMassageVisible, setMassageVisibility] = useState(false);
-    const [arrowRotation, setArrowRotation] = useState(0);
-
-    const toggleMassageVisibility = () => {
-      setMassageVisibility(!isMassageVisible);
-      setArrowRotation(arrowRotation === 0 ? 90 : 0);
-    };
-
-    const arrowIconStyle = {
-      height: "15px",
-      transform: `rotate(${arrowRotation}deg)`,
-    };
-
-    return (
-      <div class="dropdown">
-        <div
-          class="dropdown-btn"
-          onClick={toggleMassageVisibility}
-          style={{ cursor: "pointer" }}
-        >
-          <h3>Massage</h3>
-          <img src={arrowIcon} alt="Arrow" style={arrowIconStyle} />
-        </div>
-        {isMassageVisible && <MassageContent />}
-      </div>
-    );
-  };
 
   return (
     <div>
       <h1 class="center">Services</h1>
-      <HairDropdown />
-      <NailsDropdown />
-      <MakeupDropdown />
-      <MassageDropdown />
+      <CustomDropdown
+        title="Hair"
+        icon="arrow.png"
+        ContentComponent={HairContent}
+      />
+      <CustomDropdown
+        title="Nails"
+        icon="arrow.png"
+        ContentComponent={NailContent}
+      />
+      <CustomDropdown
+        title="Makeup"
+        icon="arrow.png"
+        ContentComponent={MakeupContent}
+      />
+      <CustomDropdown
+        title="Massage"
+        icon="arrow.png"
+        ContentComponent={MassageContent}
+      />
       <div class="extra-space"></div>
     </div>
   );
