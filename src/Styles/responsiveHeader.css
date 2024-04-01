@@ -1,247 +1,251 @@
 /* Styles for smaller screens (mobile) */
 @media screen and (max-width: 950px) {
+  .account-link-button,
+  .about-link-button {
+    color: #090b0a;
+    font-family: "cormorant-bold", serif;
+    font-size: 18px;
+    text-decoration: none;
+    padding: 10px 20px;
+    background-color: white;
+    transition: background-color 0.3s ease;
+    /* Add transition for hover effect */
+    text-transform: none;
+    /* Prevent uppercase transformation */
+    text-shadow: none;
+    /* Remove text shadow */
+    border: none;
+    /* Remove the border */
+    box-shadow: none;
+    /* Remove the drop shadow */
 
-    .account-link-button, .about-link-button {
-            color: #090B0A;
-            font-family: 'cormorant-bold', serif;
-            font-size: 18px;
-            text-decoration: none;
-            padding: 10px 20px;
-            background-color: white;
-            transition: background-color 0.3s ease;
-            /* Add transition for hover effect */
-            text-transform: none;
-            /* Prevent uppercase transformation */
-            text-shadow: none;
-            /* Remove text shadow */
-            border: none;
-            /* Remove the border */
-            box-shadow: none;
-            /* Remove the drop shadow */
-    
-            /* Additional styles to align to the left */
-            text-align: left;
-            width: 100%;
-            /* Make the button take full width */
-            display: flex;
-            align-items: center;
-            justify-content: flex-start;
-        }
-    
-        .account-link-button:hover, .about-link-button:hover {
-            background-color: #E7E7E7;
-        }
-    
-        .account-link-button:focus, .about-link-button:focus {
-            outline: none;
-            /* Remove outline on focus, add if necessary */
-        }
-
-
-
-    nav {
-        display: none;/*hide nav at first*/
-        grid-area: nav;
-        width: 326px;
-        height: 100vh; /*take up entire viewport height. i thought this looks cleaner*/
-        position: absolute;
-        top: 85%;
-        right: 0;
-        z-index: 999;
-        text-align: center;
-    }
-
-    #about-web {
-        display:none
-    }
-    #account-web {
-        display: none
-    }
-
-    .header-container.mobile-open nav {
-    display: block;
-    }
-
-    .show {
-        background: white;
-        box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
-    }
-
-    #hamburger-menu::before {
-        content: '\2630';
-        grid-area: hamburger-menu;
-       
-    }
-
-    #hamburger-menu {
-        font-size: 45px;
-        color: #5C5C5C;
-        grid-area: hamburger-menu;
-        margin-bottom: 7px;
-    }
-
-    nav ul ul {
-        width: 100%;
-    }
-/* This is what makes the icons and text positioned to the left in mobile mode */
-    nav a {
-        display: flex;
-        align-items: center;
-        justify-content: left;
-    }
-
-    .header-container {
-        display: grid;
-        grid-template-columns: auto auto auto;
-        grid-template-areas: "logo-mobile profile hamburger-menu "
-            "nav nav nav";
-        align-items: center;
-    }
-
-        .header-container.mobile-open nav {
-            display: block;
-        }
-
-    nav ul {
-        width: 100%; /*nav links grey part*/
-        flex-direction: column;
-        justify-content: center;
-        align-items: center;
-    }
-
-    nav ul li {
-        margin: 10px 0;
-        width: 100%;
-       
-        text-align: center;
-            /* Center the text in the list items */
-    }
-
-    .centerbutton {
-        display: block;
-        margin: 10px auto; /* Center the "Book Now" button */
-    }
-
-    .logo-web {
-        display: none;
-    }
-
-    .logo-mobile {
-        max-width: 75%;
-        height: auto;
-        display: block;
-        grid-area: logo-mobile;
-    }
-
-    .profile-icon-mobile {
-        max-height: 35px;
-        display: block;
-    }
-
-    .profile-icon-web {
-        display: none;
-    }
-
-
-    .icon-mobile {
-        max-height: 35px;
-        margin-right: 10px;
-        display: flex;
-    }
-
-  nav ul li>ul { /*makes subpages vertical*/
-      display: none;
-      position: relative;
-      top: 0;
-      left: 0;
-      width: 100%;
+    /* Additional styles to align to the left */
+    text-align: left;
+    width: 100%;
+    /* Make the button take full width */
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
   }
-   
-  @keyframes slideIn {
-      from {
-          transform: translateX(100%);
-      }
 
-      to {
-          transform: translateX(0);
-      }
+  .account-link-button:hover,
+  .about-link-button:hover {
+    background-color: #e7e7e7;
+  }
+
+  .account-link-button:focus,
+  .about-link-button:focus {
+    outline: none;
+    /* Remove outline on focus, add if necessary */
+  }
+
+  nav {
+    display: none; /*hide nav at first*/
+    grid-area: nav;
+    width: 326px;
+    height: 100vh; /*take up entire viewport height. i thought this looks cleaner*/
+    position: absolute;
+    top: 85%;
+    right: 0;
+    z-index: 999;
+    text-align: center;
+  }
+
+  #about-web {
+    display: none;
+  }
+  #account-web {
+    display: none;
+  }
+
+  .header-container.mobile-open nav {
+    display: block;
+  }
+
+  .show {
+    background: white;
+    box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
+  }
+
+  #hamburger-menu::before {
+    content: "\2630";
+    grid-area: hamburger-menu;
+  }
+
+  #hamburger-menu {
+    font-size: 45px;
+    color: #5c5c5c;
+    grid-area: hamburger-menu;
+    margin-bottom: 7px;
+    cursor: pointer;
+    padding: 0;
+
+    box-shadow: none;
+    border-radius: 0;
+    border: none;
+    background-color: white;
+  }
+
+  nav ul ul {
+    width: 100%;
+  }
+  /* This is what makes the icons and text positioned to the left in mobile mode */
+  nav a {
+    display: flex;
+    align-items: center;
+    justify-content: left;
+  }
+
+  .header-container {
+    display: grid;
+    grid-template-columns: auto auto auto;
+    grid-template-areas:
+      "logo-mobile profile hamburger-menu "
+      "nav nav nav";
+    align-items: center;
+  }
+
+  .header-container.mobile-open nav {
+    display: block;
+  }
+
+  nav ul {
+    width: 100%; /*nav links grey part*/
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }
+
+  nav ul li {
+    margin: 10px 0;
+    width: 100%;
+
+    text-align: center;
+    /* Center the text in the list items */
+  }
+
+  .centerbutton {
+    display: block;
+    margin: 10px auto; /* Center the "Book Now" button */
+  }
+
+  .logo-web {
+    display: none;
+  }
+
+  .logo-mobile {
+    max-width: 75%;
+    height: auto;
+    display: block;
+    grid-area: logo-mobile;
+  }
+
+  .profile-icon-mobile {
+    max-height: 35px;
+    display: block;
+  }
+
+  .profile-icon-web {
+    display: none;
+  }
+
+  .icon-mobile {
+    max-height: 35px;
+    margin-right: 10px;
+    display: flex;
+  }
+
+  nav ul li > ul {
+    /*makes subpages vertical*/
+    display: none;
+    position: relative;
+    top: 0;
+    left: 0;
+    width: 100%;
+  }
+
+  @keyframes slideIn {
+    from {
+      transform: translateX(100%);
+    }
+
+    to {
+      transform: translateX(0);
+    }
   }
 
   @keyframes slideOut {
-      from {
-          transform: translateX(0);
-      }
+    from {
+      transform: translateX(0);
+    }
 
-      to {
-          transform: translateX(100%);
-      }
+    to {
+      transform: translateX(100%);
+    }
   }
 
   .sidebar {
-      animation-duration: 0.8s;
-      animation-fill-mode: forwards;
+    animation-duration: 0.8s;
+    animation-fill-mode: forwards;
   }
 
   .sidebar.show ul {
-      display: block;
-      /* show subpages when the sidebar has the 'show' class */
+    display: block;
+    /* show subpages when the sidebar has the 'show' class */
   }
 
   .sidebar.show ul li {
-      position: relative;
+    position: relative;
   }
 
-  .sidebar.show ul li.isSidebarOpen>ul {
-      display: none !important;
+  .sidebar.show ul li.isSidebarOpen > ul {
+    display: none !important;
   }
 
-  .sidebar.show ul li>ul {
-      /*display: none;*/
-      padding-left: 44px;
-      width: 100%;
-      white-space: nowrap;
+  .sidebar.show ul li > ul {
+    /*display: none;*/
+    padding-left: 44px;
+    width: 100%;
+    white-space: nowrap;
   }
-
 }
 
-
-/* Styles for larger screens */
 @media screen and (min-width: 950px) {
-    .account-link-button {
-            margin-right: 10px;
-        }
+  .account-link-button {
+    margin-right: 10px;
+  }
 
-        
-    nav ul li:hover>ul {
-            display: grid;
-            top: 100%;
-            left: 0;
-            width: max-content;
-        }
+  nav ul li:hover > ul {
+    display: grid;
+    top: 100%;
+    left: 0;
+    width: max-content;
+  }
 
-
-    .profile-icon-mobile {
-        display: none;
-    }
-
-    .profile-icon-web {
-        max-width: 40%;
-    }
-
-    .logo-mobile {
+  .profile-icon-mobile {
     display: none;
-    }
+  }
 
-    #about-mobile {
-        display: none
-    }
+  .profile-icon-web {
+    max-width: 40%;
+  }
 
-    #account-mobile {
-        display: none
-    }
+  .logo-mobile {
+    display: none;
+  }
 
-    .account-link {
-        display: none;
-    }
+  #about-mobile {
+    display: none;
+  }
 
+  #account-mobile {
+    display: none;
+  }
+
+  .account-link {
+    display: none;
+  }
+  #hamburger-menu {
+    display: none;
+  }
 }

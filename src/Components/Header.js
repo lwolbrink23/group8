@@ -104,7 +104,7 @@ function Header() {
           </Link>
         </div>
         {/* Hamburger menu icon */}
-        <div id="hamburger-menu" onClick={toggleSidebar}></div>
+        <button onClick={toggleSidebar} id="hamburger-menu"></button>
         <Link to="/account/:id">
           {" "}
           <img
