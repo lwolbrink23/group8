@@ -30,8 +30,23 @@ function ScrollToTop() {
 }
 
 function Overview() {
-  const user = useState(getUser());
+  const [user, setUser] = useState(getUser());
   console.log("active user: ", user);
+
+  useEffect(() => {
+    const handleUserChange = () => {
+      setUser(getUser());
+    };
+
+    // Assuming your login flow triggers a custom event when the user logs in
+    window.addEventListener('userLoggedIn', handleUserChange);
+
+    // Make sure to clean up the event listener to avoid memory leaks
+    return () => {
+      window.removeEventListener('userLoggedIn', handleUserChange);
+    };
+  }, [setUser]);
+
 
   /*const scrollToTop = () => {
     window.scrollTo(0, 0);
@@ -202,6 +217,12 @@ function Overview() {
             </div>
           </div>
           {/*book now button*/}
+          {/* Conditional rendering for error message */}
+          {(!user || !user.id) && (
+            <div style={{ color: 'red', textAlign: 'center', marginBottom: '10px' }}>
+              Please log in to book an appointment.
+            </div>
+          )}
           <button type="button" className="purp-button" onClick={handleBookNow}>
             Book Now
           </button>
