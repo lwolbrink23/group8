@@ -13,14 +13,14 @@ function Shopheader(props) {
     <div className="title-container trans-white">
       {!props.disableBack && <BackButton />}
       <h1>{props.htitle}</h1>
-      <Link to="/cart">
-        <div className="cart-icon">
+      <div className="cart-icon">
+        <Link to="/cart">
           <img src={shopICON} alt="shopping cart"></img>
           {props.qty !== 0 && (
             <span className="cart-quantity bold">{props.qty}</span>
           )}
-        </div>
-      </Link>
+        </Link>
+      </div>
     </div>
   );
 }
