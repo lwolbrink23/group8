@@ -12,9 +12,16 @@
   text-align: right;
 }
 /* dropdown stuff */
+#order-placed {
+  min-height: 75vh;
+}
+#order-placed .dropdown ul {
+  padding: 0;
+}
 #order-placed main .dropdown {
   width: 100%;
-  height: fit-content;
+  margin-top: 14px;
+  margin-bottom: 150px;
 }
 #order-placed main .dropdown-btn {
   background-color: #5c5c5c;
@@ -26,12 +33,8 @@
 #order-placed main .dropdown-btn:active .dropdown-content {
   max-height: auto;
 }
-#order-placed main .dropdown h3{
-margin: 10px;
-}
-#order-placed button {
-  margin-top: 14px;
-  margin-bottom: 150px;
+#order-placed main .dropdown h3 {
+  margin: 10px;
 }
 
 .ordered-item {

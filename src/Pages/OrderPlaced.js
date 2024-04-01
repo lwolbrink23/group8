@@ -12,6 +12,7 @@ import {
   fetchDataReturn,
   fetchData,
 } from "./functions/shopFunctions";
+import CustomDropdown from "../Components/CustomDropdown";
 
 function OrderPlaced() {
   const { id } = useParams();
@@ -35,7 +36,7 @@ function OrderPlaced() {
   const OrderedItems = () => {
     const mergedItems = [...cartData, ...giftcardData];
     return (
-      <ul className="dropdown-content">
+      <ul>
         {mergedItems.map((item, i) => {
           const isGift = item.id === "giftcard";
           let itemName = isGift ? "Gift Card" : "";
@@ -131,7 +132,14 @@ function OrderPlaced() {
           </Link>
         </article>
         {/* order summary */}
-        <CartDropdown />
+        <CustomDropdown
+          title={`Items Ordered (${countItems([
+            ...cartData,
+            ...giftcardData,
+          ])})`}
+          ContentComponent={OrderedItems}
+          icon={"white-arrow.svg"}
+        />
         <div className="home-mobile center">
           <Link to="/">
             <button className="button">Back to Home</button>
