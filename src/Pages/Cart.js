@@ -114,10 +114,8 @@ function Cart() {
                   <br></br> instock
                 </p>
                 <div className="item-interaction">
-                  <img
-                    src={minusICON}
-                    alt="subtract item"
-                    className="mouse-hover"
+                  <button
+                    className="item-interact"
                     onClick={() =>
                       handleDecrement(
                         isGift ? item.price : item.id,
@@ -126,19 +124,30 @@ function Cart() {
                         isGift ? "giftcard" : "cart"
                       )
                     }
-                  ></img>
+                  >
+                    <img
+                      src={minusICON}
+                      alt="subtract item"
+                      className="mouse-hover"
+                    ></img>
+                  </button>
+
                   <p className="item-amount poppins-bigger bold">{item.qty}</p>
-                  <img
-                    src={plusICON}
-                    alt="add item"
-                    className="mouse-hover"
+                  <button
+                    className="item-interact"
                     onClick={() =>
                       handleIncrement(
                         isGift ? item.price : item.id,
                         isGift ? "giftcard" : "cart"
                       )
                     }
-                  ></img>
+                  >
+                    <img
+                      src={plusICON}
+                      alt="add item"
+                      className="mouse-hover"
+                    ></img>
+                  </button>
                 </div>
               </div>
               <p className="align-right poppins-bigger rem-top-margin">
