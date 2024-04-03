@@ -117,6 +117,7 @@ function Overview() {
             date: formattedDate,
             time: clickedTime,
             serviceName: serviceName,
+            staff: staff
           },
         });
         // Navigate to confirmation page or do something else
@@ -200,7 +201,7 @@ function Overview() {
             <div id="staff">
               <div className="icon-container">
                 <img src={purpleLady} alt="Purple woman icon" />
-                <p>Your Info: Staff Member</p>
+                <p>Service Provider: {staff}</p>
               </div>
             </div>
             <div id="date-time">

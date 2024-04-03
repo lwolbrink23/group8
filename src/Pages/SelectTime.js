@@ -30,6 +30,8 @@ function SelectTime() {
   const staff = location.state?.staff;
   const serviceTitle = location.state?.serviceTitle;
 
+  console.log(location.state)
+
   const [selectedDate, setSelectedDate] = useState(new Date());
 
   const handleDateChange = (date) => {
@@ -66,7 +68,7 @@ function SelectTime() {
     setClickedTime(time);
   };
 
-   const isPastDate = (date) => {
+  const isPastDate = (date) => {
     const today = new Date();
     return date < today;
   };
