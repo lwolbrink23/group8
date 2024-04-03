@@ -116,7 +116,7 @@ function Account({ props }) {
   };
 
   const renderScheduledAppointments = () => renderAppointments("scheduled");
-  const renderAppointmentHistory = () => renderAppointments("complete");
+  const renderAppointmentHistory = () => renderAppointments("cancelled");
 
   // Function to handle appointment view details button click & pass state to next page
   const handleActionClick = (appointment) => {
