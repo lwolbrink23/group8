@@ -10,6 +10,7 @@ function OrderHistory({ dbOrders }) {
       state: {
         order: {
           cart: order.cart,
+          giftcards: order.cart.giftcards,
           costs: order.costs,
           date: order.date,
           status: order.status,
@@ -20,6 +21,8 @@ function OrderHistory({ dbOrders }) {
       },
     }); // Pass the appointment information in the state
   };
+
+  console.log(dbOrders)
 
   const OrderedHistoryItems = ({ order }) => (
     <div className="orderHistoryDetails">
@@ -62,13 +65,32 @@ function OrderHistory({ dbOrders }) {
                   <br></br>
                   <span style={{ fontSize: "13px" }}>quantity</span>
                   <br></br>
-                  <span id="item-qty">{item.qty["$numberInt"]}</span>
+                  <span id="item-qty">{item.qty}</span>
                 </p>
               </div>
               <p className="align-right">${item.price}</p>
             </li>
           );
         })}
+
+        {order.cart.giftcards.map((item, i) => {
+
+          return (
+            <li className="ordered-item" key={i}>
+              <div className="item-history-info">
+                <p>
+                  <span style={{ fontWeight: "bold" }}>Giftcard</span>
+                  <br></br>
+                  <span style={{ fontSize: "13px" }}>quantity</span>
+                  <br></br>
+                  <span id="item-qty">{item.qty}</span>
+                </p>
+              </div>
+              <p className="align-right">${item.price}</p>
+            </li>
+          );
+        })}
+
       </ul>
     </div>
   );
