@@ -5,6 +5,27 @@
     justify-content: flex-end;
 }
 
+.overview-container {
+    max-width: 1000px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.overview-content {
+    margin-top: 40px;
+    margin-bottom: auto;
+}
+
+.appt_overview_textArea {
+    width: 380px;
+}
+
+.appt_overview_text {
+    width: 380px;
+    text-align: justify;
+    margin-bottom: 40px;
+}
+
 .cancelation-policy {
     width: 75%;
 }
@@ -21,7 +42,7 @@
 .overview-container>div {
     flex: 1;
 }
- 
+
 .overview {
     float: right;
     background: white;
@@ -31,6 +52,7 @@
     padding: 0 50px;
     padding-bottom: 20px;
     margin-bottom: 100px;
+    height: 460px
 }
 
 .icon-container {
@@ -59,10 +81,10 @@
 .OverviewDeats {
     display: grid;
     grid-template-columns: 1fr auto;
-        /* Define two columns: one taking up the remaining space, and one sized by its content */
-        justify-content: space-between;
-        /* This will place the columns on opposite ends of the div */
-    }
+    /* Define two columns: one taking up the remaining space, and one sized by its content */
+    justify-content: space-between;
+    /* This will place the columns on opposite ends of the div */
+}
 
 @media (max-width: 900px) {
 
@@ -73,12 +95,21 @@
         margin: 20px 50px;
     }
 
-    .payment,
     .overview {
         width: 100%;
         /* Make each div take the full container width */
-        margin-bottom: 10px;
+        margin-bottom: 100px;
         /* Reduce margin */
-        
+        margin-top: -60px;
+        margin-left: auto;
+        margin-right: auto;
     }
+
+    .payment {
+        margin-left: auto;
+        margin-right: auto;
+        width: 400px;
+    }
+
+
 }

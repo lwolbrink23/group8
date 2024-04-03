@@ -134,7 +134,7 @@ function Overview() {
   };
 
   return (
-    <div>
+    <div >
       <ScrollToTop />
       <div className="title-container trans-white">
         <BackButton />
@@ -154,8 +154,8 @@ function Overview() {
             </div>
           </div>
           <div className="cancelation-policy">
-            <h2>Cancelation Policy</h2>
-            <p>
+            <h2>Cancellation Policy</h2>
+            <p className="appt_overview_text">
               If you need to cancel or reschedule please let us know 24 hours in
               advance. Cancellations made within 24 hours of the appointment are
               subject to cancellation fees of 50% of the service. No-shows are
@@ -170,63 +170,66 @@ function Overview() {
               name="booking-text-box"
               rows="4"
               cols="70"
+              className="appt_overview_textArea"
             ></textarea>
           </div>
         </div>
         <div className="overview" id="booking-overview">
-          <h2>Overview</h2>
-          {selectedServices.map((service, index) => {
-            const parts = service.split("\n"); // Split the service string into parts
-            return (
-              <div key={index} id="booked-service">
-                <p>
-                  {parts[0]}
-                  <br />
-                  {parts[1]}
-                </p>{" "}
-                {/* Service name */}
-                <p>{parts[2]}</p> {/* Service duration and price */}
-              </div>
-            );
-          })}
-
-          <hr />
-          <p id="total">
-            <strong>Total: ${totalCost}</strong>
-          </p>
-          <div className="appointment" id="appt-container">
-            <p>
-              <strong>Appointment:</strong>
-            </p>
-            <div id="staff">
-              <div className="icon-container">
-                <img src={purpleLady} alt="Purple woman icon" />
-                <p>Service Provider: {staff}</p>
-              </div>
-            </div>
-            <div id="date-time">
-              <div className="icon-container">
-                <img src={calendar} alt="Purple calendar icon" />
-                <div>
-                  <p id="appt-date">
-                    {formattedDate}
+          <div className="overview-content">
+            <h2>Overview</h2>
+            {selectedServices.map((service, index) => {
+              const parts = service.split("\n"); // Split the service string into parts
+              return (
+                <div key={index} id="booked-service">
+                  <p>
+                    {parts[0]}
                     <br />
-                    {clickedTime}
-                  </p>
+                    {parts[1]}
+                  </p>{" "}
+                  {/* Service name */}
+                  <p>{parts[2]}</p> {/* Service duration and price */}
+                </div>
+              );
+            })}
+
+            <hr />
+            <p id="total">
+              <strong>Total: ${totalCost}</strong>
+            </p>
+            <div className="appointment" id="appt-container">
+              <p>
+                <strong>Appointment:</strong>
+              </p>
+              <div id="staff">
+                <div className="icon-container">
+                  <img src={purpleLady} alt="Purple woman icon" />
+                  <p>Service Provider: {staff}</p>
+                </div>
+              </div>
+              <div id="date-time">
+                <div className="icon-container">
+                  <img src={calendar} alt="Purple calendar icon" />
+                  <div>
+                    <p id="appt-date">
+                      {formattedDate}
+                      <br />
+                      {clickedTime}
+                    </p>
+                  </div>
                 </div>
               </div>
             </div>
+            {/*book now button*/}
+            {/* Conditional rendering for error message */}
+            {(!user || !user.id) && (
+              <div style={{ color: 'red', textAlign: 'center', marginBottom: '10px' }}>
+                Please log in to book an appointment.
+              </div>
+            )}
+            <button type="button" className="purp-button" onClick={handleBookNow}>
+              Book Now
+            </button>
           </div>
-          {/*book now button*/}
-          {/* Conditional rendering for error message */}
-          {(!user || !user.id) && (
-            <div style={{ color: 'red', textAlign: 'center', marginBottom: '10px' }}>
-              Please log in to book an appointment.
-            </div>
-          )}
-          <button type="button" className="purp-button" onClick={handleBookNow}>
-            Book Now
-          </button>
         </div>
       </div>
     </div>
