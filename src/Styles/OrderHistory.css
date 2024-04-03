@@ -34,13 +34,14 @@
 
 #titles-right {
     text-align: right;
-    
+
 }
 
 .width {
     padding: 20px;
     width: 100%;
     max-width: 600px;
+    box-shadow: none;
     box-sizing: border-box;
 }
 
@@ -52,7 +53,3 @@
     width: 94%;
     margin: 0 auto;
 }
-
-
-
-
