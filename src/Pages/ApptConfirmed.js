@@ -23,6 +23,7 @@ function Confirmed() {
 
   const location = useLocation();
 
+  const staffName = location.state?.staff
   const serviceName = location.state?.serviceName || "Default Service Name";
   const totalCost = location.state?.totalCost || 0;
   const formattedDate = location.state?.date;
@@ -68,10 +69,10 @@ function Confirmed() {
             ))}
           </div>
           <div id="company">
-            <h3>
-              <b>Company</b>
-            </h3>
+            <p><strong>Company:</strong></p>
             <p>{serviceName}</p>
+            <p><strong>Service Provider:</strong></p>
+            <p>{staffName}</p>
           </div>
         </div>
         <Link to="/" onClick={scrollToTop}>
