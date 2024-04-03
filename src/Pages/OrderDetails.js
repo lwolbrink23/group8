@@ -48,6 +48,28 @@ function OrderDetails({ props }) {
             </li>
           );
         })}
+
+        {order.cart.giftcards.map((item, i) => {
+
+          return (
+            <li className="ordered-item" key={i}>
+              <img
+                src={require("../assets/images/shop/giftcard.png")}
+                alt=""
+              ></img>
+              <div className="item-history-info">
+                <p>
+                  <span style={{ fontWeight: "bold" }}>Giftcard</span>
+                  <br></br>
+                  <span style={{ fontSize: "13px" }}>quantity</span>
+                  <br></br>
+                  <span id="item-qty">{item.qty}</span>
+                </p>
+              </div>
+              <p className="align-right">${item.price}</p>
+            </li>
+          );
+        })}
       </ul>
       <hr />
       <div className="payment-info">
