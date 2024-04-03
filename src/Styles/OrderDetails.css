@@ -20,6 +20,7 @@
     width: 100%;
     max-width: 600px;
     box-sizing: border-box;
+    box-shadow: none;
 }
 
 .details {
@@ -46,6 +47,8 @@
     text-align: center;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
 }
+
+
 
 .order-details p {
     color: #666;
