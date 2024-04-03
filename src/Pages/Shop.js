@@ -205,6 +205,11 @@ function Shop() {
     // Replace any non-numeric characters except for '.'
     inputValue = inputValue.replace(/[^0-9.]/g, "");
 
+    // Add '.00' if no decimal point is present
+    if (!inputValue.includes(".")) {
+      inputValue += ".00";
+    }
+
     // Remove all but the first period
     const periodIndex = inputValue.indexOf(".");
     if (periodIndex !== -1) {
@@ -309,7 +314,7 @@ function Shop() {
             </p>
             <p>Enter an amount:</p>
             <div className="col-2">
-              <input value={giftcardInput} onChange={handleInputChange}></input>
+              <input placeholder="0.00" value={giftcardInput} onChange={handleInputChange}></input>
               <button
                 className="button"
                 disabled={!giftcardInput}
