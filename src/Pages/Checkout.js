@@ -87,18 +87,27 @@ function Checkout() {
   // // make sure every field is filled & no errors
   const areAllFieldsEntered = () => {
     // Check if all fields are non-empty
+    let payment = paymentInfo.option;
+
+    if (paymentInfo.option === "card") {
+      payment = Object.values(paymentInfo).every((value) => value !== "");
+    }
     return (
       Object.values(personalInfo).every((value) => value !== "") &&
       Object.values(addressInfo).every((value) => value !== "") &&
-      Object.values(paymentInfo).every((value) => value !== "")
+      payment
     );
   };
   const areAllErrorsEmpty = () => {
     // Check if all strings in error states are empty
+    let paymentErrV = paymentInfo.option;
+    if (paymentInfo.option === "card") {
+      paymentErrV = Object.values(paymentErr).every((value) => value === "");
+    }
     return (
       Object.values(personalErr).every((value) => value === "") &&
       Object.values(addressErr).every((value) => value === "") &&
-      Object.values(paymentErr).every((value) => value === "")
+      paymentErrV
     );
   };
 
@@ -442,8 +451,9 @@ function Checkout() {
       (await validateValues("zip")) ||
       (await validateValues("city")) ||
       (await validateValues("state")) ||
-      (await validateValues("cc")) ||
-      (await validateValues("cvc"))
+      (paymentInfo.option === "card" &&
+        ((await validateValues("cc")) || (await validateValues("cvc")))) ||
+      !paymentInfo.option
     ) {
       return;
     }
@@ -507,6 +517,11 @@ function Checkout() {
           state: Cstate,
           zip: Czip,
         },
+      },
+      payment: {
+        type: paymentInfo.option,
+        cardEnd:
+          paymentInfo.option === "card" ? paymentInfo.cardNum.slice(-4) : "",
       },
       date: Date.now(),
     };
