@@ -104,10 +104,10 @@ const SelectServices = () => {
         serviceTitle: serviceTitle,
         totalCost: totalCost,
         duration: duration,
-        serviceName: "Simply Chic Hair",
-        provProfPic: "SimplyChicHair",
-        provProfId: "iID0",
-        staff: "Marissa S.",
+        serviceName: "Healing Hands Spa",
+        provProfPic: "HealingHandsSpa",
+        provProfId: "iID3",
+        staff: "John M.",
       },
     });
   };
