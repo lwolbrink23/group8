@@ -77,6 +77,10 @@ function OrderHistory({ dbOrders }) {
 
           return (
             <li className="ordered-item" key={i}>
+              <img
+                src={require("../assets/images/shop/giftcard.png")}
+                alt=""
+              ></img>
               <div className="item-history-info">
                 <p>
                   <span style={{ fontWeight: "bold" }}>Giftcard</span>
