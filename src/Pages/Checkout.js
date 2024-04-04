@@ -445,14 +445,15 @@ function Checkout() {
   const handlePlaceOrder = async () => {
     if (
       (await validateValues("address")) ||
-      (await validateValues("validCard")) ||
       (await validateValues("email")) ||
       (await validateValues("phone")) ||
       (await validateValues("zip")) ||
       (await validateValues("city")) ||
       (await validateValues("state")) ||
       (paymentInfo.option === "card" &&
-        ((await validateValues("cc")) || (await validateValues("cvc")))) ||
+        ((await validateValues("cc")) ||
+          (await validateValues("cvc")) ||
+          (await validateValues("validCard")))) ||
       !paymentInfo.option
     ) {
       return;
