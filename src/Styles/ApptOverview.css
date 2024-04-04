@@ -1,115 +1,112 @@
 .overview-container {
-    margin: 20px 150px;
-    display: flex;
-    gap: 100px;
-    justify-content: flex-end;
+  margin: 20px 150px;
+  display: flex;
+  gap: 100px;
+  justify-content: flex-end;
 }
 
 .overview-container {
-    max-width: 1000px;
-    margin-left: auto;
-    margin-right: auto;
+  max-width: 1000px;
+  margin-left: auto;
+  margin-right: auto;
 }
 
 .overview-content {
-    margin-top: 40px;
-    margin-bottom: auto;
+  margin-top: 40px;
+  margin-bottom: auto;
 }
 
 .appt_overview_textArea {
-    width: 380px;
+  width: 380px;
 }
 
 .appt_overview_text {
-    width: 380px;
-    text-align: justify;
-    margin-bottom: 40px;
+  width: 380px;
+  text-align: justify;
+  margin-bottom: 40px;
 }
 
 .cancelation-policy {
-    width: 75%;
+  width: 75%;
 }
 
 #payment-method {
-    display: flex;
-    align-items: center;
+  display: flex;
+  align-items: center;
 }
 
 #payment-method img {
-    width: 50px
+  width: 50px;
 }
 
-.overview-container>div {
-    flex: 1;
+.overview-container > div {
+  flex: 1;
 }
 
 .overview {
-    float: right;
-    background: white;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.25);
-    width: 100%;
-    max-width: 300px;
-    padding: 0 50px;
-    padding-bottom: 20px;
-    margin-bottom: 100px;
-    height: 460px
+  float: right;
+  background: white;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.25);
+  width: 100%;
+  max-width: 300px;
+  padding: 0 50px;
+  padding-bottom: 20px;
+  margin-bottom: 100px;
+  min-height: 460px;
 }
 
 .icon-container {
-    display: flex;
-    align-items: center;
+  display: flex;
+  align-items: center;
 }
 
 .icon-container img {
-    width: 50px
+  width: 50px;
 }
 
 #booked-time {
-    font-size: 12px;
-    margin-bottom: 40px;
+  font-size: 12px;
+  margin-bottom: 40px;
 }
 
 #booked-service {
-    display: flex;
-    justify-content: space-between;
+  display: flex;
+  justify-content: space-between;
 }
 
 #total {
-    margin-bottom: 40px;
+  margin-bottom: 40px;
 }
 
 .OverviewDeats {
-    display: grid;
-    grid-template-columns: 1fr auto;
-    /* Define two columns: one taking up the remaining space, and one sized by its content */
-    justify-content: space-between;
-    /* This will place the columns on opposite ends of the div */
+  display: grid;
+  grid-template-columns: 1fr auto;
+  /* Define two columns: one taking up the remaining space, and one sized by its content */
+  justify-content: space-between;
+  /* This will place the columns on opposite ends of the div */
 }
 
 @media (max-width: 900px) {
+  /* Adjust the max-width as needed for your breakpoint */
+  .overview-container {
+    flex-direction: column;
+    align-items: center;
+    margin: 20px 50px;
+  }
 
-    /* Adjust the max-width as needed for your breakpoint */
-    .overview-container {
-        flex-direction: column;
-        align-items: center;
-        margin: 20px 50px;
-    }
+  .overview {
+    width: 100%;
+    /* Make each div take the full container width */
+    margin-bottom: 100px;
+    /* Reduce margin */
+    margin-top: -60px;
+    margin-left: auto;
+    margin-right: auto;
+  }
 
-    .overview {
-        width: 100%;
-        /* Make each div take the full container width */
-        margin-bottom: 100px;
-        /* Reduce margin */
-        margin-top: -60px;
-        margin-left: auto;
-        margin-right: auto;
-    }
-
-    .payment {
-        margin-left: auto;
-        margin-right: auto;
-        width: 400px;
-    }
-
-
+  .payment {
+    margin-left: auto;
+    margin-right: auto;
+    width: 400px;
+  }
 }
