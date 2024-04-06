@@ -42,6 +42,9 @@ function getUser() {
 
 function Home() {
   const [subscribeError, setSubscribeError] = useState("");
+  const [blogSubscribeError, setBlogSubscribeError] = useState("");
+
+
   const mobilecarouselImages = [
     promoBottle,
     promoAroma,
@@ -130,8 +133,10 @@ function Home() {
         console.log("Successfully subscribed to blog");
         openBlog();
         resetInput();
+        setBlogSubscribeError("");
       } else {
-        console.error("Failed to subscribe to blog:", response.statusText);
+        const errorData = await response.json();
+        setBlogSubscribeError(errorData.error);
       }
     } catch (error) {
       console.error("Error subscribing to blog:", error);
@@ -322,6 +327,7 @@ function Home() {
                 <li>Tips & Tricks</li>
                 <li>Industry Trends</li>
               </ul>
+              {blogSubscribeError && (<div className="subscribe-error" style={{ color: 'white' }}>{blogSubscribeError}</div>)}
               <input
                 type="email"
                 placeholder="Enter your email"
