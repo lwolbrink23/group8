@@ -41,7 +41,7 @@
 }
 
 .popup-container p {
-    color: #000;
+    color: #000 !important;
 }
 
 .popup-input {

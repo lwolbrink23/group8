@@ -41,6 +41,7 @@ function getUser() {
 }
 
 function Home() {
+  const [subscribeError, setSubscribeError] = useState("");
   const mobilecarouselImages = [
     promoBottle,
     promoAroma,
@@ -158,11 +159,10 @@ function Home() {
         console.log("Successfully subscribed to newsletter");
         openNews();
         resetInput();
+        setSubscribeError("");
       } else {
-        console.error(
-          "Failed to subscribe to newsletter:",
-          response.statusText
-        );
+        const errorData = await response.json();
+        setSubscribeError(errorData.error);
       }
     } catch (error) {
       console.error("Error subscribing to newsletter:", error);
@@ -351,6 +351,7 @@ function Home() {
                 Sign up to our newsletter and receive the freshest info.
               </p>
               <br />
+              {subscribeError && <div className="subscribe-error" style={{ color: 'white' }}>{subscribeError}</div>}
               <input
                 type="email"
                 placeholder="Enter your email"
