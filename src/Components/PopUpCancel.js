@@ -19,6 +19,7 @@ const PopUpCancel = ({ isOpen, closePopUp, cancelAppt }) => {
         <button onClick={closePopUp} className="cancelPopupBtn">
           No
         </button>
+        <div className="popup-background" onClick={closePopUp}></div>
       </div>
     </div>
   );

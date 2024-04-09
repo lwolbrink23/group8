@@ -35,6 +35,7 @@ const PopupPassword = ({ isOpen, closePopup }) => {
           <button onClick={closePopup} className="closebtnemail">
             Close
           </button>
+        <div className="popup-background" onClick={closePopup}></div>
         </div>
       </div>
     );

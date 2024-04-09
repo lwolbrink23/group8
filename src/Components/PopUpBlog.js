@@ -11,6 +11,7 @@ const PopupBlog = ({ isOpen, closePopup }) => {
                     to our blog!</p>
                 <p>Check your email to get the latest info about The Suite Spot!</p>
                 <button onClick={closePopup}>Close</button>
+                <div className="popup-background" onClick={closePopup}></div>
             </div>
         </div>
     );

@@ -10,6 +10,7 @@ const PopUpExistingUser = ({ isOpen, closePopup }) => {
         <h2>Account Exists</h2>
         <p>Your account already exists. Please log in or use a different email.</p>
         <button onClick={closePopup}>Close</button>
+        <div className="popup-background" onClick={closePopup}></div>
       </div>
     </div>
   );
