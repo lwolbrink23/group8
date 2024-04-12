@@ -10,6 +10,7 @@ const PopupContact = ({ isOpen, closePopup }) => {
                 <p>Thank you for contacting us!</p>
                 <p>We will get back to you shortly.</p>
                 <button onClick={closePopup}>Close</button>
+                <div className="popup-background" onClick={closePopup}></div>
             </div>
         </div>
     );
