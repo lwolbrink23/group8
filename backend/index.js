@@ -63,7 +63,7 @@ import loginRoutes from "./routes/loginRoutes.js";
 import subscriptionRoutes from "./routes/subcriptionRoutes.js";
 import rentSuiteRoutes from "./routes/rentSuiteRoutes.js";
 
-const PORT = process.env.PORT || 3003;
+const PORT = process.env.PORT;
 const MONGODB_URI = process.env.MONGODB_URI;
 
 const app = express();
