@@ -5,6 +5,7 @@ import { Link, useNavigate } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { loginUser } from "../Store/userSlice";
 import PopUpExistingUser from "../Components/PopUpExistingUser";
+import { BACKEND_ADDRESS } from "../App";
 
 function SignUp() {
   const navigate = useNavigate();
@@ -107,7 +108,7 @@ function SignUp() {
     };
 
     try {
-      const response = await fetch("http://localhost:3003/signup", {
+      const response = await fetch(`${BACKEND_ADDRESS}/signup`, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
