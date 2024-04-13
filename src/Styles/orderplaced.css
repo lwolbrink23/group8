@@ -93,7 +93,7 @@
   }
   #order-placed button {
     margin-top: 14px;
-    margin-bottom: 55px;
+    /* margin-bottom: 55px; */
   }
   #order-placed main {
     padding: 18px 35px;
