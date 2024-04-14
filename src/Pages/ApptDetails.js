@@ -5,6 +5,7 @@ import "../Styles/apptdetails.css";
 import calendaricon from "../assets/icons/calendaricon.png";
 import BackButton from "../Components/BackButton";
 import PopUpCancel from "../Components/PopUpCancel";
+import { BACKEND_ADDRESS } from "../App";
 
 function getUser() {
   let user = localStorage.getItem("user");
@@ -107,13 +108,12 @@ function ApptDetails({ props }) {
       const userId = user.id;
       console.log(userId);
       // API call to update the status in the database
-      const response = await fetch(`http://localhost:3003/cancel`, {
+      const response = await fetch(`${BACKEND_ADDRESS}/cancel`, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
         },
         body: JSON.stringify({ userId, appointmentId }),
-
       });
 
       if (response.ok) {
