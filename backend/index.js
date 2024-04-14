@@ -45,7 +45,6 @@ subscriptionRoutes(app, database);
 rentSuiteRoutes(app, database);
 accountRoutes(app, database); */
 
-
 // testing from ChatGPT
 
 import { MongoClient, ServerApiVersion } from "mongodb";
@@ -77,32 +76,35 @@ const client = new MongoClient(MONGODB_URI, {
     deprecationErrors: true,
   },
 });
-
+app.get("/", async (req, res) => {
+  res.send("meow");
+});
 async function connectToDatabase() {
-    try {
-        await client.connect();
-        console.log("Connected to MongoDB");
-        
-        // Define a database object for route handling
-        const database = client.db("TheSuiteSpot");
+  try {
+    await client.connect();
+    console.log("Connected to MongoDB");
 
-        // Use the imported routes
-        shopRoutes(app, database);
-        providerRoutes(app, database);
-        blogRoutes(app, database);
-        userRoutes(app, client, database);
-        loginRoutes(app, database);
-        subscriptionRoutes(app, database);
-        rentSuiteRoutes(app, database);
-        accountRoutes(app, database);
+    // Define a database object for route handling
+    const database = client.db("TheSuiteSpot");
 
-        // Start listening on the configured port
-        app.listen(PORT, () => {
-            console.log(`Server is running on port ${PORT}`);
-        });
-    } catch (error) {
-        console.error("Failed to connect to MongoDB", error);
-    }
+    // Use the imported routes
+    shopRoutes(app, database);
+    providerRoutes(app, database);
+    blogRoutes(app, database);
+    userRoutes(app, client, database);
+    loginRoutes(app, database);
+    subscriptionRoutes(app, database);
+    rentSuiteRoutes(app, database);
+    accountRoutes(app, database);
+
+    // Start listening on the configured port
+    app.listen(PORT, () => {
+      console.log(`Server is running on port ${PORT}`);
+    });
+  } catch (error) {
+    console.error("Failed to connect to MongoDB", error);
+  }
 }
 
 connectToDatabase();
+export default app;
