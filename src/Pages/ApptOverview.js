@@ -6,7 +6,7 @@ import store from "../assets/icons/icons8-shop-96.png";
 import purpleLady from "../assets/icons/icons8-person-female-100.png";
 import calendar from "../assets/icons/icons8-event-accepted-tentatively-96.png";
 import BackButton from "../Components/BackButton";
-import BACKEND_ADDRESS from "../App";
+import { BACKEND_ADDRESS } from "../App";
 
 function getUser() {
   let user = localStorage.getItem("user");
