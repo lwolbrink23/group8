@@ -6,6 +6,7 @@ import store from "../assets/icons/icons8-shop-96.png";
 import purpleLady from "../assets/icons/icons8-person-female-100.png";
 import calendar from "../assets/icons/icons8-event-accepted-tentatively-96.png";
 import BackButton from "../Components/BackButton";
+import BACKEND_ADDRESS from "../App";
 
 function getUser() {
   let user = localStorage.getItem("user");
@@ -39,14 +40,13 @@ function Overview() {
     };
 
     // Assuming your login flow triggers a custom event when the user logs in
-    window.addEventListener('userLoggedIn', handleUserChange);
+    window.addEventListener("userLoggedIn", handleUserChange);
 
     // Make sure to clean up the event listener to avoid memory leaks
     return () => {
-      window.removeEventListener('userLoggedIn', handleUserChange);
+      window.removeEventListener("userLoggedIn", handleUserChange);
     };
   }, [setUser]);
-
 
   /*const scrollToTop = () => {
     window.scrollTo(0, 0);
@@ -97,7 +97,7 @@ function Overview() {
       console.log(bookingData);
 
       // Make a POST request to the backend booking route
-      const response = await fetch("http://localhost:3003/bookings", {
+      const response = await fetch(`${BACKEND_ADDRESS}/bookings`, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -117,7 +117,7 @@ function Overview() {
             date: formattedDate,
             time: clickedTime,
             serviceName: serviceName,
-            staff: staff
+            staff: staff,
           },
         });
         // Navigate to confirmation page or do something else
@@ -134,7 +134,7 @@ function Overview() {
   };
 
   return (
-    <div >
+    <div>
       <ScrollToTop />
       <div className="title-container trans-white">
         <BackButton />
@@ -222,11 +222,21 @@ function Overview() {
             {/*book now button*/}
             {/* Conditional rendering for error message */}
             {(!user || !user.id) && (
-              <div style={{ color: 'red', textAlign: 'center', marginBottom: '10px' }}>
+              <div
+                style={{
+                  color: "red",
+                  textAlign: "center",
+                  marginBottom: "10px",
+                }}
+              >
                 Please log in to book an appointment.
               </div>
             )}
-            <button type="button" className="purp-button" onClick={handleBookNow}>
+            <button
+              type="button"
+              className="purp-button"
+              onClick={handleBookNow}
+            >
               Book Now
             </button>
           </div>
