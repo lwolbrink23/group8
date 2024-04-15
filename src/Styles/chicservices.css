@@ -251,6 +251,11 @@ img {
 
 /* mobile screen */
 @media screen and (max-width: 766px) {
+  h1 {
+    font-size: 30px;
+  }
+
+
   .tabs {
     font: 700 20px Cormorant;
     margin-bottom: 20px;

@@ -30,7 +30,7 @@ function SelectTime() {
   const staff = location.state?.staff;
   const serviceTitle = location.state?.serviceTitle;
 
-  console.log(location.state)
+  console.log(location.state);
 
   const [selectedDate, setSelectedDate] = useState(new Date());
 
@@ -76,8 +76,8 @@ function SelectTime() {
   return (
     <div>
       <div className="title-container trans-white">
-        <BackButton />
-        <h1>{serviceName}</h1>
+        <BackButton className="viewBackbutn" />
+        <h1 className="mobiletitle">{serviceName}</h1>
       </div>
       <div className="arrow-container"></div>
       <div className="overview-container">
@@ -140,6 +140,7 @@ function SelectTime() {
             type="button"
             disabled={!clickedTime}
             style={{ color: !clickedTime ? "grey" : "initial" }}
+            className="continuebutton"
           >
             CONTINUE
           </button>

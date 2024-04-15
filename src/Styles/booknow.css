@@ -44,12 +44,34 @@
     .buttons {
             margin-top: 2px;
         }
-    .top {
-        display:flex;
-        flex-wrap:wrap;
-    }
+
     .top img {
         margin-bottom: 2px;
     }
+
+        .suites, .top {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+            text-align: center;
+            /* Optional if you want items stacked vertically */
+        }
+    
+
+        .suites p {
+            width: 260px;
+        }
+        /* Additional styling for buttons if needed */
+        .buttons {
+            display: block;
+            gap: 10px;
+            width: 300px;        }
+    
+        .buttons button {
+            font-size: 14px;
+            width: 400px;
+            height: 40px;
+        }
 }
 
