@@ -43,7 +43,7 @@
   flex: 1;
 }
 
-.overviewAppt {
+.overviewAppt, .overview {
   float: right;
   background: white;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.25);
@@ -115,7 +115,7 @@
       width: 100%;
     }
 
-  .overviewAppt {
+  .overviewAppt, .overview {
     margin-bottom: 100px;
     margin-top: -80px;
     margin-left: auto;
