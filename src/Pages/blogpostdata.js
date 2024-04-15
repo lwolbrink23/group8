@@ -7,6 +7,7 @@ import allAgesImage from "../assets/images/allages.jpeg";
 import hairPink from "../assets/images/hair-pinkbg.jpeg";
 import nailBlog from "../assets/images/nails-blog.webp";
 import "../Styles/blogpost.css";
+import { BACKEND_ADDRESS } from "../App";
 
 function BlogPostData() {
   const { category, id } = useParams();
@@ -16,7 +17,7 @@ function BlogPostData() {
     const fetchBlogPost = async () => {
       try {
         const response = await fetch(
-          `http://localhost:3003/blog/blogpost/${category}/${id}`
+         `${BACKEND_ADDRESS}/blog/blogpost/${encodeURIComponent(category)}/${encodeURIComponent(id)}`
         );
         if (!response.ok) {
           throw new Error("Failed to fetch blog post");
