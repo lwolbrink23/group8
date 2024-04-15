@@ -4,19 +4,19 @@
     padding: 20px;
     margin: 0;
   }
+
   .titles-containers h1 {
     margin: 0;
     padding: 0;
   }
+
   .tabs {
     text-align: left;
     font: 700 26px "Cormorant";
     margin-bottom: 30px;
     box-shadow: 0 4px 4px 0 rgba(0, 0, 0, 0.25);
     background-color: #fff;
-    padding-top: 20px;
-    padding-bottom: 20px;
-    padding-left: 10px;
+    padding: 20px 10px;
   }
 
   .tabs button {
@@ -60,20 +60,23 @@
 
   .tabs-cat-list {
     flex-direction: column;
+    width: 70%;
   }
 
   .button-container {
     display: flex;
     align-items: center;
   }
-img {
-  max-height: fit-content;
-}
+
+  img {
+    max-height: fit-content;
+  }
+
   .check-mark {
-    max-width: 70px !important;
-      max-height: 70px !important;
-      pointer-events: none;
-      box-sizing: border-box;
+    max-width: 50px !important;
+    max-height: 50px !important;
+    pointer-events: none;
+    box-sizing: border-box;
   }
 
   .services-selected ul {
@@ -109,12 +112,12 @@ img {
     align-items: center;
     position: relative;
     text-align: center;
-    font: 700 20px Poppins;
     background: #fff;
     box-shadow: 0 4px 4px 0 rgba(0, 0, 0, 0.25);
     width: 100%;
-    max-width: 500px;
+    max-width: 300px;
     margin: 0 auto;
+    /* Centered */
     padding: 20px;
     flex-shrink: 0;
     height: 100%;
@@ -124,19 +127,15 @@ img {
     margin-top: 20px;
     width: 150px;
   }
-.overviews-containers {
-  margin: 20px 150px;
-  display: flex;
-  gap: 100px;
-  justify-content: flex-end;
-}
 
-.overviews-containers {
-  max-width: 1000px;
-  margin-left: auto;
-  margin-right: auto;
-}
-
+  .overviews-containers {
+    max-width: 1000px;
+    margin: 20px auto;
+    /* Centered */
+    display: flex;
+    gap: 50px;
+    justify-content: flex-end;
+  }
 
   .plus-button,
   .remove-button {
@@ -144,6 +143,8 @@ img {
     box-shadow: none;
     padding: 15px;
     flex-shrink: 0;
+    max-width: 60px !important;
+    max-height: 60px !important;
   }
 
   .category-list button:hover {
@@ -157,95 +158,68 @@ img {
   .image-div {
     display: grid;
     grid-template-columns: 60% auto;
-    gap: 30px;
     justify-content: center;
     align-items: center;
     height: auto;
-    margin-top: 15px;
-    margin-left: 100px;
-  }
+    margin-top: 15px !important;
+    max-width: 1020px;
+    margin: 0 auto;
+    /* Centered */
 
-  .focus-image,
-  .side-images {
-    width: 80%;
-    height: auto;
-    padding: 10px;
   }
 
   .focus-image {
+    height: 530px;
+    padding: 0;
     grid-column: 1 / 2;
-    width: 90%;
-    height: auto;
-    justify-self: center;
-    align-self: center;
+    width: 100%;
+    justify-self: left;
+    margin: 0;
+    object-fit: cover;
   }
 
   .side-images-container {
     display: flex;
     flex-direction: column;
     grid-column: 2 / 3;
+    padding: 0;
+    margin: 0;
   }
 
-    .side-images-containerB {
-      display: flex;
-      flex-direction: column;
-      grid-column: 2 / 3;
-    }
-
-  .side-images {
+  .side-images,
+  .side-imagesB,
+  .side-imagesH, .side-imagesP {
     justify-self: left;
-    margin-left: -50px;
-    width: 78%;
-    height: auto;
+    margin-left: 20px;
+    width: auto;
+    /* Adjusted width */
     max-width: 100%;
-    aspect-ratio: 1.86/ 1;
+    /* Adjusted max-width */
+    height: 259px;
     object-fit: cover;
+    padding: 0;
+    margin-bottom: 5px;
   }
 
-  .side-imagesP {
-    justify-self: left;
-    margin-left: -50px;
-    width: 78%;
-    height: auto;
-    max-width: 100%;
-    aspect-ratio: 2.04/ 1;
-    object-fit: cover;
-  }
-  .side-imagesB {
-    justify-self: left;
-    margin-left: -50px;
-    width: 78%;
-    height: auto;
-    max-width: 100%;
-    aspect-ratio: 1.72/ 1;
-    object-fit: cover;
-  }
-  .side-imagesH {
-    justify-self: left;
-    margin-left: -50px;
-    width: 78%;
-    height: auto;
-    max-width: 100%;
-    aspect-ratio: 1.71/ 1;
-    object-fit: cover;
+
+  .side-images-container> :first-child {
+    padding-bottom: 10px;
   }
 
-  .side-images-container > :first-child {
-    padding-bottom:10px;
+  .side-images-containerC {
+    width: 96%;
+    padding: 0;
+    margin-left: 0;
   }
-
-.side-images-containerB> :first-child {
-  padding-bottom: 20px;
-}
-
-    .side-images-containerB> :last-child {
-      padding-bottom: 0;
-    }
 
   .select-serv {
-    font: 700 32px Cormorant;
     text-align: left;
-    margin-left: 150px;
+    margin: 0 auto;
+    /* Adjusted margin */
+    width: 100vw;
+    /* Adjusted width */
+    max-width: 1000px;
+    /* Adjusted max-width */
   }
 }
 
@@ -269,6 +243,7 @@ img {
     box-shadow: none;
     cursor: pointer;
     padding: 8px;
+        margin-left: 10px;
   }
 
   .tabs button.active {
