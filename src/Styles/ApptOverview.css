@@ -43,7 +43,7 @@
   flex: 1;
 }
 
-.overview {
+.overviewAppt {
   float: right;
   background: white;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.25);
@@ -86,27 +86,87 @@
   /* This will place the columns on opposite ends of the div */
 }
 
-@media (max-width: 900px) {
+@media (max-width: 768px) {
+
+  .payment-method {
+    margin-top: 40px;
+  }
   /* Adjust the max-width as needed for your breakpoint */
   .overview-container {
     flex-direction: column;
     align-items: center;
-    margin: 20px 50px;
+    justify-content: center;
+    margin: 0 auto;
+    padding: 0;
+    width: 90vw !important;
+    max-width: none;
   }
 
-  .overview {
-    width: 100%;
-    /* Make each div take the full container width */
+    .payment-method, .cancelation-policy, .appt_overview_text, .booking-notes, .appt_overview_text p {
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      margin: 20px auto;
+      width: 100%;
+      max-width: none;    
+    }
+
+    .appt_overview_textArea {
+      width: 100%;
+    }
+
+  .overviewAppt {
     margin-bottom: 100px;
-    /* Reduce margin */
-    margin-top: -60px;
+    margin-top: -80px;
     margin-left: auto;
     margin-right: auto;
+    width: 90vw !important;
+    max-width: none;
+    padding: 0;
+    margin-bottom: 100px;
+    min-height: 460px;
   }
 
   .payment {
     margin-left: auto;
     margin-right: auto;
-    width: 400px;
+    width: 100%;
+  }
+
+   .overviewAppt p {
+    margin: 20px;
+ }
+      
+   .overviewAppt h2 {
+    margin-left: 10px;
+ }
+
+  .appointmentoverviewappt {
+    margin-left: 10px;
+    margin-bottom: -30px;
+  }
+
+    .appointmentoverviewappt p {
+      margin-left: 10px;
+    }
+
+  
+  .apptoverviewcontinuebutn {
+    margin-bottom: 30px;
+    width: 90%;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 40px;
+    display: flex;
+      justify-content: center;
+      align-items: center;
+      flex-direction: column;
+
+  }
+
+  .lineapptov {
+    width: 90%;
   }
 }
+
+

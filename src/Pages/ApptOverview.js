@@ -138,7 +138,7 @@ function Overview() {
       <ScrollToTop />
       <div className="title-container trans-white">
         <BackButton />
-        <h1>{serviceName}</h1>
+        <h1 className="mobiletitle">{serviceName}</h1>
       </div>
       <div className="overview-container">
         <div className="payment">
@@ -174,7 +174,7 @@ function Overview() {
             ></textarea>
           </div>
         </div>
-        <div className="overview" id="booking-overview">
+        <div className="overviewAppt" id="booking-overview">
           <div className="overview-content">
             <h2>Overview</h2>
             {selectedServices.map((service, index) => {
@@ -192,11 +192,11 @@ function Overview() {
               );
             })}
 
-            <hr />
+            <hr className="lineapptov" />
             <p id="total">
               <strong>Total: ${totalCost}</strong>
             </p>
-            <div className="appointment" id="appt-container">
+            <div className="appointmentoverviewappt" id="appt-container">
               <p>
                 <strong>Appointment:</strong>
               </p>
@@ -234,7 +234,7 @@ function Overview() {
             )}
             <button
               type="button"
-              className="purp-button"
+              className="purp-button apptoverviewcontinuebutn"
               onClick={handleBookNow}
             >
               Book Now
