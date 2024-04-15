@@ -4,7 +4,7 @@
   /* Adjust the top position based on your layout */
   right: 0;
   /* Align with the right side of the parent container */
-  margin-top: 20px;
+  margin-top: 15px;
   margin-right: 50px;
   /*line up with image*/
 }
@@ -99,7 +99,6 @@
   height: auto;
   flex-shrink: 0;
   padding: 20px;
-  box-sizing: border-box;
   display: flex;
   flex-direction: column;
   max-width: 80%;

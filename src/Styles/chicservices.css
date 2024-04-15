@@ -48,8 +48,9 @@
     justify-content: space-between;
     align-items: center;
     margin-bottom: 12px;
-    padding: 0 15px;
+    padding: 0 25px;
     cursor: pointer;
+    flex-shrink: 0;
     transition: transform 0.3s ease;
   }
 
@@ -71,7 +72,6 @@ img {
   .check-mark {
     max-width: 70px !important;
       max-height: 70px !important;
-      margin-left: 5px;
       pointer-events: none;
       box-sizing: border-box;
   }
@@ -124,6 +124,19 @@ img {
     margin-top: 20px;
     width: 150px;
   }
+.overviews-containers {
+  margin: 20px 150px;
+  display: flex;
+  gap: 100px;
+  justify-content: flex-end;
+}
+
+.overviews-containers {
+  max-width: 1000px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
 
   .plus-button,
   .remove-button {
@@ -317,7 +330,6 @@ img {
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    margin-top: -90px;
   }
 
   .services-selected ul {
@@ -362,4 +374,11 @@ img {
     text-align: center;
     margin-left: 0;
   }
+    .overviews-containers {
+      flex-direction: column;
+      align-items: center;
+      margin: 10px;
+      gap: 100px;
+      justify-content: flex-end;
+    }
 }

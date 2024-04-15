@@ -150,7 +150,7 @@ const SelectServices = () => {
       <div className="select-serv">
         <h3>Select Services</h3>
       </div>
-      <div className="overview-container">
+      <div className="overviews-containers">
         <div className="tabs-cat-list">
           <div className="tabs">
             {Object.keys(categories).map((category) => (
