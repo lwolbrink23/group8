@@ -287,12 +287,12 @@ function Shop() {
           disableBack={true}
         />
 
-        <h2>
+        <h2 className="shoph2">
           Find all your <br></br> favorite products here.
         </h2>
       </div>
       {/* shop items */}
-      <main>
+      <main className="mobilemain">
         <ul className="items-container">
           {/* mapping each shop item */}
           <ShopItems />
