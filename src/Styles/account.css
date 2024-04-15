@@ -1,4 +1,3 @@
-
 .orderInfoContainer {
     display: flex;
     flex-direction: column;
@@ -33,7 +32,7 @@
     right: 100%;
     text-align: center;
     text-transform: none;
-        /*makes it stop being uppercase like other buttons*/
+    /*makes it stop being uppercase like other buttons*/
 }
 
 .custom-dropdown {
@@ -70,10 +69,10 @@
 .profileTop {
     background-color: white;
     display: flex;
-        flex-direction: column;
-        align-items: center;
-        text-align: center;
-        padding: 20px;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    padding: 20px;
 }
 
 .profileTop h2 {
@@ -87,7 +86,7 @@
     overflow: hidden;
     /* Hide the overflow to make sure it stays a circle */
     margin: 0 auto;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3); 
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
     background-color: #f0f0f0;
     padding: 10px;
 }
@@ -106,7 +105,8 @@
 
 .editButton,
 .signoutButton,
-.changePW, .shopButton {
+.changePW,
+.shopButton {
     width: 150px;
     font-size: 14px;
 }
@@ -117,9 +117,10 @@
 }
 
 .signoutButton {
-    background-color: #F8A0A0; 
+    background-color: #F8A0A0;
     margin-left: 5px;
 }
+
 .signoutButton:hover {
     background-color: #ee6363;
     color: white;
@@ -157,12 +158,13 @@
     margin-bottom: 15px;
     /* Adjust the margin between rows as needed */
     border-bottom: 1px solid #ddd;
-        /* Add a horizontal line */
+    /* Add a horizontal line */
 }
 
-.linesofInfo { /*tightly targeting only the information lines*/
+.linesofInfo {
+    /*tightly targeting only the information lines*/
     margin-bottom: 20px;
-   /* align-items: left;*/
+    /* align-items: left;*/
 }
 
 .persInfoContainer h3 {
@@ -186,7 +188,7 @@
 .AppointmentsContainer {
     margin: 20px auto;
     text-align: center;
-    
+
 }
 
 .apptsInfoContainer {
@@ -213,19 +215,20 @@ table {
 th,
 td {
     padding: 8px;
-        text-align: center;
-        white-space: nowrap;
-        overflow: hidden;
-        text-overflow: ellipsis;
+    text-align: center;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
 
 }
 
 
-th { /*Table top header*/
+th {
+    /*Table top header*/
     background-color: #D8E79C;
 }
 
-.noAppts { 
+.noAppts {
     padding: 20px;
     color: #888;
     font-weight: bold;
@@ -240,72 +243,88 @@ th { /*Table top header*/
 
 /* Styles for mobile*/
 @media screen and (max-width: 767px) {
+
+    .linesofInfo {
+        width: 70%;
+    }
+
     .table tr,
-        .table td {
-            font-size: 11.5px;
-        }
+    .table td {
+        font-size: 11.5px;
+    }
 
-        .table th {
-            font-size: 13px;
-        }
+    .table th {
+        font-size: 13px;
+    }
 
-        .apptActionButton {
-            width: 85px;
-            height: 30px;
-            font-size: 12px;
-        }
+    .apptActionButton {
+        width: 80px;
+        height: 30px;
+        font-size: 11px;
+    }
 
-        .apptsInfoContainer {
-         min-width: 550px;
-        }
+    .persInfoContainer,
+    .apptsInfoContainer,
+    .orderInfoContainer {
+        max-width: 100vw;
+    }
 
-        .orderInfoContainer { 
-            min-width: 550px;
-        }
+    .tablewidth {
+        max-width: 100vw;
+    }
 
-        .persInfoContainer {
-            min-width: 550px;
-        }
+    .staffcolumn,
+    .servicecolumn {
+        display: none;
+    }
 
     .profile-picture-container {
-            width: 100px;
-            height: 100px;
-        }
+        width: 100px;
+        height: 100px;
+    }
 
-        .persIcons {
-            width: 30px;
-            height: 30px;
-            margin-right: 10px;
-        }
+    .persIcons {
+        width: 30px;
+        height: 30px;
+        margin-right: 10px;
+    }
 
-        .changePW {
-            margin-left: 40px;
-        }
+    .changePW {
+        margin-left: 40px;
+        width: 90px;
+        font-size: 12px;
+    }
+
+    .custom-dropdown {
+        width: 130px !important;
+        font-size: 10px;
+    }
 
 }
 
 /* Styles for web*/
 @media screen and (min-width: 767px) {
+
     /* Set a fixed width for the Services column */
-        .table th:nth-child(2),
-        .table td:nth-child(2) {
-            width: 200px;
-            /* Adjust the width as needed */
-        }
-    
-        /* Set a fixed width for the Services column */
-        .table th:nth-child(3),
-        .table td:nth-child(3) {
-            width: 300px;
-            /* Adjust the width as needed */
-        }
-    
-        /* Set a fixed width for the Services column */
-        .table th:nth-child(4),
-        .table td:nth-child(4) {
-            width: 100px;
-            /* Adjust the width as needed */
-        }
+    .table th:nth-child(2),
+    .table td:nth-child(2) {
+        width: 200px;
+        /* Adjust the width as needed */
+    }
+
+    /* Set a fixed width for the Services column */
+    .table th:nth-child(3),
+    .table td:nth-child(3) {
+        width: 300px;
+        /* Adjust the width as needed */
+    }
+
+    /* Set a fixed width for the Services column */
+    .table th:nth-child(4),
+    .table td:nth-child(4) {
+        width: 100px;
+        /* Adjust the width as needed */
+    }
 
 
     .apptsInfoContainer {
@@ -319,13 +338,14 @@ th { /*Table top header*/
         max-width: 1050px;
         min-width: 800px;
     }
+
     .buttonsContainer {
         display: flex;
         flex-direction: column;
         align-items: center;
         text-align: center;
         margin-top: 0;
-        }
+    }
 
     .signoutButton {
         margin-top: 10px;
@@ -335,7 +355,7 @@ th { /*Table top header*/
 
     .editButton {
         margin-left: auto;
-            margin-right: auto;
+        margin-right: auto;
     }
 
     .changePW {
@@ -343,44 +363,45 @@ th { /*Table top header*/
     }
 
     .profileContainer {
-            display: flex;
-            gap: 20px;
-                /* Add spacing between the two containers */
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
-            background-color: white;
-            margin-left: auto;
-            margin-right: auto;
-            margin-top: 20px;
-            margin-bottom: 20px;
-            width: 70%;
-            max-width: 1050px;
-            min-width: 800px;
-        }
+        display: flex;
+        gap: 20px;
+        /* Add spacing between the two containers */
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+        background-color: white;
+        margin-left: auto;
+        margin-right: auto;
+        margin-top: 20px;
+        margin-bottom: 20px;
+        width: 70%;
+        max-width: 1050px;
+        min-width: 800px;
+    }
 
-        .profileTop {
-            flex: 0 0 30%; /* Adjust the percentage for the desired width */
-        }
+    .profileTop {
+        flex: 0 0 30%;
+        /* Adjust the percentage for the desired width */
+    }
 
 
-        .profileTop h2 {
-            font-size: 20px;
-        }
+    .profileTop h2 {
+        font-size: 20px;
+    }
 
-        .persInfoContainer {
-            box-shadow: none;
-            margin: 0;
-            flex: 1;
-        }   
+    .persInfoContainer {
+        box-shadow: none;
+        margin: 0;
+        flex: 1;
+    }
 
-        .linesofInfo {
-            width: 90%;
-        }
+    .linesofInfo {
+        width: 90%;
+    }
 
-        .persInfoContainer h3 {
-            margin: 20px 0;
-            margin-top: 50px;
-            text-align: left; 
-        }
+    .persInfoContainer h3 {
+        margin: 20px 0;
+        margin-top: 50px;
+        text-align: left;
+    }
 
 
     .profile-picture-container {

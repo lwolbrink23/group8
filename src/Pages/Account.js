@@ -92,12 +92,12 @@ function Account({ props }) {
           return (
             <tr key={appointment.id}>
               <td key="filteredappts1">{formattedDate}</td>
-              <td key="filteredappts2">{appointment.location}</td>
-              <td key="filteredappts3">
+              <td key="filteredappts2" >{truncateText(appointment.location, 16)}</td>
+              <td key="filteredappts3" className="servicecolumn">
                 {truncateText(appointment.services, 24)}
               </td>{" "}
               {/* Adjust the character limit as needed */}
-              <td key="filteredappts4">{appointment.staff}</td>
+              <td key="filteredappts4" className="staffcolumn">{appointment.staff}</td>
               <td key="filteredappts5">
                 <div className="apptActionContainer">
                   <button
@@ -257,13 +257,13 @@ function Account({ props }) {
                   <h3>Scheduled Appointments</h3>
                 </div>
                 <div className="table">
-                  <table>
+                  <table className="tablewidth">
                     <thead>
                       <tr key="schedTable">
                         <th key="schedTable1">Date</th>
-                        <th key="schedTable2">Location</th>
-                        <th key="schedTable3">Services</th>
-                        <th key="schedTable4">Staff</th>
+                        <th key="schedTable2" >Location</th>
+                        <th key="schedTable3" className="servicecolumn">Services</th>
+                        <th key="schedTable4" className="staffcolumn">Staff</th>
                         <th key="schedTable5"></th>
                         {/* ^View Details Button Column - DO NOT DELETE */}
                       </tr>
@@ -281,8 +281,8 @@ function Account({ props }) {
                       <tr key="historyTable">
                         <th key="historyTable1">Date</th>
                         <th key="historyTable2">Location</th>
-                        <th key="historyTable3">Services</th>
-                        <th key="historyTable4">Staff</th>
+                        <th key="historyTable3" className="servicecolumn">Services</th>
+                        <th key="historyTable4" className="staffcolumn">Staff</th>
                         <th key="historyTable5"></th>{" "}
                         {/* ^View Details Button Column - DO NOT DELETE */}
                       </tr>

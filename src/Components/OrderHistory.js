@@ -57,7 +57,7 @@ function OrderHistory({ dbOrders }) {
             <li className="ordered-item" key={i}>
               <img
                 src={require("../assets/images/shop/" + itemPic + ".png")}
-                alt=""
+                alt="" className="imgitem"
               ></img>
               <div className="item-history-info">
                 <p>
@@ -79,7 +79,7 @@ function OrderHistory({ dbOrders }) {
             <li className="ordered-item" key={i}>
               <img
                 src={require("../assets/images/shop/giftcard.png")}
-                alt=""
+                alt="" className="imgitem"
               ></img>
               <div className="item-history-info">
                 <p>

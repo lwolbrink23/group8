@@ -53,3 +53,26 @@
     width: 94%;
     margin: 0 auto;
 }
+
+/* Styles for mobile*/
+@media screen and (max-width: 767px) {
+
+    .date::before,
+    .date::after {
+        content: '';
+        position: absolute;
+        top: 50%;
+        width: 35%;
+        height: 1px;
+        background-color: rgb(112, 111, 111);
+        /* Change the color as needed */
+    }
+
+    .ordered-item {
+        margin-top: -10px;
+    }
+
+    .imgitem {
+        margin-top: 18px;
+    }
+}
