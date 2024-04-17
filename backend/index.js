@@ -75,7 +75,6 @@ const client = new MongoClient(MONGODB_URI, {
     strict: true,
     deprecationErrors: true,
   },
-  poolSize: 20,  // Example pool size; adjust based on your needs
   serverSelectionTimeoutMS: 5000,  // Timeout for server selection
   socketTimeoutMS: 5000  // Controls how long a send or receive on a socket can take before timing out
 });
