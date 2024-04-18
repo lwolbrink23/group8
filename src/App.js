@@ -30,7 +30,8 @@ import ApptDetails from "./Pages/ApptDetails";
 import ContactUs from "./Pages/ContactUs";
 import { Route, Routes } from "react-router-dom";
 
-export const BACKEND_ADDRESS = "https://the-suite-spot-backend.vercel.app";
+export const BACKEND_ADDRESS =
+  "https://the-suite-spot-backend-7806dd88b438.herokuapp.com";
 //export const BACKEND_ADDRESS = "http://localhost:3003";
 
 // this is only the home page elements
