@@ -240,7 +240,7 @@ function ApptDetails({ props }) {
                   style={{
                     display: getStatusCancelBtn(location.state.status),
                   }}
-                  onClick={() => openPopUp()}
+                  onClick={() => cancelAppt()}
                 >
                   Cancel
                 </button>
